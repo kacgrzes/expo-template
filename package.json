@@ -1,5 +1,6 @@
 {
   "name": "@kacgrzes/expo-template",
+  "version": "42.0.1",
   "description": "Expo template ready to develop mobile apps",
   "keywords": [
     "expo",
