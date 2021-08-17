@@ -19,6 +19,7 @@ Version in the `package.json` is one to one the latest expo on which the templat
 
 - Expo
 - React Navigation
+- i18next
 - Light/dark mode toggle
 - Live previews
 - Fullscreen mode
