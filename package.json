@@ -22,7 +22,7 @@
   },
   "author": "Kacper Grzeszczyk",
   "license": "MIT",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "src/index.tsx",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -31,11 +31,39 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.15.0",
+    "@react-native-community/netinfo": "6.0.0",
+    "@react-navigation/bottom-tabs": "^6.0.5",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/native-stack": "^6.0.6",
     "expo": "~42.0.1",
+    "expo-app-loading": "^1.1.2",
+    "expo-application": "~3.2.0",
+    "expo-asset": "^8.3.3",
+    "expo-constants": "~11.0.1",
+    "expo-crypto": "~9.2.0",
+    "expo-device": "~3.3.0",
+    "expo-error-recovery": "~2.2.0",
+    "expo-font": "~9.2.1",
+    "expo-linking": "~2.3.1",
+    "expo-local-authentication": "~11.1.1",
+    "expo-localization": "~10.2.0",
+    "expo-network": "~3.2.0",
+    "expo-screen-orientation": "~3.2.1",
+    "expo-secure-store": "~10.2.0",
+    "expo-splash-screen": "~0.11.2",
     "expo-status-bar": "~1.0.4",
+    "expo-updates": "~0.8.2",
+    "expo-web-browser": "~9.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-pager-view": "5.0.12",
+    "react-native-reanimated": "~2.2.0",
+    "react-native-safe-area-context": "3.2.0",
+    "react-native-screens": "~3.4.0",
+    "react-native-svg": "12.1.1",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
@@ -43,5 +71,6 @@
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "typescript": "~4.0.0"
-  }
+  },
+  "private": true
 }
