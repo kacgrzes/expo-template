@@ -1,12 +1,13 @@
 ## Todo;
 
+- construct a flow on how to develop apps follow CDD (component driven development)
 - examples: https://github.com/expo/examples
 - https://blog.expo.dev/
 - icons
 - fonts
 - https://docs.expo.dev/guides/testing-with-jest/
 - auth flow
-- storybook (https://storybook.js.org/tutorials/intro-to-storybook/react-native/en/get-started/)
+- storybook (add version v6) (https://storybook.js.org/tutorials/intro-to-storybook/react-native/en/get-started/)
 - theme
 - add react-query (i guess we won't ever use anything else)
 - handle offline mode somehow
@@ -17,7 +18,6 @@
 - typography
 - button
 - scrollview with easy keyboard hide
-- easy module resolver
 - configure typescript + eslint / tslint + prettier
 - setup multiple environments
 - form validations and form components
@@ -30,13 +30,15 @@
 - run custom snack: https://github.com/expo/snack
 - https://github.com/expo/google-fonts
 
+- easy module resolver - DONE
+
 ## Nice articles:
 
 - https://github.com/expo/fyi
 - https://www.reactnativeschool.com/
 - https://brainsandbeards.com/blog/i18n-in-react-native-apps?utm_campaign=React%2BNative%2BNow&utm_medium=email&utm_source=React_Native_Now_88
 - https://github.com/kadikraman/react-native-template/blob/main/template/src/hooks/useTypedNavigation.ts
-- https://koprowski.it/import-alias-in-react-native-and-vscode/?utm_campaign=React%2BNative%2BNow&utm_medium=email&utm_source=React_Native_Now_83
+- https://koprowski.it/import-alias-in-react-native-and-vscode/?utm_campaign=React%2BNative%2BNow&utm_medium=email&utm_source=React_Native_Now_83 - DONE
 - https://koprowski.it/react-native-form-validation-with-react-hook-form-usecontroller/
 
 ## Other templates:
