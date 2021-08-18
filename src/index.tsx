@@ -1,19 +1,23 @@
-import './i18n/index'
+import 'react-native-gesture-handler'
+import '~i18n'
+
 import React from 'react'
 import { registerRootComponent } from 'expo'
-import { StatusBar } from 'expo-status-bar'
-import { NavigationContainer } from '@react-navigation/native'
 
-import { RootStackScreen } from '~navigation'
+import { AppLoading, StatusBar } from '~components'
+import { Navigation } from '~navigation'
+import { AuthProvider, SafeAreaProvider } from '~providers'
 
 export default function App() {
   return (
-    <>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <RootStackScreen />
-      </NavigationContainer>
-    </>
+    <SafeAreaProvider>
+      <AuthProvider>
+        <AppLoading>
+          <StatusBar style="auto" />
+          <Navigation />
+        </AppLoading>
+      </AuthProvider>
+    </SafeAreaProvider>
   )
 }
 

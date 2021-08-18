@@ -4,7 +4,7 @@ import { ExamplesScreen, HomeScreen } from '~screens'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
-export const MainBottomTabScreen = () => {
+export const BottomTabNavigator = () => {
   return (
     <Navigator>
       <Screen name="Home" component={HomeScreen} />
