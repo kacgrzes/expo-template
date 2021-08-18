@@ -76,6 +76,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@expo/config": "^5.0.7",
     "@testing-library/jest-native": "^4.0.2",
     "@testing-library/react-native": "^7.2.0",
     "@types/i18next": "^13.0.0",
