@@ -1,1 +1,1 @@
-export const SignUpScreen = () => null;
+export const SignUpScreen = () => null

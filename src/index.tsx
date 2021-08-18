@@ -1,10 +1,10 @@
-import './i18n/index';
-import React from 'react';
-import { registerRootComponent } from 'expo';
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
+import './i18n/index'
+import React from 'react'
+import { registerRootComponent } from 'expo'
+import { StatusBar } from 'expo-status-bar'
+import { NavigationContainer } from '@react-navigation/native'
 
-import { RootStackScreen } from './navigation/RootStack';
+import { RootStackScreen } from '~navigation'
 
 export default function App() {
   return (
@@ -14,7 +14,7 @@ export default function App() {
         <RootStackScreen />
       </NavigationContainer>
     </>
-  );
+  )
 }
 
-registerRootComponent(App);
+registerRootComponent(App)

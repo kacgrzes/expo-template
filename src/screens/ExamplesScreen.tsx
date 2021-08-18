@@ -1,9 +1,9 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { Pressable, ScrollView, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
+import { Pressable, ScrollView, Text } from 'react-native'
 
 export const ExamplesScreen = () => {
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation()
 
   return (
     <ScrollView>
@@ -11,5 +11,5 @@ export const ExamplesScreen = () => {
         <Text>Hello!</Text>
       </Pressable>
     </ScrollView>
-  );
-};
+  )
+}

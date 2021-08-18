@@ -1,9 +1,8 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ExamplesScreen } from '../screens/ExamplesScreen';
-import { HomeScreen } from '../screens/HomeScreen';
+import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { ExamplesScreen, HomeScreen } from '~screens'
 
-const { Navigator, Screen } = createBottomTabNavigator();
+const { Navigator, Screen } = createBottomTabNavigator()
 
 export const MainBottomTabScreen = () => {
   return (
@@ -11,5 +10,5 @@ export const MainBottomTabScreen = () => {
       <Screen name="Home" component={HomeScreen} />
       <Screen name="Examples" component={ExamplesScreen} />
     </Navigator>
-  );
-};
+  )
+}

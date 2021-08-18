@@ -1,8 +1,12 @@
 ## Todo;
 
+- examples: https://github.com/expo/examples
 - https://blog.expo.dev/
+- icons
+- fonts
 - https://docs.expo.dev/guides/testing-with-jest/
 - auth flow
+- storybook (https://storybook.js.org/tutorials/intro-to-storybook/react-native/en/get-started/)
 - theme
 - add react-query (i guess we won't ever use anything else)
 - handle offline mode somehow
@@ -21,7 +25,7 @@
 - add figma link on how to setup icon and splash screen to readme
 - add hidden developer / admin menu
 - add language switch
-- how to add custom vector icons set to the app?
+- how to add custom vector icons set to the app? - include this in the docs
 - https://github.com/expo/expo-preview-action
 - run custom snack: https://github.com/expo/snack
 - https://github.com/expo/google-fonts
