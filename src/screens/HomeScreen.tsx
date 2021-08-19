@@ -1,17 +1,24 @@
 import React from 'react'
-import { Pressable, Text, View } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { useAuth, useTranslation } from '~hooks'
+import { Button } from '~components'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
   const { signOut } = useAuth()
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>{t('hello')}</Text>
-      <Pressable onPress={signOut}>
-        <Text>Sign out!</Text>
-      </Pressable>
+      <Button onPress={signOut}>Sign out!</Button>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})

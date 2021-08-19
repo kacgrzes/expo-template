@@ -1,5 +1,13 @@
 ## Todo;
 
+- add all the features that this starter has based on commits
+- typescript for navigation
+- ThemeProvider
+- Dark / Light theme switch
+- feature flags -> provider / hook and consumer with a feature name. Feature has: name, description, active
+  - https://github.com/garbles/flag
+  - https://github.com/romaindso/react-feature-flags
+- restyle???
 - construct a flow on how to develop apps follow CDD (component driven development)
 - examples: https://github.com/expo/examples
 - https://blog.expo.dev/

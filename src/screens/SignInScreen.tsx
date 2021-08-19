@@ -1,12 +1,21 @@
 import React from 'react'
-import { Pressable, Text } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { Button } from '~components'
 import { useAuth } from '~hooks'
 
 export const SignInScreen = () => {
   const { signIn } = useAuth()
   return (
-    <Pressable onPress={signIn}>
-      <Text>Sign in!</Text>
-    </Pressable>
+    <View style={styles.container}>
+      <Button onPress={signIn}>Sign in</Button>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})

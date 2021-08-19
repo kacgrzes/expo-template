@@ -3,3 +3,4 @@
 export { useTranslation } from 'react-i18next'
 export * from './useAuth'
 export * from './useCachedResources'
+export * from './useColorScheme'

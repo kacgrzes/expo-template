@@ -3,6 +3,7 @@
     "name": "TemplateApp",
     "slug": "TemplateApp",
     "version": "1.0.0",
+    "userInterfaceStyle": "automatic",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
