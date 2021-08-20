@@ -14,7 +14,7 @@ export const AppLoading: FC = ({ children }) => {
     }
   }, [isLoadingComplete, isSignedIn])
 
-  if (!isLoadingComplete && isSignedIn === null) {
+  if (!isLoadingComplete || isSignedIn === null) {
     return null
   }
 
