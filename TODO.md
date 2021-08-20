@@ -1,7 +1,11 @@
 ## Todo;
 
+- take a look at the other app from Tom and get some ideas from there
 - add all the features that this starter has based on commits
+- imports from ah (go through the commits history)
 - typescript for navigation
+- https://miragejs.com/
+- faker.js
 - ThemeProvider
 - Dark / Light theme switch
 - feature flags -> provider / hook and consumer with a feature name. Feature has: name, description, active
@@ -24,8 +28,13 @@
 - add basic toast mechanism
 - basic components: box, flex, etc
 - typography
+- analytics setup
+- empty state
 - button
-- scrollview with easy keyboard hide
+- form field
+- components library
+- prioritze language in language detection
+- scrollview with easy keyboard hide, keyboard avoid view etc
 - configure typescript + eslint / tslint + prettier
 - setup multiple environments
 - form validations and form components
