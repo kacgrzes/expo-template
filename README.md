@@ -71,25 +71,25 @@ Please adhere to this project's `code of conduct`.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/kacgrzes/expo-typescript-template.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd expo-typescript-template
 ```
 
 Install dependencies
 
 ```bash
-  npm install
+  yarn
 ```
 
-Start the server
+Start the expo server
 
 ```bash
-  npm run start
+  yarn start
 ```
 
 ## License

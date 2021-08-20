@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 import '~i18n'
 
 import React from 'react'
-import { registerRootComponent } from 'expo'
+// import { registerRootComponent } from 'expo'
 
 import { AppLoading } from '~components'
 import { Navigation } from '~navigation'
@@ -20,4 +20,4 @@ export default function App() {
   )
 }
 
-registerRootComponent(App)
+// registerRootComponent(App)
