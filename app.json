@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "TemplateApp",
-    "slug": "TemplateApp",
+    "name": "Template",
+    "slug": "Template",
+    "scheme": "template",
     "version": "1.0.0",
     "userInterfaceStyle": "automatic",
     "orientation": "portrait",
