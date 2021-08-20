@@ -1,4 +1,4 @@
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](assets/logo.png)
 
 [![MIT License](https://img.shields.io/npm/l/@kacgrzes/expo-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![MIT License](https://img.shields.io/npm/v/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/v/@kacgrzes/expo-template?style=flat-square)
@@ -19,11 +19,18 @@ Version in the `package.json` is one to one the latest expo on which the templat
 
 - Expo
 - React Navigation
-- i18next
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+  - with dark and light theme set up
+  - with screen tracking hook
+- color scheme detection (dark / light mode toggle)
+- hermes enabled on Android by default
+- i18next with translations, language detection and translations
+- wait to load fonts and all the assets
+- auth flow ready for implementation details
+- prettier
+- babel-module-resolver
+- tests with jest and @testing-library/react-native
+
+See all the details in the documentation.
 
 ## Screenshots
 

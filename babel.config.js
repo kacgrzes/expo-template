@@ -11,6 +11,7 @@ module.exports = function (api) {
             /**
              * Regular expression is used to match all files inside `./src` directory and map each `.src/folder/[..]` to `~folder/[..]` path
              */
+            '~assets': './assets',
             '^~(.+)': './src/\\1',
           },
           extensions: [
