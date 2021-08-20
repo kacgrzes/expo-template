@@ -6,7 +6,6 @@
     "expo",
     "template",
     "expo-template",
-    "react-native-school",
     "react-native",
     "react-native-template",
     "jest",
@@ -41,7 +40,7 @@
     "@react-native-community/netinfo": "6.0.0",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
-    "@react-navigation/native-stack": "^6.0.6",
+    "@react-navigation/native-stack": "^6.1.0",
     "expo": "~42.0.1",
     "expo-app-loading": "^1.1.2",
     "expo-application": "~3.2.0",
@@ -86,6 +85,6 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "jest-expo": "^42.1.0",
     "prettier": "2.3.2",
-    "typescript": "~4.0.0"
+    "typescript": "^4.3.5"
   }
 }
