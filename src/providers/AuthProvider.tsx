@@ -1,26 +1,34 @@
+import { useAsyncStorage } from '@react-native-async-storage/async-storage'
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { AuthContext } from '~contexts'
+
+// TODO: change key here
+const TOKEN_KEY = '@template/token'
 
 export const AuthProvider: FC = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(null)
 
+  const { setItem, getItem, removeItem } = useAsyncStorage(TOKEN_KEY)
+
   useEffect(() => {
-    // TODO: this simulates bootstraping
-    const timer = setTimeout(() => {
-      setIsSignedIn(false)
-    }, 300)
+    const bootstrap = async () => {
+      const token = await getItem()
+      setIsSignedIn(!!token)
+    }
 
-    return () => clearTimeout(timer)
+    bootstrap()
   }, [])
 
-  const signIn = useCallback(() => {
-    // TODO: this is only simulation. Implement sign in here
-    setTimeout(() => setIsSignedIn(true), 300)
+  const signIn = useCallback(async () => {
+    await setItem('token here')
+    setIsSignedIn(true)
   }, [])
-  const signOut = useCallback(() => {
-    // TODO: this is only simulation. Implement sign out here
-    setTimeout(() => setIsSignedIn(false), 300)
+
+  const signOut = useCallback(async () => {
+    await removeItem()
+    setIsSignedIn(false)
   }, [])
+
   const signUp = useCallback(() => {
     // TODO: implement sign up here
   }, [])
