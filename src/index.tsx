@@ -4,7 +4,7 @@ import '~i18n'
 import React from 'react'
 import { registerRootComponent } from 'expo'
 
-import { AppLoading, StatusBar } from '~components'
+import { AppLoading } from '~components'
 import { Navigation } from '~navigation'
 import { AuthProvider, SafeAreaProvider } from '~providers'
 
@@ -13,7 +13,6 @@ export default function App() {
     <SafeAreaProvider>
       <AuthProvider>
         <AppLoading>
-          <StatusBar style="auto" />
           <Navigation />
         </AppLoading>
       </AuthProvider>

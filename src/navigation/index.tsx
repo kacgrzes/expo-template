@@ -1,16 +1,27 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { RootNavigator } from './RootNavigator'
-import { NavigationTheme } from '~constants'
-import { useColorScheme } from '~hooks'
+import { StatusBar } from '~components'
+import { useScreenTracker, useNavigationTheme } from '~hooks'
+import { linking } from './linking'
 
 export const Navigation = () => {
-  const colorScheme = useColorScheme()
-  // const theme = colorScheme === 'dark' ? NavigationTheme.Dark : NavigationTheme.Light
+  const { navigationRef, onReady, onStateChange } = useScreenTracker()
+  const navigationTheme = useNavigationTheme()
 
   return (
-    <NavigationContainer theme={NavigationTheme.Light}>
-      <RootNavigator />
-    </NavigationContainer>
+    <>
+      {/* TODO: move Status bar to a separate component; set default values */}
+      <StatusBar animated hideTransitionAnimation="fade" style="dark" />
+      <NavigationContainer
+        ref={navigationRef}
+        onReady={onReady}
+        onStateChange={onStateChange}
+        theme={navigationTheme}
+        linking={linking}
+      >
+        <RootNavigator />
+      </NavigationContainer>
+    </>
   )
 }

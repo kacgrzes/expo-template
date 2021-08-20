@@ -1,7 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { BottomTabNavigator } from './BottomTabNavigator'
-import { ApplicationInfoScreen, SignInScreen, SignUpScreen } from '~screens'
+import { ApplicationInfoScreen, NotFoundScreen, SignInScreen, SignUpScreen } from '~screens'
 import { useAuth } from '~hooks'
 
 const { Navigator, Screen, Group } = createNativeStackNavigator()
@@ -29,6 +29,7 @@ export const RootNavigator = () => {
       )}
       <Group screenOptions={{ presentation: 'modal' }}>
         <Screen name="ApplicationInfo" component={ApplicationInfoScreen} />
+        <Screen name="NotFound" component={NotFoundScreen} />
       </Group>
     </Navigator>
   )
