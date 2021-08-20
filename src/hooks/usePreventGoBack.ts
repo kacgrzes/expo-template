@@ -6,7 +6,7 @@ export const usePreventGoBack = (shouldPrevent = true) => {
   const navigation = useNavigation()
 
   useEffect(() => {
-    navigation.addListener('beforeRemove', (event) => {
+    const callback = (event: any) => {
       if (!shouldPrevent) {
         return
       }
@@ -25,6 +25,10 @@ export const usePreventGoBack = (shouldPrevent = true) => {
           },
         ]
       )
-    })
+    }
+
+    navigation.addListener('beforeRemove', callback)
+
+    return () => navigation.removeListener('beforeRemove', callback)
   }, [navigation, shouldPrevent])
 }
