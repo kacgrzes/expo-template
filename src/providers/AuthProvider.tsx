@@ -1,18 +1,16 @@
-import { useAsyncStorage } from '@react-native-async-storage/async-storage'
+import * as SecureStore from 'expo-secure-store'
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { AuthContext } from '~contexts'
 
-// TODO: change key here
-const TOKEN_KEY = '@template/token'
+// TODO: move to constants
+const TOKEN_KEY = 'token'
 
 export const AuthProvider: FC = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(null)
 
-  const { setItem, getItem, removeItem } = useAsyncStorage(TOKEN_KEY)
-
   useEffect(() => {
     const bootstrap = async () => {
-      const token = await getItem()
+      const token = await SecureStore.getItemAsync(TOKEN_KEY)
       setIsSignedIn(!!token)
     }
 
@@ -20,12 +18,12 @@ export const AuthProvider: FC = ({ children }) => {
   }, [])
 
   const signIn = useCallback(async () => {
-    await setItem('token here')
+    await SecureStore.setItemAsync(TOKEN_KEY, 'token here')
     setIsSignedIn(true)
   }, [])
 
   const signOut = useCallback(async () => {
-    await removeItem()
+    await SecureStore.deleteItemAsync(TOKEN_KEY)
     setIsSignedIn(false)
   }, [])
 
