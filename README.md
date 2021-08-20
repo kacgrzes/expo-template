@@ -21,11 +21,15 @@ Version in the `package.json` is one to one the latest expo on which the templat
 - React Navigation
   - with dark and light theme set up
   - with screen tracking hook
+  - state persistance on development mode
+  - prevent go back (to be used on forms for example)
 - color scheme detection (dark / light mode toggle)
 - hermes enabled on Android by default
 - i18next with translations, language detection and translations
 - wait to load fonts and all the assets
 - auth flow ready for implementation details
+  - using expo-secure-store module to save user token
+  - right now it has simple signIn/signOut flow
 - prettier
 - babel-module-resolver
 - tests with jest and @testing-library/react-native
