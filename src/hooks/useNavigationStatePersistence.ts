@@ -2,17 +2,17 @@ import { useCallback, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { getInitialURL } from 'expo-linking'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { isProduction } from '~constants'
 
 const PERSISTENCE_KEY = '@template/navigation-state'
-const EXPO_LINK_REGEXP = /^exp:\/\/\d*\.\d\.\d\.\d:\d*$/
+const EXPO_LINK_REGEXP = /^exp:\/\/\d+\.\d+\.\d+\.\d+:\d*$/
 
 const checkInitialURL = (initialUrl: string | null) => {
   return initialUrl == null || initialUrl.match(EXPO_LINK_REGEXP) !== null
 }
 
 export const useNavigationStatePersistence = () => {
-  // TODO: move __DEV__ to constants
-  const [isReady, setIsReady] = useState(__DEV__ ? false : true)
+  const [isReady, setIsReady] = useState(isProduction)
   const [initialState, setInitialState] = useState()
 
   useEffect(() => {
