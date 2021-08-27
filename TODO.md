@@ -2,6 +2,7 @@
 
 - take a look at the other app from Tom and get some ideas from there
 - add all the features that this starter has based on commits
+- prepare a list of checks that need to be done in order to have a good quality app
 - imports from ah (go through the commits history)
 - typescript for navigation
 - https://miragejs.com/
