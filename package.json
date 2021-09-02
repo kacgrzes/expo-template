@@ -45,7 +45,7 @@
     "expo": "~42.0.1",
     "expo-app-loading": "^1.1.2",
     "expo-application": "~3.2.0",
-    "expo-asset": "^8.3.3",
+    "expo-asset": "~8.3.3",
     "expo-constants": "~11.0.1",
     "expo-crypto": "~9.2.0",
     "expo-device": "~3.3.0",
@@ -75,7 +75,7 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "~7.9.0",
     "@expo/config": "^5.0.7",
     "@testing-library/jest-native": "^4.0.2",
     "@testing-library/react-native": "^7.2.0",
@@ -84,8 +84,8 @@
     "@types/react-i18next": "^8.1.0",
     "@types/react-native": "~0.63.2",
     "babel-plugin-module-resolver": "^4.1.0",
-    "jest-expo": "^42.1.0",
+    "jest-expo": "^42.0.0",
     "prettier": "2.3.2",
-    "typescript": "^4.3.5"
+    "typescript": "~4.0.0"
   }
 }
