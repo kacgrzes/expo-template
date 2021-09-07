@@ -6,6 +6,7 @@
     "paths": {
       "~*": ["src/*"],
       "~assets": ["assets"]
-    }
+    },
+    "typeRoots": ["node_modules/@types", "src/types"]
   }
 }
