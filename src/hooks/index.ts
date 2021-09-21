@@ -15,6 +15,14 @@ export {
   useScrollToTop,
   useTheme,
 } from '@react-navigation/native'
+export {
+  useController,
+  useFieldArray,
+  useForm,
+  useFormContext,
+  useFormState,
+  useWatch,
+} from 'react-hook-form'
 export * from '@react-native-community/hooks'
 export * from './useAuth'
 export * from './useCachedResources'
