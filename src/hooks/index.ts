@@ -24,6 +24,17 @@ export {
   useWatch,
 } from 'react-hook-form'
 export * from '@react-native-community/hooks'
+export {
+  useHydrate,
+  useInfiniteQuery,
+  useIsFetching,
+  useIsMutating,
+  useMutation,
+  useQueries,
+  useQuery,
+  useQueryClient,
+  useQueryErrorResetBoundary,
+} from 'react-query'
 export * from './useAuth'
 export * from './useCachedResources'
 export * from './useColorScheme'

@@ -75,7 +75,8 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-svg": "12.1.1",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-query": "^3.24.3"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
@@ -86,6 +87,7 @@
     "@types/react": "~16.9.35",
     "@types/react-i18next": "^8.1.0",
     "@types/react-native": "~0.63.2",
+    "@types/react-query": "^1.2.9",
     "babel-plugin-module-resolver": "^4.1.0",
     "jest-expo": "^42.0.0",
     "miragejs": "^0.1.41",

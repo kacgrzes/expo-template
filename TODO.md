@@ -1,5 +1,6 @@
 ## Todo;
 
+- react-query react-native devtools: https://github.com/bgaleotti/react-query-native-devtools
 - sprawdzic dlaczego auto import nie dziala z tyldami
 - zmienne środowiskowe: Dev, UAT (User Acceptance Testing), and Production (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-1-c52b5d3dcb7)
 - eas json config: https://docs.expo.dev/build/eas-json/
