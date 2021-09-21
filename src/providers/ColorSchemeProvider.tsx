@@ -2,7 +2,6 @@ import React, { FC, useEffect } from 'react'
 import { ColorSchemeContext } from '~contexts'
 import { ColorSchemeName, useColorScheme } from 'react-native'
 import { useAsyncStorage } from '@react-native-async-storage/async-storage'
-import { useState } from 'react-native/node_modules/@types/react'
 
 type InternalColorScheme = NonNullable<ColorSchemeName> | 'system'
 
