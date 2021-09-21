@@ -1,10 +1,17 @@
 ## Todo;
 
+- sprawdzic dlaczego auto import nie dziala z tyldami
+- zmienne środowiskowe: Dev, UAT (User Acceptance Testing), and Production (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-1-c52b5d3dcb7)
+- eas json config: https://docs.expo.dev/build/eas-json/
 - typical auth flow - https://i.redd.it/x7wkhwkz05g71.png
 - take a look at the other app from Tom and get some ideas from there
+- check RN Europe on YT (from Callstack)
+- https://github.com/alan2207/bulletproof-react
 - add all the features that this starter has based on commits
 - prepare a list of checks that need to be done in order to have a good quality app
 - imports from ah (go through the commits history)
+- CI / CD https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-2-78a6fa480d59
+- yarn deeplink:android / ios + url
 - typescript for navigation
 - https://miragejs.com/
 - faker.js
@@ -13,7 +20,7 @@
 - feature flags -> provider / hook and consumer with a feature name. Feature has: name, description, active
   - https://github.com/garbles/flag
   - https://github.com/romaindso/react-feature-flags
-- restyle???
+- restyle ???
 - construct a flow on how to develop apps follow CDD (component driven development)
 - examples: https://github.com/expo/examples
 - https://blog.expo.dev/
@@ -32,6 +39,7 @@
 - typography
 - analytics setup
 - empty state
+- scrollview with keyboard
 - button
 - form field
 - components library
@@ -43,6 +51,7 @@
 - add easy scripts to easy deploy, build and do all the necessary stuff
 - add figma link on how to setup icon and splash screen to readme
 - add hidden developer / admin menu
+- bitrise
 - add language switch
 - how to add custom vector icons set to the app? - include this in the docs
 - https://github.com/expo/expo-preview-action
