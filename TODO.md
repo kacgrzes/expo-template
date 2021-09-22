@@ -4,6 +4,7 @@
 - react-query react-native devtools: https://github.com/bgaleotti/react-query-native-devtools
 - sprawdzic dlaczego auto import nie dziala z tyldami
 - zmienne środowiskowe: Dev, UAT (User Acceptance Testing), and Production (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-1-c52b5d3dcb7)
+- podpiecie CI / CD (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-2-78a6fa480d59)
 - eas json config: https://docs.expo.dev/build/eas-json/
 - typical auth flow - https://i.redd.it/x7wkhwkz05g71.png
 - take a look at the other app from Tom and get some ideas from there

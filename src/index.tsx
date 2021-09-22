@@ -7,6 +7,7 @@ import { startMockedServer } from '~services'
 
 import React from 'react'
 import { registerRootComponent } from 'expo'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AppLoading } from '~components'
 import { Navigation } from '~navigation'
@@ -19,14 +20,18 @@ if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
   startMockedServer()
 }
 
+const queryClient = new QueryClient({})
+
 export default function App() {
   return (
     <SafeAreaProvider>
-      <AuthProvider>
-        <AppLoading>
-          <Navigation />
-        </AppLoading>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <AppLoading>
+            <Navigation />
+          </AppLoading>
+        </AuthProvider>
+      </QueryClientProvider>
     </SafeAreaProvider>
   )
 }
