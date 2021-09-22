@@ -6,8 +6,11 @@ export const startMockedServer = () => {
   }
 
   window.server = createServer({
+    environment: 'development',
     namespace: '/api',
     timing: 400,
+    logging: true,
+    useDefaultPassthroughs: true,
     routes() {
       this.get('/timestamp', () => {
         return {

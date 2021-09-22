@@ -11,7 +11,12 @@ import { AppLoading } from '~components'
 import { Navigation } from '~navigation'
 import { AuthProvider, SafeAreaProvider } from '~providers'
 
-startMockedServer()
+// FIXME: there is some issue with miragejs that causes console.log to not work
+const DISABLE_CONSOLE_ENABLE_MOCKED_SERVER = false
+
+if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
+  startMockedServer()
+}
 
 export default function App() {
   return (

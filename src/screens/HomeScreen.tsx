@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { useAuth, useTranslation } from '~hooks'
+import { useAuth, useTranslation, useTimestamp } from '~hooks'
 import { Button } from '~components'
 
 export const HomeScreen = () => {
@@ -19,14 +19,6 @@ export const HomeScreen = () => {
     console.log('handleSheetChanges', index)
   }, [])
 
-  useEffect(() => {
-    fetch('/api/timestamp')
-      .then((response) => response.json())
-      .then((data) => {
-        alert(`This is just an example response form miragejs \n\n ${JSON.stringify(data)}`)
-      })
-  }, [])
-
   return (
     <View style={styles.container}>
       <Text>{t('hello')}</Text>
@@ -41,11 +33,11 @@ export const HomeScreen = () => {
       <Button onPress={signOut}>Sign out!</Button>
       <BottomSheet
         ref={bottomSheetRef}
-        index={1}
+        index={0}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
       >
-        <View style={styles.contentContainer}>
+        <View>
           <Text>Awesome 🎉</Text>
         </View>
       </BottomSheet>
