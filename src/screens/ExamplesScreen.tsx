@@ -1,14 +1,16 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import { Button } from '~components'
 
 export const ExamplesScreen = () => {
   const { navigate } = useNavigation()
 
+  const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [])
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Button onPress={() => navigate('ApplicationInfo')}>Go to ApplicationInfo</Button>
+      <Button onPress={goToApplicationInfo}>Go to ApplicationInfo</Button>
     </ScrollView>
   )
 }
