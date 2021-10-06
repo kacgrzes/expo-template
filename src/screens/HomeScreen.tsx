@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import React, { useCallback, useMemo, useRef } from 'react'
+import { View, Text, Image } from 'react-native'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { useAuth, useTranslation, useTimestamp } from '~hooks'
+import { useAuth, useTranslation, useTheme } from '~hooks'
 import { Button } from '~components'
 
 export const HomeScreen = () => {
   const { t } = useTranslation()
   const { signOut } = useAuth()
+  const { s } = useTheme()
 
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null)
@@ -20,35 +21,25 @@ export const HomeScreen = () => {
   }, [])
 
   return (
-    <View style={styles.container}>
+    <View style={[s.flex1, s.justifyCenter, s.itemsCenter]}>
       <Text>{t('hello')}</Text>
       <Image
         source={require('~assets/logo.png')}
         resizeMode="contain"
         resizeMethod="resize"
-        style={{
-          height: 100,
-        }}
+        style={[s.h24]}
       />
-      <Button onPress={signOut}>Sign out!</Button>
+      <Button onPress={signOut} title="Sign out!" />
       <BottomSheet
         ref={bottomSheetRef}
         index={0}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
       >
-        <View>
+        <View style={[s.p4]}>
           <Text>Awesome 🎉</Text>
         </View>
       </BottomSheet>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})

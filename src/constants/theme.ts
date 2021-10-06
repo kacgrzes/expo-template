@@ -1,6 +1,10 @@
 import { Theme } from '@react-navigation/native'
+import { createTheme } from 'react-native-whirlwind'
 
-export const LightTheme: Theme = {
+export const lightTheme = createTheme()
+export const darkTheme = createTheme()
+
+export const LightNavigationTheme: Theme = {
   colors: {
     background: '#fff',
     border: 'transparent',
@@ -12,7 +16,7 @@ export const LightTheme: Theme = {
   dark: false,
 }
 
-export const DarkTheme: Theme = {
+export const DarkNavigationTheme: Theme = {
   colors: {
     background: '#000',
     border: 'transparent',
@@ -25,6 +29,6 @@ export const DarkTheme: Theme = {
 }
 
 export const NavigationTheme = {
-  Light: LightTheme,
-  Dark: DarkTheme,
+  Light: LightNavigationTheme,
+  Dark: DarkNavigationTheme,
 }

@@ -1,31 +1,27 @@
 import React, { FC } from 'react'
-import { Pressable, Text, StyleSheet, PressableProps } from 'react-native'
+import { Pressable, Text, PressableProps } from 'react-native'
+import { useTheme } from '~hooks'
 
-type ButtonProps = PressableProps
+type ButtonProps = PressableProps & {
+  title: string
+}
 
-export const Button: FC<ButtonProps> = ({ children, ...props }) => {
+export const Button: FC<ButtonProps> = ({ children, title, ...props }) => {
+  const { s } = useTheme()
   return (
-    <Pressable style={styles.button} {...props}>
-      <Text style={styles.text}>{children}</Text>
+    <Pressable
+      style={[
+        s.itemsCenter,
+        s.alignCenter,
+        s.justifyCenter,
+        s.minW48,
+        s.p4,
+        s.bgBlack,
+        s.roundedSm,
+      ]}
+      {...props}
+    >
+      <Text style={[s.textWhite]}>{title}</Text>
     </Pressable>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    backgroundColor: 'black',
-    borderRadius: 8,
-    padding: 20,
-    minWidth: 200,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    color: 'white',
-  },
-})

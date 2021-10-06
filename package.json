@@ -78,6 +78,7 @@
     "react-native-screens": "~3.4.0",
     "react-native-svg": "12.1.1",
     "react-native-web": "~0.13.12",
+    "react-native-whirlwind": "^0.1.0-beta.4",
     "react-query": "^3.24.3",
     "use-debounce": "^7.0.0"
   },

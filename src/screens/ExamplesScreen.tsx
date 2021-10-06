@@ -1,24 +1,18 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { ScrollView, StyleSheet } from 'react-native'
+import { ScrollView } from 'react-native'
 import { Button } from '~components'
+import { useTheme } from '~hooks'
 
 export const ExamplesScreen = () => {
   const { navigate } = useNavigation()
+  const { s } = useTheme()
 
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [])
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Button onPress={goToApplicationInfo}>Go to ApplicationInfo</Button>
+    <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
+      <Button onPress={goToApplicationInfo} title="Go to ApplicationInfo" />
     </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})

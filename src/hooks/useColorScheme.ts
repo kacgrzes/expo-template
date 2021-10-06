@@ -4,4 +4,5 @@
 
 export const useColorScheme = () => {
   // TODO: change key to include app name
+  return 'light'
 }
