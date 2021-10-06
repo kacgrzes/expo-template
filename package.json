@@ -30,7 +30,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watch --coverage=false --changedSince=origin/main",
-    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint": "eslint src",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
     "updateSnapshots": "jest -u --coverage=false"

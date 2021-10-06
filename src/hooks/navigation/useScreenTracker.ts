@@ -1,4 +1,5 @@
 import { useCallback, useRef } from 'react'
+
 import { navigationRef } from '~utils'
 
 type Callback = (currentRouteName: string) => Promise<void> | undefined
@@ -7,7 +8,7 @@ const defaultCallback: Callback = async (currentRouteName) => {
   console.log(`Current route: ${currentRouteName}`)
 }
 
-export const useScreenTracker = (callback: Callback = defaultCallback) => {
+export const useScreenTracker = (callback = defaultCallback) => {
   const routeNameRef = useRef<string>()
 
   const onReady = useCallback(() => {

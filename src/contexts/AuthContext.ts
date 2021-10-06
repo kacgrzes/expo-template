@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 // TODO: modify return options from signIn, signOut, signUp and add sendPasswordResetEmail and confirmPasswordReset functions
-export type AuthContext =
+export type AuthContextType =
   | {
       isSignedIn: boolean | null
       signIn: () => void
@@ -10,4 +10,4 @@ export type AuthContext =
     }
   | undefined
 
-export const AuthContext = createContext<AuthContext>(undefined)
+export const AuthContext = createContext<AuthContextType>(undefined)

@@ -11,7 +11,6 @@ export {
   useNavigationState,
   useRoute,
   useScrollToTop,
-  useTheme as useNavigationTheme,
 } from '@react-navigation/native'
 export { useCardAnimation, useGestureHandlerRef } from '@react-navigation/stack'
 export * from './useNavigationStatePersistence'

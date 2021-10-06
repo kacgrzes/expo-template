@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, NavigationState } from '@react-navigation/native'
 import React, { FC } from 'react'
 
 import { RootNavigator } from './RootNavigator'
@@ -16,8 +16,7 @@ export const Navigation: FC = () => {
     onStateChange: onStateChangeNavigationStatePersistance,
   } = useNavigationStatePersistence()
 
-  // FIXME: use correct type here and maybe use some wrapper to call two functions at once
-  const onStateChange = (state: any) => {
+  const onStateChange = (state: NavigationState | undefined) => {
     onStateChangeScreenTracker()
     onStateChangeNavigationStatePersistance(state)
   }

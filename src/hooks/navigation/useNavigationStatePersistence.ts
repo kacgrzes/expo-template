@@ -1,7 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { getInitialURL } from 'expo-linking'
 import { useCallback, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
-import { getInitialURL } from 'expo-linking'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import { isProduction } from '~constants'
 
 const PERSISTENCE_KEY = '@template/navigation-state'

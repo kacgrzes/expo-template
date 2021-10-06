@@ -3,15 +3,15 @@
 import 'react-native-gesture-handler'
 import 'react-native-reanimated'
 import '~i18n'
-import { startMockedServer } from '~services'
 
-import React from 'react'
 import { registerRootComponent } from 'expo'
+import React, { FC } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AppLoading } from '~components'
 import { Navigation } from '~navigation'
 import { AuthProvider, SafeAreaProvider } from '~providers'
+import { startMockedServer } from '~services'
 
 // FIXME: there is some issue with miragejs that causes console.log to not work
 const DISABLE_CONSOLE_ENABLE_MOCKED_SERVER = false
@@ -22,7 +22,7 @@ if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
 
 const queryClient = new QueryClient({})
 
-export default function App() {
+const App: FC = () => {
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
@@ -37,3 +37,5 @@ export default function App() {
 }
 
 registerRootComponent(App)
+
+export default App
