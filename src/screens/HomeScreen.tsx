@@ -1,4 +1,4 @@
-import BottomSheet from '@gorhom/bottom-sheet'
+import { BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import React, { FC, useCallback, useMemo, useRef } from 'react'
 import { View, Text, Image, ImageStyle } from 'react-native'
 
@@ -11,15 +11,24 @@ export const HomeScreen: FC = () => {
   const { s } = useTheme()
 
   // ref
-  const bottomSheetRef = useRef<BottomSheet>(null)
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null)
 
   // variables
   const snapPoints = useMemo(() => ['25%', '50%'], [])
 
   // callbacks
+  const openModal = useCallback(() => {
+    bottomSheetModalRef.current?.present()
+  }, [])
+
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index)
   }, [])
+
+  const renderBackdrop = useCallback(
+    (props) => <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={0} />,
+    []
+  )
 
   return (
     <View style={[s.flex1, s.justifyCenter, s.itemsCenter]}>
@@ -30,17 +39,19 @@ export const HomeScreen: FC = () => {
         resizeMethod="resize"
         style={[s.h24] as ImageStyle[]}
       />
+      <Button onPress={openModal} title="Open BottomSheetModal" style={[s.mB2]} />
       <Button onPress={signOut} title="Sign out!" />
-      <BottomSheet
-        ref={bottomSheetRef}
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
         index={0}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
+        backdropComponent={renderBackdrop}
       >
         <View style={[s.p4]}>
           <Text>Awesome 🎉</Text>
         </View>
-      </BottomSheet>
+      </BottomSheetModal>
     </View>
   )
 }

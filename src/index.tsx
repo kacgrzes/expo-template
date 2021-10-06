@@ -4,6 +4,7 @@ import 'react-native-gesture-handler'
 import 'react-native-reanimated'
 import '~i18n'
 
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { registerRootComponent } from 'expo'
 import React, { FC } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
@@ -28,7 +29,9 @@ const App: FC = () => {
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <AppLoading>
-            <Navigation />
+            <BottomSheetModalProvider>
+              <Navigation />
+            </BottomSheetModalProvider>
           </AppLoading>
         </AuthProvider>
       </QueryClientProvider>

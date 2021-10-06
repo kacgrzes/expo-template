@@ -5,6 +5,7 @@
 - https://www.instagram.com/p/CS9CHsfj_eR/
 - https://github.com/alan2207/bulletproof-react
 - how to add mirragejs to test: https://miragejs.com/quickstarts/react-native/react-native-testing-library/
+- https://ethercreative.github.io/react-native-shadow-generator/
 - compare miragejs with mws: https://mswjs.io/
 - add instructions to https://github.com/welldone-software/why-did-you-render
 - react-query react-native devtools: https://github.com/bgaleotti/react-query-native-devtools
