@@ -1,5 +1,13 @@
 ## Todo;
 
+CI / CD
+
+- zmienne środowiskowe: Dev, UAT (User Acceptance Testing), and Production (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-1-c52b5d3dcb7)
+- podpiecie CI / CD (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-2-78a6fa480d59)
+- eas json config: https://docs.expo.dev/build/eas-json/
+- bitrise
+- gitlab
+
 - nice components:
   - https://github.com/netguru/sticky-parallax-header
 - https://www.instagram.com/p/CS9CHsfj_eR/
@@ -10,9 +18,6 @@
 - add instructions to https://github.com/welldone-software/why-did-you-render
 - react-query react-native devtools: https://github.com/bgaleotti/react-query-native-devtools
 - sprawdzic dlaczego auto import nie dziala z tyldami
-- zmienne środowiskowe: Dev, UAT (User Acceptance Testing), and Production (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-1-c52b5d3dcb7)
-- podpiecie CI / CD (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-2-78a6fa480d59)
-- eas json config: https://docs.expo.dev/build/eas-json/
 - typical auth flow - https://i.redd.it/x7wkhwkz05g71.png
 - take a look at the other app from Tom and get some ideas from there
 - check RN Europe on YT (from Callstack)
@@ -30,11 +35,9 @@
 - feature flags -> provider / hook and consumer with a feature name. Feature has: name, description, active
   - https://github.com/garbles/flag
   - https://github.com/romaindso/react-feature-flags
-- restyle ???
 - construct a flow on how to develop apps follow CDD (component driven development)
 - examples: https://github.com/expo/examples
 - https://blog.expo.dev/
-- icons
 - fonts
 - https://docs.expo.dev/guides/testing-with-jest/
 - auth flow
@@ -55,19 +58,19 @@
 - components library
 - prioritze language in language detection
 - scrollview with easy keyboard hide, keyboard avoid view etc
-- configure typescript + eslint / tslint + prettier
 - setup multiple environments
 - form validations and form components
 - add easy scripts to easy deploy, build and do all the necessary stuff
 - add figma link on how to setup icon and splash screen to readme
 - add hidden developer / admin menu
-- bitrise
 - add language switch
 - how to add custom vector icons set to the app? - include this in the docs
 - https://github.com/expo/expo-preview-action
 - run custom snack: https://github.com/expo/snack
 - https://github.com/expo/google-fonts
 
+- icons - DONE
+- configure typescript + eslint / tslint + prettier - DONE
 - easy module resolver - DONE
 
 ## Nice articles:
