@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import * as Font from 'expo-font'
 import { useEffect, useState } from 'react'
 
-export const useCachedResources = () => {
+export const useCachedResources = (): boolean => {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
 
   useEffect(() => {

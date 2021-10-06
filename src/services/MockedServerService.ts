@@ -1,6 +1,6 @@
 import { createServer } from 'miragejs'
 
-export const startMockedServer = () => {
+export const startMockedServer = (): void => {
   if (window.server) {
     server.shutdown()
   }

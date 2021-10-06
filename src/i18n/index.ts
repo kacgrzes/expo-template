@@ -1,17 +1,18 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import languageDetector from './languageDetector';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+
+import languageDetector from './languageDetector'
 
 // Add more resources here
 const RESOURCES = {
   en: require('./translations/en.json'),
-};
+}
 
 const resources = Object.fromEntries(
   Object.entries(RESOURCES).map(([lang, translation]) => {
-    return [lang, { translation }];
+    return [lang, { translation }]
   })
-);
+)
 
 i18n
   .use(languageDetector)
@@ -25,4 +26,4 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-  });
+  })

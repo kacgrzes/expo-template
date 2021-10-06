@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { FC, useCallback } from 'react'
 import { ScrollView } from 'react-native'
+
 import { Button } from '~components'
 import { useTheme } from '~hooks'
 
-export const ExamplesScreen = () => {
+export const ExamplesScreen: FC = () => {
   const { navigate } = useNavigation()
   const { s } = useTheme()
 

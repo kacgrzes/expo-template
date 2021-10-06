@@ -1,4 +1,5 @@
 import { useColorScheme } from './useColorScheme'
+
 import { darkTheme, lightTheme } from '~constants'
 
 export const useTheme = () => {

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { View } from 'react-native'
+
 import { Button } from '~components'
 import { useAuth, useTheme } from '~hooks'
 
-export const SignInScreen = () => {
+export const SignInScreen: FC = () => {
   const { signIn } = useAuth()
   const { s } = useTheme()
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export const useTimestamp = () => {
+export const useTimestamp = (): void => {
   useEffect(() => {
     fetch('/api/timestamp')
       .then((response) => response.json())

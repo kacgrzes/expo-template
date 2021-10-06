@@ -1,10 +1,11 @@
-import React, { useCallback, useMemo, useRef } from 'react'
-import { View, Text, Image } from 'react-native'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { useAuth, useTranslation, useTheme } from '~hooks'
-import { Button } from '~components'
+import React, { FC, useCallback, useMemo, useRef } from 'react'
+import { View, Text, Image, ImageStyle } from 'react-native'
 
-export const HomeScreen = () => {
+import { Button } from '~components'
+import { useAuth, useTranslation, useTheme } from '~hooks'
+
+export const HomeScreen: FC = () => {
   const { t } = useTranslation()
   const { signOut } = useAuth()
   const { s } = useTheme()
@@ -27,7 +28,7 @@ export const HomeScreen = () => {
         source={require('~assets/logo.png')}
         resizeMode="contain"
         resizeMethod="resize"
-        style={[s.h24]}
+        style={[s.h24] as ImageStyle[]}
       />
       <Button onPress={signOut} title="Sign out!" />
       <BottomSheet

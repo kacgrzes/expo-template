@@ -1,12 +1,14 @@
-import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
+import React, { FC } from 'react'
+
 import { BottomTabNavigator } from './BottomTabNavigator'
-import { ApplicationInfoScreen, NotFoundScreen, SignInScreen, SignUpScreen } from '~screens'
+
 import { useAuth } from '~hooks'
+import { ApplicationInfoScreen, NotFoundScreen, SignInScreen, SignUpScreen } from '~screens'
 
 const { Navigator, Screen, Group } = createStackNavigator()
 
-export const RootNavigator = () => {
+export const RootNavigator: FC = () => {
   const { isSignedIn } = useAuth()
 
   return (

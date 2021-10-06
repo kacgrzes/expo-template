@@ -1,10 +1,11 @@
-import React from 'react'
 // TODO: there are tons of more interesting methods there!
 import * as Application from 'expo-application'
+import React, { FC } from 'react'
 import { ScrollView, Text } from 'react-native'
+
 import { usePreventGoBack, useTranslation, useTheme } from '~hooks'
 
-export const ApplicationInfoScreen = () => {
+export const ApplicationInfoScreen: FC = () => {
   const { i18n } = useTranslation()
   const { s } = useTheme()
   usePreventGoBack()

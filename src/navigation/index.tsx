@@ -1,11 +1,13 @@
-import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
+import React, { FC } from 'react'
+
 import { RootNavigator } from './RootNavigator'
-import { StatusBar } from '~components'
-import { useScreenTracker, useNavigationTheme, useNavigationStatePersistence } from '~hooks'
 import { linking } from './linking'
 
-export const Navigation = () => {
+import { StatusBar } from '~components'
+import { useScreenTracker, useNavigationTheme, useNavigationStatePersistence } from '~hooks'
+
+export const Navigation: FC = () => {
   const { navigationRef, onReady, onStateChange: onStateChangeScreenTracker } = useScreenTracker()
   const navigationTheme = useNavigationTheme()
   const {

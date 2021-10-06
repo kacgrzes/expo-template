@@ -4,9 +4,9 @@
  * https://reactnavigation.org/docs/configuring-links
  */
 
-import { createURL } from 'expo-linking'
-import Constants from 'expo-constants'
 import { LinkingOptions } from '@react-navigation/native'
+import Constants from 'expo-constants'
+import { createURL } from 'expo-linking'
 
 const prefix = createURL('/')
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []

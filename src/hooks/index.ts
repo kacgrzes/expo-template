@@ -27,7 +27,7 @@ export { useFonts } from 'expo-font'
 export { useURL } from 'expo-linking'
 export { useAnimationState, useDynamicAnimation } from 'moti'
 export { useSSR, useTranslation } from 'react-i18next'
-export { useColorScheme, useWindowDimensions } from 'react-native'
+export { useWindowDimensions } from 'react-native'
 export {
   useSpring,
   useTiming,
