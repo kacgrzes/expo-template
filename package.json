@@ -38,6 +38,8 @@
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
     "@gorhom/bottom-sheet": "^4.0.3",
+    "@motify/interactions": "^0.15.4",
+    "@motify/skeleton": "^0.15.3",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/hooks": "^2.6.0",
     "@react-native-community/netinfo": "6.0.0",
@@ -54,6 +56,7 @@
     "expo-device": "~3.3.0",
     "expo-error-recovery": "~2.2.0",
     "expo-font": "~9.2.1",
+    "expo-linear-gradient": "~9.2.0",
     "expo-linking": "~2.3.1",
     "expo-local-authentication": "~11.1.1",
     "expo-localization": "~10.2.0",

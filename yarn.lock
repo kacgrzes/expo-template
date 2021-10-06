@@ -1975,12 +1975,42 @@
   dependencies:
     "@motify/core" "^0.14.2"
 
+"@motify/components@^0.15.3":
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/@motify/components/-/components-0.15.3.tgz#ccfa6b8937ea53dbf4ca5477d238230a4e4ab64e"
+  integrity sha512-PDpff2qSPlGMh2lM9rt5g7+7VrJa8wh/zXzoz+uNTHEQNsx11NHGiU61wd1vo25T5+u2b2MGL0kR+9D1hzQivw==
+  dependencies:
+    "@motify/core" "^0.15.3"
+
 "@motify/core@^0.14.2":
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/@motify/core/-/core-0.14.2.tgz#e048c377ad6a14ccd03750643f32bb2c95615caa"
   integrity sha512-lL2ZIzRIcCt7+Wx1davI1VOLTTJ1ZEbWj93TPbo80SLqaY++gTZSXzo8N1aHdmLR1XEaq94R6Ip1cPKDNQQmWA==
   dependencies:
     framer-motion "^3.9.1"
+
+"@motify/core@^0.15.3":
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/@motify/core/-/core-0.15.3.tgz#9bfad89f23db950b232d758fa037b4d696493d99"
+  integrity sha512-ftyEGEJFOmbn7ENjNV4Y4sQQXyJuCuZMLzm4jShI6tL3BJJrvlRRGxuJmeyu4OOTGEyLPWCceXmB1pWfQJroHA==
+  dependencies:
+    framer-motion "^3.9.1"
+
+"@motify/interactions@^0.15.4":
+  version "0.15.4"
+  resolved "https://registry.yarnpkg.com/@motify/interactions/-/interactions-0.15.4.tgz#7caf962170cf8873072c9f8e92c9f5580e6e6038"
+  integrity sha512-bBotXgBGcG/VMNIpvenVzGWYLkZlLZAm12eF0+d0tm+Pdosp9hTso13HXT/DWK6kJFvBsNzW909+xksHZ1RlIg==
+  dependencies:
+    "@motify/components" "^0.15.3"
+    "@motify/core" "^0.15.3"
+
+"@motify/skeleton@^0.15.3":
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/@motify/skeleton/-/skeleton-0.15.3.tgz#2c66a4e2d205cbd23bc3636673412dee618b5956"
+  integrity sha512-80q7ml5nRZUB/QWMq/kVvJuBjLbqFN7SDV7D11YXXLr+F2XmuwbOMvTDIdFAzBtz0mgbBBVGFmhYtztu6JbbsQ==
+  dependencies:
+    "@motify/components" "^0.15.3"
+    "@motify/core" "^0.15.3"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -4459,6 +4489,11 @@ expo-keep-awake@~9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-9.2.0.tgz#9cbdcc8264c943ef29a58326236cd34267e98f43"
   integrity sha512-R5jAx5j3MqrhKFB307FBpaHtYSYeVIFX/rVforBF5inKonYjXRWVhjGoBjolF4geAryNamC3NKhMfxyaaB0W6Q==
+
+expo-linear-gradient@~9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-9.2.0.tgz#5ae16fcb8f141b1c51dc36bd4493dfd6566a9511"
+  integrity sha512-LnW2u9OT6GeyC6T8qEGjFYfNSk4KIBAwU0aRSjM4Y8hckWqhtKngGDz46DqGmJBzvZMSKuZZvj5xKn794r54ag==
 
 expo-linking@~2.3.1:
   version "2.3.1"
