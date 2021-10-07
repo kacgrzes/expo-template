@@ -8,6 +8,8 @@ CI / CD
 - bitrise
 - gitlab
 
+- ARIA: https://react-native-aria.geekyants.com/
+- BLURHASH: https://github.com/mrousavy/react-native-blurhash
 - nice components:
   - https://github.com/netguru/sticky-parallax-header
 - https://www.instagram.com/p/CS9CHsfj_eR/

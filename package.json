@@ -31,9 +31,20 @@
     "eject": "expo eject",
     "test": "jest --watch --coverage=false --changedSince=origin/main",
     "lint": "eslint src",
-    "testDebug": "jest -o --watch --coverage=false",
-    "testFinal": "jest",
-    "updateSnapshots": "jest -u --coverage=false"
+    "test:debug": "jest -o --watch --coverage=false",
+    "test:final": "jest",
+    "updateSnapshots": "jest -u --coverage=false",
+    "publish": "expo publish",
+    "login": "expo login",
+    "logout": "expo logout",
+    "register": "expo register",
+    "whoami": "expo whoami",
+    "build:ios": "expo build:ios",
+    "build:android": "expo build:android",
+    "build": "yarn build:ios && yarn build:android",
+    "upload:ios": "expo upload:ios",
+    "upload:android": "expo upload:android",
+    "upload": "yarn upload:ios && yarn upload:android"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
