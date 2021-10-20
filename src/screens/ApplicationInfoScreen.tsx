@@ -12,14 +12,14 @@ export const ApplicationInfoScreen: FC = () => {
 
   return (
     <ScrollView contentContainerStyle={[s.flex1, s.justifyStart, s.p4]}>
-      <Text>
+      <Text style={[s.textPrimary]}>
         When you will try to go back it will double ask if you really want to leave {'\n'}
       </Text>
-      <Text>{Application.applicationId}</Text>
-      <Text>{Application.applicationName}</Text>
-      <Text>{Application.nativeApplicationVersion}</Text>
-      <Text>{Application.nativeBuildVersion}</Text>
-      <Text>{i18n.languages.join(', ')}</Text>
+      <Text style={[s.textPrimary]}>{Application.applicationId}</Text>
+      <Text style={[s.textPrimary]}>{Application.applicationName}</Text>
+      <Text style={[s.textPrimary]}>{Application.nativeApplicationVersion}</Text>
+      <Text style={[s.textPrimary]}>{Application.nativeBuildVersion}</Text>
+      <Text style={[s.textPrimary]}>{i18n.languages.join(', ')}</Text>
     </ScrollView>
   )
 }

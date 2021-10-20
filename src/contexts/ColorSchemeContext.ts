@@ -1,9 +1,13 @@
 import { createContext } from 'react'
-import { ColorSchemeName } from 'react-native'
+import { ColorSchemeName as RNColorSchemeName } from 'react-native'
+
+import { ColorSchemeName } from '~providers'
 
 export type ColorSchemeContextType =
   | {
-      colorScheme: NonNullable<ColorSchemeName>
+      colorScheme: ColorSchemeName
+      systemColorScheme: RNColorSchemeName
+      setNewColorScheme: (newColorScheme: ColorSchemeName) => void
     }
   | undefined
 

@@ -14,6 +14,5 @@ export {
 } from '@react-navigation/native'
 export { useCardAnimation, useGestureHandlerRef } from '@react-navigation/stack'
 export * from './useNavigationStatePersistence'
-export * from './useNavigationTheme'
 export * from './usePreventGoBack'
 export * from './useScreenTracker'

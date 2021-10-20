@@ -5,11 +5,11 @@ import { RootNavigator } from './RootNavigator'
 import { linking } from './linking'
 
 import { StatusBar } from '~components'
-import { useScreenTracker, useNavigationTheme, useNavigationStatePersistence } from '~hooks'
+import { useScreenTracker, useNavigationStatePersistence, useTheme } from '~hooks'
 
 export const Navigation: FC = () => {
   const { navigationRef, onReady, onStateChange: onStateChangeScreenTracker } = useScreenTracker()
-  const navigationTheme = useNavigationTheme()
+  const { navigationTheme } = useTheme()
   const {
     isReady,
     initialState,

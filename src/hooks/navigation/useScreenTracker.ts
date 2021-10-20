@@ -1,3 +1,4 @@
+import { NavigationContainerRefWithCurrent } from '@react-navigation/core'
 import { useCallback, useRef } from 'react'
 
 import { navigationRef } from '~utils'
@@ -8,7 +9,13 @@ const defaultCallback: Callback = async (currentRouteName) => {
   console.log(`Current route: ${currentRouteName}`)
 }
 
-export const useScreenTracker = (callback = defaultCallback) => {
+type ScreenTrackerReturn = {
+  navigationRef: NavigationContainerRefWithCurrent<ReactNavigation.RootParamList>
+  onReady: () => void
+  onStateChange: () => Promise<void>
+}
+
+export const useScreenTracker = (callback = defaultCallback): ScreenTrackerReturn => {
   const routeNameRef = useRef<string>()
 
   const onReady = useCallback(() => {

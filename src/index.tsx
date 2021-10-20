@@ -12,6 +12,7 @@ import { QueryClientProvider, QueryClient } from 'react-query'
 import { AppLoading } from '~components'
 import { Navigation } from '~navigation'
 import { AuthProvider, SafeAreaProvider } from '~providers'
+import { ColorSchemeProvider } from '~providers/ColorSchemeProvider'
 import { startMockedServer } from '~services'
 
 // FIXME: there is some issue with miragejs that causes console.log to not work
@@ -29,9 +30,11 @@ const App: FC = () => {
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <AppLoading>
-            <BottomSheetModalProvider>
-              <Navigation />
-            </BottomSheetModalProvider>
+            <ColorSchemeProvider>
+              <BottomSheetModalProvider>
+                <Navigation />
+              </BottomSheetModalProvider>
+            </ColorSchemeProvider>
           </AppLoading>
         </AuthProvider>
       </QueryClientProvider>

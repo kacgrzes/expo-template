@@ -12,9 +12,16 @@ const checkInitialURL = (initialUrl: string | null) => {
   return initialUrl == null || initialUrl.match(EXPO_LINK_REGEXP) !== null
 }
 
-export const useNavigationStatePersistence = () => {
+type NavigationStatePersistenceReturn = {
+  // TODO: Add proper type to initial state
+  initialState: unknown
+  onStateChange: (state: unknown) => void
+  isReady: boolean
+}
+
+export const useNavigationStatePersistence = (): NavigationStatePersistenceReturn => {
   const [isReady, setIsReady] = useState(isProduction)
-  const [initialState, setInitialState] = useState()
+  const [initialState, setInitialState] = useState<unknown>()
 
   useEffect(() => {
     const restoreState = async () => {

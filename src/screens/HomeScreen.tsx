@@ -49,7 +49,7 @@ export const HomeScreen: FC = () => {
         backdropComponent={renderBackdrop}
       >
         <View style={[s.p4]}>
-          <Text>Awesome 🎉</Text>
+          <Text style={[s.textPrimary]}>Awesome 🎉</Text>
         </View>
       </BottomSheetModal>
     </View>

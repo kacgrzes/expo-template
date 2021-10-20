@@ -7,7 +7,7 @@ export const NotFoundScreen: FC = () => {
   const { s } = useTheme()
   return (
     <View style={[s.flex1, s.justifyCenter, s.itemsCenter]}>
-      <Text>NotFound screen</Text>
+      <Text style={[s.textPrimary]}>NotFound screen</Text>
     </View>
   )
 }
