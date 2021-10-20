@@ -24,5 +24,11 @@ module.exports = {
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
     'react-native/no-single-element-style-arrays': 'off',
+    '@typescript-eslint/no-unused-vars': ['error']
   },
+  settings: {
+    react: {
+      version: 'detect' // React version. "detect" automatically picks the version you have installed.
+    }
+  }
 }
