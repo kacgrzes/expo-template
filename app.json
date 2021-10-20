@@ -1,9 +1,10 @@
 {
   "expo": {
     "name": "Template",
-    "slug": "Template",
+    "slug": "expo-typescript-template",
     "scheme": "template",
     "version": "1.0.0",
+    "owner": "binarapps",
     "userInterfaceStyle": "automatic",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
