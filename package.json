@@ -25,7 +25,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "start": "expo start",
-    "start:fast": "EXPO_USE_EXOTIC=1 expo start",
+    "start:fast": "EXPO_USE_EXOTIC=1 expo start --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -60,7 +60,7 @@
     "@react-navigation/native-stack": "^6.1.0",
     "@react-navigation/stack": "^6.0.7",
     "expo": "~42.0.1",
-    "expo-app-loading": "^1.1.2",
+    "expo-app-loading": "1.1.2",
     "expo-application": "~3.2.0",
     "expo-asset": "~8.3.3",
     "expo-constants": "~11.0.1",
