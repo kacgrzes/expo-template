@@ -1,13 +1,18 @@
 import { useColorScheme } from './useColorScheme'
 
 import { darkTheme, lightTheme, AppTheme, lightColors, darkColors, Colors } from '~constants'
+import { ColorSchemeName } from '~providers'
 
 type ReturnValues = {
   s: AppTheme
   colors: Colors
 }
 
-const themes = {
+type Themes = {
+  [key in ColorSchemeName]: ReturnValues
+}
+
+const themes: Themes = {
   dark: {
     s: darkTheme,
     colors: darkColors,

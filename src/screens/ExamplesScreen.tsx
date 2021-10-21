@@ -3,8 +3,8 @@ import React, { FC, useCallback } from 'react'
 import { ScrollView, Text } from 'react-native'
 
 import { Button } from '~components'
+import { colorSchemesList } from '~constants'
 import { useColorScheme, useTheme } from '~hooks'
-import { colorSchemesList } from '~providers'
 
 export const ExamplesScreen: FC = () => {
   const { navigate } = useNavigation()

@@ -7,7 +7,7 @@ import { useContext } from 'react'
 
 import { ColorSchemeContext, ColorSchemeContextType } from '~contexts'
 
-export const useColorScheme = (): ColorSchemeContextType => {
+export const useColorScheme = (): NonNullable<ColorSchemeContextType> => {
   const context = useContext(ColorSchemeContext)
   if (context === undefined) {
     throw new Error('useColorScheme must be used within a ColorSchemeProvider')

@@ -2,27 +2,35 @@ import { useAsyncStorage } from '@react-native-async-storage/async-storage'
 import React, { FC, useEffect } from 'react'
 import { useColorScheme as useRNColorScheme } from 'react-native'
 
+import { colorSchemesList, colorSchemes } from '~constants'
 import { ColorSchemeContext, ColorSchemeContextType } from '~contexts'
 import { useState, useMemo, useCallback } from '~hooks'
 
-// It's added in case of creating multiple themes
-export const colorSchemesList = ['light', 'dark', 'system'] as const
-export type ColorSchemeName = typeof colorSchemesList[number]
+export type SettingColorSchemeName = typeof colorSchemesList[number]
+export type ColorSchemeName = Exclude<SettingColorSchemeName, 'system'>
+
+const defaultColorScheme = colorSchemes.LIGHT
 
 export const ColorSchemeProvider: FC = ({ children }) => {
   const { setItem, getItem } = useAsyncStorage('@demo/colorScheme')
   const systemColorScheme = useRNColorScheme()
-  const [colorSchemeSetting, setColorSchemeSetting] = useState<ColorSchemeName>('system')
+  const [colorSchemeSetting, setColorSchemeSetting] = useState<SettingColorSchemeName>(
+    colorSchemes.SYSTEM
+  )
 
-  const colorScheme = colorSchemeSetting === 'system' ? systemColorScheme : colorSchemeSetting
+  const colorScheme =
+    (colorSchemeSetting === 'system' ? systemColorScheme : colorSchemeSetting) || defaultColorScheme
 
   useEffect(() => {
     const getInitialColorScheme = async () => {
       getItem((error, savedColorScheme) => {
         if (!error && savedColorScheme) {
-          setColorSchemeSetting(savedColorScheme as ColorSchemeName)
-        } else {
+          setColorSchemeSetting(savedColorScheme as SettingColorSchemeName)
+        } else if (systemColorScheme) {
+          // For old devices it's possible that system color scheme name is null or undefined
           setColorSchemeSetting(systemColorScheme)
+        } else {
+          setColorSchemeSetting(defaultColorScheme)
         }
       })
     }
@@ -32,7 +40,7 @@ export const ColorSchemeProvider: FC = ({ children }) => {
   }, [])
 
   const setNewColorSchemeSetting = useCallback(
-    (newColorScheme: ColorSchemeName) => {
+    (newColorScheme: SettingColorSchemeName) => {
       const oldColorScheme = colorSchemeSetting
       setColorSchemeSetting(newColorScheme)
       setItem(newColorScheme, (error) => {
@@ -45,7 +53,7 @@ export const ColorSchemeProvider: FC = ({ children }) => {
     [colorSchemeSetting, setItem]
   )
 
-  const providerValue: ColorSchemeContextType = useMemo(
+  const value: ColorSchemeContextType = useMemo(
     () => ({
       colorScheme,
       colorSchemeSetting,
@@ -54,5 +62,5 @@ export const ColorSchemeProvider: FC = ({ children }) => {
     [colorScheme, colorSchemeSetting, setNewColorSchemeSetting]
   )
 
-  return <ColorSchemeContext.Provider value={providerValue} children={children} />
+  return <ColorSchemeContext.Provider value={value} children={children} />
 }
