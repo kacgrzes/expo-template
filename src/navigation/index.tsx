@@ -5,21 +5,29 @@ import { RootNavigator } from './RootNavigator'
 import { linking } from './linking'
 
 import { StatusBar } from '~components'
-import { useScreenTracker, useNavigationStatePersistence, useTheme } from '~hooks'
+import {
+  useScreenTracker,
+  useNavigationStatePersistence,
+  useNavigationTheme,
+  useCallback,
+} from '~hooks'
 
 export const Navigation: FC = () => {
   const { navigationRef, onReady, onStateChange: onStateChangeScreenTracker } = useScreenTracker()
-  const { navigationTheme } = useTheme()
+  const { navigationTheme } = useNavigationTheme()
   const {
     isReady,
     initialState,
     onStateChange: onStateChangeNavigationStatePersistance,
   } = useNavigationStatePersistence()
 
-  const onStateChange = (state: NavigationState | undefined) => {
-    onStateChangeScreenTracker()
-    onStateChangeNavigationStatePersistance(state)
-  }
+  const onStateChange = useCallback(
+    (state: NavigationState | undefined) => {
+      onStateChangeScreenTracker()
+      onStateChangeNavigationStatePersistance(state)
+    },
+    [onStateChangeNavigationStatePersistance, onStateChangeScreenTracker]
+  )
 
   if (!isReady) {
     return null

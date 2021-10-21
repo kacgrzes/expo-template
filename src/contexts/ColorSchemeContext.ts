@@ -5,9 +5,9 @@ import { ColorSchemeName } from '~providers'
 
 export type ColorSchemeContextType =
   | {
-      userColorScheme: ColorSchemeName
+      colorSchemeSetting: ColorSchemeName
       colorScheme: RNColorSchemeName
-      setColorScheme: (newColorScheme: ColorSchemeName) => void
+      setColorSchemeSetting: (newColorScheme: ColorSchemeName) => void
     }
   | undefined
 

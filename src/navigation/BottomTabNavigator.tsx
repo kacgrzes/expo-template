@@ -2,13 +2,13 @@ import { Feather } from '@expo/vector-icons'
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import React, { FC } from 'react'
 
-import { useCallback, useTheme } from '~hooks'
+import { useCallback, useNavigationTheme } from '~hooks'
 import { ExamplesScreen, HomeScreen } from '~screens'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
 export const BottomTabNavigator: FC = () => {
-  const { colors } = useTheme()
+  const { tabBarTheme } = useNavigationTheme()
 
   const screenOptions = useCallback(
     ({ route }): BottomTabNavigationOptions => ({
@@ -26,10 +26,9 @@ export const BottomTabNavigator: FC = () => {
         // You can return any component that you like here!
         return <Feather name={iconName} size={size} color={color} />
       },
-      tabBarActiveTintColor: colors.text,
-      tabBarInactiveTintColor: colors.gray600,
+      ...tabBarTheme,
     }),
-    [colors.text, colors.gray600]
+    [tabBarTheme]
   )
 
   return (

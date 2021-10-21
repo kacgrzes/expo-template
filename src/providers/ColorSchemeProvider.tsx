@@ -12,45 +12,46 @@ export type ColorSchemeName = typeof colorSchemesList[number]
 export const ColorSchemeProvider: FC = ({ children }) => {
   const { setItem, getItem } = useAsyncStorage('@demo/colorScheme')
   const systemColorScheme = useRNColorScheme()
-  const [userColorScheme, setUserColorScheme] = useState<ColorSchemeName>('system')
+  const [colorSchemeSetting, setColorSchemeSetting] = useState<ColorSchemeName>('system')
 
-  const colorScheme = userColorScheme === 'system' ? systemColorScheme : userColorScheme
+  const colorScheme = colorSchemeSetting === 'system' ? systemColorScheme : colorSchemeSetting
 
   useEffect(() => {
     const getInitialColorScheme = async () => {
       getItem((error, savedColorScheme) => {
         if (!error && savedColorScheme) {
-          setUserColorScheme(savedColorScheme as ColorSchemeName)
+          setColorSchemeSetting(savedColorScheme as ColorSchemeName)
         } else {
-          setUserColorScheme(systemColorScheme)
+          setColorSchemeSetting(systemColorScheme)
         }
       })
     }
 
     getInitialColorScheme()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const setColorScheme = useCallback(
+  const setNewColorSchemeSetting = useCallback(
     (newColorScheme: ColorSchemeName) => {
-      const oldColorScheme = userColorScheme
-      setUserColorScheme(newColorScheme)
+      const oldColorScheme = colorSchemeSetting
+      setColorSchemeSetting(newColorScheme)
       setItem(newColorScheme, (error) => {
         if (error) {
-          setUserColorScheme(oldColorScheme)
+          setColorSchemeSetting(oldColorScheme)
         }
         // TODO: Handle error
       })
     },
-    [userColorScheme]
+    [colorSchemeSetting, setItem]
   )
 
   const providerValue: ColorSchemeContextType = useMemo(
     () => ({
-      colorScheme, // light | dark
-      userColorScheme, // colorSchemeSetting
-      setColorScheme, // setColorSchemeSetting
+      colorScheme,
+      colorSchemeSetting,
+      setColorSchemeSetting: setNewColorSchemeSetting,
     }),
-    [userColorScheme, setColorScheme, systemColorScheme]
+    [colorScheme, colorSchemeSetting, setNewColorSchemeSetting]
   )
 
   return <ColorSchemeContext.Provider value={providerValue} children={children} />

@@ -33,7 +33,7 @@ export const useScreenTracker = (callback = defaultCallback): ScreenTrackerRetur
     }
 
     routeNameRef.current = currentRouteName
-  }, [])
+  }, [callback])
 
   return { navigationRef, onReady, onStateChange }
 }
