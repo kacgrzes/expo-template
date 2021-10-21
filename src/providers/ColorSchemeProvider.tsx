@@ -12,15 +12,17 @@ export type ColorSchemeName = typeof colorSchemesList[number]
 export const ColorSchemeProvider: FC = ({ children }) => {
   const { setItem, getItem } = useAsyncStorage('@demo/colorScheme')
   const systemColorScheme = useRNColorScheme()
-  const [colorScheme, setColorScheme] = useState<ColorSchemeName>('system')
+  const [userColorScheme, setUserColorScheme] = useState<ColorSchemeName>('system')
+
+  const colorScheme = userColorScheme === 'system' ? systemColorScheme : userColorScheme
 
   useEffect(() => {
     const getInitialColorScheme = async () => {
       getItem((error, savedColorScheme) => {
         if (!error && savedColorScheme) {
-          setColorScheme(savedColorScheme as ColorSchemeName)
+          setUserColorScheme(savedColorScheme as ColorSchemeName)
         } else {
-          setColorScheme(systemColorScheme)
+          setUserColorScheme(systemColorScheme)
         }
       })
     }
@@ -28,27 +30,27 @@ export const ColorSchemeProvider: FC = ({ children }) => {
     getInitialColorScheme()
   }, [])
 
-  const setNewColorScheme = useCallback(
+  const setColorScheme = useCallback(
     (newColorScheme: ColorSchemeName) => {
-      const oldColorScheme = colorScheme
-      setColorScheme(newColorScheme)
+      const oldColorScheme = userColorScheme
+      setUserColorScheme(newColorScheme)
       setItem(newColorScheme, (error) => {
         if (error) {
-          setColorScheme(oldColorScheme)
+          setUserColorScheme(oldColorScheme)
         }
         // TODO: Handle error
       })
     },
-    [colorScheme]
+    [userColorScheme]
   )
 
   const providerValue: ColorSchemeContextType = useMemo(
     () => ({
       colorScheme,
-      systemColorScheme,
-      setNewColorScheme,
+      userColorScheme,
+      setColorScheme,
     }),
-    [colorScheme, setNewColorScheme, systemColorScheme]
+    [userColorScheme, setColorScheme, systemColorScheme]
   )
 
   return <ColorSchemeContext.Provider value={providerValue} children={children} />

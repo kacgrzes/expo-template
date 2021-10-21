@@ -8,7 +8,7 @@ import { colorSchemesList } from '~providers'
 
 export const ExamplesScreen: FC = () => {
   const { navigate } = useNavigation()
-  const { setNewColorScheme, colorScheme } = useColorScheme()
+  const { setColorScheme, userColorScheme } = useColorScheme()
   const { s } = useTheme()
 
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [])
@@ -16,15 +16,15 @@ export const ExamplesScreen: FC = () => {
   return (
     <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
       <Button onPress={goToApplicationInfo} title="Go to ApplicationInfo" />
-      <Text style={[s.textPrimary]}>Current theme: {colorScheme}</Text>
+      <Text style={[s.textPrimary]}>Current theme: {userColorScheme}</Text>
       {colorSchemesList.map((scheme) => {
-        const isSelected = scheme === colorScheme
+        const isSelected = scheme === userColorScheme
 
         return (
           <Button
             key={scheme}
             style={[s.mB1]}
-            onPress={() => setNewColorScheme(scheme)}
+            onPress={() => setColorScheme(scheme)}
             title={`${scheme}${isSelected ? ' - selected' : ''}`}
           />
         )

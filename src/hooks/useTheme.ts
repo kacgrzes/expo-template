@@ -17,7 +17,7 @@ type ReturnValues = {
   s: AppTheme
   navigationTheme: typeof DarkNavigationTheme
   colors: Colors
-  userTheme: RNColorSchemeName
+  colorScheme: RNColorSchemeName
   light: AppTheme
   dark: AppTheme
 }
@@ -36,17 +36,11 @@ const themes = {
 }
 
 export const useTheme = (): ReturnValues => {
-  const { colorScheme, systemColorScheme } = useColorScheme()
-
-  const userTheme = colorScheme === 'system' ? systemColorScheme : colorScheme
-
-  const { s, navigationTheme, colors } = themes[userTheme]
+  const { colorScheme } = useColorScheme()
 
   return {
-    s,
-    colors,
-    navigationTheme,
-    userTheme,
+    ...themes[colorScheme],
+    colorScheme,
     light: lightTheme,
     dark: darkTheme,
   }

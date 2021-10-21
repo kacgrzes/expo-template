@@ -1,16 +1,16 @@
 import { StatusBar as ExpoStatusBar, StatusBarProps } from 'expo-status-bar'
 import React from 'react'
 
-import { useTheme } from '~hooks'
+import { useColorScheme } from '~hooks'
 
 export const StatusBar = (props: StatusBarProps): JSX.Element => {
-  const { userTheme } = useTheme()
+  const { colorScheme } = useColorScheme()
 
   return (
     <ExpoStatusBar
       animated
       hideTransitionAnimation="fade"
-      style={userTheme === 'dark' ? 'light' : 'dark'}
+      style={colorScheme === 'dark' ? 'light' : 'dark'}
       {...props}
     />
   )

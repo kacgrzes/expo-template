@@ -22,7 +22,6 @@ export const Button: FC<ButtonProps> = ({ children, style, title, ...props }) =>
             s.justifyCenter,
             s.minW48,
             s.p4,
-            s.bgBlack,
             s.roundedSm,
             s.bgPrimary,
           ],

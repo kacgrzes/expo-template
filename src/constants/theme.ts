@@ -9,6 +9,8 @@ type ExtendType = {
 }
 export type AppTheme = ReturnType<typeof createTheme> & ExtendType
 
+type CommonColors = ThemeProps['colors']
+
 type ExtendedColors = {
   background: string
   border: string
@@ -18,9 +20,9 @@ type ExtendedColors = {
   text: string
 }
 
-export type Colors = ThemeProps['colors'] & ExtendedColors
+export type Colors = CommonColors & ExtendedColors
 
-const commonColors: ThemeProps['colors'] = {
+const commonColors: CommonColors = {
   primary: '#3f51b5',
   primaryLight: '#7986cb',
   primaryDark: '#303f9f',
