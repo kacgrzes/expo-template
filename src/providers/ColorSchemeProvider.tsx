@@ -46,9 +46,9 @@ export const ColorSchemeProvider: FC = ({ children }) => {
 
   const providerValue: ColorSchemeContextType = useMemo(
     () => ({
-      colorScheme,
-      userColorScheme,
-      setColorScheme,
+      colorScheme, // light | dark
+      userColorScheme, // colorSchemeSetting
+      setColorScheme, // setColorSchemeSetting
     }),
     [userColorScheme, setColorScheme, systemColorScheme]
   )

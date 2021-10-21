@@ -22,6 +22,15 @@ type ReturnValues = {
   dark: AppTheme
 }
 
+// Propozycja ReturnValue
+/*
+type ReturnValues = {
+  s: AppTheme
+  colors
+}
+
+*/
+
 const themes = {
   dark: {
     s: darkTheme,
