@@ -15,6 +15,7 @@ module.exports = {
     'universe',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'plugin:react-hooks/recommended',
   ],
   env: {
     'react-native/react-native': true,
@@ -24,7 +25,8 @@ module.exports = {
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
     'react-native/no-single-element-style-arrays': 'off',
-    '@typescript-eslint/no-unused-vars': ['error']
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'react/jsx-no-bind': ['warn'],
   },
   settings: {
     react: {
