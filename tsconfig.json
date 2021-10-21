@@ -11,8 +11,6 @@
     "resolveJsonModule": true,
     // sets types for project using src/types folder
     "typeRoots": ["node_modules/@types", "src/types"],
-    "noImplicitReturns": false,
-    "strictNullChecks": false,
     "jsx": "react-native",
     "lib": ["es6", "dom", "esnext"],
     "target": "esnext",
