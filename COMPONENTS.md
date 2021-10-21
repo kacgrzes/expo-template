@@ -1,5 +1,31 @@
+## Workflow when creating new component:
+
+- Let's go with priority of a component
+  - Typography
+  - Button
+  - Layout
+- atoms / molecules / organisms / templates / pages
+- each component should have an API defined before implementeation - we need to predict usage of this component and find the most optimal way
+- good way to go is look through UI libraries written bellow and try to propose something and later on select best pratices
+- we can do brainstorm to find the best solution for all the RN guys in the whole team
+
+TODO:
+
+- start with typography (https://github.com/hectahertz/react-native-typography) follow steps above
+
 ## Libraries
 
+<!-- TODO: add more popular libraries -->
+
+- https://github.com/react-native-elements/react-native-elements
+- https://github.com/GeekyAnts/NativeBase
+- https://github.com/akveo/react-native-ui-kitten
+- https://github.com/creativetimofficial/material-kit
+- https://github.com/shoutem/ui
+- https://github.com/wix/react-native-ui-lib
+- https://github.com/Trixieapp/react-virgin
+- https://github.com/jxom/bumbag-ui
+- https://github.com/nachos-ui/nachos-ui
 - https://github.com/rilyu/teaset
 - https://avocode.com/nachos-ui
 - https://github.com/rcaferati/react-native-really-awesome-button
@@ -22,12 +48,11 @@
 
 ## Components
 
+Absolute // TODO:
 Accordion
 ActionButtons
 ActionSheet
-ActionSheet
 ActivityIndicator
-Alert
 Alert
 AlertDialog
 Appbar
@@ -36,53 +61,31 @@ Appbar.BackAction
 Appbar.Content
 Appbar.Header
 Autocomplete
-Autocomplete
 Autosuggest
-FormControl
-DropDownMenu
-HorizontalPager
-ImageGallery
-EmptyState
-DateTimePicker
-DatePicker
-TimePicker
-ImageBackground
-Absolute
-Lightbox
-LinearGradient
-Screen
-SearchField
-
-InlineDropDownMenu
-ScrollView
 Avatar
 Avatar.Icon
 Avatar.Image
 Avatar.Text
-Badge
 Badge
 Banner
 BasePage
 BottomNav
 BottomNavigation
 BottomSheet
-BottomSheet
-BottomSheet
 BottomTabs
-Box
-Box
-Box.Safe
-Box.Scroll
-Box.Touchable
+Box // TODO:
+Box.Safe // TODO:
+Box.Scroll // TODO:
+Box.Touchable // TODO:
 Bubble
-Button
+Button // TODO:
 ButtonGroup
 ButtonIcon
 Calendar
-Caption
+Caption // TODO:
 Card
 Carousel
-Center
+Center // TODO:
 CheckBox / Checkbox
 CheckBoxGroup / CheckboxGroup
 Chip
@@ -90,7 +93,7 @@ CircularSlider
 CodeInput
 Collapse
 ColorPicker
-Column
+Column // TODO:
 Container
 Countdown
 Counter
@@ -102,8 +105,7 @@ DataTable.Pagination
 DataTable.Row
 DataTable.Title
 DatePicker
-Dialog
-Dialog
+DateTimePicker
 Dialog
 Dialog.Actions
 Dialog.Content
@@ -112,12 +114,12 @@ Dialog.Title
 DialogAlert
 Div
 Divider
-Divider
 Drawer
 Drawer.Item
 Drawer.Section
 Dropdown
 DropdownMenu
+EmptyState
 Expand
 Expandable
 FAB / Fab
@@ -125,36 +127,40 @@ FAB.Group
 Fail // Toast
 FieldWrapper
 FlatList
-Flex
+Flex // TODO:
 FloatingMenu
-Form
+Form // TODO:
 FormControl
 Gravatar
 Grid
 Group
 Header
-Heading
-Headline
-HelperText
+Heading // TODO:
+Headline // TODO:
+HelperText // TODO:
 Hidden
 Hide
-HStack / Row
+HorizontalPager
+HStack / Row // TODO:
 Icon
 IconButton
-IconButton
 IconToggle
-Image
+Image // TODO:
+ImageBackground // TODO:
+ImageGallery
 Indicator
-Input
+InlineDropDownMenu
+Input // TODO:
 KeyboardAvoidingView
 KeyboardSpace
-Label
+Label // TODO:
 LabelRating
 Layout
 Level
+Lightbox
 Linear Progress
-Link
-List
+LinearGradient
+Link // TODO:
 List
 List.Accordion
 List.AccordionGroup
@@ -164,15 +170,11 @@ List.Nested
 List.Section
 List.Subheader
 ListItem
-ListItem
 ListSection
 MediaControls
 MentionInput
 Menu
-Menu
-Menu
 Menu.Item
-Modal
 Modal
 MotionSlider
 OverflowMenu
@@ -180,26 +182,21 @@ Overlay
 Page
 PageViewer
 Paper
-Paragraph
+Paragraph // TODO:
 PhoneInput
 Picker
 Pincode
 Popover
-Popover
 Portal
-Pressable
-Pressable
+Pressable // TODO:
 Pricing
 Progress
-Progress
-ProgressBar
 ProgressBar
 ProgressCircle
 ProgressSteps
 Radio
 RadioButton
 RadioGroup
-Range
 Range
 RangeSlider
 Rating
@@ -208,12 +205,11 @@ RefreshControl
 Ribbon
 Ripple
 RippleFeedback
-Row
-Screen
+Row // TODO:
 Screen
 ScrollView
 SearchBar
-SearchBar
+SearchField
 Section
 SectionList
 Segment
@@ -221,7 +217,6 @@ SegmentedBar
 SegmentedControl
 SegmentedControlButton
 SegmentedView
-Select
 Select
 Separator
 Set
@@ -232,19 +227,14 @@ Slider
 Snackbar
 Social Icons / Social Icon Buttons
 SocialIcon
-SocialIcon
 SpeedDial
-Spinner
-Spinner
 Spinner
 Stack
 StatusBar
 Stepper
-Stepper
-Stepper
-Subheader
-Subheading
-Subtitle
+Subheader // TODO:
+Subheading // TODO:
+Subtitle // TODO:
 Success // Toast
 Surface
 Switch
@@ -256,17 +246,16 @@ TabButton
 Tabs
 TabView
 Tag
-Text
+Text // TODO:
 TextArea
-Textarea / TextArea
-TextInput
+TextInput // TODO:
 TextInput.Affix
 TextInput.Icon
 Thumbnail
 Tile
 TimePicker
-Title
-Toast
+TimePicker
+Title // TODO:
 Toast
 Toggle
 ToggleButton
@@ -274,16 +263,15 @@ ToggleButton.Group
 ToggleButton.Row
 Toolbar
 Tooltip
-Tooltip
 TopNav
 TopNavigationover
 TopTabs
-TouchableOpacity
-TouchableRipple
-Touchalbe // all
-Typography
+TouchableOpacity // TODO:
+TouchableRipple // TODO:
+Touchalbe // all // TODO:
+Typography // TODO:
 View
 ViewPager
-VStack / Column
+VStack / Column // TODO:
 Wheel
-ZStack
+ZStack // TODO:
