@@ -2,8 +2,8 @@ import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { Theme } from '@react-navigation/native'
 import { useMemo } from 'react'
 
-import { useColorScheme } from './useColorScheme'
-import { useTheme } from './useTheme'
+import { useColorScheme } from '../useColorScheme'
+import { useTheme } from '../useTheme'
 
 import { DarkNavigationTheme, LightNavigationTheme } from '~constants'
 

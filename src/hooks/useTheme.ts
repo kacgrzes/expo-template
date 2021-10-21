@@ -26,7 +26,5 @@ const themes: Themes = {
 export const useTheme = (): ReturnValues => {
   const { colorScheme } = useColorScheme()
 
-  return {
-    ...themes[colorScheme],
-  }
+  return themes[colorScheme]
 }

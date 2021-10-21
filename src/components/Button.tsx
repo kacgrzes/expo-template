@@ -27,19 +27,9 @@ export const Button: FC<ButtonProps> = ({ children, style, title, ...props }) =>
         ],
         style
       ),
-    [
-      s.alignCenter,
-      s.bgPrimary,
-      s.itemsCenter,
-      s.justifyCenter,
-      s.minW48,
-      s.opacity100,
-      s.opacity60,
-      s.p4,
-      s.roundedSm,
-      style,
-    ]
+    [s, style]
   )
+
   return (
     <Pressable style={styleFunction} {...props}>
       <Text style={s.textWhite}>{title}</Text>
