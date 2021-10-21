@@ -8,7 +8,7 @@ import { colorSchemesList } from '~providers'
 
 export const ExamplesScreen: FC = () => {
   const { navigate } = useNavigation()
-  const { setNewColorScheme, colorScheme, systemColorTheme } = useColorScheme()
+  const { setNewColorScheme, colorScheme } = useColorScheme()
   const { s } = useTheme()
 
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [])

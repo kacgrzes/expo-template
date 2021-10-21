@@ -6,7 +6,6 @@ import { createTheme, ThemeProps } from 'react-native-whirlwind'
 type ExtendType = {
   textPrimary: ViewStyle | TextStyle | ImageStyle
   background: ViewStyle | TextStyle | ImageStyle
-  secondBackground: ViewStyle | TextStyle | ImageStyle
 }
 export type AppTheme = ReturnType<typeof createTheme> & ExtendType
 
@@ -101,9 +100,6 @@ export const darkTheme = StyleSheet.create({
   }),
   background: {
     backgroundColor: darkColors.background,
-  },
-  secondBackground: {
-    backgroundColor: lightColors.white,
   },
   textPrimary: {
     color: darkColors.text,
