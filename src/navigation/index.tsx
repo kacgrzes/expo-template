@@ -27,8 +27,7 @@ export const Navigation: FC = () => {
 
   return (
     <>
-      {/* TODO: move Status bar to a separate component; set default values */}
-      <StatusBar animated hideTransitionAnimation="fade" style="dark" />
+      <StatusBar />
       <NavigationContainer
         ref={navigationRef}
         onReady={onReady}
