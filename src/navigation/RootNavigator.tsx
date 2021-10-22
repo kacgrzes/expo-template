@@ -29,7 +29,6 @@ export const RootNavigator: FC = () => {
 
   const getUrl = useCallback(
     async ({ url }: { url?: string }): Promise<void> => {
-      console.log({ url })
       if (url) {
         linkTo(url)
       }
@@ -40,8 +39,6 @@ export const RootNavigator: FC = () => {
   useEffect(() => {
     initialNavigate()
 
-    // linkTo('/details')
-    // console.log('Navigate to details')
     Linking.addEventListener('url', getUrl)
 
     return () => {
