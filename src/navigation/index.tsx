@@ -1,5 +1,4 @@
 import { NavigationContainer, NavigationState } from '@react-navigation/native'
-import * as Linking from 'expo-linking'
 import React, { FC } from 'react'
 
 import { RootNavigator } from './RootNavigator'
