@@ -1,4 +1,4 @@
-import '@react-navigation/native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { routesList, Routes } from '~constants'
 
 // Helpers
@@ -10,6 +10,10 @@ type NavigatorParams<NavigatorRouteParams, NavigatorRoute extends keyof Navigato
   | undefined
 
 type RoutesUnion = typeof routesList[number]
+
+// Specific screens props
+// You can get navigation or route prop for every screen f. eg. DetailsScreenProps['route']
+type DetailsScreenProps = NativeStackScreenProps<RootStackParamList, 'Details'>
 
 type RootStackParamList = {
   // Stacks

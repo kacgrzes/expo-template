@@ -4,10 +4,11 @@ import { View, Text } from 'react-native'
 
 import { Button } from '~components'
 import { useRoute, useTheme } from '~hooks'
+import { DetailsScreenProps } from '~types/navigation'
 
 export const DetailsScreen: FC = () => {
   const { s } = useTheme()
-  const { params } = useRoute()
+  const { params } = useRoute<DetailsScreenProps['route']>()
 
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null)
