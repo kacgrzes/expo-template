@@ -5,7 +5,6 @@ export {
   useIsFocused,
   useLinkBuilder,
   useLinkProps,
-  useLinkTo,
   useNavigation,
   useNavigationBuilder,
   useNavigationState,
@@ -17,3 +16,4 @@ export * from './useNavigationStatePersistence'
 export * from './usePreventGoBack'
 export * from './useScreenTracker'
 export * from './useNavigationTheme'
+export * from './useLinkTo'

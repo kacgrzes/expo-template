@@ -8,17 +8,25 @@ import { LinkingOptions } from '@react-navigation/native'
 import Constants from 'expo-constants'
 import { createURL } from 'expo-linking'
 
-const prefix = createURL('/')
+export const prefix = createURL('/')
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []
 
 // Visit https://reactnavigation.org/docs/configuring-links#playground to see more
 export const linking: LinkingOptions<ReactNavigation.RootParamList> = {
   prefixes: [prefix, ...universalLinks],
   config: {
+    initialRouteName: 'Root',
     screens: {
+      Settings: 'settings',
       Root: {
         screens: {
-          Home: '',
+          HomeStack: {
+            initialRouteName: 'Home',
+            screens: {
+              Home: '',
+              Details: '/details/:id',
+            },
+          },
           Examples: 'examples',
         },
       },

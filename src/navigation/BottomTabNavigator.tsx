@@ -2,8 +2,10 @@ import { Feather } from '@expo/vector-icons'
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import React, { FC } from 'react'
 
+import { HomeStack } from './HomeStack'
+
 import { useCallback, useNavigationTheme } from '~hooks'
-import { ExamplesScreen, HomeScreen } from '~screens'
+import { ExamplesScreen } from '~screens'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
@@ -15,7 +17,7 @@ export const BottomTabNavigator: FC = () => {
       tabBarIcon: ({ color, size }) => {
         let iconName: keyof typeof Feather.glyphMap
 
-        if (route.name === 'Home') {
+        if (route.name === 'HomeStack') {
           iconName = 'home'
         } else if (route.name === 'Examples') {
           iconName = 'list'
@@ -33,7 +35,7 @@ export const BottomTabNavigator: FC = () => {
 
   return (
     <Navigator screenOptions={screenOptions}>
-      <Screen name="Home" component={HomeScreen} />
+      <Screen name="HomeStack" component={HomeStack} options={{ headerShown: false }} />
       <Screen name="Examples" component={ExamplesScreen} />
     </Navigator>
   )

@@ -1,4 +1,5 @@
 import { NavigationContainer, NavigationState } from '@react-navigation/native'
+import * as Linking from 'expo-linking'
 import React, { FC } from 'react'
 
 import { RootNavigator } from './RootNavigator'
@@ -15,6 +16,7 @@ import {
 export const Navigation: FC = () => {
   const { navigationRef, onReady, onStateChange: onStateChangeScreenTracker } = useScreenTracker()
   const { navigationTheme } = useNavigationTheme()
+
   const {
     isReady,
     initialState,
