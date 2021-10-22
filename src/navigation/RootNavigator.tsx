@@ -28,7 +28,7 @@ export const RootNavigator: FC = () => {
   }, [linkTo])
 
   const getUrl = useCallback(
-    async ({ url }: { url?: string }): Promise<void> => {
+    ({ url }: { url?: string }): void => {
       if (url) {
         linkTo(url)
       }
