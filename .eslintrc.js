@@ -27,6 +27,8 @@ module.exports = {
     'react-native/no-single-element-style-arrays': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     'react/jsx-no-bind': ['warn'],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off'
   },
   settings: {
     react: {

@@ -1,5 +1,4 @@
 import { StatusBar as ExpoStatusBar, StatusBarProps } from 'expo-status-bar'
-import React from 'react'
 
 import { useColorScheme } from '~hooks'
 

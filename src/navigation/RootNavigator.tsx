@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
 

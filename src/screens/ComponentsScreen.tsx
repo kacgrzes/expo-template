@@ -1,4 +1,3 @@
-import React from 'react'
 import { Alert, ScrollView } from 'react-native'
 
 import { Button } from '~components'

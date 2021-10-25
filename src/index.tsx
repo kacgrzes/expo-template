@@ -6,7 +6,6 @@ import '~i18n'
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { registerRootComponent } from 'expo'
-import React from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AppLoading } from '~components'

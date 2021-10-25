@@ -1,6 +1,5 @@
 // TODO: there are tons of more interesting methods there!
 import * as Application from 'expo-application'
-import React from 'react'
 import { ScrollView, Text } from 'react-native'
 
 import { usePreventGoBack, useTranslation, useTheme } from '~hooks'

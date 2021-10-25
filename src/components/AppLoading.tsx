@@ -1,5 +1,5 @@
 import * as SplashScreen from 'expo-splash-screen'
-import React, { FC, Fragment, useEffect } from 'react'
+import { FC, Fragment, useEffect } from 'react'
 
 import { useAuth, useCachedResources } from '~hooks'
 

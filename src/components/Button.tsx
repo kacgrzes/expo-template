@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Pressable, Text, PressableProps, StyleSheet, ViewStyle } from 'react-native'
 
 import { useTheme, useCallback } from '~hooks'

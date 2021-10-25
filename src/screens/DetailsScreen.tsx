@@ -1,5 +1,5 @@
 import { BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet'
-import React, { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 import { View, Text } from 'react-native'
 
 import { Button } from '~components'

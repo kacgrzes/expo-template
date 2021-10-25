@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons'
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import { ExamplesStack } from './ExamplesStack'
 import { HomeStack } from './HomeStack'
