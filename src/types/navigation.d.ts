@@ -1,8 +1,4 @@
-import {
-  CompositeNavigationProp,
-  CompositeScreenProps,
-  NavigatorScreenParams,
-} from '@react-navigation/native'
+import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native'
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { StackScreenProps } from '@react-navigation/stack'
 
@@ -48,36 +44,26 @@ declare global {
   // - HomeScreenNavigationProps['navigation']
 
   // Home stack
-  type HomeScreenNavigationProps = CompositeScreenProps<
-    StackScreenProps<RootStackParamList, 'MainTab'>,
-    CompositeScreenProps<
-      BottomTabScreenProps<MainTabParamList, 'HomeStack'>,
-      StackScreenProps<HomeStackParamList, 'Home'>
-    >
-  >
-
-  type DetailsScreenNavigationProps = CompositeScreenProps<
-    StackScreenProps<RootStackParamList, 'MainTab'>,
-    CompositeScreenProps<
-      BottomTabScreenProps<MainTabParamList, 'HomeStack'>,
-      StackScreenProps<HomeStackParamList, 'Details'>
-    >
-  >
+  type HomeScreenNavigationProps = HomeStackComposite<'Home'>
+  type DetailsScreenNavigationProps = HomeStackComposite<'Details'>
 
   // Examples stack
-  type ExamplesScreenNavigationProps = CompositeScreenProps<
-    StackScreenProps<RootStackParamList, 'MainTab'>,
-    CompositeScreenProps<
-      BottomTabScreenProps<MainTabParamList, 'ExamplesStack'>,
-      StackScreenProps<ExampleStackParamList, 'Examples'>
-    >
-  >
-
-  type ComponentsScreenNavigationProps = CompositeScreenProps<
-    StackScreenProps<RootStackParamList, 'MainTab'>,
-    CompositeScreenProps<
-      BottomTabScreenProps<MainTabParamList, 'ExamplesStack'>,
-      StackScreenProps<ExampleStackParamList, 'Components'>
-    >
-  >
+  type ExamplesScreenNavigationProps = ExamplesStackComposite<'Examples'>
+  type ComponentsScreenNavigationProps = ExamplesStackComposite<'Components'>
 }
+
+type HomeStackComposite<S extends keyof HomeStackParamList> = CompositeScreenProps<
+  StackScreenProps<RootStackParamList, 'MainTab'>,
+  CompositeScreenProps<
+    BottomTabScreenProps<MainTabParamList, 'HomeStack'>,
+    StackScreenProps<HomeStackParamList, S>
+  >
+>
+
+type ExamplesStackComposite<S extends keyof ExampleStackParamList> = CompositeScreenProps<
+  StackScreenProps<RootStackParamList, 'MainTab'>,
+  CompositeScreenProps<
+    BottomTabScreenProps<MainTabParamList, 'HomeStack'>,
+    StackScreenProps<ExampleStackParamList, S>
+  >
+>
