@@ -1,10 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import * as Linking from 'expo-linking'
 import React, { FC } from 'react'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
 
-import { useAuth, useLinkTo, useCallback, useEffect } from '~hooks'
+import { useAuth } from '~hooks'
 import {
   ApplicationInfoScreen,
   NotFoundScreen,
@@ -17,35 +16,6 @@ const { Navigator, Screen, Group } = createStackNavigator()
 
 export const RootNavigator: FC = () => {
   const { isSignedIn } = useAuth()
-  const linkTo = useLinkTo()
-
-  // TODO: Consider moving deeplinking logic to seperate file
-  const initialNavigate = useCallback(async (): Promise<void> => {
-    const initial = await Linking.getInitialURL()
-    if (initial) {
-      linkTo(initial)
-    }
-  }, [linkTo])
-
-  const getUrl = useCallback(
-    ({ url }: { url?: string }): void => {
-      if (url) {
-        linkTo(url)
-      }
-    },
-    [linkTo]
-  )
-
-  useEffect(() => {
-    initialNavigate()
-
-    Linking.addEventListener('url', getUrl)
-
-    return () => {
-      Linking.removeEventListener('url', getUrl)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <Navigator>
