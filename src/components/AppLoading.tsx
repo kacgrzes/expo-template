@@ -1,11 +1,11 @@
 import * as SplashScreen from 'expo-splash-screen'
-import React, { Fragment, ReactNode, useEffect } from 'react'
+import React, { FC, Fragment, useEffect } from 'react'
 
 import { useAuth, useCachedResources } from '~hooks'
 
 SplashScreen.preventAutoHideAsync()
 
-export const AppLoading = ({ children }: { children: ReactNode }): JSX.Element | null => {
+export const AppLoading: FC = ({ children }) => {
   const isLoadingComplete = useCachedResources()
   const { isSignedIn } = useAuth()
 
