@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { View, Text } from 'react-native'
 
 import { useTheme } from '~hooks'
 
-export const NotFoundScreen: FC = () => {
+export const NotFoundScreen = (): JSX.Element => {
   const { s } = useTheme()
   return (
     <View style={[s.flex1, s.justifyCenter, s.itemsCenter]}>

@@ -1,13 +1,15 @@
 import { BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet'
-import React, { FC, useCallback, useMemo, useRef } from 'react'
+import React, { useCallback, useMemo, useRef } from 'react'
 import { View, Text } from 'react-native'
 
 import { Button } from '~components'
-import { useRoute, useTheme } from '~hooks'
+import { useTheme } from '~hooks'
 
-export const DetailsScreen: FC = () => {
+export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
+  const {
+    route: { params },
+  } = props
   const { s } = useTheme()
-  const { params } = useRoute<DetailsScreenNavigationProps['route']>()
 
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null)

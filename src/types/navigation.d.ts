@@ -44,12 +44,12 @@ declare global {
   // - HomeScreenNavigationProps['navigation']
 
   // Home stack
-  type HomeScreenNavigationProps = HomeStackComposite<'Home'>
-  type DetailsScreenNavigationProps = HomeStackComposite<'Details'>
+  type HomeScreenProps = HomeStackComposite<'Home'>
+  type DetailsScreenProps = HomeStackComposite<'Details'>
 
   // Examples stack
-  type ExamplesScreenNavigationProps = ExamplesStackComposite<'Examples'>
-  type ComponentsScreenNavigationProps = ExamplesStackComposite<'Components'>
+  type ExamplesScreenProps = ExamplesStackComposite<'Examples'>
+  type ComponentsScreenProps = ExamplesStackComposite<'Components'>
 }
 
 type HomeStackComposite<S extends keyof HomeStackParamList> = CompositeScreenProps<

@@ -5,6 +5,7 @@ export {
   useIsFocused,
   useLinkBuilder,
   useLinkProps,
+  useLinkTo,
   useNavigation,
   useNavigationBuilder,
   useNavigationState,

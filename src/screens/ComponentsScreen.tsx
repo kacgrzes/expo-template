@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Alert, ScrollView } from 'react-native'
 
 import { Button } from '~components'
@@ -6,7 +6,7 @@ import { useTheme } from '~hooks'
 
 const openAlert = () => Alert.alert('Button Pressed', 'You have pressed button')
 
-export const ComponentsScreen: FC = () => {
+export const ComponentsScreen = (): JSX.Element => {
   const { s } = useTheme()
 
   return (

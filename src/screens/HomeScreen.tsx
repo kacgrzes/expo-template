@@ -1,12 +1,14 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { View, Text, Image, ImageStyle } from 'react-native'
 
 import { Button } from '~components'
-import { useCallback, useTranslation, useTheme, useNavigation } from '~hooks'
+import { useCallback, useTranslation, useTheme } from '~hooks'
 
-export const HomeScreen: FC = () => {
+export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
+  const {
+    navigation: { navigate },
+  } = props
   const { t } = useTranslation()
-  const { navigate } = useNavigation<HomeScreenNavigationProps['navigation']>()
   const { s } = useTheme()
 
   const navigateToDetails = useCallback(() => {

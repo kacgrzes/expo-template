@@ -1,12 +1,13 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { FC, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 
 import { Button } from '~components'
 import { useTheme } from '~hooks'
 
-export const ExamplesScreen: FC = () => {
-  const { navigate } = useNavigation<ExamplesScreenNavigationProps['navigation']>()
+export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
+  const {
+    navigation: { navigate },
+  } = props
   const { s } = useTheme()
 
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
