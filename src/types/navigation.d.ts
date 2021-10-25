@@ -11,10 +11,7 @@ type NavigatorParams<NavigatorRouteParams, NavigatorRoute extends keyof Navigato
 
 type RoutesUnion = typeof routesList[number]
 
-// Specific screens props
-// You can get navigation or route prop for every screen f. eg. DetailsScreenProps['route']
-type DetailsScreenProps = NativeStackScreenProps<RootStackParamList, 'Details'>
-
+// PARAMS
 type RootStackParamList = {
   // Stacks
   HomeStack: HomeStackNavParams
@@ -47,3 +44,7 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
+
+// SCREENS - specific screens props
+// You can get navigation or route prop for every screen f. eg. DetailsScreenNavigationProps['route']
+type DetailsScreenNavigationProps = NativeStackScreenProps<RootStackParamList, 'Details'>
