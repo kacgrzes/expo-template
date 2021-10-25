@@ -6,19 +6,11 @@ import { useCallback, useTranslation, useTheme, useNavigation } from '~hooks'
 
 export const HomeScreen: FC = () => {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<HomeScreenNavigationProps['navigation']>()
   const { s } = useTheme()
 
   const navigateToDetails = useCallback(() => {
-    navigate('MainTab', {
-      screen: 'HomeStack',
-      params: {
-        screen: 'Details',
-        params: {
-          id: '123',
-        },
-      },
-    })
+    navigate('Details', { id: '123451' })
   }, [navigate])
 
   return (

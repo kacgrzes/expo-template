@@ -1,4 +1,5 @@
 export * from './ApplicationInfoScreen'
+export * from './ComponentsScreen'
 export * from './DetailsScreen'
 export * from './ExamplesScreen'
 export * from './HomeScreen'

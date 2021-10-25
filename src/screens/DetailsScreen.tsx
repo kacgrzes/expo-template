@@ -4,7 +4,6 @@ import { View, Text } from 'react-native'
 
 import { Button } from '~components'
 import { useRoute, useTheme } from '~hooks'
-import { DetailsScreenNavigationProps } from '~types/navigation'
 
 export const DetailsScreen: FC = () => {
   const { s } = useTheme()

@@ -27,7 +27,13 @@ export const linking: LinkingOptions<RootStackParamList> = {
               Details: '/details/:id',
             },
           },
-          Examples: 'examples',
+          ExamplesStack: {
+            initialRouteName: 'Examples',
+            screens: {
+              Examples: '/examples',
+              Components: '/components',
+            },
+          },
         },
       },
       SignIn: 'sign-in',
