@@ -6,7 +6,7 @@ import '~i18n'
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { registerRootComponent } from 'expo'
-import React, { FC } from 'react'
+import React from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AppLoading } from '~components'
@@ -24,7 +24,7 @@ if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
 
 const queryClient = new QueryClient({})
 
-const App: FC = () => {
+const App = (): JSX.Element => {
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>

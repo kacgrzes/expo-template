@@ -4,9 +4,15 @@ import React, { FC } from 'react'
 import { BottomTabNavigator } from './BottomTabNavigator'
 
 import { useAuth } from '~hooks'
-import { ApplicationInfoScreen, NotFoundScreen, SignInScreen, SignUpScreen } from '~screens'
+import {
+  ApplicationInfoScreen,
+  NotFoundScreen,
+  SettingsScreen,
+  SignInScreen,
+  SignUpScreen,
+} from '~screens'
 
-const { Navigator, Screen, Group } = createStackNavigator()
+const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 
 export const RootNavigator: FC = () => {
   const { isSignedIn } = useAuth()
@@ -25,8 +31,9 @@ export const RootNavigator: FC = () => {
           <Screen name="SignUp" component={SignUpScreen} />
         </Group>
       ) : (
-        <Group key="authorized" screenOptions={{ headerShown: false }}>
-          <Screen name="Root" component={BottomTabNavigator} />
+        <Group key="authorized">
+          <Screen name="MainTab" component={BottomTabNavigator} options={{ headerShown: false }} />
+          <Screen name="Settings" component={SettingsScreen} />
         </Group>
       )}
       <Group key="modals" screenOptions={{ presentation: 'modal' }}>

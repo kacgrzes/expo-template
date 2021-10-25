@@ -1,3 +1,5 @@
 {
-  "hello": "Hello!"
+  "hello": "Welcome",
+  "thanks": "Thank you for using best template for expo apps",
+  "app_information": "Shake your device to open developer menu"
 }

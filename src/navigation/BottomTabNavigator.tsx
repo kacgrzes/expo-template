@@ -2,10 +2,12 @@ import { Feather } from '@expo/vector-icons'
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import React, { FC } from 'react'
 
-import { useCallback, useNavigationTheme } from '~hooks'
-import { ExamplesScreen, HomeScreen } from '~screens'
+import { ExamplesStack } from './ExamplesStack'
+import { HomeStack } from './HomeStack'
 
-const { Navigator, Screen } = createBottomTabNavigator()
+import { useCallback, useNavigationTheme } from '~hooks'
+
+const { Navigator, Screen } = createBottomTabNavigator<MainTabParamList>()
 
 export const BottomTabNavigator: FC = () => {
   const { tabBarTheme } = useNavigationTheme()
@@ -15,9 +17,9 @@ export const BottomTabNavigator: FC = () => {
       tabBarIcon: ({ color, size }) => {
         let iconName: keyof typeof Feather.glyphMap
 
-        if (route.name === 'Home') {
+        if (route.name === 'HomeStack') {
           iconName = 'home'
-        } else if (route.name === 'Examples') {
+        } else if (route.name === 'ExamplesStack') {
           iconName = 'list'
         } else {
           iconName = 'alert-triangle'
@@ -26,6 +28,7 @@ export const BottomTabNavigator: FC = () => {
         // You can return any component that you like here!
         return <Feather name={iconName} size={size} color={color} />
       },
+      headerShown: false,
       ...tabBarTheme,
     }),
     [tabBarTheme]
@@ -33,8 +36,8 @@ export const BottomTabNavigator: FC = () => {
 
   return (
     <Navigator screenOptions={screenOptions}>
-      <Screen name="Home" component={HomeScreen} />
-      <Screen name="Examples" component={ExamplesScreen} />
+      <Screen name="HomeStack" component={HomeStack} />
+      <Screen name="ExamplesStack" component={ExamplesStack} />
     </Navigator>
   )
 }

@@ -15,6 +15,7 @@ import {
 export const Navigation: FC = () => {
   const { navigationRef, onReady, onStateChange: onStateChangeScreenTracker } = useScreenTracker()
   const { navigationTheme } = useNavigationTheme()
+
   const {
     isReady,
     initialState,
