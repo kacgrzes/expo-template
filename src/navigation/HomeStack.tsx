@@ -2,9 +2,8 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { DetailsScreen, HomeScreen } from '~screens'
-import { HomeStackParamsMap } from '~types/navigation'
 
-const { Navigator, Screen } = createStackNavigator<HomeStackParamsMap>()
+const { Navigator, Screen } = createStackNavigator<HomeStackParamList>()
 
 export const HomeStack = (): JSX.Element => (
   <Navigator>

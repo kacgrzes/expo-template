@@ -10,7 +10,15 @@ export const HomeScreen: FC = () => {
   const { s } = useTheme()
 
   const navigateToDetails = useCallback(() => {
-    navigate('Details', { id: '2314' })
+    navigate('MainTab', {
+      screen: 'HomeStack',
+      params: {
+        screen: 'Details',
+        params: {
+          id: '123',
+        },
+      },
+    })
   }, [navigate])
 
   return (

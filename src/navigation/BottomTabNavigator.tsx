@@ -7,7 +7,7 @@ import { HomeStack } from './HomeStack'
 import { useCallback, useNavigationTheme } from '~hooks'
 import { ExamplesScreen } from '~screens'
 
-const { Navigator, Screen } = createBottomTabNavigator()
+const { Navigator, Screen } = createBottomTabNavigator<MainTabParamList>()
 
 export const BottomTabNavigator: FC = () => {
   const { tabBarTheme } = useNavigationTheme()

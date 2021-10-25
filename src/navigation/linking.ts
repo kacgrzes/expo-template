@@ -12,13 +12,13 @@ const prefix = createURL('/')
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []
 
 // Visit https://reactnavigation.org/docs/configuring-links#playground to see more
-export const linking: LinkingOptions<ReactNavigation.RootParamList> = {
+export const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [prefix, ...universalLinks],
   config: {
-    initialRouteName: 'Root',
+    initialRouteName: 'MainTab',
     screens: {
       Settings: 'settings',
-      Root: {
+      MainTab: {
         screens: {
           HomeStack: {
             initialRouteName: 'Home',

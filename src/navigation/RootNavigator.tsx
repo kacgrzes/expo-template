@@ -12,7 +12,7 @@ import {
   SignUpScreen,
 } from '~screens'
 
-const { Navigator, Screen, Group } = createStackNavigator()
+const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 
 export const RootNavigator: FC = () => {
   const { isSignedIn } = useAuth()
@@ -32,7 +32,7 @@ export const RootNavigator: FC = () => {
         </Group>
       ) : (
         <Group key="authorized">
-          <Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+          <Screen name="MainTab" component={BottomTabNavigator} options={{ headerShown: false }} />
           <Screen name="Settings" component={SettingsScreen} />
         </Group>
       )}
