@@ -1,5 +1,4 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React from 'react'
 
 import { ComponentsScreen, ExamplesScreen } from '~screens'
 

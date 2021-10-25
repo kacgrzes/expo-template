@@ -1,5 +1,5 @@
 import { useAsyncStorage } from '@react-native-async-storage/async-storage'
-import React, { FC, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { useColorScheme as useRNColorScheme } from 'react-native'
 
 import { colorSchemesList, colorSchemes } from '~constants'

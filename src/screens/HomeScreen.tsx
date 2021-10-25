@@ -1,4 +1,3 @@
-import React from 'react'
 import { View, Text, Image, ImageStyle } from 'react-native'
 
 import { Button } from '~components'
