@@ -8,7 +8,7 @@ import { LinkingOptions } from '@react-navigation/native'
 import Constants from 'expo-constants'
 import { createURL } from 'expo-linking'
 
-export const prefix = createURL('/')
+const prefix = createURL('/')
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []
 
 // Visit https://reactnavigation.org/docs/configuring-links#playground to see more
