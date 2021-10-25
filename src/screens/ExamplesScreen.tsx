@@ -17,7 +17,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
     () =>
       navigate('HomeStack', {
         screen: 'Details',
-        params: { id: 'xdd' },
+        params: { id: 'examples-id' },
       }),
     [navigate]
   )

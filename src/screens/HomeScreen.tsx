@@ -12,7 +12,7 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
   const { s } = useTheme()
 
   const navigateToDetails = useCallback(() => {
-    navigate('Details', { id: '123451' })
+    navigate('Details', { id: 'home-id' })
   }, [navigate])
 
   return (
