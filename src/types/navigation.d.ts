@@ -53,17 +53,17 @@ declare global {
 }
 
 type HomeStackComposite<S extends keyof HomeStackParamList> = CompositeScreenProps<
-  StackScreenProps<RootStackParamList, 'MainTab'>,
   CompositeScreenProps<
-    BottomTabScreenProps<MainTabParamList, 'HomeStack'>,
-    StackScreenProps<HomeStackParamList, S>
-  >
+    StackScreenProps<HomeStackParamList, S>,
+    BottomTabScreenProps<MainTabParamList, 'HomeStack'>
+  >,
+  StackScreenProps<RootStackParamList, 'MainTab'>
 >
 
 type ExamplesStackComposite<S extends keyof ExampleStackParamList> = CompositeScreenProps<
-  StackScreenProps<RootStackParamList, 'MainTab'>,
   CompositeScreenProps<
-    BottomTabScreenProps<MainTabParamList, 'HomeStack'>,
+    BottomTabScreenProps<MainTabParamList, 'ExamplesStack'>,
     StackScreenProps<ExampleStackParamList, S>
-  >
+  >,
+  StackScreenProps<RootStackParamList, 'MainTab'>
 >
