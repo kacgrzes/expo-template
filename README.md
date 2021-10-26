@@ -104,6 +104,7 @@ Start the expo server
 
 If you have any feedback, please reach out to me at kacgrzes@gmail.com
 
-## Authors
+## Contributors
 
 - [@kacgrzes](https://www.github.com/kacgrzes)
+- [@MateuszRostkowski](https://www.github.com/MateuszRostkowski)
