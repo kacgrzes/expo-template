@@ -41,5 +41,5 @@ export const AuthProvider: FC = ({ children }) => {
     }
   }, [isSignedIn, signIn, signOut, signUp])
 
-  return <AuthContext.Provider value={value} children={children} />
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

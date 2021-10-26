@@ -62,5 +62,5 @@ export const ColorSchemeProvider: FC = ({ children }) => {
     [colorScheme, colorSchemeSetting, setNewColorSchemeSetting]
   )
 
-  return <ColorSchemeContext.Provider value={value} children={children} />
+  return <ColorSchemeContext.Provider value={value}>{children}</ColorSchemeContext.Provider>
 }

@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { InitialState, NavigationState } from '@react-navigation/native'
 import { getInitialURL } from 'expo-linking'
 import { useCallback, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
@@ -13,15 +14,14 @@ const checkInitialURL = (initialUrl: string | null) => {
 }
 
 type NavigationStatePersistenceReturn = {
-  // TODO: Add proper type to initial state
-  initialState: unknown
-  onStateChange: (state: unknown) => void
+  initialState?: InitialState
+  onStateChange: (state: NavigationState | undefined) => void
   isReady: boolean
 }
 
 export const useNavigationStatePersistence = (): NavigationStatePersistenceReturn => {
   const [isReady, setIsReady] = useState(isProduction)
-  const [initialState, setInitialState] = useState<unknown>()
+  const [initialState, setInitialState] = useState<InitialState>()
 
   useEffect(() => {
     const restoreState = async () => {
@@ -47,7 +47,7 @@ export const useNavigationStatePersistence = (): NavigationStatePersistenceRetur
     }
   }, [isReady])
 
-  const onStateChange = useCallback((state) => {
+  const onStateChange = useCallback((state: NavigationState | undefined) => {
     AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))
   }, [])
 
