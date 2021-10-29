@@ -4,7 +4,7 @@ import { createTheme, ThemeProps } from 'react-native-whirlwind'
 
 // here you can define your own classes, rembemer to add them to light and dark themes
 type ExtendType = {
-  textPrimary: ViewStyle | TextStyle | ImageStyle
+  textPrimary: TextStyle
   background: ViewStyle | TextStyle | ImageStyle
 }
 export type AppTheme = ReturnType<typeof createTheme> & ExtendType
@@ -84,7 +84,7 @@ export const darkColors: Colors = {
   text: '#ffffff',
 }
 
-export const lightTheme = StyleSheet.create({
+export const lightTheme: AppTheme = StyleSheet.create({
   ...createTheme({
     colors: lightColors,
   }),
@@ -96,7 +96,7 @@ export const lightTheme = StyleSheet.create({
   },
 })
 
-export const darkTheme = StyleSheet.create({
+export const darkTheme: AppTheme = StyleSheet.create({
   ...createTheme({
     colors: darkColors,
   }),
