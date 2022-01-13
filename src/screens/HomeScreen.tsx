@@ -1,6 +1,6 @@
-import { View, Text, Image, ImageStyle } from 'react-native'
+import { Text, Image, ImageStyle } from 'react-native'
 
-import { Button } from '~components'
+import { Button, Center } from '~components'
 import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
@@ -15,7 +15,7 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
   }, [navigate])
 
   return (
-    <View style={[s.flex1, s.justifyCenter, s.itemsCenter]}>
+    <Center flex={1}>
       <Image
         source={require('~assets/logo.png')}
         resizeMode="contain"
@@ -26,6 +26,6 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
       <Text style={[s.pY2, s.textCenter, s.textPrimary]}>{t('thanks')}</Text>
       <Text style={[s.pY2, s.textCenter, s.textPrimary]}>{t('app_information')}</Text>
       <Button style={[s.mY2]} onPress={navigateToDetails} title="Details" />
-    </View>
+    </Center>
   )
 }

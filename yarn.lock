@@ -7948,10 +7948,10 @@ react-native-whirlwind@^0.1.0-beta.4:
   resolved "https://registry.yarnpkg.com/react-native-whirlwind/-/react-native-whirlwind-0.1.0-beta.4.tgz#ff75401427a477f8688d8806f2edbaec679ab936"
   integrity sha512-IGy7pTqKFr9M+aJ2hENZU3byS9vv5pPb7m2fEHDnS/GPrsuSN8DDpxMraQoXgY5sdPdzug4M6h8x9RME8Iifgw==
 
-react-native@0.64.2:
-  version "0.64.2"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.64.2.tgz#233b6ed84ac4749c8bc2a2d6cf63577a1c437d18"
-  integrity sha512-Ty/fFHld9DcYsFZujXYdeVjEhvSeQcwuTGXezyoOkxfiGEGrpL/uwUZvMzwShnU4zbbTKDu2PAm/uwuOittRGA==
+react-native@0.64.3:
+  version "0.64.3"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.64.3.tgz#40db6385963b4b17325f9cc86dd19132394b03fc"
+  integrity sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw==
   dependencies:
     "@jest/create-cache-key-function" "^26.5.0"
     "@react-native-community/cli" "^5.0.1-alpha.1"
