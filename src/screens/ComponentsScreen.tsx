@@ -1,4 +1,4 @@
-import { Alert, ScrollView } from 'react-native'
+import { Alert, ScrollView, Text } from 'react-native'
 
 import { Button } from '~components'
 import { useTheme } from '~hooks'
@@ -10,6 +10,7 @@ export const ComponentsScreen = (): JSX.Element => {
 
   return (
     <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
+      <Text>This is component screen</Text>
       <Button onPress={openAlert} title="Button" />
     </ScrollView>
   )
