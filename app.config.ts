@@ -6,5 +6,8 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     extra: {
       universalLinks: [],
     },
+    ios: {
+      bundleIdentifier: 'com.test.test',
+    },
   }
 }
