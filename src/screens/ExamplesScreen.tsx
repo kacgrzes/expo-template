@@ -1,8 +1,8 @@
-import { CheckIcon } from 'assets/icons/CheckIcon'
 import { useCallback } from 'react'
 import { ScrollView, View } from 'react-native'
 
 import { Button } from '~components'
+import { CheckIcon } from '~components/icons/CheckIcon'
 import { useTheme } from '~hooks'
 
 export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
