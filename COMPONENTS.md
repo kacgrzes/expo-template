@@ -39,6 +39,14 @@ TODO:
 - https://github.com/nidorx/react-native-ui-blueprint
 - https://github.com/cawfree/react-native-label
 
+* React Native SVG \*
+
+- copy element as svg from Figma design
+- go to https://react-svgr.com/playground/
+- select "React Native" on the left
+- copy code for react native
+- width, height and color (fill) can be added as props to the SVG component
+
 ## Layouts
 
 - https://github.com/ATF19/react-native-shop-ui
