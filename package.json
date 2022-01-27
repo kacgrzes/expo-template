@@ -136,6 +136,6 @@
     "lint-staged": "^11.0.0"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "yarn lint --fix"
+    "*.{ts,tsx,js,jsx}": "./node_modules/.bin/eslint src --fix"
   }
 }
