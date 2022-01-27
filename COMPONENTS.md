@@ -41,7 +41,7 @@ TODO:
 
 * React Native SVG \*
 
-- copy as svg from figma design
+- copy element as svg from Figma design
 - go to https://react-svgr.com/playground/
 - select "React Native" on the left
 - copy code for react native
