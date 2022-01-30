@@ -1,8 +1,8 @@
 import { LinearGradient, LinearGradientProps } from 'expo-linear-gradient'
-import { View, ViewProps, TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import { View, ViewProps, TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native'
 
 import { useTheme } from '~hooks'
-import { generateStyledSystem, StyledProps } from '~utils'
+import { generateStyledSystem, SpacingValue, StyledProps } from '~utils'
 
 export type BoxProps = StyledProps & ViewProps
 export type TouchableProps = StyledProps & TouchableOpacityProps
@@ -44,3 +44,12 @@ export const Column = (props: ColumnProps) => <Box {...props} flexDirection="col
 
 type AbsoluteProps = Omit<BoxProps, 'position'>
 export const Absolute = (props: AbsoluteProps) => <Box {...props} position="absolute" />
+export const AbsoluteFullFill = (props: AbsoluteProps) => (
+  <Box flex={1} top={0} right={0} left={0} bottom={0} {...props} position="absolute" />
+)
+type SpacerProps = {
+  x?: SpacingValue
+  y?: SpacingValue
+  flex?: ViewStyle['flex']
+}
+export const Spacer = ({ x = 0, y = 0, flex }: SpacerProps) => <Box mt={y} mr={x} flex={flex} />
