@@ -217,15 +217,17 @@ export const Text = ({
 }
 
 type TypographyProps = Omit<Props, 'variant'>
+const generateTextVariant = (variant: TextVariants) => (props: TypographyProps) =>
+  <Text {...props} variant={variant} />
 
-Text.H1 = (props: TypographyProps) => <Text {...props} variant="H1" />
-Text.H2 = (props: TypographyProps) => <Text {...props} variant="H2" />
-Text.H3 = (props: TypographyProps) => <Text {...props} variant="H3" />
-Text.H4 = (props: TypographyProps) => <Text {...props} variant="H4" />
-Text.H5 = (props: TypographyProps) => <Text {...props} variant="H5" />
-Text.H6 = (props: TypographyProps) => <Text {...props} variant="H6" />
-Text.BodyRegular = (props: TypographyProps) => <Text {...props} variant="BodyRegular" />
-Text.BodyBold = (props: TypographyProps) => <Text {...props} variant="BodyBold" />
-Text.CaptionRegular = (props: TypographyProps) => <Text {...props} variant="CaptionRegular" />
-Text.CaptionBold = (props: TypographyProps) => <Text {...props} variant="CaptionBold" />
-Text.Button = (props: TypographyProps) => <Text {...props} variant="Button" />
+Text.H1 = generateTextVariant('H1')
+Text.H2 = generateTextVariant('H2')
+Text.H3 = generateTextVariant('H3')
+Text.H4 = generateTextVariant('H4')
+Text.H5 = generateTextVariant('H5')
+Text.H6 = generateTextVariant('H6')
+Text.BodyRegular = generateTextVariant('BodyRegular')
+Text.BodyBold = generateTextVariant('BodyBold')
+Text.CaptionRegular = generateTextVariant('CaptionRegular')
+Text.CaptionBold = generateTextVariant('CaptionBold')
+Text.Button = generateTextVariant('Button')
