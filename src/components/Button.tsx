@@ -1,5 +1,7 @@
 import { FC } from 'react'
-import { Pressable, Text, PressableProps, StyleSheet, ViewStyle } from 'react-native'
+import { Pressable, PressableProps, StyleSheet, ViewStyle } from 'react-native'
+
+import { Text } from './Typography'
 
 import { useTheme, useCallback } from '~hooks'
 
@@ -32,7 +34,7 @@ export const Button: FC<ButtonProps> = ({ children, style, title, ...props }) =>
 
   return (
     <Pressable style={styleFunction} {...props}>
-      <Text style={s.textWhite}>{title}</Text>
+      <Text.Button color="white">{title}</Text.Button>
     </Pressable>
   )
 }
