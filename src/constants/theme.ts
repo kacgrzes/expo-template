@@ -4,7 +4,10 @@ import { createTheme, ThemeProps } from 'react-native-whirlwind'
 
 // here you can define your own classes, rembemer to add them to light and dark themes
 type ExtendType = {
-  textPrimary: TextStyle
+  fontLato: TextStyle
+  fontLatoBold: TextStyle
+  fontLatoExtraBold: TextStyle
+  textMain: TextStyle
   background: ViewStyle | TextStyle | ImageStyle
 }
 export type AppTheme = ReturnType<typeof createTheme> & ExtendType
@@ -21,6 +24,7 @@ type ExtendedColors = {
 }
 
 export type Colors = CommonColors & ExtendedColors
+export type ColorNames = keyof Colors
 
 const commonColors: CommonColors = {
   primary: '#3f51b5',
@@ -84,6 +88,18 @@ export const darkColors: Colors = {
   text: '#ffffff',
 }
 
+const customFonts = {
+  fontLato: {
+    fontFamily: 'lato-regular',
+  },
+  fontLatoBold: {
+    fontFamily: 'lato-bold',
+  },
+  fontLatoExtraBold: {
+    fontFamily: 'lato-extra-bold',
+  },
+} as const
+
 const fontSizes: ThemeProps['fontSizes'] = {
   '2xs': 10,
   xs: 12,
@@ -143,9 +159,10 @@ export const lightTheme: AppTheme = StyleSheet.create({
   background: {
     backgroundColor: lightColors.background,
   },
-  textPrimary: {
+  textMain: {
     color: lightColors.text,
   },
+  ...customFonts,
 })
 
 export const darkTheme: AppTheme = StyleSheet.create({
@@ -157,9 +174,10 @@ export const darkTheme: AppTheme = StyleSheet.create({
   background: {
     backgroundColor: darkColors.background,
   },
-  textPrimary: {
+  textMain: {
     color: darkColors.text,
   },
+  ...customFonts,
 })
 
 export const LightNavigationTheme: Theme = {

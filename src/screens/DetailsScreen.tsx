@@ -1,8 +1,8 @@
 import { BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import { useCallback, useMemo, useRef } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 
-import { Button } from '~components'
+import { Button, Text } from '~components'
 import { useTheme } from '~hooks'
 
 export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
@@ -44,7 +44,7 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
         backdropComponent={renderBackdrop}
       >
         <View style={[s.p4]}>
-          <Text>Awesome 🎉</Text>
+          <Text color="black">Awesome 🎉</Text>
         </View>
       </BottomSheetModal>
     </View>
