@@ -1,6 +1,8 @@
 import { StyleProp, ViewStyle } from 'react-native'
 import { ThemeProps } from 'react-native-whirlwind'
 
+import { hex2rgba } from './hex2rgba'
+
 import { Colors, spacing } from '~constants'
 
 type Spacing = Exclude<ThemeProps['spacing'], 'px'>
@@ -29,6 +31,7 @@ type SpacingProps = { [key in SpacingKeys]?: SpacingValue }
 type FlexProps = {
   flex?: ViewStyle['flex']
   flexGrow?: ViewStyle['flexGrow']
+  flexShrink?: ViewStyle['flexShrink']
   justifyContent?: ViewStyle['justifyContent']
   alignItems?: ViewStyle['alignItems']
   alignSelf?: ViewStyle['alignSelf']
@@ -38,6 +41,7 @@ type FlexProps = {
 
 type BackgroundProps = {
   bg?: keyof Colors
+  bgOpacity?: number
 }
 
 type Sizing = 'width' | 'minWidth' | 'maxWidth' | 'height' | 'minHeight' | 'maxHeight'
@@ -92,6 +96,22 @@ type BordersProps = {
    * **Number value in pixels**
    */
   borderTopLeftRadius?: ViewStyle['borderTopLeftRadius']
+  /**
+   * **Number value in pixels**
+   */
+  borderTopWidth?: ViewStyle['borderTopWidth']
+  /**
+   * **Number value in pixels**
+   */
+  borderBottomWidth?: ViewStyle['borderBottomWidth']
+  /**
+   * **Number value in pixels**
+   */
+  borderLeftWidth?: ViewStyle['borderLeftWidth']
+  /**
+   * **Number value in pixels**
+   */
+  borderRightWidth?: ViewStyle['borderRightWidth']
 }
 
 type LayoutsProps = {
@@ -101,6 +121,7 @@ type LayoutsProps = {
   bottom?: ViewStyle['bottom']
   right?: ViewStyle['right']
   left?: ViewStyle['left']
+  overflow?: ViewStyle['overflow']
 }
 
 export type StyledProps = SizingProps &
@@ -178,6 +199,7 @@ const generateFlexStyle = ({
   alignSelf,
   flexDirection,
   flexGrow,
+  flexShrink,
   flexWrap,
 }: FlexProps): StyleProp<ViewStyle> => {
   const style: StyleProp<ViewStyle> = [
@@ -187,13 +209,19 @@ const generateFlexStyle = ({
     !!alignSelf && { alignSelf },
     !!flexDirection && { flexDirection },
     !!flexGrow && { flexGrow },
+    !!flexShrink && { flexShrink },
     !!flexWrap && { flexWrap },
   ]
   return style.filter(Boolean)
 }
 
-const generateBgStyle = ({ bg }: BackgroundProps, colors: Colors): StyleProp<ViewStyle> => {
-  const style: StyleProp<ViewStyle> = [!!bg && { backgroundColor: colors[bg] }]
+const generateBgStyle = (
+  { bg, bgOpacity = 1 }: BackgroundProps,
+  colors: Colors
+): StyleProp<ViewStyle> => {
+  const backgroundColor = bg && colors[bg] ? hex2rgba(colors[bg], bgOpacity) : bg
+  const style: StyleProp<ViewStyle> = [!!bg && { backgroundColor }]
+
   return style.filter(Boolean)
 }
 
@@ -223,12 +251,33 @@ const generateEffectsStyle = ({ opacity }: EffectsProps): StyleProp<ViewStyle> =
 }
 
 const generateBordersStyle = (
-  { borderColor, borderRadius, borderStyle, borderWidth }: BordersProps,
+  {
+    borderColor,
+    borderRadius,
+    borderStyle,
+    borderWidth,
+    borderBottomEndRadius,
+    borderBottomLeftRadius,
+    borderBottomWidth,
+    borderLeftWidth,
+    borderRightWidth,
+    borderTopEndRadius,
+    borderTopLeftRadius,
+    borderTopWidth,
+  }: BordersProps,
   colors: Colors
 ): StyleProp<ViewStyle> => {
   return [
     !!borderColor && { borderColor: colors[borderColor] },
     {
+      borderBottomEndRadius,
+      borderBottomLeftRadius,
+      borderBottomWidth,
+      borderLeftWidth,
+      borderRightWidth,
+      borderTopEndRadius,
+      borderTopLeftRadius,
+      borderTopWidth,
       borderRadius,
       borderStyle,
       borderWidth,
@@ -243,6 +292,7 @@ const generateLayouts = ({
   right,
   top,
   zIndex,
+  overflow,
 }: LayoutsProps): StyleProp<ViewStyle> => {
   return {
     position,
@@ -251,6 +301,7 @@ const generateLayouts = ({
     right,
     top,
     zIndex,
+    overflow,
   }
 }
 

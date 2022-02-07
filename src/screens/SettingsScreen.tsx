@@ -1,6 +1,6 @@
-import { ScrollView, Text } from 'react-native'
+import { ScrollView } from 'react-native'
 
-import { Button } from '~components'
+import { Button, Text } from '~components'
 import { colorSchemesList } from '~constants'
 import { useAuth, useColorScheme, useTheme } from '~hooks'
 
@@ -10,7 +10,7 @@ export const SettingsScreen = (): JSX.Element => {
   const { signOut } = useAuth()
   return (
     <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
-      <Text style={[s.textPrimary]}>Current theme: {colorSchemeSetting}</Text>
+      <Text>Current theme: {colorSchemeSetting}</Text>
       {colorSchemesList.map((scheme) => {
         const isSelected = scheme === colorSchemeSetting
 
