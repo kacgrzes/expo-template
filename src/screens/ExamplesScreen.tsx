@@ -1,5 +1,6 @@
 import { useCallback } from 'react'
 import { ScrollView, View, Text } from 'react-native'
+
 import { Button } from '~components'
 import { CheckIcon } from '~components/icons/CheckIcon'
 import { useTheme } from '~hooks'
