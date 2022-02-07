@@ -1,4 +1,4 @@
-import { Alert, ScrollView, Text } from 'react-native'
+import { Alert, ScrollView } from 'react-native'
 
 import { Button, Text } from '~components'
 import { useTheme } from '~hooks'

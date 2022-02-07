@@ -25,15 +25,15 @@ describe('Testing react navigation', () => {
       </NavigationContainer>
     )
 
-    const { queryByText, findByText } = render(component)
-    const oldScreen = queryByText('This is Example screen')
-    const button = await findByText('Go to Components')
+    const { queryByText, getByText } = render(component)
+    const oldScreen = await queryByText('This is Example screen')
+    const button = getByText('Go to Components')
     expect(oldScreen).toBeTruthy()
     expect(button).toBeTruthy()
 
     fireEvent.press(button)
-    const newScreen = await findByText('This is component screen')
-    const componentButton = await findByText('Button')
+    const newScreen = getByText('This is component screen')
+    const componentButton = getByText('Button')
 
     expect(newScreen).toBeTruthy()
     expect(componentButton).toBeTruthy()
