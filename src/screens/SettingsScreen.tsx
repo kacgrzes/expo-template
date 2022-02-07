@@ -8,7 +8,6 @@ export const SettingsScreen = (): JSX.Element => {
   const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()
   const { s } = useTheme()
   const { signOut } = useAuth()
-
   return (
     <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
       <Text>Current theme: {colorSchemeSetting}</Text>
