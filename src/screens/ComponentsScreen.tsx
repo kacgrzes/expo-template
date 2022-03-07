@@ -10,6 +10,7 @@ export const ComponentsScreen = (): JSX.Element => {
 
   return (
     <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
+      <Text>This is component screen</Text>
       <Button onPress={openAlert} title="Button" />
       <Text>Typography Base</Text>
       <Text.H1>Typography H1</Text.H1>
