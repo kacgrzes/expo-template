@@ -34,7 +34,11 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
       <Button style={s.mB2} onPress={goToApplicationInfo} title="Go to ApplicationInfo" />
       <Button style={s.mB2} onPress={goToComponents} title="Go to Components" />
       <Button style={s.mB2} onPress={goToHomeStackDetails} title="Go to Home Stack Details" />
-      <Button style={s.mB2} onPress={goToAppSettings} title="Go to app settings" />
+      <Button style={s.mB10} onPress={goToAppSettings} title="Go to Settings" />
+      <Button.Secondary style={s.mB2} title="Button Seconday" />
+      <Button.Flat style={s.mB2} title="Button flat" />
+      <Button loading disabled style={s.mB2} title="Loading button" />
+      <Button disabled style={s.mB2} title="Disabled button" />
     </ScrollView>
   )
 }
