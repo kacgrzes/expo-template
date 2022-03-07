@@ -1,9 +1,9 @@
 ## Workflow when creating new component:
 
 - Let's go with priority of a component
-  - Typography
-  - Button
-  - Layout
+  - Typography - DONE
+  - Button - DONE
+  - Layout - DONE
 - atoms / molecules / organisms / templates / pages
 - each component should have an API defined before implementeation - we need to predict usage of this component and find the most optimal way
 - good way to go is look through UI libraries written bellow and try to propose something and later on select best pratices
@@ -56,7 +56,7 @@ TODO:
 
 ## Components
 
-Absolute // TODO:
+Absolute - DONE
 Accordion
 ActionButtons
 ActionSheet
@@ -81,7 +81,7 @@ BottomNav
 BottomNavigation
 BottomSheet
 BottomTabs
-Box // TODO:
+Box - DONE
 Box.Safe // TODO:
 Box.Scroll // TODO:
 Box.Touchable // TODO:
@@ -93,7 +93,7 @@ Calendar
 Caption // TODO:
 Card
 Carousel
-Center // TODO:
+Center - DONE
 CheckBox / Checkbox
 CheckBoxGroup / CheckboxGroup
 Chip
