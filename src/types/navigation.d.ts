@@ -43,6 +43,9 @@ declare global {
   // - HomeScreenNavigationProps['route']
   // - HomeScreenNavigationProps['navigation']
 
+  // Root stack
+  type RootStackScreenProps = RootStackComposite
+
   // Home stack
   type HomeScreenProps = HomeStackComposite<'Home'>
   type DetailsScreenProps = HomeStackComposite<'Details'>
@@ -51,6 +54,12 @@ declare global {
   type ExamplesScreenProps = ExamplesStackComposite<'Examples'>
   type ComponentsScreenProps = ExamplesStackComposite<'Components'>
 }
+
+type RootStackComposite<S extends keyof RootStackParamList = keyof RootStackParamList> =
+  CompositeScreenProps<
+    StackScreenProps<RootStackParamList, S>,
+    BottomTabScreenProps<MainTabParamList>
+  >
 
 type HomeStackComposite<S extends keyof HomeStackParamList> = CompositeScreenProps<
   CompositeScreenProps<
