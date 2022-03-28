@@ -1,40 +1,120 @@
-import { FC } from 'react'
-import { Pressable, PressableProps, StyleSheet, ViewStyle } from 'react-native'
+import { useMemo } from 'react'
+import { Pressable, PressableProps, ViewStyle, ActivityIndicator } from 'react-native'
 
 import { Text } from './Typography'
 
-import { useTheme, useCallback } from '~hooks'
+import { AppTheme } from '~constants'
+import { useCallback, useTheme } from '~hooks'
+
+type ButtonVariants = 'Primary' | 'Secondary' | 'Flat'
 
 type ButtonProps = PressableProps & {
-  title: string
+  title?: string
   style?: ViewStyle
+  variant?: ButtonVariants
+  disabled?: boolean
+  loading?: boolean
+  fullWidth?: boolean
 }
 
-export const Button: FC<ButtonProps> = ({ children, style, title, ...props }) => {
+type ButtonVariantProps = Omit<ButtonProps, 'variant'>
+
+const generateVariants = (s: AppTheme) => ({
+  Primary: {
+    notPressedStyle: s.bgPrimary,
+    pressedStyle: s.bgPrimaryLight,
+    disabledStyle: s.bgGray200,
+    textStyle: s.textWhite,
+    pressedTextStyle: s.textWhite,
+  },
+  Secondary: {
+    notPressedStyle: [s.borderPrimary, s.border, s.bgTransparent],
+    pressedStyle: s.bgPrimary,
+    disabledStyle: s.borderGray200,
+    textStyle: s.textPrimary,
+    pressedTextStyle: s.textWhite,
+  },
+  Flat: {
+    notPressedStyle: s.bgTransparent,
+    pressedStyle: s.bgPrimary,
+    disabledStyle: [],
+    textStyle: s.textPrimary,
+    pressedTextStyle: s.textWhite,
+  },
+})
+
+const buttonMinHeightStyle = { minHeight: 40 }
+
+export const Button = ({
+  style,
+  title,
+  variant = 'Primary',
+  disabled = false,
+  fullWidth = false,
+  loading = false,
+  children,
+  ...props
+}: ButtonProps): JSX.Element => {
   const { s } = useTheme()
 
-  // TODO: Think about better solution for cases like this
-  const styleFunction = useCallback(
-    ({ pressed }) =>
-      StyleSheet.compose(
-        [
-          pressed ? s.opacity60 : s.opacity100,
-          s.itemsCenter,
-          s.alignCenter,
-          s.justifyCenter,
-          s.minW48,
-          s.p4,
-          s.roundedSm,
-          s.bgPrimary,
-        ],
-        style
-      ),
-    [s, style]
+  const commonStyles = useMemo(
+    () => [
+      fullWidth && s.wFull,
+      buttonMinHeightStyle,
+      s.itemsCenter,
+      s.alignCenter,
+      s.justifyCenter,
+      s.pY1,
+      s.pX2,
+      s.minW48,
+      s.roundedSm,
+      style,
+    ],
+    [fullWidth, s, style]
+  )
+
+  const variants = generateVariants(s)
+
+  const { pressedStyle, notPressedStyle, disabledStyle, textStyle, pressedTextStyle } =
+    variants[variant] || variants['Primary']
+
+  const pressableStyleFunction = useCallback(
+    ({ pressed }) => [
+      ...commonStyles,
+      notPressedStyle,
+      pressed && pressedStyle,
+      disabled && disabledStyle,
+    ],
+    [commonStyles, disabled, disabledStyle, notPressedStyle, pressedStyle]
+  )
+
+  const textStyleFunction = useCallback(
+    ({ pressed }) => {
+      if (!title && !children) return console.warn('Button should recieve children or title')
+      return (
+        <Text.Button
+          color="white"
+          uppercase
+          center
+          style={[textStyle, pressed && pressedTextStyle, disabled && s.textDisabled, s.pB0_5]}
+        >
+          {title}
+        </Text.Button>
+      )
+    },
+    [children, disabled, pressedTextStyle, s.pB0_5, s.textDisabled, textStyle, title]
   )
 
   return (
-    <Pressable style={styleFunction} {...props}>
-      <Text.Button color="white">{title}</Text.Button>
+    <Pressable style={pressableStyleFunction} disabled={disabled} testID="MAIN_BUTTON" {...props}>
+      {loading ? <ActivityIndicator size={24} /> : children || textStyleFunction}
     </Pressable>
   )
 }
+
+const generateButtonType = (variant: ButtonVariants) => (props: ButtonVariantProps) =>
+  <Button {...props} variant={variant} />
+
+Button.Primary = generateButtonType('Primary')
+Button.Secondary = generateButtonType('Secondary')
+Button.Flat = generateButtonType('Flat')

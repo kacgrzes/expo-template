@@ -32,26 +32,21 @@ CI / CD
 - typescript for navigation
 - https://miragejs.com/
 - faker.js
-- ThemeProvider
-- Dark / Light theme switch
 - feature flags -> provider / hook and consumer with a feature name. Feature has: name, description, active
   - https://github.com/garbles/flag
   - https://github.com/romaindso/react-feature-flags
 - construct a flow on how to develop apps follow CDD (component driven development)
 - examples: https://github.com/expo/examples
 - https://blog.expo.dev/
-- fonts
 - https://docs.expo.dev/guides/testing-with-jest/
 - auth flow
 - storybook (add version v6) (https://storybook.js.org/tutorials/intro-to-storybook/react-native/en/get-started/)
-- theme
 - add react-query (i guess we won't ever use anything else)
+  - maybe we should add some example backend calls?
 - handle offline mode somehow
 - add tests
 - add basic onboarding flow
 - add basic toast mechanism
-- basic components: box, flex, etc
-- typography
 - analytics setup
 - empty state
 - scrollview with keyboard
@@ -74,6 +69,11 @@ CI / CD
 - icons - DONE
 - configure typescript + eslint / tslint + prettier - DONE
 - easy module resolver - DONE
+- typography - DONE
+- custom fonts - DONE
+- theme - DONE
+- ThemeProvider - DONE
+- Dark / Light theme switch - DONE
 
 ## Nice articles:
 
