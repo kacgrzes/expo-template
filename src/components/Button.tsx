@@ -90,7 +90,10 @@ export const Button = ({
 
   const textStyleFunction = useCallback(
     ({ pressed }) => {
-      if (!title && !children) return console.warn('Button should recieve children or title')
+      if (!title && !children) {
+        console.warn('Button should recieve children or title')
+        return null
+      }
       return (
         <Text.Button
           color="white"

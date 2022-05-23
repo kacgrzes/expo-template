@@ -21,7 +21,7 @@ const languageDetector: LanguageDetectorAsyncModule = {
 
         return callback(locale)
       })
-    } catch (error) {
+    } catch {
       const { locale } = await Localization.getLocalizationAsync()
 
       return callback(locale)
@@ -30,7 +30,7 @@ const languageDetector: LanguageDetectorAsyncModule = {
   cacheUserLanguage: async (language) => {
     try {
       await AsyncStorage.setItem(USER_LANGUAGE, language)
-    } catch (error) {
+    } catch {
       // TODO: maybe we should handle this somehow?
       console.log('do nothing')
     }
