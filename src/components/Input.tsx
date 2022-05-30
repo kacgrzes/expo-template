@@ -125,10 +125,10 @@ export const Input = forwardRef<TextInput, InputProps>(
 
 type ControlledInputProps = Omit<InputProps, 'style' | 'error' | 'inputContainerStyle'> & {
   // TODO: Think how to change this to proper type
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
   // - https://react-hook-form.com/ts#Control
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   name: Path<any>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
   errorMessage?: string
