@@ -1,4 +1,5 @@
 export * from './asyncStorageKeys'
 export * from './colorSchemes'
 export * from './environments'
+export * from './regex'
 export * from './theme'

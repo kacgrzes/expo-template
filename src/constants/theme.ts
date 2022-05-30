@@ -3,13 +3,18 @@ import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { createTheme, ThemeProps } from 'react-native-whirlwind'
 
 // here you can define your own classes, rembemer to add them to light and dark themes
+type ExtendedClass =
+  | 'inputShadow'
+  | 'fontLato'
+  | 'fontLatoBold'
+  | 'fontLatoExtraBold'
+  | 'textMain'
+  | 'background'
+
 type ExtendType = {
-  fontLato: TextStyle
-  fontLatoBold: TextStyle
-  fontLatoExtraBold: TextStyle
-  textMain: TextStyle
-  background: ViewStyle | TextStyle | ImageStyle
+  [key in ExtendedClass]: ViewStyle | TextStyle | ImageStyle
 }
+
 export type AppTheme = ReturnType<typeof createTheme> & ExtendType
 
 type CommonColors = ThemeProps['colors']
@@ -33,7 +38,7 @@ const commonColors: CommonColors = {
   primaryContrast: '#fff',
   secondary: '#f50057',
   secondaryLight: '#ff4081',
-  secondaryDark: '#c51162',
+  secondaryDark: '#0054A6',
   secondaryContrast: '#fff',
   info: '#2196f3',
   infoLight: '#64b5f6',
@@ -150,19 +155,29 @@ export const spacing: ThemeProps['spacing'] = {
   '96': 24 * scale,
 } as const
 
+const customClasses = {
+  ...customFonts,
+  inputShadow: {
+    shadowOffset: { width: 0, height: 2 },
+    shadowColor: commonColors.secondaryDark,
+    shadowOpacity: 0.16,
+    elevation: 3,
+  },
+} as const
+
 export const lightTheme: AppTheme = StyleSheet.create({
   ...createTheme({
     colors: lightColors,
     spacing,
     fontSizes,
   }),
+  ...customClasses,
   background: {
     backgroundColor: lightColors.background,
   },
   textMain: {
     color: lightColors.text,
   },
-  ...customFonts,
 })
 
 export const darkTheme: AppTheme = StyleSheet.create({
@@ -171,13 +186,13 @@ export const darkTheme: AppTheme = StyleSheet.create({
     spacing,
     fontSizes,
   }),
+  ...customClasses,
   background: {
     backgroundColor: darkColors.background,
   },
   textMain: {
     color: darkColors.text,
   },
-  ...customFonts,
 })
 
 export const LightNavigationTheme: Theme = {
