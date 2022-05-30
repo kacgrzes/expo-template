@@ -1,5 +1,6 @@
 export * from './AppLoading'
 export * from './Atoms'
 export * from './Button'
+export * from './Input'
 export * from './StatusBar'
 export * from './Typography'

@@ -5,6 +5,8 @@ declare global {
     server: Server
   }
 
+  type InputTypes = 'protected' | 'email' | undefined
+
   let server: Server
 }
 
