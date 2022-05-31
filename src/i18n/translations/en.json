@@ -1,6 +1,39 @@
 {
   "errors": {
-    "screen_not_found": "NotFound screen"
+    "screen_not_found": "NotFound screen",
+    "something_went_wrong": "Something went wrong"
+  },
+  "form": {
+    "invalid_email_format": "Incorrect e-mail address",
+    "required": "This field is required"
+  },
+  "sign_in_screen": {
+    "dont_have_an_account": "Don't have an account?",
+    "forgot_password": "Forgot your password?",
+    "or_pass": "or enter:",
+    "password_label": "Password",
+    "password_placeholder": "password",
+    "with_zameniem_id": "With the booking number"
+  },
+  "common": {
+    "add": "Add",
+    "back": "Back",
+    "cancel": "Cancel",
+    "save": "Save",
+    "remove": "Remove",
+    "sign_in": "Sign in",
+    "sign_up": "Register",
+    "log_in": "Login",
+    "try_again": "Try again",
+    "send_again": "Send again",
+    "email_label": "E-mail",
+    "email_placeholder": "john@doe.com",
+    "empty_list": "The list is empty",
+    "phone_label": "Telephone",
+    "show_on_map": "Show on map",
+    "try_again_later": "Please try again later",
+    "go_back": "Go back",
+    "search": "Search"
   },
   "hello": "Welcome",
   "thanks": "Thank you for using best template for expo apps",
