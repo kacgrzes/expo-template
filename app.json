@@ -19,7 +19,8 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "jsEngine": "hermes"
+      "jsEngine": "hermes",
+      "bundleIdentifier": "com.binarapps.template.dev"
     },
     "android": {
       "adaptiveIcon": {

@@ -4,4 +4,4 @@
 yarn lint-staged
 yarn typecheck
 yarn prettier:write
-npx pretty-quick --staged --ignore-path=./.prettierignore
+yarn pretty-quick --staged --ignore-path=./.prettierignore
