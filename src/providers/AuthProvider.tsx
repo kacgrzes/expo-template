@@ -1,5 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as SecureStore from 'expo-secure-store'
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import { Platform } from 'react-native'
 
 import { AuthContext, AuthContextType } from '~contexts'
 import { wait } from '~utils'
@@ -12,7 +14,12 @@ export const AuthProvider: FC = ({ children }) => {
 
   useEffect(() => {
     const bootstrap = async () => {
-      const token = await SecureStore.getItemAsync(TOKEN_KEY)
+      let token: string | null = ''
+      if (Platform.OS === 'web') {
+        token = await AsyncStorage.getItem(TOKEN_KEY)
+      } else {
+        token = await SecureStore.getItemAsync(TOKEN_KEY)
+      }
       setIsSignedIn(!!token)
     }
 
@@ -28,12 +35,21 @@ export const AuthProvider: FC = ({ children }) => {
     if (data.email !== 'test@example.com' || data.password !== '123456') {
       throw new Error('Incorrect email or password')
     }
-    await SecureStore.setItemAsync(TOKEN_KEY, 'token here')
+    if (Platform.OS === 'web') {
+      await AsyncStorage.setItem(TOKEN_KEY, 'token here')
+    } else {
+      await SecureStore.setItemAsync(TOKEN_KEY, 'token here')
+    }
     setIsSignedIn(true)
   }, [])
 
   const signOut = useCallback(async () => {
     await SecureStore.deleteItemAsync(TOKEN_KEY)
+    if (Platform.OS === 'web') {
+      await AsyncStorage.removeItem(TOKEN_KEY)
+    } else {
+      await SecureStore.deleteItemAsync(TOKEN_KEY)
+    }
     setIsSignedIn(false)
   }, [])
 

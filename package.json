@@ -111,6 +111,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@expo/config": "^6.0.24",
+    "@expo/webpack-config": "^0.16.24",
     "@testing-library/jest-native": "^4.0.5",
     "@testing-library/react-native": "^9.1.0",
     "@types/i18next": "^13.0.0",
