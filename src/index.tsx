@@ -10,7 +10,7 @@ import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AppLoading } from '~components'
 import { Navigation } from '~navigation'
-import { AuthProvider, SafeAreaProvider } from '~providers'
+import { AuthProvider, NotificationsProvider, SafeAreaProvider } from '~providers'
 import { ColorSchemeProvider } from '~providers/ColorSchemeProvider'
 import { startMockedServer } from '~services'
 
@@ -26,17 +26,19 @@ const queryClient = new QueryClient({})
 const App = (): JSX.Element => {
   return (
     <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <AppLoading>
-            <ColorSchemeProvider>
-              <BottomSheetModalProvider>
-                <Navigation />
-              </BottomSheetModalProvider>
-            </ColorSchemeProvider>
-          </AppLoading>
-        </AuthProvider>
-      </QueryClientProvider>
+      <NotificationsProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <AppLoading>
+              <ColorSchemeProvider>
+                <BottomSheetModalProvider>
+                  <Navigation />
+                </BottomSheetModalProvider>
+              </ColorSchemeProvider>
+            </AppLoading>
+          </AuthProvider>
+        </QueryClientProvider>
+      </NotificationsProvider>
     </SafeAreaProvider>
   )
 }

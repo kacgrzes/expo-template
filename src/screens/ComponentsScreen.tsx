@@ -1,17 +1,30 @@
-import { Alert, ScrollView } from 'react-native'
+import * as Linking from 'expo-linking'
+import { ScrollView } from 'react-native'
 
 import { Button, Text } from '~components'
-import { useTheme } from '~hooks'
-
-const openAlert = () => Alert.alert('Button Pressed', 'You have pressed button')
+import { useCallback, useNotifications, useTheme } from '~hooks'
 
 export const ComponentsScreen = (): JSX.Element => {
   const { s } = useTheme()
+  const { notify } = useNotifications()
+  const testNotification = useCallback(
+    () =>
+      notify('info', {
+        params: {
+          title: 'In-app notification example',
+          description: 'by react-native-notificated 🎉',
+          onPress: () => {
+            Linking.openURL('https://thewidlarzgroup.github.io/react-native-notificated/')
+          },
+        },
+      }),
+    [notify]
+  )
 
   return (
     <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
       <Text>This is component screen</Text>
-      <Button onPress={openAlert} title="Button" />
+      <Button onPress={testNotification} title="Button" />
       <Text>Typography Base</Text>
       <Text.H1>Typography H1</Text.H1>
       <Text.H2>Typography H2</Text.H2>
