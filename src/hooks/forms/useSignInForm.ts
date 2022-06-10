@@ -11,7 +11,7 @@ type FormValues = {
   password: string
 }
 
-const defaultValues = { email: '', password: '' }
+const defaultValues = { email: 'test@example.com', password: '123456' }
 
 export const useSignInForm = () => {
   const { signIn } = useAuth()
