@@ -1,0 +1,31 @@
+name: Lint | Test
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install -g yarn
+      - name: Instaling packages
+        run: |
+          yarn
+      - name: Running linters
+        run: |
+          yarn tsc
+          yarn lint
+      - name: Running tests
+        run: |
+          yarn test
+        env:
+          CI: true
