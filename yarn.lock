@@ -1234,7 +1234,7 @@
   resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-45.0.0.tgz#963c2fdce8fbcbd003758b92ed8a25375f437ef6"
   integrity sha512-/QGhhLWyaGautgEyU50UJr5YqKJix5t77ePTwreOVAhmZH+ff3nrrtYTTnccx+qF08ZNQmfAyYMCD3rQfzpiJA==
 
-"@expo/config@6.0.24", "@expo/config@^6.0.14", "@expo/config@^6.0.24", "@expo/config@~6.0.23":
+"@expo/config@6.0.24", "@expo/config@^6.0.14", "@expo/config@~6.0.19", "@expo/config@~6.0.23":
   version "6.0.24"
   resolved "https://registry.yarnpkg.com/@expo/config/-/config-6.0.24.tgz#3602da8fdfa817e290a52fb328fc8ed9d6bc61e7"
   integrity sha512-OcACI1md1Yo5TQmUxxueJ/RaTlR2Mgl6KswTFOYCL1XJERF/jjAx95zhWXH+JQGdlM0yB0vqM6vB6GbUFRvLxA==
@@ -2316,7 +2316,7 @@
   dependencies:
     "@types/react" "^17"
 
-"@types/react@*", "@types/react@^17", "@types/react@^17.0.4":
+"@types/react@*", "@types/react@^17", "@types/react@^17.0.4", "@types/react@~17.0.21":
   version "17.0.45"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.45.tgz#9b3d5b661fd26365fefef0e766a1c6c30ccf7b3f"
   integrity sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==
@@ -4515,25 +4515,25 @@ expo-crypto@~10.2.0:
   resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-10.2.0.tgz#86d16e7e93b62af37d9ded3d344744e94d6ab4e4"
   integrity sha512-YVFp+DJXBtt4t6oZXepnzb+xwpKzFbXn3B9Oma1Tfh6J0rIlm/I20UW/5apdvEdbj44fxJ5DsiZeyADI3bcZkQ==
 
-expo-dev-client@~0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-0.10.0.tgz#bb7bc44056ac18c571419ac4b64ea1a2c09171f5"
-  integrity sha512-0vs3IGTAnKtciDXcLPEOJGcKLMZKieidCTj5jZYEVsQbySoqzazu4Xo3mXjPy0quzfjchVWEYYbdrl87LzhPwQ==
+expo-dev-client@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-1.0.0.tgz#89948d7f07adaceb4c77053535f5c4efc9a41a31"
+  integrity sha512-hqCf7IRaVOsiekFXoIifC+knGmS/hqnx6Kr+bdNbUi7UppJr7Wltww2+m0JQFIUSbjVpIEGLJIotClAi/1Vfew==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
-    expo-dev-launcher "0.11.7"
-    expo-dev-menu "0.11.0"
+    expo-dev-launcher "1.0.0"
+    expo-dev-menu "1.0.0"
     expo-dev-menu-interface "0.7.0"
     expo-manifests "~0.3.0"
     expo-updates-interface "~0.6.0"
 
-expo-dev-launcher@0.11.7:
-  version "0.11.7"
-  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-0.11.7.tgz#4ebaf116d3e693b8fe93cb7c5b90811747162882"
-  integrity sha512-VDbq6BxV5YDTOTOlGaEwaHfWfSL9VOljJXjUstFXxcWQl97NtWDNMBL3h7PNbRGtD9o5X5h1HI3pdp0ofPESPA==
+expo-dev-launcher@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-1.0.0.tgz#86b302320739df16c17defbdf4a1dba8dde05684"
+  integrity sha512-yRqDdhCo7gBJorFSypkur1o1JHrIiG1eRnAbMb3E7LXg7RdgcirwXJrgt7WtnWTrYHKR//2BBlTlqFBIG5pteA==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
-    expo-dev-menu "0.11.0"
+    expo-dev-menu "1.0.0"
     resolve-from "^5.0.0"
     semver "^7.3.5"
 
@@ -4542,10 +4542,10 @@ expo-dev-menu-interface@0.7.0:
   resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.7.0.tgz#e141a671c7a34b921e7255653665d5e8489dab08"
   integrity sha512-f/9gWLpuvXvQPeVBHH0T7qm4v2/Ynygs7dzebxqSWGDcCabfqRhuX+dv/t7CGu85m6waC9xYYnjLG7l8LC/i3Q==
 
-expo-dev-menu@0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-0.11.0.tgz#bb3598fee21f2e30b25ff96acf4937d15ad9d801"
-  integrity sha512-IM10nl4oSvdKnmcZnrFvuIPposLhIRmzOEcAyrBzcm/RfLJoRXnKy+Nv8dF4qD8gbL8quITW2mgFTPyhQzR/dg==
+expo-dev-menu@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-1.0.0.tgz#2b6709bea829b2363e3b6bc3bf5fccecb59676b7"
+  integrity sha512-1420lih/NZR5NHcA2tgCfx6M2UoWBDJB9fY9Bb5/XDGXVeSsrubmu6Ck80Y4qdpDpPesQ/saZxVuilkfzBoNmQ==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
     expo-dev-menu-interface "0.7.0"
@@ -4583,10 +4583,10 @@ expo-font@~10.1.0:
   dependencies:
     fontfaceobserver "^2.1.0"
 
-expo-haptics@~11.1.0:
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/expo-haptics/-/expo-haptics-11.1.1.tgz#fdaf253d35433e07415424e4792b1db5cc9b0961"
-  integrity sha512-Z1qRr9/lPInLhTtyjFyLqPC4edg1G/qlWCShFXNz5eJHOnotOv8qpIKDOvPYPrG3XsJc8UO8ds2Z3qmBUApEUA==
+expo-haptics@~11.2.0:
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/expo-haptics/-/expo-haptics-11.2.0.tgz#0ffb9f82395e88f9f66ceebb0f3279739311412c"
+  integrity sha512-ijuWU2ljLBGjIf7OQCvnBQIu/chezndnWkfi518XxvK0hudA4+fAe98mqHO6hom9GexNRxhQZbXc0hcVnxkaiA==
 
 expo-json-utils@~0.3.0:
   version "0.3.0"
@@ -4705,10 +4705,10 @@ expo-updates-interface@~0.6.0:
   resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.6.0.tgz#cef5250106e59572afdfcf245c534754c8c844ba"
   integrity sha512-oQcGTsE8mSkSxENPlWjZPGoJpt3RFDNPuO5d8shBDxBb4ZNH/W2ojavSFQMaLbNMoS0bYQQhzbRNEIBd306QMg==
 
-expo-updates@~0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.13.1.tgz#ffed4216eda6afbc15f06399115a5b9e649102a6"
-  integrity sha512-6GTqgAco3da/rk0/AvDRFmrWxEIxlmIs7vvoCWWxyvifLBlQAaU08+AdZH5RwdN3aUaIep70pnqlc67xe/y0og==
+expo-updates@~0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.13.2.tgz#c96d664d8a97eb3af6841e46a137962b8bf06361"
+  integrity sha512-2ZthmyxYuN/c71y2oLNz9fdVXLf7ggxAw3Tfy+kwtGOTKNyOf/YoG+SwX7a0v+jZTJnuorEj5FuNf3wrniQ7+w==
   dependencies:
     "@expo/code-signing-certificates" "0.0.1"
     "@expo/config" "^6.0.14"
@@ -4723,10 +4723,10 @@ expo-updates@~0.13.1:
     resolve-from "^5.0.0"
     uuid "^3.4.0"
 
-expo-web-browser@~10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-10.2.0.tgz#e37450e5a0dd2eb1cf5ea5511589ed207da8aafe"
-  integrity sha512-Y8LCiktTUdPQVgO5BR6uHFU8FGu/8ysT2ynpO0WFeD4odX8JBX5JwQ9HokEa3XvRJNpefgQmXETDjzkMznXMvQ==
+expo-web-browser@~10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-10.2.1.tgz#4bd9214f7aefcd1af6ea26ae068a0e3e25a1e0bd"
+  integrity sha512-om34EL7OX5ouBM/hq2PrjHDLKmjVhAy+1H7YqRY6nS8dWsewnLFdLq4d8GPwWQBYb6kHKYVzwFRj+WLTfpAOBQ==
   dependencies:
     compare-urls "^2.0.0"
 
