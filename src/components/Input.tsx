@@ -79,7 +79,10 @@ export const Input = forwardRef<TextInput, InputProps>(
     return (
       <View style={inputContainerStyle}>
         {label ? (
-          <Text.CaptionBold color={error ? 'error' : 'secondaryDark'} style={[s.selfStart, s.mB1]}>
+          <Text.CaptionBold
+            color={error ? 'error' : 'secondaryDark'}
+            style={[s.selfStart, s.mB1, { position: 'absolute', top: -10 }]}
+          >
             {label}
           </Text.CaptionBold>
         ) : null}
