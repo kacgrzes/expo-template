@@ -44,7 +44,6 @@ export const AuthProvider: FC = ({ children }) => {
   }, [])
 
   const signOut = useCallback(async () => {
-    await SecureStore.deleteItemAsync(TOKEN_KEY)
     if (Platform.OS === 'web') {
       await AsyncStorage.removeItem(TOKEN_KEY)
     } else {

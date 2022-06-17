@@ -1,22 +1,14 @@
 import { useMemo } from 'react'
-import {
-  Pressable,
-  PressableProps,
-  ViewStyle,
-  ActivityIndicator,
-  Platform,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native'
+import { Pressable, PressableProps, ViewStyle, ActivityIndicator } from 'react-native'
 
 import { Text } from './Typography'
 
-import { AppTheme, Colors } from '~constants'
+import { AppTheme } from '~constants'
 import { useCallback, useTheme } from '~hooks'
 
 type ButtonVariants = 'Primary' | 'Secondary' | 'Flat'
 
-type ButtonProps = Omit<PressableProps, 'style'> & {
+type ButtonProps = PressableProps & {
   title?: string
   style?: ViewStyle
   variant?: ButtonVariants
@@ -27,22 +19,13 @@ type ButtonProps = Omit<PressableProps, 'style'> & {
 
 type ButtonVariantProps = Omit<ButtonProps, 'variant'>
 
-const generateVariants = (s: AppTheme, colors: Colors) => ({
+const generateVariants = (s: AppTheme) => ({
   Primary: {
-    notPressedStyle: {
-      backgroundColor: colors.primary,
-    },
-    pressedStyle: {
-      backgroundColor: colors.primaryLight,
-    },
-    disabledStyle: {
-      backgroundColor: colors.gray200,
-    },
-
-    textStyle: {
-      color: colors.white,
-    },
-    pressedTextStyle: { color: colors.white },
+    notPressedStyle: s.bgPrimary,
+    pressedStyle: s.bgPrimaryLight,
+    disabledStyle: s.bgGray200,
+    textStyle: s.textWhite,
+    pressedTextStyle: s.textWhite,
   },
   Secondary: {
     notPressedStyle: [s.borderPrimary, s.border, s.bgTransparent],
@@ -72,26 +55,25 @@ export const Button = ({
   children,
   ...props
 }: ButtonProps): JSX.Element => {
-  const { s, colors } = useTheme()
+  const { s } = useTheme()
 
   const commonStyles = useMemo(
     () => [
-      fullWidth && { width: '100%' },
+      fullWidth && s.wFull,
       buttonMinHeightStyle,
-      {
-        justifyContent: 'center',
-        alignItems: 'center',
-        minWidth: 48,
-        borderRadius: 10,
-        paddingHorizontal: 4,
-        paddingVertical: 8,
-      },
+      s.itemsCenter,
+      s.alignCenter,
+      s.justifyCenter,
+      s.pY1,
+      s.pX2,
+      s.minW48,
+      s.roundedSm,
       style,
     ],
-    [fullWidth, style]
+    [fullWidth, s, style]
   )
 
-  const variants = generateVariants(s, colors)
+  const variants = generateVariants(s)
 
   const { pressedStyle, notPressedStyle, disabledStyle, textStyle, pressedTextStyle } =
     variants[variant] || variants['Primary']
@@ -126,33 +108,6 @@ export const Button = ({
     [children, disabled, pressedTextStyle, s.pB0_5, s.textDisabled, textStyle, title]
   )
 
-  if (Platform.OS === 'web') {
-    return (
-      <TouchableOpacity
-        style={styles.button}
-        disabled={disabled}
-        testID="MAIN_BUTTON"
-        // TODO: Uncomment this when start implementing web
-        // {...props}
-      >
-        {loading ? (
-          <ActivityIndicator size={24} />
-        ) : (
-          children || (
-            <Text.Button
-              color="white"
-              uppercase
-              center
-              style={[textStyle, disabled && s.textDisabled, s.pB0_5]}
-            >
-              {title}
-            </Text.Button>
-          )
-        )}
-      </TouchableOpacity>
-    )
-  }
-
   return (
     <Pressable style={pressableStyleFunction} disabled={disabled} testID="MAIN_BUTTON" {...props}>
       {loading ? <ActivityIndicator size={24} /> : children || textStyleFunction}
@@ -166,16 +121,3 @@ const generateButtonType = (variant: ButtonVariants) => (props: ButtonVariantPro
 Button.Primary = generateButtonType('Primary')
 Button.Secondary = generateButtonType('Secondary')
 Button.Flat = generateButtonType('Flat')
-
-const styles = StyleSheet.create({
-  // eslint-disable-next-line
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#3f51b5',
-    borderRadius: 10,
-    justifyContent: 'center',
-    minWidth: 48,
-    paddingHorizontal: 4,
-    paddingVertical: 8,
-  },
-})
