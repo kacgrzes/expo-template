@@ -1,15 +1,50 @@
-import { useCallback } from 'react'
-import { ScrollView, View, Text } from 'react-native'
+import { Box, Button, Row, ScrollView, Text, useTheme } from 'native-base'
+import { Fragment, useCallback } from 'react'
 
-import { Button } from '~components'
-import { CheckIcon } from '~components/icons/CheckIcon'
-import { useTheme } from '~hooks'
+const buttonVariants = ['ghost', 'outline', 'solid', 'subtle', 'link']
+const colorsVariants = [
+  'primary',
+  'secondary',
+  'tertiary',
+  'danger',
+  'error',
+  'success',
+  'warning',
+  'muted',
+  'info',
+  'light',
+  'rose',
+  'pink',
+  'fuchsia',
+  'purple',
+  'violet',
+  'indigo',
+  'blue',
+  'lightBlue',
+  'darkBlue',
+  'cyan',
+  'teal',
+  'emerald',
+  'green',
+  'lime',
+  'yellow',
+  'amber',
+  'orange',
+  'red',
+  'warmGray',
+  'trueGray',
+  'gray',
+  'coolGray',
+  'blueGray',
+  'dark',
+]
 
 export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const {
     navigation: { navigate },
   } = props
-  const { s, colors } = useTheme()
+
+  const { colors } = useTheme()
 
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
   const goToAppSettings = useCallback(() => navigate('Settings'), [navigate])
@@ -22,23 +57,32 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
       }),
     [navigate]
   )
-  const exampleColors = [colors.error, colors.warningLight, colors.focused]
   return (
-    <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
-      <Text>This is Example screen</Text>
-      <View style={[s.flexRow, s.mB10]}>
-        {exampleColors.map((color) => (
-          <CheckIcon key={color} color={color} />
-        ))}
-      </View>
-      <Button style={s.mB2} onPress={goToApplicationInfo} title="Go to ApplicationInfo" />
-      <Button style={s.mB2} onPress={goToComponents} title="Go to Components" />
-      <Button style={s.mB2} onPress={goToHomeStackDetails} title="Go to Home Stack Details" />
-      <Button style={s.mB10} onPress={goToAppSettings} title="Go to Settings" />
-      <Button.Secondary style={s.mB2} title="Button Seconday" />
-      <Button.Flat style={s.mB2} title="Button flat" />
-      <Button loading disabled style={s.mB2} title="Loading button" />
-      <Button disabled style={s.mB2} title="Disabled button" />
+    <ScrollView p={4}>
+      <Text mb={4} color="white">
+        Colors
+      </Text>
+      {colorsVariants.map((colorVariant) => {
+        return (
+          <Fragment key={colorVariant}>
+            <Text color="white">{colorVariant}</Text>
+            <Row mb={6}>
+              {Object.values(colors[colorVariant]).map((color) => {
+                return <Box h={8} w={8} key={color} bg={color} />
+              })}
+            </Row>
+          </Fragment>
+        )
+      })}
+
+      <Text color={'white'}>Buttons variants</Text>
+      {buttonVariants.map((buttonVariant) => {
+        return (
+          <Button key={buttonVariant} variant={buttonVariant}>
+            {buttonVariant}
+          </Button>
+        )
+      })}
     </ScrollView>
   )
 }

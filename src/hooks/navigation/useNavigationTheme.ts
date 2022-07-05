@@ -1,11 +1,11 @@
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { Theme } from '@react-navigation/native'
+import { useTheme } from 'native-base'
 import { useMemo } from 'react'
 
 import { useColorScheme } from '../useColorScheme'
-import { useTheme } from '../useTheme'
 
-import { DarkNavigationTheme, LightNavigationTheme } from '~constants'
+import { darkNavigationTheme, lightNavigationTheme } from '~constants'
 
 type ReturnValues = {
   navigationTheme: Theme
@@ -18,13 +18,13 @@ export const useNavigationTheme = (): ReturnValues => {
 
   const tabBarTheme: BottomTabNavigationOptions = useMemo(
     () => ({
-      tabBarActiveTintColor: colors.text,
-      tabBarInactiveTintColor: colors.gray600,
+      tabBarActiveTintColor: colors.primary[600],
+      tabBarInactiveTintColor: colors.primary[400],
     }),
-    [colors.text, colors.gray600]
+    [colors.primary]
   )
 
-  const navigationTheme = colorScheme === 'dark' ? DarkNavigationTheme : LightNavigationTheme
+  const navigationTheme = colorScheme === 'dark' ? darkNavigationTheme : lightNavigationTheme
 
   return {
     navigationTheme,

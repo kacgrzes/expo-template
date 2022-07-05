@@ -1,14 +1,12 @@
-import { Image, ImageStyle } from 'react-native'
+import { Button, Center, Spacer, Text, Image } from 'native-base'
 
-import { Button, Center, Spacer, Text } from '~components'
-import { useCallback, useTranslation, useTheme } from '~hooks'
+import { useCallback, useTranslation } from '~hooks'
 
 export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
   const {
     navigation: { navigate },
   } = props
   const { t } = useTranslation()
-  const { s } = useTheme()
 
   const navigateToDetails = useCallback(() => {
     navigate('Details', { id: 'home-id' })
@@ -20,15 +18,15 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
         source={require('~assets/logo.png')}
         resizeMode="contain"
         resizeMethod="resize"
-        style={[s.h24] as ImageStyle[]}
+        height={24}
       />
-      <Text.H2 center>{t('hello')}</Text.H2>
+      <Text textAlign={'center'}>{t('hello')}</Text>
       <Spacer y={2} />
-      <Text center>{t('thanks')}</Text>
+      <Text textAlign={'center'}>{t('thanks')}</Text>
       <Spacer y={2} />
-      <Text center>{t('app_information')}</Text>
+      <Text textAlign={'center'}>{t('app_information')}</Text>
       <Spacer y={4} />
-      <Button onPress={navigateToDetails} title="Details" />
+      <Button onPress={navigateToDetails}>Details</Button>
     </Center>
   )
 }

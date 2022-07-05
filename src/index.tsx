@@ -9,10 +9,11 @@ import { registerRootComponent } from 'expo'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AppLoading } from '~components'
+import { theme, nativeBaseConfig } from '~constants'
 import { Navigation } from '~navigation'
-import { AuthProvider, NotificationsProvider, SafeAreaProvider } from '~providers'
+import { AuthProvider, NotificationsProvider, NativeBaseProvider } from '~providers'
 import { ColorSchemeProvider } from '~providers/ColorSchemeProvider'
-import { startMockedServer } from '~services'
+import { startMockedServer, colorModeManager } from '~services'
 
 // FIXME: there is some issue with miragejs that causes console.log to not work
 const DISABLE_CONSOLE_ENABLE_MOCKED_SERVER = false
@@ -25,10 +26,10 @@ const queryClient = new QueryClient({})
 
 const App = (): JSX.Element => {
   return (
-    <SafeAreaProvider>
+    <NativeBaseProvider theme={theme} colorModeManager={colorModeManager} config={nativeBaseConfig}>
       <NotificationsProvider>
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
             <AppLoading>
               <ColorSchemeProvider>
                 <BottomSheetModalProvider>
@@ -36,10 +37,10 @@ const App = (): JSX.Element => {
                 </BottomSheetModalProvider>
               </ColorSchemeProvider>
             </AppLoading>
-          </AuthProvider>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </AuthProvider>
       </NotificationsProvider>
-    </SafeAreaProvider>
+    </NativeBaseProvider>
   )
 }
 

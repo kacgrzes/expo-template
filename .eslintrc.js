@@ -36,19 +36,7 @@ module.exports = {
     'react-native/no-raw-text': [
       2,
       {
-        skip: [
-          'Text.H1',
-          'Text.H2',
-          'Text.H3',
-          'Text.H4',
-          'Text.H5',
-          'Text.H6',
-          'Text.BodyRegular',
-          'Text.BodyBold',
-          'Text.CaptionRegular',
-          'Text.CaptionBold',
-          'Text.Button',
-        ],
+        skip: ['Button'],
       },
     ],
   },
