@@ -17,6 +17,7 @@ Version in the `package.json` is one to one the latest expo on which the templat
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)
 
+- TypeScript support
 - Expo
 - React Navigation
   - with dark and light theme set up
@@ -33,6 +34,8 @@ Version in the `package.json` is one to one the latest expo on which the templat
 - prettier
 - babel-module-resolver
 - tests with jest and @testing-library/react-native
+- animations with `reanimated` and `moti`
+- `@gorhom/bottom-sheet`
 
 See all the details in the documentation.
 
@@ -59,7 +62,6 @@ Insert gif or link to demo
 ## Roadmap
 
 - Additional browser support
-
 - Add more integrations
 
 ## Contributing
