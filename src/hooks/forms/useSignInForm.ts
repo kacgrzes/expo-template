@@ -9,9 +9,10 @@ import { useAuth } from '../useAuth'
 type FormValues = {
   email: string
   password: string
+  confirm: boolean
 }
 
-const defaultValues = { email: 'test@example.com', password: '123456' }
+const defaultValues = { email: 'test@example.com', password: '123456', confirm: false }
 
 export const useSignInForm = () => {
   const { signIn } = useAuth()
