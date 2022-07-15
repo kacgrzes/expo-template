@@ -1,6 +1,6 @@
 import { TextInput } from 'react-native'
 
-import { Box, Button, Center, ControlledInput, Text, Checkbox } from '~components'
+import { Box, Button, Center, ControlledInput, Text, ControlledCheckbox } from '~components'
 import { REGEX } from '~constants'
 import { useRef, useSignInForm, useTheme, useTranslation } from '~hooks'
 
@@ -47,7 +47,12 @@ export const SignInScreen = (): JSX.Element => {
         rules={{ required: t('form.required') }}
         containerStyle={[s.mB2]}
       />
-      <Checkbox control={control} name="confirm" label="Example label" disabled={isSubmitting} />
+      <ControlledCheckbox
+        control={control}
+        name="confirm"
+        label="Remember me"
+        disabled={isSubmitting}
+      />
       <Box mt={4} />
       <Button onPress={submit} title="Sign in" loading={isSubmitting} disabled={isSubmitting} />
       <Box mt={4} />
