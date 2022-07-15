@@ -1,5 +1,5 @@
 import { Theme } from '@react-navigation/native'
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native'
+import { ImageStyle, Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { createTheme, ThemeProps } from 'react-native-whirlwind'
 
 // here you can define your own classes, rembemer to add them to light and dark themes
@@ -165,7 +165,12 @@ const customClasses = {
   },
 } as const
 
-export const lightTheme: AppTheme = StyleSheet.create({
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const createStyles: <T extends StyleSheet.NamedStyles<T> | StyleSheet.NamedStyles<any>>(
+  styles: T
+) => T = Platform.OS === 'web' ? (s) => s : StyleSheet.create
+
+export const lightTheme: AppTheme = createStyles({
   ...createTheme({
     colors: lightColors,
     spacing,
@@ -180,7 +185,7 @@ export const lightTheme: AppTheme = StyleSheet.create({
   },
 })
 
-export const darkTheme: AppTheme = StyleSheet.create({
+export const darkTheme: AppTheme = createStyles({
   ...createTheme({
     colors: darkColors,
     spacing,
