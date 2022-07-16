@@ -2,14 +2,17 @@ import { TextInput } from 'react-native'
 
 import { Box, Button, Center, ControlledInput, Text, ControlledCheckbox } from '~components'
 import { REGEX } from '~constants'
-import { useRef, useSignInForm, useTheme, useTranslation } from '~hooks'
+import { useCallback, useNavigation, useRef, useSignInForm, useTheme, useTranslation } from '~hooks'
 
 export const SignInScreen = (): JSX.Element => {
   const { s } = useTheme()
   const { t } = useTranslation()
+  const { navigate } = useNavigation()
   const emailInputRef = useRef<TextInput>(null)
 
   const { control, error, errors, submit, isSubmitting } = useSignInForm()
+
+  const goToSignUp = useCallback(() => navigate('SignUp'), [navigate])
 
   return (
     <Center px={8} flex={1} bg="gray100">
@@ -55,9 +58,15 @@ export const SignInScreen = (): JSX.Element => {
       />
       <Box mt={4} />
       <Button onPress={submit} title="Sign in" loading={isSubmitting} disabled={isSubmitting} />
-      <Box mt={4} />
+      <Box mt={8} />
       {!!error && <Text.BodyBold color="errorLight">{error}</Text.BodyBold>}
       {/* TODO: Remove this after implementing signing in with backend  */}
+      <Box alignItems="center">
+        <Text.H5>{t('sign_in_screen.dont_have_an_account')}</Text.H5>
+        <Box mt={2} />
+        <Button onPress={goToSignUp} title="Sign up" variant="Flat" />
+      </Box>
+      <Box mt={8} />
       <Text.BodyBold>Correct credentials</Text.BodyBold>
       <Text.BodyRegular color="gray500" center>
         Email: test@example.com{'\n'}Password: 123456

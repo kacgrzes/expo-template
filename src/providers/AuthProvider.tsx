@@ -37,8 +37,11 @@ export const AuthProvider: FC = ({ children }) => {
     setIsSignedIn(false)
   }, [])
 
-  const signUp = useCallback(() => {
-    // TODO: implement sign up here
+  const signUp = useCallback(async (data) => {
+    // temporary solution
+    console.log(data)
+    await wait(500)
+    setIsSignedIn(true)
   }, [])
 
   const value = useMemo(() => {
