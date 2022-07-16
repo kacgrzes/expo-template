@@ -1,18 +1,16 @@
-import * as SecureStore from 'expo-secure-store'
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { AuthContext, AuthContextType } from '~contexts'
+import { deleteToken, getToken, setToken } from '~services'
 import { wait } from '~utils'
-
-// TODO: move to constants
-const TOKEN_KEY = 'token'
 
 export const AuthProvider: FC = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(null)
 
   useEffect(() => {
     const bootstrap = async () => {
-      const token = await SecureStore.getItemAsync(TOKEN_KEY)
+      // TODO: This should be moved to backend calls, in this bootstrap function we should fetch user info and not token
+      const token = await getToken()
       setIsSignedIn(!!token)
     }
 
@@ -28,12 +26,12 @@ export const AuthProvider: FC = ({ children }) => {
     if (data.email !== 'test@example.com' || data.password !== '123456') {
       throw new Error('Incorrect email or password')
     }
-    await SecureStore.setItemAsync(TOKEN_KEY, 'token here')
+    await setToken('token_here')
     setIsSignedIn(true)
   }, [])
 
   const signOut = useCallback(async () => {
-    await SecureStore.deleteItemAsync(TOKEN_KEY)
+    await deleteToken()
     setIsSignedIn(false)
   }, [])
 
