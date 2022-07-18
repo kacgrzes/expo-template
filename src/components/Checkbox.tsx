@@ -1,8 +1,9 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Control, Controller, ControllerRenderProps, FieldErrors, get } from 'react-hook-form'
-import { Pressable, Text, PressableProps } from 'react-native'
+import { Pressable, PressableProps } from 'react-native'
 
 import { Row } from './Atoms'
+import { Text } from './Typography'
 
 import { useCallback, useTheme } from '~hooks'
 
@@ -45,12 +46,8 @@ export const Checkbox = ({
       {...props}
     >
       <Row alignItems="center" opacity={disabled ? 0.5 : 1}>
-        <MaterialCommunityIcons
-          size={size}
-          name={icon}
-          color={error ? s.borderError.borderColor : s.bgPrimary.backgroundColor}
-        />
-        {children ? children : <Text>{label}</Text>}
+        <MaterialCommunityIcons size={size} name={icon} color={s.bgPrimary.backgroundColor} />
+        {children ? children : <Text color={error ? 'error' : 'secondaryDark'}>{label}</Text>}
       </Row>
     </Pressable>
   )
@@ -72,7 +69,6 @@ export const ControlledCheckbox = ({
   ...props
 }: ControlledCheckboxProps) => {
   const error = !!get(errors, name)
-  console.log(error)
 
   const handlePress = useCallback(
     (field: ControllerRenderProps) => (newValue: boolean) => field.onChange(newValue),
