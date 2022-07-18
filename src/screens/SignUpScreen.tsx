@@ -62,6 +62,7 @@ export const SignUpScreen = () => {
           label={t('sign_up_screen.agree_terms_label')}
           name="agree"
           isRequired
+          errors={errors}
         />
         <Box mt={2} />
         <ControlledCheckbox
