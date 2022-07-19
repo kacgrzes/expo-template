@@ -28,7 +28,13 @@ export const RootNavigator: FC = () => {
               title: 'Sign in',
             }}
           />
-          <Screen name="SignUp" component={SignUpScreen} />
+          <Screen
+            name="SignUp"
+            component={SignUpScreen}
+            options={{
+              title: 'Sign up',
+            }}
+          />
         </Group>
       ) : (
         <Group key="authorized">

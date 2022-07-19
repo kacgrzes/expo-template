@@ -4,18 +4,19 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { isError } from 'react-query'
 
-import { useAuth } from '../useAuth'
+import { useAuth } from '~hooks/useAuth'
+import { SignUpFormValues } from '~types/authForms'
 
-import { SignInFormValues } from '~types/authForms'
-
-const defaultValues: SignInFormValues = {
-  email: 'test@example.com',
-  password: '123456',
-  confirm: false,
+const defaultValues: SignUpFormValues = {
+  user: '',
+  email: '',
+  password: '',
+  agree: false,
+  newsletter: false,
 }
 
-export const useSignInForm = () => {
-  const { signIn } = useAuth()
+export const useSignUpForm = () => {
+  const { signUp } = useAuth()
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { t } = useTranslation()
@@ -24,16 +25,16 @@ export const useSignInForm = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignInFormValues>({
+  } = useForm<SignUpFormValues>({
     mode: 'onTouched',
     defaultValues,
   })
 
-  const onSubmit = async (data: SignInFormValues) => {
+  const onSubmit = async (data: SignUpFormValues) => {
     try {
       setIsSubmitting(true)
       setError('')
-      await signIn(data)
+      await signUp(data)
     } catch (e) {
       if (isError(e)) {
         setError(e.message)
