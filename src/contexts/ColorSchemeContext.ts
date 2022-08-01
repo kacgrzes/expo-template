@@ -6,7 +6,7 @@ export type ColorSchemeContextType =
   | {
       colorSchemeSetting: SettingColorSchemeName
       colorScheme: ColorSchemeName
-      setColorSchemeSetting: (newColorScheme: SettingColorSchemeName) => void
+      setColorSchemeSetting: (newColorScheme: ColorSchemeName) => void
     }
   | undefined
 

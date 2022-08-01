@@ -1,12 +1,14 @@
 import * as Linking from 'expo-linking'
-import { ScrollView } from 'react-native'
+import { VStack, Heading, Divider, Button, ScrollView } from 'native-base'
 
-import { Button, Text } from '~components'
-import { useCallback, useNotifications, useTheme } from '~hooks'
+import { useCallback, useNotifications, useTranslation } from '~hooks'
+
+const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
+const buttonVariants = ['solid', 'outline', 'subtle', 'ghost'] as const
 
 export const ComponentsScreen = (): JSX.Element => {
-  const { s } = useTheme()
   const { notify } = useNotifications()
+  const { t } = useTranslation()
   const testNotification = useCallback(
     () =>
       notify('info', {
@@ -22,21 +24,30 @@ export const ComponentsScreen = (): JSX.Element => {
   )
 
   return (
-    <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
-      <Text>This is component screen</Text>
-      <Button onPress={testNotification} title="Button" />
-      <Text>Typography Base</Text>
-      <Text.H1>Typography H1</Text.H1>
-      <Text.H2>Typography H2</Text.H2>
-      <Text.H3>Typography H3</Text.H3>
-      <Text.H4>Typography H4</Text.H4>
-      <Text.H5>Typography H5</Text.H5>
-      <Text.H6>Typography H6</Text.H6>
-      <Text.BodyBold>Typography BodyBold</Text.BodyBold>
-      <Text.BodyRegular>Typography BodyRegular</Text.BodyRegular>
-      <Text.CaptionBold>Typography CaptionBold</Text.CaptionBold>
-      <Text.CaptionRegular>Typography CaptionRegular</Text.CaptionRegular>
-      <Text.Button>Typography Button</Text.Button>
+    <ScrollView p={4}>
+      <Button alignSelf="center" variant="outline" onPress={testNotification}>
+        {t('components_screen.test_notification')}
+      </Button>
+      <Divider my={4} />
+      <VStack alignItems="center">
+        <Heading mb={4}>{t('components_screen.typography.label')}</Heading>
+        {headingSizes.map((size) => (
+          <Heading key={size} size={size}>
+            {t(`components_screen.typography.${size}`)}
+          </Heading>
+        ))}
+        <Divider my={4} />
+        <Heading mb={4}>{t('components_screen.button_variants.header')}</Heading>
+        {buttonVariants.map((variant) => (
+          <Button key={variant} mb={2} variant={variant}>
+            {t(`components_screen.button_variants.${variant}`)}
+          </Button>
+        ))}
+        <Button mb={2} isLoading variant="link" />
+        <Button mb={2} isDisabled>
+          {t('components_screen.button_variants.disabled')}
+        </Button>
+      </VStack>
     </ScrollView>
   )
 }

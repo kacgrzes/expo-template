@@ -1,10 +1,11 @@
 import { useAsyncStorage } from '@react-native-async-storage/async-storage'
-import { FC, useEffect } from 'react'
+import { useColorMode } from 'native-base'
+import { FC } from 'react'
 import { useColorScheme as useRNColorScheme } from 'react-native'
 
 import { colorSchemesList, colorSchemes, ASYNC_STORAGE_KEYS } from '~constants'
 import { ColorSchemeContext, ColorSchemeContextType } from '~contexts'
-import { useState, useMemo, useCallback } from '~hooks'
+import { useEffect, useState, useMemo, useCallback } from '~hooks'
 
 export type SettingColorSchemeName = typeof colorSchemesList[number]
 export type ColorSchemeName = Exclude<SettingColorSchemeName, 'system'>
@@ -14,6 +15,7 @@ const defaultColorScheme = colorSchemes.LIGHT
 export const ColorSchemeProvider: FC = ({ children }) => {
   const { setItem, getItem } = useAsyncStorage(ASYNC_STORAGE_KEYS.COLOR_SCHEME)
   const systemColorScheme = useRNColorScheme()
+  const { setColorMode } = useColorMode()
   const [colorSchemeSetting, setColorSchemeSetting] = useState<SettingColorSchemeName>(
     colorSchemes.SYSTEM
   )
@@ -23,16 +25,17 @@ export const ColorSchemeProvider: FC = ({ children }) => {
 
   useEffect(() => {
     const getInitialColorScheme = async () => {
-      getItem((error, savedColorScheme) => {
-        if (!error && savedColorScheme) {
-          setColorSchemeSetting(savedColorScheme as SettingColorSchemeName)
-        } else if (systemColorScheme) {
-          // For old devices it's possible that system color scheme name is null or undefined
-          setColorSchemeSetting(systemColorScheme)
+      try {
+        const colorScheme = await getItem()
+        if (colorScheme === 'system' && systemColorScheme) {
+          setNewColorSchemeSetting(systemColorScheme)
         } else {
-          setColorSchemeSetting(defaultColorScheme)
+          setNewColorSchemeSetting((colorScheme || defaultColorScheme) as ColorSchemeName)
         }
-      })
+      } catch (error) {
+        console.error(error)
+        setNewColorSchemeSetting(defaultColorScheme)
+      }
     }
 
     getInitialColorScheme()
@@ -40,17 +43,19 @@ export const ColorSchemeProvider: FC = ({ children }) => {
   }, [])
 
   const setNewColorSchemeSetting = useCallback(
-    (newColorScheme: SettingColorSchemeName) => {
+    (newColorScheme: ColorSchemeName) => {
       const oldColorScheme = colorSchemeSetting
       setColorSchemeSetting(newColorScheme)
+      setColorMode(newColorScheme)
       setItem(newColorScheme, (error) => {
         if (error) {
+          console.error(error)
           setColorSchemeSetting(oldColorScheme)
         }
         // TODO: Handle error
       })
     },
-    [colorSchemeSetting, setItem]
+    [colorSchemeSetting, setColorMode, setItem]
   )
 
   const value: ColorSchemeContextType = useMemo(

@@ -1,18 +1,16 @@
 // TODO: there are tons of more interesting methods there!
 import * as Application from 'expo-application'
-import { ScrollView } from 'react-native'
+import { ScrollView, Text } from 'native-base'
 
-import { Text } from '~components'
-import { usePreventGoBack, useTranslation, useTheme } from '~hooks'
+import { usePreventGoBack, useTranslation } from '~hooks'
 
 export const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n } = useTranslation()
-  const { s } = useTheme()
   usePreventGoBack()
 
   return (
-    <ScrollView contentContainerStyle={[s.flex1, s.justifyStart, s.p4]}>
-      <Text>
+    <ScrollView p={4}>
+      <Text bold>
         When you will try to go back it will double ask if you really want to leave {'\n'}
       </Text>
       <Text>{Application.applicationId}</Text>

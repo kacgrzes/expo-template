@@ -32,6 +32,8 @@ export const linking: LinkingOptions<RootStackParamList> = {
             screens: {
               Examples: '/examples',
               Components: '/components',
+              Colors: '/colors',
+              Typography: '/typography',
             },
           },
         },

@@ -1,73 +1,50 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Checkbox as NBCheckbox, ICheckboxProps, FormControl } from 'native-base'
 import { Control, Controller, ControllerRenderProps, FieldErrors, get } from 'react-hook-form'
-import { Pressable, PressableProps } from 'react-native'
 
-import { Row } from './Atoms'
-import { Text } from './Typography'
+import { useCallback } from '~hooks'
 
-import { useCallback, useTheme } from '~hooks'
-
-type CheckboxProps = PressableProps & {
+type CheckboxProps = Omit<ICheckboxProps, 'value'> & {
+  label: string
+  isRequired?: boolean
+  isInvalid?: boolean
   value: boolean
-  onChangeValue: (newValue: boolean) => void
-  label?: string
-  children?: React.ReactNode
-  disabled?: boolean
-  size?: number
-  error?: boolean
 }
 
-interface ControllerFieldProps {
-  field: ControllerRenderProps
-}
-
-export const Checkbox = ({
-  disabled,
-  value,
-  onChangeValue,
+export const Checkbox: React.FC<CheckboxProps> = ({
+  isInvalid,
+  isRequired,
   label,
-  children,
-  size = 30,
-  error,
+  value,
+  name,
+  onChange,
   ...props
-}: CheckboxProps) => {
-  const { s } = useTheme()
-  const icon = value ? 'checkbox-marked' : 'checkbox-blank-outline'
-
-  const handleValueChange = useCallback(() => {
-    onChangeValue(!value)
-  }, [onChangeValue, value])
-
-  return (
-    <Pressable
-      onPress={handleValueChange}
-      disabled={disabled}
-      accessibilityRole="checkbox"
-      {...props}
+}) => (
+  <FormControl isInvalid={isInvalid} isRequired={isRequired} {...props}>
+    <NBCheckbox
+      value={name ?? ''}
+      isChecked={value}
+      onChange={onChange}
+      _invalid={{ _text: { color: 'error.500', fontWeight: 'bold' } }}
     >
-      <Row alignItems="center" opacity={disabled ? 0.5 : 1}>
-        <MaterialCommunityIcons size={size} name={icon} color={s.bgPrimary.backgroundColor} />
-        {children ? children : <Text color={error ? 'error' : 'secondaryDark'}>{label}</Text>}
-      </Row>
-    </Pressable>
-  )
-}
+      {label}
+    </NBCheckbox>
+  </FormControl>
+)
 
-type ControlledCheckboxProps = Omit<CheckboxProps, 'value' | 'onChangeValue'> & {
+type ControlledCheckboxProps = Omit<CheckboxProps, 'value'> & {
   name: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>
   errors?: FieldErrors
-  isRequired?: boolean
 }
 
-export const ControlledCheckbox = ({
+export const ControlledCheckbox: React.FC<ControlledCheckboxProps> = ({
   name,
   control,
   errors,
-  isRequired = false,
+  isRequired,
   ...props
-}: ControlledCheckboxProps) => {
+}) => {
   const error = !!get(errors, name)
 
   const handlePress = useCallback(
@@ -76,25 +53,24 @@ export const ControlledCheckbox = ({
   )
 
   const renderCheckbox = useCallback(
-    ({ field }: ControllerFieldProps) => {
-      return (
-        <Checkbox
-          {...props}
-          onChangeValue={handlePress(field)}
-          value={field?.value}
-          error={error}
-        />
-      )
-    },
-    [error, handlePress, props]
+    ({ field }) => (
+      <Checkbox
+        {...props}
+        name={field.name}
+        value={field.value}
+        onChange={handlePress(field)}
+        isInvalid={error}
+        isRequired={isRequired}
+      />
+    ),
+    [error, isRequired, handlePress, props]
   )
-
   return (
     <Controller
       name={name}
       control={control}
-      render={renderCheckbox}
       rules={{ required: isRequired }}
+      render={renderCheckbox}
     />
   )
 }

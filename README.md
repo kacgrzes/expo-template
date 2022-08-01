@@ -24,6 +24,7 @@ Version in the `package.json` is one to one the latest expo on which the templat
   - with screen tracking hook
   - state persistance on development mode
   - prevent go back (to be used on forms for example)
+- native-base
 - color scheme detection (dark / light mode toggle)
 - hermes enabled on Android by default
 - i18next with translations, language detection and translations
@@ -50,6 +51,11 @@ Init expo with this template using:
 ```bash
   expo init --template=@kacgrzes/expo-template <name of your app>
 ```
+
+### Working with designer in your project
+
+Expo template, you are going to use - bundles native-base ui lib out of the box.
+To have the best starting experience in your project - write a dm to your designer that they should use [NativeBase Figma Design Kit](https://www.figma.com/community/file/1050753649783931446)
 
 ## Documentation
 

@@ -1,53 +1,17 @@
-import { Box, Button, Row, ScrollView, Text, useTheme } from 'native-base'
-import { Fragment, useCallback } from 'react'
+import { Button, ScrollView, Center } from 'native-base'
 
-const buttonVariants = ['ghost', 'outline', 'solid', 'subtle', 'link']
-const colorsVariants = [
-  'primary',
-  'secondary',
-  'tertiary',
-  'danger',
-  'error',
-  'success',
-  'warning',
-  'muted',
-  'info',
-  'light',
-  'rose',
-  'pink',
-  'fuchsia',
-  'purple',
-  'violet',
-  'indigo',
-  'blue',
-  'lightBlue',
-  'darkBlue',
-  'cyan',
-  'teal',
-  'emerald',
-  'green',
-  'lime',
-  'yellow',
-  'amber',
-  'orange',
-  'red',
-  'warmGray',
-  'trueGray',
-  'gray',
-  'coolGray',
-  'blueGray',
-  'dark',
-]
+import { useTranslation, useCallback } from '~hooks'
 
 export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const {
     navigation: { navigate },
   } = props
 
-  const { colors } = useTheme()
+  const { t } = useTranslation()
 
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
   const goToAppSettings = useCallback(() => navigate('Settings'), [navigate])
+  const goToColors = useCallback(() => navigate('Colors'), [navigate])
   const goToComponents = useCallback(() => navigate('Components'), [navigate])
   const goToHomeStackDetails = useCallback(
     () =>
@@ -59,30 +23,23 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   )
   return (
     <ScrollView p={4}>
-      <Text mb={4} color="white">
-        Colors
-      </Text>
-      {colorsVariants.map((colorVariant) => {
-        return (
-          <Fragment key={colorVariant}>
-            <Text color="white">{colorVariant}</Text>
-            <Row mb={6}>
-              {Object.values(colors[colorVariant]).map((color) => {
-                return <Box h={8} w={8} key={color} bg={color} />
-              })}
-            </Row>
-          </Fragment>
-        )
-      })}
-
-      <Text color={'white'}>Buttons variants</Text>
-      {buttonVariants.map((buttonVariant) => {
-        return (
-          <Button key={buttonVariant} variant={buttonVariant}>
-            {buttonVariant}
-          </Button>
-        )
-      })}
+      <Center>
+        <Button size="lg" width="64" mb={2} onPress={goToApplicationInfo}>
+          {t('examples_screen.go_to_application_info')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToColors}>
+          {t('examples_screen.go_to_colors')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToComponents}>
+          {t('examples_screen.go_to_components')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToHomeStackDetails}>
+          {t('examples_screen.go_to_home_stack_details')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToAppSettings}>
+          {t('examples_screen.go_to_settings')}
+        </Button>
+      </Center>
     </ScrollView>
   )
 }

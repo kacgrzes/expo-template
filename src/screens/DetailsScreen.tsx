@@ -1,6 +1,7 @@
 import { BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import { Box, Center, Text, Button } from 'native-base'
-import { useCallback, useMemo, useRef } from 'react'
+
+import { useCallback, useMemo, useRef } from '~hooks'
 
 export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   const {

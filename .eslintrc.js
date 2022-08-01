@@ -22,21 +22,23 @@ module.exports = {
   ],
   env: {
     'react-native/react-native': true,
-    // 'react-native-globals/all': true,
   },
   rules: {
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
-    'react-native/no-single-element-style-arrays': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+
     'react/jsx-no-bind': ['warn'],
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'react/display-name': 'off',
+    'react/prop-types': 'off',
+
+    'react-native/no-single-element-style-arrays': 'off',
     'react-native/no-raw-text': [
       2,
       {
-        skip: ['Button'],
+        skip: ['Button', 'Heading'],
       },
     ],
   },

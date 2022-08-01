@@ -1,129 +1,117 @@
 import { Feather } from '@expo/vector-icons'
-import { forwardRef, useCallback, useState } from 'react'
-import { ChangeHandler, Control, Controller, get, Path, RegisterOptions } from 'react-hook-form'
-import { FieldErrors } from 'react-hook-form/dist/types/errors'
-import { StyleProp, StyleSheet, TextInput, TextInputProps, View, ViewStyle } from 'react-native'
+import { IInputProps, FormControl, useTheme, Input as NBInput } from 'native-base'
+import { forwardRef } from 'react'
+import {
+  ChangeHandler,
+  Control,
+  Controller,
+  FieldErrors,
+  Path,
+  RegisterOptions,
+  get,
+} from 'react-hook-form'
+import { TextInput } from 'react-native'
 
-import { Box, Touchable } from './Atoms'
-import { Text } from './Typography'
+import { Touchable } from './Atoms'
 
-import { useTheme, useMemo, useSecurePassword } from '~hooks'
+import { useSecurePassword, useCallback, useMemo } from '~hooks'
 
-type InputProps = TextInputProps & {
-  placeholder: string
+type InputProps = IInputProps & {
   label?: string
-  error?: boolean
-  inputContainerStyle?: StyleProp<ViewStyle>
+  helperText?: string
+  errorMessage?: string
+  errorIcon?: JSX.Element
   onInputBlur?: () => ChangeHandler
-  fullWidth?: boolean
-  type?: InputTypes
 }
 
+const layoutPropsKeys = [
+  'm',
+  'margin',
+  'mt',
+  'marginTop',
+  'mr',
+  'marginRight',
+  'mb',
+  'marginBottom',
+  'ml',
+  'marginLeft',
+  'mx',
+  'my',
+  'p',
+  'padding',
+  'pt',
+  'paddingTop',
+  'pr',
+  'paddingRight',
+  'pb',
+  'paddingBottom',
+  'pl',
+  'paddingLeft',
+  'px',
+  'py',
+]
+
 export const Input = forwardRef<TextInput, InputProps>(
-  (
-    {
-      children,
-      style,
-      placeholder,
-      error = false,
-      label,
-      inputContainerStyle,
-      onInputBlur,
-      fullWidth,
-      type,
-      value,
-      editable = true,
-      ...props
-    },
-    ref
-  ) => {
-    const { s, colors } = useTheme()
-    const { securePassword, toggleSecurePassword, iconName, isPasswordType } =
-      useSecurePassword(type)
+  ({ label, helperText, isRequired, errorMessage, errorIcon, onInputBlur, ...props }, ref) => {
+    const { colors } = useTheme()
 
-    const [isFocused, setIsFocused] = useState(false)
-
-    const isEmailType = type === 'email'
-
-    const handleFocus = useCallback(() => {
-      setIsFocused(true)
-    }, [])
-    const handleBlur = useCallback(() => {
-      onInputBlur && onInputBlur()
-      setIsFocused(false)
-    }, [onInputBlur])
-
-    const composedStyles = useMemo(
+    const layoutProps = useMemo(
       () =>
-        StyleSheet.compose<ViewStyle>(
-          [
-            fullWidth && s.wFull,
-            s.fontLato,
-            s.itemsCenter,
-            s.itemsCenter,
-            isPasswordType && s.justifyBetween,
-            s.minW48,
-            s.pR2,
-            s.h10,
-            s.roundedSm,
-            editable && s.border,
-            s.borderGray300,
-            isFocused && [s.borderSecondaryDark, s.inputShadow],
-            error && s.borderError,
-          ],
-          style
-        ),
-      [isPasswordType, fullWidth, s, editable, isFocused, error, style]
+        Object.fromEntries(Object.entries(props).filter(([key]) => layoutPropsKeys.includes(key))),
+      [props]
     )
 
+    const inputProps = useMemo(
+      () =>
+        Object.fromEntries(Object.entries(props).filter(([key]) => !layoutPropsKeys.includes(key))),
+      [props]
+    )
+
+    const { securePassword, toggleSecurePassword, iconName } = useSecurePassword(props.type)
+    const handleBlur = useCallback(() => {
+      onInputBlur?.()
+    }, [onInputBlur])
+
     return (
-      <View style={inputContainerStyle}>
-        {label ? (
-          <Text.CaptionBold color={error ? 'error' : 'secondaryDark'} style={[s.selfStart, s.mB1]}>
+      <FormControl isRequired={isRequired} isInvalid={Boolean(errorMessage)} {...layoutProps}>
+        {label && (
+          <FormControl.Label
+            _disabled={{
+              _text: {
+                color: 'gray.400',
+                fontWeight: 'bold',
+              },
+            }}
+          >
             {label}
-          </Text.CaptionBold>
-        ) : null}
-        <Box
-          alignItems="center"
-          flexDirection="row"
-          bg="white"
-          style={composedStyles}
-          bgOpacity={editable ? 0.8 : 1}
-        >
-          <TextInput
-            placeholder={placeholder}
-            autoCapitalize="none"
-            editable={editable}
-            ref={ref}
-            secureTextEntry={securePassword}
-            onFocus={handleFocus}
-            style={[
-              s.pX4,
-              s.flex1,
-              s.textBase,
-              s.textSecondaryDark,
-              !editable && s.textGray300,
-              isFocused && s.textSecondaryDark,
-              error && s.textError,
-            ]}
-            onBlur={handleBlur}
-            placeholderTextColor={colors.gray300}
-            testID="MAIN_INPUT"
-            value={isEmailType ? value?.trim() : value}
-            {...props}
-          />
-          {isPasswordType && (
-            <Touchable onPress={toggleSecurePassword}>
-              <Feather name={iconName} color={colors.gray300} size={24} />
-            </Touchable>
-          )}
-        </Box>
-      </View>
+          </FormControl.Label>
+        )}
+        <NBInput
+          {...inputProps}
+          onBlur={handleBlur}
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          ref={ref!}
+          secureTextEntry={securePassword}
+          rightElement={
+            inputProps.type === 'password' ? (
+              <Touchable mr={2} onPress={toggleSecurePassword}>
+                <Feather name={iconName} color={colors.gray['400']} size={24} />
+              </Touchable>
+            ) : (
+              inputProps.rightElement
+            )
+          }
+        />
+        {helperText && <FormControl.HelperText>{helperText}</FormControl.HelperText>}
+        {errorMessage && (
+          <FormControl.ErrorMessage leftIcon={errorIcon}>{errorMessage}</FormControl.ErrorMessage>
+        )}
+      </FormControl>
     )
   }
 )
 
-type ControlledInputProps = Omit<InputProps, 'style' | 'error' | 'inputContainerStyle'> & {
+type ControlledInputProps = InputProps & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
@@ -135,53 +123,27 @@ type ControlledInputProps = Omit<InputProps, 'style' | 'error' | 'inputContainer
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>
   errors: FieldErrors
-  inputStyles?: StyleProp<ViewStyle>
-  containerStyle?: StyleProp<ViewStyle>
 }
 
 export const ControlledInput = forwardRef<TextInput, ControlledInputProps>(
-  (
-    {
-      placeholder,
-      containerStyle,
-      rules,
-      name,
-      errorMessage = '',
-      errors,
-      control,
-      inputStyles,
-      label,
-      fullWidth,
-      ...rest
-    },
-    ref
-  ) => {
-    const { s } = useTheme()
-    const errorMessageText = get(errors, name)?.message
-
+  ({ placeholder, label, control, rules, name, errors, ...props }, ref) => {
+    const errorMessage = get(errors, name)?.message
     const renderInput = useCallback(
       ({ field: { onChange, onBlur, value } }) => (
         <Input
+          {...props}
           ref={ref}
           onInputBlur={onBlur}
           onChangeText={onChange}
           value={value}
           placeholder={placeholder}
-          style={inputStyles}
-          error={!!errorMessageText}
+          errorMessage={errorMessage}
           label={label}
-          fullWidth={fullWidth}
-          {...rest}
         />
       ),
-      [errorMessageText, fullWidth, inputStyles, label, placeholder, ref, rest]
+      [ref, placeholder, errorMessage, label, props]
     )
 
-    return (
-      <View style={[containerStyle, fullWidth && s.wFull]}>
-        <Controller control={control} rules={rules} render={renderInput} name={name} />
-        <Text style={[s.mT1, s.textError, s.pL1]}>{errorMessageText || ''}</Text>
-      </View>
-    )
+    return <Controller name={name} control={control} rules={rules} render={renderInput} />
   }
 )

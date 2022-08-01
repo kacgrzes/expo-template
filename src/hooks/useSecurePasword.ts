@@ -1,7 +1,8 @@
+import { IInputProps } from 'native-base'
 import { useCallback, useState } from 'react'
 
-export const useSecurePassword = (type: InputTypes) => {
-  const isPasswordType = type === 'protected'
+export const useSecurePassword = (type: IInputProps['type']) => {
+  const isPasswordType = type === 'password'
   const [securePassword, setSecurePassword] = useState(isPasswordType)
   const iconName: 'eye' | 'eye-off' = securePassword ? 'eye-off' : 'eye'
 
