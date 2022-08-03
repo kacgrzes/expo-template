@@ -14,6 +14,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
   const goToAppSettings = useCallback(() => navigate('Settings'), [navigate])
   const goToComponents = useCallback(() => navigate('Components'), [navigate])
+  const goToGallery = useCallback(() => navigate('Gallery'), [navigate])
   const goToHomeStackDetails = useCallback(
     () =>
       navigate('HomeStack', {
@@ -33,6 +34,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
       </View>
       <Button style={s.mB2} onPress={goToApplicationInfo} title="Go to ApplicationInfo" />
       <Button style={s.mB2} onPress={goToComponents} title="Go to Components" />
+      <Button style={s.mB2} onPress={goToGallery} title="Go to Gallery" />
       <Button style={s.mB2} onPress={goToHomeStackDetails} title="Go to Home Stack Details" />
       <Button style={s.mB10} onPress={goToAppSettings} title="Go to Settings" />
       <Button.Secondary style={s.mB2} title="Button Seconday" />

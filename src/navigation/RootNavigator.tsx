@@ -10,6 +10,7 @@ import {
   SettingsScreen,
   SignInScreen,
   SignUpScreen,
+  GalleryScreen,
 } from '~screens'
 
 const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
@@ -40,6 +41,13 @@ export const RootNavigator: FC = () => {
         <Group key="authorized">
           <Screen name="MainTab" component={BottomTabNavigator} options={{ headerShown: false }} />
           <Screen name="Settings" component={SettingsScreen} />
+          <Screen
+            name="Gallery"
+            component={GalleryScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
         </Group>
       )}
       <Group key="modals" screenOptions={{ presentation: 'modal' }}>

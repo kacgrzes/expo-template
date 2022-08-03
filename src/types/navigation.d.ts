@@ -27,6 +27,7 @@ declare global {
     // authorized
     MainTab: NavigatorScreenParams<MainTabParamList>
     Settings: undefined
+    Gallery: undefined
 
     // modals
     ApplicationInfo: undefined
