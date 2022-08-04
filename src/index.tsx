@@ -12,7 +12,6 @@ import { AppLoading } from '~components'
 import { theme, nativeBaseConfig } from '~constants'
 import { Navigation } from '~navigation'
 import { AuthProvider, NotificationsProvider, NativeBaseProvider } from '~providers'
-import { ColorSchemeProvider } from '~providers/ColorSchemeProvider'
 import { startMockedServer, colorModeManager } from '~services'
 
 // FIXME: there is some issue with miragejs that causes console.log to not work
@@ -32,11 +31,9 @@ const App = (): JSX.Element => {
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
             <AppLoading>
-              <ColorSchemeProvider>
-                <BottomSheetModalProvider>
-                  <Navigation />
-                </BottomSheetModalProvider>
-              </ColorSchemeProvider>
+              <BottomSheetModalProvider>
+                <Navigation />
+              </BottomSheetModalProvider>
             </AppLoading>
           </AuthProvider>
         </QueryClientProvider>

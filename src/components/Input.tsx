@@ -89,8 +89,7 @@ export const Input = forwardRef<TextInput, InputProps>(
         <NBInput
           {...inputProps}
           onBlur={handleBlur}
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          ref={ref!}
+          ref={ref || undefined}
           secureTextEntry={securePassword}
           rightElement={
             inputProps.type === 'password' ? (

@@ -1,17 +1,10 @@
 ## Workflow when creating new component:
 
 - Let's go with priority of a component
-  - Typography - DONE
-  - Button - DONE
-  - Layout - DONE
 - atoms / molecules / organisms / templates / pages
 - each component should have an API defined before implementeation - we need to predict usage of this component and find the most optimal way
 - good way to go is look through UI libraries written bellow and try to propose something and later on select best pratices
 - we can do brainstorm to find the best solution for all the RN guys in the whole team
-
-TODO:
-
-- start with typography (https://github.com/hectahertz/react-native-typography) follow steps above
 
 ## Libraries
 
@@ -81,10 +74,6 @@ BottomNav
 BottomNavigation
 BottomSheet
 BottomTabs
-Box - DONE
-Box.Safe // TODO:
-Box.Scroll // TODO:
-Box.Touchable // TODO:
 Bubble
 Button // TODO:
 ButtonGroup
@@ -158,7 +147,7 @@ ImageBackground // TODO:
 ImageGallery
 Indicator
 InlineDropDownMenu
-Input // TODO:
+Input // TODO: Fix typing on a ControlledInput Path.
 KeyboardAvoidingView
 KeyboardSpace
 Label // TODO:
@@ -276,7 +265,7 @@ TopNavigationover
 TopTabs
 TouchableOpacity // TODO:
 TouchableRipple // TODO:
-Touchalbe // all // TODO:
+Touchable // all // TODO:
 Typography // TODO:
 View
 ViewPager

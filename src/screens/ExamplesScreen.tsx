@@ -13,6 +13,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const goToAppSettings = useCallback(() => navigate('Settings'), [navigate])
   const goToColors = useCallback(() => navigate('Colors'), [navigate])
   const goToComponents = useCallback(() => navigate('Components'), [navigate])
+  const goToTypography = useCallback(() => navigate('Typography'), [navigate])
   const goToHomeStackDetails = useCallback(
     () =>
       navigate('HomeStack', {
@@ -32,6 +33,9 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
         </Button>
         <Button size="lg" width="64" mb={2} onPress={goToComponents}>
           {t('examples_screen.go_to_components')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToTypography}>
+          Go to Typography
         </Button>
         <Button size="lg" width="64" mb={2} onPress={goToHomeStackDetails}>
           {t('examples_screen.go_to_home_stack_details')}

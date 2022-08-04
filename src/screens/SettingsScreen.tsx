@@ -1,27 +1,24 @@
-import { ScrollView, Text, Button, Center } from 'native-base'
+import { ScrollView, Text, Button, Center, ColorMode } from 'native-base'
 
-import { useAuth, useCallback, useColorScheme } from '~hooks'
-import { ColorSchemeName } from '~providers'
-
-const schemes: ColorSchemeName[] = ['light', 'dark']
+import { useAuth, useCallback, useColorMode } from '~hooks'
 
 export const SettingsScreen = (): JSX.Element => {
-  const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()
+  const { colorMode, setColorMode } = useColorMode()
   const { signOut } = useAuth()
 
   const handleColorSchemeSettingChange = useCallback(
-    (colorScheme: ColorSchemeName) => () => setColorSchemeSetting(colorScheme),
-    [setColorSchemeSetting]
+    (colorScheme: ColorMode) => () => setColorMode(colorScheme),
+    [setColorMode]
   )
 
   return (
     <ScrollView>
       <Center>
         <Text fontSize="2xl" bold mb={2}>
-          Current theme: {colorSchemeSetting}
+          Current theme: {colorMode}
         </Text>
-        {schemes.map((scheme) => {
-          const isSelected = scheme === colorSchemeSetting
+        {(['light', 'dark'] as ColorMode[]).map((scheme) => {
+          const isSelected = scheme === colorMode
 
           return (
             <Button

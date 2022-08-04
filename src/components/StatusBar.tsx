@@ -1,15 +1,15 @@
 import { StatusBar as ExpoStatusBar, StatusBarProps } from 'expo-status-bar'
 
-import { useColorScheme } from '~hooks'
+import { useColorMode } from '~hooks'
 
 export const StatusBar = (props: StatusBarProps): JSX.Element => {
-  const { colorScheme } = useColorScheme()
+  const { colorMode } = useColorMode()
 
   return (
     <ExpoStatusBar
       animated
       hideTransitionAnimation="fade"
-      style={colorScheme === 'dark' ? 'light' : 'dark'}
+      style={colorMode === 'dark' ? 'light' : 'dark'}
       {...props}
     />
   )

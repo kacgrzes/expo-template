@@ -1,38 +1,53 @@
-import { ScrollView, Center, Text, Heading, Switch } from 'native-base'
+import { Center, Divider, Heading, Row, ScrollView, Switch, Text } from 'native-base'
 
-import { useCallback, useColorScheme } from '~hooks'
+import { useColorMode } from '~hooks'
+
+export const fontSizes = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+  '5xl',
+  '6xl',
+  '7xl',
+  '8xl',
+  '9xl',
+]
+export const headingSizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl']
 
 export const TypographyScreen = (): JSX.Element => {
-  const colorScheme = useColorScheme()
-
-  const changeColorScheme = useCallback(
-    () => colorScheme.setColorSchemeSetting(colorScheme.colorScheme === 'dark' ? 'light' : 'dark'),
-    [colorScheme]
-  )
-
+  const { toggleColorMode, colorMode } = useColorMode()
   return (
     <ScrollView>
       <Center>
-        <Switch my={8} onChange={changeColorScheme} />
-        <Text fontSize="xs">xs</Text>
-        <Text fontSize="sm">sm</Text>
-        <Text fontSize="md">md</Text>
-        <Text fontSize="lg">lg</Text>
-        <Text fontSize="xl">xl</Text>
-        <Text fontSize="2xl">2xl</Text>
-        <Text fontSize="3xl">3xl</Text>
-        <Text fontSize="4xl">4xl</Text>
-        <Text fontSize="5xl">5xl</Text>
-        <Text fontSize="6xl">6xl</Text>
+        <Row alignItems="center" flex={1}>
+          <Text>🌞</Text>
+          {/* 
+            Investigate the issue about using `useCallback` on `onChange`
+            https://github.com/adobe/react-spectrum/issues/2320
+          */}
+          <Switch mx={4} my={8} value={colorMode === 'dark'} onChange={toggleColorMode} />
+          <Text>🌚</Text>
+        </Row>
+        <Text fontSize="4xl">Text.fontSize: </Text>
+        {fontSizes.map((fontSize) => (
+          <Text key={fontSize} fontSize={fontSize}>
+            Text - {fontSize}
+          </Text>
+        ))}
 
-        <Heading size="xs">xs</Heading>
-        <Heading size="sm">sm</Heading>
-        <Heading size="md">md</Heading>
-        <Heading size="lg">lg</Heading>
-        <Heading size="xl">xl</Heading>
-        <Heading size="2xl">2xl</Heading>
-        <Heading size="3xl">3xl</Heading>
-        <Heading size="4xl">4xl</Heading>
+        <Divider />
+
+        <Text fontSize="4xl">Heding.size: </Text>
+        {headingSizes.map((size) => (
+          <Heading key={size} size={size}>
+            Heading - {size}
+          </Heading>
+        ))}
       </Center>
     </ScrollView>
   )

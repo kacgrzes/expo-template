@@ -7,6 +7,9 @@
     "invalid_email_format": "Incorrect e-mail address",
     "required": "This field is required"
   },
+  "application_info_screen": {
+    "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
+  },
   "sign_in_screen": {
     "sign_in": "Sign in",
     "sign_up": "Sign up",
