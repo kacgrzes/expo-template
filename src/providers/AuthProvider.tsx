@@ -1,11 +1,12 @@
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 
 import { AuthContext, AuthContextType } from '~contexts'
 import { useCallback, useEffect, useMemo, useState } from '~hooks'
 import { deleteToken, getToken, setToken } from '~services'
+import { SignUpFormValues } from '~types/authForms'
 import { wait } from '~utils'
 
-export const AuthProvider: FC = ({ children }) => {
+export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(null)
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export const AuthProvider: FC = ({ children }) => {
     setIsSignedIn(false)
   }, [])
 
-  const signUp = useCallback(async (data) => {
+  const signUp = useCallback(async (data: SignUpFormValues) => {
     // temporary solution
     console.log(data)
     await wait(500)

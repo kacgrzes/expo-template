@@ -1,4 +1,8 @@
-import { BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet'
+import {
+  BottomSheetModal,
+  BottomSheetBackdrop,
+  BottomSheetBackdropProps,
+} from '@gorhom/bottom-sheet'
 import { Box, Center, Text, Button } from 'native-base'
 
 import { useCallback, useMemo, useRef } from '~hooks'
@@ -24,7 +28,9 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   }, [])
 
   const renderBackdrop = useCallback(
-    (props) => <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={0} />,
+    (props: BottomSheetBackdropProps) => (
+      <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={0} />
+    ),
     []
   )
 
