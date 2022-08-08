@@ -1,5 +1,12 @@
 import { Checkbox as NBCheckbox, ICheckboxProps, FormControl } from 'native-base'
-import { Control, Controller, ControllerRenderProps, FieldErrors, get } from 'react-hook-form'
+import {
+  Control,
+  Controller,
+  ControllerRenderProps,
+  FieldErrors,
+  FieldValues,
+  get,
+} from 'react-hook-form'
 
 import { useCallback } from '~hooks'
 
@@ -8,6 +15,10 @@ type CheckboxProps = Omit<ICheckboxProps, 'value'> & {
   isRequired?: boolean
   isInvalid?: boolean
   value: boolean
+}
+
+interface RenderCheckboxProps {
+  field: ControllerRenderProps<FieldValues, string>
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -53,7 +64,7 @@ export const ControlledCheckbox: React.FC<ControlledCheckboxProps> = ({
   )
 
   const renderCheckbox = useCallback(
-    ({ field }) => (
+    ({ field }: RenderCheckboxProps) => (
       <Checkbox
         {...props}
         name={field.name}
