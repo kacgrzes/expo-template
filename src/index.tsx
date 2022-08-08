@@ -1,3 +1,5 @@
+// duplicated import of gesture handler is required for bottom sheet modal to work on android
+/* eslint-disable import/no-duplicates */
 // FIXME: see how why did you render works
 // import './wdyr'
 import 'react-native-gesture-handler'
@@ -6,6 +8,8 @@ import '~i18n'
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { registerRootComponent } from 'expo'
+import { StyleSheet } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AppLoading } from '~components'
@@ -31,9 +35,11 @@ const App = (): JSX.Element => {
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
             <AppLoading>
-              <BottomSheetModalProvider>
-                <Navigation />
-              </BottomSheetModalProvider>
+              <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+                <BottomSheetModalProvider>
+                  <Navigation />
+                </BottomSheetModalProvider>
+              </GestureHandlerRootView>
             </AppLoading>
           </AuthProvider>
         </QueryClientProvider>
@@ -41,6 +47,12 @@ const App = (): JSX.Element => {
     </NativeBaseProvider>
   )
 }
+
+const styles = StyleSheet.create({
+  gestureHandlerRootView: {
+    flex: 1,
+  },
+})
 
 registerRootComponent(App)
 
