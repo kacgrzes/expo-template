@@ -128,6 +128,7 @@ export const ControlledInput = forwardRef<TextInput, ControlledInputProps>(
   ({ placeholder, label, control, rules, name, errors, ...props }, ref) => {
     const errorMessage = get(errors, name)?.message
     const renderInput = useCallback(
+      // @ts-expect-error: field parameters should be typed
       ({ field: { onChange, onBlur, value } }) => (
         <Input
           {...props}

@@ -76,6 +76,7 @@ export const ControlledCheckbox: React.FC<ControlledCheckboxProps> = ({
     ),
     [error, isRequired, handlePress, props]
   )
+
   return (
     <Controller
       name={name}
