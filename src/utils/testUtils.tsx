@@ -1,10 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { render, RenderOptions, RenderAPI } from '@testing-library/react-native'
+import { render, RenderAPI } from '@testing-library/react-native'
 import { NativeBaseProvider } from 'native-base'
 import { PropsWithChildren, ReactElement } from 'react'
 import { I18nextProvider } from 'react-i18next'
 
 import i18n from '~i18n'
+
+type RenderOptions = Parameters<typeof render>[1]
 
 const nbInitialWindowMetrics = {
   frame: { x: 0, y: 0, width: 0, height: 0 },
@@ -19,8 +21,10 @@ const Providers: React.FC<PropsWithChildren> = ({ children }) => (
   </NativeBaseProvider>
 )
 
-const customRender = (ui: ReactElement, options?: RenderOptions): RenderAPI =>
-  render(ui, { wrapper: Providers, ...options })
+const customRender = (ui: ReactElement, options?: RenderOptions): RenderAPI => {
+  console.log('ui', ui, 'options', options)
+  return render(ui, { wrapper: Providers, ...options })
+}
 
 export * from '@testing-library/react-native'
 export { customRender as render }
