@@ -22,7 +22,6 @@ const Providers: React.FC<PropsWithChildren> = ({ children }) => (
 )
 
 const customRender = (ui: ReactElement, options?: RenderOptions): RenderAPI => {
-  console.log('ui', ui, 'options', options)
   return render(ui, { wrapper: Providers, ...options })
 }
 
