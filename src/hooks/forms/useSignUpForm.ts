@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { isError } from 'react-query'
 
-import { useAuth } from '~hooks/useAuth'
+import { useAuth } from '~providers'
 import { SignUpFormValues } from '~types/authForms'
 
 const defaultValues: SignUpFormValues = {

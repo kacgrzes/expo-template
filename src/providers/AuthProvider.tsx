@@ -6,6 +6,8 @@ import { deleteToken, getToken, setToken } from '~services'
 import { SignUpFormValues } from '~types/authForms'
 import { wait } from '~utils'
 
+const [useAuth, Provider] = AuthContext
+
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean | null>(null)
 
@@ -53,5 +55,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [isSignedIn, signIn, signOut, signUp])
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return <Provider value={value}>{children}</Provider>
 }
+
+export { useAuth }
