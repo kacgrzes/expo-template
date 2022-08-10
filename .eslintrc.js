@@ -11,6 +11,8 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'react-native-globals', 'react', 'react-native'],
   extends: [
+    'airbnb',
+    'airbnb/hooks',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-native/all',
