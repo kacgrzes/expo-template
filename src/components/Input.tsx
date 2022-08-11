@@ -9,6 +9,8 @@ import {
   Path,
   RegisterOptions,
   get,
+  ControllerRenderProps,
+  FieldValues,
 } from 'react-hook-form'
 import { TextInput } from 'react-native'
 
@@ -21,7 +23,11 @@ type InputProps = IInputProps & {
   helperText?: string
   errorMessage?: string
   errorIcon?: JSX.Element
-  onInputBlur?: () => ChangeHandler
+  onInputBlur?: () => ChangeHandler | void
+}
+
+interface RenderInputProps {
+  field: ControllerRenderProps<FieldValues, string>
 }
 
 const layoutPropsKeys = [
@@ -128,8 +134,7 @@ export const ControlledInput = forwardRef<TextInput, ControlledInputProps>(
   ({ placeholder, label, control, rules, name, errors, ...props }, ref) => {
     const errorMessage = get(errors, name)?.message
     const renderInput = useCallback(
-      // @ts-expect-error: field parameters should be typed
-      ({ field: { onChange, onBlur, value } }) => (
+      ({ field: { onChange, onBlur, value } }: RenderInputProps) => (
         <Input
           {...props}
           ref={ref}
