@@ -1,7 +1,6 @@
 import { ScrollView, Text, Button, Center, ColorMode } from 'native-base'
 
-import { useCallback, useColorMode } from '~hooks'
-import { useAuth } from '~providers'
+import { useAuth, useCallback, useColorMode } from '~hooks'
 
 export const SettingsScreen = (): JSX.Element => {
   const { colorMode, setColorMode } = useColorMode()

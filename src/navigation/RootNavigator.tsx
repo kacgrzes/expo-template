@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
 
-import { useAuth } from '~providers'
+import { useAuth } from '~hooks'
 import {
   ApplicationInfoScreen,
   NotFoundScreen,

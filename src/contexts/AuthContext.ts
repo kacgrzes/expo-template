@@ -9,4 +9,5 @@ export type AuthContextType = {
   signUp: (data: SignUpFormValues) => void
 }
 
-export const AuthContext = createGenericContext<AuthContextType>('AuthContext')
+export const [useAuthContext, AuthContextProvider] =
+  createGenericContext<AuthContextType>('AuthContext')
