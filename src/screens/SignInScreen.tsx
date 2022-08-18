@@ -1,7 +1,7 @@
 import { Box, Button, Center, Image, Text } from 'native-base'
 import { TextInput } from 'react-native'
 
-import { ControlledCheckbox, ControlledInput } from '~components'
+import { ControlledField } from '~components'
 import { REGEX } from '~constants'
 import { useCallback, useSignInForm, useNavigation, useTranslation, useRef } from '~hooks'
 
@@ -16,24 +16,24 @@ export const SignInScreen = (): JSX.Element => {
   return (
     <Center p={8} flex={1}>
       <Image
-        source={require('~assets/logo.png')}
-        resizeMode="contain"
-        resizeMethod="resize"
-        height={24}
         alt="logo"
         flex={1}
+        height={24}
+        resizeMethod="resize"
+        resizeMode="contain"
+        source={require('~assets/logo.png')}
       />
-      <ControlledInput
-        isRequired
-        returnKeyType="next"
-        label={t('common.email_label')}
+      <ControlledField.Input
+        autoCapitalize="none"
         control={control}
         errors={errors}
-        name="email"
+        isRequired
         keyboardType="email-address"
-        autoCapitalize="none"
+        label={t('common.email_label')}
+        name="email"
         onSubmitEditing={passwordInputRef.current?.focus}
         placeholder={t('common.email_placeholder')}
+        returnKeyType="next"
         rules={{
           required: t('form.required'),
           pattern: {
@@ -41,38 +41,41 @@ export const SignInScreen = (): JSX.Element => {
             message: t('form.invalid_email_format'),
           },
         }}
+        testID="emailInput"
       />
-      <ControlledInput
-        isRequired
-        ref={passwordInputRef}
-        returnKeyType="send"
-        onSubmitEditing={submit}
-        label={t('sign_in_screen.password_label')}
+      <ControlledField.Input
+        autoCapitalize="none"
         control={control}
         errors={errors}
+        isRequired
+        label={t('sign_in_screen.password_label')}
         name="password"
-        type="password"
-        autoCapitalize="none"
+        onSubmitEditing={submit}
         placeholder={t('sign_in_screen.password_placeholder')}
+        ref={passwordInputRef}
+        returnKeyType="send"
         rules={{
           required: t('form.required'),
         }}
+        testID="passwordInput"
+        type="password"
       />
       <Center mt={8}>
-        <ControlledCheckbox
+        <ControlledField.Checkbox
           control={control}
           errors={errors}
-          name="confirm"
           label={t('sign_in_screen.remember_me')}
           mb={4}
+          name="confirm"
+          testID="confirmCheckbox"
         />
         <Button
-          testID="signInButton"
-          onPress={submit}
-          isLoading={isSubmitting}
-          width="64"
           isDisabled={isSubmitting}
+          isLoading={isSubmitting}
           mb={8}
+          onPress={submit}
+          testID="signInButton"
+          width="64"
         >
           {t('sign_in_screen.sign_in')}
         </Button>
@@ -83,6 +86,7 @@ export const SignInScreen = (): JSX.Element => {
           {t('sign_in_screen.sign_up')}
         </Button>
       </Center>
+
       <Box mt={12} />
       {/* TODO: Remove this after implementing signing in with backend  */}
       <Text bold>Correct credentials</Text>
