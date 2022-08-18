@@ -1,19 +1,19 @@
-import { useCallback } from 'react'
-import { ScrollView, View, Text } from 'react-native'
+import { Button, ScrollView, Center } from 'native-base'
 
-import { Button } from '~components'
-import { CheckIcon } from '~components/icons/CheckIcon'
-import { useTheme } from '~hooks'
+import { useTranslation, useCallback } from '~hooks'
 
 export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const {
     navigation: { navigate },
   } = props
-  const { s, colors } = useTheme()
+
+  const { t } = useTranslation()
 
   const goToApplicationInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
   const goToAppSettings = useCallback(() => navigate('Settings'), [navigate])
+  const goToColors = useCallback(() => navigate('Colors'), [navigate])
   const goToComponents = useCallback(() => navigate('Components'), [navigate])
+  const goToTypography = useCallback(() => navigate('Typography'), [navigate])
   const goToHomeStackDetails = useCallback(
     () =>
       navigate('HomeStack', {
@@ -22,23 +22,28 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
       }),
     [navigate]
   )
-  const exampleColors = [colors.error, colors.warningLight, colors.focused]
   return (
-    <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
-      <Text>This is Example screen</Text>
-      <View style={[s.flexRow, s.mB10]}>
-        {exampleColors.map((color) => (
-          <CheckIcon key={color} color={color} />
-        ))}
-      </View>
-      <Button style={s.mB2} onPress={goToApplicationInfo} title="Go to ApplicationInfo" />
-      <Button style={s.mB2} onPress={goToComponents} title="Go to Components" />
-      <Button style={s.mB2} onPress={goToHomeStackDetails} title="Go to Home Stack Details" />
-      <Button style={s.mB10} onPress={goToAppSettings} title="Go to Settings" />
-      <Button.Secondary style={s.mB2} title="Button Seconday" />
-      <Button.Flat style={s.mB2} title="Button flat" />
-      <Button loading disabled style={s.mB2} title="Loading button" />
-      <Button disabled style={s.mB2} title="Disabled button" />
+    <ScrollView p={4}>
+      <Center>
+        <Button size="lg" width="64" mb={2} onPress={goToApplicationInfo}>
+          {t('examples_screen.go_to_application_info')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToColors}>
+          {t('examples_screen.go_to_colors')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToComponents}>
+          {t('examples_screen.go_to_components')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToTypography}>
+          {t('examples_screen.go_to_typography')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToHomeStackDetails}>
+          {t('examples_screen.go_to_home_stack_details')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToAppSettings}>
+          {t('examples_screen.go_to_settings')}
+        </Button>
+      </Center>
     </ScrollView>
   )
 }

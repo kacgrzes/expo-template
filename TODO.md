@@ -53,6 +53,7 @@ CI / CD
 - button
 - form field
 - components library
+- custom fonts
 - prioritze language in language detection
 - scrollview with easy keyboard hide, keyboard avoid view etc
 - setup multiple environments
@@ -70,7 +71,6 @@ CI / CD
 - configure typescript + eslint / tslint + prettier - DONE
 - easy module resolver - DONE
 - typography - DONE
-- custom fonts - DONE
 - theme - DONE
 - ThemeProvider - DONE
 - Dark / Light theme switch - DONE

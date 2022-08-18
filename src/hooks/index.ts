@@ -1,6 +1,14 @@
 // Reexport all the hooks that you use within the project here
 
 export {
+  useAccessibleColors,
+  useColorMode,
+  useColorModeValue,
+  useLayout,
+  useNativeBase,
+  useTheme,
+} from 'native-base'
+export {
   useCallback,
   useContext,
   useDebugValue,
@@ -57,12 +65,10 @@ export {
 } from 'react-query'
 export * from './useAuth'
 export * from './useCachedResources'
-export * from './useColorScheme'
 export * from './useSecurePasword'
 export * from './navigation'
 export * from './forms'
 export * from './useToggle'
 export { useDebounce, useDebouncedCallback, useThrottledCallback } from 'use-debounce'
 export * from './useTimestamp'
-export * from './useTheme'
 export { useNotificationController, useNotifications } from 'react-native-notificated'

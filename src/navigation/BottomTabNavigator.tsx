@@ -5,11 +5,12 @@ import { FC } from 'react'
 import { ExamplesStack } from './ExamplesStack'
 import { HomeStack } from './HomeStack'
 
-import { useCallback, useNavigationTheme } from '~hooks'
+import { useCallback, useNavigationTheme, useTranslation } from '~hooks'
 
 const { Navigator, Screen } = createBottomTabNavigator<MainTabParamList>()
 
 export const BottomTabNavigator: FC = () => {
+  const { t } = useTranslation()
   const { tabBarTheme } = useNavigationTheme()
 
   const screenOptions = useCallback(
@@ -36,8 +37,16 @@ export const BottomTabNavigator: FC = () => {
 
   return (
     <Navigator screenOptions={screenOptions}>
-      <Screen name="HomeStack" component={HomeStack} />
-      <Screen name="ExamplesStack" component={ExamplesStack} />
+      <Screen
+        name="HomeStack"
+        options={{ title: t('navigation.screen_titles.home_stack') }}
+        component={HomeStack}
+      />
+      <Screen
+        name="ExamplesStack"
+        options={{ title: t('navigation.screen_titles.examples_stack') }}
+        component={ExamplesStack}
+      />
     </Navigator>
   )
 }

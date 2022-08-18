@@ -1,30 +1,43 @@
-import { ScrollView } from 'react-native'
+import { ScrollView, Text, Button, Center, ColorMode } from 'native-base'
 
-import { Button, Text } from '~components'
-import { colorSchemesList } from '~constants'
-import { useAuth, useColorScheme, useTheme } from '~hooks'
+import { useAuth, useCallback, useColorMode, useTranslation } from '~hooks'
 
 export const SettingsScreen = (): JSX.Element => {
-  const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()
-  const { s } = useTheme()
+  const { t } = useTranslation()
+  const { colorMode, setColorMode } = useColorMode()
   const { signOut } = useAuth()
+
+  const handleColorSchemeSettingChange = useCallback(
+    (colorScheme: ColorMode) => () => setColorMode(colorScheme),
+    [setColorMode]
+  )
+
   return (
-    <ScrollView contentContainerStyle={[s.flex1, s.itemsCenter, s.justifyCenter]}>
-      <Text>Current theme: {colorSchemeSetting}</Text>
-      {colorSchemesList.map((scheme) => {
-        const isSelected = scheme === colorSchemeSetting
+    <ScrollView>
+      <Center>
+        <Text fontSize="2xl" bold mb={2}>
+          {t('settings_screen.current_theme', { theme: colorMode })}
+        </Text>
+        {(['light', 'dark'] as ColorMode[]).map((scheme) => {
+          const isSelected = scheme === colorMode
 
-        return (
-          <Button
-            key={scheme}
-            style={[s.mB1]}
-            onPress={() => setColorSchemeSetting(scheme)}
-            title={`${scheme}${isSelected ? ' - selected' : ''}`}
-          />
-        )
-      })}
+          return (
+            <Button
+              size="lg"
+              width="64"
+              key={scheme}
+              mb={2}
+              onPress={handleColorSchemeSettingChange(scheme)}
+            >
+              {`${scheme}${isSelected ? t('settings_screen.selected') : ''}`}
+            </Button>
+          )
+        })}
 
-      <Button style={[s.mT10]} onPress={signOut} title="Sign out!" />
+        <Button colorScheme="danger" mt={8} size="lg" width="64" onPress={signOut}>
+          {t('settings_screen.sign_out')}
+        </Button>
+      </Center>
     </ScrollView>
   )
 }

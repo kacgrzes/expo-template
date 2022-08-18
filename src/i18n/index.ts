@@ -18,6 +18,10 @@ i18n
   .use(languageDetector)
   .use(initReactI18next)
   .init({
+    // v4 is not available on android
+    // check this link - https://www.i18next.com/misc/json-format#i-18-next-json-v4
+    // to see the differences between v4 and v3.
+    compatibilityJSON: 'v3',
     resources,
     fallbackLng: 'en',
     react: {
@@ -27,3 +31,5 @@ i18n
       escapeValue: false,
     },
   })
+
+export default i18n

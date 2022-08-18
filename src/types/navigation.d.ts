@@ -12,6 +12,8 @@ declare global {
   type ExampleStackParamList = {
     Examples: undefined
     Components: undefined
+    Colors: undefined
+    Typography: undefined
   }
 
   type MainTabParamList = {

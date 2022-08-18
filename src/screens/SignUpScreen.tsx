@@ -1,39 +1,50 @@
+import { Button, Center } from 'native-base'
+import { RefObject, useRef } from 'react'
 import { TextInput } from 'react-native'
 
-import { Box, Button, Center, ControlledCheckbox, ControlledInput } from '~components'
+import { ControlledField } from '~components'
 import { REGEX } from '~constants'
-import { useRef, useSignUpForm, useTheme, useTranslation } from '~hooks'
+import { useSignUpForm, useTranslation } from '~hooks'
+
+type SignUpFields = {
+  email: RefObject<TextInput>
+  password: RefObject<TextInput>
+}
 
 export const SignUpScreen = () => {
-  const { s } = useTheme()
   const { t } = useTranslation()
-  const emailInputRef = useRef<TextInput>(null)
+
+  const fields: SignUpFields = {
+    email: useRef<TextInput>(null),
+    password: useRef<TextInput>(null),
+  }
 
   const { control, errors, submit, isSubmitting } = useSignUpForm()
 
   return (
-    <Center px={8} flex={1} bg="gray100">
-      <ControlledInput
-        fullWidth
-        label={t('common.user_label')}
+    <Center px={8} flex={1}>
+      <ControlledField.Input
+        mb={2}
+        autoCapitalize="none"
         control={control}
         errors={errors}
-        placeholder={t('common.user_placeholder')}
         name="user"
+        label={t('common.user_label')}
+        placeholder={t('common.user_placeholder')}
         returnKeyType="next"
-        containerStyle={[s.mB2]}
+        onSubmitEditing={fields.email.current?.focus}
       />
-      <ControlledInput
-        fullWidth
+      <ControlledField.Input
+        ref={fields.email}
+        autoCapitalize="none"
         label={t('common.email_label')}
         control={control}
         errors={errors}
         keyboardType="email-address"
         placeholder={t('common.email_placeholder')}
         name="email"
-        type="email"
         returnKeyType="next"
-        onSubmitEditing={emailInputRef.current?.focus}
+        onSubmitEditing={fields.password.current?.focus}
         rules={{
           required: t('form.required'),
           pattern: {
@@ -41,38 +52,46 @@ export const SignUpScreen = () => {
             message: t('form.invalid_email_format'),
           },
         }}
-        containerStyle={[s.mB2]}
+        isRequired
+        mb={2}
       />
-      <ControlledInput
-        fullWidth
+      <ControlledField.Input
+        isRequired
+        mb={16}
+        ref={fields.password}
+        returnKeyType="next"
+        onSubmitEditing={submit}
         label={t('sign_in_screen.password_label')}
         control={control}
         errors={errors}
-        placeholder={t('sign_in_screen.password_placeholder')}
         name="password"
-        type="protected"
-        returnKeyType="send"
-        onSubmitEditing={submit}
-        rules={{ required: t('form.required') }}
-        containerStyle={[s.mB2]}
+        type="password"
+        autoCapitalize="none"
+        placeholder={t('sign_in_screen.password_placeholder')}
+        rules={{
+          required: t('form.required'),
+        }}
       />
-      <Box>
-        <ControlledCheckbox
-          control={control}
-          label={t('sign_up_screen.agree_terms_label')}
-          name="agree"
-          isRequired
-          errors={errors}
-        />
-        <Box mt={2} />
-        <ControlledCheckbox
-          control={control}
-          label={t('sign_up_screen.newsletter_label')}
-          name="newsletter"
-        />
-      </Box>
-      <Box mt={8} />
-      <Button onPress={submit} title="Sign Up" loading={isSubmitting} disabled={isSubmitting} />
+
+      <ControlledField.Checkbox
+        isRequired
+        control={control}
+        errors={errors}
+        name="agree"
+        label={t('sign_up_screen.agree_terms_label')}
+        mb={2}
+      />
+      <ControlledField.Checkbox
+        isRequired
+        control={control}
+        errors={errors}
+        name="newsletter"
+        label={t('sign_up_screen.newsletter_label')}
+        mb={4}
+      />
+      <Button onPress={submit} isLoading={isSubmitting} isDisabled={isSubmitting}>
+        {t('sign_up_screen.sign_up')}
+      </Button>
     </Center>
   )
 }
