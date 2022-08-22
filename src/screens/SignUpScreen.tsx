@@ -2,7 +2,7 @@ import { Button, Center } from 'native-base'
 import { RefObject, useRef } from 'react'
 import { TextInput } from 'react-native'
 
-import { ControlledCheckbox, ControlledInput } from '~components'
+import { ControlledField } from '~components'
 import { REGEX } from '~constants'
 import { useSignUpForm, useTranslation } from '~hooks'
 
@@ -23,7 +23,7 @@ export const SignUpScreen = () => {
 
   return (
     <Center px={8} flex={1}>
-      <ControlledInput
+      <ControlledField.Input
         mb={2}
         autoCapitalize="none"
         control={control}
@@ -34,7 +34,7 @@ export const SignUpScreen = () => {
         returnKeyType="next"
         onSubmitEditing={fields.email.current?.focus}
       />
-      <ControlledInput
+      <ControlledField.Input
         ref={fields.email}
         autoCapitalize="none"
         label={t('common.email_label')}
@@ -55,7 +55,7 @@ export const SignUpScreen = () => {
         isRequired
         mb={2}
       />
-      <ControlledInput
+      <ControlledField.Input
         isRequired
         mb={16}
         ref={fields.password}
@@ -73,7 +73,7 @@ export const SignUpScreen = () => {
         }}
       />
 
-      <ControlledCheckbox
+      <ControlledField.Checkbox
         isRequired
         control={control}
         errors={errors}
@@ -81,7 +81,7 @@ export const SignUpScreen = () => {
         label={t('sign_up_screen.agree_terms_label')}
         mb={2}
       />
-      <ControlledCheckbox
+      <ControlledField.Checkbox
         isRequired
         control={control}
         errors={errors}
@@ -89,7 +89,6 @@ export const SignUpScreen = () => {
         label={t('sign_up_screen.newsletter_label')}
         mb={4}
       />
-
       <Button onPress={submit} isLoading={isSubmitting} isDisabled={isSubmitting}>
         {t('sign_up_screen.sign_up')}
       </Button>

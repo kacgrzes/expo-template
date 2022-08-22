@@ -7,6 +7,30 @@
     "invalid_email_format": "Incorrect e-mail address",
     "required": "This field is required"
   },
+  "navigation": {
+    "prevent_go_back_alert": {
+      "title": "Discard changes?",
+      "description": "You have unsaved changes. Are you sure to discard them and leave the screen?",
+      "dont_leave": "Don't leave",
+      "discard": "Discard"
+    },
+    "screen_titles": {
+      "home_stack": "HomeStack",
+      "examples_stack": "ExamplesStack",
+      "examples": "Examples",
+      "components": "Components",
+      "colors": "Colors",
+      "typography": "Typography",
+      "home": "Home",
+      "details": "Details",
+      "sign_in": "Sign in",
+      "sign_up": "Sign up",
+      "main_tab": "MainTab",
+      "settings": "Settings",
+      "application_info": "ApplicationInfo",
+      "not_found": "NotFound"
+    }
+  },
   "application_info_screen": {
     "navigation_info": "When you will try to go back it will double ask if you really want to leave \n"
   },
@@ -33,11 +57,22 @@
   "colors_screen": {
     "colors_label": "Colors"
   },
+  "typography_screen": {
+    "text_font_size": "Text.fontSize: ",
+    "heading_size": "Heading.size: "
+  },
+  "details_screen": {
+    "title": "This is details screen",
+    "open_bottom_sheet": "Open BottomSheetModal",
+    "screen_params": "Screen params: {{params}}",
+    "awesome": "Awesome 🎉"
+  },
   "examples_screen": {
     "header": "This is Example screen",
     "go_to_application_info": "Go to ApplicationInfo",
     "go_to_colors": "Go to Colors",
     "go_to_components": "Go to Components",
+    "go_to_typography": "Go to Typography",
     "go_to_home_stack_details": "Go to HomeStackDetails",
     "go_to_settings": "Go to Settings"
   },
@@ -62,7 +97,16 @@
       "subtle": "Button subtle",
       "ghost": "Button ghost",
       "disabled": "Button disabled"
+    },
+    "notification": {
+      "title": "In-app notification example",
+      "description": "by react-native-notificated 🎉"
     }
+  },
+  "settings_screen": {
+    "current_theme": "Current theme: {{theme}}",
+    "sign_out": "Sign out!",
+    "selected": " - selected"
   },
   "common": {
     "add": "Add",

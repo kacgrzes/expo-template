@@ -1,8 +1,9 @@
 import { ScrollView, Text, Button, Center, ColorMode } from 'native-base'
 
-import { useAuth, useCallback, useColorMode } from '~hooks'
+import { useAuth, useCallback, useColorMode, useTranslation } from '~hooks'
 
 export const SettingsScreen = (): JSX.Element => {
+  const { t } = useTranslation()
   const { colorMode, setColorMode } = useColorMode()
   const { signOut } = useAuth()
 
@@ -15,7 +16,7 @@ export const SettingsScreen = (): JSX.Element => {
     <ScrollView>
       <Center>
         <Text fontSize="2xl" bold mb={2}>
-          Current theme: {colorMode}
+          {t('settings_screen.current_theme', { theme: colorMode })}
         </Text>
         {(['light', 'dark'] as ColorMode[]).map((scheme) => {
           const isSelected = scheme === colorMode
@@ -28,13 +29,13 @@ export const SettingsScreen = (): JSX.Element => {
               mb={2}
               onPress={handleColorSchemeSettingChange(scheme)}
             >
-              {`${scheme}${isSelected ? ' - selected' : ''}`}
+              {`${scheme}${isSelected ? t('settings_screen.selected') : ''}`}
             </Button>
           )
         })}
 
         <Button colorScheme="danger" mt={8} size="lg" width="64" onPress={signOut}>
-          Sign out!
+          {t('settings_screen.sign_out')}
         </Button>
       </Center>
     </ScrollView>

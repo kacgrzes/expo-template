@@ -1,6 +1,6 @@
 import { Center, Divider, Heading, Row, ScrollView, Switch, Text } from 'native-base'
 
-import { useColorMode } from '~hooks'
+import { useColorMode, useTranslation } from '~hooks'
 
 export const fontSizes = [
   'xs',
@@ -21,6 +21,7 @@ export const headingSizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl']
 
 export const TypographyScreen = (): JSX.Element => {
   const { toggleColorMode, colorMode } = useColorMode()
+  const { t } = useTranslation()
   return (
     <ScrollView>
       <Center>
@@ -33,7 +34,7 @@ export const TypographyScreen = (): JSX.Element => {
           <Switch mx={4} my={8} value={colorMode === 'dark'} onChange={toggleColorMode} />
           <Text>🌚</Text>
         </Row>
-        <Text fontSize="4xl">Text.fontSize: </Text>
+        <Text fontSize="4xl">{t('typography_screen.text_font_size')}</Text>
         {fontSizes.map((fontSize) => (
           <Text key={fontSize} fontSize={fontSize}>
             Text - {fontSize}
@@ -42,7 +43,7 @@ export const TypographyScreen = (): JSX.Element => {
 
         <Divider />
 
-        <Text fontSize="4xl">Heding.size: </Text>
+        <Text fontSize="4xl">{t('typography_screen.heading_size')}</Text>
         {headingSizes.map((size) => (
           <Heading key={size} size={size}>
             Heading - {size}

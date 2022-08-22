@@ -5,12 +5,14 @@ import {
 } from '@gorhom/bottom-sheet'
 import { Box, Center, Text, Button } from 'native-base'
 
-import { useCallback, useMemo, useRef } from '~hooks'
+import { useCallback, useMemo, useRef, useTranslation } from '~hooks'
 
 export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   const {
     route: { params },
   } = props
+
+  const { t } = useTranslation()
 
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null)
@@ -36,9 +38,9 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
 
   return (
     <Center>
-      <Text>This is details screen</Text>
-      <Button onPress={openModal}>Open BottomSheetModal</Button>
-      <Text>Screen params {JSON.stringify(params)}</Text>
+      <Text>{t('details_screen.title')}</Text>
+      <Button onPress={openModal}>{t('details_screen.open_bottom_sheet')}</Button>
+      <Text>{t('details_screen.screen_params', { params: JSON.stringify(params) })}</Text>
       <BottomSheetModal
         ref={bottomSheetModalRef}
         index={0}
@@ -47,7 +49,7 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
         backdropComponent={renderBackdrop}
       >
         <Box p={4}>
-          <Text color="black">Awesome 🎉</Text>
+          <Text color="black">{t('details_screen.awesome')}</Text>
         </Box>
       </BottomSheetModal>
     </Center>
