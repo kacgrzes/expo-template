@@ -3,14 +3,14 @@ import { Controller, get } from 'react-hook-form'
 import { TextInput } from 'react-native'
 
 import { Field } from '../../molecules'
-import type { ControlledInputProps } from './types'
+import type { ControlledInputProps, RenderInputProps } from './types'
 
 export const Input = forwardRef<TextInput, ControlledInputProps>(
   ({ control, name, errors, rules, children, ...props }, ref) => {
     const errorMessage = get(errors, name)?.message
 
     const renderInput = useCallback(
-      ({ field: { onChange, name, ...fieldProps } }) => (
+      ({ field: { onChange, name, ...fieldProps } }: RenderInputProps) => (
         <Field.Input
           {...props}
           {...fieldProps}

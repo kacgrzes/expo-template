@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Control, FieldErrors, Path, RegisterOptions } from 'react-hook-form'
+import {
+  Control,
+  ControllerRenderProps,
+  FieldErrors,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from 'react-hook-form'
 
 import { FieldCheckboxProps, FieldInputProps } from '~components/molecules'
 
@@ -22,4 +29,8 @@ export type ControlledInputProps = FieldInputProps & {
   control: Control<any>
   errors: FieldErrors<any>
   rules?: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs'>
+}
+
+export interface RenderInputProps {
+  field: ControllerRenderProps<FieldValues, string>
 }
