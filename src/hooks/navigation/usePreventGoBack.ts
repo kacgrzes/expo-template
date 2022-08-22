@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Alert } from 'react-native'
 
 export const usePreventGoBack = (shouldPrevent = true): void => {
+  const { t } = useTranslation()
   const navigation = useNavigation()
 
   useEffect(() => {
@@ -15,12 +17,16 @@ export const usePreventGoBack = (shouldPrevent = true): void => {
       event?.preventDefault()
 
       Alert.alert(
-        'Discard changes?',
-        'You have unsaved changes. Are you sure to discard them and leave the screen?',
+        t('navigation.prevent_go_back_alert.title'),
+        t('navigation.prevent_go_back_alert.description'),
         [
-          { text: "Don't leave", style: 'cancel', onPress: () => undefined },
           {
-            text: 'Discard',
+            text: t('navigation.prevent_go_back_alert.dont_leave'),
+            style: 'cancel',
+            onPress: () => undefined,
+          },
+          {
+            text: t('navigation.prevent_go_back_alert.discard'),
             style: 'destructive',
             onPress: () => navigation.dispatch(event?.data?.action),
           },
@@ -31,5 +37,5 @@ export const usePreventGoBack = (shouldPrevent = true): void => {
     navigation.addListener('beforeRemove', callback)
 
     return () => navigation.removeListener('beforeRemove', callback)
-  }, [navigation, shouldPrevent])
+  }, [navigation, shouldPrevent, t])
 }

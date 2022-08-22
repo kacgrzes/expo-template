@@ -13,14 +13,14 @@ export const ComponentsScreen = (): JSX.Element => {
     () =>
       notify('info', {
         params: {
-          title: 'In-app notification example',
-          description: 'by react-native-notificated 🎉',
+          title: t('components_screen.notification.title'),
+          description: t('components_screen.notification.description'),
           onPress: () => {
             Linking.openURL('https://thewidlarzgroup.github.io/react-native-notificated/')
           },
         },
       }),
-    [notify]
+    [notify, t]
   )
 
   return (

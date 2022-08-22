@@ -35,7 +35,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
           {t('examples_screen.go_to_components')}
         </Button>
         <Button size="lg" width="64" mb={2} onPress={goToTypography}>
-          Go to Typography
+          {t('examples_screen.go_to_typography')}
         </Button>
         <Button size="lg" width="64" mb={2} onPress={goToHomeStackDetails}>
           {t('examples_screen.go_to_home_stack_details')}

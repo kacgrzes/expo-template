@@ -6,9 +6,9 @@ afterEach(cleanup)
 
 describe('SignInScreen', () => {
   it('should render SignIn screen with the key elements', () => {
-    const { getByPlaceholderText, getByRole, getAllByRole } = render(<SignInScreen />)
-    const emailInput = getByPlaceholderText('john@doe.com')
-    const passwordInput = getByPlaceholderText('password')
+    const { getByTestId, getByRole, getAllByRole } = render(<SignInScreen />)
+    const emailInput = getByTestId('emailInput')
+    const passwordInput = getByTestId('passwordInput')
     const confirmationCheckbox = getByRole('checkbox')
     const buttons = getAllByRole('button')
 
@@ -19,9 +19,9 @@ describe('SignInScreen', () => {
   })
 
   it('should display errors on required fields', async () => {
-    const { getByTestId, findAllByText, getByPlaceholderText, update } = render(<SignInScreen />)
-    const emailInput = getByPlaceholderText('john@doe.com')
-    const passwordInput = getByPlaceholderText('password')
+    const { findAllByText, getByTestId, update } = render(<SignInScreen />)
+    const emailInput = getByTestId('emailInput')
+    const passwordInput = getByTestId('passwordInput')
     const signInButton = getByTestId('signInButton')
 
     expect(signInButton).toBeDefined()
@@ -37,9 +37,9 @@ describe('SignInScreen', () => {
   })
 
   it('should validate email format', async () => {
-    const { getByPlaceholderText, getByText, getByTestId, update } = render(<SignInScreen />)
+    const { getByTestId, getByText, update } = render(<SignInScreen />)
 
-    const emailInput = getByPlaceholderText('john@doe.com')
+    const emailInput = getByTestId('emailInput')
     fireEvent.changeText(emailInput, 'test@test')
 
     const signInButton = getByTestId('signInButton')
