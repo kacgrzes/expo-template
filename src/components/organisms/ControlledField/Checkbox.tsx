@@ -1,7 +1,7 @@
 import { Controller, ControllerRenderProps, get } from 'react-hook-form'
 
 import { Field } from '../../molecules'
-import type { ControlledCheckboxProps } from './types'
+import type { ControlledCheckboxProps, RenderInputProps } from './types'
 
 import { useCallback } from '~hooks'
 
@@ -20,7 +20,7 @@ export const Checkbox: React.FC<ControlledCheckboxProps> = ({
   )
 
   const renderCheckbox = useCallback(
-    ({ field }) => (
+    ({ field }: RenderInputProps) => (
       <Field>
         <Field.Checkbox
           {...props}

@@ -45,6 +45,11 @@ declare global {
   // - HomeScreenNavigationProps['route']
   // - HomeScreenNavigationProps['navigation']
 
+  type BottomTabScreenProps = BaseBottomTabScreenProps<
+    MainTabParamList,
+    'ExamplesStack' | 'HomeStack'
+  >
+
   // Root stack
   type RootStackScreenProps = RootStackComposite
 

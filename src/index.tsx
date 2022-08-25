@@ -31,6 +31,7 @@ const App = (): JSX.Element => {
   return (
     <NativeBaseProvider theme={theme} colorModeManager={colorModeManager} config={nativeBaseConfig}>
       {/* NativeBaseProvider includes SafeAreaProvider so that we don't have to include it in a root render tree */}
+      {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
       <NotificationsProvider>
         <QueryClientProvider client={queryClient}>
           <AuthProvider>

@@ -9,12 +9,14 @@ import { useCallback, useNavigationTheme, useTranslation } from '~hooks'
 
 const { Navigator, Screen } = createBottomTabNavigator<MainTabParamList>()
 
+type ScreenOptions = (params: BottomTabScreenProps) => BottomTabNavigationOptions
+
 export const BottomTabNavigator: FC = () => {
   const { t } = useTranslation()
   const { tabBarTheme } = useNavigationTheme()
 
-  const screenOptions = useCallback(
-    ({ route }): BottomTabNavigationOptions => ({
+  const screenOptions = useCallback<ScreenOptions>(
+    ({ route }) => ({
       tabBarIcon: ({ color, size }) => {
         let iconName: keyof typeof Feather.glyphMap
 
