@@ -63,7 +63,6 @@ export {
   useQueryClient,
   useQueryErrorResetBoundary,
 } from 'react-query'
-export * from './useAuth'
 export * from './useCachedResources'
 export * from './useSecurePasword'
 export * from './navigation'
@@ -72,3 +71,4 @@ export * from './useToggle'
 export { useDebounce, useDebouncedCallback, useThrottledCallback } from 'use-debounce'
 export * from './useTimestamp'
 export { useNotificationController, useNotifications } from 'react-native-notificated'
+export { useAuthContext as useAuth } from '~contexts'

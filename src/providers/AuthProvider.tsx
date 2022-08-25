@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 
-import { AuthContext, AuthContextType } from '~contexts'
+import { AuthContextProvider, AuthContextType } from '~contexts'
 import { useCallback, useEffect, useMemo, useState } from '~hooks'
 import { deleteToken, getToken, setToken } from '~services'
 import { SignUpFormValues } from '~types/authForms'
@@ -53,5 +53,5 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [isSignedIn, signIn, signOut, signUp])
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return <AuthContextProvider value={value}>{children}</AuthContextProvider>
 }
