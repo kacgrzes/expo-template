@@ -1,0 +1,22 @@
+{
+  "todohighlight.keywords": [
+    {
+      "text": "CONFIG:",
+      "color": "#FFF",
+      "backgroundColor": "green",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "HACK:",
+      "color": "#000",
+      "backgroundColor": "red",
+      "isWholeLine": false
+    },
+    {
+      "text": "TODO:",
+      "color": "#fff",
+      "backgroundColor": "darkOrange",
+      "isWholeLine": false
+    }
+  ]
+}
