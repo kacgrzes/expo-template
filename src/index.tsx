@@ -11,6 +11,7 @@ import { registerRootComponent } from 'expo'
 import { StyleSheet } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { QueryClientProvider, QueryClient } from 'react-query'
+import Reactotron from 'reactotron-react-native'
 
 import { AppLoading } from '~components'
 import { theme, nativeBaseConfig } from '~constants'
@@ -23,6 +24,13 @@ const DISABLE_CONSOLE_ENABLE_MOCKED_SERVER = false
 
 if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
   startMockedServer()
+}
+
+const isUsingReactotron = false
+if (__DEV__ && isUsingReactotron && !process.env.JEST_WORKER_ID) {
+  import('../ReactotronConfig').then(() => console.log('Reactotron Configured'))
+
+  console.log = Reactotron.log || console.log
 }
 
 const queryClient = new QueryClient({})

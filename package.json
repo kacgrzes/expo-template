@@ -103,6 +103,7 @@
     "react-native-svg": "12.3.0",
     "react-native-web": "~0.18.7",
     "react-query": "^3.39.0",
+    "reactotron-react-native": "^5.0.3",
     "use-debounce": "^8.0.1"
   },
   "resolutions": {
