@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import * as Font from 'expo-font'
 import { useEffect, useState } from 'react'
 
+import { checkForUpdates } from '~utils'
 export const useCachedResources = (): boolean => {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
 
@@ -15,6 +16,7 @@ export const useCachedResources = (): boolean => {
           'lato-bold': require('assets/fonts/Lato-Bold.ttf'),
           'lato-extra-bold': require('assets/fonts/Lato-Black.ttf'),
         })
+        await checkForUpdates(true)
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e)
