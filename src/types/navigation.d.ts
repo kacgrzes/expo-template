@@ -14,6 +14,7 @@ declare global {
     Components: undefined
     Colors: undefined
     Typography: undefined
+    DataFromBeScreen: undefined
   }
 
   type MainTabParamList = {

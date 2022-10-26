@@ -1,4 +1,5 @@
 export * from './checkForUpdates'
+export * from './getApiError'
 export * from './getNavigator'
 export * from './hex2rgba'
 export * from './noop'
