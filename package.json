@@ -22,7 +22,6 @@
   },
   "author": "BinarApps",
   "license": "MIT",
-  "main": "src/index.tsx",
   "scripts": {
     "android": "cross-env cross-env IS_DEV=1 expo start --android",
     "build:production:android": "yarn prepare:production && eas build --platform android --profile production",

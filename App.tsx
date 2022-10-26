@@ -6,8 +6,6 @@ import 'react-native-gesture-handler'
 import 'react-native-reanimated'
 import '~i18n'
 
-import { registerRootComponent } from 'expo'
-
 import { Navigation } from '~navigation'
 import { Providers } from '~providers'
 import { startMockedServer } from '~services'
@@ -26,7 +24,5 @@ const App = (): JSX.Element => {
     </Providers>
   )
 }
-
-registerRootComponent(App)
 
 export default App
