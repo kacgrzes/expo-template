@@ -1,0 +1,56 @@
+diff --git a/node_modules/native-base/lib/commonjs/components/primitives/Select/Select.js b/node_modules/native-base/lib/commonjs/components/primitives/Select/Select.js
+index ed68b62..cb78457 100644
+--- a/node_modules/native-base/lib/commonjs/components/primitives/Select/Select.js
++++ b/node_modules/native-base/lib/commonjs/components/primitives/Select/Select.js
+@@ -77,6 +77,12 @@ const Select = ({
+ 
+   const [isFocused, setIsFocused] = _react.default.useState(false);
+ 
++  _react.default.useEffect(() => {
++    if (isFocusedProp) {
++      setIsOpen(true)
++    }
++  }, [isFocusedProp])
++
+   const {
+     focusProps,
+     isFocusVisible
+diff --git a/node_modules/native-base/lib/commonjs/core/color-mode/hooks.js b/node_modules/native-base/lib/commonjs/core/color-mode/hooks.js
+index 8c5c5bb..d99d546 100644
+--- a/node_modules/native-base/lib/commonjs/core/color-mode/hooks.js
++++ b/node_modules/native-base/lib/commonjs/core/color-mode/hooks.js
+@@ -47,9 +47,9 @@ const useAppState = () => {
+   const subscription = _react.default.useMemo(() => ({
+     getCurrentValue: () => _reactNative.AppState.currentState,
+     subscribe: callback => {
+-      _reactNative.AppState.addEventListener('change', callback);
++      const sb = _reactNative.AppState.addEventListener('change', callback);
+ 
+-      return () => _reactNative.AppState.removeEventListener('change', callback);
++      return () => sb.remove()
+     }
+   }), []);
+ 
+diff --git a/node_modules/native-base/src/components/primitives/Select/Select.tsx b/node_modules/native-base/src/components/primitives/Select/Select.tsx
+index 5e4b361..1d050d0 100644
+--- a/node_modules/native-base/src/components/primitives/Select/Select.tsx
++++ b/node_modules/native-base/src/components/primitives/Select/Select.tsx
+@@ -1,4 +1,4 @@
+-import React, { forwardRef, memo } from 'react';
++import React, { forwardRef, memo, useEffect } from 'react';
+ import type { ISelectProps } from './types';
+ import { Platform, Keyboard } from 'react-native';
+ import { Actionsheet } from '../../composites/Actionsheet';
+@@ -49,6 +49,12 @@ const Select = (
+   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+   const [isFocused, setIsFocused] = React.useState<boolean>(false);
+ 
++  useEffect(() => {
++    if (isFocusedProp) {
++      setIsOpen(true)
++    }
++  }, [isFocusedProp])
++
+   const { focusProps, isFocusVisible } = useFocusRing();
+   const { hoverProps, isHovered } = useHover({ isDisabled }, _ref);
+ 
