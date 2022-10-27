@@ -15,6 +15,7 @@ export const useCachedResources = (): boolean => {
           'lato-regular': require('assets/fonts/Lato-Regular.ttf'),
           'lato-bold': require('assets/fonts/Lato-Bold.ttf'),
           'lato-extra-bold': require('assets/fonts/Lato-Black.ttf'),
+          IcoMoon: require('~assets/icomoon/icomoon.ttf'),
         })
         await checkForUpdates(true)
       } catch (e) {

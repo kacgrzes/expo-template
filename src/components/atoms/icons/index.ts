@@ -1,2 +1,4 @@
 export * from './CheckIcon'
-export type { IconProps } from './types'
+export * from './Icon'
+
+export type { CheckIconProps } from './types'
