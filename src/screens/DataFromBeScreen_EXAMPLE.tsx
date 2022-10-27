@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import { StyleSheet, ListRenderItem } from 'react-native'
 
 import { useGetCity_EXAMPLE } from '~query-hooks'
-import { CatFactType } from '~services'
+import { CatFactType } from '~types/catFacts'
 export const DataFromBeScreen_EXAMPLE = () => {
   const { dataList, isFetchedDataAfterMount } = useGetCity_EXAMPLE()
 
