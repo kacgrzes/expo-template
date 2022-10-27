@@ -37,6 +37,7 @@ Version in the `package.json` is one to one the latest expo on which the templat
 - tests with jest and @testing-library/react-native
 - animations with `reanimated` and `moti`
 - `@gorhom/bottom-sheet`
+- Reactotron
 
 See all the details in the documentation.
 
