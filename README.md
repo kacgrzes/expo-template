@@ -1,11 +1,11 @@
-![Logo](assets/logo.png)
+<!-- ![Logo](assets/logo.png) -->
 
-[![MIT License](https://img.shields.io/npm/l/@kacgrzes/expo-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+<!-- [![MIT License](https://img.shields.io/npm/l/@kacgrzes/expo-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![MIT License](https://img.shields.io/npm/v/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/v/@kacgrzes/expo-template?style=flat-square)
 [![MIT License](https://img.shields.io/npm/dt/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/dt/@kacgrzes/expo-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square)](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square)
+[![MIT License](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square)](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square) -->
 
-# @kacgrzes/expo-template
+# @binarapps/expo-ts-template
 
 This is a template to be used with expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included so it's easier to start coding the app itself without all the necessary boilerplate setup. It has:
 
@@ -13,9 +13,9 @@ Version in the `package.json` is one to one the latest expo on which the templat
 
 ## Features
 
-[![MIT License](https://img.shields.io/npm/types/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/types/@kacgrzes/expo-template?style=flat-square)
+<!-- [![MIT License](https://img.shields.io/npm/types/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/types/@kacgrzes/expo-template?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)
+[![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square) -->
 
 - TypeScript support
 - Expo
@@ -45,22 +45,23 @@ See all the details in the documentation.
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-## Installation
+<!-- TODO: Add instlation instruction -->
+<!-- ## Installation
 
 Init expo with this template using:
 
 ```bash
   expo init --template=@kacgrzes/expo-template <name of your app>
-```
+``` -->
 
-### Working with designer in your project
+## Working with designer in your project
 
 Expo template, you are going to use - bundles native-base ui lib out of the box.
 To have the best starting experience in your project - write a dm to your designer that they should use [NativeBase Figma Design Kit](https://www.figma.com/community/file/1050753649783931446)
 
-## Documentation
+<!-- ## Documentation
 
-[Documentation](https://linktodocumentation)
+[Documentation](https://linktodocumentation) -->
 
 ## Demo
 
@@ -117,3 +118,6 @@ If you have any feedback, please reach out to me at kacgrzes@gmail.com
 
 - [@kacgrzes](https://www.github.com/kacgrzes)
 - [@MateuszRostkowski](https://www.github.com/MateuszRostkowski)
+- [@MSzalowski](https://www.github.com/MSzalowski)
+- [@zagoorland](https://www.github.com/zagoorland)
+- [@lukasz-patalan](https://github.com/lukasz-patalan)

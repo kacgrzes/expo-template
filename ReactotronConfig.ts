@@ -31,3 +31,5 @@ Reactotron?.setAsyncStorageHandler?.(AsyncStorage)
     overlay: false,
   })
   .connect()
+
+console.log = Reactotron.log || console.log
