@@ -146,8 +146,10 @@ If you have any feedback, please reach out to me at kacgrzes@gmail.com
 
 ## Contributors
 
-- [@kacgrzes](https://www.github.com/kacgrzes)
-- [@MateuszRostkowski](https://www.github.com/MateuszRostkowski)
-- [@MSzalowski](https://www.github.com/MSzalowski)
-- [@zagoorland](https://www.github.com/zagoorland)
-- [@lukasz-patalan](https://github.com/lukasz-patalan)
+- [Kacper Grzeszczyk](https://www.github.com/kacgrzes) - @kacgrzes
+- [Mateusz Rostkowski](https://www.github.com/MateuszRostkowski) - @MateuszRostkowski
+- [Michał Szalowski](https://www.github.com/MSzalowski) - @MSzalowski
+- [Jakub Zagórski](https://www.github.com/zagoorland) - @zagoorland
+- [Łukasz Patalan](https://github.com/lukasz-patalan) - @lukasz
+- [Mario Gliwa](https://github.com/mario688) - @mario688
+- [Michał Baumruck](https://github.com/micbaumr) - @micbaumr
