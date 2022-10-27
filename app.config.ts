@@ -17,7 +17,7 @@ type Setup = { [key in Environments]: string }
 const adaptiveIconPath = './assets/icons/android/adaptive-icon-'
 const appIconPath = './assets/icons/ios/icon-'
 
-// CONFIG: Add your eas build config here !!
+// CONFIG: Add your eas build config here !! More details about the following parameters, and other available configs -> https://docs.expo.dev/build-reference/eas-json/
 export const APP_CONFIG = {
   androidPackageName: 'your_android_package_name', // CONFIG: Add your android package name here
   appName: 'your_app_name', // CONFIG: Add your app name here
@@ -25,7 +25,6 @@ export const APP_CONFIG = {
   iosBundleIdentifier: 'your_ios_bundle_identifier', // CONFIG: Add your ios bundle identifier here
   isDev: process.env.IS_DEV === '1',
   isExpoGo: process.env.IS_EXPO_GO === '1',
-  schema: 'your_schema_name', // CONFIG: Add your schema name
 } as const
 
 const runtimeVersion = { policy: APP_CONFIG.isDev ? 'sdkVersion' : 'appVersion' } as const
@@ -64,11 +63,6 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
     staging: `${APP_CONFIG.iosBundleIdentifier}.stg`,
     qa: `${APP_CONFIG.iosBundleIdentifier}.qa`,
   },
-  schema: {
-    production: `${APP_CONFIG.schema}`,
-    staging: `${APP_CONFIG.schema}-stg`,
-    qa: `${APP_CONFIG.schema}-qa`,
-  },
 } as const
 
 export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
@@ -105,7 +99,6 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     name: EAS_ENV_CONFIG.appName[ENVIRONMENT],
     owner: config.owner || 'binarapps',
     runtimeVersion,
-    scheme: EAS_ENV_CONFIG.schema[ENVIRONMENT],
     updates: { url: `https://u.expo.dev/${APP_CONFIG.easProjectId}` },
   }
 }
