@@ -7,7 +7,6 @@
     "owner": "binarapps",
     "userInterfaceStyle": "automatic",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,14 +22,10 @@
       "bundleIdentifier": "com.binarapps.template.dev"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
       "jsEngine": "hermes"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icons/web/favicon.png"
     }
   }
 }

@@ -1,22 +1,60 @@
 {
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "ios": {
-        "simulator": true
-      }
+    "production": {
+      "android": {
+        "autoIncrement": true,
+        "buildType": "apk"
+      },
+      "channel": "production",
+      "distribution": "store",
+      "ios": { "autoIncrement": "buildNumber" }
+    },
+    "staging": {
+      "android": {
+        "autoIncrement": true,
+        "buildType": "apk"
+      },
+      "channel": "staging",
+      "distribution": "store",
+      "ios": { "autoIncrement": "buildNumber" }
     },
     "qa": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
-    "preview": {
-      "distribution": "internal"
-    },
-    "production": {}
+      "android": {
+        "autoIncrement": true,
+        "buildType": "apk"
+      },
+      "channel": "qa",
+      "distribution": "store",
+      "ios": { "autoIncrement": "buildNumber" }
+    }
   },
   "cli": {
+    "appVersionSource": "remote",
     "version": ">= 0.53.1"
+  },
+  // CONFIG: Add submitting to store logic - more info (https://docs.expo.dev/submit/eas-json/)
+  // "android":{
+  //   "serviceAccountKeyPath": "path_to_your_service_account_key",
+  //   "track": "production"
+  // },
+  //  "ios":{ "appleId": "your_apple_id",
+  //    "ascAppId": "your_appStore_app_id",
+  //    "appleTeamId": "your_apple_team_id",
+  //    "appName": "your_app_name",
+  //    "language": "your_app_language f.e en-US"
+  // }
+  "submit": {
+    "production": {
+      "android": {},
+      "ios": {}
+    },
+    "staging": {
+      "android": {},
+      "ios": {}
+    },
+    "qa": {
+      "android": {},
+      "ios": {}
+    }
   }
 }
