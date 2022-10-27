@@ -14,6 +14,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const goToColors = useCallback(() => navigate('Colors'), [navigate])
   const goToComponents = useCallback(() => navigate('Components'), [navigate])
   const goToTypography = useCallback(() => navigate('Typography'), [navigate])
+  const goToCityListScreen_EXAMPLE = useCallback(() => navigate('DataFromBeScreen'), [navigate])
   const goToHomeStackDetails = useCallback(
     () =>
       navigate('HomeStack', {
@@ -42,6 +43,9 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
         </Button>
         <Button size="lg" width="64" mb={2} onPress={goToAppSettings}>
           {t('examples_screen.go_to_settings')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToCityListScreen_EXAMPLE}>
+          {t('examples_screen.go_to_screen_with_BEdata')}
         </Button>
       </Center>
     </ScrollView>

@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import { useTranslation } from '~hooks'
 import { ColorsScreen, ComponentsScreen, ExamplesScreen, TypographyScreen } from '~screens'
+import { DataFromBeScreen_EXAMPLE } from '~screens/DataFromBeScreen_EXAMPLE'
 
 const { Navigator, Screen } = createStackNavigator<ExampleStackParamList>()
 
@@ -28,6 +29,11 @@ export const ExamplesStack = (): JSX.Element => {
         name="Typography"
         options={{ title: t('navigation.screen_titles.typography') }}
         component={TypographyScreen}
+      />
+      <Screen
+        name="DataFromBeScreen"
+        options={{ title: t('navigation.screen_titles.examples') }}
+        component={DataFromBeScreen_EXAMPLE}
       />
     </Navigator>
   )

@@ -74,7 +74,8 @@
     "go_to_components": "Go to Components",
     "go_to_typography": "Go to Typography",
     "go_to_home_stack_details": "Go to HomeStackDetails",
-    "go_to_settings": "Go to Settings"
+    "go_to_settings": "Go to Settings",
+    "go_to_screen_with_BEdata": "Go to screen with data from BE"
   },
   "components_screen": {
     "test_notification": "Test notification",
