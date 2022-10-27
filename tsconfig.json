@@ -13,6 +13,7 @@
     "typeRoots": ["node_modules/@types", "src/types"],
     "jsx": "react-native",
     "lib": ["es6", "dom", "esnext"],
+    "module": "ESNext",
     "target": "esnext",
     "skipLibCheck": true
   },
