@@ -12,5 +12,6 @@ export const getColorValue = ({ color, colors }: GetColorValueProps): string => 
   const [main, number] = color.split('.') as unknown as [string, string]
 
   // @ts-expect-error: native base color literal
-  return number ? colors[main][number] : colors[main]
+  const colorToReturn = number ? colors[main][number] : colors[main]
+  return colorToReturn || color
 }

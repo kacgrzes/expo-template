@@ -1,6 +1,7 @@
 import * as Linking from 'expo-linking'
 import { VStack, Heading, Divider, Button, ScrollView } from 'native-base'
 
+import { Icon } from '~components'
 import { useCallback, useNotifications, useTranslation } from '~hooks'
 
 const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
@@ -44,7 +45,8 @@ export const ComponentsScreen = (): JSX.Element => {
           </Button>
         ))}
         <Button mb={2} isLoading variant="link" />
-        <Button mb={2} isDisabled>
+        <Icon name="account-box-fill" size={24} color={'amber.600'} />
+        <Button mb={4} isDisabled>
           {t('components_screen.button_variants.disabled')}
         </Button>
       </VStack>

@@ -1,9 +1,9 @@
-import { Feather } from '@expo/vector-icons'
-import { Input as NBInput, useTheme, Pressable as Touchable } from 'native-base'
+import { Input as NBInput, Pressable as Touchable } from 'native-base'
 import { forwardRef } from 'react'
 import { TextInput } from 'react-native'
 
 import type { InputProps } from '.'
+import { Icon } from './Icon'
 
 import { useSecurePassword } from '~hooks'
 
@@ -12,7 +12,6 @@ import { useSecurePassword } from '~hooks'
  */
 export const Input = forwardRef<TextInput, InputProps>(
   ({ secureTextIconName, secureTextIconColor, secureTextIconSize = 24, ...props }, ref) => {
-    const { colors } = useTheme()
     const { securePassword, toggleSecurePassword, iconName } = useSecurePassword(props.type)
     return (
       <NBInput
@@ -24,9 +23,9 @@ export const Input = forwardRef<TextInput, InputProps>(
         rightElement={
           props.type === 'password' ? (
             <Touchable mr={2} onPress={toggleSecurePassword}>
-              <Feather
+              <Icon
                 name={secureTextIconName || iconName}
-                color={secureTextIconColor || colors.gray['400']}
+                color={secureTextIconColor || 'gray.400'}
                 size={secureTextIconSize}
               />
             </Touchable>

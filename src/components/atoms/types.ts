@@ -1,7 +1,8 @@
-import { Feather } from '@expo/vector-icons'
 import { IBoxProps, Theme, IInputProps } from 'native-base'
-import { ComponentProps } from 'react'
 import { ViewStyle } from 'react-native'
+
+import { IconNames } from '~types/icon'
+import { ColorNames } from '~types/native-base'
 
 export type AbsoluteProps = Omit<IBoxProps, 'position'>
 
@@ -13,7 +14,7 @@ export type SpacerProps = {
 }
 
 export type InputProps = IInputProps & {
-  secureTextIconName?: ComponentProps<typeof Feather>['name']
-  secureTextIconColor?: string
+  secureTextIconName?: IconNames
+  secureTextIconColor?: ColorNames
   secureTextIconSize?: number
 }
