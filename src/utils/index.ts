@@ -1,5 +1,6 @@
 export * from './checkForUpdates'
 export * from './getApiError'
+export * from './getColorValue'
 export * from './getNavigator'
 export * from './hex2rgba'
 export * from './noop'

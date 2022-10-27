@@ -32,6 +32,10 @@ const commonColors = {
   notification: '#000',
 }
 
+export const ProjectColors = {
+  //CONFIG: Add your project specific colors here
+}
+
 const fontSizes = {
   '2xs': 10,
   xs: 12,
@@ -79,7 +83,7 @@ export const theme = extendTheme({
   config: {
     useSystemColorMode: true,
   },
-  colors: commonColors,
+  colors: { ...commonColors, ...ProjectColors },
   space,
   shadows: {
     inputShadow: {

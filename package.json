@@ -37,6 +37,7 @@
     "generate:env:production": "scripts/generate_dotenv.sh production",
     "generate:env:qa": "scripts/generate_dotenv.sh qa",
     "generate:env:staging": "scripts/generate_dotenv.sh staging",
+    "generate:icon:types": "node ./scripts/generate_icon_types.js",
     "ios": "cross-env IS_DEV=1 expo start --ios",
     "lint": "eslint src && yarn tsc",
     "login": "expo login",
