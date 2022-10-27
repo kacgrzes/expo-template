@@ -16,3 +16,11 @@ web-build/
 yarn-error.log
 
 dist/
+
+# project files
+
+# CONFIG: uncomment following lines
+# .env
+# .env.qa
+# .env.production
+# .env.staging
