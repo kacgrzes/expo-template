@@ -1,5 +1,5 @@
 //THIS IS EXAMPLE REQUEST
-import { apiClient } from '~services/api'
+import { apiClient } from '../api/apiClient'
 export type CatFactType = {
   fact: string
   length: number
