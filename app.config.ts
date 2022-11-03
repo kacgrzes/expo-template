@@ -21,8 +21,8 @@ const appIconPath = './assets/icons/ios/icon-'
 export const APP_CONFIG = {
   androidPackageName: 'your_android_package_name', // CONFIG: Add your android package name here
   appName: 'your_app_name', // CONFIG: Add your app name here
-  easProjectId: 'your _eas_project_id', // CONFIG: Add your eas project ID here
-  iosBundleIdentifier: 'your_ios_bundle_identifier', // CONFIG: Add your ios bundle identifier here
+  easProjectId: 'your-eas-project-id', // CONFIG: Add your eas project ID here
+  iosBundleIdentifier: 'your.ios.bundle.identifier', // CONFIG: Add your ios bundle identifier here
   isDev: process.env.IS_DEV === '1',
   isExpoGo: process.env.IS_EXPO_GO === '1',
 } as const
