@@ -8,7 +8,7 @@ import { QueryClientProvider, QueryClient } from 'react-query'
 import { AuthProvider } from './AuthProvider'
 import { NotificationsProvider } from './NotificatedProvider'
 
-import { AppLoading } from '~components'
+import { AppLoading, WebWrapper } from '~components'
 import { theme, nativeBaseConfig } from '~constants'
 import { useAppStateActive } from '~hooks'
 import { colorModeManager } from '~services'
@@ -28,7 +28,9 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
           <AuthProvider>
             <AppLoading>
               <GestureHandlerRootView style={styles.gestureHandlerRootView}>
-                <BottomSheetModalProvider>{children}</BottomSheetModalProvider>
+                <BottomSheetModalProvider>
+                  <WebWrapper>{children}</WebWrapper>
+                </BottomSheetModalProvider>
               </GestureHandlerRootView>
             </AppLoading>
           </AuthProvider>
