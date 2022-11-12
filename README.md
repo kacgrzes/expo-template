@@ -13,6 +13,8 @@ Version in the `package.json` is one to one the latest expo on which the templat
 
 ## Usage
 
+There are two types of usage:
+
 1. Init using this command
 
 ```bash
