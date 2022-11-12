@@ -15,7 +15,7 @@ Version in the `package.json` is one to one the latest expo on which the templat
 
 1. Init using this command
 
-- expo init --template=@binarapps/expo-ts-template <name of your app>
+- expo init --template=@binarapps/expo-ts-template name_of_your_app
 
 2. Use this as template repo on github
    ![Github Repository Template](assets/github-repository-template.png)
