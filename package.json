@@ -1,6 +1,6 @@
 {
   "name": "@binarapps/expo-ts-template",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Expo template ready to develop mobile apps",
   "keywords": [
     "expo",
@@ -48,7 +48,6 @@
     "prepare:staging": "yarn generate:env:staging && BASH_ENV=./.env scripts/upload_env.sh",
     "prepare": "husky install",
     "prettier:write": "prettier --write ./src",
-    "publish": "expo publish",
     "register": "expo register",
     "start:fast": "EXPO_USE_EXOTIC=1 expo start --clear",
     "start": "cross-env IS_DEV=1 expo start -c",

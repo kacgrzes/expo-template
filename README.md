@@ -1,9 +1,9 @@
-<!-- ![Logo](assets/logo.png) -->
+![Logo](assets/logo.png)
 
-<!-- [![MIT License](https://img.shields.io/npm/l/@kacgrzes/expo-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![MIT License](https://img.shields.io/npm/v/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/v/@kacgrzes/expo-template?style=flat-square)
-[![MIT License](https://img.shields.io/npm/dt/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/dt/@kacgrzes/expo-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square)](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square) -->
+[![MIT License](https://img.shields.io/npm/l/@binarapps/expo-ts-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![MIT License](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)
+[![MIT License](https://img.shields.io/npm/dt/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/dt/@binarapps/expo-ts-template?style=flat-square)
+[![MIT License](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/github/stars/binarapps/expo-ts-template?style=flat-square)
 
 # @binarapps/expo-ts-template
 
@@ -11,11 +11,20 @@ This is a template to be used with expo. It includes all the necessary stuff to 
 
 Version in the `package.json` is one to one the latest expo on which the template was tested.
 
+## Usage
+
+1. Init using this command
+
+- expo init --template=@binarapps/expo-ts-template <name of your app>
+
+2. Use this as template repo on github
+   ![Github Repository Template](assets/github-repository-template.png)
+
 ## Features
 
-<!-- [![MIT License](https://img.shields.io/npm/types/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/types/@kacgrzes/expo-template?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)
-[![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square) -->
+[![MIT License](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)
+[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)
+[![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)
 
 - TypeScript support
 - Expo
@@ -45,23 +54,16 @@ See all the details in the documentation.
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-<!-- TODO: Add instlation instruction -->
-<!-- ## Installation
-
-Init expo with this template using:
-
-```bash
-  expo init --template=@kacgrzes/expo-template <name of your app>
-``` -->
-
 ## Working with designer in your project
 
 Expo template, you are going to use - bundles native-base ui lib out of the box.
 To have the best starting experience in your project - write a dm to your designer that they should use [NativeBase Figma Design Kit](https://www.figma.com/community/file/1050753649783931446)
 
-<!-- ## Documentation
-
-[Documentation](https://linktodocumentation) -->
+<!--
+  TODO: add documentation
+  ## Documentation
+  [Documentation](https://linktodocumentation)
+-->
 
 ## Demo
 
@@ -85,7 +87,7 @@ Please adhere to this project's `code of conduct`.
 Clone the project
 
 ```bash
-  git clone https://github.com/kacgrzes/expo-typescript-template.git
+  git clone https://github.com/binarapps/expo-ts-template.git
 ```
 
 Go to the project directory
