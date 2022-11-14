@@ -55,7 +55,7 @@
     "test:final": "jest",
     "test": "jest --watch --coverage=false --changedSince=origin/main",
     "typecheck": "eslint .eslintrc.js --fix",
-    "update:expo_go": "yarn prepare:qa && cross-env IS_DEV=1 eas update --auto",
+    "update:expo_go": "yarn prepare:qa && cross-env IS_DEV=1 IS_EXPO_GO=1 eas update --auto",
     "update:production": "yarn prepare:production && eas update --branch production --message=\"ENV: Production\"",
     "update:production:android": "yarn prepare:production &&  eas update --branch production --platform android",
     "update:production:ios": "yarn prepare:production && eas update --branch production --platform ios",

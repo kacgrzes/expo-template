@@ -21,7 +21,7 @@ const appIconPath = './assets/icons/ios/icon-'
 export const APP_CONFIG = {
   androidPackageName: 'your_android_package_name', // CONFIG: Add your android package name here
   appName: 'your_app_name', // CONFIG: Add your app name here
-  easProjectId: 'your-eas-project-id', // CONFIG: Add your eas project ID here
+  easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
   iosBundleIdentifier: 'your.ios.bundle.identifier', // CONFIG: Add your ios bundle identifier here
   isDev: process.env.IS_DEV === '1',
   isExpoGo: process.env.IS_EXPO_GO === '1',
@@ -74,6 +74,11 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
 
   // TODO: Set to hermes when updating to expo 47
   const jsEngine = (!APP_CONFIG.isExpoGo && 'hermes') || undefined
+  const eas = APP_CONFIG.easProjectId
+    ? {
+        eas: { projectId: APP_CONFIG.easProjectId },
+      }
+    : {}
 
   return {
     ...config,
@@ -86,7 +91,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
       package: EAS_ENV_CONFIG.androidPackageName[ENVIRONMENT],
     },
     extra: {
-      // eas: { projectId: APP_CONFIG.easProjectId }, // CONFIG: uncomment this line when real easProjectId available
+      ...eas,
       ENVIRONMENT,
       universalLinks: [],
     },
