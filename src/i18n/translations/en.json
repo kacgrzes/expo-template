@@ -105,6 +105,7 @@
     }
   },
   "settings_screen": {
+    "copy_push_token": "Copy push token",
     "current_theme": "Current theme: {{theme}}",
     "sign_out": "Sign out!",
     "selected": " - selected"

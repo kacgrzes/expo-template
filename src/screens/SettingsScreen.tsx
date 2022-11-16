@@ -1,3 +1,5 @@
+import * as Clipboard from 'expo-clipboard'
+import * as Notifications from 'expo-notifications'
 import { ScrollView, Text, Button, Center, ColorMode } from 'native-base'
 
 import { Version, Spacer } from '~components'
@@ -14,9 +16,18 @@ export const SettingsScreen = (): JSX.Element => {
     [setColorMode]
   )
 
+  const handleCopyPushToken = useCallback(async () => {
+    const token = (await Notifications.getExpoPushTokenAsync()).data
+    await Clipboard.setStringAsync(token)
+    alert('Copied push token')
+  }, [])
+
   return (
     <ScrollView>
       <Center flex={1}>
+        <Button size="lg" width="64" my={2} onPress={handleCopyPushToken}>
+          {t('settings_screen.copy_push_token')}
+        </Button>
         <Text fontSize="2xl" bold mb={2}>
           {t('settings_screen.current_theme', { theme: colorMode })}
         </Text>

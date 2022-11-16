@@ -1,4 +1,5 @@
 export const ASYNC_STORAGE_KEYS = {
+  PUSH_TOKEN: '@notification/push-token',
   NAVIGATION_STATE: '@navigation/navigation-state',
   USER_LANGUAGE: '@language/user-language',
   COLOR_SCHEME: '@theme/colorScheme',

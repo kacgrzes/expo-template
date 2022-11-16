@@ -100,6 +100,7 @@
     "expo-local-authentication": "~12.3.0",
     "expo-localization": "~13.1.0",
     "expo-network": "~4.3.0",
+    "expo-notifications": "~0.16.1",
     "expo-screen-orientation": "~4.3.0",
     "expo-secure-store": "~11.3.0",
     "expo-splash-screen": "~0.16.2",
