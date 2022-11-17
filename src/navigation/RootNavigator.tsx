@@ -17,6 +17,9 @@ const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 export const RootNavigator: FC = () => {
   const { t } = useTranslation()
   const { isSignedIn } = useAuth()
+  const { foregroundNotification, backgroundNotification, clearNotification } = useNotification({
+    enableDeeplink: true,
+  })
 
   // CONFIG: Handle in app notification
   useNotificationSetup()
