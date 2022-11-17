@@ -74,6 +74,7 @@ CI / CD
 - theme - DONE
 - ThemeProvider - DONE
 - Dark / Light theme switch - DONE
+- expo-notifications - DONE
 
 ## Nice articles:
 
