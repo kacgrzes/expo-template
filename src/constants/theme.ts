@@ -81,7 +81,8 @@ export const space = {
 
 export const theme = extendTheme({
   config: {
-    useSystemColorMode: true,
+    useSystemColorMode: false,
+    initialColorMode: 'light',
   },
   colors: { ...commonColors, ...ProjectColors },
   space,
