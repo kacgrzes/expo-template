@@ -1,4 +1,3 @@
-import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -7,6 +6,7 @@ import { isError } from 'react-query'
 import { useAuth } from '../useAuth'
 
 import { SignUpFormValues } from '~types/authForms'
+import { hapticImpact } from '~utils'
 
 const defaultValues: SignUpFormValues = {
   user: '',
@@ -42,7 +42,7 @@ export const useSignUpForm = () => {
       } else {
         setError(t('errors.something_went_wrong'))
       }
-      impactAsync(ImpactFeedbackStyle.Medium)
+      hapticImpact()
     } finally {
       setIsSubmitting(false)
     }
