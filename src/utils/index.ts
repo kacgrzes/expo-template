@@ -1,3 +1,4 @@
+export * from './alert'
 export * from './checkForUpdates'
 export * from './getApiError'
 export * from './getColorValue'
