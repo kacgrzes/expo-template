@@ -79,8 +79,8 @@ type HomeStackComposite<S extends keyof HomeStackParamList> = CompositeScreenPro
 
 type ExamplesStackComposite<S extends keyof ExampleStackParamList> = CompositeScreenProps<
   CompositeScreenProps<
-    BottomTabScreenProps<MainTabParamList, 'ExamplesStack'>,
-    StackScreenProps<ExampleStackParamList, S>
+    StackScreenProps<ExampleStackParamList, S>,
+    BottomTabScreenProps<MainTabParamList, 'ExamplesStack'>
   >,
   StackScreenProps<RootStackParamList, 'MainTab'>
 >
