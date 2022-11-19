@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Alert } from 'react-native'
+
+import { alert } from '~utils'
 
 export const usePreventGoBack = (shouldPrevent = true): void => {
   const { t } = useTranslation()
@@ -16,7 +17,7 @@ export const usePreventGoBack = (shouldPrevent = true): void => {
 
       event?.preventDefault()
 
-      Alert.alert(
+      alert(
         t('navigation.prevent_go_back_alert.title'),
         t('navigation.prevent_go_back_alert.description'),
         [

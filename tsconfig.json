@@ -24,6 +24,7 @@
     "jest.config.js",
     ".eslint.config.js",
     "node_modules",
+    "webpack.config.js",
     "**/*.spec.ts",
     "dist"
   ]

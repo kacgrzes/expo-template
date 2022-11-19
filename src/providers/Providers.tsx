@@ -9,7 +9,7 @@ import { AuthProvider } from './AuthProvider'
 import { ColorSchemeProvider } from './ColorSchemeProvider'
 import { NotificationsProvider } from './NotificatedProvider'
 
-import { AppLoading } from '~components'
+import { AppLoading, WebWrapper } from '~components'
 import { theme, nativeBaseConfig } from '~constants'
 import { useAppStateActive } from '~hooks'
 import { checkForUpdates } from '~utils'
@@ -29,7 +29,9 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
             <AppLoading>
               <ColorSchemeProvider>
                 <GestureHandlerRootView style={styles.gestureHandlerRootView}>
-                  <BottomSheetModalProvider>{children}</BottomSheetModalProvider>
+                  <BottomSheetModalProvider>
+                    <WebWrapper>{children}</WebWrapper>
+                  </BottomSheetModalProvider>
                 </GestureHandlerRootView>
               </ColorSchemeProvider>
             </AppLoading>

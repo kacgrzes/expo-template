@@ -1,7 +1,7 @@
 import * as Updates from 'expo-updates'
 import i18n from 'i18next'
-import { Alert } from 'react-native'
 
+import { alert } from './alert'
 import { wait } from './wait'
 
 import { isDevelopment } from '~constants'
@@ -25,7 +25,7 @@ export const checkForUpdates = async (shouldReload?: boolean) => {
     if (isAlertOpened) return
     isAlertOpened = true
 
-    Alert.alert(i18n.t('update.alert_title'), i18n.t('update.alert_message'), [
+    alert(i18n.t('update.alert_title'), i18n.t('update.alert_message'), [
       {
         text: i18n.t('common.cancel'),
         onPress: () => {
