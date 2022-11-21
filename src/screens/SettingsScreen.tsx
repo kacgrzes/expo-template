@@ -1,27 +1,24 @@
-import { ScrollView, Text, Button, Center, ColorMode } from 'native-base'
+import { ScrollView, Text, Button, Center } from 'native-base'
 
 import { Version, Spacer } from '~components'
-import { useAuth, useCallback, useColorMode, useTranslation } from '~hooks'
+import { colorSchemesList } from '~constants'
+import { useColorScheme } from '~contexts'
+import { useAuth, useTranslation } from '~hooks'
 import { noop } from '~utils'
 
 export const SettingsScreen = (): JSX.Element => {
   const { t } = useTranslation()
-  const { colorMode, setColorMode } = useColorMode()
+  const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()
   const { signOut } = useAuth()
-
-  const handleColorSchemeSettingChange = useCallback(
-    (colorScheme: ColorMode) => () => setColorMode(colorScheme),
-    [setColorMode]
-  )
 
   return (
     <ScrollView>
       <Center flex={1}>
         <Text fontSize="2xl" bold mb={2}>
-          {t('settings_screen.current_theme', { theme: colorMode })}
+          {t('settings_screen.current_theme', { theme: colorSchemeSetting })}
         </Text>
-        {(['light', 'dark'] as ColorMode[]).map((scheme) => {
-          const isSelected = scheme === colorMode
+        {colorSchemesList.map((scheme) => {
+          const isSelected = scheme === colorSchemeSetting
 
           return (
             <Button
@@ -29,9 +26,10 @@ export const SettingsScreen = (): JSX.Element => {
               width="64"
               key={scheme}
               mb={2}
-              onPress={handleColorSchemeSettingChange(scheme)}
+              onPress={() => setColorSchemeSetting(scheme)}
             >
-              {`${scheme}${isSelected ? t('settings_screen.selected') : ''}`}
+              {scheme}
+              {isSelected ? ' - selected' : ''}
             </Button>
           )
         })}

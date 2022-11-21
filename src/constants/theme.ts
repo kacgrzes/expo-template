@@ -88,7 +88,8 @@ const breakpoints = {
 export const theme = extendTheme({
   breakpoints,
   config: {
-    useSystemColorMode: true,
+    useSystemColorMode: false,
+    initialColorMode: 'light',
   },
   colors: { ...commonColors, ...ProjectColors },
   space,
