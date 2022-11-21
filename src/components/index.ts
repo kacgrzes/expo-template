@@ -4,6 +4,7 @@ export * from './organisms'
 
 export * from './AppLoading'
 export * from './KeyboardAwareScrollView'
+export * from './LanguagePicker'
 export * from './StatusBar'
 export * from './Version'
 export * from './WebWrapper'

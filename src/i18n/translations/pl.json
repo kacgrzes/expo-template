@@ -1,0 +1,137 @@
+{
+  "errors": {
+    "screen_not_found": "NotFound screen",
+    "something_went_wrong": "Coś poszło nie tak"
+  },
+  "form": {
+    "invalid_email_format": "Zły adres e-mail",
+    "required": "Pole wymagane"
+  },
+  "navigation": {
+    "prevent_go_back_alert": {
+      "title": "Anulować zmiany?",
+      "description": "Masz niezapisane zmiany. Jesteś pewny, że chcesz je porzucić i wyjść?",
+      "dont_leave": "Nie wychodź",
+      "discard": "Porzuć"
+    },
+    "screen_titles": {
+      "home_stack": "HomeStack",
+      "examples_stack": "ExamplesStack",
+      "examples": "Examples",
+      "components": "Components",
+      "colors": "Colors",
+      "typography": "Typography",
+      "home": "Home",
+      "details": "Details",
+      "sign_in": "Sign in",
+      "sign_up": "Sign up",
+      "main_tab": "MainTab",
+      "settings": "Settings",
+      "application_info": "ApplicationInfo",
+      "not_found": "NotFound"
+    }
+  },
+  "application_info_screen": {
+    "navigation_info": "Kiedy będziesz próbował cofnąć to zostaniesz podwójnie zapytany, czy na pewno tego chcesz \n"
+  },
+  "sign_in_screen": {
+    "sign_in": "Zaloguj",
+    "sign_up": "Zarejestruj",
+    "dont_have_an_account": "Nie masz konta?",
+    "forgot_password": "Zapomniałeś hasła?",
+    "or_pass": "lub wprowadź:",
+    "email_helper_text": "Email",
+    "password_label": "Hasło",
+    "password_helper_text": "Hasła muszą być takie same",
+    "password_placeholder": "hasło",
+    "remember_me": "Zapamiętaj mnie"
+  },
+  "sign_up_screen": {
+    "agree_terms_label": "Zgadzam się z warunkami użytkowania",
+    "newsletter_label": "Subskrybuj nasz newsletter",
+    "sign_up": "Zarejestruj"
+  },
+  "home_screen": {
+    "details": "Detale"
+  },
+  "colors_screen": {
+    "colors_label": "Kolory"
+  },
+  "typography_screen": {
+    "text_font_size": "Text.fontSize: ",
+    "heading_size": "Heading.size: "
+  },
+  "details_screen": {
+    "title": "To jest przykładowy widok",
+    "open_bottom_sheet": "Otwórz BottomSheetModal",
+    "screen_params": "Parametry widoku: {{params}}",
+    "awesome": "Wspaniale 🎉"
+  },
+  "examples_screen": {
+    "header": "To jest przykładowy widok",
+    "go_to_application_info": "Idź do ApplicationInfo",
+    "go_to_colors": "Idź do Kolorów",
+    "go_to_components": "Idź do Komponentów",
+    "go_to_typography": "Idź do Typografii",
+    "go_to_home_stack_details": "Idź do HomeStackDetails",
+    "go_to_settings": "Idź do Ustawień",
+    "go_to_screen_with_BEdata": "Idź do widoku z danymi z backendu"
+  },
+  "components_screen": {
+    "test_notification": "Test notification",
+    "typography": {
+      "label": "Typography",
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "2xl": "2xl",
+      "3xl": "3xl",
+      "4xl": "4xl"
+    },
+    "button_variants": {
+      "header": "Button variants",
+      "secondary": "Button secondary",
+      "outline": "Button outline",
+      "solid": "Button solid",
+      "subtle": "Button subtle",
+      "ghost": "Button ghost",
+      "disabled": "Button disabled"
+    },
+    "notification": {
+      "title": "In-app notification example",
+      "description": "by react-native-notificated 🎉"
+    }
+  },
+  "settings_screen": {
+    "current_theme": "Current theme: {{theme}}",
+    "sign_out": "Wyloguj!",
+    "selected": " - wybrano"
+  },
+  "common": {
+    "add": "Dodaj",
+    "back": "Cofnij",
+    "cancel": "Anuluj",
+    "email_label": "E-mail",
+    "email_placeholder": "john@doe.com",
+    "empty_list": "Lista jest pusta",
+    "go_back": "Cofnij",
+    "log_in": "Login",
+    "phone_label": "Telefon",
+    "remove": "Usuń",
+    "save": "Zapisz",
+    "search": "Szukaj",
+    "send_again": "Wyślij ponownie",
+    "show_on_map": "Pokaż na mapie",
+    "sign_in": "Zaloguj",
+    "sign_up": "Zarejestruj",
+    "try_again_later": "Proszę spróbuj ponownie później",
+    "try_again": "Spróbuj ponownie",
+    "user_label": "Użytkownik",
+    "user_placeholder": "Użytkownik"
+  },
+  "hello": "Witaj",
+  "thanks": "Dzięki za używanie najlepszej templatki dla aplikacji expo",
+  "app_information": "Potrząśnij swoim urządzeniem, by otworzyć menu dewelopera"
+}

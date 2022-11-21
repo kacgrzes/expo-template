@@ -6,9 +6,12 @@ import languageDetector from './languageDetector'
 // Add more resources here
 const RESOURCES = {
   en: require('./translations/en.json'),
+  pl: require('./translations/pl.json'),
 }
 
-const resources = Object.fromEntries(
+export const AVAILABLE_LANGUAGES_KEYS = Object.keys(RESOURCES).map((key) => key.toUpperCase())
+
+export const resources = Object.fromEntries(
   Object.entries(RESOURCES).map(([lang, translation]) => {
     return [lang, { translation }]
   })
