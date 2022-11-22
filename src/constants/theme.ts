@@ -79,9 +79,17 @@ export const space = {
   '96': 24 * scale,
 } as const
 
+const breakpoints = {
+  mobile: 0,
+  tablet: 568,
+  desktop: 1024,
+}
+
 export const theme = extendTheme({
+  breakpoints,
   config: {
-    useSystemColorMode: true,
+    useSystemColorMode: false,
+    initialColorMode: 'light',
   },
   colors: { ...commonColors, ...ProjectColors },
   space,

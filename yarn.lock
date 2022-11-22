@@ -1940,10 +1940,10 @@
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-13.0.0.tgz#e2989b85e95a82bce216f88cf8fb583ab050ec95"
   integrity sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==
 
-"@expo/webpack-config@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@expo/webpack-config/-/webpack-config-0.17.0.tgz#25253e60a6d551be679b8864184d602cd10351ce"
-  integrity sha512-qRBBcuMsWVQD3tiNlPkaX/KMOUxIq9bGCFwK4gW9Yw2WC2mrQHb3wVIsnVPRgHtnD29FFgRG8GypeKKT6cAkBQ==
+"@expo/webpack-config@^0.16.2":
+  version "0.16.27"
+  resolved "https://registry.yarnpkg.com/@expo/webpack-config/-/webpack-config-0.16.27.tgz#05819e9b4a3f9dfc6890e86d14c11071d70c8891"
+  integrity sha512-dC9RzRJAvMncNyxQX1+SR4NfkQPwjYxhxDpeUxGVySEuPLeluG219ddqMTVh2HMeqA7fGZsCEGWa5yVadSknNQ==
   dependencies:
     "@babel/core" "7.9.0"
     "@expo/config" "6.0.24"

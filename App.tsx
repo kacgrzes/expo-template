@@ -17,10 +17,11 @@ if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
   startMockedServer()
 }
 
-const isUsingReactotron = false
-if (__DEV__ && isUsingReactotron && !process.env.JEST_WORKER_ID) {
-  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
-}
+// TODO: Uncomment reactotron setup when using
+// const isUsingReactotron = true
+// if (__DEV__ && isUsingReactotron && !process.env.JEST_WORKER_ID) {
+//   require('./ReactotronConfig')
+// }
 
 const App = (): JSX.Element => {
   return (

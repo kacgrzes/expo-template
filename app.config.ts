@@ -74,7 +74,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
 
   // TODO: Set to hermes when updating to expo 47
   const jsEngine = (!APP_CONFIG.isExpoGo && 'hermes') || undefined
-  const eas = APP_CONFIG.easProjectId
+  const eas = APP_CONFIG.isDev
     ? {
         eas: { projectId: APP_CONFIG.easProjectId },
       }

@@ -6,13 +6,13 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AuthProvider } from './AuthProvider'
+import { ColorSchemeProvider } from './ColorSchemeProvider'
 import { NotificationsProvider } from './NotificatedProvider'
 import { NotificationProvider as ExpoNotificationsProvider } from './NotificationProvider'
 
-import { AppLoading } from '~components'
+import { AppLoading, WebWrapper } from '~components'
 import { theme, nativeBaseConfig } from '~constants'
 import { useAppStateActive } from '~hooks'
-import { colorModeManager } from '~services'
 import { checkForUpdates } from '~utils'
 
 const queryClient = new QueryClient({})
@@ -21,17 +21,21 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
   useAppStateActive(checkForUpdates, false)
 
   return (
-    <NativeBaseProvider theme={theme} colorModeManager={colorModeManager} config={nativeBaseConfig}>
-      {/* NativeBaseProvider includes SafeAreaProvider so that we don't have to include it in a root render tree */}
+    // NativeBaseProvider includes SafeAreaProvider so that we don't have to include it in a root render tree
+    <NativeBaseProvider theme={theme} config={nativeBaseConfig}>
       <ExpoNotificationsProvider>
         {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
         <NotificationsProvider>
           <QueryClientProvider client={queryClient}>
             <AuthProvider>
               <AppLoading>
-                <GestureHandlerRootView style={styles.gestureHandlerRootView}>
-                  <BottomSheetModalProvider>{children}</BottomSheetModalProvider>
-                </GestureHandlerRootView>
+                <ColorSchemeProvider>
+                  <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+                    <BottomSheetModalProvider>
+                      <WebWrapper>{children}</WebWrapper>
+                    </BottomSheetModalProvider>
+                  </GestureHandlerRootView>
+                </ColorSchemeProvider>
               </AppLoading>
             </AuthProvider>
           </QueryClientProvider>
