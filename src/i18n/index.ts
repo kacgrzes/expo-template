@@ -9,8 +9,6 @@ const RESOURCES = {
   pl: require('./translations/pl.json'),
 }
 
-export const AVAILABLE_LANGUAGES_KEYS = Object.keys(RESOURCES).map((key) => key.toUpperCase())
-
 export const resources = Object.fromEntries(
   Object.entries(RESOURCES).map(([lang, translation]) => {
     return [lang, { translation }]
