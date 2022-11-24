@@ -51,7 +51,7 @@ expo init --template=@binarapps/expo-ts-template name_of_your_app
 - animations with `reanimated` and `moti`
 - `@gorhom/bottom-sheet`
 - Reactotron
-- expo-notifications
+- expo-notifications (You can read how to configure them [here](/NOTIFICATIONS_SETUP.md))
 
 See all the details in the documentation.
 

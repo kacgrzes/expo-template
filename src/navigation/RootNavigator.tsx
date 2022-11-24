@@ -4,7 +4,8 @@ import { Alert } from 'react-native'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
 
-import { useAuth, useNotification, useTranslation } from '~hooks'
+import { useNotificationContext } from '~contexts'
+import { useAuth, useTranslation } from '~hooks'
 import {
   ApplicationInfoScreen,
   NotFoundScreen,
@@ -19,7 +20,7 @@ const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 export const RootNavigator: FC = () => {
   const { t } = useTranslation()
   const { isSignedIn } = useAuth()
-  const { foregroundNotification, backgroundNotification, clearNotification } = useNotification()
+  const { notification, setNotification } = useNotificationContext()
 
   useEffect(() => {
     const initNotifications = async () => {
@@ -29,22 +30,13 @@ export const RootNavigator: FC = () => {
   }, [])
 
   useEffect(() => {
-    if (foregroundNotification) {
-      Alert.alert('Notification from foreground', JSON.stringify(foregroundNotification), [
-        { text: 'Cancel', onPress: clearNotification, style: 'cancel' },
-        { text: 'Ok', onPress: clearNotification },
+    if (notification) {
+      Alert.alert('Notification', JSON.stringify(notification), [
+        { text: 'Cancel', onPress: () => setNotification(undefined), style: 'cancel' },
+        { text: 'Ok', onPress: () => setNotification(undefined) },
       ])
     }
-  }, [foregroundNotification, clearNotification])
-
-  useEffect(() => {
-    if (backgroundNotification) {
-      Alert.alert('Notification from background', JSON.stringify(backgroundNotification), [
-        { text: 'Cancel', onPress: clearNotification, style: 'cancel' },
-        { text: 'Ok', onPress: clearNotification },
-      ])
-    }
-  }, [backgroundNotification, clearNotification])
+  }, [notification, setNotification])
 
   return (
     <Navigator>

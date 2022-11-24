@@ -3,6 +3,11 @@ import { PropsWithChildren, FC, useEffect } from 'react'
 
 import { NotificationContextProvider, NotificationContextType } from '~contexts'
 import { useState, useMemo } from '~hooks'
+import {
+  disableAndroidBackgroundNotificationListener,
+  getNotificationFromStack,
+  getNotificationStackLength,
+} from '~services'
 
 export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   const [permissionStatus, setPermissionStatus] =
@@ -15,6 +20,31 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
       setPermissionStatus(status)
     }
     getPermissionStatus()
+  }, [])
+
+  useEffect(() => {
+    while (getNotificationStackLength() > 0) {
+      const androidBackgroundNotification = getNotificationFromStack()
+      if (androidBackgroundNotification) {
+        setNotification(androidBackgroundNotification)
+      }
+    }
+    disableAndroidBackgroundNotificationListener()
+
+    const notificationResponseReceived = Notifications.addNotificationResponseReceivedListener(
+      ({ notification }) => {
+        setNotification(notification)
+      }
+    )
+
+    const notificationReceived = Notifications.addNotificationReceivedListener((notification) => {
+      setNotification(notification)
+    })
+
+    return () => {
+      Notifications.removeNotificationSubscription(notificationResponseReceived)
+      Notifications.removeNotificationSubscription(notificationReceived)
+    }
   }, [])
 
   const value = useMemo(

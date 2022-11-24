@@ -1,4 +1,5 @@
 import * as Device from 'expo-device'
+import { Subscription } from 'expo-modules-core'
 import * as Notifications from 'expo-notifications'
 import { Platform } from 'react-native'
 
@@ -32,3 +33,24 @@ export const registerForPushNotificationsAsync = async () => {
     throw new Error('Must use physical device for Push Notifications')
   }
 }
+
+let notificationListener: Subscription | null = null
+
+const notificationStack: Notifications.Notification[] = []
+
+export const enableAndroidBackgroundNotificationListener = () => {
+  if (Platform.OS !== 'android') return
+  notificationListener = Notifications.addNotificationResponseReceivedListener(
+    ({ notification }) => {
+      notificationStack.push(notification)
+    }
+  )
+}
+
+export const disableAndroidBackgroundNotificationListener = () => {
+  notificationListener?.remove()
+}
+
+export const getNotificationFromStack = () => notificationStack.shift()
+
+export const getNotificationStackLength = () => notificationStack.length
