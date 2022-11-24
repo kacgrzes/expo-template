@@ -66,15 +66,15 @@ export {
 } from 'react-query'
 export { useDebounce, useDebouncedCallback, useThrottledCallback } from 'use-debounce'
 
-// Custom hooks implemented in app
-
 export * from './forms'
 export * from './navigation'
 
+// Custom hooks implemented in app
 export * from './useAppStateActive'
 export * from './useAuth'
 export * from './useBoolean'
 export * from './useCachedResources'
+export * from './useNotificationSetup'
 export * from './useSecurePassword'
 export * from './useTimestamp'
 export * from './useToggle'

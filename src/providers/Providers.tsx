@@ -8,6 +8,7 @@ import { QueryClientProvider, QueryClient } from 'react-query'
 import { AuthProvider } from './AuthProvider'
 import { ColorSchemeProvider } from './ColorSchemeProvider'
 import { NotificationsProvider } from './NotificatedProvider'
+import { NotificationProvider as ExpoNotificationsProvider } from './NotificationProvider'
 
 import { AppLoading, WebWrapper } from '~components'
 import { theme, nativeBaseConfig } from '~constants'
@@ -22,22 +23,24 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
   return (
     // NativeBaseProvider includes SafeAreaProvider so that we don't have to include it in a root render tree
     <NativeBaseProvider theme={theme} config={nativeBaseConfig}>
-      {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
-      <NotificationsProvider>
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider>
-            <AppLoading>
-              <ColorSchemeProvider>
-                <GestureHandlerRootView style={styles.gestureHandlerRootView}>
-                  <BottomSheetModalProvider>
-                    <WebWrapper>{children}</WebWrapper>
-                  </BottomSheetModalProvider>
-                </GestureHandlerRootView>
-              </ColorSchemeProvider>
-            </AppLoading>
-          </AuthProvider>
-        </QueryClientProvider>
-      </NotificationsProvider>
+      <ExpoNotificationsProvider>
+        {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
+        <NotificationsProvider>
+          <QueryClientProvider client={queryClient}>
+            <AuthProvider>
+              <AppLoading>
+                <ColorSchemeProvider>
+                  <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+                    <BottomSheetModalProvider>
+                      <WebWrapper>{children}</WebWrapper>
+                    </BottomSheetModalProvider>
+                  </GestureHandlerRootView>
+                </ColorSchemeProvider>
+              </AppLoading>
+            </AuthProvider>
+          </QueryClientProvider>
+        </NotificationsProvider>
+      </ExpoNotificationsProvider>
     </NativeBaseProvider>
   )
 }

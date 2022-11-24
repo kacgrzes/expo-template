@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
 
-import { useAuth, useTranslation } from '~hooks'
+import { useAuth, useNotificationSetup, useTranslation } from '~hooks'
 import {
   ApplicationInfoScreen,
   NotFoundScreen,
@@ -17,6 +17,9 @@ const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 export const RootNavigator: FC = () => {
   const { t } = useTranslation()
   const { isSignedIn } = useAuth()
+
+  // CONFIG: Handle in app notification
+  useNotificationSetup()
 
   return (
     <Navigator>
