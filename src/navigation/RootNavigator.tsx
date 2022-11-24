@@ -1,11 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import { FC, useEffect } from 'react'
-import { Alert } from 'react-native'
+import { FC } from 'react'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
 
-import { useNotificationContext } from '~contexts'
-import { useAuth, useTranslation } from '~hooks'
+import { useAuth, useNotificationSetup, useTranslation } from '~hooks'
 import {
   ApplicationInfoScreen,
   NotFoundScreen,
@@ -13,30 +11,15 @@ import {
   SignInScreen,
   SignUpScreen,
 } from '~screens'
-import { registerForPushNotificationsAsync } from '~services'
 
 const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 
 export const RootNavigator: FC = () => {
   const { t } = useTranslation()
   const { isSignedIn } = useAuth()
-  const { notification, setNotification } = useNotificationContext()
 
-  useEffect(() => {
-    const initNotifications = async () => {
-      await registerForPushNotificationsAsync()
-    }
-    initNotifications()
-  }, [])
-
-  useEffect(() => {
-    if (notification) {
-      Alert.alert('Notification', JSON.stringify(notification), [
-        { text: 'Cancel', onPress: () => setNotification(undefined), style: 'cancel' },
-        { text: 'Ok', onPress: () => setNotification(undefined) },
-      ])
-    }
-  }, [notification, setNotification])
+  // CONFIG: Handle in app notification
+  useNotificationSetup()
 
   return (
     <Navigator>
