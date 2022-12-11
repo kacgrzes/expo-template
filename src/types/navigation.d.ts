@@ -22,6 +22,18 @@ declare global {
     ExamplesStack: NavigatorScreenParams<ExampleStackParamList>
   }
 
+  type WebTabParamList = ExampleStackParamList & HomeStackParamList
+
+  // type WebTabParamList = {
+  //   Home: undefined
+  //   Details: { id: string }
+  //   Examples: undefined
+  //   Components: undefined
+  //   Colors: undefined
+  //   Typography: undefined
+  //   DataFromBeScreen: undefined
+  // }
+
   type RootStackParamList = {
     // unauthorized
     SignUp: undefined

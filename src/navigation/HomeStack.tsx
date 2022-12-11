@@ -1,24 +1,36 @@
 import { createStackNavigator } from '@react-navigation/stack'
-
-import { useTranslation } from '~hooks'
+import { t } from 'i18next'
 import { DetailsScreen, HomeScreen } from '~screens'
+
+import { useMemo } from '~hooks'
 
 const { Navigator, Screen } = createStackNavigator<HomeStackParamList>()
 
+export const enum HomeStackScreensEnum {
+  Home = 'Home',
+  Details = 'Details',
+}
+
+export const homeStackScreensData = [
+  {
+    name: HomeStackScreensEnum.Home,
+    component: HomeScreen,
+    title: t('navigation.screen_titles.home'),
+  },
+  {
+    name: HomeStackScreensEnum.Details,
+    component: DetailsScreen,
+    title: t('navigation.screen_titles.details'),
+  },
+]
+
 export const HomeStack = (): JSX.Element => {
-  const { t } = useTranslation()
-  return (
-    <Navigator>
-      <Screen
-        name="Home"
-        options={{ title: t('navigation.screen_titles.home') }}
-        component={HomeScreen}
-      />
-      <Screen
-        name="Details"
-        options={{ title: t('navigation.screen_titles.details') }}
-        component={DetailsScreen}
-      />
-    </Navigator>
+  const screens = useMemo(
+    () =>
+      homeStackScreensData.map(({ name, component, title }) => (
+        <Screen key={name} options={{ title }} {...{ component, name }} />
+      )),
+    []
   )
+  return <Navigator>{screens}</Navigator>
 }

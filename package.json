@@ -68,6 +68,7 @@
     "updateSnapshots": "jest -u --coverage=false",
     "upload": "yarn upload:ios && yarn upload:android",
     "web": "cross-env IS_DEV=1 expo start --web",
+    "web:build": "expo export:web",
     "whoami": "expo whoami"
   },
   "dependencies": {

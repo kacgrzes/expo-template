@@ -1,5 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
+import { Platform } from 'react-native'
+import { WebNavigator } from './webNavigator/WebNavigator'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
 
@@ -13,10 +15,13 @@ import {
 } from '~screens'
 
 const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
+const isWeb = Platform.OS === 'web'
 
 export const RootNavigator: FC = () => {
   const { t } = useTranslation()
   const { isSignedIn } = useAuth()
+
+  const renderTabNavigator = useMemo(() => (isWeb ? WebNavigator : BottomTabNavigator), [isWeb])
 
   // CONFIG: Handle in app notification
   useNotificationSetup()
@@ -45,7 +50,7 @@ export const RootNavigator: FC = () => {
           <Screen
             name="MainTab"
             options={{ title: t('navigation.screen_titles.main_tab'), headerShown: false }}
-            component={BottomTabNavigator}
+            component={renderTabNavigator}
           />
           <Screen
             name="Settings"
