@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useLinkTo } from '@react-navigation/native'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import { Alert } from 'react-native'
 
 import { useAuth } from './useAuth'
@@ -17,7 +17,6 @@ type Options = {
   enableDeeplink?: boolean
 }
 export const useNotificationSetup = (opts?: Options) => {
-  const [deeplink, setDeeplink] = useState<string>()
   const { notification, setNotification } = useNotificationContext()
   const linkTo = useLinkTo()
   const { isSignedIn } = useAuth()
@@ -45,7 +44,6 @@ export const useNotificationSetup = (opts?: Options) => {
       const addSlash = !finalDeeplink.startsWith('/')
       finalDeeplink = `${addSlash ? '/' : ''}${finalDeeplink}`
 
-      setDeeplink(finalDeeplink)
       if (opts?.enableDeeplink) {
         linkTo(finalDeeplink)
       }
@@ -61,10 +59,9 @@ export const useNotificationSetup = (opts?: Options) => {
         { text: 'Ok', onPress: () => setNotification(undefined) },
       ])
 
-      const deeplinkPath = notification.request.content.data.deeplink as string | undefined
+      // Elvis chains prevent crashes in undiscslosed edge cases
+      const deeplinkPath = notification?.request?.content?.data?.deeplink as string | undefined
       handleDeeplink(deeplinkPath)
     }
   }, [handleDeeplink, notification, setNotification])
-
-  return { deeplink }
 }
