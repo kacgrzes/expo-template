@@ -1,7 +1,7 @@
 import { Box, Button, Center, Image, Text } from 'native-base'
 import { TextInput } from 'react-native'
 
-import { ControlledField, KeyboardAwareScrollView } from '~components'
+import { ControlledField, KeyboardAwareScrollView, LanguagePicker } from '~components'
 import { REGEX } from '~constants'
 import { useCallback, useSignInForm, useNavigation, useTranslation, useRef, useTheme } from '~hooks'
 
@@ -21,6 +21,9 @@ export const SignInScreen = (): JSX.Element => {
         width: space['full'],
       }}
     >
+      <Box alignItems={'flex-end'} width="full" pr={8}>
+        <LanguagePicker />
+      </Box>
       <Center p={8} flex={1} flexGrow={1} width={space['full']}>
         <Image
           alt="logo"

@@ -61,7 +61,6 @@ CI / CD
 - add easy scripts to easy deploy, build and do all the necessary stuff
 - add figma link on how to setup icon and splash screen to readme
 - add hidden developer / admin menu
-- add language switch
 - how to add custom vector icons set to the app? - include this in the docs
 - https://github.com/expo/expo-preview-action
 - run custom snack: https://github.com/expo/snack
@@ -75,6 +74,7 @@ CI / CD
 - ThemeProvider - DONE
 - Dark / Light theme switch - DONE
 - expo-notifications - DONE
+- add language switch - DONE
 
 ## Nice articles:
 

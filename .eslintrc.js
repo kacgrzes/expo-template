@@ -38,7 +38,7 @@ module.exports = {
     'react-native/no-raw-text': [
       2,
       {
-        skip: ['Button', 'Heading'],
+        skip: ['Button', 'Heading', 'Menu.Item'],
       },
     ],
   },
