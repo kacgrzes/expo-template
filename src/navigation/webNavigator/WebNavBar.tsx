@@ -1,9 +1,9 @@
 import { Box, Pressable, Row, Text } from 'native-base'
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { bottomTabsScreenData, BottomTabsRoutes } from '../BottomTabNavigator'
-import { examplesStackScreensData, ExamplesStackScreensEnum } from '../ExamplesStack'
-import { homeStackScreensData, HomeStackScreensEnum } from '../HomeStack'
+import { bottomTabsScreensData, BottomTabsScreens } from '../BottomTabNavigator'
+import { examplesStackScreensData, ExamplesStackScreens } from '../ExamplesStack'
+import { homeStackScreensData, HomeStackScreens } from '../HomeStack'
 import { TAB_DEFAULT_ICON } from '../constants'
 import { WEB_NAV_BAR_ICON_SIZE } from './constants'
 
@@ -11,27 +11,27 @@ import { Icon } from '~components'
 import { BREAKPOINTS } from '~constants'
 import { useNavigation, useWeb } from '~hooks'
 
-const getRoutesNamesFromStack = (
+const getScreensNamesFromStack = (
   stack: typeof homeStackScreensData | typeof examplesStackScreensData
 ) => stack.map((screen) => screen.name)
 
 const webNavBarScreensStructure = [
-  { [BottomTabsRoutes.Home]: getRoutesNamesFromStack(homeStackScreensData) },
-  { [BottomTabsRoutes.Examples]: getRoutesNamesFromStack(examplesStackScreensData) },
-]
+  { [BottomTabsScreens.Home]: getScreensNamesFromStack(homeStackScreensData) },
+  { [BottomTabsScreens.Examples]: getScreensNamesFromStack(examplesStackScreensData) },
+] as const
 
-const getCurrentStackName = (routeName: ExamplesStackScreensEnum | HomeStackScreensEnum) => {
-  const currentStack = webNavBarScreensStructure?.find((stack) => {
-    return Object.values(stack).flat().includes(routeName)
-  })
-  return currentStack ? Object.keys(currentStack)[0] : null
+const getCurrentStackName = (routeName: ExamplesStackScreens | HomeStackScreens) => {
+  const currentStack = webNavBarScreensStructure?.find((stack) =>
+    Object.values(stack).flat().includes(routeName)
+  )
+  return Object.keys(currentStack)[0]
 }
 
-type Props = { currentRouteName: ExamplesStackScreensEnum | HomeStackScreensEnum }
+type Props = { currentRouteName: ExamplesStackScreens | HomeStackScreens }
 
 export const WebNavBar = ({ currentRouteName }: Props): JSX.Element => {
   // TODO: fix type
-  const [activeTab, setActiveTab] = useState<string>()
+  const [activeTab, setActiveTab] = useState<BottomTabsScreens>()
   const { navigate } = useNavigation()
   const { webContentWidth } = useWeb()
 
@@ -46,14 +46,14 @@ export const WebNavBar = ({ currentRouteName }: Props): JSX.Element => {
       }
     }
   }, [currentRouteName])
+
   const handleTabPress = useCallback(
-    (stackName: BottomTabsRoutes) => {
+    (stackName: typeof BottomTabsScreens) => {
       setActiveTab(stackName)
       const screenToNavigate = webNavBarScreensStructure?.find(
         (stack) => Object.keys(stack)[0] === stackName
       )?.[stackName][0]
 
-      // @ts-expect-error: react navigation works differently on web and it's hard to add types that satisfy web and mobile
       navigate(screenToNavigate)
     },
     [navigate, setActiveTab]
@@ -70,7 +70,7 @@ export const WebNavBar = ({ currentRouteName }: Props): JSX.Element => {
         mx="auto"
       >
         <Row flex={1} {...(!shouldApplyDesktopStyles && { justifyContent: 'space-evenly' })}>
-          {bottomTabsScreenData.map(({ name, title, icons }) => {
+          {bottomTabsScreensData.map(({ name, title, icons }) => {
             const focused = activeTab === name
             const iconToRender = (focused ? icons.active : icons.inactive) || TAB_DEFAULT_ICON
             return (

@@ -15,19 +15,19 @@ type ScreenOptions = (params: BottomTabScreenProps) => BottomTabNavigationOption
 // make sure, that when you add new screen data to bottom tab navigator,
 // you also update linkingForWeb['MainTab'] in src/navigation/linking.tsx accordingly
 
-export const enum BottomTabsRoutes {
+export const enum BottomTabsScreens {
   Home = 'HomeStack',
   Examples = 'ExamplesStack',
 }
 
-export const bottomTabsScreenData = [
+export const bottomTabsScreensData = [
   {
     component: HomeStack,
     icons: {
       active: 'home-5-fill',
       inactive: 'home-line',
     },
-    name: BottomTabsRoutes.Home,
+    name: BottomTabsScreens.Home,
     title: t('navigation.screen_titles.home_stack'),
   },
   {
@@ -36,7 +36,7 @@ export const bottomTabsScreenData = [
       active: 'file-list-2-fill',
       inactive: 'file-list-2-line',
     },
-    name: BottomTabsRoutes.Examples,
+    name: BottomTabsScreens.Examples,
     title: t('navigation.screen_titles.examples_stack'),
   },
 ] as const
@@ -48,7 +48,7 @@ export const BottomTabNavigator: FC = () => {
     ({ route }) => ({
       tabBarIcon: ({ color, size, focused }) => {
         const { active, inactive } =
-          bottomTabsScreenData.find((screen) => screen.name === route.name)?.icons || {}
+          bottomTabsScreensData.find((screen) => screen.name === route.name)?.icons || {}
         const iconToRender = (focused ? active : inactive) || TAB_DEFAULT_ICON
 
         // You can return any component that you like here!
@@ -62,7 +62,7 @@ export const BottomTabNavigator: FC = () => {
 
   const navigatorScreens = useMemo(
     () =>
-      bottomTabsScreenData.map((screen, index) => (
+      bottomTabsScreensData.map((screen, index) => (
         <Screen
           key={String(index)}
           name={screen.name}

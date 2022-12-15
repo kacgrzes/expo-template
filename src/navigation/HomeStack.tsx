@@ -6,19 +6,19 @@ import { useMemo } from '~hooks'
 
 const { Navigator, Screen } = createStackNavigator<HomeStackParamList>()
 
-export const enum HomeStackScreensEnum {
+export const enum HomeStackScreens {
   Home = 'Home',
   Details = 'Details',
 }
 
 export const homeStackScreensData = [
   {
-    name: HomeStackScreensEnum.Home,
+    name: HomeStackScreens.Home,
     component: HomeScreen,
     title: t('navigation.screen_titles.home'),
   },
   {
-    name: HomeStackScreensEnum.Details,
+    name: HomeStackScreens.Details,
     component: DetailsScreen,
     title: t('navigation.screen_titles.details'),
   },
