@@ -19,7 +19,9 @@ export const RootNavigator: FC = () => {
   const { isSignedIn } = useAuth()
 
   // CONFIG: Handle in app notification
-  useNotificationSetup()
+  useNotificationSetup({
+    enableDeeplink: true,
+  })
 
   return (
     <Navigator>
