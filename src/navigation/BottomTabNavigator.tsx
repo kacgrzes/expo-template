@@ -1,5 +1,5 @@
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 
 import { bottomTabsScreensData } from './config/tabs'
 
@@ -13,6 +13,15 @@ type ScreenOptions = (params: BottomTabScreenProps) => BottomTabNavigationOption
 
 // make sure, that when you add new screen data to bottom tab navigator,
 // you also update linkingForWeb['MainTab'] in src/navigation/linking.tsx accordingly
+
+const navigatorScreens = bottomTabsScreensData.map((screen, index) => (
+  <Screen
+    key={String(index)}
+    name={screen.name}
+    options={{ title: screen.title }}
+    component={screen.component}
+  />
+))
 
 export const BottomTabNavigator: FC = () => {
   const { tabBarTheme } = useNavigationTheme()
@@ -31,19 +40,6 @@ export const BottomTabNavigator: FC = () => {
       ...tabBarTheme,
     }),
     [tabBarTheme]
-  )
-
-  const navigatorScreens = useMemo(
-    () =>
-      bottomTabsScreensData.map((screen, index) => (
-        <Screen
-          key={String(index)}
-          name={screen.name}
-          options={{ title: screen.title }}
-          component={screen.component}
-        />
-      )),
-    []
   )
 
   return <Navigator screenOptions={screenOptions}>{navigatorScreens}</Navigator>
