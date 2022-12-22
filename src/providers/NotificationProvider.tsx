@@ -1,8 +1,8 @@
 import * as Notifications from 'expo-notifications'
-import { PropsWithChildren, FC, useEffect } from 'react'
+import { PropsWithChildren, FC } from 'react'
 
 import { NotificationContextProvider, NotificationContextType } from '~contexts'
-import { useState, useMemo } from '~hooks'
+import { useState, useMemo, useEffect } from '~hooks'
 import {
   disableAndroidBackgroundNotificationListener,
   getNotificationFromStack,
@@ -48,7 +48,12 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [])
 
   const value = useMemo(
-    () => ({ permissionStatus, setPermissionStatus, notification, setNotification }),
+    () => ({
+      permissionStatus,
+      setPermissionStatus,
+      notification,
+      setNotification,
+    }),
     [notification, permissionStatus]
   )
   return <NotificationContextProvider value={value}>{children}</NotificationContextProvider>

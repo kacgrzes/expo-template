@@ -8,12 +8,12 @@ import { LinkingOptions } from '@react-navigation/native'
 import Constants from 'expo-constants'
 import { createURL } from 'expo-linking'
 import { Platform } from 'react-native'
+
+import { ExamplesStackScreens } from './ExamplesStack'
+import { HomeStackScreens } from './HomeStack'
 const prefix = createURL('/')
+const authorizedPaths = ['/details', '/examples', '/components', '/colors', '/typography']
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []
-
-
-import { ExamplesStackScreensEnum } from './ExamplesStack'
-import { HomeStackScreensEnum } from './HomeStack'
 // Visit https://reactnavigation.org/docs/configuring-links#playground to see more
 
 const WEB_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
@@ -24,13 +24,13 @@ const WEB_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
       initialRouteName: 'Home',
       screens: {
         // @ts-expect-error: react navigation works differently on web and it's hard to add types that satisfy web and mobile
-        [HomeStackScreensEnum.Home]: '/home',
-        [HomeStackScreensEnum.Details]: '/details',
-        [ExamplesStackScreensEnum.Examples]: '/examples',
-        [ExamplesStackScreensEnum.Components]: '/components',
-        [ExamplesStackScreensEnum.Colors]: '/colors',
-        [ExamplesStackScreensEnum.Typography]: '/typography',
-        [ExamplesStackScreensEnum.DataFromBeScreen_EXAMPLE]: '/data-from-be'
+        [HomeStackScreens.Home]: '/home',
+        [HomeStackScreens.Details]: '/details',
+        [ExamplesStackScreens.Examples]: '/examples',
+        [ExamplesStackScreens.Components]: '/components',
+        [ExamplesStackScreens.Colors]: '/colors',
+        [ExamplesStackScreens.Typography]: '/typography',
+        [ExamplesStackScreens.DataFromBeScreen_EXAMPLE]: '/data-from-be',
       },
     },
     SignIn: 'sign-in',
@@ -64,9 +64,6 @@ const APP_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
         },
       },
     },
-    SignIn: 'sign-in',
-    SignUp: 'sign-up',
-    NotFound: '*',
   },
 }
 
@@ -74,3 +71,11 @@ export const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [prefix, ...universalLinks],
   config: Platform.OS === 'web' ? WEB_LINKS_CONFIG : APP_LINKS_CONFIG,
 }
+
+/**
+ *  Checks whether provided link contains authorized link or not.
+ *
+ * @param linkWithoutPrefix link to check with navigation authorized paths
+ */
+export const isAuthorizedLink = (linkWithoutPrefix: string): boolean =>
+  authorizedPaths.some((path) => linkWithoutPrefix.includes(path))

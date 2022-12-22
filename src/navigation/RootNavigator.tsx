@@ -1,9 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { FC, useMemo } from 'react'
 import { Platform } from 'react-native'
-import { WebNavigator } from './webNavigator/WebNavigator'
 
 import { BottomTabNavigator } from './BottomTabNavigator'
+import { WebNavigator } from './webNavigator/WebNavigator'
 
 import { useAuth, useNotificationSetup, useTranslation } from '~hooks'
 import {
@@ -24,7 +24,9 @@ export const RootNavigator: FC = () => {
   const renderTabNavigator = useMemo(() => (isWeb ? WebNavigator : BottomTabNavigator), [isWeb])
 
   // CONFIG: Handle in app notification
-  useNotificationSetup()
+  useNotificationSetup({
+    enableDeeplink: true,
+  })
 
   return (
     <Navigator>
