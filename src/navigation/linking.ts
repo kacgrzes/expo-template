@@ -9,13 +9,13 @@ import Constants from 'expo-constants'
 import { createURL } from 'expo-linking'
 import { Platform } from 'react-native'
 
-import { ExamplesStackScreens } from './ExamplesStack'
-import { HomeStackScreens } from './HomeStack'
+import { ExamplesStackScreens, HomeStackScreens } from './config/enums'
+
 const prefix = createURL('/')
 const authorizedPaths = ['/details', '/examples', '/components', '/colors', '/typography']
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []
-// Visit https://reactnavigation.org/docs/configuring-links#playground to see more
 
+// Visit https://reactnavigation.org/docs/configuring-links#playground to see more
 const WEB_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
   initialRouteName: 'MainTab',
   screens: {
@@ -24,7 +24,7 @@ const WEB_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
       initialRouteName: 'Home',
       screens: {
         // @ts-expect-error: react navigation works differently on web and it's hard to add types that satisfy web and mobile
-        [HomeStackScreens.Home]: '/home',
+        [HomeStackScreens.Home]: '/',
         [HomeStackScreens.Details]: '/details',
         [ExamplesStackScreens.Examples]: '/examples',
         [ExamplesStackScreens.Components]: '/components',
@@ -33,9 +33,9 @@ const WEB_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
         [ExamplesStackScreens.DataFromBeScreen_EXAMPLE]: '/data-from-be',
       },
     },
-    SignIn: 'sign-in',
-    SignUp: 'sign-up',
-    ApplicationInfoScreen: '/aplication-info',
+    SignIn: '/sign-in',
+    SignUp: '/sign-up',
+    ApplicationInfo: '/aplication-info',
     NotFound: '*',
   },
 }

@@ -1,23 +1,17 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useMemo } from 'react'
 
-import { examplesStackScreensData, ExamplesStackScreensEnum } from '../ExamplesStack'
-import { homeStackScreensData, HomeStackScreensEnum } from '../HomeStack'
+import { examplesStackScreensData, homeStackScreensData } from '../config/screens'
 import { WebNavBar } from './WebNavBar'
-import { WEB_SCREEN_STYLES } from './constants'
 
+import { WEB_SCREEN_STYLES } from '~constants/navigation'
 import { useWeb } from '~hooks'
 
 const { Navigator: NavigatorWeb, Screen: ScreenWeb } = createStackNavigator<WebTabParamList>()
-// TODO: fix any type
 const screens = [...examplesStackScreensData, ...homeStackScreensData]
 
 export const WebNavigator: FC = () => {
   const { shouldApplyMobileStyles } = useWeb()
-
-  const [currentRouteName, setRouteName] = useState<
-    ExamplesStackScreensEnum | HomeStackScreensEnum
-  >(HomeStackScreensEnum.Home)
 
   const renderScreens = useMemo(() => {
     return screens.map((screen) => (
@@ -27,26 +21,16 @@ export const WebNavigator: FC = () => {
 
   return (
     <>
-      {!shouldApplyMobileStyles && <WebNavBar currentRouteName={currentRouteName} />}
+      {!shouldApplyMobileStyles && <WebNavBar />}
       <NavigatorWeb
-        screenListeners={() => ({
-          state: (e) => {
-            // @ts-ignore e.data is readonly and TS complains about state value on that type
-            const currentScreen = e?.data?.state?.routes[e.data.state.index || 0]?.name
-            setRouteName(currentScreen)
-          },
-        })}
         screenOptions={{
           headerShown: false,
-          cardStyle: {
-            ...WEB_SCREEN_STYLES,
-            backgroundColor: 'red',
-          },
+          cardStyle: WEB_SCREEN_STYLES,
         }}
       >
         {renderScreens}
       </NavigatorWeb>
-      {shouldApplyMobileStyles && <WebNavBar currentRouteName={currentRouteName} />}
+      {shouldApplyMobileStyles && <WebNavBar />}
     </>
   )
 }

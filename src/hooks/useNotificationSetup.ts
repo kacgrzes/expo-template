@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useLinkTo } from '@react-navigation/native'
 import { useCallback, useEffect } from 'react'
-import { Alert } from 'react-native'
 
 import { useAuth } from './useAuth'
 
@@ -9,6 +8,7 @@ import { ASYNC_STORAGE_KEYS } from '~constants'
 import { useNotificationContext } from '~contexts'
 import { isAuthorizedLink } from '~navigation/linking'
 import { registerForPushNotificationsAsync } from '~services'
+import { alert } from '~utils'
 
 type Options = {
   /**
@@ -54,7 +54,7 @@ export const useNotificationSetup = (opts?: Options) => {
   // CONFIG: Handle in app notification
   useEffect(() => {
     if (notification) {
-      Alert.alert('Notification', JSON.stringify(notification), [
+      alert('Notification', JSON.stringify(notification), [
         { text: 'Cancel', onPress: () => setNotification(undefined), style: 'cancel' },
         { text: 'Ok', onPress: () => setNotification(undefined) },
       ])

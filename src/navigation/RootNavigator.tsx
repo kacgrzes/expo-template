@@ -21,7 +21,7 @@ export const RootNavigator: FC = () => {
   const { t } = useTranslation()
   const { isSignedIn } = useAuth()
 
-  const renderTabNavigator = useMemo(() => (isWeb ? WebNavigator : BottomTabNavigator), [isWeb])
+  const renderTabNavigator = useMemo(() => (isWeb ? WebNavigator : BottomTabNavigator), [])
 
   // CONFIG: Handle in app notification
   useNotificationSetup({

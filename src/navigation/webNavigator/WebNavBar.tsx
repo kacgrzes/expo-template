@@ -1,62 +1,43 @@
 import { Box, Pressable, Row, Text } from 'native-base'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 
-import { bottomTabsScreensData, BottomTabsScreens } from '../BottomTabNavigator'
-import { examplesStackScreensData, ExamplesStackScreens } from '../ExamplesStack'
-import { homeStackScreensData, HomeStackScreens } from '../HomeStack'
-import { TAB_DEFAULT_ICON } from '../constants'
-import { WEB_NAV_BAR_ICON_SIZE } from './constants'
+import { BottomTabsScreens } from '../config/enums'
+import { bottomTabsScreensData } from '../config/tabs'
 
 import { Icon } from '~components'
-import { BREAKPOINTS } from '~constants'
-import { useNavigation, useWeb } from '~hooks'
+import { BREAKPOINTS, TAB_DEFAULT_ICON, WEB_NAV_BAR_ICON_SIZE } from '~constants'
+import { useNavigation, useNavigationState, useWeb } from '~hooks'
+import { navigationRef } from '~utils'
 
-const getScreensNamesFromStack = (
-  stack: typeof homeStackScreensData | typeof examplesStackScreensData
-) => stack.map((screen) => screen.name)
-
-const webNavBarScreensStructure = [
-  { [BottomTabsScreens.Home]: getScreensNamesFromStack(homeStackScreensData) },
-  { [BottomTabsScreens.Examples]: getScreensNamesFromStack(examplesStackScreensData) },
-] as const
-
-const getCurrentStackName = (routeName: ExamplesStackScreens | HomeStackScreens) => {
-  const currentStack = webNavBarScreensStructure?.find((stack) =>
-    Object.values(stack).flat().includes(routeName)
-  )
-  return Object.keys(currentStack)[0]
-}
-
-type Props = { currentRouteName: ExamplesStackScreens | HomeStackScreens }
-
-export const WebNavBar = ({ currentRouteName }: Props): JSX.Element => {
-  // TODO: fix type
-  const [activeTab, setActiveTab] = useState<BottomTabsScreens>()
+export const WebNavBar = (): JSX.Element => {
   const { navigate } = useNavigation()
   const { webContentWidth } = useWeb()
 
   const shouldApplyDesktopStyles = webContentWidth >= BREAKPOINTS.desktop
 
-  useEffect(() => {
-    if (currentRouteName) {
-      const currentStack = getCurrentStackName(currentRouteName)
-
-      if (currentStack) {
-        setActiveTab(currentStack)
-      }
-    }
-  }, [currentRouteName])
+  // This hook call is needed to rerender this component when navigation state will change
+  // thanks to that function `getCurrentRoute` will have proper value
+  useNavigationState((state) => state.routes)
+  const currentRouteName = navigationRef.current?.getCurrentRoute()?.name ?? ''
 
   const handleTabPress = useCallback(
-    (stackName: typeof BottomTabsScreens) => {
-      setActiveTab(stackName)
-      const screenToNavigate = webNavBarScreensStructure?.find(
-        (stack) => Object.keys(stack)[0] === stackName
-      )?.[stackName][0]
+    (stackName: BottomTabsScreens) => {
+      // Search for first screen that is in selected tab
+      const screenToNavigate = bottomTabsScreensData?.find((stack) => stack.name === stackName)
+        ?.screens?.[0].name as any
 
       navigate(screenToNavigate)
     },
-    [navigate, setActiveTab]
+    [navigate]
+  )
+
+  const isActiveTab = useCallback(
+    (screens: { name: string }[]) => {
+      // search through screens that are in single bottom tab,
+      // if one of screens from bottom tab is found then we should mark it as active
+      return screens.some((screen) => screen.name === currentRouteName)
+    },
+    [currentRouteName]
   )
 
   return (
@@ -70,8 +51,8 @@ export const WebNavBar = ({ currentRouteName }: Props): JSX.Element => {
         mx="auto"
       >
         <Row flex={1} {...(!shouldApplyDesktopStyles && { justifyContent: 'space-evenly' })}>
-          {bottomTabsScreensData.map(({ name, title, icons }) => {
-            const focused = activeTab === name
+          {bottomTabsScreensData.map(({ name, title, icons, screens }) => {
+            const focused = isActiveTab(screens as any)
             const iconToRender = (focused ? icons.active : icons.inactive) || TAB_DEFAULT_ICON
             return (
               <Box key={name} mx="4">
