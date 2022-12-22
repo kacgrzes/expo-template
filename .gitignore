@@ -10,7 +10,7 @@ npm-debug.*
 web-build/
 
 # webstorm
-.idea
+.idea/
 
 # macOS
 .DS_Store
