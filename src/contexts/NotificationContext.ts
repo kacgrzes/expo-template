@@ -9,6 +9,8 @@ export type NotificationContextType = {
   setPermissionStatus: Dispatch<SetStateAction<PermissionStatus | undefined>>
   notification?: Notifications.Notification
   setNotification: Dispatch<SetStateAction<Notifications.Notification | undefined>>
+  inAppNotification?: Notifications.Notification
+  setInAppNotification: Dispatch<SetStateAction<Notifications.Notification | undefined>>
 }
 
 export const [useNotificationContext, NotificationContextProvider] =
