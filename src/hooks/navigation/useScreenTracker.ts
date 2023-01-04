@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react'
 
 import { navigationRef } from '~utils'
 
-type Callback = (currentRouteName: string) => Promise<void> | void | undefined
+type Callback = (currentRouteName: string) => Promise<void> | undefined
 
 const defaultCallback: Callback = async (currentRouteName) => {
   console.log(`Current route: ${currentRouteName}`)
