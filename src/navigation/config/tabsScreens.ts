@@ -16,27 +16,32 @@ export const examplesStackScreensData = [
   {
     name: ExamplesStackScreens.Examples,
     component: ExamplesScreen,
-    title: t('navigation.screen_titles.examples'),
+    options: { title: t('navigation.screen_titles.examples') },
+    deeplink: '/examples',
   },
   {
     name: ExamplesStackScreens.Typography,
     component: TypographyScreen,
-    title: t('navigation.screen_titles.typography'),
+    options: { title: t('navigation.screen_titles.typography') },
+    deeplink: '/typography',
   },
   {
     name: ExamplesStackScreens.Colors,
     component: ColorsScreen,
-    title: t('navigation.screen_titles.colors'),
+    options: { title: t('navigation.screen_titles.colors') },
+    deeplink: '/colors',
   },
   {
     name: ExamplesStackScreens.Components,
     component: ComponentsScreen,
-    title: t('navigation.screen_titles.components'),
+    options: { title: t('navigation.screen_titles.components') },
+    deeplink: '/components',
   },
   {
     name: ExamplesStackScreens.DataFromBeScreen_EXAMPLE,
     component: DataFromBeScreen_EXAMPLE,
-    title: t('navigation.screen_titles.data_from_be_screen_example'),
+    options: { title: t('navigation.screen_titles.data_from_be_screen_example') },
+    deeplink: '/data-example',
   },
 ] as const
 
@@ -44,11 +49,13 @@ export const homeStackScreensData = [
   {
     name: HomeStackScreens.Home,
     component: HomeScreen,
-    title: t('navigation.screen_titles.home'),
+    options: { title: t('navigation.screen_titles.home') },
+    deeplink: '/',
   },
   {
     name: HomeStackScreens.Details,
     component: DetailsScreen,
-    title: t('navigation.screen_titles.details'),
+    options: { title: t('navigation.screen_titles.details') },
+    deeplink: '/details',
   },
 ]

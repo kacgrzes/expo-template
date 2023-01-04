@@ -3,7 +3,7 @@ import { t } from 'i18next'
 import { ExamplesStack } from '../ExamplesStack'
 import { HomeStack } from '../HomeStack'
 import { BottomTabsScreens } from './enums'
-import { examplesStackScreensData, homeStackScreensData } from './screens'
+import { examplesStackScreensData, homeStackScreensData } from './tabsScreens'
 
 export const bottomTabsScreensData = [
   {
@@ -14,7 +14,7 @@ export const bottomTabsScreensData = [
     },
     name: BottomTabsScreens.Home,
     screens: homeStackScreensData,
-    title: t('navigation.screen_titles.home_stack'),
+    options: { title: t('navigation.screen_titles.home_stack') },
   },
   {
     component: ExamplesStack,
@@ -24,6 +24,8 @@ export const bottomTabsScreensData = [
     },
     name: BottomTabsScreens.Examples,
     screens: examplesStackScreensData,
-    title: t('navigation.screen_titles.examples_stack'),
+    options: { title: t('navigation.screen_titles.examples_stack') },
   },
 ] as const
+
+export const webScreensData = bottomTabsScreensData.map((tab) => tab?.screens ?? []).flat()

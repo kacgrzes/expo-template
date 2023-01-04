@@ -1,27 +1,27 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import { FC, useMemo } from 'react'
-import { Platform } from 'react-native'
+import { FC } from 'react'
 
-import { BottomTabNavigator } from './BottomTabNavigator'
-import { WebNavigator } from './webNavigator/WebNavigator'
+import { rootStackScreensData } from './config/rootScreens'
 
-import { useAuth, useNotificationSetup, useTranslation } from '~hooks'
-import {
-  ApplicationInfoScreen,
-  NotFoundScreen,
-  SettingsScreen,
-  SignInScreen,
-  SignUpScreen,
-} from '~screens'
+import { useAuth } from '~hooks'
+import { useNotificationSetup } from '~hooks/useNotificationSetup'
 
 const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
-const isWeb = Platform.OS === 'web'
+
+const authorizedScreens = rootStackScreensData.authorized.map((props) => (
+  <Screen key={props.name} {...props} />
+))
+
+const unauthorizedScreens = rootStackScreensData.unauthorized.map((props) => (
+  <Screen key={props.name} {...props} />
+))
+
+const modalsScreens = rootStackScreensData.modals.map((props) => (
+  <Screen key={props.name} {...props} />
+))
 
 export const RootNavigator: FC = () => {
-  const { t } = useTranslation()
   const { isSignedIn } = useAuth()
-
-  const renderTabNavigator = useMemo(() => (isWeb ? WebNavigator : BottomTabNavigator), [])
 
   // CONFIG: Handle in app notification
   useNotificationSetup({
@@ -31,47 +31,12 @@ export const RootNavigator: FC = () => {
   return (
     <Navigator>
       {!isSignedIn ? (
-        <Group key="unauthorized">
-          <Screen
-            name="SignIn"
-            component={SignInScreen}
-            options={{
-              title: t('navigation.screen_titles.sign_in'),
-            }}
-          />
-          <Screen
-            name="SignUp"
-            component={SignUpScreen}
-            options={{
-              title: t('navigation.screen_titles.sign_up'),
-            }}
-          />
-        </Group>
+        <Group key="unauthorized">{unauthorizedScreens}</Group>
       ) : (
-        <Group key="authorized">
-          <Screen
-            name="MainTab"
-            options={{ title: t('navigation.screen_titles.main_tab'), headerShown: false }}
-            component={renderTabNavigator}
-          />
-          <Screen
-            name="Settings"
-            options={{ title: t('navigation.screen_titles.settings') }}
-            component={SettingsScreen}
-          />
-        </Group>
+        <Group key="authorized">{authorizedScreens}</Group>
       )}
       <Group key="modals" screenOptions={{ presentation: 'modal' }}>
-        <Screen
-          name="ApplicationInfo"
-          options={{ title: t('navigation.screen_titles.application_info') }}
-          component={ApplicationInfoScreen}
-        />
-        <Screen
-          name="NotFound"
-          options={{ title: t('navigation.screen_titles.not_found') }}
-          component={NotFoundScreen}
-        />
+        {modalsScreens}
       </Group>
     </Navigator>
   )

@@ -1,21 +1,24 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import React, { FC } from 'react'
 
-import { examplesStackScreensData, homeStackScreensData } from '../config/screens'
+import { webScreensData } from '../config/tabs'
 import { WebNavBar } from './WebNavBar'
 
 import { WEB_SCREEN_STYLES } from '~constants/navigation'
-import { useWeb } from '~hooks'
+import { useDimensions, useNavigationTheme, useWeb } from '~hooks'
 
 const { Navigator: NavigatorWeb, Screen: ScreenWeb } = createStackNavigator<WebTabParamList>()
-const screens = [...examplesStackScreensData, ...homeStackScreensData]
 
-const renderScreens = screens.map((screen) => (
+const renderScreens = webScreensData.map((screen) => (
   <ScreenWeb name={screen?.name} component={screen?.component} key={screen?.name} />
 ))
 
 export const WebNavigator: FC = () => {
-  const { shouldApplyMobileStyles } = useWeb()
+  const { shouldApplyMobileStyles, webContentWidth } = useWeb()
+  const { navigationTheme } = useNavigationTheme()
+  const {
+    window: { width: windowWidth },
+  } = useDimensions()
 
   return (
     <>
@@ -23,7 +26,11 @@ export const WebNavigator: FC = () => {
       <NavigatorWeb
         screenOptions={{
           headerShown: false,
-          cardStyle: WEB_SCREEN_STYLES,
+          cardStyle: {
+            ...WEB_SCREEN_STYLES,
+            paddingHorizontal: (windowWidth - webContentWidth) / 2,
+            backgroundColor: navigationTheme.colors.background,
+          },
         }}
       >
         {renderScreens}

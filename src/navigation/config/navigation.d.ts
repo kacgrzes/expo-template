@@ -65,6 +65,7 @@ declare global {
   type ComponentsScreenProps = ExamplesStackComposite<'Components'>
 }
 
+// Helper types
 type RootStackComposite<S extends keyof RootStackParamList = keyof RootStackParamList> =
   CompositeScreenProps<
     StackScreenProps<RootStackParamList, S>,

@@ -9,61 +9,75 @@ import Constants from 'expo-constants'
 import { createURL } from 'expo-linking'
 import { Platform } from 'react-native'
 
-import { ExamplesStackScreens, HomeStackScreens } from './config/enums'
+import { HomeStackScreens, RootStackScreens } from './config/enums'
+import { rootStackScreensData } from './config/rootScreens'
+import { webScreensData, bottomTabsScreensData } from './config/tabs'
 
 const prefix = createURL('/')
-const authorizedPaths = ['/details', '/examples', '/components', '/colors', '/typography']
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []
+
+const webTabsScreens = webScreensData.reduce<{ [key: string]: string }>((prev, current) => {
+  prev[current.name] = current.deeplink
+  return prev
+}, {})
+
+const mobileTabsScreens = bottomTabsScreensData.reduce<{
+  [key: string]: {
+    initialRouteName: string
+    screens: { [key: string]: string }
+  }
+}>((prev, current) => {
+  // issue in typescript, follow this thread: https://github.com/microsoft/TypeScript/issues/44373
+  const screens = current.screens as unknown as {
+    initialRouteName: string
+    name: string
+    deeplink: string
+    screens: { [key: string]: string }
+  }[]
+  prev[current.name] = {
+    initialRouteName: current.screens[0].name,
+    screens: screens.reduce<{ [key: string]: string }>((prev, current) => {
+      prev[current.name] = current.deeplink
+      return prev
+    }, {}),
+  }
+  return prev
+}, {})
+
+const rootScreensData = [
+  // Filter out MainTab because it's handled separately
+  ...rootStackScreensData.authorized.filter((screen) => screen.name !== RootStackScreens.MainTab),
+  ...rootStackScreensData.unauthorized,
+  ...rootStackScreensData.modals,
+]
+
+const webRootScreens = rootScreensData.reduce<{ [key: string]: string }>((prev, current) => {
+  prev[current.name] = current.deeplink
+  return prev
+}, {})
 
 // Visit https://reactnavigation.org/docs/configuring-links#playground to see more
 const WEB_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
   initialRouteName: 'MainTab',
   screens: {
     MainTab: {
-      // @ts-expect-error: react navigation works differently on web and it's hard to add types that satisfy web and mobile
-      initialRouteName: 'Home',
-      screens: {
-        // @ts-expect-error: react navigation works differently on web and it's hard to add types that satisfy web and mobile
-        [HomeStackScreens.Home]: '/',
-        [HomeStackScreens.Details]: '/details',
-        [ExamplesStackScreens.Examples]: '/examples',
-        [ExamplesStackScreens.Components]: '/components',
-        [ExamplesStackScreens.Colors]: '/colors',
-        [ExamplesStackScreens.Typography]: '/typography',
-        [ExamplesStackScreens.DataFromBeScreen_EXAMPLE]: '/data-from-be',
-      },
+      // @ts-expect-error: Enum can't be cast to string, but the values are the same
+      initialRouteName: HomeStackScreens.Home,
+      screens: webTabsScreens,
     },
-    SignIn: '/sign-in',
-    SignUp: '/sign-up',
-    ApplicationInfo: '/aplication-info',
-    NotFound: '*',
+    ...webRootScreens,
   },
 }
 
 const APP_LINKS_CONFIG: LinkingOptions<RootStackParamList>['config'] = {
   initialRouteName: 'MainTab',
   screens: {
-    Settings: 'settings',
     MainTab: {
-      screens: {
-        HomeStack: {
-          initialRouteName: 'Home',
-          screens: {
-            Home: '',
-            Details: '/details/:id',
-          },
-        },
-        ExamplesStack: {
-          initialRouteName: 'Examples',
-          screens: {
-            Examples: '/examples',
-            Components: '/components',
-            Colors: '/colors',
-            Typography: '/typography',
-          },
-        },
-      },
+      // @ts-expect-error: Enum can't be cast to string, but the values are the same
+      initialRouteName: HomeStackScreens.Home,
+      screens: mobileTabsScreens,
     },
+    ...webRootScreens,
   },
 }
 
@@ -71,11 +85,3 @@ export const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [prefix, ...universalLinks],
   config: Platform.OS === 'web' ? WEB_LINKS_CONFIG : APP_LINKS_CONFIG,
 }
-
-/**
- *  Checks whether provided link contains authorized link or not.
- *
- * @param linkWithoutPrefix link to check with navigation authorized paths
- */
-export const isAuthorizedLink = (linkWithoutPrefix: string): boolean =>
-  authorizedPaths.some((path) => linkWithoutPrefix.includes(path))

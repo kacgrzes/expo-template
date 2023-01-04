@@ -1,4 +1,13 @@
 // SCREENS
+export const enum RootStackScreens {
+  SignIn = 'SignIn',
+  SignUp = 'SignUp',
+  MainTab = 'MainTab',
+  Settings = 'Settings',
+  ApplicationInfo = 'ApplicationInfo',
+  NotFound = 'NotFound',
+}
+
 export const enum ExamplesStackScreens {
   Examples = 'Examples',
   Typography = 'Typography',

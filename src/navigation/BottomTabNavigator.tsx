@@ -14,13 +14,8 @@ type ScreenOptions = (params: BottomTabScreenProps) => BottomTabNavigationOption
 // make sure, that when you add new screen data to bottom tab navigator,
 // you also update linkingForWeb['MainTab'] in src/navigation/linking.tsx accordingly
 
-const navigatorScreens = bottomTabsScreensData.map((screen, index) => (
-  <Screen
-    key={String(index)}
-    name={screen.name}
-    options={{ title: screen.title }}
-    component={screen.component}
-  />
+const navigatorScreens = bottomTabsScreensData.map((props) => (
+  <Screen key={props.name} {...props} />
 ))
 
 export const BottomTabNavigator: FC = () => {
