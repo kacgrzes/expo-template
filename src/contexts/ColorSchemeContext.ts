@@ -1,7 +1,7 @@
 import { colorSchemesList } from '~constants'
 import createGenericContext from '~utils/createGenericContext'
 
-export type SettingColorSchemeName = typeof colorSchemesList[number]
+export type SettingColorSchemeName = (typeof colorSchemesList)[number]
 export type ColorSchemeName = Exclude<SettingColorSchemeName, 'system'>
 
 export type ColorSchemeContextType = {
