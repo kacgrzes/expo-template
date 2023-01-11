@@ -3,7 +3,7 @@ import { ColorNames } from '~types/native-base'
 
 type GetColorValueProps = {
   color: ColorNames
-  colors: typeof theme['colors']
+  colors: (typeof theme)['colors']
 }
 
 export const getColorValue = ({ color, colors }: GetColorValueProps): string => {
