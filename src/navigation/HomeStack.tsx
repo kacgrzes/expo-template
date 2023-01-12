@@ -1,24 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { useTranslation } from '~hooks'
-import { DetailsScreen, HomeScreen } from '~screens'
+import { homeStackScreensData } from './config/tabsScreens'
 
 const { Navigator, Screen } = createStackNavigator<HomeStackParamList>()
 
+const screens = homeStackScreensData.map((props) => <Screen key={props.name} {...props} />)
+
 export const HomeStack = (): JSX.Element => {
-  const { t } = useTranslation()
-  return (
-    <Navigator>
-      <Screen
-        name="Home"
-        options={{ title: t('navigation.screen_titles.home') }}
-        component={HomeScreen}
-      />
-      <Screen
-        name="Details"
-        options={{ title: t('navigation.screen_titles.details') }}
-        component={DetailsScreen}
-      />
-    </Navigator>
-  )
+  return <Navigator>{screens}</Navigator>
 }

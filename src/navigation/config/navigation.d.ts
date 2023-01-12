@@ -22,6 +22,8 @@ declare global {
     ExamplesStack: NavigatorScreenParams<ExampleStackParamList>
   }
 
+  type WebTabParamList = ExampleStackParamList & HomeStackParamList
+
   type RootStackParamList = {
     // unauthorized
     SignUp: undefined
@@ -63,6 +65,7 @@ declare global {
   type ComponentsScreenProps = ExamplesStackComposite<'Components'>
 }
 
+// Helper types
 type RootStackComposite<S extends keyof RootStackParamList = keyof RootStackParamList> =
   CompositeScreenProps<
     StackScreenProps<RootStackParamList, S>,

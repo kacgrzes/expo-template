@@ -68,6 +68,7 @@
     "updateSnapshots": "jest -u --coverage=false",
     "upload": "yarn upload:ios && yarn upload:android",
     "web": "cross-env IS_DEV=1 expo start --web",
+    "web:build": "expo export:web",
     "whoami": "expo whoami"
   },
   "dependencies": {
@@ -131,7 +132,8 @@
     "use-debounce": "^8.0.4"
   },
   "resolutions": {
-    "@types/react": "^17.0.4"
+    "@types/react": "^17.0.4",
+    "react-error-overlay": "6.0.9"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

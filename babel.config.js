@@ -3,9 +3,12 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
-      ["@babel/plugin-transform-react-jsx", {
-        "runtime": "automatic"
-      }],
+      [
+        '@babel/plugin-transform-react-jsx',
+        {
+          runtime: 'automatic',
+        },
+      ],
       [
         'module-resolver',
         {
@@ -29,6 +32,7 @@ module.exports = function (api) {
           ],
         },
       ],
+      '@babel/plugin-proposal-export-namespace-from',
       'react-native-reanimated/plugin',
     ],
   }

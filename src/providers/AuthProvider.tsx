@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 
-import { AuthContextProvider, AuthContextType } from '~contexts'
+import { AuthContextProvider, AuthContextType, authContextRef } from '~contexts'
 import { useCallback, useEffect, useMemo, useState } from '~hooks'
 import { deleteToken, getToken, setToken } from '~services'
 import { SignUpFormValues } from '~types/authForms'
@@ -52,6 +52,9 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       signUp,
     }
   }, [isSignedIn, signIn, signOut, signUp])
+
+  // @ts-expect-error: wrong typings in react
+  authContextRef.current = value
 
   return <AuthContextProvider value={value}>{children}</AuthContextProvider>
 }
