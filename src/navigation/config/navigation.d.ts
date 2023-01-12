@@ -1,5 +1,4 @@
-import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native'
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
+import { NavigatorScreenParams } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 
 declare global {
@@ -54,36 +53,22 @@ declare global {
   >
 
   // Root stack
-  type RootStackScreenProps = RootStackComposite
+  type RootStackScreenProps = ScreenComposite
 
   // Home stack
-  type HomeScreenProps = HomeStackComposite<'Home'>
-  type DetailsScreenProps = HomeStackComposite<'Details'>
+  type HomeScreenProps = ScreenComposite<'Home'>
+  type DetailsScreenProps = ScreenComposite<'Details'>
 
   // Examples stack
-  type ExamplesScreenProps = ExamplesStackComposite<'Examples'>
-  type ComponentsScreenProps = ExamplesStackComposite<'Components'>
+  type ExamplesScreenProps = ScreenComposite<'Examples'>
+  type ComponentsScreenProps = ScreenComposite<'Components'>
 }
 
+// type ScreenHehe = ScreenComponent
+
 // Helper types
-type RootStackComposite<S extends keyof RootStackParamList = keyof RootStackParamList> =
-  CompositeScreenProps<
-    StackScreenProps<RootStackParamList, S>,
-    BottomTabScreenProps<MainTabParamList>
-  >
-
-type HomeStackComposite<S extends keyof HomeStackParamList> = CompositeScreenProps<
-  CompositeScreenProps<
-    StackScreenProps<HomeStackParamList, S>,
-    BottomTabScreenProps<MainTabParamList, 'HomeStack'>
-  >,
-  StackScreenProps<RootStackParamList, 'MainTab'>
->
-
-type ExamplesStackComposite<S extends keyof ExampleStackParamList> = CompositeScreenProps<
-  CompositeScreenProps<
-    StackScreenProps<ExampleStackParamList, S>,
-    BottomTabScreenProps<MainTabParamList, 'ExamplesStack'>
-  >,
-  StackScreenProps<RootStackParamList, 'MainTab'>
->
+type ScreenComposite<
+  S extends keyof (RootStackParamList &
+    HomeStackParamList &
+    ExampleStackParamList) = keyof RootStackParamList
+> = StackScreenProps<RootStackParamList & HomeStackParamList & ExampleStackParamList, S>

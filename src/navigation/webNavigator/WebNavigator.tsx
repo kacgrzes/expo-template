@@ -10,7 +10,14 @@ import { useDimensions, useNavigationTheme, useWeb } from '~hooks'
 const { Navigator: NavigatorWeb, Screen: ScreenWeb } = createStackNavigator<WebTabParamList>()
 
 const renderScreens = webScreensData.map((screen) => (
-  <ScreenWeb name={screen?.name} component={screen?.component} key={screen?.name} />
+  <ScreenWeb
+    key={screen?.name}
+    options={screen.options}
+    // @ts-expect-error: hard to implement good types when mapping screens
+    name={screen?.name}
+    // @ts-expect-error: hard to implement good types when mapping screens
+    component={screen.component}
+  />
 ))
 
 export const WebNavigator: FC = () => {

@@ -44,8 +44,6 @@ export const useNotificationSetup = (opts?: Options) => {
       const addSlash = !finalDeeplink.startsWith('/')
       finalDeeplink = `${addSlash ? '/' : ''}${finalDeeplink}`
 
-      console.log(finalDeeplink)
-
       if (opts?.enableDeeplink) {
         linkTo(finalDeeplink)
       }
