@@ -32,7 +32,7 @@ const faviconPath = './assets/icons/web/favicon-'
 // CONFIG: Add your eas build config here !! More details about the following parameters, and other available configs -> https://docs.expo.dev/build-reference/eas-json/
 export const APP_CONFIG = {
   androidPackageName: 'your_android_package_name', // CONFIG: Add your android package name here
-  appName: 'your_app_name', // CONFIG: Add your app name here
+  appName: 'Template', // CONFIG: Add your app name here
   easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
   iosBundleIdentifier: 'your.ios.bundle.identifier', // CONFIG: Add your ios bundle identifier here
   isDev: process.env.IS_DEV === '1',

@@ -1,14 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useLinkTo } from '@react-navigation/native'
+import * as Notifications from 'expo-notifications'
 import { useCallback, useEffect } from 'react'
-import { Alert } from 'react-native'
-
-import { useAuth } from './useAuth'
 
 import { ASYNC_STORAGE_KEYS } from '~constants'
-import { useNotificationContext } from '~contexts'
-import { isAuthorizedLink } from '~navigation/linking'
+import { authContextRef, useNotificationContext } from '~contexts'
 import { registerForPushNotificationsAsync } from '~services'
+import { alert } from '~utils'
+import { isAuthorizedLink } from '~utils/isAuthorizedLink'
 
 type Options = {
   /**
@@ -16,10 +15,10 @@ type Options = {
    */
   enableDeeplink?: boolean
 }
+
 export const useNotificationSetup = (opts?: Options) => {
-  const { notification, setNotification } = useNotificationContext()
+  const { inAppNotification, setInAppNotification } = useNotificationContext()
   const linkTo = useLinkTo()
-  const { isSignedIn } = useAuth()
 
   useEffect(() => {
     const initNotifications = async () => {
@@ -36,7 +35,8 @@ export const useNotificationSetup = (opts?: Options) => {
       let finalDeeplink = deeplinkPath
 
       const isAuthorizedPath = isAuthorizedLink(deeplinkPath)
-      if (!isSignedIn && isAuthorizedPath) {
+
+      if (!authContextRef.current?.isSignedIn && isAuthorizedPath) {
         AsyncStorage.setItem(ASYNC_STORAGE_KEYS.NEXT_DEEP_LINK, deeplinkPath)
         finalDeeplink = '/sign-in'
       }
@@ -44,24 +44,39 @@ export const useNotificationSetup = (opts?: Options) => {
       const addSlash = !finalDeeplink.startsWith('/')
       finalDeeplink = `${addSlash ? '/' : ''}${finalDeeplink}`
 
+      console.log(finalDeeplink)
+
       if (opts?.enableDeeplink) {
         linkTo(finalDeeplink)
       }
     },
-    [linkTo, isSignedIn, opts?.enableDeeplink]
+    [linkTo, opts?.enableDeeplink]
   )
 
   // CONFIG: Handle in app notification
-  useEffect(() => {
-    if (notification) {
-      Alert.alert('Notification', JSON.stringify(notification), [
-        { text: 'Cancel', onPress: () => setNotification(undefined), style: 'cancel' },
-        { text: 'Ok', onPress: () => setNotification(undefined) },
+  const navigateWithNotification = useCallback(
+    (notification: Notifications.Notification) => {
+      const { title, body } = notification?.request?.content ?? {}
+      alert(title ?? 'Notification', body ?? 'Navigate somewhere', [
+        { text: 'Cancel', onPress: () => setInAppNotification(undefined), style: 'cancel' },
+        {
+          text: 'Ok',
+          onPress: () => {
+            // Elvis chains prevent crashes in undiscslosed edge cases
+            const deeplinkPath = notification?.request?.content?.data?.deeplink as
+              | string
+              | undefined
+            handleDeeplink(deeplinkPath)
+          },
+        },
       ])
+    },
+    [handleDeeplink, setInAppNotification]
+  )
 
-      // Elvis chains prevent crashes in undiscslosed edge cases
-      const deeplinkPath = notification?.request?.content?.data?.deeplink as string | undefined
-      handleDeeplink(deeplinkPath)
+  useEffect(() => {
+    if (inAppNotification) {
+      navigateWithNotification(inAppNotification)
     }
-  }, [handleDeeplink, notification, setNotification])
+  }, [inAppNotification, navigateWithNotification, setInAppNotification])
 }

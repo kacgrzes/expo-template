@@ -15,6 +15,8 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const goToComponents = useCallback(() => navigate('Components'), [navigate])
   const goToTypography = useCallback(() => navigate('Typography'), [navigate])
   const goToCityListScreen_EXAMPLE = useCallback(() => navigate('DataFromBeScreen'), [navigate])
+
+  // FIXME: This will no work on web, we need to find a way to make this work
   const goToHomeStackDetails = useCallback(
     () =>
       navigate('HomeStack', {
