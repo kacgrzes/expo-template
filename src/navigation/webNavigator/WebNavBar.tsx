@@ -15,7 +15,7 @@ export const WebNavBar = (): JSX.Element => {
 
   // This hook call is needed to rerender this component when navigation state will change
   // thanks to that function `getCurrentRoute` will have proper value
-  useNavigationState((state) => state.routes)
+  useNavigationState((state) => state?.routes)
   const currentRouteName = navigationRef.current?.getCurrentRoute()?.name ?? ''
 
   const handleTabPress = useCallback(
