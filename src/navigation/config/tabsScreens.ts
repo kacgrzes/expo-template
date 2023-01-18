@@ -58,4 +58,4 @@ export const homeStackScreensData = [
     options: { title: t('navigation.screen_titles.details') },
     deeplink: '/details',
   },
-]
+] as const

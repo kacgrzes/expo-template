@@ -1,7 +1,7 @@
 import { Box, Pressable, Row, Text } from 'native-base'
 import React, { useCallback } from 'react'
 
-import { BottomTabsScreens } from '../config/enums'
+import { BottomTabsScreensKeys } from '../config/enums'
 import { bottomTabsScreensData } from '../config/tabs'
 
 import { Icon } from '~components'
@@ -19,7 +19,7 @@ export const WebNavBar = (): JSX.Element => {
   const currentRouteName = navigationRef.current?.getCurrentRoute()?.name ?? ''
 
   const handleTabPress = useCallback(
-    (stackName: BottomTabsScreens) => {
+    (stackName: BottomTabsScreensKeys) => {
       // Search for first screen that is in selected tab
       const screenToNavigate = bottomTabsScreensData?.find((stack) => stack.name === stackName)
         ?.screens?.[0].name as any
