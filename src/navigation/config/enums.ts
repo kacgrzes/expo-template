@@ -16,7 +16,7 @@ export const ExamplesStackScreens = {
   Typography: 'Typography',
   Colors: 'Colors',
   Components: 'Components',
-  DataFromBeScreen_EXAMPLE: 'DataFromBeScreen',
+  DataFromBeScreen_EXAMPLE: 'DataFromBeScreen_EXAMPLE',
 } as const
 
 export const HomeStackScreens = {

@@ -1,5 +1,6 @@
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
-import { FC } from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import { FC, memo } from 'react'
 
 import { bottomTabsScreensData } from './config/tabs'
 
@@ -11,12 +12,16 @@ const { Navigator, Screen } = createBottomTabNavigator<MainTabParamList>()
 
 type ScreenOptions = (params: BottomTabScreenProps) => BottomTabNavigationOptions
 
-// make sure, that when you add new screen data to bottom tab navigator,
-// you also update linkingForWeb['MainTab'] in src/navigation/linking.tsx accordingly
+const navigatorScreens = bottomTabsScreensData.map((props) => {
+  const Component = memo((): JSX.Element => {
+    const { Navigator: StackNavigator, Screen: StackScreen } = createStackNavigator()
+    const screens = props.screens.map((props) => <StackScreen key={props.name} {...props} />)
+    return <StackNavigator>{screens}</StackNavigator>
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  })
 
-const navigatorScreens = bottomTabsScreensData.map((props) => (
-  <Screen key={props.name} {...props} />
-))
+  return <Screen key={props.name} {...props} component={Component} />
+})
 
 export const BottomTabNavigator: FC = () => {
   const { tabBarTheme } = useNavigationTheme()
