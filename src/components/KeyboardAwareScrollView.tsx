@@ -1,9 +1,9 @@
 import { KeyboardAvoidingView, View, ScrollView, IScrollViewProps } from 'native-base'
-import React, { FC } from 'react'
-import { KeyboardAvoidingViewProps, Platform, StyleProp, ViewStyle } from 'react-native'
+import React, { FC, useMemo } from 'react'
+import { KeyboardAvoidingViewProps, Platform, StyleProp, StyleSheet, ViewStyle } from 'react-native'
 import { Edge } from 'react-native-safe-area-context'
 
-import { useSafeAreaInsetsStyle } from '~hooks'
+import { useNavigationTheme, useSafeAreaInsetsStyle } from '~hooks'
 
 type Props = {
   /**
@@ -44,10 +44,26 @@ export const KeyboardAwareScrollView: FC<Props> = (props) => {
     safeAreaEdges = [],
     children,
     keyboardShouldPersistTaps = 'handled',
-    contentContainerStyle,
     ScrollViewProps,
-    style,
   } = props
+
+  const { navigationTheme } = useNavigationTheme()
+
+  const scrollViewContentContainerStyle = useMemo(
+    () =>
+      StyleSheet.compose<ViewStyle>(
+        [
+          {
+            alignItems: 'center',
+            backgroundColor: navigationTheme.colors.background,
+            flexGrow: 1,
+            justifyContent: 'space-between',
+          },
+        ],
+        ScrollViewProps?.contentContainerStyle
+      ),
+    [ScrollViewProps?.contentContainerStyle, navigationTheme.colors.background]
+  )
 
   const $containerInsets = useSafeAreaInsetsStyle(safeAreaEdges)
 
@@ -57,13 +73,11 @@ export const KeyboardAwareScrollView: FC<Props> = (props) => {
         behavior={isIos ? 'padding' : undefined}
         keyboardVerticalOffset={100}
         {...KeyboardAvoidingViewProps}
-        style={[$flexStyle, KeyboardAvoidingViewProps?.style]}
       >
         <ScrollView
           {...ScrollViewProps}
           keyboardShouldPersistTaps={keyboardShouldPersistTaps}
-          style={[$flexStyle, ScrollViewProps?.style, style]}
-          contentContainerStyle={[ScrollViewProps?.contentContainerStyle, contentContainerStyle]}
+          contentContainerStyle={scrollViewContentContainerStyle}
         >
           {children}
         </ScrollView>
