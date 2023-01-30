@@ -118,7 +118,6 @@
     "react-i18next": "^12.1.4",
     "react-native": "0.70.5",
     "react-native-gesture-handler": "~2.8.0",
-    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-notificated": "^0.0.1-beta.2",
     "react-native-pager-view": "6.0.1",
     "react-native-reanimated": "~2.12.0",
