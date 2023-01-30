@@ -10,8 +10,8 @@ import { hapticImpact } from '~utils'
 
 const defaultValues: SignInFormValues = {
   // TODO: Reset this values when building production app
-  email: 'test@example.com',
-  password: '123456',
+  email: '',
+  password: '',
   confirm: false,
 }
 
@@ -24,6 +24,8 @@ export const useSignInForm = () => {
   const {
     control,
     formState: { errors },
+    register,
+    setFocus,
     handleSubmit,
   } = useForm<SignInFormValues>({
     mode: 'onTouched',
@@ -51,6 +53,8 @@ export const useSignInForm = () => {
     submit: handleSubmit(onSubmit),
     isSubmitting,
     setIsSubmitting,
+    register,
+    setFocus,
     control,
     errors,
     error,

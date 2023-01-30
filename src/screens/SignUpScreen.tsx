@@ -1,35 +1,30 @@
 import { Button, Center, useTheme } from 'native-base'
-import { RefObject, useRef } from 'react'
-import { TextInput } from 'react-native'
+import { useCallback, useEffect } from 'react'
 
 import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { REGEX } from '~constants'
 import { useSignUpForm, useTranslation } from '~hooks'
 
-type SignUpFields = {
-  email: RefObject<TextInput>
-  password: RefObject<TextInput>
-}
-
 export const SignUpScreen = () => {
   const { t } = useTranslation()
   const { space } = useTheme()
 
-  const fields: SignUpFields = {
-    email: useRef<TextInput>(null),
-    password: useRef<TextInput>(null),
-  }
+  const { control, errors, submit, isSubmitting, register, setFocus } = useSignUpForm()
 
-  const { control, errors, submit, isSubmitting } = useSignUpForm()
+  useEffect(() => {
+    setTimeout(() => {
+      setFocus('user')
+    }, 500)
+  }, [setFocus])
+
+  const focusEmailInput = useCallback(() => setFocus('email'), [setFocus])
+  const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={{
-        width: space['full'],
-      }}
-    >
+    <KeyboardAwareScrollView>
       <Center px={8} flex={1} flexGrow={1} width={space['full']}>
         <ControlledField.Input
+          {...register('user')}
           mb={2}
           autoCapitalize="none"
           control={control}
@@ -37,11 +32,14 @@ export const SignUpScreen = () => {
           name="user"
           label={t('common.user_label')}
           placeholder={t('common.user_placeholder')}
+          rules={{
+            required: t('form.required'),
+          }}
           returnKeyType="next"
-          onSubmitEditing={fields.email.current?.focus}
+          onSubmitEditing={focusEmailInput}
         />
         <ControlledField.Input
-          ref={fields.email}
+          {...register('email')}
           autoCapitalize="none"
           label={t('common.email_label')}
           control={control}
@@ -50,7 +48,7 @@ export const SignUpScreen = () => {
           placeholder={t('common.email_placeholder')}
           name="email"
           returnKeyType="next"
-          onSubmitEditing={fields.password.current?.focus}
+          onSubmitEditing={focusPasswordInput}
           rules={{
             required: t('form.required'),
             pattern: {
@@ -62,9 +60,9 @@ export const SignUpScreen = () => {
           mb={2}
         />
         <ControlledField.Input
+          {...register('password')}
           isRequired
           mb={16}
-          ref={fields.password}
           returnKeyType="next"
           onSubmitEditing={submit}
           label={t('sign_in_screen.password_label')}
