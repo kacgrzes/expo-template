@@ -10,7 +10,7 @@ const environments = {
 } as const
 
 export const envValues = Object.values(environments)
-export type Environments = typeof envValues[number]
+export type Environments = (typeof envValues)[number]
 
 type Setup = { [key in Environments]: string }
 
