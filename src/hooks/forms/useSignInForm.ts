@@ -10,8 +10,8 @@ import { hapticImpact } from '~utils'
 
 const defaultValues: SignInFormValues = {
   // TODO: Reset this values when building production app
-  email: '',
-  password: '',
+  email: 'test@example.com',
+  password: '123456',
   confirm: false,
 }
 
