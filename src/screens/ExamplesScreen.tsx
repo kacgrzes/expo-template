@@ -14,17 +14,13 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const goToColors = useCallback(() => navigate('Colors'), [navigate])
   const goToComponents = useCallback(() => navigate('Components'), [navigate])
   const goToTypography = useCallback(() => navigate('Typography'), [navigate])
-  const goToCityListScreen_EXAMPLE = useCallback(() => navigate('DataFromBeScreen'), [navigate])
-
-  // FIXME: This will no work on web, we need to find a way to make this work
-  const goToHomeStackDetails = useCallback(
-    () =>
-      navigate('HomeStack', {
-        screen: 'Details',
-        params: { id: 'examples-id' },
-      }),
+  const goToCityListScreen_EXAMPLE = useCallback(
+    () => navigate('DataFromBeScreen_EXAMPLE'),
     [navigate]
   )
+
+  const goToHomeStackDetails = useCallback(() => navigate('Details', { id: 'xdd' }), [navigate])
+
   return (
     <ScrollView p={4}>
       <Center>

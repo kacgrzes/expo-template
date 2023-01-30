@@ -1,3 +1,4 @@
+import { StackNavigationOptions } from '@react-navigation/stack'
 import { t } from 'i18next'
 
 import { ExamplesStackScreens, HomeStackScreens } from './enums'
@@ -12,7 +13,15 @@ import {
   TypographyScreen,
 } from '~screens'
 
-export const examplesStackScreensData = [
+type ScreenType<T extends string> = {
+  name: T
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: (props: { navigation: any; route: any }) => JSX.Element
+  options?: StackNavigationOptions
+  deeplink: string
+}
+
+export const examplesStackScreensData: ScreenType<keyof typeof ExamplesStackScreens>[] = [
   {
     name: ExamplesStackScreens.Examples,
     component: ExamplesScreen,
@@ -43,9 +52,9 @@ export const examplesStackScreensData = [
     options: { title: t('navigation.screen_titles.data_from_be_screen_example') },
     deeplink: '/data-example',
   },
-] as const
+]
 
-export const homeStackScreensData = [
+export const homeStackScreensData: ScreenType<keyof typeof HomeStackScreens>[] = [
   {
     name: HomeStackScreens.Home,
     component: HomeScreen,

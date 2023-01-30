@@ -1,28 +1,33 @@
+type Keys<T> = keyof T
+export const keys = <T extends object>(object: T) => Object.keys(object) as (keyof T)[]
+
 // SCREENS
-export const enum RootStackScreens {
-  SignIn = 'SignIn',
-  SignUp = 'SignUp',
-  MainTab = 'MainTab',
-  Settings = 'Settings',
-  ApplicationInfo = 'ApplicationInfo',
-  NotFound = 'NotFound',
-}
+export const RootStackScreens = {
+  SignIn: 'SignIn',
+  SignUp: 'SignUp',
+  MainTab: 'MainTab',
+  Settings: 'Settings',
+  ApplicationInfo: 'ApplicationInfo',
+  NotFound: 'NotFound',
+} as const
 
-export const enum ExamplesStackScreens {
-  Examples = 'Examples',
-  Typography = 'Typography',
-  Colors = 'Colors',
-  Components = 'Components',
-  DataFromBeScreen_EXAMPLE = 'DataFromBeScreen',
-}
+export const ExamplesStackScreens = {
+  Examples: 'Examples',
+  Typography: 'Typography',
+  Colors: 'Colors',
+  Components: 'Components',
+  DataFromBeScreen_EXAMPLE: 'DataFromBeScreen_EXAMPLE',
+} as const
 
-export const enum HomeStackScreens {
-  Home = 'Home',
-  Details = 'Details',
-}
+export const HomeStackScreens = {
+  Home: 'Home',
+  Details: 'Details',
+} as const
 
 // BOTTOM TABS
-export enum BottomTabsScreens {
-  Home = 'HomeStack',
-  Examples = 'ExamplesStack',
-}
+export const BottomTabsScreens = {
+  HomeStack: 'HomeStack',
+  ExamplesStack: 'ExamplesStack',
+} as const
+
+export type BottomTabsScreensKeys = Keys<typeof BottomTabsScreens>
