@@ -8,21 +8,17 @@ const languageDetector: LanguageDetectorAsyncModule = {
   type: 'languageDetector',
   async: true, // If this is set to true, your detect function receives a callback function that you should call with your language, useful to retrieve your language stored in AsyncStorage for example
   init: () => undefined,
-  detect: async () => {
+  detect: async (callback) => {
+    let language
     try {
-      await AsyncStorage.getItem(USER_LANGUAGE).then(async (language) => {
-        if (language) {
-          return Promise.resolve(language)
-        }
-        const locale = Localization.getLocales()[0].languageCode
-
-        return Promise.resolve(locale)
-      })
-    } catch {
-      const locale = Localization.getLocales()[0].languageCode
-
-      return Promise.resolve(locale)
+      language = await AsyncStorage.getItem(USER_LANGUAGE)
+    } finally {
+      if (!language) {
+        language = Localization?.getLocales?.()?.[0]?.languageCode
+      }
     }
+    callback(language)
+    return language
   },
   cacheUserLanguage: async (language) => {
     try {
