@@ -1,4 +1,4 @@
-import { createRef } from 'react'
+import { createRef, MutableRefObject } from 'react'
 
 import { SignInFormValues, SignUpFormValues } from '~types/authForms'
 import createGenericContext from '~utils/createGenericContext'
@@ -14,4 +14,4 @@ export type AuthContextType = {
 export const [useAuthContext, AuthContextProvider] =
   createGenericContext<AuthContextType>('AuthContext')
 
-export const authContextRef = createRef<AuthContextType>()
+export const authContextRef: MutableRefObject<AuthContextType | null> = createRef()

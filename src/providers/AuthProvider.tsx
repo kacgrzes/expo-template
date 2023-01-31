@@ -53,7 +53,6 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [isSignedIn, signIn, signOut, signUp])
 
-  // @ts-expect-error: wrong typings in react
   authContextRef.current = value
 
   return <AuthContextProvider value={value}>{children}</AuthContextProvider>
