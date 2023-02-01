@@ -1,4 +1,5 @@
 export * from './atoms'
+export * from './bottomSheets'
 export * from './molecules'
 export * from './organisms'
 
@@ -7,5 +8,3 @@ export * from './KeyboardAwareScrollView'
 export * from './LanguagePicker'
 export * from './StatusBar'
 export * from './Version'
-export * from './WebWrapper'
-export * from './BottomSheets'

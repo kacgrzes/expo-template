@@ -15,8 +15,8 @@
       "discard": "Discard"
     },
     "screen_titles": {
-      "home_stack": "HomeStack",
-      "examples_stack": "ExamplesStack",
+      "home_stack": "Home",
+      "examples_stack": "Examples",
       "examples": "Examples",
       "components": "Components",
       "colors": "Colors",

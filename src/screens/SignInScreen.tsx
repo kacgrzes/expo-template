@@ -1,7 +1,7 @@
 import { Box, Button, Center, Image, Text } from 'native-base'
 import { TextInput } from 'react-native'
 
-import { ControlledField, KeyboardAwareScrollView, LanguagePicker } from '~components'
+import { ControlledField, KeyboardAwareScrollView, LanguagePicker, Version } from '~components'
 import { REGEX } from '~constants'
 import { useCallback, useSignInForm, useNavigation, useTranslation, useRef, useTheme } from '~hooks'
 
@@ -13,7 +13,8 @@ export const SignInScreen = (): JSX.Element => {
   const passwordInputRef = useRef<TextInput>(null)
   const { control, errors, submit, isSubmitting } = useSignInForm()
 
-  const goToSignUp = useCallback(() => navigate('SignUp'), [navigate])
+  const navigateToSignUp = useCallback(() => navigate('SignUp'), [navigate])
+  const navigateToAppInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
 
   return (
     <KeyboardAwareScrollView
@@ -92,7 +93,7 @@ export const SignInScreen = (): JSX.Element => {
           <Text bold mb={4}>
             {t('sign_in_screen.dont_have_an_account')}
           </Text>
-          <Button width="64" onPress={goToSignUp} variant="ghost">
+          <Button width="64" onPress={navigateToSignUp} variant="ghost">
             {t('sign_in_screen.sign_up')}
           </Button>
         </Center>
@@ -103,6 +104,7 @@ export const SignInScreen = (): JSX.Element => {
         <Text color="gray.500" textAlign="center">
           Email: test@example.com{'\n'}Password: 123456
         </Text>
+        <Version onPress={navigateToAppInfo} />
       </Center>
     </KeyboardAwareScrollView>
   )

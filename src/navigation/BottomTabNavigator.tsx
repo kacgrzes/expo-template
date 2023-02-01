@@ -1,36 +1,40 @@
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
-import { FC } from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import { FC, memo } from 'react'
 
-import { ExamplesStack } from './ExamplesStack'
-import { HomeStack } from './HomeStack'
+import { bottomTabsScreensData } from './config/tabs'
 
 import { Icon } from '~components'
-import { useCallback, useNavigationTheme, useTranslation } from '~hooks'
-import { IconNames } from '~types/icon'
+import { TAB_DEFAULT_ICON } from '~constants'
+import { useCallback, useNavigationTheme } from '~hooks'
 
 const { Navigator, Screen } = createBottomTabNavigator<MainTabParamList>()
 
 type ScreenOptions = (params: BottomTabScreenProps) => BottomTabNavigationOptions
 
+const navigatorScreens = bottomTabsScreensData.map((props) => {
+  const Component = memo((): JSX.Element => {
+    const { Navigator: StackNavigator, Screen: StackScreen } = createStackNavigator()
+    const screens = props.screens.map((props) => <StackScreen key={props.name} {...props} />)
+    return <StackNavigator>{screens}</StackNavigator>
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  })
+
+  return <Screen key={props.name} {...props} component={Component} />
+})
+
 export const BottomTabNavigator: FC = () => {
-  const { t } = useTranslation()
   const { tabBarTheme } = useNavigationTheme()
 
   const screenOptions = useCallback<ScreenOptions>(
     ({ route }) => ({
       tabBarIcon: ({ color, size, focused }) => {
-        let iconName: IconNames
-
-        if (route.name === 'HomeStack') {
-          iconName = focused ? 'home-5-fill' : 'home-line'
-        } else if (route.name === 'ExamplesStack') {
-          iconName = focused ? 'file-list-2-fill' : 'file-list-2-line'
-        } else {
-          iconName = 'alert-line'
-        }
+        const { active, inactive } =
+          bottomTabsScreensData.find((screen) => screen.name === route.name)?.icons || {}
+        const iconToRender = (focused ? active : inactive) || TAB_DEFAULT_ICON
 
         // You can return any component that you like here!
-        return <Icon name={iconName} size={size} color={color} />
+        return <Icon name={iconToRender} size={size} color={color} />
       },
       headerShown: false,
       ...tabBarTheme,
@@ -38,18 +42,5 @@ export const BottomTabNavigator: FC = () => {
     [tabBarTheme]
   )
 
-  return (
-    <Navigator screenOptions={screenOptions}>
-      <Screen
-        name="HomeStack"
-        options={{ title: t('navigation.screen_titles.home_stack') }}
-        component={HomeStack}
-      />
-      <Screen
-        name="ExamplesStack"
-        options={{ title: t('navigation.screen_titles.examples_stack') }}
-        component={ExamplesStack}
-      />
-    </Navigator>
-  )
+  return <Navigator screenOptions={screenOptions}>{navigatorScreens}</Navigator>
 }

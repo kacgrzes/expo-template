@@ -4,7 +4,7 @@ import qs from 'qs'
 
 import { injectTokenToRequest } from '../interceptors/injectToken'
 
-import { API_URL, SECOND_IN_MS } from '~constants'
+import { ENV, SECOND_IN_MS } from '~constants'
 import { getApiError } from '~utils'
 
 export type ApiError = {
@@ -14,8 +14,7 @@ export type ApiError = {
   }
 }
 
-//CONFIG: change to proper URL in API_URL in constants
-export const baseURL = `${API_URL}` // TODO: create env for dev/staging/prod and keep it there
+export const baseURL = ENV.API_URL
 
 export const apiClient = axios.create({
   baseURL,

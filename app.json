@@ -1,31 +1,19 @@
 {
   "expo": {
-    "name": "Template",
-    "slug": "expo-typescript-template",
-    "scheme": "template",
-    "version": "1.0.0",
-    "owner": "binarapps",
-    "userInterfaceStyle": "automatic",
-    "orientation": "portrait",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
+    "android": { "jsEngine": "hermes" },
     "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "jsEngine": "hermes",
-      "bundleIdentifier": "com.binarapps.template.dev"
+    "ios": { "jsEngine": "hermes", "supportsTablet": true },
+    "name": "Template",
+    "orientation": "portrait",
+    "owner": "binarapps",
+    "slug": "expo-typescript-template",
+    "splash": {
+      "backgroundColor": "#ffffff",
+      "image": "./assets/splash.png",
+      "resizeMode": "cover"
     },
-    "android": {
-      "jsEngine": "hermes"
-    },
-    "web": {
-      "favicon": "./assets/icons/web/favicon.png"
-    }
+    "updates": { "fallbackToCacheTimeout": 0 },
+    "userInterfaceStyle": "automatic",
+    "version": "1.0.0"
   }
 }

@@ -1,21 +1,29 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { FC } from 'react'
+import { Platform } from 'react-native'
 
-import { BottomTabNavigator } from './BottomTabNavigator'
+import { rootStackScreensData } from './config/rootScreens'
+import { WebNavBar } from './webNavigator/WebNavBar'
 
-import { useAuth, useNotificationSetup, useTranslation } from '~hooks'
-import {
-  ApplicationInfoScreen,
-  NotFoundScreen,
-  SettingsScreen,
-  SignInScreen,
-  SignUpScreen,
-} from '~screens'
+import { WEB_SCREEN_STYLES } from '~constants'
+import { useAuth, useDimensions, useNavigationTheme, useWeb } from '~hooks'
+import { useNotificationSetup } from '~hooks/useNotificationSetup'
 
 const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
 
-export const RootNavigator: FC = () => {
-  const { t } = useTranslation()
+const authorizedScreens = rootStackScreensData.authorized.map((props) => (
+  <Screen key={props.name} {...props} />
+))
+
+const unauthorizedScreens = rootStackScreensData.unauthorized.map((props) => (
+  <Screen key={props.name} {...props} />
+))
+
+const modalsScreens = rootStackScreensData.modals.map((props) => (
+  <Screen key={props.name} {...props} />
+))
+
+export const RootNavigatorMobile: FC = () => {
   const { isSignedIn } = useAuth()
 
   // CONFIG: Handle in app notification
@@ -26,48 +34,50 @@ export const RootNavigator: FC = () => {
   return (
     <Navigator>
       {!isSignedIn ? (
-        <Group key="unauthorized">
-          <Screen
-            name="SignIn"
-            component={SignInScreen}
-            options={{
-              title: t('navigation.screen_titles.sign_in'),
-            }}
-          />
-          <Screen
-            name="SignUp"
-            component={SignUpScreen}
-            options={{
-              title: t('navigation.screen_titles.sign_up'),
-            }}
-          />
-        </Group>
+        <Group key="unauthorized">{unauthorizedScreens}</Group>
       ) : (
-        <Group key="authorized">
-          <Screen
-            name="MainTab"
-            options={{ title: t('navigation.screen_titles.main_tab'), headerShown: false }}
-            component={BottomTabNavigator}
-          />
-          <Screen
-            name="Settings"
-            options={{ title: t('navigation.screen_titles.settings') }}
-            component={SettingsScreen}
-          />
-        </Group>
+        <Group key="authorized">{authorizedScreens}</Group>
       )}
       <Group key="modals" screenOptions={{ presentation: 'modal' }}>
-        <Screen
-          name="ApplicationInfo"
-          options={{ title: t('navigation.screen_titles.application_info') }}
-          component={ApplicationInfoScreen}
-        />
-        <Screen
-          name="NotFound"
-          options={{ title: t('navigation.screen_titles.not_found') }}
-          component={NotFoundScreen}
-        />
+        {modalsScreens}
       </Group>
     </Navigator>
   )
 }
+
+export const RootNavigatorWeb: FC = () => {
+  const { shouldApplyMobileStyles, webContentWidth } = useWeb()
+  const { navigationTheme } = useNavigationTheme()
+  const {
+    window: { width: windowWidth },
+  } = useDimensions()
+  const { isSignedIn } = useAuth()
+
+  return (
+    <>
+      {!shouldApplyMobileStyles && isSignedIn && <WebNavBar />}
+      <Navigator
+        screenOptions={{
+          headerShown: false,
+          cardStyle: {
+            ...WEB_SCREEN_STYLES,
+            paddingHorizontal: (windowWidth - webContentWidth) / 2,
+            backgroundColor: navigationTheme.colors.background,
+          },
+        }}
+      >
+        {!isSignedIn ? (
+          <Group key="unauthorized">{unauthorizedScreens}</Group>
+        ) : (
+          <Group key="authorized">{authorizedScreens}</Group>
+        )}
+        <Group key="modals" screenOptions={{ presentation: 'modal' }}>
+          {modalsScreens}
+        </Group>
+      </Navigator>
+      {shouldApplyMobileStyles && isSignedIn && <WebNavBar />}
+    </>
+  )
+}
+
+export const RootNavigator = Platform.OS === 'web' ? RootNavigatorWeb : RootNavigatorMobile
