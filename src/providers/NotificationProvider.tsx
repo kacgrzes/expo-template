@@ -13,6 +13,8 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
   const [permissionStatus, setPermissionStatus] =
     useState<NotificationContextType['permissionStatus']>()
   const [notification, setNotification] = useState<NotificationContextType['notification']>()
+  const [inAppNotification, setInAppNotification] =
+    useState<NotificationContextType['inAppNotification']>()
 
   useEffect(() => {
     const getPermissionStatus = async () => {
@@ -39,6 +41,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const notificationReceived = Notifications.addNotificationReceivedListener((notification) => {
       setNotification(notification)
+      setInAppNotification(notification)
     })
 
     return () => {
@@ -47,14 +50,16 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [])
 
-  const value = useMemo(
+  const value: NotificationContextType = useMemo(
     () => ({
       permissionStatus,
       setPermissionStatus,
       notification,
       setNotification,
+      inAppNotification,
+      setInAppNotification,
     }),
-    [notification, permissionStatus]
+    [inAppNotification, notification, permissionStatus]
   )
   return <NotificationContextProvider value={value}>{children}</NotificationContextProvider>
 }

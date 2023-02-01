@@ -7,7 +7,7 @@
 
 # @binarapps/expo-ts-template
 
-This is a template to be used with expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included so it's easier to start coding the app itself without all the necessary boilerplate setup. It has:
+This is a template to be used with expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup. It has:
 
 Version in the `package.json` is one to one the latest expo on which the template was tested.
 
@@ -21,7 +21,7 @@ There are two types of usage:
 expo init --template=@binarapps/expo-ts-template name_of_your_app
 ```
 
-2. Use this as template repo on github
+2. Use this as template repo on GitHub
    ![Github Repository Template](assets/github-repository-template.png)
 
 ## Features
@@ -35,7 +35,7 @@ expo init --template=@binarapps/expo-ts-template name_of_your_app
 - React Navigation
   - with dark and light theme set up
   - with screen tracking hook
-  - state persistance on development mode
+  - state persistence on development mode
   - prevent go back (to be used on forms for example)
 - native-base
 - color scheme detection (dark / light mode toggle)
@@ -51,7 +51,7 @@ expo init --template=@binarapps/expo-ts-template name_of_your_app
 - animations with `reanimated` and `moti`
 - `@gorhom/bottom-sheet`
 - Reactotron
-- expo-notifications (You can read how to configure them [here](/NOTIFICATIONS_SETUP.md))
+- expo-notifications (You can read how to configure them [here](/NOTIFICATIONS_SETUP.MD))
 
 See all the details in the documentation.
 
@@ -160,3 +160,4 @@ If you have any feedback, please reach out to me at kacgrzes@gmail.com
 - [Łukasz Patalan](https://github.com/lukasz-patalan) - @lukasz
 - [Mario Gliwa](https://github.com/mario688) - @mario688
 - [Michał Baumruck](https://github.com/micbaumr) - @micbaumr
+- [Andrzej Zaborski](https://github.com/AnMiZa) - @AnMiZa
