@@ -104,7 +104,7 @@ export const CircleLoader = ({
   thickness = 2,
   color = 'black',
 }: CircleLoaderType): JSX.Element => {
-  const { animatedStyle, progress } = useCircleLoader()
+  const { animatedRotate, progress } = useCircleLoader()
 
   const fullCircleStyle = {
     width: size,
@@ -120,7 +120,7 @@ export const CircleLoader = ({
   }
 
   return (
-    <Animated.View style={[animatedStyle, fullCircleStyle]}>
+    <Animated.View style={[animatedRotate, fullCircleStyle]}>
       <HalfCircle progress={progress} isFlipped={false} {...circleStyleProps} />
       <HalfCircle progress={progress} isFlipped={true} {...circleStyleProps} />
     </Animated.View>

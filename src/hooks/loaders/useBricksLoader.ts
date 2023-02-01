@@ -19,6 +19,8 @@ type UseBricksLoaderType = {
   animatedStyleBoxThree: ViewStyle
 }
 
+const easing = Easing.cubic
+
 export const useBricksLoader = ({
   containerSize,
   size,
@@ -27,7 +29,6 @@ export const useBricksLoader = ({
   size: number
 }): UseBricksLoaderType => {
   const moving = useSharedValue(0)
-  const easing = Easing.cubic
   const width = containerSize - size
 
   useEffect(() => {
@@ -48,7 +49,7 @@ export const useBricksLoader = ({
       ),
       -1
     )
-  }, [easing, moving])
+  }, [moving])
 
   const animatedStyleBoxOne = useAnimatedStyle(() => {
     const left =

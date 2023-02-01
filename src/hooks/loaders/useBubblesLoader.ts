@@ -27,13 +27,14 @@ type UseBubblesLoaderType = {
   }
 }
 
+const easing = Easing.linear
+const clamp = Extrapolate.CLAMP
+const stretchingOutputRange = [80, 150]
+const stretchingInputRange = [0, 2]
+
 export const useBubblesLoader = (): UseBubblesLoaderType => {
   const stretching = useSharedValue(0)
   const rotation = useSharedValue(0)
-  const easing = Easing.linear
-  const clamp = Extrapolate.CLAMP
-  const stretchingOutputRange = [80, 150]
-  const stretchingInputRange = [0, 2]
 
   useEffect(() => {
     stretching.value = withRepeat(
@@ -44,7 +45,7 @@ export const useBubblesLoader = (): UseBubblesLoaderType => {
       -1,
       true
     )
-  }, [stretching, easing])
+  }, [stretching])
 
   useEffect(() => {
     rotation.value = withRepeat(
@@ -56,7 +57,7 @@ export const useBubblesLoader = (): UseBubblesLoaderType => {
       ),
       -1
     )
-  }, [easing, rotation])
+  }, [rotation])
 
   const animatedRotate = useAnimatedStyle(() => {
     const rotate = interpolate(rotation.value, [0, 4], [0, 360], clamp)

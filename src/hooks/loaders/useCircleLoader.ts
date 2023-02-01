@@ -13,7 +13,7 @@ import {
 
 type UseCircleLoaderType = {
   progress: SharedValue<number>
-  animatedStyle: {
+  animatedRotate: {
     transform: {
       rotate: string
     }[]
@@ -34,7 +34,7 @@ export const useCircleLoader = (): UseCircleLoaderType => {
     )
   }, [easing, progress])
 
-  const animatedStyle = useAnimatedStyle(() => {
+  const animatedRotate = useAnimatedStyle(() => {
     const rotateValue = interpolate(progress.value, [0, 2], [0, 720], Extrapolate.CLAMP)
     return {
       transform: [
@@ -47,6 +47,6 @@ export const useCircleLoader = (): UseCircleLoaderType => {
 
   return {
     progress,
-    animatedStyle,
+    animatedRotate,
   }
 }

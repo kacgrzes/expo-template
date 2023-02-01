@@ -1,12 +1,33 @@
 import * as Linking from 'expo-linking'
 import { VStack, Heading, Divider, Button, ScrollView } from 'native-base'
 
-import { Icon } from '~components'
-import { Loader } from '~components/atoms/Loader'
+import { Icon, Loader } from '~components'
 import { useCallback, useNotifications, useTranslation } from '~hooks'
 
 const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
 const buttonVariants = ['solid', 'outline', 'subtle', 'ghost'] as const
+const loaderVariants = [
+  {
+    type: 'circle',
+    headerText: 'components_screen.loader_variants.circle',
+  },
+  {
+    type: 'bubbles',
+    headerText: 'components_screen.loader_variants.bubbles',
+  },
+  {
+    type: 'bricks',
+    headerText: 'components_screen.loader_variants.bricks',
+  },
+  {
+    type: 'disk',
+    headerText: 'components_screen.loader_variants.disk',
+  },
+  {
+    type: 'default',
+    headerText: 'components_screen.loader_variants.default',
+  },
+] as const
 
 export const ComponentsScreen = (): JSX.Element => {
   const { notify } = useNotifications()
@@ -52,30 +73,15 @@ export const ComponentsScreen = (): JSX.Element => {
         </Button>
         <Divider my={4} />
         <Heading mb={4}>{t('components_screen.loader_variants.header')}</Heading>
-        <Heading mb={4} size="sm">
-          {t('components_screen.loader_variants.circle')}
-        </Heading>
-        <Loader type="circle" />
-        <Divider my={4} backgroundColor="transparent" />
-        <Heading mb={4} size="sm">
-          {t('components_screen.loader_variants.bubbles')}
-        </Heading>
-        <Loader type="bubbles" />
-        <Divider my={4} backgroundColor="transparent" />
-        <Heading mb={4} size="sm">
-          {t('components_screen.loader_variants.bricks')}
-        </Heading>
-        <Loader type="bricks" />
-        <Divider my={4} backgroundColor="transparent" />
-        <Heading mb={4} size="sm">
-          {t('components_screen.loader_variants.disk')}
-        </Heading>
-        <Loader type="disk" />
-        <Divider my={4} backgroundColor="transparent" />
-        <Heading mb={4} size="sm">
-          {t('components_screen.loader_variants.default')}
-        </Heading>
-        <Loader type="default" />
+        {loaderVariants?.map((loader) => (
+          <>
+            <Heading mb={4} size="sm">
+              {t(loader?.headerText)}
+            </Heading>
+            <Loader type={loader?.type} />
+            <Divider my={4} backgroundColor="transparent" />
+          </>
+        ))}
       </VStack>
       <Divider my={4} />
     </ScrollView>
