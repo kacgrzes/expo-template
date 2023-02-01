@@ -1,5 +1,5 @@
 import * as Linking from 'expo-linking'
-import { VStack, Heading, Divider, Button, ScrollView } from 'native-base'
+import { VStack, Heading, Divider, Button, ScrollView, View } from 'native-base'
 
 import { Icon, Loader } from '~components'
 import { useCallback, useNotifications, useTranslation } from '~hooks'
@@ -74,13 +74,13 @@ export const ComponentsScreen = (): JSX.Element => {
         <Divider my={4} />
         <Heading mb={4}>{t('components_screen.loader_variants.header')}</Heading>
         {loaderVariants?.map((loader) => (
-          <>
+          <View flex={1} key={loader.type}>
             <Heading mb={4} size="sm">
               {t(loader?.headerText)}
             </Heading>
             <Loader type={loader?.type} />
             <Divider my={4} backgroundColor="transparent" />
-          </>
+          </View>
         ))}
       </VStack>
       <Divider my={4} />
