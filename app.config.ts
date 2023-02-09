@@ -72,9 +72,9 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
     qa: `${APP_CONFIG.appName} (qa)`,
   },
   favicon: {
-    production: `${faviconPath}production`,
-    staging: `${faviconPath}staging`,
-    qa: `${faviconPath}qa`,
+    production: `${faviconPath}production.png`,
+    staging: `${faviconPath}staging.png`,
+    qa: `${faviconPath}qa.png`,
   },
   iosBundleIdentifier: {
     production: `${APP_CONFIG.iosBundleIdentifier}`,
