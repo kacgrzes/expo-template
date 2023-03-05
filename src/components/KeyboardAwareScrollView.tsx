@@ -14,7 +14,7 @@ type Props = Omit<KeyboardAwareScrollViewProps, 'contentContainerStyle'> & {
 }
 
 export const KeyboardAwareScrollView = forwardRef<KeyboardAwareScroll, Props>(
-  ({ children, onMomentumScrollEnd, contentContainerStyle = {}, ...rest }, ref) => {
+  ({ children, contentContainerStyle = {}, ...rest }, ref) => {
     const { navigationTheme } = useNavigationTheme()
 
     const scrollViewContentContainerStyle = useMemo(
