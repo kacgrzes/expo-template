@@ -13,16 +13,35 @@ Version in the `package.json` is one to one the latest expo on which the templat
 
 ## Usage
 
-There are two types of usage:
+There are three types of usage:
 
-1. Init using this command
+1. Init using this command (beaware that sometimes this template can't be updated on npm, in that case, clone this repository and reinitialize repozitory for yourself - check third type of setup)
 
 ```bash
 expo init --template=@binarapps/expo-ts-template name_of_your_app
 ```
 
 2. Use this as template repo on GitHub
-   ![Github Repository Template](assets/github-repository-template.png)
+   ![Github Repository Template](assets/tutorials/github-repository-template.png)
+
+3. Clone repository
+
+   This usage is usefull when npm code version is ot up to date, you can verify it by checking dates of last commit and last publish
+   ![Check last release date](assets/tutorials/check-last-release-date.png)
+
+```bash
+git clone git@github.com:binarapps/expo-ts-template.git
+cd expo-ts-template
+yarn
+yarn start
+```
+
+- in that case you can also reinitialize repozitory if you don't want to keep history of commits
+
+```bash
+rm -rg .git
+git commit -m "chore: initialize project"
+```
 
 ## Features
 
@@ -30,34 +49,41 @@ expo init --template=@binarapps/expo-ts-template name_of_your_app
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)
 
-- TypeScript support
-- Expo
-- React Navigation
-  - with dark and light theme set up
-  - with screen tracking hook
+### Implemented libraries
+
+- Fully TypeScript support
+- Expo v47
+- React Navigation v6
+- Native-base v3.4
+- Prettier
+- Babel-module-resolver
+- Tests with jest and @testing-library/react-native
+- i18next with translations, language detection and translations
+- `@gorhom/bottom-sheet`
+- Expo-notifications (You can read how to configure them [here](/NOTIFICATIONS_SETUP.MD))
+- Reactotron
+  - used for debugging
+- Reanimated
+
+### Implemented custom features
+
+- add custom fonts
+  - wait to load fonts and all the assets
+- dark / light support
+  - color scheme detection (dark / light mode toggle)
+- navigation
+  - screen tracking hook
   - state persistence on development mode
   - prevent go back (to be used on forms for example)
-- native-base
-- color scheme detection (dark / light mode toggle)
-- hermes enabled on Android by default
-- i18next with translations, language detection and translations
-- wait to load fonts and all the assets
+  - strongly types, prevent issues in future
 - auth flow ready for implementation details
   - using expo-secure-store module to save user token
   - right now it has simple signIn/signOut flow
-- prettier
-- babel-module-resolver
-- tests with jest and @testing-library/react-native
 - animations with `reanimated` and `moti`
-- `@gorhom/bottom-sheet`
-- Reactotron
-- expo-notifications (You can read how to configure them [here](/NOTIFICATIONS_SETUP.MD))
 
-See all the details in the documentation.
+<!-- ## Screenshots
 
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
 
 ## Working with designer in your project
 
