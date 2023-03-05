@@ -9,7 +9,7 @@ export const SignUpScreen = () => {
   const { t } = useTranslation()
   const { space } = useTheme()
 
-  const { control, errors, submit, isSubmitting, register, setFocus } = useSignUpForm()
+  const { control, errors, submit, isSubmitting, setFocus } = useSignUpForm()
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,7 +24,6 @@ export const SignUpScreen = () => {
     <KeyboardAwareScrollView>
       <Center px={8} flex={1} flexGrow={1} width={space['full']}>
         <ControlledField.Input
-          {...register('user')}
           mb={2}
           autoCapitalize="none"
           control={control}
@@ -39,7 +38,6 @@ export const SignUpScreen = () => {
           onSubmitEditing={focusEmailInput}
         />
         <ControlledField.Input
-          {...register('email')}
           autoCapitalize="none"
           label={t('common.email_label')}
           control={control}
@@ -60,7 +58,6 @@ export const SignUpScreen = () => {
           mb={2}
         />
         <ControlledField.Input
-          {...register('password')}
           isRequired
           mb={16}
           returnKeyType="next"

@@ -16,7 +16,7 @@ export const SignInScreen = (): JSX.Element => {
   const { t } = useTranslation()
   const { space } = useTheme()
 
-  const { control, errors, submit, isSubmitting, register, setFocus } = useSignInForm()
+  const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,7 +43,6 @@ export const SignInScreen = (): JSX.Element => {
           source={require('~assets/logo.png')}
         />
         <ControlledField.Input
-          {...register('email')}
           autoCapitalize="none"
           control={control}
           errors={errors}
@@ -64,7 +63,6 @@ export const SignInScreen = (): JSX.Element => {
           testID="emailInput"
         />
         <ControlledField.Input
-          {...register('password')}
           autoCapitalize="none"
           control={control}
           errors={errors}

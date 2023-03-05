@@ -25,7 +25,6 @@ export const useSignUpForm = () => {
   const {
     control,
     formState: { errors },
-    register,
     setFocus,
     handleSubmit,
   } = useForm<SignUpFormValues>({
@@ -55,7 +54,6 @@ export const useSignUpForm = () => {
     isSubmitting,
     setIsSubmitting,
     control,
-    register,
     setFocus,
     errors,
     error,
