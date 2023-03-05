@@ -25,6 +25,7 @@ export const useSignUpForm = () => {
   const {
     control,
     formState: { errors },
+    setFocus,
     handleSubmit,
   } = useForm<SignUpFormValues>({
     mode: 'onTouched',
@@ -53,6 +54,7 @@ export const useSignUpForm = () => {
     isSubmitting,
     setIsSubmitting,
     control,
+    setFocus,
     errors,
     error,
   }

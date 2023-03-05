@@ -1,8 +1,45 @@
 diff --git a/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js b/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
-index 03f46af..d641d28 100644
+index 03f46af..8537de0 100644
 --- a/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
 +++ b/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
-@@ -523,21 +523,18 @@ function KeyboardAwareHOC(
+@@ -312,6 +312,7 @@ function KeyboardAwareHOC(
+       extraHeight?: number,
+       keyboardOpeningTime?: number
+     ) => {
++      
+       if (extraHeight === undefined) {
+         extraHeight = this.props.extraHeight || 0
+       }
+@@ -326,7 +327,7 @@ function KeyboardAwareHOC(
+         responder &&
+           responder.scrollResponderScrollNativeHandleToKeyboard(
+             reactNode,
+-            extraHeight,
++            extraHeight + 40,
+             true
+           )
+       }, keyboardOpeningTime)
+@@ -410,7 +411,8 @@ function KeyboardAwareHOC(
+                   if (Platform.OS === 'ios') {
+                     if (
+                       textInputBottomPosition >
+-                      keyboardPosition - totalExtraHeight
++                      keyboardPosition - totalExtraHeight || 
++                      textInputBottomPosition < 200
+                     ) {
+                       this._scrollToFocusedInputWithNodeHandle(
+                         currentlyFocusedField
+@@ -430,7 +432,8 @@ function KeyboardAwareHOC(
+                       this.scrollForExtraHeightOnAndroid(totalExtraHeight)
+                     } else if (
+                       textInputBottomPosition >
+-                      keyboardPosition - totalExtraHeight
++                      keyboardPosition - totalExtraHeight || 
++                      textInputBottomPosition < 200
+                     ) {
+                       this.scrollForExtraHeightOnAndroid(
+                         totalExtraHeight -
+@@ -523,21 +526,18 @@ function KeyboardAwareHOC(
      }
  
      render() {

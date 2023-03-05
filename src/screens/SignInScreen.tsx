@@ -1,27 +1,35 @@
 import { Box, Button, Center, Image, Text } from 'native-base'
-import { TextInput } from 'react-native'
 
 import { ControlledField, KeyboardAwareScrollView, LanguagePicker, Version } from '~components'
 import { REGEX } from '~constants'
-import { useCallback, useSignInForm, useNavigation, useTranslation, useRef, useTheme } from '~hooks'
+import {
+  useCallback,
+  useSignInForm,
+  useNavigation,
+  useTranslation,
+  useTheme,
+  useEffect,
+} from '~hooks'
 
 export const SignInScreen = (): JSX.Element => {
   const { navigate } = useNavigation()
   const { t } = useTranslation()
   const { space } = useTheme()
 
-  const passwordInputRef = useRef<TextInput>(null)
-  const { control, errors, submit, isSubmitting } = useSignInForm()
+  const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFocus('email')
+    }, 500)
+  }, [setFocus])
 
   const navigateToSignUp = useCallback(() => navigate('SignUp'), [navigate])
   const navigateToAppInfo = useCallback(() => navigate('ApplicationInfo'), [navigate])
+  const focusPasswordInput = useCallback(() => setFocus('password'), [setFocus])
 
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={{
-        width: space['full'],
-      }}
-    >
+    <KeyboardAwareScrollView>
       <Box alignItems={'flex-end'} width="full" pr={8}>
         <LanguagePicker />
       </Box>
@@ -42,7 +50,7 @@ export const SignInScreen = (): JSX.Element => {
           keyboardType="email-address"
           label={t('common.email_label')}
           name="email"
-          onSubmitEditing={passwordInputRef.current?.focus}
+          onSubmitEditing={focusPasswordInput}
           placeholder={t('common.email_placeholder')}
           returnKeyType="next"
           rules={{
@@ -63,7 +71,6 @@ export const SignInScreen = (): JSX.Element => {
           name="password"
           onSubmitEditing={submit}
           placeholder={t('sign_in_screen.password_placeholder')}
-          ref={passwordInputRef}
           returnKeyType="send"
           rules={{
             required: t('form.required'),

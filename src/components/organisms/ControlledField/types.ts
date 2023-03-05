@@ -20,7 +20,7 @@ export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'value'> & {
   errors?: FieldErrors<any>
 }
 
-export type ControlledInputProps = FieldInputProps & {
+export type ControlledInputProps = Omit<FieldInputProps, 'ref'> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
