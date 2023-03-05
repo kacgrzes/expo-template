@@ -99,6 +99,14 @@
       "ghost": "Button ghost",
       "disabled": "Button disabled"
     },
+    "loader_variants": {
+      "header": "Loader variants",
+      "circle": "Circle loader",
+      "bubbles": "Bubbles loader",
+      "bricks": "Bricks loader",
+      "disk": "Disk loader",
+      "default": "Default loader"
+    },
     "notification": {
       "title": "In-app notification example",
       "description": "by react-native-notificated 🎉"
