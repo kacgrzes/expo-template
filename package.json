@@ -141,7 +141,6 @@
     "use-debounce": "^8.0.4"
   },
   "resolutions": {
-    "@types/react": "^17.0.4",
     "react-error-overlay": "6.0.9"
   },
   "devDependencies": {
