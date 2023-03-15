@@ -6,7 +6,8 @@ import { navigationRef } from '~utils'
 type Callback = (currentRouteName: string) => Promise<void> | undefined
 
 const defaultCallback: Callback = async (currentRouteName) => {
-  console.log(`Current route: ${currentRouteName}`)
+  // TODO: Add analytics logs here
+  // console.log(`Current route: ${currentRouteName}`)
 }
 
 type ScreenTrackerReturn = {

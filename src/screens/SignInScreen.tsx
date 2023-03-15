@@ -1,7 +1,15 @@
-import { Box, Button, Center, Image, Text } from 'native-base'
+import { Box, Button, Center, Text } from 'native-base'
+import { StyleSheet, Image } from 'react-native'
 
-import { ControlledField, KeyboardAwareScrollView, LanguagePicker, Version } from '~components'
-import { REGEX } from '~constants'
+import {
+  ControlledField,
+  KeyboardAwareScrollView,
+  LanguagePicker,
+  Spacer,
+  Version,
+} from '~components'
+import { REGEX, darkLogo, lightLogo } from '~constants'
+import { useColorScheme } from '~contexts'
 import {
   useCallback,
   useSignInForm,
@@ -15,6 +23,7 @@ export const SignInScreen = (): JSX.Element => {
   const { navigate } = useNavigation()
   const { t } = useTranslation()
   const { space } = useTheme()
+  const { colorScheme } = useColorScheme()
 
   const { control, errors, submit, isSubmitting, setFocus } = useSignInForm()
 
@@ -35,13 +44,12 @@ export const SignInScreen = (): JSX.Element => {
       </Box>
       <Center p={8} flex={1} flexGrow={1} width={space['full']}>
         <Image
-          alt="logo"
-          flex={1}
-          height={24}
+          style={styles.logo}
           resizeMethod="resize"
           resizeMode="contain"
-          source={require('~assets/logo.png')}
+          source={colorScheme === 'light' ? lightLogo : darkLogo}
         />
+        <Spacer y="8" />
         <ControlledField.Input
           autoCapitalize="none"
           control={control}
@@ -116,3 +124,9 @@ export const SignInScreen = (): JSX.Element => {
     </KeyboardAwareScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  logo: {
+    height: 100,
+  },
+})

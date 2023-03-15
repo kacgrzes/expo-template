@@ -1,5 +1,8 @@
-import { Button, Center, Text, Image } from 'native-base'
+import { Button, Center, Text } from 'native-base'
+import { Image, StyleSheet } from 'react-native'
 
+import { darkLogo, lightLogo } from '~constants'
+import { useColorScheme } from '~contexts'
 import { useCallback, useTranslation } from '~hooks'
 
 export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
@@ -7,6 +10,7 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
     navigation: { navigate },
   } = props
   const { t } = useTranslation()
+  const { colorScheme } = useColorScheme()
 
   const navigateToDetails = useCallback(() => {
     navigate('Details', { id: 'home-id' })
@@ -15,11 +19,10 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
   return (
     <Center flex={1}>
       <Image
-        source={require('~assets/logo.png')}
+        source={colorScheme === 'light' ? lightLogo : darkLogo}
+        style={styles.logo}
         resizeMode="contain"
         resizeMethod="resize"
-        height={24}
-        alt="logo"
       />
       <Text textAlign="center">{t('hello')}</Text>
       <Text textAlign="center">{t('thanks')}</Text>
@@ -30,3 +33,9 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
     </Center>
   )
 }
+
+const styles = StyleSheet.create({
+  logo: {
+    height: 100,
+  },
+})
