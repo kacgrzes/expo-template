@@ -1,35 +1,39 @@
-type Keys<T> = keyof T
-export const keys = <T extends object>(object: T) => Object.keys(object) as (keyof T)[]
-
+'use strict'
+exports.__esModule = true
+exports.HomeStackScreens =
+  exports.ExamplesStackScreens =
+  exports.BottomTabsScreens =
+  exports.RootStackScreens =
+  exports.keys =
+    void 0
+const keys = function (object) {
+  return Object.keys(object)
+}
+exports.keys = keys
 // Root_SCREENS
-export const RootStackScreens = {
+exports.RootStackScreens = {
   SignIn: 'SignIn',
   SignUp: 'SignUp',
   MainTab: 'MainTab',
   Settings: 'Settings',
   ApplicationInfo: 'ApplicationInfo',
   NotFound: 'NotFound',
-} as const
-
+}
 // BottomTabs_SCREENS
-export const BottomTabsScreens = {
+exports.BottomTabsScreens = {
   HomeStack: 'HomeStack',
   ExamplesStack: 'ExamplesStack',
-} as const
-
+}
 // ExamplesStack_SCREENS
-export const ExamplesStackScreens = {
+exports.ExamplesStackScreens = {
   Examples: 'Examples',
   Typography: 'Typography',
   Colors: 'Colors',
   Components: 'Components',
   DataFromBeScreen_EXAMPLE: 'DataFromBeScreen_EXAMPLE',
-} as const
-
+}
 // HomeStack_SCREENS
-export const HomeStackScreens = {
+exports.HomeStackScreens = {
   Home: 'Home',
   Details: 'Details',
-} as const
-
-export type BottomTabsScreensKeys = Keys<typeof BottomTabsScreens>
+}

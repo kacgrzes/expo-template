@@ -1,8 +1,8 @@
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
-import { FC, memo } from 'react'
+import { memo } from 'react'
 
-import { bottomTabsScreensData } from './config/tabs'
+import { bottomTabsScreensData } from './config/screens'
 
 import { Icon } from '~components'
 import { TAB_DEFAULT_ICON } from '~constants'
@@ -23,7 +23,7 @@ const navigatorScreens = bottomTabsScreensData.map((props) => {
   return <Screen key={props.name} {...props} component={Component} />
 })
 
-export const BottomTabNavigator: FC = () => {
+export const BottomTabNavigator = () => {
   const { tabBarTheme } = useNavigationTheme()
 
   const screenOptions = useCallback<ScreenOptions>(
