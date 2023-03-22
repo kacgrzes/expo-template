@@ -1,4 +1,8 @@
-![Logo](assets/logo-light.png)
+
+<p align="center">
+    <img src="assets/logo-light.png" alt="Logo">
+</p>
+
 
 [![MIT License](https://img.shields.io/npm/l/@binarapps/expo-ts-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![MIT License](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)
