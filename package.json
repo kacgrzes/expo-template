@@ -12,7 +12,6 @@
     "eslint",
     "prettier"
   ],
-  "homepage": "https://github.com/binarapps/expo-ts-template",
   "repository": {
     "type": "git",
     "url": "https://github.com/binarapps/expo-ts-template.git"

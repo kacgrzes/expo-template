@@ -27,3 +27,5 @@ dist/
 # .env.qa
 # .env.production
 # .env.staging
+# Local Netlify folder
+.netlify
