@@ -1,4 +1,4 @@
-import { rootStackScreensData } from '~navigation/config/rootScreens'
+import { rootStackScreensData } from '~navigation/config/screens'
 
 const unauthorizedPaths = [
   ...rootStackScreensData.modals,

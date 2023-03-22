@@ -50,7 +50,6 @@ export const Loader = ({ type, ...props }: LoaderType): JSX.Element => {
     } else if (type === 'disk') {
       return <DiskLoader {...(props as DiskLoaderType)} />
     } else {
-      // @ts-expect-error - 'ActivityIndicator' cannot be used as a JSX component.
       return <ActivityIndicator {...(props as ActivityIndicatorProps)} />
     }
   }, [type, props])

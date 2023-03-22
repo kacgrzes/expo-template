@@ -10,8 +10,8 @@ import { createURL } from 'expo-linking'
 import { Platform } from 'react-native'
 
 import { HomeStackScreens, RootStackScreens } from './config/enums'
-import { rootStackScreensData } from './config/rootScreens'
-import { webScreensData, bottomTabsScreensData } from './config/tabs'
+import { rootStackScreensData } from './config/screens'
+import { bottomTabsScreensData, webScreensData } from './config/tabs'
 
 const prefix = createURL('/')
 const universalLinks = Constants.manifest?.extra?.universalLinks ?? []

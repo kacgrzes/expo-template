@@ -24,15 +24,15 @@ declare global {
   type WebTabParamList = ExampleStackParamList & HomeStackParamList
 
   type RootStackParamList = {
-    // unauthorized
+    // Root_unauthorized
     SignUp: undefined
     SignIn: undefined
 
-    // authorized
+    // Root_authorized
     MainTab: NavigatorScreenParams<MainTabParamList>
     Settings: undefined
 
-    // modals
+    // Root_modals
     ApplicationInfo: undefined
     NotFound: undefined
   }
@@ -52,14 +52,16 @@ declare global {
     'ExamplesStack' | 'HomeStack'
   >
 
-  // Root stack
+  // root_stack
   type RootStackScreenProps = ScreenComposite
 
-  // Home stack
+  // RootStack_SCREENS
+
+  // home_stack
   type HomeScreenProps = ScreenComposite<'Home'>
   type DetailsScreenProps = ScreenComposite<'Details'>
 
-  // Examples stack
+  // examples_stack
   type ExamplesScreenProps = ScreenComposite<'Examples'>
   type ComponentsScreenProps = ScreenComposite<'Components'>
 }

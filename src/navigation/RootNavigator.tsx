@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { FC } from 'react'
 import { Platform } from 'react-native'
 
-import { rootStackScreensData } from './config/rootScreens'
+import { rootStackScreensData } from './config/screens'
 import { WebNavBar } from './webNavigator/WebNavBar'
 
 import { WEB_SCREEN_STYLES } from '~constants'
