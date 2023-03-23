@@ -2,7 +2,7 @@ import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-nav
 import { createStackNavigator } from '@react-navigation/stack'
 import { memo } from 'react'
 
-import { bottomTabsScreensData } from './config/screens'
+import { bottomTabsScreensData } from './config/tabs'
 
 import { Icon } from '~components'
 import { TAB_DEFAULT_ICON } from '~constants'

@@ -6,7 +6,7 @@ import { BottomTabsScreensKeys } from '../config/enums'
 import { Icon } from '~components'
 import { TAB_DEFAULT_ICON, WEB_NAV_BAR_ICON_SIZE } from '~constants'
 import { useNavigation, useNavigationState, useWeb } from '~hooks'
-import { bottomTabsScreensData } from '~navigation/config/screens'
+import { bottomTabsScreensData } from '~navigation/config/tabs'
 import { navigationRef } from '~utils'
 
 export const WebNavBar = (): JSX.Element => {

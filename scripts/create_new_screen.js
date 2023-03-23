@@ -7,6 +7,7 @@ const { addAfter, addBefore, execPromise, logger } = require('./utils')
 
 const enumsFileSrc = './src/navigation/config/enums.ts'
 const screensFileSrc = './src/navigation/config/screens.ts'
+// const tabsFileSrc = './src/navigation/config/tabs.ts'
 const typesFileSrc = './src/navigation/config/navigation.d.ts'
 const screensIndexFileSrc = './src/screens/index.ts'
 
@@ -195,6 +196,7 @@ const generateScreen = async (name, screenType) => {
   // Remove temp files
   logger.info('Removing temp files')
   // await execPromise('rm -rf ./scripts/temp')
+  await execPromise('rm -rf ./scripts/temp')
 
   // Make sure everything went well
   logger.info('Checking code - lint and typescript')
@@ -240,6 +242,7 @@ const generateNewScreen = async () => {
         if (!name) {
           return logger.error('No screen name passed')
         }
+        // 1. NEW root screen -> screen_name + screen_type (authorized | not_authorized | modal | normal)
         generateScreen(name, { type: 'root', value: screenType })
       })
     }
@@ -256,10 +259,12 @@ const generateNewScreen = async () => {
         // Logic when adding new tab
         if (screenType === '_new') {
           const bottomTabName = prompt('What is bottom tab name? ')
+          // 2. New bottom tab screen - screen_name + bottom_tab_name
           generateScreen(name, { type: 'tabs_new', value: bottomTabName + 'Stack' })
           return
         }
 
+        // 3. New bottom tab => screen_name + bottom_tab_name
         generateScreen(name, { type: 'tabs', value: screenType })
       })
     }
@@ -267,3 +272,23 @@ const generateNewScreen = async () => {
 }
 
 generateNewScreen()
+
+// INSTRUCTION
+// 0. Common
+//   a) index.ts -> export
+//   b) screen_name.ts -> screen_name component
+
+// 1. NEW root screen -> screen_name + screen_type (authorized | not_authorized | modal | normal)
+//   a) enums.ts -> const RootStackScreens = {
+//   b) navigation.d.ts -> type RootStackParamList = {
+//   c) screens.ts -> import + rootStackScreensData.authorized
+
+// 2. New bottom tab screen - screen_name + bottom_tab_name (ExampleStack)
+//   a) enums.ts -> const {bottom_tab_name}Screens = {
+//   b) navigation.d.ts -> type {bottom_tab_name}ParamList = {
+//   c) tabs.ts -> import + // HomeStack_SCREENS_END (before)
+
+// 3. New bottom tab => screen_name + bottom_tab_name
+//   a) enums.ts -> const {bottom_tab_name}StackScreens = { + export const BottomTabsScreens = { (after)
+//   b) navigation.d.ts -> type {bottom_tab_name}ParamList = {
+//   c) tabs.ts -> import + // ${bottom_tab_name}_SCREENS_END (before)
