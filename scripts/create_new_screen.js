@@ -41,19 +41,19 @@ const addToEnums = (name, screenType) => {
 
   // 3. a) LOGIC WHEN ADDING NEW TAB
   if (screenType.type === 'tabs_new') {
-    let contents = addAfter(
+    let newContents = addAfter(
       contents,
       'export const BottomTabsScreens = {',
       Content.bottomTab(screenType.value)
     )
 
-    contents = addBefore(
-      contents,
+    newContents = addBefore(
+      newContents,
       '// ExamplesStack_SCREENS',
       Content.tabEnum(screenType.value, StackScreens, name)
     )
 
-    fs.writeFileSync(enumsFileSrc, contents)
+    fs.writeFileSync(enumsFileSrc, newContents)
     return
   }
 
