@@ -8,7 +8,7 @@ declare global {
     Details: { id: string }
   }
 
-  type ExampleStackParamList = {
+  type ExamplesStackParamList = {
     Examples: undefined
     Components: undefined
     Colors: undefined
@@ -18,10 +18,11 @@ declare global {
 
   type MainTabParamList = {
     HomeStack: NavigatorScreenParams<HomeStackParamList>
-    ExamplesStack: NavigatorScreenParams<ExampleStackParamList>
+    ExamplesStack: NavigatorScreenParams<ExamplesStackParamList>
+    // MainTabParamList END
   }
 
-  type WebTabParamList = ExampleStackParamList & HomeStackParamList
+  type WebTabParamList = ExamplesStackParamList & HomeStackParamList
 
   type RootStackParamList = {
     // Root_unauthorized
@@ -50,6 +51,7 @@ declare global {
   type BottomTabScreenProps = BaseBottomTabScreenProps<
     MainTabParamList,
     'ExamplesStack' | 'HomeStack'
+    // BottomTabScreenProps END
   >
 
   // root_stack
@@ -57,11 +59,11 @@ declare global {
 
   // RootStack_SCREENS
 
-  // home_stack
+  // HomeStack_SCREENS
   type HomeScreenProps = ScreenComposite<'Home'>
   type DetailsScreenProps = ScreenComposite<'Details'>
 
-  // examples_stack
+  // ExamplesStack_SCREENS
   type ExamplesScreenProps = ScreenComposite<'Examples'>
   type ComponentsScreenProps = ScreenComposite<'Components'>
 }
@@ -72,5 +74,5 @@ declare global {
 type ScreenComposite<
   S extends keyof (RootStackParamList &
     HomeStackParamList &
-    ExampleStackParamList) = keyof RootStackParamList
-> = StackScreenProps<RootStackParamList & HomeStackParamList & ExampleStackParamList, S>
+    ExamplesStackParamList) = keyof RootStackParamList
+> = StackScreenProps<RootStackParamList & HomeStackParamList & ExamplesStackParamList, S>

@@ -46,6 +46,7 @@ export const rootStackScreensData: RootScreensType = {
       options: { title: t('navigation.screen_titles.home') },
       deeplink: '/settings',
     },
+    // authorized_SCREENS_END
   ],
   unauthorized: [
     {
@@ -60,6 +61,7 @@ export const rootStackScreensData: RootScreensType = {
       options: { title: t('navigation.screen_titles.sign_up') },
       deeplink: '/sign-up',
     },
+    // unauthorized_SCREENS_END
   ],
   modals: [
     {
@@ -74,6 +76,7 @@ export const rootStackScreensData: RootScreensType = {
       options: { title: t('navigation.screen_titles.not_found') },
       deeplink: '*',
     },
+    // modals_SCREENS_END
   ],
 } // RootStack_SCREENS_END
 

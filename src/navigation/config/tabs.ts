@@ -1,7 +1,12 @@
 import { StackNavigationOptions } from '@react-navigation/stack'
 import { t } from 'i18next'
 
-import { BottomTabsScreens, ExamplesStackScreens, HomeStackScreens } from './enums'
+import {
+  BottomTabsScreens,
+  ExamplesStackScreens,
+  HomeStackScreens,
+  // StackEnums
+} from './enums'
 
 import {
   ColorsScreen,
@@ -53,7 +58,8 @@ const examplesStackScreensData: ScreenType<keyof typeof ExamplesStackScreens>[] 
     options: { title: t('navigation.screen_titles.data_from_be_screen_example') },
     deeplink: '/data-example',
   },
-] // ExamplesStack_SCREENS_END
+  // ExamplesStack_SCREENS_END
+]
 
 // HomeStack_SCREENS_START
 const homeStackScreensData: ScreenType<keyof typeof HomeStackScreens>[] = [
@@ -69,7 +75,8 @@ const homeStackScreensData: ScreenType<keyof typeof HomeStackScreens>[] = [
     options: { title: t('navigation.screen_titles.details') },
     deeplink: '/details',
   },
-] // HomeStack_SCREENS_END
+  // HomeStack_SCREENS_END
+]
 
 // BottomTab_SCREENS_START
 export const bottomTabsScreensData = [
@@ -91,6 +98,7 @@ export const bottomTabsScreensData = [
     screens: examplesStackScreensData,
     options: { title: t('navigation.screen_titles.examples_stack') },
   },
-] // BottomTab_SCREENS_END
+  // BottomTab_SCREENS_END
+]
 
 export const webScreensData = bottomTabsScreensData.map((tab) => tab?.screens ?? []).flat()
