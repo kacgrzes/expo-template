@@ -2,6 +2,8 @@ import { Button, Center, Text } from 'native-base'
 
 import { useCallback, useTranslation } from '~hooks'
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 export const _NAME_Screen = (props: _NAME_ScreenProps): JSX.Element => {
   const {
     navigation: { navigate },
