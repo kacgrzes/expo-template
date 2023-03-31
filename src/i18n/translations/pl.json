@@ -67,6 +67,9 @@
     "screen_params": "Parametry widoku: {{params}}",
     "awesome": "Wspaniale 🎉"
   },
+  "examples_component": {
+    "example": "Przyklad"
+  },
   "examples_screen": {
     "header": "To jest przykładowy widok",
     "go_to_application_info": "Idź do ApplicationInfo",
