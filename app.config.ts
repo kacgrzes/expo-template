@@ -37,7 +37,7 @@ export const APP_CONFIG = {
   iosBundleIdentifier: 'your.ios.bundle.identifier', // CONFIG: Add your ios bundle identifier here
   isDev: process.env.IS_DEV === '1',
   isExpoGo: process.env.IS_EXPO_GO === '1',
-  scheme: 'your_url_scheme', //CONFIG: Add your url scheme to link to your app
+  scheme: 'your_url_scheme', // CONFIG: Add your url scheme to link to your app
 } as const
 
 const runtimeVersion = { policy: APP_CONFIG.isDev ? 'sdkVersion' : 'appVersion' } as const

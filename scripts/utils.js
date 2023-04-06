@@ -47,3 +47,7 @@ exports.addAfter = (content, searchText, textToAdd) => {
 exports.addBefore = (content, searchText, textToAdd) => {
   return content.replace(searchText, textToAdd + searchText)
 }
+
+exports.deleteText = (content, searchText) => {
+  return content.replace(searchText, '')
+}
