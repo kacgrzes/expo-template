@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { FC } from 'react'
+import React from 'react'
 
-import { webScreensData } from '../config/tabs'
+import { webScreensData } from '~navigation/config/tabs'
 
 const { Navigator: NavigatorWeb, Screen: ScreenWeb } = createStackNavigator<WebTabParamList>()
 
@@ -14,6 +14,6 @@ const renderScreens = webScreensData.map((screen) => (
   />
 ))
 
-export const WebNavigator: FC = () => {
+export const WebNavigator = () => {
   return <NavigatorWeb>{renderScreens}</NavigatorWeb>
 }

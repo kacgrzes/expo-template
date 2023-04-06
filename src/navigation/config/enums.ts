@@ -1,7 +1,7 @@
 type Keys<T> = keyof T
 export const keys = <T extends object>(object: T) => Object.keys(object) as (keyof T)[]
 
-// SCREENS
+// Root_SCREENS
 export const RootStackScreens = {
   SignIn: 'SignIn',
   SignUp: 'SignUp',
@@ -11,6 +11,13 @@ export const RootStackScreens = {
   NotFound: 'NotFound',
 } as const
 
+// BottomTabs_SCREENS
+export const BottomTabsScreens = {
+  HomeStack: 'HomeStack',
+  ExamplesStack: 'ExamplesStack',
+} as const
+
+// ExamplesStack_SCREENS
 export const ExamplesStackScreens = {
   Examples: 'Examples',
   Typography: 'Typography',
@@ -19,15 +26,10 @@ export const ExamplesStackScreens = {
   DataFromBeScreen_EXAMPLE: 'DataFromBeScreen_EXAMPLE',
 } as const
 
+// HomeStack_SCREENS
 export const HomeStackScreens = {
   Home: 'Home',
   Details: 'Details',
-} as const
-
-// BOTTOM TABS
-export const BottomTabsScreens = {
-  HomeStack: 'HomeStack',
-  ExamplesStack: 'ExamplesStack',
 } as const
 
 export type BottomTabsScreensKeys = Keys<typeof BottomTabsScreens>
