@@ -67,6 +67,9 @@
     "screen_params": "Screen params: {{params}}",
     "awesome": "Awesome 🎉"
   },
+  "examples_component": {
+    "example": "Example"
+  },
   "examples_screen": {
     "header": "This is Example screen",
     "go_to_application_info": "Go to ApplicationInfo",
