@@ -2,22 +2,22 @@ exports.screenOptions = (name, screenNameType) => `{
     name: ${screenNameType}Screens.${name},
     component: ${name}Screen,
     // TODO: Add translation here
-    options: { title: '${name}' },
+    options: { title: '${name.replace('Stack', '')}' },
     deeplink: '/${name.toLowerCase()}',
   },
 `
 
 exports.tabOptions = (value) => `  {
-  // TODO: Change icon name
-  icons: {
-    active: 'file-list-2-fill',
-    inactive: 'file-list-2-line',
-  } as const,
-  name: BottomTabsScreens.${value},
-  screens: ${value.charAt(0).toLowerCase() + value.slice(1)}ScreensData,
-  // TODO: Add translation here
-  options: { title: '${value}' },
-},
+    // TODO: Change icon name
+    icons: {
+      active: 'file-list-2-fill',
+      inactive: 'file-list-2-line',
+    } as BottomTabIcons,
+    name: BottomTabsScreens.${value},
+    screens: ${value.charAt(0).toLowerCase() + value.slice(1)}ScreensData,
+    // TODO: Add translation here
+    options: { title: '${value.replace('Stack', '')}' },
+  },
 `
 
 exports.screenComposite = (name) => `
@@ -54,6 +54,8 @@ type ${value}ParamList = {
 }\n`
 
 exports.navigatorScreenParams = (value) => `${value}: NavigatorScreenParams<${value}ParamList>
+`
+exports.webTabBar = (value) => `& ${value}ParamList
 `
 exports.newBottomTabScreenComposite = (value, name) => `
 // ${value}_SCREENS

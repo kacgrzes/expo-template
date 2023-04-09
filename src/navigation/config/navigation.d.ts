@@ -23,6 +23,7 @@ declare global {
   }
 
   type WebTabParamList = ExamplesStackParamList & HomeStackParamList
+  // WebTabParamListEnd
 
   type RootStackParamList = {
     // Root_unauthorized

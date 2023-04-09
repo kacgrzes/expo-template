@@ -17,6 +17,7 @@ import {
   HomeScreen,
   TypographyScreen,
 } from '~screens'
+import { IconNames } from '~types/icon'
 
 type ScreenType<T extends string> = {
   name: T
@@ -78,13 +79,17 @@ const homeStackScreensData: ScreenType<keyof typeof HomeStackScreens>[] = [
   // HomeStack_SCREENS_END
 ]
 
+type BottomTabIcons = {
+  active: IconNames
+  inactive: IconNames
+}
 // BottomTab_SCREENS_START
 export const bottomTabsScreensData = [
   {
     icons: {
       active: 'home-5-fill',
       inactive: 'home-line',
-    } as const,
+    } as BottomTabIcons,
     name: BottomTabsScreens.HomeStack,
     screens: homeStackScreensData,
     options: { title: t('navigation.screen_titles.home_stack') },
@@ -93,7 +98,7 @@ export const bottomTabsScreensData = [
     icons: {
       active: 'file-list-2-fill',
       inactive: 'file-list-2-line',
-    } as const,
+    } as BottomTabIcons,
     name: BottomTabsScreens.ExamplesStack,
     screens: examplesStackScreensData,
     options: { title: t('navigation.screen_titles.examples_stack') },

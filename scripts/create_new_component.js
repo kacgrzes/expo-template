@@ -3,7 +3,7 @@ const fs = require('fs')
 const prompt = require('prompt-sync')()
 const selectPrompt = require('select-prompt')
 
-const { execPromise, logger } = require('./utils')
+const { logger } = require('./utils')
 
 const paths = {
   template: './scripts/templates/component_template.tsx',
@@ -25,8 +25,8 @@ const createComponentFile = (name, type) => {
 
 const addToIndex = (name, type) => {
   const atomicComponentIndexPath = `./src/components/${type}s/index.ts`
-  const newExport = `export * from './${name}'
-`
+  const newExport = `
+export * from './${name}'`
   if (type === 'common') {
     const contents = fs.readFileSync(paths.componentsIndex, 'utf8')
     fs.writeFileSync(paths.componentsIndex, contents + newExport)
@@ -45,10 +45,6 @@ const generateComponent = async (name, type) => {
 
   // Add Component to index
   addToIndex(name, type)
-
-  // Make sure everything went well
-  logger.info('Checking code - lint and typescript')
-  await execPromise('yarn eslint src --fix && yarn tsc')
 
   // Finish
   logger.success(`Component ${name} created successfully`)

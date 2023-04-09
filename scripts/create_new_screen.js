@@ -13,6 +13,20 @@ const typesFileSrc = './src/navigation/config/navigation.d.ts'
 const screensIndexFileSrc = './src/screens/index.ts'
 
 /**
+ * @param {string} name
+ */
+const validateScreen = (name) => {
+  const enumsFile = require('./temp/enums')
+
+  Object.values(enumsFile).forEach((enumValue) => {
+    if (enumValue[name]) {
+      logger.error(`Screen with name ${name} already exists`)
+      process.exit(1)
+    }
+  })
+}
+
+/**
  * @typedef {{
  *     "tabs",
  *     "tabs_new",
@@ -161,6 +175,7 @@ const addToTypes = (name, screenType) => {
       '// MainTabParamList END',
       Content.navigatorScreenParams(screenType.value)
     )
+    contents = addBefore(contents, '// WebTabParamListEnd', Content.webTabBar(screenType.value))
     contents = addBefore(
       contents,
       `  // HomeStack_SCREENS`,
@@ -173,8 +188,7 @@ const addToTypes = (name, screenType) => {
 
 const addToIndex = (name) => {
   const newExport = `
-export * from './${name}Screen'
-`
+export * from './${name}Screen'`
 
   const contents = fs.readFileSync(screensIndexFileSrc, 'utf8')
 
@@ -188,6 +202,9 @@ export * from './${name}Screen'
  * @param {keyof TYPES} screenType.type
  */
 const generateScreen = async (name, screenType) => {
+  // VALIDATE IF SCREEN NAME IS VALID
+  validateScreen(name)
+
   // GENERATE SCREEN FILE
   logger.info('Generating screen files')
   createScreenFile(name)
@@ -201,10 +218,6 @@ const generateScreen = async (name, screenType) => {
   // Remove temp files
   logger.info('Removing temp files')
   await execPromise('rm -rf ./scripts/temp')
-
-  // Make sure everything went well
-  logger.info('Checking code - lint and typescript')
-  await execPromise('yarn eslint src --fix && yarn tsc')
 
   // FISNISH
   logger.success(`Screen ${name} created successfully`)
