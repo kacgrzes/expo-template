@@ -1,8 +1,6 @@
-
 <p align="center">
     <img src="assets/logo-light.png" alt="Logo">
 </p>
-
 
 [![MIT License](https://img.shields.io/npm/l/@binarapps/expo-ts-template?style=flat-square)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 [![MIT License](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/v/@binarapps/expo-ts-template?style=flat-square)
@@ -14,6 +12,14 @@
 This is a template to be used with expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup. It has:
 
 Version in the `package.json` is one to one the latest expo on which the template was tested.
+
+## Demo
+
+<p align="center">
+    <img src="assets/tutorials/demo-dark.png" alt="demo-dark" style="width: 45%;">
+    &nbsp; &nbsp;
+    <img src="assets/tutorials/demo-light.png" alt="demo-light" style="width: 45%;">
+</p>
 
 ## Usage
 
@@ -47,6 +53,16 @@ rm -rg .git
 git commit -m "chore: initialize project"
 ```
 
+### App setup
+
+After setting up repository you can run bootstrap command to setup everything you need:
+
+```bash
+yarn bootstrap:new_app
+```
+
+This command will ask you for some needed informations and then will overwrite your files in repository.
+
 ## Features
 
 [![MIT License](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)
@@ -79,6 +95,9 @@ git commit -m "chore: initialize project"
 
 ### Implemented custom features
 
+- generators:
+  - create screen - `yarn generate:screen`
+  - create component - `yarn generate:component`
 - support of multiple environments
   - production, staging, qa
 - eas configuration
@@ -114,10 +133,6 @@ To have the best starting experience in your project - write a dm to your design
   [Documentation](https://linktodocumentation)
 -->
 
-## Demo
-
-Insert gif or link to demo
-
 ## Roadmap
 
 - tutorial on how to use features
@@ -130,15 +145,7 @@ Insert gif or link to demo
 - Add desings (figma) and redesing whole app
 - Updating expo versions (in future)
 - Deploy app to appstore and playstore
-- Add some code snippets / generators
-  - component
-  - screen
 - Improve mock server logic
-- Prepare setup for development - add custom scripts
-  - replace README to be ready for development
-  - remove TODO.md file
-  - cleanup gitignore files
-  - ask for app name and set it up in config
 - add commit lint
 - add script that display last update information (eas update)
 
@@ -230,6 +237,9 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 - [Mario Gliwa](https://github.com/mario688) - @mario688
 - [Michał Baumruck](https://github.com/micbaumr) - @micbaumr
 - [Andrzej Zaborski](https://github.com/AnMiZa) - @AnMiZa
+- [Bartłomiej Sworzeń](https://github.com/Sworzen1) - @Sworzen1
+- [Karol Andracki](https://github.com/Karol-Andracki) - @karol-andracki
+- [Weronika Grzeszczyk](https://github.com/vercia) - @vercia
 
 ## Similar packages
 
