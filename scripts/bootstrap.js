@@ -74,6 +74,21 @@ const bootstrap = () => {
     return logger.error('Please write correct app name')
   }
 
+  const appSlug = prompt('Write your app slug: ')
+  if (!appSlug) {
+    return logger.error('Please write correct app slug')
+  }
+
+  const organizationOwner = prompt('Write your organization owner: ')
+  if (!organizationOwner) {
+    return logger.error('Please write correct organization owner')
+  }
+
+  const easId = prompt('Write your eas project ID: ')
+  if (!easId) {
+    return logger.error('Please write correct eas project ID')
+  }
+
   const bundleId = prompt('Write your bundle ID: ')
   if (!bundleId) {
     return logger.error('Please write correct bundle ID')
@@ -88,13 +103,12 @@ const bootstrap = () => {
   if (!scheme) {
     return logger.error('Please write correct scheme')
   }
-
-  const easId = prompt('Write your eas project ID: ')
-  if (!easId) {
-    return logger.error('Please write correct eas project ID')
-  }
   // 1. Setup project -> set ( appName, bundleId, androidPackageName, appScheme, easProjectId )
   setUpProject(appName, bundleId, androidPackageName, scheme, easId)
+
+  logger.info(
+    '\nYou can also add images right now, go to assets folder and replace images to match your app \n'
+  )
 }
 
 bootstrap()
