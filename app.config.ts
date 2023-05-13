@@ -3,17 +3,6 @@ import * as dotenv from 'dotenv'
 
 dotenv.config()
 
-// ENV_VARIABLES_NAMES - array of env variables names
-const ENV_VARIABLES_NAMES = ['ENVIRONMENT'] as const
-
-const getEnvVariables = () =>
-  ENV_VARIABLES_NAMES.map((envVariable) => {
-    return { [envVariable]: process.env[envVariable] }
-  })
-
-const ENV_VARIABLES = getEnvVariables()
-const ENV_VARIABLES_VALUES = Object.assign({}, ...ENV_VARIABLES)
-
 const environments = {
   prod: 'production',
   stg: 'staging',
@@ -23,33 +12,32 @@ const environments = {
 export const envValues = Object.values(environments)
 export type Environments = (typeof envValues)[number]
 
-type Setup = { [key in Environments]: string }
-
 const adaptiveIconPath = './assets/icons/android/adaptive-icon-'
 const appIconPath = './assets/icons/ios/icon-'
 const faviconPath = './assets/icons/web/favicon-'
 
-// CONFIG: Add your eas build config here !! More details about the following parameters, and other available configs -> https://docs.expo.dev/build-reference/eas-json/
+// APP_CONFIG_START
 export const APP_CONFIG = {
   androidPackageName: 'your_android_package_name', // CONFIG: Add your android package name here
   appName: 'Template', // CONFIG: Add your app name here
   easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
   iosBundleIdentifier: 'your.ios.bundle.identifier', // CONFIG: Add your ios bundle identifier here
-  isDev: process.env.IS_DEV === '1',
-  isExpoGo: process.env.IS_EXPO_GO === '1',
   scheme: 'your_url_scheme', // CONFIG: Add your url scheme to link to your app
+  adaptiveIconBackgroundColor: '#2E7AF0CC', // CONFIG: Add your android adaptive icon background color here
 } as const
+// APP_CONFIG_END
 
-const runtimeVersion = { policy: APP_CONFIG.isDev ? 'sdkVersion' : 'appVersion' } as const
+const IS_DEV = process.env.IS_DEV === '1'
 
+const runtimeVersion = { policy: IS_DEV ? 'sdkVersion' : 'appVersion' } as const
+
+type Setup = { [key in Environments]: string }
 export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
-  // CONFIG: Add your android adaptive icon background color here
   adaptiveIconBackgroundColor: {
-    production: '#2E7AF0CC',
-    staging: '#0064FF',
-    qa: '#041939',
+    production: APP_CONFIG.adaptiveIconBackgroundColor,
+    staging: '#0064FF', // TODO: Randomize APP_CONFIG.adaptiveIconBackgroundColor
+    qa: '#041939', // TODO: Randomize APP_CONFIG.adaptiveIconBackgroundColor
   },
-  // CONFIG: Change android adaptive icons here
   adaptiveIcon: {
     production: `${adaptiveIconPath}production.png`,
     staging: `${adaptiveIconPath}staging.png`,
@@ -60,7 +48,6 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
     staging: `${APP_CONFIG.androidPackageName}.stg`,
     qa: `${APP_CONFIG.androidPackageName}.qa`,
   },
-  // CONFIG: Change ios app icons here
   appIcon: {
     production: `${appIconPath}production.png`,
     staging: `${appIconPath}staging.png`,
@@ -88,6 +75,7 @@ export const EAS_ENV_CONFIG: { [key: string]: Setup } = {
   },
 } as const
 
+// CONFIG: Add your eas build config here !! More details about the following parameters, and other available configs -> https://docs.expo.dev/build-reference/eas-json/
 export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
   const ENVIRONMENT = (process.env.ENVIRONMENT || 'qa') as Environments
 
@@ -108,7 +96,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     extra: {
       eas: { projectId: APP_CONFIG.easProjectId },
       ENVIRONMENT,
-      ...ENV_VARIABLES_VALUES,
+      ...process.env,
       universalLinks: [],
     },
     icon: EAS_ENV_CONFIG.appIcon[ENVIRONMENT],

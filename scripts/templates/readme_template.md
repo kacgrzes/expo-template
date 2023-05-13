@@ -1,4 +1,4 @@
-# @binarapps/_NAME_
+# @_OWNER_/_NAME_
 
 This is a template to be used with expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included so it's easier to start coding the app itself without all the necessary boilerplate setup. It has:
 

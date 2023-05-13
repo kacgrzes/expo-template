@@ -2,7 +2,7 @@
 const fs = require('fs')
 const prompt = require('prompt-sync')()
 
-const { addBefore, deleteText, logger } = require('./utils')
+const { logger, addAfter } = require('./utils')
 
 const paths = {
   appConfig: './app.config.ts',
@@ -13,31 +13,32 @@ const paths = {
 }
 
 // 1.
-const replaceReadme = (appName) => {
+const replaceReadme = (appName, organizationOwner) => {
   let contents = fs.readFileSync(paths.readmeTemplate, 'utf8')
   contents = contents.replaceAll('_NAME_', appName)
+  contents = contents.replaceAll('_OWNER_', organizationOwner)
 
   fs.writeFileSync(paths.readme, contents)
 }
 
 // 2.
-const setUpAppConfig = (appName, bundleId, androidPackageName, scheme, easId) => {
+const setUpAppConfig = (appName, bundleId, androidPackageName, scheme, easId, androidIconColor) => {
   let contents = fs.readFileSync(paths.appConfig, 'utf8')
-  contents = deleteText(contents, "'your_android_package_name',")
-  contents = deleteText(contents, "'your.ios.bundle.identifier',")
-  contents = deleteText(contents, "'ac562c27-4a4e-4532-869f-fe6f9447bee6',")
-  contents = deleteText(contents, "'Template',")
-  contents = deleteText(contents, "'your_url_scheme',")
 
-  contents = addBefore(
-    contents,
-    '// CONFIG: Add your android package name',
-    `'${androidPackageName}',`
-  )
-  contents = addBefore(contents, '// CONFIG: Add your app name', `'${appName}',`)
-  contents = addBefore(contents, '// CONFIG: Add your eas project ID', `'${easId}',`)
-  contents = addBefore(contents, '// CONFIG: Add your ios bundle identifier', `'${bundleId}',`)
-  contents = addBefore(contents, '// CONFIG: Add your url scheme', `'${scheme}',`)
+  const appConfig = `
+export const APP_CONFIG = {
+  androidPackageName: '${androidPackageName}', // CONFIG: Add your android package name here
+  appName: '${appName}', // CONFIG: Add your app name here
+  easProjectId: '${easId}', // CONFIG: Add your eas project ID here
+  iosBundleIdentifier: '${bundleId}', // CONFIG: Add your ios bundle identifier here
+  scheme: '${scheme}', // CONFIG: Add your url scheme to link to your app
+  adaptiveIconBackgroundColor: '${androidIconColor}', // CONFIG: Add your url scheme to link to your app
+} as const
+`
+
+  contents = contents.replace(/(\/\/ APP_CONFIG_START)[\s\S]*?(\/\/ APP_CONFIG_END)/g, '$1$2')
+
+  contents = addAfter(contents, '// APP_CONFIG_START', `${appConfig}`)
   fs.writeFileSync(paths.appConfig, contents)
 }
 
@@ -48,53 +49,100 @@ const replatePullRequestTemplate = () => {
   fs.writeFileSync(paths.pullRequestTemplate, contents)
 }
 
-const setUpProject = (appName, bundleId, androidPackageName, scheme, easId) => {
+// 4.
+const changeAppJson = (appName, appSlug, organizationOwner) => {
+  const appJson = JSON.parse(fs.readFileSync('./app.json', 'utf8'))
+  appJson.expo.slug = appSlug
+  appJson.expo.name = appName
+  appJson.expo.owner = organizationOwner
+  fs.writeFileSync('./app.json', JSON.stringify(appJson, null, 2))
+}
+
+const setUpProject = async (
+  appName,
+  bundleId,
+  androidPackageName,
+  scheme,
+  easId,
+  organizationOwner,
+  androidIconColor,
+  appSlug
+) => {
   // START
   logger.success('Start ...')
 
-  logger.info('Generating new readme file')
   // 1. Delete readme -> and create new, with new app name etc.
-  replaceReadme(appName)
+  logger.info('Generating new readme file')
+  replaceReadme(appName, organizationOwner)
 
-  logger.info('Change project variables in app.config.ts file')
   // 2. Replace appName, bundleId, androidPackageName,scheme and easProjectId in app.config.ts file
-  setUpAppConfig(appName, bundleId, androidPackageName, scheme, easId)
+  logger.info('Change project variables in app.config.ts file')
+  setUpAppConfig(appName, bundleId, androidPackageName, scheme, easId, androidIconColor)
 
-  logger.info('Generating new pull request template file')
   // 3. Delete exist pull request template -> generate the new
+  logger.info('Generating new pull request template file')
   replatePullRequestTemplate()
+
+  // 4. Change app.json file
+  logger.info('Change app.json file')
+  changeAppJson(appName, appSlug, organizationOwner)
 
   //Finish
   logger.success(`Config your project has been success`)
 }
 
 const bootstrap = () => {
-  const appName = prompt('Write your app name: ')
+  logger.info('Please give me this information to setup your project:')
+  const appName = prompt('App name: ')
   if (!appName) {
     return logger.error('Please write correct app name')
   }
 
-  const bundleId = prompt('Write your bundle ID: ')
+  const appSlug = prompt('App slug (from expo dashboard): ')
+  if (!appSlug) {
+    return logger.error('Please write app slug')
+  }
+
+  const organizationOwner = prompt('Organization owner (from expo dashboard): ')
+  if (!organizationOwner) {
+    return logger.error('Please write organziation owner')
+  }
+
+  const easId = prompt('EAS project ID (from expo dashboard): ')
+  if (!easId) {
+    return logger.error('Please write correct eas project ID')
+  }
+
+  const androidIconColor =
+    prompt('Android adaptive icon color (you can leave it empty and fill it later): ') ||
+    '#2E7AF0CC'
+
+  const bundleId = prompt('Bundle ID (ios): ')
   if (!bundleId) {
     return logger.error('Please write correct bundle ID')
   }
 
-  const androidPackageName = prompt('Write your android package name: ')
+  const androidPackageName = prompt('Package name (android): ')
   if (!androidPackageName) {
     return logger.error('Please write correct android package name')
   }
 
-  const scheme = prompt('Write your scheme: ')
+  const scheme = prompt('URL scheme (for deeplinking): ')
   if (!scheme) {
     return logger.error('Please write correct scheme')
   }
 
-  const easId = prompt('Write your eas project ID: ')
-  if (!easId) {
-    return logger.error('Please write correct eas project ID')
-  }
-  // 1. Setup project -> set ( appName, bundleId, androidPackageName, appScheme, easProjectId )
-  setUpProject(appName, bundleId, androidPackageName, scheme, easId)
+  // 1. Setup project -> set ( appName, bundleId, androidPackageName, appScheme, easProjectId, organizationOwner, androidIconColor )
+  setUpProject(
+    appName,
+    bundleId,
+    androidPackageName,
+    scheme,
+    easId,
+    organizationOwner,
+    androidIconColor,
+    appSlug
+  )
 }
 
 bootstrap()
@@ -103,3 +151,4 @@ bootstrap()
 // 1. Delete readme and write the new one
 // 2. Setup app.config.ts file
 // 3. Setup pull_request_template.md
+// 4. Setup app.json file
