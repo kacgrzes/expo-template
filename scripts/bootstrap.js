@@ -143,6 +143,11 @@ const bootstrap = () => {
     androidIconColor,
     appSlug
   )
+
+  logger.info(
+    '\nYou can also add images right now, go to assets folder and replace images to match your app \n'
+  )
+  logger.info('\nPlease verify the changes made by this script and commit it to your repository \n')
 }
 
 bootstrap()

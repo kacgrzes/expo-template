@@ -174,7 +174,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd expo-typescript-template
+  cd expo-ts-template
 ```
 
 Install dependencies
