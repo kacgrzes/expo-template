@@ -58,6 +58,15 @@ const changeAppJson = (appName, appSlug, organizationOwner) => {
   fs.writeFileSync('./app.json', JSON.stringify(appJson, null, 2))
 }
 
+// 5.
+const changePackageJson = (appName, organizationOwner) => {
+  const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
+  packageJson.name = `@${organizationOwner}/${appName}`
+  packageJson.description = `App created from expo-template powered by binarapps`
+  packageJson.version = '1.0.0'
+  fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2))
+}
+
 const setUpProject = async (
   appName,
   bundleId,
@@ -86,6 +95,10 @@ const setUpProject = async (
   // 4. Change app.json file
   logger.info('Change app.json file')
   changeAppJson(appName, appSlug, organizationOwner)
+
+  // 5. Change package.json file
+  logger.info('Change package.json file')
+  changePackageJson(appName, organizationOwner)
 
   //Finish
   logger.success(`Config your project has been success`)
