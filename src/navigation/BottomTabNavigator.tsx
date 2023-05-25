@@ -1,5 +1,6 @@
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
+import { Text } from 'native-base'
 import { memo } from 'react'
 
 import { bottomTabsScreensData } from './config/tabs'
@@ -33,8 +34,19 @@ export const BottomTabNavigator = () => {
           bottomTabsScreensData.find((screen) => screen.name === route.name)?.icons || {}
         const iconToRender = (focused ? active : inactive) || TAB_DEFAULT_ICON
 
-        // You can return any component that you like here!
+        // CONFIG: You can return any component that you like here!
         return <Icon name={iconToRender} size={size} color={color} />
+      },
+      tabBarLabel: ({ color, focused }) => {
+        const title =
+          bottomTabsScreensData.find((screen) => screen.name === route.name)?.options?.title || ''
+
+        // CONFIG: You can return any component that you like here!
+        return (
+          <Text fontSize="xs" bold={focused} color={color}>
+            {title}
+          </Text>
+        )
       },
       headerShown: false,
       ...tabBarTheme,
