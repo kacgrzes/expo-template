@@ -28,7 +28,7 @@ There are three types of usage:
 1. Init using this command (beaware that sometimes this template can't be updated on npm, in that case, clone this repository and reinitialize repozitory for yourself - check third type of setup)
 
 ```bash
-expo init --template=@binarapps/expo-ts-template name_of_your_app
+npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app
 ```
 
 2. Use this as template repo on GitHub
