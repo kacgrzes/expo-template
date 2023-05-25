@@ -1,5 +1,6 @@
 import { NavigatorScreenParams } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
+import { BottomTabScreenProps as BaseBottomTabScreenProps } from '@react-navigation/bottom-tabs'
 
 declare global {
   // PARAMS
