@@ -23,7 +23,7 @@ const modalsScreens = rootStackScreensData.modals.map((props) => (
   <Screen key={props.name} {...props} />
 ))
 
-export const RootNavigatorMobile: FC = () => {
+const RootNavigatorMobile: FC = () => {
   const { isSignedIn } = useAuth()
 
   // CONFIG: Handle in app notification
@@ -45,7 +45,7 @@ export const RootNavigatorMobile: FC = () => {
   )
 }
 
-export const RootNavigatorWeb: FC = () => {
+const RootNavigatorWeb: FC = () => {
   const { shouldApplyMobileStyles, webContentWidth } = useWeb()
   const { navigationTheme } = useNavigationTheme()
   const { width: windowWidth } = useWindowDimensions()

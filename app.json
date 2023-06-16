@@ -1,8 +1,13 @@
 {
   "expo": {
-    "android": { "jsEngine": "hermes" },
+    "android": {
+      "jsEngine": "hermes"
+    },
     "assetBundlePatterns": ["**/*"],
-    "ios": { "jsEngine": "hermes", "supportsTablet": true },
+    "ios": {
+      "jsEngine": "hermes",
+      "supportsTablet": true
+    },
     "name": "Template",
     "orientation": "portrait",
     "owner": "binarapps",
@@ -12,7 +17,9 @@
       "image": "./assets/splash.png",
       "resizeMode": "cover"
     },
-    "updates": { "fallbackToCacheTimeout": 0 },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "userInterfaceStyle": "automatic",
     "version": "1.0.0"
   }

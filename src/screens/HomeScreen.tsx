@@ -37,5 +37,6 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
 const styles = StyleSheet.create({
   logo: {
     height: 100,
+    width: '100%',
   },
 })

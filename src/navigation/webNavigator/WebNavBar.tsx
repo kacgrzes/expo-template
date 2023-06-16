@@ -1,17 +1,19 @@
 import { Box, Pressable, Row, Text } from 'native-base'
 import React, { useCallback } from 'react'
+import { StyleSheet } from 'react-native'
 
 import { BottomTabsScreensKeys } from '../config/enums'
 
 import { Icon } from '~components'
 import { TAB_DEFAULT_ICON, WEB_NAV_BAR_ICON_SIZE } from '~constants'
-import { useNavigation, useNavigationState, useWeb } from '~hooks'
+import { useNavigation, useNavigationState, useNavigationTheme, useWeb } from '~hooks'
 import { bottomTabsScreensData } from '~navigation/config/tabs'
 import { navigationRef } from '~utils'
 
 export const WebNavBar = (): JSX.Element => {
   const { navigate } = useNavigation()
   const { shouldApplyMobileStyles, webContentWidth } = useWeb()
+  const { tabBarTheme } = useNavigationTheme()
 
   // This hook call is needed to rerender this component when navigation state will change
   // thanks to that function `getCurrentRoute` will have proper value
@@ -39,46 +41,46 @@ export const WebNavBar = (): JSX.Element => {
   )
 
   return (
-    <Box w="full" bgColor="white">
-      <Row
-        alignItems="center"
-        bgColor="white"
-        justifyContent="space-between"
-        py="3"
-        w={webContentWidth}
-        mx="auto"
-      >
+    <Box w="full" style={tabBarTheme.tabBarStyle}>
+      <Row alignItems="center" justifyContent="space-between" py="2" w={webContentWidth} mx="auto">
         <Row flex={1} {...(shouldApplyMobileStyles && { justifyContent: 'space-evenly' })}>
           {bottomTabsScreensData.map(({ name, icons, screens, options }) => {
-            const focused = isActiveTab(screens as any)
+            const focused = isActiveTab(screens)
             const iconToRender = (focused ? icons.active : icons.inactive) || TAB_DEFAULT_ICON
+            const color = focused
+              ? tabBarTheme.tabBarActiveTintColor
+              : tabBarTheme.tabBarInactiveTintColor
             return (
-              <Box key={name} mx="4">
-                <Box>
-                  <Pressable
-                    flexDir={shouldApplyMobileStyles ? 'column' : 'row'}
-                    // eslint-disable-next-line react/jsx-no-bind
-                    onPress={() => handleTabPress(name)}
-                    {...(shouldApplyMobileStyles && { alignItems: 'center' })}
-                  >
-                    <Icon
-                      name={iconToRender}
-                      size={WEB_NAV_BAR_ICON_SIZE}
-                      color={focused ? 'red.800' : 'gray.500'}
-                    />
-                    {options.title ? (
-                      <Text
-                        bold={focused}
-                        color={focused ? 'actionBlue' : 'offMain'}
-                        ml="1"
-                        underline={focused}
-                      >
-                        {options.title}
-                      </Text>
-                    ) : null}
-                  </Pressable>
-                  {focused && <Box bgColor="actionBlue" w="full" h="2px" />}
-                </Box>
+              <Box key={name} mx="2">
+                <Pressable
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onPress={() => handleTabPress(name)}
+                  bgColor="red"
+                >
+                  {({ isHovered, isPressed }) => (
+                    <Box
+                      // MOBILE
+                      flexDir={shouldApplyMobileStyles ? 'column' : 'row'}
+                      style={
+                        isPressed && shouldApplyMobileStyles ? styles.iconContainer : undefined
+                      }
+                      {...(shouldApplyMobileStyles && { alignItems: 'center' })}
+                      // DESKTOP
+                      bgColor={isHovered && !shouldApplyMobileStyles ? 'light.200' : 'transparent'}
+                      p={!shouldApplyMobileStyles ? 3 : undefined}
+                      // BOTH
+                      borderRadius={8}
+                    >
+                      <Icon name={iconToRender} size={WEB_NAV_BAR_ICON_SIZE} color={color} />
+                      {options.title ? (
+                        <Text bold={focused} color={color} ml="1">
+                          {options.title}
+                        </Text>
+                      ) : null}
+                      {focused && <Box bgColor="actionBlue" w="full" h="2px" />}
+                    </Box>
+                  )}
+                </Pressable>
               </Box>
             )
           })}
@@ -87,3 +89,10 @@ export const WebNavBar = (): JSX.Element => {
     </Box>
   )
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    opacity: 0.8,
+    transform: [{ scale: 0.9 }],
+  },
+})
