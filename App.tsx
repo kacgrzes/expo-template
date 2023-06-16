@@ -1,6 +1,7 @@
 // FIXME: see how why did you render works
 // import './wdyr'
 import 'react-native-gesture-handler'
+import 'setimmediate'
 import 'react-native-reanimated'
 import '~i18n'
 import * as Device from 'expo-device'

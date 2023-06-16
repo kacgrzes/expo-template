@@ -1,9 +1,9 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { NativeBaseProvider } from 'native-base'
 import { ReactNode } from 'react'
 import { StyleSheet } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { QueryClientProvider, QueryClient } from 'react-query'
 
 import { AuthProvider } from './AuthProvider'
 import { ColorSchemeProvider } from './ColorSchemeProvider'

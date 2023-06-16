@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { QueryKeys } from '~enums'
 import { getData, CatFactsListType } from '~services'
@@ -9,7 +9,7 @@ export const useGetCity_EXAMPLE = () => {
     status: dataStatus,
     refetch: refetchData,
     isFetchedAfterMount: isFetchedDataAfterMount,
-  } = useQuery<CatFactsListType>(QueryKeys.CatsExample, getData)
+  } = useQuery<CatFactsListType>([QueryKeys.CatsExample], getData)
 
   return { dataList, dataStatus, refetchData, isFetchedDataAfterMount }
 }

@@ -1,12 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { FC } from 'react'
-import { Platform } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 
 import { rootStackScreensData } from './config/screens'
 import { WebNavBar } from './webNavigator/WebNavBar'
 
 import { WEB_SCREEN_STYLES } from '~constants'
-import { useAuth, useDimensions, useNavigationTheme, useWeb } from '~hooks'
+import { useAuth, useNavigationTheme, useWeb } from '~hooks'
 import { useNotificationSetup } from '~hooks/useNotificationSetup'
 
 const { Navigator, Screen, Group } = createStackNavigator<RootStackParamList>()
@@ -48,9 +48,7 @@ export const RootNavigatorMobile: FC = () => {
 export const RootNavigatorWeb: FC = () => {
   const { shouldApplyMobileStyles, webContentWidth } = useWeb()
   const { navigationTheme } = useNavigationTheme()
-  const {
-    window: { width: windowWidth },
-  } = useDimensions()
+  const { width: windowWidth } = useWindowDimensions()
   const { isSignedIn } = useAuth()
 
   return (

@@ -9,7 +9,6 @@ export {
   useBottomSheetTimingConfigs,
 } from '@gorhom/bottom-sheet'
 export { useAsyncStorage } from '@react-native-async-storage/async-storage'
-export * from '@react-native-community/hooks'
 export { useNetInfo } from '@react-native-community/netinfo'
 export { useAssets } from 'expo-asset'
 export { useFonts } from 'expo-font'
@@ -63,7 +62,7 @@ export {
   useQuery,
   useQueryClient,
   useQueryErrorResetBoundary,
-} from 'react-query'
+} from '@tanstack/react-query'
 export { useDebounce, useDebouncedCallback, useThrottledCallback } from 'use-debounce'
 
 export * from './forms'

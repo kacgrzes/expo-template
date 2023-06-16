@@ -1,5 +1,5 @@
-import { useDimensions } from '@react-native-community/hooks'
 import { useState, useEffect } from 'react'
+import { Dimensions } from 'react-native'
 
 import { theme } from '~constants'
 
@@ -14,26 +14,31 @@ const {
 
 export const useWeb: () => ReturnType = () => {
   const [width, setWidth] = useState<number>(0)
-  const {
-    screen: { width: screenWidth },
-    window: { width: windowWidth },
-  } = useDimensions()
 
   useEffect(() => {
-    switch (true) {
-      case windowWidth < tablet:
-        setWidth(windowWidth)
-        break
-      case windowWidth >= tablet && windowWidth < desktop:
-        setWidth(tablet)
-        break
-      case windowWidth >= desktop:
-        setWidth(desktop)
-        break
-      default:
-        setWidth(screenWidth)
+    const setDimensions = (windowWidth: number, screenWidth: number) => {
+      switch (true) {
+        case windowWidth < tablet:
+          setWidth(windowWidth)
+          break
+        case windowWidth >= tablet && windowWidth < desktop:
+          setWidth(tablet)
+          break
+        case windowWidth >= desktop:
+          setWidth(desktop)
+          break
+        default:
+          setWidth(screenWidth)
+      }
     }
-  }, [screenWidth, windowWidth])
+    setDimensions(Dimensions.get('window').width, Dimensions.get('screen').width)
+    Dimensions.addEventListener(
+      'change',
+      ({ window: { width: windowWidth }, screen: { width: screenWidth } }) => {
+        setDimensions(windowWidth, screenWidth)
+      }
+    )
+  }, [])
 
   return {
     webContentWidth: width,

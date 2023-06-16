@@ -1,5 +1,5 @@
 import { forwardRef, useMemo } from 'react'
-import { Platform, StyleProp, StyleSheet, ViewStyle } from 'react-native'
+import { Platform, StyleProp, ViewStyle } from 'react-native'
 import {
   KeyboardAwareScrollView as KeyboardAwareScroll,
   KeyboardAwareScrollViewProps,
@@ -18,18 +18,15 @@ export const KeyboardAwareScrollView = forwardRef<KeyboardAwareScroll, Props>(
     const { navigationTheme } = useNavigationTheme()
 
     const scrollViewContentContainerStyle = useMemo(
-      () =>
-        StyleSheet.compose<ViewStyle>(
-          [
-            {
-              alignItems: 'center',
-              backgroundColor: navigationTheme.colors.background,
-              flexGrow: 1,
-              justifyContent: 'space-between',
-            },
-          ],
-          contentContainerStyle
-        ),
+      () => [
+        {
+          alignItems: 'center',
+          backgroundColor: navigationTheme.colors.background,
+          flexGrow: 1,
+          justifyContent: 'space-between',
+        },
+        contentContainerStyle,
+      ],
       [contentContainerStyle, navigationTheme.colors.background]
     )
 
