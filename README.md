@@ -14,6 +14,15 @@ This is a template to be used with expo. It includes all the necessary stuff to 
 
 Version in the `package.json` is one to one the latest expo on which the template was tested.
 
+## Why to use?
+
+We know there are a lot of project starters for react native, but we have some good features:
+- Fully works with **expo go**
+    - Good for start the project and later you can switch to expo-dev-client
+- **Code generators** (create new screen / create new component)
+- **Fully + Strong typed**
+- **App deployment documentatio** (currently in progress, but it will be added in near future)
+  
 ## Demo
 
 <p align="center">
@@ -136,6 +145,8 @@ To have the best starting experience in your project - write a dm to your design
 
 ## Roadmap
 
+- add some state management tool
+- write docs (app deployment, app setup and more)
 - tutorial on how to use features
   - navigation
   - deeplinking
@@ -250,6 +261,7 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 
 ### Outdated
 
+- https://github.com/kacgrzes/expo-typescript-template (our repo is for of this one)
 - https://github.com/codingki/react-native-expo-template
 - https://github.com/flatlogic/react-native-starter
 - https://github.com/mcnamee/react-native-expo-starter-kit
