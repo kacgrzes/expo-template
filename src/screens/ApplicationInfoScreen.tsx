@@ -8,7 +8,7 @@ import { Button, ScrollView, Text } from 'native-base'
 import { isExpoGo } from '~constants'
 import { useCallback, usePreventGoBack, useTranslation } from '~hooks'
 
-const experienceId = Constants.expoConfig?.extra?.experienceId
+const projectId = Constants.expoConfig?.extra?.eas?.projectId
 
 export const ApplicationInfoScreen = (): JSX.Element => {
   const { i18n, t } = useTranslation()
@@ -16,16 +16,16 @@ export const ApplicationInfoScreen = (): JSX.Element => {
 
   const handleCopyPushToken = useCallback(async () => {
     try {
-      if (!isExpoGo && !experienceId) {
+      if (!isExpoGo && !projectId) {
         throw new Error(
-          'You must provide `experienceId` in app.json `extra` section in order to use notifications without Expo Go.'
+          'You must set `projectId` in eas build then value will be avaliable from Constants?.expoConfig?.extra?.eas?.projectId'
         )
       }
       const token = (
         await Notifications.getExpoPushTokenAsync(
           !isExpoGo
             ? {
-                experienceId,
+                projectId,
               }
             : {}
         )

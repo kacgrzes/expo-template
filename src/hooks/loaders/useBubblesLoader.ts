@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
+import { ViewStyle } from 'react-native'
 import {
+  AnimateStyle,
   Easing,
   Extrapolate,
   interpolate,
@@ -19,12 +21,8 @@ type UseBubblesLoaderType = {
       rotate: string
     }[]
   }
-  animatedHeight: {
-    height: string
-  }
-  animatedWidth: {
-    width: string
-  }
+  animatedHeight: AnimateStyle<ViewStyle>
+  animatedWidth: AnimateStyle<ViewStyle>
 }
 
 const easing = Easing.linear

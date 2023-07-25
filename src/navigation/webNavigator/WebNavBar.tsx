@@ -24,7 +24,7 @@ export const WebNavBar = (): JSX.Element => {
     (stackName: BottomTabsScreensKeys) => {
       // Search for first screen that is in selected tab
       const screenToNavigate = bottomTabsScreensData?.find((stack) => stack.name === stackName)
-        ?.screens?.[0].name as any
+        ?.screens?.[0].name as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
       navigate(screenToNavigate)
     },
