@@ -1,13 +1,9 @@
 ## Todo;
 
-CI / CD
-
-- zmienne środowiskowe: Dev, UAT (User Acceptance Testing), and Production (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-1-c52b5d3dcb7)
-- podpiecie CI / CD (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-2-78a6fa480d59)
+- environment variables: Dev, UAT (User Acceptance Testing), and Production (https://blog.expo.dev/guest-post-expo-react-native-at-payright-part-1-c52b5d3dcb7)
 - eas json config: https://docs.expo.dev/build/eas-json/
 - bitrise
 - gitlab
-
 - ARIA: https://react-native-aria.geekyants.com/
 - BLURHASH: https://github.com/mrousavy/react-native-blurhash
 - nice components:
@@ -19,7 +15,7 @@ CI / CD
 - compare miragejs with mws: https://mswjs.io/
 - add instructions to https://github.com/welldone-software/why-did-you-render
 - react-query react-native devtools: https://github.com/bgaleotti/react-query-native-devtools
-- sprawdzic dlaczego auto import nie dziala z tyldami
+- check why auto import doesn't work with tildes
 - typical auth flow - https://i.redd.it/x7wkhwkz05g71.png
 - take a look at the other app from Tom and get some ideas from there
 - check RN Europe on YT (from Callstack)
@@ -88,4 +84,3 @@ CI / CD
 ## Other templates:
 
 - https://github.com/ReactNativeSchool/expo-typescript-template
--

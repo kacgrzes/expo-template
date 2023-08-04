@@ -17,12 +17,13 @@ Version in the `package.json` is one to one the latest expo on which the templat
 ## Why to use?
 
 We know there are a lot of project starters for react native, but we have some good features:
+
 - Fully works with **expo go**
-    - Good for start the project and later you can switch to expo-dev-client
+  - Good for start the project and later you can switch to expo-dev-client
 - **Code generators** (create new screen / create new component)
 - **Fully + Strong typed**
-- **App deployment documentatio** (currently in progress, but it will be added in near future)
-  
+- **App deployment documentation** (currently in progress, but it will be added in near future)
+
 ## Demo
 
 <p align="center">
@@ -46,7 +47,7 @@ npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app
 
 3. Clone repository
 
-   This usage is usefull when npm code version is ot up to date, you can verify it by checking dates of last commit and last publish
+   This usage is usefull when npm code version is not up to date, you can verify it by checking dates of last commit and last publish
    ![Check last release date](assets/tutorials/check-last-release-date.png)
 
 ```bash
@@ -83,7 +84,7 @@ This command will ask you for some needed informations and then will overwrite y
 
 - TypeScript
   - app is fully typed
-- [Expo v47](https://github.com/expo/expo)
+- [Expo v49](https://github.com/expo/expo)
 - [React Navigation v6](https://github.com/react-navigation/react-navigation)
 - Native-base v3.4
 - Prettier and eslint
@@ -170,6 +171,8 @@ To have the best starting experience in your project - write a dm to your design
 ## Contributing
 
 Contributions are always welcome!
+
+<!-- TODO: Create such files and add hyperlinks to them. -->
 
 See `contributing.md` for ways to get started.
 
