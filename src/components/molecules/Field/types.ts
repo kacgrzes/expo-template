@@ -1,4 +1,4 @@
-import { ICheckboxProps, IFormControlProps } from 'native-base'
+import { ICheckboxProps, IFormControlProps, IRadioGroupProps } from 'native-base'
 
 import { InputProps } from '~components'
 
@@ -12,4 +12,11 @@ export type FieldInputProps = InputProps & {
 export type FieldCheckboxProps = ICheckboxProps &
   IFormControlProps & {
     label?: string
+  }
+
+export type FieldRadioProps = IRadioGroupProps &
+  IFormControlProps & {
+    label?: string
+    radioOptions?: string[]
+    errorMessage?: string
   }

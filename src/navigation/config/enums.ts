@@ -24,6 +24,7 @@ export const ExamplesStackScreens = {
   Colors: 'Colors',
   Components: 'Components',
   DataFromBeScreen_EXAMPLE: 'DataFromBeScreen_EXAMPLE',
+  TestForm: 'TestForm',
 } as const
 
 // HomeStack_SCREENS

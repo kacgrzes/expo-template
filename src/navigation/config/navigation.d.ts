@@ -10,6 +10,7 @@ declare global {
   }
 
   type ExamplesStackParamList = {
+    TestForm: undefined
     Examples: undefined
     Components: undefined
     Colors: undefined
@@ -66,6 +67,7 @@ declare global {
   type DetailsScreenProps = ScreenComposite<'Details'>
 
   // ExamplesStack_SCREENS
+  type TestFormScreenProps = ScreenComposite<'TestForm'>
   type ExamplesScreenProps = ScreenComposite<'Examples'>
   type ComponentsScreenProps = ScreenComposite<'Components'>
 }

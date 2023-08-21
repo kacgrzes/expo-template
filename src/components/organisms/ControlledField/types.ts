@@ -8,7 +8,7 @@ import {
   RegisterOptions,
 } from 'react-hook-form'
 
-import { FieldCheckboxProps, FieldInputProps } from '~components/molecules'
+import { FieldCheckboxProps, FieldInputProps, FieldRadioProps } from '~components/molecules'
 
 export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'value'> & {
   // TODO: Think how to change this to proper type
@@ -33,4 +33,14 @@ export type ControlledInputProps = Omit<FieldInputProps, 'ref'> & {
 
 export interface RenderInputProps {
   field: ControllerRenderProps<FieldValues, string>
+}
+
+export type ControlledRadioProps = FieldRadioProps & {
+  // TODO: Think how to change this to proper type
+  // Could be helpful when solving
+  // - https://fettblog.eu/typescript-react-generic-forward-refs/
+  // - https://react-hook-form.com/ts#Control
+  name: Path<any>
+  control: Control<any>
+  errors?: FieldErrors<any>
 }

@@ -18,6 +18,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
     () => navigate('DataFromBeScreen_EXAMPLE'),
     [navigate]
   )
+  const goToTestForm = useCallback(() => navigate('TestForm'), [navigate])
 
   const goToHomeStackDetails = useCallback(() => navigate('Details', { id: 'xdd' }), [navigate])
 
@@ -44,6 +45,9 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
         </Button>
         <Button size="lg" width="64" mb={2} onPress={goToCityListScreen_EXAMPLE}>
           {t('examples_screen.go_to_screen_with_BEdata')}
+        </Button>
+        <Button size="lg" width="64" mb={2} onPress={goToTestForm}>
+          {t('examples_screen.go_to_screen_test_form')}
         </Button>
       </Center>
     </ScrollView>

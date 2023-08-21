@@ -16,6 +16,7 @@ import {
   ExamplesScreen,
   HomeScreen,
   TypographyScreen,
+  TestFormScreen,
 } from '~screens'
 import { IconNames } from '~types/icon'
 
@@ -58,6 +59,13 @@ const examplesStackScreensData: ScreenType<keyof typeof ExamplesStackScreens>[] 
     component: DataFromBeScreen_EXAMPLE,
     options: { title: t('navigation.screen_titles.data_from_be_screen_example') },
     deeplink: '/data-example',
+  },
+  {
+    name: ExamplesStackScreens.TestForm,
+    component: TestFormScreen,
+    // TODO: Add translation here
+    options: { title: 'TestForm' },
+    deeplink: '/testform',
   },
   // ExamplesStack_SCREENS_END
 ]
