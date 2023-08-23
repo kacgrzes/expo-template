@@ -1,11 +1,10 @@
 import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
-import { Text } from 'native-base'
 import { memo } from 'react'
 
 import { bottomTabsScreensData } from './config/tabs'
 
-import { Icon } from '~components'
+import { Text, Icon } from '~components/atoms'
 import { TAB_DEFAULT_ICON } from '~constants'
 import { useCallback, useNavigationTheme } from '~hooks'
 

@@ -1,9 +1,8 @@
 import * as SplashScreen from 'expo-splash-screen'
-import { Center, Spinner, View } from 'native-base'
 import { FC, PropsWithChildren, useCallback, useEffect } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
-import { AbsoluteFullFill } from './atoms'
+import { AbsoluteFullFill, Loader, Center } from './atoms'
 
 import { useAuth, useBoolean, useCachedResources } from '~hooks'
 
@@ -59,8 +58,7 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
       {isLoading || isDelayLoading ? (
         <AbsoluteFullFill bg="white">
           <Center flex="1">
-            {/* //TODO: Add custom spinner */}
-            <Spinner />
+            <Loader type="bubbles" />
           </Center>
         </AbsoluteFullFill>
       ) : null}

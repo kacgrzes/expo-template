@@ -1,4 +1,4 @@
-export { Pressable as Touchable } from 'native-base'
+export { Pressable as Touchable, Box, Center, Text, Button, Row } from 'native-base'
 export { LinearGradient as Gradient } from 'expo-linear-gradient'
 
 export * from './Absolute'

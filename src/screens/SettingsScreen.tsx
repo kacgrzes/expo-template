@@ -1,6 +1,7 @@
-import { ScrollView, Text, Button, Center } from 'native-base'
+import { ScrollView } from 'react-native'
 
 import { Version, Spacer } from '~components'
+import { Button, Center, Text } from '~components/atoms'
 import { colorSchemesList } from '~constants'
 import { useColorScheme } from '~contexts'
 import { useAuth, useCallback, useTranslation } from '~hooks'

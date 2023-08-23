@@ -1,12 +1,4 @@
-import {
-  HStack,
-  ChevronDownIcon,
-  Text,
-  Pressable,
-  useTheme,
-  Menu,
-  IPressableProps,
-} from 'native-base'
+import { Pressable, Menu, IPressableProps } from 'native-base'
 import { StyleSheet } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -17,7 +9,8 @@ import Animated, {
 
 import languages from '../../assets/languages.json'
 
-import { useCallback, useTranslation } from '~hooks'
+import { Icon, Row, Text } from '~components/atoms'
+import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
   const { sizes } = useTheme()
@@ -46,14 +39,14 @@ export const LanguagePicker: React.FC = () => {
 
       return (
         <Pressable {...props}>
-          <HStack>
+          <Row>
             <Text fontSize="xl" pr="2">
               {languages[language].emoji}
             </Text>
             <Animated.View style={[animatedIconStyle, styles.icon]}>
-              <ChevronDownIcon />
+              <Icon size={24} name="arrow-down-line" />
             </Animated.View>
-          </HStack>
+          </Row>
         </Pressable>
       )
     },

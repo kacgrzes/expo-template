@@ -1,7 +1,8 @@
 import * as Linking from 'expo-linking'
-import { VStack, Heading, Divider, Button, ScrollView, View } from 'native-base'
+import { ScrollView, StyleSheet } from 'react-native'
 
 import { Icon, Loader } from '~components'
+import { Box, Text, Spacer, Button } from '~components/atoms'
 import { useCallback, useNotifications, useTranslation } from '~hooks'
 
 const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
@@ -47,20 +48,20 @@ export const ComponentsScreen = (): JSX.Element => {
   )
 
   return (
-    <ScrollView p={4}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Button alignSelf="center" variant="outline" onPress={testNotification}>
         {t('components_screen.test_notification')}
       </Button>
-      <Divider my={4} />
-      <VStack alignItems="center">
-        <Heading mb={4}>{t('components_screen.typography.label')}</Heading>
+      <Spacer y="4" />
+      <Box alignItems="center">
+        <Text mb={4}>{t('components_screen.typography.label')}</Text>
         {headingSizes.map((size) => (
-          <Heading key={size} size={size}>
+          <Text key={size} size={size}>
             {t(`components_screen.typography.${size}`)}
-          </Heading>
+          </Text>
         ))}
-        <Divider my={4} />
-        <Heading mb={4}>{t('components_screen.button_variants.header')}</Heading>
+        <Spacer y="4" />
+        <Text mb={4}>{t('components_screen.button_variants.header')}</Text>
         {buttonVariants.map((variant) => (
           <Button key={variant} mb={2} variant={variant}>
             {t(`components_screen.button_variants.${variant}`)}
@@ -71,19 +72,26 @@ export const ComponentsScreen = (): JSX.Element => {
         <Button my={4} isDisabled>
           {t('components_screen.button_variants.disabled')}
         </Button>
-        <Divider my={4} />
-        <Heading mb={4}>{t('components_screen.loader_variants.header')}</Heading>
+        <Spacer y="4" />
+        <Text mb={4}>{t('components_screen.loader_variants.header')}</Text>
         {loaderVariants?.map((loader) => (
-          <View flex={1} key={loader.type}>
-            <Heading mb={4} size="sm">
+          <Box flex={1} key={loader.type}>
+            <Text mb={4} size="sm">
               {t(loader?.headerText)}
-            </Heading>
+            </Text>
             <Loader type={loader?.type} />
-            <Divider my={4} backgroundColor="transparent" />
-          </View>
+            <Spacer y="4" />
+          </Box>
         ))}
-      </VStack>
-      <Divider my={4} />
+      </Box>
+      <Spacer y="4" />
     </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
+})

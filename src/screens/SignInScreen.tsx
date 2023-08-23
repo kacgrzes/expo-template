@@ -1,4 +1,3 @@
-import { Box, Button, Center, Text } from 'native-base'
 import { StyleSheet, Image } from 'react-native'
 
 import {
@@ -8,6 +7,7 @@ import {
   Spacer,
   Version,
 } from '~components'
+import { Box, Button, Center, Text } from '~components/atoms'
 import { REGEX, darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
 import {

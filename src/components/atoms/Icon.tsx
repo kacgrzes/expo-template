@@ -1,8 +1,8 @@
 import { createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconJson from 'assets/icomoon/selection.json'
-import { useTheme } from 'native-base'
 import { StyleProp, ViewStyle } from 'react-native'
 
+import { useTheme } from '~hooks'
 import { IconNames } from '~types/icon'
 import { ColorNames } from '~types/native-base'
 import { getColorValue } from '~utils'

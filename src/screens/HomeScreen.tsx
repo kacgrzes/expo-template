@@ -1,6 +1,6 @@
-import { Button, Center, Text } from 'native-base'
 import { Image, StyleSheet } from 'react-native'
 
+import { Button, Center, Text } from '~components/atoms'
 import { darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
 import { useCallback, useTranslation } from '~hooks'

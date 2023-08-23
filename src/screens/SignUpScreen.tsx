@@ -1,9 +1,9 @@
-import { Button, Center, useTheme } from 'native-base'
 import { useCallback, useEffect } from 'react'
 
 import { ControlledField, KeyboardAwareScrollView } from '~components'
+import { Button, Center } from '~components/atoms'
 import { REGEX } from '~constants'
-import { useSignUpForm, useTranslation } from '~hooks'
+import { useSignUpForm, useTranslation, useTheme } from '~hooks'
 
 export const SignUpScreen = () => {
   const { t } = useTranslation()

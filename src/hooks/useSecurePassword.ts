@@ -1,9 +1,7 @@
-import { IInputProps } from 'native-base'
 import { useCallback, useState } from 'react'
 
 import { IconNames } from '~types/icon'
-
-export const useSecurePassword = (type: IInputProps['type']) => {
+export const useSecurePassword = (type?: 'text' | 'password') => {
   const isPasswordType = type === 'password'
   const [securePassword, setSecurePassword] = useState(isPasswordType)
   const iconName: IconNames = securePassword ? 'eye-line' : 'eye-off-line'

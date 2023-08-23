@@ -1,10 +1,9 @@
-import { Box, Pressable, Row, Text } from 'native-base'
 import React, { useCallback } from 'react'
 import { StyleSheet } from 'react-native'
 
 import { BottomTabsScreensKeys } from '../config/enums'
 
-import { Icon } from '~components'
+import { Icon, Box, Row, Text, Touchable } from '~components'
 import { TAB_DEFAULT_ICON, WEB_NAV_BAR_ICON_SIZE } from '~constants'
 import { useNavigation, useNavigationState, useNavigationTheme, useWeb } from '~hooks'
 import { bottomTabsScreensData } from '~navigation/config/tabs'
@@ -52,7 +51,7 @@ export const WebNavBar = (): JSX.Element => {
               : tabBarTheme.tabBarInactiveTintColor
             return (
               <Box key={name} mx="2">
-                <Pressable
+                <Touchable
                   // eslint-disable-next-line react/jsx-no-bind
                   onPress={() => handleTabPress(name)}
                   bgColor="red"
@@ -80,7 +79,7 @@ export const WebNavBar = (): JSX.Element => {
                       {focused && <Box bgColor="actionBlue" w="full" h="2px" />}
                     </Box>
                   )}
-                </Pressable>
+                </Touchable>
               </Box>
             )
           })}

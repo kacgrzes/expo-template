@@ -1,7 +1,9 @@
-import { Button, TextArea, Checkbox, FormControl, Text, Select } from 'native-base'
+import { TextArea, Checkbox, FormControl, Select } from 'native-base'
 import { Controller } from 'react-hook-form'
+import { StyleSheet } from 'react-native'
 
 import { ControlledField, KeyboardAwareScrollView } from '~components'
+import { Button, Text } from '~components/atoms'
 import { useTestForm, useTranslation } from '~hooks'
 
 const SHOE_SIZES = [
@@ -35,7 +37,7 @@ export const TestFormScreen = (): JSX.Element => {
   ]
 
   return (
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView contentContainerStyle={styles.container}>
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.contact_data')}
       </Text>
@@ -229,3 +231,10 @@ export const TestFormScreen = (): JSX.Element => {
     </KeyboardAwareScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
+})

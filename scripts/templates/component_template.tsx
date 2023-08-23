@@ -1,6 +1,6 @@
-import { Center, Text } from 'native-base'
 import { FC } from 'react'
 
+import { Center, Text } from '~components/atoms'
 import { useTranslation } from '~hooks'
 
 type _NAME_Props = {

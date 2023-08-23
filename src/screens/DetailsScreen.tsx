@@ -1,6 +1,4 @@
-import { Center, Text, Button, Box } from 'native-base'
-
-import { useBottomSheet } from '~components'
+import { useBottomSheet, Center, Text, Button, Box } from '~components'
 import { useTranslation } from '~hooks'
 
 export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
