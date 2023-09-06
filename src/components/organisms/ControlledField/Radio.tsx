@@ -1,42 +1,36 @@
-import { Radio as NBRadio } from 'native-base'
 import { forwardRef } from 'react'
-import { Controller, get } from 'react-hook-form'
+import { Controller, get, ControllerProps } from 'react-hook-form'
 
 import { Field } from '../../molecules'
-import type { ControlledRadioProps, RenderInputProps } from './types'
+import type { ControlledRadioProps } from './types'
 
+import { RadioProps } from '~components/atoms'
 import { useCallback } from '~hooks'
 
-export const Radio = forwardRef<typeof NBRadio, ControlledRadioProps>(
-  ({ name, control, errors, isRequired, onChange, ...props }, ref) => {
-    const error = !!get(errors, name)
+export const Radio = forwardRef<RadioProps, ControlledRadioProps>(
+  ({ name, control, errors, isRequired, rules, ...props }, ref) => {
+    const errorMessage = get(errors, name)?.message
 
     const renderRadio = useCallback(
-      ({ field }: RenderInputProps): JSX.Element => (
+      ({ field }: Parameters<ControllerProps['render']>[0]): JSX.Element => (
         <Field>
           <Field.Radio
             {...props}
             ref={ref}
+            errorMessage={errorMessage}
+            isError={!!errorMessage}
             name={field.name}
             value={field.value}
             onChange={(newValue: string): void => {
               field.onChange(newValue)
             }}
-            isInvalid={error}
             isRequired={isRequired}
           />
         </Field>
       ),
-      [error, isRequired, props, ref]
+      [errorMessage, props, isRequired, ref]
     )
 
-    return (
-      <Controller
-        name={name}
-        control={control}
-        rules={{ required: isRequired }}
-        render={renderRadio}
-      />
-    )
+    return <Controller name={name} control={control} rules={rules} render={renderRadio} />
   }
 )

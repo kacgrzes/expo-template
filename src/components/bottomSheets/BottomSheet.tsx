@@ -6,9 +6,9 @@ import {
   BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet'
 import { BottomSheetModalMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
-import { Box } from 'native-base'
 import { forwardRef, Ref, useCallback } from 'react'
 
+import { Box } from '~components/atoms'
 import { useMemo } from '~hooks'
 
 type Props = {

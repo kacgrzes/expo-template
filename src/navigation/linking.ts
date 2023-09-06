@@ -14,7 +14,7 @@ import { rootStackScreensData } from './config/screens'
 import { bottomTabsScreensData, webScreensData } from './config/tabs'
 
 const prefix = createURL('/')
-const universalLinks = Constants.manifest?.extra?.universalLinks ?? []
+const universalLinks = Constants.expoConfig?.extra?.universalLinks ?? []
 
 const webTabsScreens = webScreensData.reduce<{ [key: string]: string }>((prev, current) => {
   prev[current.name] = current.deeplink

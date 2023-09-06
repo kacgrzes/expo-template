@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Center } from 'native-base'
 import React, { useMemo } from 'react'
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native'

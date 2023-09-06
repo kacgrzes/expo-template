@@ -1,5 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { render, RenderAPI } from '@testing-library/react-native'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove NativeBaseProvider when issue is resolved
 import { NativeBaseProvider } from 'native-base'
 import { PropsWithChildren, ReactElement } from 'react'
 import { I18nextProvider } from 'react-i18next'

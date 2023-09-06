@@ -3,8 +3,9 @@ import * as Application from 'expo-application'
 import * as Clipboard from 'expo-clipboard'
 import Constants from 'expo-constants'
 import * as Notifications from 'expo-notifications'
-import { Button, ScrollView, Text } from 'native-base'
+import { ScrollView, StyleSheet } from 'react-native'
 
+import { Button, Text } from '~components'
 import { isExpoGo } from '~constants'
 import { useCallback, usePreventGoBack, useTranslation } from '~hooks'
 
@@ -39,7 +40,7 @@ export const ApplicationInfoScreen = (): JSX.Element => {
     }
   }, [])
   return (
-    <ScrollView p={4}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Button size="lg" width="64" my={2} onPress={handleCopyPushToken}>
         {t('settings_screen.copy_push_token')}
       </Button>
@@ -52,3 +53,9 @@ export const ApplicationInfoScreen = (): JSX.Element => {
     </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
+})

@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Box, Modal } from 'native-base'
 import { forwardRef, useCallback, useImperativeHandle } from 'react'
 import { ScrollView } from 'react-native'

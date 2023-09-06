@@ -1,5 +1,6 @@
-import { Button, ScrollView, Center } from 'native-base'
+import { StyleSheet, ScrollView } from 'react-native'
 
+import { Button, Center } from '~components/atoms'
 import { useTranslation, useCallback } from '~hooks'
 
 export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
@@ -23,7 +24,7 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
   const goToHomeStackDetails = useCallback(() => navigate('Details', { id: 'xdd' }), [navigate])
 
   return (
-    <ScrollView p={4}>
+    <ScrollView style={styles.container}>
       <Center>
         <Button size="lg" width="64" mb={2} onPress={goToApplicationInfo}>
           {t('examples_screen.go_to_application_info')}
@@ -53,3 +54,9 @@ export const ExamplesScreen = (props: ExamplesScreenProps): JSX.Element => {
     </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
+})

@@ -61,7 +61,7 @@
     "prettier:write": "prettier --write ./src",
     "register": "expo register",
     "start:fast": "EXPO_USE_EXOTIC=1 expo start --clear",
-    "start": "cross-env IS_DEV=1 expo start -c",
+    "start": "cross-env IS_DEV=1 expo start -c -g",
     "test:debug": "jest -o --watch --coverage=false",
     "test:final": "jest",
     "test": "jest --watch --coverage=false --changedSince=origin/main",

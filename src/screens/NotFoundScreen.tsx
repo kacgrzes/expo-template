@@ -1,5 +1,4 @@
-import { Center, Text } from 'native-base'
-
+import { Center, Text } from '~components/atoms'
 import { useTranslation } from '~hooks'
 
 export const NotFoundScreen = (): JSX.Element => {

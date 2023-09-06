@@ -20,10 +20,8 @@ export const KeyboardAwareScrollView = forwardRef<KeyboardAwareScroll, Props>(
     const scrollViewContentContainerStyle = useMemo(
       () => [
         {
-          alignItems: 'center',
           backgroundColor: navigationTheme.colors.background,
           flexGrow: 1,
-          justifyContent: 'space-between',
         },
         contentContainerStyle,
       ],

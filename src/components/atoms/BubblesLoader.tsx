@@ -1,4 +1,6 @@
-import { View } from 'native-base'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
+import { Box } from 'native-base'
 import React from 'react'
 import Animated from 'react-native-reanimated'
 
@@ -10,7 +12,7 @@ export type BubblesLoaderType = {
 }
 
 const FullCircle = ({ size = 10, color = 'black' }: BubblesLoaderType): JSX.Element => (
-  <View style={{ backgroundColor: color, borderRadius: size / 2, width: size, height: size }} />
+  <Box style={{ backgroundColor: color, borderRadius: size / 2, width: size, height: size }} />
 )
 
 export const BubblesLoader = ({ size = 40, color = 'black' }: BubblesLoaderType): JSX.Element => {

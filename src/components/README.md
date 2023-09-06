@@ -102,8 +102,7 @@ The **Spacer** component is used to pass space between components in a render tr
 ### Usage
 
 ```tsx
-import { Container } from 'native-base'
-import { Spacer, Input } from '~components'
+import { Spacer, Input, Container } from '~components'
 
 const MyComponent: React.FC = () => (
   <Container>
@@ -192,7 +191,6 @@ _type_: `JSX.Element` | `undefined`
 ### Usage
 
 ```tsx
-import { Container } from 'native-base'
 import { Field } from '~components'
 
 const MyComponent: React.FC = () => (
@@ -226,7 +224,6 @@ _type_: `string` | `undefined`
 ### Usage
 
 ```tsx
-import { Container } from 'native-base'
 import { Field } from '~components'
 
 const MyComponent: React.FC = () => (
@@ -272,7 +269,6 @@ _type_: `FieldErrors<any>`
 ### Usage
 
 ```tsx
-import { Container } from 'native-base'
 import { useForm } from 'react-hook-form'
 
 import { ControlledField } from '~components'
@@ -343,7 +339,6 @@ _type_: `FieldErrors<any>` | `undefined`
 ### Usage
 
 ```tsx
-import { Container } from 'native-base'
 import { useForm } from 'react-hook-form'
 
 import { ControlledField } from '~components'

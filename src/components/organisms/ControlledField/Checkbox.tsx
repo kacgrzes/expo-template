@@ -1,7 +1,7 @@
-import { Controller, ControllerRenderProps, get } from 'react-hook-form'
+import { Controller, ControllerProps, get } from 'react-hook-form'
 
 import { Field } from '../../molecules'
-import type { ControlledCheckboxProps, RenderInputProps } from './types'
+import type { ControlledCheckboxProps } from './types'
 
 import { useCallback } from '~hooks'
 
@@ -10,36 +10,26 @@ export const Checkbox: React.FC<ControlledCheckboxProps> = ({
   control,
   errors,
   isRequired,
+  rules,
   ...props
 }) => {
-  const error = !!get(errors, name)
-
-  const handlePress = useCallback(
-    (field: ControllerRenderProps) => (newValue: boolean) => field.onChange(newValue),
-    []
-  )
+  const errorMessage = get(errors, name)?.message
 
   const renderCheckbox = useCallback(
-    ({ field }: RenderInputProps) => (
+    ({ field }: Parameters<ControllerProps['render']>[0]) => (
       <Field>
         <Field.Checkbox
           {...props}
           name={field.name}
           value={field.value}
-          onChange={handlePress(field)}
-          isInvalid={error}
+          errorMessage={errorMessage}
+          onChange={(newValue) => field.onChange(newValue)}
+          isError={!!errorMessage}
           isRequired={isRequired}
         />
       </Field>
     ),
-    [error, isRequired, handlePress, props]
+    [errorMessage, isRequired, props]
   )
-  return (
-    <Controller
-      name={name}
-      control={control}
-      rules={{ required: isRequired }}
-      render={renderCheckbox}
-    />
-  )
+  return <Controller name={name} control={control} rules={rules} render={renderCheckbox} />
 }

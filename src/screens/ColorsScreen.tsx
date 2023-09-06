@@ -1,4 +1,12 @@
-import { useTheme, ScrollView, Heading, Row, Box, Theme, Center } from 'native-base'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
+import { Theme } from 'native-base'
+import { ScrollView, StyleSheet } from 'react-native'
+
+import { Box, Text, Row, Center } from '~components/atoms'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
+import { useTheme } from '~hooks'
 
 type ColorsKeys = keyof Theme['colors']
 const colorsVariants: ColorsKeys[] = [
@@ -42,10 +50,10 @@ export const ColorsScreen = (): JSX.Element => {
   const { colors } = useTheme()
 
   return (
-    <ScrollView p={4}>
+    <ScrollView style={styles.container}>
       {colorsVariants.map((colorVariant) => (
         <Center key={colorVariant}>
-          <Heading size="sm">{colorVariant}</Heading>
+          <Text size="sm">{colorVariant}</Text>
           <Row my={2}>
             {Object.values(colors[colorVariant]).map((color) => (
               <Box h={8} w={8} key={color} bg={color} />
@@ -56,3 +64,10 @@ export const ColorsScreen = (): JSX.Element => {
     </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
+})

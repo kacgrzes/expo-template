@@ -1,8 +1,10 @@
 import { createIconSetFromIcoMoon } from '@expo/vector-icons'
 import iconJson from 'assets/icomoon/selection.json'
-import { useTheme } from 'native-base'
 import { StyleProp, ViewStyle } from 'react-native'
 
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
+import { useTheme } from '~hooks'
 import { IconNames } from '~types/icon'
 import { ColorNames } from '~types/native-base'
 import { getColorValue } from '~utils'

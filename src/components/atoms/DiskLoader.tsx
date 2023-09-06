@@ -1,4 +1,6 @@
-import { View } from 'native-base'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
+import { Box } from 'native-base'
 import React, { useEffect } from 'react'
 import Animated, {
   Easing,
@@ -57,7 +59,7 @@ export const DiskLoader = ({
           animatedStyle,
         ]}
       >
-        <View
+        <Box
           width={circleSize}
           height={circleSize}
           borderRadius="full"

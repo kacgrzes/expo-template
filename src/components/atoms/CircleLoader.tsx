@@ -1,4 +1,6 @@
-import { View } from 'native-base'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
+import { Box } from 'native-base'
 import React from 'react'
 import Animated, {
   Extrapolate,
@@ -69,7 +71,7 @@ const HalfCircle = ({
     }
   })
   return (
-    <View
+    <Box
       pointerEvents="none"
       style={{
         ...halfCircleContainerStyle,
@@ -85,17 +87,17 @@ const HalfCircle = ({
           animatedStyle,
         ]}
       >
-        <View style={halfCircleContainerStyle}>
-          <View
+        <Box style={halfCircleContainerStyle}>
+          <Box
             style={{
               ...fullCircleStyle,
               borderWidth: thickness,
               borderColor: color,
             }}
           />
-        </View>
+        </Box>
       </Animated.View>
-    </View>
+    </Box>
   )
 }
 

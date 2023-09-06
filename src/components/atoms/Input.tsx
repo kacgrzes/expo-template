@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Input as NBInput, Pressable as Touchable } from 'native-base'
 import { forwardRef } from 'react'
 import { TextInput } from 'react-native'

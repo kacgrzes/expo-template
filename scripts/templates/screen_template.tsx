@@ -1,5 +1,4 @@
-import { Button, Center, Text } from 'native-base'
-
+import { Button, Center, Text } from '~components/atoms'
 import { useCallback, useTranslation } from '~hooks'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

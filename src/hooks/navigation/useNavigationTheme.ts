@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base hooks when issue is resolved
 import { useTheme, useColorMode } from 'native-base'
 import { useMemo } from 'react'
 

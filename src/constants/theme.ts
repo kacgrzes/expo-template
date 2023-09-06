@@ -1,4 +1,6 @@
 import type { Theme } from '@react-navigation/native'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { extendTheme } from 'native-base'
 
 const commonColors = {
@@ -30,6 +32,7 @@ const commonColors = {
   border: '#000',
   card: '#fff',
   notification: '#000',
+  lightGray: '#EBEBE4',
 }
 
 export const ProjectColors = {

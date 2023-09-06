@@ -1,4 +1,3 @@
-import { Box, Button, Center, Text } from 'native-base'
 import { StyleSheet, Image } from 'react-native'
 
 import {
@@ -8,8 +7,11 @@ import {
   Spacer,
   Version,
 } from '~components'
+import { Box, Button, Center, Text } from '~components/atoms'
 import { REGEX, darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import {
   useCallback,
   useSignInForm,
@@ -90,15 +92,15 @@ export const SignInScreen = (): JSX.Element => {
           <ControlledField.Checkbox
             control={control}
             errors={errors}
-            label={t('sign_in_screen.remember_me')}
-            mb={4}
             name="confirm"
+            checkboxText={t('sign_in_screen.remember_me')}
+            size={18}
             testID="confirmCheckbox"
           />
           <Button
             isDisabled={isSubmitting}
             isLoading={isSubmitting}
-            mb={8}
+            my={8}
             onPress={submit}
             testID="signInButton"
             width="64"
