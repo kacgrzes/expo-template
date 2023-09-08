@@ -183,7 +183,7 @@ Contributions are always welcome!
 
 <!-- TODO: Create such files and add hyperlinks to them. -->
 
-See `contributing.md` for ways to get started.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
