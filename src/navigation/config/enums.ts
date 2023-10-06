@@ -6,7 +6,6 @@ export const RootStackScreens = {
   SignIn: 'SignIn',
   SignUp: 'SignUp',
   MainTab: 'MainTab',
-  Settings: 'Settings',
   ApplicationInfo: 'ApplicationInfo',
   NotFound: 'NotFound',
 } as const
@@ -15,6 +14,7 @@ export const RootStackScreens = {
 export const BottomTabsScreens = {
   HomeStack: 'HomeStack',
   ExamplesStack: 'ExamplesStack',
+  SettingsStack: 'SettingsStack',
 } as const
 
 // ExamplesStack_SCREENS
@@ -31,6 +31,11 @@ export const ExamplesStackScreens = {
 export const HomeStackScreens = {
   Home: 'Home',
   Details: 'Details',
+} as const
+
+// SettingsStack_SCREENS
+export const SettingsStackScreens = {
+  Settings: 'Settings',
 } as const
 
 export type BottomTabsScreensKeys = Keys<typeof BottomTabsScreens>

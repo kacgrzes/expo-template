@@ -1,16 +1,11 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Text } from 'native-base'
 import { useCallback, useMemo } from 'react'
 import { View, Pressable, StyleSheet } from 'react-native'
 
+import { Box } from './Box'
 import { Icon } from './Icon'
+import { Text } from './Text'
 import { CheckboxProps } from './types'
 
-import { useColorScheme } from '~contexts'
-
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
 import { useTheme } from '~hooks'
 
 export const Checkbox = ({
@@ -25,38 +20,32 @@ export const Checkbox = ({
   ...props
 }: CheckboxProps) => {
   const { colors } = useTheme()
-  const { colorScheme } = useColorScheme()
   const handleValueChange = useCallback(() => {
     return checkboxes ? onChange(value) : onChange(!value)
   }, [onChange, value, checkboxes])
 
-  const themeColors = useMemo(
-    () => (colorScheme === 'light' ? colors.black : colors.white),
-    [colors, colorScheme]
-  )
-
   const iconColor = useMemo(() => {
     if (disabled && value) {
-      return colors.gray['500']
+      return 'gray.500'
     }
 
-    return themeColors
-  }, [disabled, value, colors, themeColors])
+    return 'text'
+  }, [disabled, value])
 
   const bgColor = useMemo(() => {
     if (!value) {
       return colors.white
     }
     if (disabled) {
-      return colors.lightGray
+      return colors.gray['200']
     }
 
     return 'transparent'
   }, [disabled, value, colors])
 
   const borderColor = useMemo(
-    () => (isError ? colors.red['500'] : disabled ? colors.gray['500'] : themeColors),
-    [isError, disabled, colors, themeColors]
+    () => (isError ? 'red.500' : disabled ? 'gray.500' : 'inputBorder'),
+    [isError, disabled]
   )
 
   return (
@@ -71,20 +60,20 @@ export const Checkbox = ({
       disabled={disabled}
     >
       <View style={styles.row}>
-        <View
+        <Box
           style={[
             styles.checkbox,
             {
               backgroundColor: bgColor,
-              borderColor,
               height: size,
               width: size,
             },
           ]}
+          borderColor={borderColor}
           {...props}
         >
           {isChecked ? <Icon color={iconColor} name="check-line" size={18} /> : null}
-        </View>
+        </Box>
         <Text>{checkboxText}</Text>
       </View>
     </Pressable>

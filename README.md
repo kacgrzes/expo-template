@@ -137,15 +137,8 @@ This command will ask you for some needed informations and then will overwrite y
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
 
-## Working with designer in your project
-
-<!--
-  TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-  Replace this section witha a new UI lib instructions when this issue will be done.
--->
-
-Expo template, you are going to use - bundles native-base ui lib out of the box.
-To have the best starting experience in your project - write a dm to your designer that they should use [NativeBase Figma Design Kit](https://www.figma.com/community/file/1050753649783931446)
+<!-- TODO: Write guide for that section when design system will be chosen. -->
+<!-- ## Working with designer in your project -->
 
 <!--
   TODO: add documentation

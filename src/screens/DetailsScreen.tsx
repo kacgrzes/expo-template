@@ -5,19 +5,23 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   const {
     route: { params },
   } = props
-  const { bottomSheetComponentRenderFunction, presentBottomSheet } = useBottomSheet()
+  const { bottomSheetComponentRenderFunction, presentBottomSheet } = useBottomSheet({
+    title: 'Details bottom sheet',
+  })
   const { t } = useTranslation()
 
   const bottomSheet = bottomSheetComponentRenderFunction(
-    <Box p="10">
-      <Text color="black">{t('details_screen.awesome')}</Text>
+    <Box p={10}>
+      <Text color="text">{t('details_screen.awesome')}</Text>
     </Box>
   )
   return (
     <Center>
       <Text>{t('details_screen.title')}</Text>
       <Button onPress={presentBottomSheet}>{t('details_screen.open_bottom_sheet')}</Button>
-      <Text>{t('details_screen.screen_params', { params: JSON.stringify(params) })}</Text>
+      <Text color="text">
+        {t('details_screen.screen_params', { params: JSON.stringify(params) })}
+      </Text>
       {bottomSheet}
     </Center>
   )

@@ -1,10 +1,14 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box } from 'native-base'
-import React from 'react'
+import { memo } from 'react'
+import { ViewStyle } from 'react-native'
 
-import { SpacerProps } from './types'
+import { Box } from './Box'
+import { SizingValue } from './types'
 
-export const Spacer = React.memo<SpacerProps>(({ x = '0', y = '0', flex }) => (
-  <Box mt={y} mr={x} flex={flex} />
+type SpacerProps = {
+  x?: SizingValue | number
+  y?: SizingValue | number
+  flex?: ViewStyle['flex']
+}
+export const Spacer = memo<SpacerProps>(({ x = 0, y = 0, flex }) => (
+  <Box pt={y} pr={x} flex={flex} />
 ))

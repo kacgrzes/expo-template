@@ -5,6 +5,10 @@ import { act, cleanup, fireEvent, render } from '~utils/testUtils'
 afterEach(cleanup)
 
 describe('SignInScreen', () => {
+  it('should skip', () => {
+    expect(true).toBe(true)
+  })
+
   it('should render SignIn screen with the key elements', () => {
     const { getByTestId, getAllByRole } = render(<SignInScreen />)
     const emailInput = getByTestId('emailInput')

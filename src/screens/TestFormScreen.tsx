@@ -1,9 +1,7 @@
-import { TextArea, FormControl } from 'native-base'
 import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
 
-import { ControlledField, KeyboardAwareScrollView } from '~components'
-import { Button, Text } from '~components/atoms'
+import { ControlledField, KeyboardAwareScrollView, TextArea, Button, Text } from '~components'
 import { useMemo, useTestForm, useTranslation } from '~hooks'
 
 const shoeSizes = [
@@ -177,20 +175,17 @@ export const TestFormScreen = (): JSX.Element => {
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.additiona_comment')}
       </Text>
-      <FormControl>
-        <Controller
-          control={control}
-          name="comment"
-          render={({ field }) => (
-            <TextArea
-              autoCompleteType={null}
-              placeholder={t('test_form.comment')}
-              value={field.value}
-              onChangeText={(value) => field.onChange(value)}
-            />
-          )}
-        />
-      </FormControl>
+      <Controller
+        control={control}
+        name="comment"
+        render={({ field }) => (
+          <TextArea
+            placeholder={t('test_form.comment')}
+            value={field.value}
+            onChangeText={(value) => field.onChange(value)}
+          />
+        )}
+      />
       <Button my={4} onPress={submit}>
         {t('test_form.submit')}
       </Button>

@@ -41,7 +41,7 @@ export const ApplicationInfoScreen = (): JSX.Element => {
   }, [])
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Button size="lg" width="64" my={2} onPress={handleCopyPushToken}>
+      <Button my={2} onPress={handleCopyPushToken}>
         {t('settings_screen.copy_push_token')}
       </Button>
       <Text bold>{t('application_info_screen.navigation_info')}</Text>

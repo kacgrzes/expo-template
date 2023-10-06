@@ -1,6 +1,6 @@
-import { ScrollView, Switch } from 'react-native'
+import { ScrollView, Switch, Platform } from 'react-native'
 
-import { Center, Text, Row, Box } from '~components/atoms'
+import { Column, Row, Box, Text } from '~components'
 import { useColorScheme } from '~contexts'
 import { useTranslation } from '~hooks'
 
@@ -18,36 +18,49 @@ export const fontSizes = [
   '7xl',
   '8xl',
   '9xl',
-]
+] as const
+const isWeb = Platform.OS === 'web'
 
 export const TypographyScreen = (): JSX.Element => {
   const { setColorSchemeSetting, colorScheme } = useColorScheme()
 
   const { t } = useTranslation()
+
   return (
     <ScrollView>
-      <Center>
-        <Row alignItems="center" flex={1}>
-          <Text>🌞</Text>
-          {/* 
+      <Row>
+        <Column flex={1} alignItems="center" justifyContent="center">
+          <Row alignItems="center" flex={1}>
+            <Text>🌞</Text>
+            {/* 
             Investigate the issue about using `useCallback` on `onChange`
             https://github.com/adobe/react-spectrum/issues/2320
           */}
-          <Box mx={4} my={8}>
-            <Switch
-              value={colorScheme === 'dark'}
-              onChange={() => setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark')}
-            />
-          </Box>
-          <Text>🌚</Text>
-        </Row>
-        <Text fontSize="4xl">{t('typography_screen.text_font_size')}</Text>
-        {fontSizes.map((fontSize) => (
-          <Text key={fontSize} fontSize={fontSize}>
-            Text - {fontSize}
-          </Text>
-        ))}
-      </Center>
+            <Box mx={4} my={8}>
+              <Switch
+                value={colorScheme === 'dark'}
+                {...(isWeb
+                  ? {
+                      onValueChange: () =>
+                        setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark'),
+                    }
+                  : {
+                      onChange: () =>
+                        setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark'),
+                    })}
+              />
+            </Box>
+            <Text>🌚</Text>
+          </Row>
+          <Text fontSize="4xl">{t('typography_screen.text_font_size')}</Text>
+          <Text.H4>{t('typography_screen.text_font_size')}</Text.H4>
+          {fontSizes.map((fontSize) => (
+            <Text key={fontSize} p={8} fontSize={fontSize}>
+              Text - {fontSize}
+            </Text>
+          ))}
+        </Column>
+      </Row>
     </ScrollView>
   )
 }

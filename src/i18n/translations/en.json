@@ -96,12 +96,14 @@
     },
     "button_variants": {
       "header": "Button variants",
+      "primary": "Button primary",
       "secondary": "Button secondary",
       "outline": "Button outline",
-      "solid": "Button solid",
-      "subtle": "Button subtle",
       "ghost": "Button ghost",
-      "disabled": "Button disabled"
+      "link": "Button link",
+      "disabled": "Button disabled",
+      "loading": "Button loading",
+      "with_icons": "Button with icons"
     },
     "loader_variants": {
       "header": "Loader variants",

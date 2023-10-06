@@ -15,6 +15,4 @@ describe('TypographyScreen', () => {
       expect(getByText(`Text - ${fontSize}`)).toBeDefined()
     })
   })
-
-  // TODO: add test for a color mode toggler
 })

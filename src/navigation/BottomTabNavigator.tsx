@@ -34,7 +34,7 @@ export const BottomTabNavigator = () => {
         const iconToRender = (focused ? active : inactive) || TAB_DEFAULT_ICON
 
         // CONFIG: You can return any component that you like here!
-        return <Icon name={iconToRender} size={size} color={color} />
+        return <Icon name={iconToRender} size={size} color={color as ColorNames} />
       },
       tabBarLabel: ({ color, focused }) => {
         const title =
@@ -42,7 +42,7 @@ export const BottomTabNavigator = () => {
 
         // CONFIG: You can return any component that you like here!
         return (
-          <Text fontSize="xs" bold={focused} color={color}>
+          <Text fontSize="xs" bold={focused} color={color as ColorNames}>
             {title}
           </Text>
         )

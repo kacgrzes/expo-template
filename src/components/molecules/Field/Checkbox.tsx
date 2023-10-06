@@ -1,11 +1,11 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box } from 'native-base'
 import { Fragment, useMemo } from 'react'
 
+import { Box } from '../../atoms/Box'
+import { Checkbox as CustomCheckbox } from '../../atoms/Checkbox'
+import { FormErrorMessage } from '../../atoms/FormErrorMessage'
+import { FormLabel } from '../../atoms/FormLabel'
+import { Spacer } from '../../atoms/Spacer'
 import { FieldCheckboxProps } from './types'
-
-import { FormLabel, Checkbox as CustomCheckbox, Spacer, FormErrorMessage } from '~components/atoms'
 
 export const Checkbox = ({
   isInvalid,
@@ -43,14 +43,14 @@ export const Checkbox = ({
             {...(Array.isArray(value) && { isChecked: value?.includes(item) })}
             {...props}
           />
-          <Spacer y="2" />
+          <Spacer y={2} />
         </Fragment>
       )
     })
   }, [checkboxes, value, props, onChange])
 
   return (
-    <Box width="100%" mb="2">
+    <Box width="100%" mb={2}>
       <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
       {checkboxes ? (
         renderCheckboxes

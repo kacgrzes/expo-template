@@ -3,13 +3,10 @@ import { useCallback, useEffect } from 'react'
 import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { Button, Center, Spacer } from '~components/atoms'
 import { REGEX } from '~constants'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
-import { useSignUpForm, useTranslation, useTheme } from '~hooks'
+import { useSignUpForm, useTranslation } from '~hooks'
 
 export const SignUpScreen = () => {
   const { t } = useTranslation()
-  const { space } = useTheme()
 
   const { control, errors, submit, isSubmitting, setFocus } = useSignUpForm()
 
@@ -24,7 +21,7 @@ export const SignUpScreen = () => {
 
   return (
     <KeyboardAwareScrollView>
-      <Center px={8} flex={1} flexGrow={1} width={space['full']}>
+      <Center px={8} flex={1} flexGrow={1}>
         <ControlledField.Input
           mb={2}
           autoCapitalize="none"
@@ -75,7 +72,7 @@ export const SignUpScreen = () => {
             required: t('form.required'),
           }}
         />
-        <Spacer y="2" />
+        <Spacer y={2} />
         <ControlledField.Checkbox
           isRequired
           control={control}
@@ -84,7 +81,7 @@ export const SignUpScreen = () => {
           size={18}
           checkboxText={t('sign_up_screen.agree_terms_label')}
         />
-        <Spacer y="2" />
+        <Spacer y={2} />
         <ControlledField.Checkbox
           isRequired
           control={control}
@@ -93,8 +90,8 @@ export const SignUpScreen = () => {
           size={18}
           checkboxText={t('sign_up_screen.newsletter_label')}
         />
-        <Spacer y="2" />
-        <Button onPress={submit} isLoading={isSubmitting} isDisabled={isSubmitting}>
+        <Spacer y={2} />
+        <Button onPress={submit} loading={isSubmitting} disabled={isSubmitting}>
           {t('sign_up_screen.sign_up')}
         </Button>
       </Center>

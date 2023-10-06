@@ -1,13 +1,8 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box } from 'native-base'
 import { forwardRef, useCallback, useImperativeHandle, useRef, useMemo } from 'react'
 import { NativeSyntheticEvent, Pressable, TextInput, TextInputFocusEventData } from 'react-native'
 
-import { Input as BaseInput } from '../../atoms/Input'
+import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '../../atoms'
 import type { FieldInputProps } from './types'
-
-import { FormErrorMessage, FormLabel } from '~components/atoms'
 
 const layoutPropsKeys = [
   'm',
@@ -65,13 +60,11 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
       [props]
     )
 
-    const handleFocus = useCallback(
-      (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
-        onFocus && e && onFocus?.(e)
-        _inputRef?.current?.focus()
-      },
-      [onFocus]
-    )
+    const handleFocus = useCallback(() => {
+      onFocus?.()
+      _inputRef?.current?.focus()
+    }, [onFocus])
+
     const handleBlur = useCallback(
       (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
         onBlur && e && onBlur(e)
@@ -92,10 +85,9 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
 
     return (
       <Box {...layoutProps} width="100%" mb="2">
-        <Pressable onPress={() => handleFocus()}>
+        <Pressable onPress={handleFocus}>
           <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
           <BaseInput
-            isRequired={isRequired}
             isInvalid={isInvalid || Boolean(errorMessage)}
             {...inputProps}
             ref={_inputRef}

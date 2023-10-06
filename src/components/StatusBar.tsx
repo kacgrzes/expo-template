@@ -1,17 +1,15 @@
 import { StatusBar as ExpoStatusBar, StatusBarProps } from 'expo-status-bar'
 
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base hooks when issue is resolved
-import { useColorMode } from '~hooks'
+import { useColorScheme } from '~contexts'
 
 export const StatusBar = (props: StatusBarProps): JSX.Element => {
-  const { colorMode } = useColorMode()
+  const { colorScheme } = useColorScheme()
 
   return (
     <ExpoStatusBar
       animated
       hideTransitionAnimation="fade"
-      style={colorMode === 'dark' ? 'light' : 'dark'}
+      style={colorScheme === 'dark' ? 'light' : 'dark'}
       {...props}
     />
   )

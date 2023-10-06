@@ -5,6 +5,7 @@ export type FieldInputProps = InputProps &
     helperText?: string
     errorMessage?: string
     errorIcon?: JSX.Element
+    onFocus?: () => void
   }
 
 export type FieldRadioProps = RadioProps &

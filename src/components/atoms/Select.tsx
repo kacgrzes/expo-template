@@ -1,23 +1,17 @@
-import {
-  BottomSheetModal,
-  BottomSheetFlatList,
-  useBottomSheetDynamicSnapPoints,
-  BottomSheetBackdrop,
-  BottomSheetBackdropProps,
-} from '@gorhom/bottom-sheet'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box, Row } from 'native-base'
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { useCallback, useMemo, useRef } from 'react'
-import { Keyboard, Pressable, StyleSheet, Text, Dimensions } from 'react-native'
+import { Keyboard, StyleSheet, Dimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
+import { Box } from './Box'
 import { Icon } from './Icon'
+import { Row } from './Row'
+import { Text } from './Text'
+import { Touchable } from './Touchables/Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 
-import { useColorScheme } from '~contexts'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
+import { BottomSheet } from '~components/bottomSheets/BottomSheet'
+import { BottomSheetFlatList } from '~components/bottomSheets/BottomSheetFlatList'
 import { useTheme } from '~hooks'
 
 const ITEM_HEIGHT = 56
@@ -66,35 +60,32 @@ const SelectItem = <T extends SelectKey>({
   )
 
   return (
-    <Box key={item.value}>
-      <TouchableOpacity style={styles.itemWrapper} onPress={onItemSelect}>
-        {maxSelectedItems === 1 ? (
-          <Row my={2} flex={1} alignItems="center">
-            <Text>{item.labelInDropdown ?? item.label}</Text>
+    <TouchableOpacity style={styles.itemWrapper} onPress={onItemSelect}>
+      {maxSelectedItems === 1 ? (
+        <Row my={2} flex={1} alignItems="center">
+          <Text>{item.labelInDropdown ?? item.label}</Text>
+        </Row>
+      ) : null}
+      {maxSelectedItems > 1 ? (
+        <Row mb={4}>
+          <Box
+            borderRadius={5}
+            borderColor={disabled && !selected ? 'gray.500' : 'inputBorder'}
+            borderWidth={1}
+            width={5}
+            height={5}
+            mr={4}
+            justifyContent="center"
+            alignItems="center"
+          >
+            {selected ? <Icon color="gray.500" name="check-fill" size={18} /> : null}
+          </Box>
+          <Row flex={1} alignItems="center">
+            <Text style={{ color }}>{item.labelInDropdown ?? item.label}</Text>
           </Row>
-        ) : null}
-        {maxSelectedItems > 1 ? (
-          <Row mb={4}>
-            <Box
-              borderRadius={5}
-              hitSlop={{ top: 5, left: 15, bottom: 5 }}
-              borderColor={disabled && !selected ? colors.gray['500'] : colors.black}
-              borderWidth={1}
-              width={5}
-              height={5}
-              mr={4}
-              justifyContent="center"
-              alignItems="center"
-            >
-              {selected ? <Icon color={colors.gray['500']} name="check-fill" size={18} /> : null}
-            </Box>
-            <Row flex={1} alignItems="center">
-              <Text style={{ color }}>{item.labelInDropdown ?? item.label}</Text>
-            </Row>
-          </Row>
-        ) : null}
-      </TouchableOpacity>
-    </Box>
+        </Row>
+      ) : null}
+    </TouchableOpacity>
   )
 }
 
@@ -110,12 +101,6 @@ export const Select = <T extends SelectKey>({
 }: SelectProps<T>) => {
   const ref = useRef<BottomSheetModal>(null)
   const { colors } = useTheme()
-  const { colorScheme } = useColorScheme()
-
-  const snapPoints = useMemo(() => ['CONTENT_HEIGHT'], [])
-
-  const { animatedHandleHeight, animatedSnapPoints, animatedContentHeight, handleContentLayout } =
-    useBottomSheetDynamicSnapPoints(snapPoints)
 
   const showDropdown = useCallback(() => {
     onOpen && onOpen()
@@ -171,48 +156,27 @@ export const Select = <T extends SelectKey>({
     []
   )
 
-  const renderBackdrop = useCallback(
-    (props: BottomSheetBackdropProps) => (
-      <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={2} />
-    ),
-    []
-  )
-
   const inputColor = useMemo(() => {
-    return isError
-      ? colors.red['500']
-      : dropdownDisabled
-      ? colors.gray['500']
-      : colorScheme === 'light'
-      ? colors.black
-      : colors.white
-  }, [dropdownDisabled, isError, colors, colorScheme])
+    return isError ? 'red.500' : dropdownDisabled ? 'gray.500' : 'text'
+  }, [dropdownDisabled, isError])
 
   return (
     <>
-      <Pressable disabled={dropdownDisabled} onPress={showDropdown} style={styles.mainWrapper}>
+      <Touchable disabled={dropdownDisabled} onPress={showDropdown} justifyContent="center">
         <Text
           numberOfLines={1}
           style={[
             styles.textInput,
-            isError ? { borderColor: colors.red['500'] } : { borderColor: colors.gray['500'] },
-            {
-              color: inputColor,
-            },
+            isError ? { borderColor: colors.red['500'] } : { borderColor: colors.inputBorder },
           ]}
+          color={inputColor}
         >
           {label}
         </Text>
         <Icon color={inputColor} size={22} name="arrow-down-s-line" style={styles.icon} />
-      </Pressable>
-      <BottomSheetModal
-        backdropComponent={renderBackdrop}
-        ref={ref}
-        snapPoints={animatedSnapPoints}
-        handleHeight={animatedHandleHeight}
-        contentHeight={animatedContentHeight}
-      >
-        <Box pb={6} px={4} onLayout={handleContentLayout}>
+      </Touchable>
+      <BottomSheet title={label} bottomSheetRef={ref}>
+        <Box pb={6} px={4}>
           <BottomSheetFlatList
             style={styles.bottomSheetFlatList}
             data={items}
@@ -221,7 +185,7 @@ export const Select = <T extends SelectKey>({
             getItemLayout={getItemLayout}
           />
         </Box>
-      </BottomSheetModal>
+      </BottomSheet>
     </>
   )
 }
@@ -235,10 +199,7 @@ const styles = StyleSheet.create({
     right: 8,
   },
   itemWrapper: {
-    padding: 8,
-  },
-  mainWrapper: {
-    justifyContent: 'center',
+    paddingVertical: 8,
   },
   textInput: {
     alignItems: 'center',

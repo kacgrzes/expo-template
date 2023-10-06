@@ -1,7 +1,4 @@
-import { ScrollView } from 'react-native'
-
-import { Version, Spacer } from '~components'
-import { Button, Center, Text } from '~components/atoms'
+import { Version, Spacer, Button, Center, Text, ScrollView } from '~components'
 import { colorSchemesList } from '~constants'
 import { useColorScheme } from '~contexts'
 import { useAuth, useCallback, useTranslation } from '~hooks'
@@ -20,7 +17,7 @@ export const SettingsScreen = (): JSX.Element => {
   )
 
   return (
-    <ScrollView>
+    <ScrollView mt={4}>
       <Center flex={1}>
         <Text fontSize="2xl" bold mb={2}>
           {t('settings_screen.current_theme', { theme: colorSchemeSetting })}
@@ -29,22 +26,16 @@ export const SettingsScreen = (): JSX.Element => {
           const isSelected = scheme === colorSchemeSetting
 
           return (
-            <Button
-              size="lg"
-              width="64"
-              key={scheme}
-              mb={2}
-              onPress={handleColorSchemeSettingChange(scheme)}
-            >
+            <Button size="lg" key={scheme} mb={2} onPress={handleColorSchemeSettingChange(scheme)}>
               {scheme + (isSelected ? ' - selected' : '')}
             </Button>
           )
         })}
 
-        <Button colorScheme="danger" mt={8} size="lg" width="64" onPress={signOut}>
+        <Button.Secondary mt={8} size="lg" onPress={signOut}>
           {t('settings_screen.sign_out')}
-        </Button>
-        <Spacer y="10" />
+        </Button.Secondary>
+        <Spacer y={10} />
         <Version onPress={noop} />
       </Center>
     </ScrollView>

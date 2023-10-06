@@ -8,7 +8,7 @@ import {
   ColorSchemeContextType,
   SettingColorSchemeName,
 } from '~contexts'
-import { useState, useMemo, useCallback, useColorMode } from '~hooks'
+import { useState, useMemo, useCallback } from '~hooks'
 
 const defaultColorScheme = colorSchemes.LIGHT
 
@@ -16,7 +16,6 @@ export const ColorSchemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const { setItem, getItem } = useAsyncStorage(ASYNC_STORAGE_KEYS.COLOR_SCHEME)
   const systemColorScheme = useRNColorScheme()
 
-  const { setColorMode } = useColorMode()
   const [colorSchemeSetting, setColorSchemeSetting] = useState<SettingColorSchemeName>(
     colorSchemes.SYSTEM
   )
@@ -41,10 +40,6 @@ export const ColorSchemeProvider: FC<PropsWithChildren> = ({ children }) => {
     getInitialColorScheme()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  useEffect(() => {
-    setColorMode(colorScheme)
-  }, [setColorMode, colorScheme])
 
   const setNewColorSchemeSetting = useCallback(
     (newColorScheme: SettingColorSchemeName) => {

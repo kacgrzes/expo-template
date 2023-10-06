@@ -4,12 +4,17 @@ import { StyleSheet, View } from 'react-native'
 
 import { AbsoluteFullFill, Loader, Center } from './atoms'
 
-import { useAuth, useBoolean, useCachedResources } from '~hooks'
+import { useAuth, useBoolean, useCachedResources, useFonts } from '~hooks'
 
 SplashScreen.preventAutoHideAsync()
 
 export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
   const isLoadingComplete = useCachedResources()
+  const [fontsLoaded, fontError] = useFonts({
+    'Lato-Black': require('../../assets/fonts/Lato-Black.ttf'),
+    'Lato-Bold': require('../../assets/fonts/Lato-Bold.ttf'),
+    'Lato-Regular': require('../../assets/fonts/Lato-Regular.ttf'),
+  })
 
   // Delay loading logic was made to prevent displaying empty screen after splash screen will hide
   const [isDelayLoading, setIsDelayLoading] = useBoolean(true)
@@ -36,11 +41,13 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
       // loading its initial state and rendering its first pixels. So instead,
       // we hide the splash screen once we know the root view has already
       // performed layout.
-      await SplashScreen.hideAsync()
+      if (fontsLoaded || fontError) {
+        await SplashScreen.hideAsync()
+      }
     } catch {
       console.log('There was some error while hiding splash screen')
     }
-  }, [])
+  }, [fontsLoaded, fontError])
 
   const isLoading = !isLoadingComplete || isSignedIn === null
 
@@ -52,12 +59,16 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [isLoading, setIsDelayLoading])
 
+  if (!fontsLoaded && !fontError) {
+    return null
+  }
+
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       {isLoading ? null : children}
       {isLoading || isDelayLoading ? (
         <AbsoluteFullFill bg="white">
-          <Center flex="1">
+          <Center flex={1}>
             <Loader type="bubbles" />
           </Center>
         </AbsoluteFullFill>

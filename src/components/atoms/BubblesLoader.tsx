@@ -1,8 +1,7 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box } from 'native-base'
 import React from 'react'
 import Animated from 'react-native-reanimated'
+
+import { Box } from './Box'
 
 import { useBubblesLoader } from '~hooks/loaders'
 

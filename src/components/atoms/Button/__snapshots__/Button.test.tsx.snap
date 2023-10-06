@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="button"
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#3b82f6",
+      "borderColor": "transparent",
+      "borderRadius": 4,
+      "borderWidth": undefined,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "minWidth": 128,
+      "paddingHorizontal": 24,
+      "paddingVertical": 8,
+    }
+  }
+  testID="baseButton"
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      {
+        "color": "#ffffff",
+        "fontFamily": "Lato-Regular",
+        "fontSize": 16,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 21,
+        "textAlign": "center",
+        "textTransform": "none",
+      }
+    }
+    testID="baseText"
+    textAlign="center"
+  >
+    Button
+  </Text>
+</View>
+`;

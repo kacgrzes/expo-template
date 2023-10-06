@@ -1,12 +1,9 @@
 import * as Linking from 'expo-linking'
-import { ScrollView, StyleSheet } from 'react-native'
 
-import { Icon, Loader } from '~components'
-import { Box, Text, Spacer, Button } from '~components/atoms'
+import { Icon, Loader, Box, Text, Button, Center, ScrollView } from '~components'
 import { useCallback, useNotifications, useTranslation } from '~hooks'
 
 const headingSizes = ['xs', 'sm', 'md', 'lg', '2xl', '3xl', '4xl'] as const
-const buttonVariants = ['solid', 'outline', 'subtle', 'ghost'] as const
 const loaderVariants = [
   {
     type: 'circle',
@@ -48,50 +45,51 @@ export const ComponentsScreen = (): JSX.Element => {
   )
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Button alignSelf="center" variant="outline" onPress={testNotification}>
+    <ScrollView flexGrow={1} p={4}>
+      <Button.Primary alignSelf="center" onPress={testNotification}>
         {t('components_screen.test_notification')}
-      </Button>
-      <Spacer y="4" />
+      </Button.Primary>
       <Box alignItems="center">
-        <Text mb={4}>{t('components_screen.typography.label')}</Text>
+        <Text.H4 mt={8} mb={4}>
+          {t('components_screen.typography.label')}
+        </Text.H4>
         {headingSizes.map((size) => (
           <Text key={size} fontSize={size}>
             {t(`components_screen.typography.${size}`)}
           </Text>
         ))}
-        <Spacer y="4" />
-        <Text mb={4}>{t('components_screen.button_variants.header')}</Text>
-        {buttonVariants.map((variant) => (
-          <Button key={variant} mb={2} variant={variant}>
-            {t(`components_screen.button_variants.${variant}`)}
-          </Button>
-        ))}
-        <Button mb={2} isLoading variant="link" />
-        <Icon name="account-box-fill" size={24} color={'amber.600'} />
-        <Button my={4} isDisabled>
+        <Text.H4 mt={8} mb={4}>
+          {t('components_screen.button_variants.header')}
+        </Text.H4>
+        <Button.Primary title={t('components_screen.button_variants.primary')} />
+        <Button.Primary
+          mt={4}
+          leftIcon={<Icon name="account-box-fill" size={24} color="red.400" />}
+          rightIcon={<Icon name="account-box-fill" size={24} color="modalBackground" />}
+          title={t('components_screen.button_variants.with_icons')}
+        />
+        <Button.Secondary mt={4} title={t('components_screen.button_variants.secondary')} />
+        <Button.Outline mt={4} title={t('components_screen.button_variants.outline')} />
+        <Button.Ghost mt={4} title={t('components_screen.button_variants.ghost')} />
+        <Button.Link mt={4} title={t('components_screen.button_variants.link')} />
+        <Button mt={4} disabled>
           {t('components_screen.button_variants.disabled')}
         </Button>
-        <Spacer y="4" />
-        <Text mb={4}>{t('components_screen.loader_variants.header')}</Text>
+        <Button mt={4} loading size="lg" />
+        <Text.H4 mt={8} mb={4}>
+          {t('components_screen.loader_variants.header')}
+        </Text.H4>
         {loaderVariants?.map((loader) => (
           <Box flex={1} key={loader.type}>
-            <Text mb={4} fontSize="sm">
+            <Text my={4} fontSize="sm">
               {t(loader?.headerText)}
             </Text>
-            <Loader type={loader?.type} />
-            <Spacer y="4" />
+            <Center>
+              <Loader type={loader?.type} />
+            </Center>
           </Box>
         ))}
       </Box>
-      <Spacer y="4" />
     </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 16,
-  },
-})

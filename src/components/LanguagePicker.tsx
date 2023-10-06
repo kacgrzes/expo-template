@@ -1,6 +1,3 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Pressable, Menu, IPressableProps } from 'native-base'
 import { StyleSheet } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -10,15 +7,18 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import languages from '../../assets/languages.json'
+import { Icon } from './atoms/Icon'
+import { Row } from './atoms/Row'
+import { Text } from './atoms/Text'
+import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
+import { Menu } from './organisms/Menu'
 
-import { Icon, Row, Text } from '~components/atoms'
 import { useColorScheme } from '~contexts'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
 import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
-  const { sizes, colors } = useTheme()
+  const { size } = useTheme()
+
   const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
   const language = i18n.language.slice(0, 2).toUpperCase() as keyof typeof languages
@@ -30,32 +30,32 @@ export const LanguagePicker: React.FC = () => {
   }))
 
   const styles = StyleSheet.create({
-    icon: { height: sizes[8], justifyContent: 'center' },
+    icon: { height: size['8'], justifyContent: 'center' },
   })
 
-  const iconColor = colorScheme === 'light' ? colors.black : colors.white
+  const iconColor = colorScheme === 'light' ? 'black' : 'white'
 
   const renderTrigger = useCallback(
     (
-      props: IPressableProps,
+      props: TouchableProps,
       state: {
-        open: boolean
+        isOpen: boolean
       }
     ) => {
       // Set animated value based on a `Menu` state
-      isOpen.value = state.open
+      isOpen.value = state.isOpen
 
       return (
-        <Pressable {...props}>
-          <Row>
-            <Text fontSize="xl" pr="2">
+        <Touchable {...props}>
+          <Row alignItems="center">
+            <Text fontSize="xl" pr={2}>
               {languages[language].emoji}
             </Text>
             <Animated.View style={[animatedIconStyle, styles.icon]}>
               <Icon size={24} name="arrow-down-s-line" color={iconColor} />
             </Animated.View>
           </Row>
-        </Pressable>
+        </Touchable>
       )
     },
     [animatedIconStyle, isOpen, language, styles.icon, iconColor]

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { StyleSheet, ListRenderItem, FlatList } from 'react-native'
+import { ListRenderItem, FlatList } from 'react-native'
 
 import { Loader, Center, Text, Box } from '~components'
 import { Spacer } from '~components/atoms'
@@ -10,7 +10,7 @@ export const DataFromBeScreen_EXAMPLE = () => {
 
   const renderItem: ListRenderItem<CatFactType> = useCallback(({ item: { fact, length } }) => {
     return (
-      <Box mb="1" bg="dark.700">
+      <Box mb="1" bg="gray.300">
         <Text>{'fact:' + fact}</Text>
         <Text>{'length: ' + length}</Text>
       </Box>
@@ -18,7 +18,7 @@ export const DataFromBeScreen_EXAMPLE = () => {
   }, [])
 
   return (
-    <Box style={styles.container}>
+    <Box flex={1}>
       <Center>
         <Text fontSize="xl">THIS IS EXAMPLE SCREEN</Text>
         <Text fontSize="xl">which contains data from backend</Text>
@@ -40,9 +40,3 @@ export const DataFromBeScreen_EXAMPLE = () => {
     </Box>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})

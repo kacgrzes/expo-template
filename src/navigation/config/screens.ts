@@ -7,13 +7,7 @@ import { bottomTabsScreensData } from './tabs'
 
 import { BottomTabNavigator } from '~navigation/BottomTabNavigator'
 import { WebNavigator } from '~navigation/webNavigator/WebNavigator'
-import {
-  ApplicationInfoScreen,
-  NotFoundScreen,
-  SettingsScreen,
-  SignInScreen,
-  SignUpScreen,
-} from '~screens'
+import { ApplicationInfoScreen, NotFoundScreen, SignInScreen, SignUpScreen } from '~screens'
 
 const isWeb = Platform.OS === 'web'
 
@@ -39,12 +33,6 @@ export const rootStackScreensData: RootScreensType = {
       component: isWeb ? WebNavigator : BottomTabNavigator,
       options: { title: t('navigation.screen_titles.home'), headerShown: false },
       deeplink: '/',
-    },
-    {
-      name: RootStackScreens.Settings,
-      component: SettingsScreen,
-      options: { title: t('navigation.screen_titles.home') },
-      deeplink: '/settings',
     },
     // authorized_SCREENS_END
   ],

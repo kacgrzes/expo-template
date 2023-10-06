@@ -1,7 +1,9 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box } from 'native-base'
+import { memo } from 'react'
 
-import type { AbsoluteProps } from './types'
+import { Box, BoxProps } from './Box'
 
-export const Absolute = (props: AbsoluteProps) => <Box {...props} position="absolute" />
+type AbsoluteProps = Omit<BoxProps, 'position'>
+export const Absolute = memo<AbsoluteProps>((props) => <Box {...props} position="absolute" />)
+export const AbsoluteFullFill = memo<AbsoluteProps>((props) => (
+  <Box top={0} right={0} left={0} bottom={0} {...props} position="absolute" />
+))

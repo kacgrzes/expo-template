@@ -14,16 +14,7 @@ export { useAssets } from 'expo-asset'
 export { useFonts } from 'expo-font'
 export { useURL } from 'expo-linking'
 export { useAnimationState, useDynamicAnimation } from 'moti'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base hooks when issue is resolved
-export {
-  useAccessibleColors,
-  useColorMode,
-  useColorModeValue,
-  useLayout,
-  useNativeBase,
-  useTheme,
-} from 'native-base'
+export { useTheme } from './useTheme'
 export {
   useCallback,
   useContext,
