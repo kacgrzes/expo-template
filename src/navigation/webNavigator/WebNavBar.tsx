@@ -77,7 +77,9 @@ export const WebNavBar = (): JSX.Element => {
                           </Text>
                         ) : null}
                       </Box>
-                      {focused && <Absolute bottom={1} backgroundColor={color} w="full" h="2px" />}
+                      {focused && !shouldApplyMobileStyles && (
+                        <Absolute bottom={1} backgroundColor={color} w="full" h="2px" />
+                      )}
                     </>
                   )}
                 </Touchable>

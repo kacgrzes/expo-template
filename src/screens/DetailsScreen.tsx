@@ -11,10 +11,11 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   const { t } = useTranslation()
 
   const bottomSheet = bottomSheetComponentRenderFunction(
-    <Box p={10}>
+    <Box px={4} py={10}>
       <Text color="text">{t('details_screen.awesome')}</Text>
     </Box>
   )
+
   return (
     <Center>
       <Text>{t('details_screen.title')}</Text>

@@ -1,4 +1,8 @@
-import { Box, Icon, Row, Text, Touchable } from '~components/atoms'
+import { Box } from '~components/atoms/Box'
+import { Icon } from '~components/atoms/Icon'
+import { Row } from '~components/atoms/Row'
+import { Text } from '~components/atoms/Text'
+import { Touchable } from '~components/atoms/Touchables/Touchable'
 
 export const BottomSheetHeader = ({
   title,

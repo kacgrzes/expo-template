@@ -1,9 +1,8 @@
 //THIS IS EXAMPLE REQUEST
 import { apiClient } from '../api'
 
-import { CatFactType } from '~types/catFacts'
-export type CatFactsListType = CatFactType[]
+import { TodoList } from '~types/todos'
 
-export const getData = () => {
-  return apiClient.get<CatFactsListType, CatFactsListType>(`/facts`)
+export const getData = async () => {
+  return apiClient.get<TodoList, TodoList>(`/todos`)
 }

@@ -6,7 +6,7 @@ const selectPrompt = require('select-prompt')
 const { logger } = require('./utils')
 
 const paths = {
-  template: './scripts/templates/component_template.tsx',
+  template: './templates/component_template.tsx',
   componentsIndex: './src/components/index.ts',
 }
 

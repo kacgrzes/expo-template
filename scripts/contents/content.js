@@ -32,7 +32,7 @@ const ${
 
 `
 
-exports.screenNameImport = (name) => `  ${name}Screen,
+exports.screenNameImport = (name) => `,  ${name}Screen
 `
 
 exports.screenEnumImport = (value) => `  ${value}Screens,

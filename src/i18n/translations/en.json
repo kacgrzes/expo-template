@@ -28,7 +28,8 @@
       "main_tab": "MainTab",
       "settings": "Settings",
       "application_info": "ApplicationInfo",
-      "not_found": "NotFound"
+      "not_found": "NotFound",
+      "data_from_be_screen_example": "Data from BE"
     }
   },
   "application_info_screen": {

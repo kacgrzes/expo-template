@@ -9,7 +9,7 @@ import { RefObject, useCallback } from 'react'
 
 import { BottomSheetHeader } from './BottomSheetHeader'
 
-import { Box } from '~components/atoms'
+import { Box } from '~components/atoms/Box'
 import { useColorScheme } from '~contexts'
 import { useMemo } from '~hooks'
 

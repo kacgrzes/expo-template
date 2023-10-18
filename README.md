@@ -20,59 +20,19 @@ We know there are a lot of project starters for react native, but we have some g
 
 - Fully works with **expo go**
   - Good for start the project and later you can switch to expo-dev-client
+- Fully works on **web**
+  - If you want to develop apps both on web and mobile this starter is good choice for you
 - **Code generators** (create new screen / create new component)
 - **Fully + Strong typed**
 - **App deployment documentation** (currently in progress, but it will be added in near future)
 
 ## Demo
 
-<p align="center">
-    <img src="assets/tutorials/demo-dark.png" alt="demo-dark" style="width: 45%;">
-    &nbsp; &nbsp;
-    <img src="assets/tutorials/demo-light.png" alt="demo-light" style="width: 45%;">
-</p>
+[![expo-ts-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
 ## Usage
 
-There are three types of usage:
-
-1. Init using this command (beaware that sometimes this template can't be updated on npm, in that case, clone this repository and reinitialize repozitory for yourself - check third type of setup)
-
-```bash
-npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app
-```
-
-2. Use this as template repo on GitHub
-   ![Github Repository Template](assets/tutorials/github-repository-template.png)
-
-3. Clone repository
-
-   This usage is usefull when npm code version is not up to date, you can verify it by checking dates of last commit and last publish
-   ![Check last release date](assets/tutorials/check-last-release-date.png)
-
-```bash
-git clone git@github.com:binarapps/expo-ts-template.git
-cd expo-ts-template
-yarn
-yarn start
-```
-
-- in that case you can also reinitialize repozitory if you don't want to keep history of commits
-
-```bash
-rm -rg .git
-git commit -m "chore: initialize project"
-```
-
-### App setup
-
-After setting up repository you can run bootstrap command to setup everything you need:
-
-```bash
-yarn bootstrap:new_app
-```
-
-This command will ask you for some needed informations and then will overwrite your files in repository.
+**[Check boostrap docs](./documentation/docs/BOOTSTRAP.md)**
 
 ## Features
 

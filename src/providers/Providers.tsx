@@ -21,9 +21,9 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
   useAppStateActive(checkForUpdates, false)
 
   return (
-    <PortalProvider>
-      <ColorSchemeProvider>
-        <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+    <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+      <PortalProvider>
+        <ColorSchemeProvider>
           <SafeAreaProvider>
             <ExpoNotificationsProvider>
               {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
@@ -38,9 +38,9 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
               </NotificationsProvider>
             </ExpoNotificationsProvider>
           </SafeAreaProvider>
-        </GestureHandlerRootView>
-      </ColorSchemeProvider>
-    </PortalProvider>
+        </ColorSchemeProvider>
+      </PortalProvider>
+    </GestureHandlerRootView>
   )
 }
 

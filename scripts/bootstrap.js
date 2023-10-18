@@ -7,9 +7,9 @@ const { logger, addAfter } = require('./utils')
 const paths = {
   appConfig: './app.config.ts',
   readme: './README.md',
-  readmeTemplate: './scripts/templates/readme_template.md',
+  readmeTemplate: './templates/readme_template.md',
   pullRequestTemplate: './.github/pull_request_template.md',
-  newPullReuestTemplate: './scripts/templates/pull_request_template.md',
+  newPullReuestTemplate: './templates/pull_request_template.md',
 }
 
 // 1.

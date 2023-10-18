@@ -3,7 +3,7 @@ const fs = require('fs')
 const prompt = require('prompt-sync')()
 const selectPrompt = require('select-prompt')
 
-const Content = require('./templates/contents/content')
+const Content = require('./contents/content')
 const { addAfter, addBefore, execPromise, logger } = require('./utils')
 
 const enumsFileSrc = './src/navigation/config/enums.ts'
@@ -35,8 +35,10 @@ const validateScreen = (name) => {
  */
 
 const createScreenFile = (name) => {
-  const screenFromFile = fs.readFileSync('./scripts/templates/screen_template.tsx', 'utf8')
-  const screenContent = screenFromFile.replaceAll('_NAME_', name)
+  const screenFromFile = fs.readFileSync('./templates/screen_template.tsx', 'utf8')
+  const screenContent = screenFromFile
+    .replaceAll('_NAME_', name)
+    .replace("// @ts-expect-error: it's a template and will be removed", '')
 
   fs.writeFileSync(`./src/screens/${name}Screen.tsx`, screenContent)
 }
