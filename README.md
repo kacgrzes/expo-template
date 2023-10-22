@@ -18,9 +18,9 @@ Version in the `package.json` is one to one the latest expo on which the templat
 
 We know there are a lot of project starters for react native, but we have some good features:
 
-- Fully works with **expo go**
+- Fully works with **EXPO GO**
   - Good for start the project and later you can switch to expo-dev-client
-- Fully works on **web**
+- Fully works on **WEB**
   - If you want to develop apps both on web and mobile this starter is good choice for you
 - **Code generators** (create new screen / create new component)
 - **Fully + Strong typed**
@@ -32,7 +32,13 @@ We know there are a lot of project starters for react native, but we have some g
 
 ## Usage
 
-**[Check boostrap docs](./documentation/docs/BOOTSTRAP.md)**
+We have prepared a documentation for how to run project with this template - **[Bootstrap docs](./documentation/docs/BOOTSTRAP.md)**
+
+Quick steps:
+
+- `npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app`
+- `cd name_of_your_app`
+- `yarn bootstrap` - the cli will ask you some questinos about your app (you can fill all this data later)
 
 ## Features
 
@@ -46,15 +52,11 @@ We know there are a lot of project starters for react native, but we have some g
   - app is fully typed
 - [Expo v49](https://github.com/expo/expo)
 - [React Navigation v6](https://github.com/react-navigation/react-navigation)
-<!--
-  TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-  Replace with\ a new UI lib.
--->
-- Native-base v3.4
 - Prettier and eslint
   - code formatting
   - code checking
 - Babel-module-resolver
+  - unified imports
 - jest and @testing-library/react-native
   - unit tests
 - i18next
@@ -66,7 +68,8 @@ We know there are a lot of project starters for react native, but we have some g
 - Reactotron
   - used for debugging
 - [Reanimated v2](https://github.com/software-mansion/react-native-reanimated)
-- Axios
+- Axios + React query
+  - Fetching data from backend
 
 ### Implemented custom features
 
@@ -93,23 +96,10 @@ We know there are a lot of project starters for react native, but we have some g
   - right now it has simple signIn/signOut flow
 - animations with `reanimated` and `moti`
 
-<!-- ## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
-
-<!-- TODO: Write guide for that section when design system will be chosen. -->
-<!-- ## Working with designer in your project -->
-
-<!--
-  TODO: add documentation
-  ## Documentation
-  [Documentation](https://linktodocumentation)
--->
-
 ## Roadmap
 
-- add some state management tool
-- write docs (app deployment, app setup and more)
+- add some state management tool - in progress
+- write docs (app deployment, app setup and more) - in progress
 - tutorial on how to use features
   - navigation
   - deeplinking
@@ -120,6 +110,7 @@ We know there are a lot of project starters for react native, but we have some g
 - Add desings (figma) and redesing whole app
 - Updating expo versions (in future)
 - Deploy app to appstore and playstore
+  - Create sample app and document the process of deployment
 - Improve mock server logic
 - add commit lint
 - add script that display last update information (eas update)

@@ -1,5 +1,6 @@
 import { ImageStyle, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 
+import { generateSize } from './generateSize'
 import {
   FlexProps,
   SpacingProps,
@@ -10,7 +11,6 @@ import {
   EffectsProps,
   BackgroundProps,
 } from '../atoms/types'
-import { generateSize } from './generateSize'
 
 import { hex2rgba, getColorValue, removeFalsyProperties } from '~utils'
 

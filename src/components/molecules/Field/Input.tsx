@@ -1,8 +1,8 @@
 import { forwardRef, useCallback, useImperativeHandle, useRef, useMemo } from 'react'
 import { NativeSyntheticEvent, Pressable, TextInput, TextInputFocusEventData } from 'react-native'
 
-import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '../../atoms'
 import type { FieldInputProps } from './types'
+import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '../../atoms'
 
 const layoutPropsKeys = [
   'm',

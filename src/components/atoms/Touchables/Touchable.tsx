@@ -8,11 +8,11 @@ import {
   TouchableOpacityProps,
 } from 'react-native'
 
-import { generateStyledSystem } from '../../utils'
-import { StyledProps } from '../types'
 import { useFocus } from './useFocus'
 import { useHover } from './useHover'
 import { useIsPressed } from './useIsPressed'
+import { generateStyledSystem } from '../../utils'
+import { StyledProps } from '../types'
 
 import { useTheme, useCallback } from '~hooks'
 
@@ -41,6 +41,8 @@ export const Touchable = forwardRef<TouchableRef, TouchableProps>(({ children, .
       isHovered,
       isPressed,
       isFocused,
+      focus: () => {},
+      blur: () => {},
       ..._touchableRef.current,
     }),
     [isFocused, isHovered, isPressed]

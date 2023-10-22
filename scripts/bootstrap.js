@@ -5,6 +5,7 @@ const prompt = require('prompt-sync')()
 const { logger, addAfter } = require('./utils')
 
 const paths = {
+  appJson: './app.json',
   appConfig: './app.config.ts',
   readme: './README.md',
   readmeTemplate: './templates/readme_template.md',
@@ -51,11 +52,12 @@ const replatePullRequestTemplate = () => {
 
 // 4.
 const changeAppJson = (appName, appSlug, organizationOwner) => {
-  const appJson = JSON.parse(fs.readFileSync('./app.json', 'utf8'))
-  appJson.expo.slug = appSlug
-  appJson.expo.name = appName
-  appJson.expo.owner = organizationOwner
-  fs.writeFileSync('./app.json', JSON.stringify(appJson, null, 2))
+  const newAppJson = JSON.parse(fs.readFileSync(paths.appJson, 'utf8'))
+  newAppJson.expo.slug = appSlug
+  newAppJson.expo.name = appName
+  newAppJson.expo.owner = organizationOwner
+  newAppJson.version = '1.0.0'
+  fs.writeFileSync(paths.appJson, JSON.stringify(newAppJson, null, 2))
 }
 
 // 5.
@@ -64,7 +66,17 @@ const changePackageJson = (appName, organizationOwner) => {
   packageJson.name = `@${organizationOwner}/${appName}`
   packageJson.description = `App created from expo-template powered by binarapps`
   packageJson.version = '1.0.0'
+
+  delete packageJson.repository
+  delete packageJson.bugs
+  delete packageJson.keywords
+
   fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2))
+}
+
+// 6.
+const removeIssueTemplates = () => {
+  fs.rm('./.github/ISSUE_TEMPLATE', { recursive: true, force: true }, () => {})
 }
 
 const setUpProject = async (
@@ -99,6 +111,10 @@ const setUpProject = async (
   // 5. Change package.json file
   logger.info('Change package.json file')
   changePackageJson(appName, organizationOwner)
+
+  // 6. Remove issue templates
+  logger.info('Remove issue templates')
+  removeIssueTemplates()
 
   //Finish
   logger.success(`Config your project has been success`)
@@ -170,3 +186,5 @@ bootstrap()
 // 2. Setup app.config.ts file
 // 3. Setup pull_request_template.md
 // 4. Setup app.json file
+// 5. Setup package.json file
+// 6. Remove issue templates

@@ -6,12 +6,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
-import languages from '../../assets/languages.json'
 import { Icon } from './atoms/Icon'
 import { Row } from './atoms/Row'
 import { Text } from './atoms/Text'
 import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
 import { Menu } from './organisms/Menu'
+import languages from '../../assets/languages.json'
 
 import { useColorScheme } from '~contexts'
 import { useCallback, useTranslation, useTheme } from '~hooks'

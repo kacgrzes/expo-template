@@ -1,8 +1,8 @@
 import { memo } from 'react'
 import { View, ViewProps } from 'react-native'
 
-import { generateStyledComponent } from '../utils/generateStyledComponent'
 import { StyledProps } from './types'
+import { generateStyledComponent } from '../utils/generateStyledComponent'
 
 export type BoxProps = StyledProps & ViewProps
 

@@ -1,11 +1,11 @@
 import { Fragment, useMemo } from 'react'
 
+import { FieldCheckboxProps } from './types'
 import { Box } from '../../atoms/Box'
 import { Checkbox as CustomCheckbox } from '../../atoms/Checkbox'
 import { FormErrorMessage } from '../../atoms/FormErrorMessage'
 import { FormLabel } from '../../atoms/FormLabel'
 import { Spacer } from '../../atoms/Spacer'
-import { FieldCheckboxProps } from './types'
 
 export const Checkbox = ({
   isInvalid,

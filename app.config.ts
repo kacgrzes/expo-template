@@ -22,7 +22,7 @@ export const APP_CONFIG = {
   appName: 'Template', // CONFIG: Add your app name here
   easProjectId: 'ac562c27-4a4e-4532-869f-fe6f9447bee6', // CONFIG: Add your eas project ID here
   iosBundleIdentifier: 'your.ios.bundle.identifier', // CONFIG: Add your ios bundle identifier here
-  scheme: 'your_url_scheme', // CONFIG: Add your url scheme to link to your app
+  scheme: 'yourUrlScheme', // CONFIG: Add your url scheme to link to your app
   adaptiveIconBackgroundColor: '#2E7AF0CC', // CONFIG: Add your android adaptive icon background color here
 } as const
 // APP_CONFIG_END

@@ -1,11 +1,11 @@
 import { forwardRef } from 'react'
 import { NativeSyntheticEvent, TextInput, TextInputFocusEventData, TextStyle } from 'react-native'
 
-import { generateStyleSheet, generateStyledSystem } from '../utils'
 import { Box } from './Box'
 import { Icon } from './Icon'
 import { Touchable } from './Touchables/Touchable'
 import type { InputProps } from './types'
+import { generateStyleSheet, generateStyledSystem } from '../utils'
 
 import {
   useSecurePassword,
@@ -59,15 +59,6 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
         : undefined,
     }),
     [lineHeights, props.lineHeight, fontSize]
-  )
-
-  const letterSpacingStyle = useMemo<TextStyle>(
-    () => ({
-      letterSpacing: props.letterSpacing
-        ? convertEmToNumber(props.letterSpacing, fontSize)
-        : undefined,
-    }),
-    [props.letterSpacing, fontSize]
   )
 
   const textColorStyle = useMemo<TextStyle>(
@@ -143,14 +134,12 @@ const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
         textTransformStyle,
         textAlignmentStyle,
         textColorStyle,
-        letterSpacingStyle,
         lineHeightStyle,
       ]),
     [
       fontFamilyStyle,
       fontSizeStyle,
       fontWeightStyle,
-      letterSpacingStyle,
       lineHeightStyle,
       props.bold,
       props.italic,
@@ -253,7 +242,6 @@ export const Input = forwardRef<TextInput, InputProps>(
           fontSize="xs"
           fontWeight="bold"
           height="100%"
-          letterSpacing="xs"
           placeholder="Enter your email"
           px={3}
           py={2}

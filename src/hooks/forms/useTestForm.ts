@@ -1,6 +1,6 @@
 import { isError } from '@tanstack/react-query'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { FieldPath, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 import { TestFormValues } from '~types/testForm'
@@ -89,7 +89,7 @@ export const useTestForm = () => {
     register,
     isSubmitting,
     setIsSubmitting,
-    setFocus,
+    setFocus: (fieldName: FieldPath<TestFormValues>) => () => setFocus(fieldName),
     control,
     errors,
     error,

@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 import { Controller, get } from 'react-hook-form'
 
-import { Field } from '../../molecules'
 import type { ControlledInputProps, RenderInputProps } from './types'
+import { Field } from '../../molecules'
 
 export const Input = ({
   control,

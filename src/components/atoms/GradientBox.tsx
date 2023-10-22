@@ -1,7 +1,7 @@
 import { LinearGradient, LinearGradientProps } from 'expo-linear-gradient'
 
-import { generateStyledComponent } from '../utils/generateStyledComponent'
 import { StyledProps } from './types'
+import { generateStyledComponent } from '../utils/generateStyledComponent'
 
 export type GradientProps = StyledProps & LinearGradientProps
 

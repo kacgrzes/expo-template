@@ -1,8 +1,8 @@
 import React from 'react'
 import { Pressable } from 'react-native'
 
-import { Select as CustomSelect, Box, FormErrorMessage, FormLabel, SelectKey } from '../../atoms'
 import type { FieldSelectProps } from './types'
+import { Select as CustomSelect, Box, FormErrorMessage, FormLabel, SelectKey } from '../../atoms'
 
 import { useMemo } from '~hooks'
 

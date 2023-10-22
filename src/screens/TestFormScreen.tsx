@@ -25,7 +25,7 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
-  const { control, errors, submit, VALIDATION } = useTestForm()
+  const { control, errors, submit, VALIDATION, setFocus } = useTestForm()
 
   const INTERESTS = useMemo(
     () => [
@@ -73,46 +73,51 @@ export const TestFormScreen = (): JSX.Element => {
         control={control}
         errors={errors}
         placeholder={t('test_form.name_placeholder')}
-        name={'name'}
+        name="name"
         returnKeyType="next"
+        onSubmitEditing={setFocus('surname')}
       />
       <ControlledField.Input
         control={control}
         errors={errors}
         placeholder={t('test_form.surname_placeholder')}
-        name={'surname'}
+        name="surname"
         returnKeyType="next"
         mt={2}
+        onSubmitEditing={setFocus('email')}
       />
       <ControlledField.Input
         control={control}
         errors={errors}
         placeholder={t('test_form.email_placeholder')}
-        name={'email'}
+        name="email"
         returnKeyType="next"
         mt={2}
+        onSubmitEditing={setFocus('phone')}
       />
       <ControlledField.Input
         control={control}
         errors={errors}
         placeholder={t('test_form.phone_placeholder')}
-        name={'phone'}
+        name="phone"
         returnKeyType="next"
         mt={2}
+        onSubmitEditing={setFocus('postalCode')}
       />
       <ControlledField.Input
         control={control}
         errors={errors}
         placeholder={t('test_form.postalCode_placeholder')}
-        name={'postalCode'}
+        name="postalCode"
         returnKeyType="next"
         mt={2}
+        onSubmitEditing={setFocus('city')}
       />
       <ControlledField.Input
         control={control}
         errors={errors}
         placeholder={t('test_form.city_placeholder')}
-        name={'city'}
+        name="city"
         returnKeyType="next"
         mt={2}
       />

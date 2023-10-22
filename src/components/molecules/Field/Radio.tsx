@@ -1,8 +1,8 @@
 import { forwardRef, useCallback, useMemo } from 'react'
 
+import { FieldRadioProps } from './types'
 import { FormErrorMessage, FormLabel, Box, Touchable, Text } from '../../atoms'
 import type { TouchableRef } from '../../atoms/Touchables/Touchable'
-import { FieldRadioProps } from './types'
 
 export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
   (

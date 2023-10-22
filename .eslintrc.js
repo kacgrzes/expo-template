@@ -6,6 +6,8 @@ module.exports = {
     },
     ecmaVersion: 2018,
     sourceType: 'module',
+    // It's needed for projects that are in monorepo
+    tsconfigRootDir: __dirname,
     project: './tsconfig.json',
     files: ['*.ts', '*.tsx'],
   },

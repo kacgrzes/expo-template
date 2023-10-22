@@ -1,7 +1,7 @@
 import React, { ComponentType } from 'react'
 
-import { StyledProps } from '../atoms/types'
 import { generateStyledSystem } from './generateStyledSystem'
+import { StyledProps } from '../atoms/types'
 
 import { useTheme } from '~hooks'
 

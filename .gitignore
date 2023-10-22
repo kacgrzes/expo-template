@@ -29,3 +29,7 @@ dist/
 # .env.staging
 # Local Netlify folder
 .netlify
+
+# native files
+/android
+/ios
