@@ -10,9 +10,7 @@
 
 # @binarapps/expo-ts-template
 
-This is a template to be used with expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup. It has:
-
-Version in the `package.json` is one to one the latest expo on which the template was tested.
+This is a template to be used with react native and expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included, so it's easier to start coding the app itself without all the necessary boilerplate setup.
 
 ## Why to use?
 
@@ -26,50 +24,28 @@ We know there are a lot of project starters for react native, but we have some g
 - **Fully + Strong typed**
 - **App deployment documentation** (currently in progress, but it will be added in near future)
 
-## Demo
+## How it looks?
 
+Check this recording of how it look like:
 [![expo-ts-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
-## Usage
+## How to use?
 
-We have prepared a documentation for how to run project with this template - **[Bootstrap docs](./documentation/docs/BOOTSTRAP.md)**
+We have prepared a detailed documentation for how to run project with this template - **[Bootstrap docs](./documentation/docs/BOOTSTRAP.md)**
 
-Quick steps:
+It's great for production project, but if you want to just test it, you can follow the quick steps (on the bottom).
+
+### Quick steps:
 
 - `npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app`
 - `cd name_of_your_app`
 - `yarn bootstrap` - the cli will ask you some questinos about your app (you can fill all this data later)
 
-## Features
+## What's inside?
 
 [![MIT License](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)](https://img.shields.io/npm/types/@binarapps/expo-ts-template?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/expo?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/binarapps/expo-ts-template/@react-navigation/native?style=flat-square)
-
-### Implemented libraries
-
-- TypeScript
-  - app is fully typed
-- [Expo v49](https://github.com/expo/expo)
-- [React Navigation v6](https://github.com/react-navigation/react-navigation)
-- Prettier and eslint
-  - code formatting
-  - code checking
-- Babel-module-resolver
-  - unified imports
-- jest and @testing-library/react-native
-  - unit tests
-- i18next
-  - translations
-  - language detection
-- `@gorhom/bottom-sheet`
-- Expo-notifications
-  - You can read how to configure them [here](/NOTIFICATIONS_SETUP.MD)
-- Reactotron
-  - used for debugging
-- [Reanimated v2](https://github.com/software-mansion/react-native-reanimated)
-- Axios + React query
-  - Fetching data from backend
 
 ### Implemented custom features
 
@@ -96,7 +72,32 @@ Quick steps:
   - right now it has simple signIn/signOut flow
 - animations with `reanimated` and `moti`
 
-## Roadmap
+### Implemented libraries
+
+- TypeScript
+  - app is fully typed
+- [Expo v49](https://github.com/expo/expo)
+- [React Navigation v6](https://github.com/react-navigation/react-navigation)
+- Prettier and eslint
+  - code formatting
+  - code checking
+- Babel-module-resolver
+  - unified imports
+- jest and @testing-library/react-native
+  - unit tests
+- i18next
+  - translations
+  - language detection
+- `@gorhom/bottom-sheet`
+- Expo-notifications
+  - You can read how to configure them [here](/NOTIFICATIONS_SETUP.MD)
+- Reactotron
+  - used for debugging
+- [Reanimated v2](https://github.com/software-mansion/react-native-reanimated)
+- Axios + React query
+  - Fetching data from backend
+
+## What is planned in the future?
 
 - add some state management tool - in progress
 - write docs (app deployment, app setup and more) - in progress
@@ -107,6 +108,7 @@ Quick steps:
   - components
   - react query
   - api calls
+  - state management tool
 - Add desings (figma) and redesing whole app
 - Updating expo versions (in future)
 - Deploy app to appstore and playstore
@@ -121,17 +123,15 @@ Quick steps:
 - [FlashList](https://github.com/Shopify/flash-list)
 - [ZOD](https://github.com/colinhacks/zod)
 
-## Contributing
+## How to contribute?
 
 Contributions are always welcome!
-
-<!-- TODO: Create such files and add hyperlinks to them. -->
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
-## Run Locally
+## Who to run locally?
 
 Clone the project
 
@@ -215,7 +215,7 @@ If you have any feedback, please reach out to me at mateusz.rostkowsky995@gmail.
 - https://github.com/infinitered/ignite
 - https://github.com/wataru-maeda/react-native-boilerplate
 
-### Outdated
+### Outdated (not maintained anymore)
 
 - https://github.com/kacgrzes/expo-typescript-template (our repo is for of this one)
 - https://github.com/codingki/react-native-expo-template
