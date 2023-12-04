@@ -50,16 +50,20 @@ yarn start
 - in that case you can also reinitialize repozitory if you don't want to keep history of commits
 
 ```bash
-rm -rg .git
+rm -r .git
+git init
 git commit -m "chore: initialize project"
 ```
 
 </details>
 
 <details>
-  <summary>2. Create project on expo.dev</summary>
+  <summary>**2.** Create project on expo.dev</summary>
   
-  You need prepare some catchy name for you app, if not provided by client
+  1. Go to expo.dev
+  2. Create account if you don't have
+  3. Sign in
+  4. Create project (detailed instruction in progress 🙁 )
 </details>
 
 <hr>
@@ -193,3 +197,30 @@ yarn bootstrap:new_app
 
 - gitignore
   - It's possible that gitgnore will not hide correct files, if that's the case please check template repo and copy `.gitignore` file
+
+## Jotai
+
+**Warning**: Only works when clonning the app, so follow the instruction bellow:
+
+1. Clone repository:
+
+```
+git clone git@github.com:binarapps/expo-ts-template.git
+cd expo-ts-template
+yarn
+yarn start
+```
+
+2. Checkout to jotai branch
+
+```
+git checkout feat/add_jotai_store
+```
+
+3. Reinitalize repository (only if you want to have a clean repo):
+
+```
+rm -r .git
+git init
+git commit -m "chore: initialize project"
+```
