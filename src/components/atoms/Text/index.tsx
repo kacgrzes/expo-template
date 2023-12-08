@@ -1,4 +1,4 @@
-import { useMemo, memo } from 'react'
+import { useMemo, memo, forwardRef, PropsWithoutRef, RefAttributes } from 'react'
 import { TextProps as BaseTextProps, Text as BaseText, TextStyle } from 'react-native'
 
 import { generateStyledComponent, generateStyleSheet } from '../../utils'
@@ -30,154 +30,167 @@ type TypographyProps = {
 }
 type TextProps = StyledProps & BaseTextProps & TypographyProps
 
-const RawText = memo<TextProps>(
-  ({
-    bold,
-    capitalize,
-    color = 'text',
-    italic,
-    letterSpacing,
-    lineHeight,
-    noOfLines,
-    strikeThrough,
-    textDecoration,
-    textTransform,
-    underline,
-    uppercase,
-    lowercase,
-    style,
-    variant,
-    ...props
-  }) => {
-    const theme = useTheme()
-    const {
-      fontFamily: variantFontFamily,
-      fontSize: variantFontSize,
-      fontWeight: variantFontWeight,
-    } = (variant && textVariants[variant]) || {}
+const RawText = memo(
+  forwardRef<BaseText, TextProps>(
+    (
+      {
+        bold,
+        capitalize,
+        color = 'text',
+        italic,
+        letterSpacing,
+        lineHeight,
+        noOfLines,
+        strikeThrough,
+        textDecoration,
+        textTransform,
+        underline,
+        uppercase,
+        lowercase,
+        style,
+        variant,
+        ...props
+      },
+      ref
+    ) => {
+      const theme = useTheme()
+      const {
+        fontFamily: variantFontFamily,
+        fontSize: variantFontSize,
+        fontWeight: variantFontWeight,
+      } = (variant && textVariants[variant]) || {}
 
-    const fontFamily = props.fontFamily || variantFontFamily
-    const fontSize = props.fontSize || variantFontSize
-    const finalFontSize = fontSize
-      ? typeof fontSize === 'number'
-        ? fontSize
-        : theme.fontSizes[fontSize]
-      : undefined
-    const fontWeight = props.fontWeight || variantFontWeight
+      const fontFamily = props.fontFamily || variantFontFamily
+      const fontSize = props.fontSize || variantFontSize
+      const finalFontSize = fontSize
+        ? typeof fontSize === 'number'
+          ? fontSize
+          : theme.fontSizes[fontSize]
+        : undefined
+      const fontWeight = props.fontWeight || variantFontWeight
 
-    const lineHeightStyle = useMemo<TextStyle>(
-      () => ({
-        lineHeight: lineHeight
-          ? convertEmToNumber(theme.lineHeights[lineHeight], finalFontSize)
-          : undefined,
-      }),
-      [theme, lineHeight, finalFontSize]
-    )
-
-    const letterSpacingStyle = useMemo<TextStyle>(
-      () => ({
-        letterSpacing: letterSpacing
-          ? convertEmToNumber(theme.letterSpacings[letterSpacing], finalFontSize)
-          : undefined,
-      }),
-      [theme, letterSpacing, finalFontSize]
-    )
-
-    const textColor = useMemo<TextStyle>(
-      () => ({
-        color: color ? getColorValue({ color, colors: theme.colors }) : theme.colors.text,
-      }),
-      [theme, color]
-    )
-
-    const textAlignmentStyle = useMemo<TextStyle>(
-      () => ({
-        textAlign: props.textAlign,
-      }),
-      [props.textAlign]
-    )
-
-    const textTransformStyle = useMemo<TextStyle>(
-      () => ({
-        textTransform:
-          capitalize || textTransform === 'capitalize'
-            ? 'capitalize'
-            : lowercase || textTransform === 'lowercase'
-            ? 'lowercase'
-            : uppercase || textTransform === 'uppercase'
-            ? 'uppercase'
-            : 'none',
-      }),
-      [capitalize, lowercase, uppercase, textTransform]
-    )
-
-    const textDecorationStyle = useMemo<TextStyle>(
-      () => ({
-        textDecorationLine:
-          underline || textDecoration === 'underline'
-            ? 'underline'
-            : strikeThrough || textDecoration === 'line-through'
-            ? 'line-through'
+      const lineHeightStyle = useMemo<TextStyle>(
+        () => ({
+          lineHeight: lineHeight
+            ? convertEmToNumber(theme.lineHeights[lineHeight], finalFontSize)
             : undefined,
-      }),
-      [underline, strikeThrough, textDecoration]
-    )
+        }),
+        [theme, lineHeight, finalFontSize]
+      )
 
-    const fontWeightStyle = useMemo<TextStyle>(
-      () => ({
-        fontWeight: (bold && 'bold') || (fontWeight && getFontWeight(fontWeight)),
-      }),
-      [fontWeight, bold]
-    )
+      const letterSpacingStyle = useMemo<TextStyle>(
+        () => ({
+          letterSpacing: letterSpacing
+            ? convertEmToNumber(theme.letterSpacings[letterSpacing], finalFontSize)
+            : undefined,
+        }),
+        [theme, letterSpacing, finalFontSize]
+      )
 
-    const fontFamilyStyle = useMemo<TextStyle>(
-      () => ({
-        fontFamily: fontFamily ? theme.fonts[fontFamily] : undefined,
-      }),
-      [theme, fontFamily]
-    )
+      const textColor = useMemo<TextStyle>(
+        () => ({
+          color: color ? getColorValue({ color, colors: theme.colors }) : theme.colors.text,
+        }),
+        [theme, color]
+      )
 
-    const fontSizeStyle = useMemo<TextStyle>(
-      () => ({
-        fontSize: finalFontSize,
-      }),
-      [finalFontSize]
-    )
+      const textAlignmentStyle = useMemo<TextStyle>(
+        () => ({
+          textAlign: props.textAlign,
+        }),
+        [props.textAlign]
+      )
 
-    const textStyle = useMemo(
-      () =>
-        generateStyleSheet<TextStyle>([
-          bold && { fontWeight: 'bold' },
-          italic && { fontStyle: 'italic' },
+      const textTransformStyle = useMemo<TextStyle>(
+        () => ({
+          textTransform:
+            capitalize || textTransform === 'capitalize'
+              ? 'capitalize'
+              : lowercase || textTransform === 'lowercase'
+              ? 'lowercase'
+              : uppercase || textTransform === 'uppercase'
+              ? 'uppercase'
+              : 'none',
+        }),
+        [capitalize, lowercase, uppercase, textTransform]
+      )
+
+      const textDecorationStyle = useMemo<TextStyle>(
+        () => ({
+          textDecorationLine:
+            underline || textDecoration === 'underline'
+              ? 'underline'
+              : strikeThrough || textDecoration === 'line-through'
+              ? 'line-through'
+              : undefined,
+        }),
+        [underline, strikeThrough, textDecoration]
+      )
+
+      const fontWeightStyle = useMemo<TextStyle>(
+        () => ({
+          fontWeight: (bold && 'bold') || (fontWeight && getFontWeight(fontWeight)),
+        }),
+        [fontWeight, bold]
+      )
+
+      const fontFamilyStyle = useMemo<TextStyle>(
+        () => ({
+          fontFamily: fontFamily ? theme.fonts[fontFamily] : undefined,
+        }),
+        [theme, fontFamily]
+      )
+
+      const fontSizeStyle = useMemo<TextStyle>(
+        () => ({
+          fontSize: finalFontSize,
+        }),
+        [finalFontSize]
+      )
+
+      const textStyle = useMemo(
+        () =>
+          generateStyleSheet<TextStyle>([
+            bold && { fontWeight: 'bold' },
+            italic && { fontStyle: 'italic' },
+            fontFamilyStyle,
+            fontSizeStyle,
+            textAlignmentStyle,
+            textColor,
+            textDecorationStyle,
+            letterSpacingStyle,
+            lineHeightStyle,
+            textTransformStyle,
+            fontWeightStyle,
+            style,
+          ]),
+        [
+          bold,
+          italic,
           fontFamilyStyle,
           fontSizeStyle,
           textAlignmentStyle,
-          textColor,
-          textDecorationStyle,
           letterSpacingStyle,
           lineHeightStyle,
+          textColor,
+          textDecorationStyle,
           textTransformStyle,
           fontWeightStyle,
           style,
-        ]),
-      [
-        bold,
-        italic,
-        fontFamilyStyle,
-        fontSizeStyle,
-        textAlignmentStyle,
-        letterSpacingStyle,
-        lineHeightStyle,
-        textColor,
-        textDecorationStyle,
-        textTransformStyle,
-        fontWeightStyle,
-        style,
-      ]
-    )
+        ]
+      )
 
-    return <BaseText testID="baseText" numberOfLines={noOfLines} {...props} style={textStyle} />
-  }
+      return (
+        <BaseText
+          ref={ref}
+          testID="baseText"
+          numberOfLines={noOfLines}
+          {...props}
+          style={textStyle}
+        />
+      )
+    }
+  )
 )
 
 export type TextVariant =
@@ -199,13 +212,17 @@ export type TextVariant =
   | 'CaptionBold'
   | 'Subtitle'
   | 'SubtitleBold'
-type TextComposition = React.ComponentType<TextProps> & {
-  [key in TextVariant]: React.ComponentType<TextProps>
+type TextComposition = React.ForwardRefExoticComponent<
+  PropsWithoutRef<TextProps> & RefAttributes<BaseText>
+> & {
+  [key in TextVariant]: React.ForwardRefExoticComponent<
+    PropsWithoutRef<TextProps> & RefAttributes<BaseText>
+  >
 }
 
 const Text = generateStyledComponent(RawText) as TextComposition
-const generateTextVariant = (variant: TextVariant) => (props: TextProps) =>
-  <Text variant={variant} {...props} />
+const generateTextVariant = (variant: TextVariant) =>
+  forwardRef<BaseText, TextProps>((props, ref) => <Text variant={variant} {...props} ref={ref} />)
 
 Text.H1 = generateTextVariant('H1')
 Text.H1Bold = generateTextVariant('H1Bold')

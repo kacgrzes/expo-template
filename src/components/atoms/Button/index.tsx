@@ -1,4 +1,12 @@
-import { useMemo, memo, useCallback } from 'react'
+import {
+  useMemo,
+  memo,
+  useCallback,
+  forwardRef,
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+} from 'react'
 import {
   Pressable,
   PressableProps,
@@ -7,6 +15,7 @@ import {
   ViewStyle,
   TextStyle,
   StyleProp,
+  View,
 } from 'react-native'
 
 import { generateStyledComponent } from '../../utils'
@@ -50,194 +59,205 @@ const styles = StyleSheet.create({
   },
 })
 
-const RawButton = memo<ButtonProps>(
-  ({
-    variant = 'Primary',
-    size = 'md',
-    loading,
-    disabled,
-    leftIcon,
-    rightIcon,
-    style,
-    title,
-    children,
-    textStyle,
-    ...props
-  }) => {
-    const { pressedStyle, notPressedStyle, disabledStyle } = useMemo(
-      () => buttonVariants[variant],
-      [variant]
-    )
-
-    const pressedStyles = useMemo<ViewStyle>(
-      () => ({
-        backgroundColor: getColorValue({
-          color: pressedStyle.backgroundColor,
-          colors: theme.light.colors,
-        }),
-        borderColor: getColorValue({
-          color: pressedStyle.borderColor!,
-          colors: theme.light.colors,
-        }),
-        borderWidth: pressedStyle.borderWidth,
-      }),
-      [pressedStyle]
-    )
-
-    const pressedColorStyle = useMemo<TextStyle>(
-      () => ({
-        color: getColorValue({
-          color: pressedStyle.color!,
-          colors: theme.light.colors,
-        }),
-      }),
-      [pressedStyle]
-    )
-
-    const notPressedStyles = useMemo<ViewStyle>(
-      () => ({
-        backgroundColor: getColorValue({
-          color: notPressedStyle.backgroundColor,
-          colors: theme.light.colors,
-        }),
-        borderColor: getColorValue({
-          color: notPressedStyle.borderColor!,
-          colors: theme.light.colors,
-        }),
-        borderWidth: notPressedStyle.borderWidth,
-      }),
-      [notPressedStyle]
-    )
-
-    const notPressedColorStyle = useMemo<TextStyle>(
-      () => ({
-        color: getColorValue({
-          color: notPressedStyle.color!,
-          colors: theme.light.colors,
-        }),
-      }),
-      [notPressedStyle]
-    )
-
-    const disabledStyles = useMemo<ViewStyle>(
-      () => ({
-        backgroundColor: getColorValue({
-          color: disabledStyle.backgroundColor,
-          colors: theme.light.colors,
-        }),
-        borderColor: getColorValue({
-          color: disabledStyle.borderColor!,
-          colors: theme.light.colors,
-        }),
-        borderWidth: disabledStyle.borderWidth,
-      }),
-      [disabledStyle]
-    )
-
-    const disabledColorStyle = useMemo<TextStyle>(
-      () => ({
-        color: getColorValue({
-          color: disabledStyle.color!,
-          colors: theme.light.colors,
-        }),
-      }),
-      [disabledStyle]
-    )
-
-    const buttonSizeStyle = useMemo<ViewStyle>(
-      () => ({
-        paddingHorizontal: size === 'sm' ? 12 : size === 'md' ? 24 : 48,
-        minWidth: size === 'sm' ? 64 : size === 'md' ? 128 : 256,
-      }),
-      [size]
-    )
-
-    const pressableStyleFunction = useCallback(
-      ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
-        StyleSheet.flatten<ViewStyle>([
-          styles.baseButton,
-          pressed ? pressedStyles : notPressedStyles,
-          disabled && disabledStyles,
-          loading && disabledStyles,
-          buttonSizeStyle,
-          typeof style === 'function' ? style({ pressed }) : style,
-        ]),
-      [pressedStyles, notPressedStyles, loading, buttonSizeStyle, disabled, disabledStyles, style]
-    )
-
-    const pressableTextStyleFunction = useCallback(
-      ({ pressed }: PressableStateCallbackType) =>
-        StyleSheet.flatten([
-          styles.baseText,
-          pressed ? pressedColorStyle : notPressedColorStyle,
-          disabled && disabledColorStyle,
-          textStyle,
-        ]),
-      [pressedColorStyle, notPressedColorStyle, disabled, disabledColorStyle, textStyle]
-    )
-
-    const childrenElement = useCallback(
-      (props: PressableStateCallbackType) => {
-        if (loading) {
-          return <Loader type="default" size={24} />
-        }
-        if (title) {
-          return (
-            <Text.Bold
-              allowFontScaling={false}
-              style={pressableTextStyleFunction(props)}
-              textAlign="center"
-            >
-              {title}
-            </Text.Bold>
-          )
-        }
-
-        if (typeof children === 'string') {
-          return (
-            <Text.Bold
-              allowFontScaling={false}
-              style={pressableTextStyleFunction(props)}
-              textAlign="center"
-            >
-              {children}
-            </Text.Bold>
-          )
-        }
-        return children
+const RawButton = memo(
+  forwardRef<View, ButtonProps>(
+    (
+      {
+        variant = 'Primary',
+        size = 'md',
+        loading,
+        disabled,
+        leftIcon,
+        rightIcon,
+        style,
+        title,
+        children,
+        textStyle,
+        ...props
       },
-      [children, loading, pressableTextStyleFunction, title]
-    )
+      ref
+    ) => {
+      const { pressedStyle, notPressedStyle, disabledStyle } = useMemo(
+        () => buttonVariants[variant],
+        [variant]
+      )
 
-    return (
-      <Pressable
-        role="button"
-        accessibilityRole="button"
-        style={pressableStyleFunction}
-        disabled={disabled}
-        testID="baseButton"
-        {...props}
-      >
-        {(props: PressableStateCallbackType) => (
-          <>
-            {leftIcon && <Box mr={8}>{leftIcon}</Box>}
-            {childrenElement(props)}
-            {rightIcon && <Box ml={8}>{rightIcon}</Box>}
-          </>
-        )}
-      </Pressable>
-    )
-  }
+      const pressedStyles = useMemo<ViewStyle>(
+        () => ({
+          backgroundColor: getColorValue({
+            color: pressedStyle.backgroundColor,
+            colors: theme.light.colors,
+          }),
+          borderColor: getColorValue({
+            color: pressedStyle.borderColor!,
+            colors: theme.light.colors,
+          }),
+          borderWidth: pressedStyle.borderWidth,
+        }),
+        [pressedStyle]
+      )
+
+      const pressedColorStyle = useMemo<TextStyle>(
+        () => ({
+          color: getColorValue({
+            color: pressedStyle.color!,
+            colors: theme.light.colors,
+          }),
+        }),
+        [pressedStyle]
+      )
+
+      const notPressedStyles = useMemo<ViewStyle>(
+        () => ({
+          backgroundColor: getColorValue({
+            color: notPressedStyle.backgroundColor,
+            colors: theme.light.colors,
+          }),
+          borderColor: getColorValue({
+            color: notPressedStyle.borderColor!,
+            colors: theme.light.colors,
+          }),
+          borderWidth: notPressedStyle.borderWidth,
+        }),
+        [notPressedStyle]
+      )
+
+      const notPressedColorStyle = useMemo<TextStyle>(
+        () => ({
+          color: getColorValue({
+            color: notPressedStyle.color!,
+            colors: theme.light.colors,
+          }),
+        }),
+        [notPressedStyle]
+      )
+
+      const disabledStyles = useMemo<ViewStyle>(
+        () => ({
+          backgroundColor: getColorValue({
+            color: disabledStyle.backgroundColor,
+            colors: theme.light.colors,
+          }),
+          borderColor: getColorValue({
+            color: disabledStyle.borderColor!,
+            colors: theme.light.colors,
+          }),
+          borderWidth: disabledStyle.borderWidth,
+        }),
+        [disabledStyle]
+      )
+
+      const disabledColorStyle = useMemo<TextStyle>(
+        () => ({
+          color: getColorValue({
+            color: disabledStyle.color!,
+            colors: theme.light.colors,
+          }),
+        }),
+        [disabledStyle]
+      )
+
+      const buttonSizeStyle = useMemo<ViewStyle>(
+        () => ({
+          paddingHorizontal: size === 'sm' ? 12 : size === 'md' ? 24 : 48,
+          minWidth: size === 'sm' ? 64 : size === 'md' ? 128 : 256,
+        }),
+        [size]
+      )
+
+      const pressableStyleFunction = useCallback(
+        ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
+          StyleSheet.flatten<ViewStyle>([
+            styles.baseButton,
+            pressed ? pressedStyles : notPressedStyles,
+            disabled && disabledStyles,
+            loading && disabledStyles,
+            buttonSizeStyle,
+            typeof style === 'function' ? style({ pressed }) : style,
+          ]),
+        [pressedStyles, notPressedStyles, loading, buttonSizeStyle, disabled, disabledStyles, style]
+      )
+
+      const pressableTextStyleFunction = useCallback(
+        ({ pressed }: PressableStateCallbackType) =>
+          StyleSheet.flatten([
+            styles.baseText,
+            pressed ? pressedColorStyle : notPressedColorStyle,
+            disabled && disabledColorStyle,
+            textStyle,
+          ]),
+        [pressedColorStyle, notPressedColorStyle, disabled, disabledColorStyle, textStyle]
+      )
+
+      const childrenElement = useCallback(
+        (props: PressableStateCallbackType) => {
+          if (loading) {
+            return <Loader type="default" size={24} />
+          }
+          if (title) {
+            return (
+              <Text.Bold
+                allowFontScaling={false}
+                style={pressableTextStyleFunction(props)}
+                textAlign="center"
+              >
+                {title}
+              </Text.Bold>
+            )
+          }
+
+          if (typeof children === 'string') {
+            return (
+              <Text.Bold
+                allowFontScaling={false}
+                style={pressableTextStyleFunction(props)}
+                textAlign="center"
+              >
+                {children}
+              </Text.Bold>
+            )
+          }
+          return children
+        },
+        [children, loading, pressableTextStyleFunction, title]
+      )
+
+      return (
+        <Pressable
+          ref={ref}
+          role="button"
+          accessibilityRole="button"
+          style={pressableStyleFunction}
+          disabled={disabled}
+          testID="baseButton"
+          {...props}
+        >
+          {(props: PressableStateCallbackType) => (
+            <>
+              {leftIcon && <Box mr={8}>{leftIcon}</Box>}
+              {childrenElement(props)}
+              {rightIcon && <Box ml={8}>{rightIcon}</Box>}
+            </>
+          )}
+        </Pressable>
+      )
+    }
+  )
 )
 export type ButtonVariant = 'Primary' | 'Secondary' | 'Outline' | 'Ghost' | 'Link'
-type ButtonComposition = React.ComponentType<ButtonProps> & {
-  [key in ButtonVariant]: React.ComponentType<ButtonProps>
+type ButtonComposition = ForwardRefExoticComponent<
+  PropsWithoutRef<ButtonProps> & RefAttributes<View>
+> & {
+  [key in ButtonVariant]: ForwardRefExoticComponent<
+    PropsWithoutRef<ButtonProps> & RefAttributes<View>
+  >
 }
+const Button = generateStyledComponent<ButtonProps, typeof Pressable>(
+  RawButton
+) as ButtonComposition
 
-const Button = generateStyledComponent(RawButton) as ButtonComposition
-
-const generateButtonVariant = (variant: ButtonVariant) => (props: ButtonProps) =>
-  <Button variant={variant} {...props} />
+const generateButtonVariant = (variant: ButtonVariant) =>
+  forwardRef<View, ButtonProps>((props, ref) => <Button variant={variant} {...props} ref={ref} />)
 
 Button.Primary = generateButtonVariant('Primary')
 Button.Secondary = generateButtonVariant('Secondary')

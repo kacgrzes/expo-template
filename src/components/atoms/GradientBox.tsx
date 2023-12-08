@@ -5,4 +5,4 @@ import { generateStyledComponent } from '../utils/generateStyledComponent'
 
 export type GradientProps = StyledProps & LinearGradientProps
 
-export const GradientBox = generateStyledComponent<GradientProps>(LinearGradient)
+export const GradientBox = generateStyledComponent<GradientProps, LinearGradient>(LinearGradient)
