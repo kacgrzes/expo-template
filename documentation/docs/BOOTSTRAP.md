@@ -19,7 +19,7 @@ description: Bootstrap project structure, that is needed to start development yo
 
 <hr>
 
-### **What you need to do to start development**
+### **What you need to do to start development?**
 
 <details>
   <summary>1. Clone this repository</summary>
@@ -37,8 +37,7 @@ npx create-expo-app --template=@binarapps/expo-ts-template name_of_your_app
 
 3. Clone repository
 
-   This usage is usefull when npm code version is ot up to date, you can verify it by checking dates of last commit and last publish
-   ![Check last release date](../static/check-last-release-date.png)
+   This usage is usefull when you want to keep git history, thanks to this you can sync incomming changes in this template
 
 ```bash
 git clone git@github.com:binarapps/expo-ts-template.git
@@ -58,7 +57,7 @@ git commit -m "chore: initialize project"
 </details>
 
 <details>
-  <summary>**2.** Create project on expo.dev</summary>
+  <summary>2. Create project on expo.dev</summary>
   
   1. Go to expo.dev
   2. Create account if you don't have
@@ -68,7 +67,7 @@ git commit -m "chore: initialize project"
 
 <hr>
 
-### **What you need to prepare:**
+### **What you need to prepare app for testing?**
 
 <details>
   <summary>1. App name</summary>
@@ -200,7 +199,7 @@ yarn bootstrap:new_app
 
 ## Jotai
 
-**Warning**: Only works when clonning the app, so follow the instruction bellow:
+> **Warning**: Only works when git cloning repository (not working for rest methods of cloning repository), so follow the instruction bellow:
 
 1. Clone repository:
 
@@ -217,10 +216,8 @@ yarn start
 git checkout feat/add_jotai_store
 ```
 
-3. Reinitalize repository (only if you want to have a clean repo):
+or merge to main
 
 ```
-rm -r .git
-git init
-git commit -m "chore: initialize project"
+git merge origin/feat/add_jotai_store
 ```
