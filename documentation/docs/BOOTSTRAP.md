@@ -11,7 +11,7 @@ tags:
 description: Bootstrap project structure, that is needed to start development your new project
 ---
 
-# BOOTSTRAP (start development)
+# BOOTSTRAP (start development) 🕐
 
 **tl;dr:** Bootstrap project structure, that is needed to start development
 
