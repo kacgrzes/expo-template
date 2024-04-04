@@ -2,6 +2,7 @@
   "expo": {
     "name": "expo-template",
     "slug": "expo-template",
+    "scheme": "expo-template",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -42,7 +43,8 @@
         {
           "launchModeExperimental": "most-recent"
         }
-      ]
+      ],
+      "expo-router"
     ]
   }
 }
