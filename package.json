@@ -8,6 +8,7 @@
     "analyze:web": "source-map-explorer 'dist/_expo/static/js/web/*.js' 'dist/_expo/static/js/web/*.js.map'",
     "android": "expo run:android",
     "clean": "rm -rf dist && rm -rf .expo && watchman watch-del-all && rm -rf ios/ && rm -rf android/",
+    "deeplink": "uri-scheme open --ios expo-template://index",
     "export-source-maps:android": "npx expo export --source-maps --platform android --no-bytecode",
     "export-source-maps:ios": "npx expo export --source-maps --platform ios --no-bytecode",
     "export-source-maps:web": "npx expo export --source-maps --platform web",
@@ -46,7 +47,8 @@
     "prettier": "^3.2.5",
     "source-map-explorer": "^2.5.3",
     "tsx": "^4.7.2",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "uri-scheme": "^1.2.0"
   },
   "private": true
 }
