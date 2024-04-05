@@ -2,6 +2,7 @@
   "expo": {
     "name": "expo-template",
     "slug": "expo-template",
+    "jsEngine": "hermes",
     "scheme": "expo-template",
     "version": "1.0.0",
     "orientation": "portrait",
