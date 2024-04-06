@@ -1,13 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { StrictMode } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, Text } from "react-native";
+import {
+  UnistylesRuntime,
+  createStyleSheet,
+  useStyles,
+} from "react-native-unistyles";
 
 function App() {
+  const { styles } = useStyles(stylesheet);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.text}>
+        <Text>Open up App.js to start working on your app!</Text>
+      </Text>
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -25,11 +34,16 @@ export default function () {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+const stylesheet = createStyleSheet((theme) => {
+  return {
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.background,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    text: {
+      color: theme.colors.typography,
+    },
+  };
 });

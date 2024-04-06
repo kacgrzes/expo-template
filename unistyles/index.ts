@@ -2,12 +2,13 @@ import { UnistylesRegistry } from "react-native-unistyles";
 
 import { breakpoints } from "./breakpoints";
 import { darkTheme, lightTheme } from "./themes";
+
 import "./types";
 
 UnistylesRegistry.addBreakpoints(breakpoints)
   .addThemes({
-    light: lightTheme,
     dark: darkTheme,
+    light: lightTheme,
     // register other themes with unique names
   })
   .addConfig({
