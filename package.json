@@ -36,6 +36,7 @@
     "expo-linking": "~6.2.2",
     "expo-local-authentication": "~13.8.0",
     "expo-localization": "~14.8.3",
+    "expo-quick-actions": "^1.0.1",
     "expo-router": "~3.4.8",
     "expo-screen-orientation": "~6.4.1",
     "expo-splash-screen": "~0.26.4",
