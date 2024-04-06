@@ -1,11 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StrictMode } from "react";
 import { ScrollView, Text } from "react-native";
-import {
-  UnistylesRuntime,
-  createStyleSheet,
-  useStyles,
-} from "react-native-unistyles";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 function App() {
   const { styles } = useStyles(stylesheet);
@@ -34,11 +30,14 @@ export default function () {
   );
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet((theme, runtime) => {
   return {
     container: {
       flex: 1,
-      backgroundColor: theme.colors.background,
+      backgroundColor: {
+        portrait: theme.colors.background,
+        landscape: "red",
+      }[runtime.orientation],
       alignItems: "center",
       justifyContent: "center",
     },
