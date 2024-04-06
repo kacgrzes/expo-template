@@ -13,7 +13,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "io.kacgrzes.expo-template"
@@ -34,7 +36,9 @@
           "launchModeExperimental": "most-recent"
         }
       ],
-      "expo-router"
+      "expo-router",
+      "expo-font",
+      "expo-localization"
     ]
   }
 }
