@@ -43,6 +43,7 @@ const stylesheet = createStyleSheet((theme, runtime) => {
     },
     text: {
       color: theme.colors.typography,
+      fontFamily: "OpenSans_400Regular",
     },
   };
 });
