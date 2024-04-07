@@ -1,9 +1,13 @@
 import "../unistyles";
-import { Slot } from "expo-router";
-import * as ScreenOrientation from "expo-screen-orientation";
 
-ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+import { Slot } from "expo-router";
+
+import { useOrientationLock } from "../hooks/useOrientationLock";
+import { useQuickActionSetup } from "../hooks/useQuickActionSetup";
 
 export default function () {
+  useOrientationLock();
+  useQuickActionSetup();
+
   return <Slot />;
 }
