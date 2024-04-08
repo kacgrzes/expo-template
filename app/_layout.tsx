@@ -1,6 +1,6 @@
 import "../unistyles";
 
-import { Slot } from "expo-router";
+import { Slot, SplashScreen } from "expo-router";
 import { enableFreeze } from "react-native-screens";
 
 import { useFontsSetup } from "../hooks/useFontsSetup";
@@ -11,6 +11,7 @@ import {
   useScreenTracking,
 } from "../hooks/useScreenTracking";
 
+SplashScreen.preventAutoHideAsync();
 enableFreeze(true);
 
 const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
