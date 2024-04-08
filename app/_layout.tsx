@@ -6,16 +6,21 @@ import { enableFreeze } from "react-native-screens";
 import { useFontsSetup } from "../hooks/useFontsSetup";
 import { useOrientationLock } from "../hooks/useOrientationLock";
 import { useQuickActionSetup } from "../hooks/useQuickActionSetup";
-import { useScreenTracking } from "../hooks/useScreenTracking";
+import {
+  ScreenTrackingCallback,
+  useScreenTracking,
+} from "../hooks/useScreenTracking";
 
 enableFreeze(true);
+
+const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
+  console.log("Screen changed", { params, pathname });
+};
 
 export default function () {
   useOrientationLock();
   useQuickActionSetup();
-  useScreenTracking(() => {
-    console.log("Screen changed");
-  });
+  useScreenTracking(recordView);
 
   const fontsLoaded = useFontsSetup();
 
