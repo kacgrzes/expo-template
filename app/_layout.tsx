@@ -1,7 +1,6 @@
 import "../unistyles";
 
-import { Slot, SplashScreen } from "expo-router";
-import { enableFreeze } from "react-native-screens";
+import { Slot } from "expo-router";
 
 import { useFontsSetup } from "../hooks/useFontsSetup";
 import { useOrientationLock } from "../hooks/useOrientationLock";
@@ -10,9 +9,9 @@ import {
   ScreenTrackingCallback,
   useScreenTracking,
 } from "../hooks/useScreenTracking";
+import { setupOnAppStart } from "../setupOnAppStart";
 
-SplashScreen.preventAutoHideAsync();
-enableFreeze(true);
+setupOnAppStart();
 
 const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
   console.log("Screen changed", { params, pathname });
