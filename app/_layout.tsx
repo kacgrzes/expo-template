@@ -1,17 +1,16 @@
 import "intl-pluralrules";
-import "../unistyles";
 import "../i18n";
+import "../unistyles";
 
 import { Slot } from "expo-router";
-
-import { useFontsSetup } from "../hooks/useFontsSetup";
-import { useOrientationLock } from "../hooks/useOrientationLock";
-import { useQuickActionSetup } from "../hooks/useQuickActionSetup";
 import {
   ScreenTrackingCallback,
+  useFontsSetup,
+  useOrientationLock,
+  useQuickActionSetup,
   useScreenTracking,
-} from "../hooks/useScreenTracking";
-import { setupOnAppStart } from "../setupOnAppStart";
+} from "hooks";
+import { setupOnAppStart } from "setupOnAppStart";
 
 setupOnAppStart();
 

@@ -13,9 +13,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "io.kacgrzes.expo-template"
@@ -41,5 +39,8 @@
       "expo-localization",
       "expo-quick-actions"
     ]
+  },
+  "experiments": {
+    "tsconfigPaths": true
   }
 }
