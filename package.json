@@ -18,7 +18,6 @@
     "prebuild": "expo prebuild --clean",
     "prebuild:ios": "expo prebuild --clean --platform ios",
     "prebuild:android": "expo prebuild --clean --platform ios",
-    "run:ios": "expo run:ios",
     "start": "expo start",
     "web": "expo start --web"
   },
@@ -44,7 +43,10 @@
     "expo-status-bar": "~1.11.1",
     "expo-store-review": "~6.8.3",
     "expo-system-ui": "~2.9.3",
+    "i18next": "^23.11.2",
+    "intl-pluralrules": "^2.0.1",
     "react": "18.2.0",
+    "react-i18next": "^14.1.0",
     "react-native": "0.73.6",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-reanimated": "~3.6.2",
