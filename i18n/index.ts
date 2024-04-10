@@ -1,19 +1,22 @@
+// @ts-ignore
 import "intl-pluralrules";
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { languageDetector } from "./languageDetector";
+import enCommon from "./locales/en/common.json";
+import frCommon from "./locales/fr/common.json";
+import plCommon from "./locales/pl/common.json";
 
-const resources = {
+export const resources = {
   en: {
-    translation: {
-      "Welcome to React": "Welcome to React and react-i18next",
-    },
+    common: enCommon,
   },
   fr: {
-    translation: {
-      "Welcome to React": "Bienvenue à React et react-i18next",
-    },
+    translation: frCommon,
+  },
+  pl: {
+    translation: plCommon,
   },
 };
 
@@ -23,6 +26,7 @@ export const i18n = i18next
   .init({
     cleanCode: true,
     compatibilityJSON: "v4",
+    defaultNS: "common",
     debug: __DEV__,
     fallbackLng: "en",
     interpolation: {

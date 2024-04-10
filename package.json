@@ -19,7 +19,8 @@
     "prebuild:ios": "expo prebuild --clean --platform ios",
     "prebuild:android": "expo prebuild --clean --platform ios",
     "start": "expo start",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prepare:i18next": "i18next-resources-for-ts interface -i ./i18n/locales/en -o ./@types/resources.d.ts"
   },
   "dependencies": {
     "@expo-google-fonts/open-sans": "^0.2.3",
@@ -60,6 +61,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-universe": "^12.0.0",
+    "i18next-resources-for-ts": "^1.5.0",
     "plop": "^4.0.1",
     "prettier": "^3.2.5",
     "source-map-explorer": "^2.5.3",
