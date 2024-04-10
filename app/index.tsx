@@ -2,14 +2,17 @@ import { StatusBar } from "expo-status-bar";
 import { StrictMode } from "react";
 import { ScrollView, Text } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const { styles } = useStyles(stylesheet);
+  const { t } = useTranslation();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.text}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Open up App.js to start working on your app!{"\n"}</Text>
+        <Text>{t("Welcome to React")}</Text>
       </Text>
       <StatusBar style="auto" />
     </ScrollView>
@@ -44,6 +47,8 @@ const stylesheet = createStyleSheet((theme, runtime) => {
     text: {
       color: theme.colors.typography,
       fontFamily: "OpenSans_400Regular",
+      justifyContent: "center",
+      textAlign: "center",
     },
   };
 });

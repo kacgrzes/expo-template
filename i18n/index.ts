@@ -1,9 +1,23 @@
-import i18n from "i18next";
+import "intl-pluralrules";
+import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { languageDetector } from "./languageDetector";
 
-i18n
+const resources = {
+  en: {
+    translation: {
+      "Welcome to React": "Welcome to React and react-i18next",
+    },
+  },
+  fr: {
+    translation: {
+      "Welcome to React": "Bienvenue à React et react-i18next",
+    },
+  },
+};
+
+export const i18n = i18next
   .use(languageDetector)
   .use(initReactI18next)
   .init({
@@ -14,4 +28,5 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     },
+    resources,
   });

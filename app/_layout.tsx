@@ -1,6 +1,5 @@
-import "intl-pluralrules";
-import "../i18n";
-import "../unistyles";
+import "i18n";
+import "unistyles";
 
 import { Slot } from "expo-router";
 import {
