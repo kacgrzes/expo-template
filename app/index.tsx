@@ -1,8 +1,20 @@
 import { StatusBar } from "expo-status-bar";
 import { StrictMode } from "react";
+import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
 import { Button, ScrollView, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+
+function Fallback({ error, resetErrorBoundary }: FallbackProps) {
+  return (
+    <SafeAreaView>
+      <Text>Something went wrong!</Text>
+      <Text>{error.message}</Text>
+      <Button title="Try again" onPress={resetErrorBoundary} />
+    </SafeAreaView>
+  );
+}
 
 function App() {
   const { styles } = useStyles(stylesheet);
@@ -29,12 +41,18 @@ function Root({ children }) {
   return <>{children}</>;
 }
 
+const handleError = (error: Error, info: { componentStack: string }) => {
+  console.error(error, info);
+};
+
 export default function () {
   return (
     <StrictMode>
-      <Root>
-        <App />
-      </Root>
+      <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
+        <Root>
+          <App />
+        </Root>
+      </ErrorBoundary>
     </StrictMode>
   );
 }
