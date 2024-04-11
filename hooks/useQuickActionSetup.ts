@@ -12,6 +12,9 @@ export const useQuickActionSetup = () => {
         id: "hello",
         icon: "prohibit",
         subtitle: "Let us help you out.",
+        params: {
+          href: "/help",
+        },
       },
     ]);
   }, []);

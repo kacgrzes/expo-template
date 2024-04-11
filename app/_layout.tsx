@@ -18,15 +18,10 @@ const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
 };
 
 export default function () {
+  useFontsSetup();
   useOrientationLock();
   useQuickActionSetup();
   useScreenTracking(recordView);
-
-  const fontsLoaded = useFontsSetup();
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   return <Slot />;
 }
