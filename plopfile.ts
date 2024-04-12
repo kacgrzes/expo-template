@@ -17,7 +17,7 @@ export default function (plop: NodePlopAPI) {
       {
         type: "add",
         path: "components/{{name}}.tsx",
-        templateFile: "plop-templates/controller.hbs",
+        templateFile: "templates/Component.ts.hbs",
       },
     ],
   });

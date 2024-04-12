@@ -1,0 +1,15 @@
+import { Text, StyleSheet } from "react-native";
+
+type {{ pascalCase name }}Props = {
+  name: string;
+};
+
+export function {{ pascalCase name }}({ name }: {{ pascalCase name }}Props) {
+  return <Text style={styles.name}>Hello, {name}</Text>;
+}
+
+const styles = StyleSheet.create({
+  name: {
+    color: "pink",
+  },
+});
