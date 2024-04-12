@@ -8,6 +8,7 @@ import {
   useOrientationLock,
   useQuickActionSetup,
   useScreenTracking,
+  useShakeEvent,
 } from "hooks";
 import { setupOnAppStart } from "setupOnAppStart";
 
@@ -22,6 +23,7 @@ export default function () {
   useOrientationLock();
   useQuickActionSetup();
   useScreenTracking(recordView);
+  useShakeEvent();
 
   return <Slot />;
 }

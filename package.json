@@ -40,6 +40,7 @@
     "expo-quick-actions": "^1.0.1",
     "expo-router": "~3.4.9",
     "expo-screen-orientation": "~6.4.1",
+    "expo-sensors": "~12.9.1",
     "expo-splash-screen": "~0.26.5",
     "expo-status-bar": "~1.11.1",
     "expo-store-review": "~6.8.3",
