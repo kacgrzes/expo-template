@@ -5,6 +5,10 @@ import { z } from "zod";
 
 export const env = z
   .object({
-    NODE_ENV: z.string().default("development"),
+    NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
   })
   .parse(process.env);
+
+export const isDeveloopment = env.NODE_ENV === "development";
+export const isProduction = env.NODE_ENV === "production";
+export const isTest = env.NODE_ENV === "test";
