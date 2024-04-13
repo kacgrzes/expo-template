@@ -2,9 +2,10 @@ import { StatusBar } from "expo-status-bar";
 import { StrictMode } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
-import { Button, Pressable, ScrollView, Text } from "react-native";
+import { Button, Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { env } from "utils/env";
 
 function Fallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
@@ -32,6 +33,9 @@ function App() {
         }}>
         <Text style={styles.button}>{`Current language: ${i18n.language}`}</Text>
       </Pressable>
+      <View style={{ padding: 16, backgroundColor: "lightgrey", borderRadius: 4 }}>
+        <Text>{JSON.stringify(env, null, 2)}</Text>
+      </View>
       <StatusBar style="auto" />
     </ScrollView>
   );
