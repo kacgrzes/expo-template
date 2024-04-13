@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StrictMode } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
-import { Button, ScrollView, Text } from "react-native";
+import { Button, Pressable, ScrollView, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -26,12 +26,12 @@ function App() {
         <Text>Open up App.js to start working on your app!{"\n"}</Text>
         <Text>{t("Welcome to React")}</Text>
       </Text>
-      <Button
-        title={`Current language: ${i18n.language}`}
+      <Pressable
         onPress={() => {
           i18n.changeLanguage(i18n.language === "en" ? "pl" : "en");
-        }}
-      />
+        }}>
+        <Text style={styles.button}>{`Current language: ${i18n.language}`}</Text>
+      </Pressable>
       <StatusBar style="auto" />
     </ScrollView>
   );
@@ -69,6 +69,13 @@ const stylesheet = createStyleSheet((theme, runtime) => {
       justifyContent: "center",
     },
     text: {
+      color: theme.colors.typography,
+      fontFamily: "OpenSans_400Regular",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+    button: {
+      padding: 8,
       color: theme.colors.typography,
       fontFamily: "OpenSans_400Regular",
       justifyContent: "center",
