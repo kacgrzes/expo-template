@@ -20,7 +20,10 @@
     "prebuild:ios": "expo prebuild --clean --platform ios",
     "prepare:i18next": "i18next-resources-for-ts interface -i ./i18n/locales/en -o ./@types/resources.d.ts",
     "start": "expo start",
-    "test": "jest",
+    "test": "jest --watch --coverage=false --changedSince=origin/main",
+    "test:debug": "jest -o --watch --coverage=false",
+    "test:final": "jest",
+    "updateSnapshots": "jest -u --coverage=false",
     "web": "expo start --web"
   },
   "dependencies": {
