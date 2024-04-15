@@ -9,6 +9,7 @@
     "android": "expo run:android",
     "clean": "rm -rf dist && rm -rf .expo && watchman watch-del-all && rm -rf ios/ && rm -rf android/ && rm -rf /Users/kacgrzes/Library/Developer/Xcode/DerivedData && rm -rf ./node-modules/",
     "deeplink": "uri-scheme open --ios expo-template://index",
+    "devtools": "npx react-devtools",
     "export-source-maps:android": "npx expo export --source-maps --platform android --no-bytecode",
     "export-source-maps:ios": "npx expo export --source-maps --platform ios --no-bytecode",
     "export-source-maps:web": "npx expo export --source-maps --platform web",
