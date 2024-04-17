@@ -1,23 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import { StrictMode } from "react";
-import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
-import { Button, Pressable, ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { env } from "utils/env";
 
-function Fallback({ error, resetErrorBoundary }: FallbackProps) {
-  return (
-    <SafeAreaView>
-      <Text>Something went wrong!</Text>
-      <Text>{error.message}</Text>
-      <Button title="Try again" onPress={resetErrorBoundary} />
-    </SafeAreaView>
-  );
-}
-
-function App() {
+export default function App() {
   const { styles } = useStyles(stylesheet);
   const { t, i18n } = useTranslation();
 
@@ -33,31 +20,11 @@ function App() {
         }}>
         <Text style={styles.button}>{`Current language: ${i18n.language}`}</Text>
       </Pressable>
-      <View style={{ padding: 16, backgroundColor: "lightgrey", borderRadius: 4 }}>
+      <View style={styles.jsonViewer}>
         <Text>{JSON.stringify(env, null, 2)}</Text>
       </View>
       <StatusBar style="auto" />
     </ScrollView>
-  );
-}
-
-function Root({ children }) {
-  return <>{children}</>;
-}
-
-const handleError = (error: Error, info: { componentStack: string }) => {
-  console.error(error, info);
-};
-
-export default function () {
-  return (
-    <StrictMode>
-      <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-        <Root>
-          <App />
-        </Root>
-      </ErrorBoundary>
-    </StrictMode>
   );
 }
 
@@ -85,5 +52,6 @@ const stylesheet = createStyleSheet((theme, runtime) => {
       justifyContent: "center",
       textAlign: "center",
     },
+    jsonViewer: { padding: 16, backgroundColor: "lightgrey", borderRadius: 4 },
   };
 });
