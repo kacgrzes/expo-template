@@ -43,7 +43,8 @@
       "expo-router",
       "expo-font",
       "expo-localization",
-      "expo-quick-actions"
+      "expo-quick-actions",
+      "expo-secure-store"
     ]
   },
   "experiments": {
