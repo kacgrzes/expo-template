@@ -2,14 +2,7 @@ import "i18n";
 import "unistyles";
 
 import { Slot } from "expo-router";
-import {
-  ScreenTrackingCallback,
-  useFontsSetup,
-  useOrientationLock,
-  useQuickActionSetup,
-  useScreenTracking,
-  useShakeEvent,
-} from "hooks";
+import { ScreenTrackingCallback, useFontsSetup, useOrientationLock, useQuickActionSetup, useScreenTracking, useShakeEvent } from "hooks";
 import { setupOnAppStart } from "setupOnAppStart";
 
 setupOnAppStart();
