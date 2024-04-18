@@ -1,14 +1,17 @@
-import { Text, StyleSheet } from "react-native";
+import { Text } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type {{ pascalCase name }}Props = {
   name: string;
 };
 
 export function {{ pascalCase name }}({ name }: {{ pascalCase name }}Props) {
+  const { styles } = useStyles(stylesheet);
+
   return <Text style={styles.name}>Hello, {name}</Text>;
 }
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet({
   name: {
     color: "pink",
   },
