@@ -1,11 +1,13 @@
+import { useSession } from "auth";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Button, Pressable, ScrollView, Text, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { env } from "utils/env";
 
 export default function App() {
   const { styles } = useStyles(stylesheet);
+  const { signOut } = useSession();
   const { t, i18n } = useTranslation();
 
   return (
@@ -23,6 +25,7 @@ export default function App() {
       <View style={styles.jsonViewer}>
         <Text>{JSON.stringify(env, null, 2)}</Text>
       </View>
+      <Button title="Sign out" onPress={signOut} />
       <StatusBar style="auto" />
     </ScrollView>
   );

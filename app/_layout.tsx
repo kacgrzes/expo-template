@@ -1,6 +1,7 @@
 import "i18n";
 import "unistyles";
 
+import { SessionProvider } from "auth";
 import { Fallback } from "components";
 import { Slot } from "expo-router";
 import { ScreenTrackingCallback, useFontsSetup, useOrientationLock, useQuickActionSetup, useScreenTracking, useShakeEvent } from "hooks";
@@ -28,7 +29,9 @@ export default function () {
   return (
     <StrictMode>
       <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-        <Slot />
+        <SessionProvider>
+          <Slot />
+        </SessionProvider>
       </ErrorBoundary>
     </StrictMode>
   );
