@@ -44,7 +44,8 @@
       "expo-font",
       "expo-localization",
       "expo-quick-actions",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-tracking-transparency"
     ]
   },
   "experiments": {

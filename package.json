@@ -67,7 +67,9 @@
     "react-native-screens": "~3.29.0",
     "react-native-unistyles": "^2.5.5",
     "zod": "^3.23.4",
-    "expo-secure-store": "~12.8.1"
+    "expo-secure-store": "~12.8.1",
+    "expo-tracking-transparency": "~3.3.0",
+    "expo-clipboard": "~5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
