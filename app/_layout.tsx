@@ -20,7 +20,7 @@ const handleError = (error: Error, info: { componentStack: string }) => {
 };
 
 export default function () {
-  useFontsSetup();
+  const areFontsLoaded = useFontsSetup();
   useOrientationLock();
   useQuickActionSetup();
   useScreenTracking(recordView);
@@ -30,7 +30,7 @@ export default function () {
     <StrictMode>
       <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
         <SessionProvider>
-          <Slot />
+          <Slot key={`${areFontsLoaded}`} />
         </SessionProvider>
       </ErrorBoundary>
     </StrictMode>
