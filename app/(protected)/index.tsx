@@ -1,4 +1,5 @@
 import { useSession } from "auth";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
 import { Button, Pressable, ScrollView, Text, View } from "react-native";
@@ -26,6 +27,9 @@ export default function App() {
         <Text>{JSON.stringify(env, null, 2)}</Text>
       </View>
       <Button title="Sign out" onPress={signOut} />
+      <Link href="/about">
+        <Text>About</Text>
+      </Link>
       <StatusBar style="auto" />
     </ScrollView>
   );
