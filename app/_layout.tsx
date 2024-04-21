@@ -14,6 +14,7 @@ import {
 } from "hooks";
 import { StrictMode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { setupOnAppStart } from "setupOnAppStart";
 
 setupOnAppStart();
@@ -36,9 +37,11 @@ export default function () {
   return (
     <StrictMode>
       <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-        <SessionProvider>
-          <Slot key={`${areFontsLoaded}`} />
-        </SessionProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <SessionProvider>
+            <Slot key={`${areFontsLoaded}`} />
+          </SessionProvider>
+        </GestureHandlerRootView>
       </ErrorBoundary>
     </StrictMode>
   );
