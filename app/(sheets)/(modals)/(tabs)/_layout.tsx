@@ -7,10 +7,14 @@ export default function Tabs() {
   return (
     <TabsRouter
       screenOptions={{
+        headerShown: false,
         tabBarActiveTintColor: theme.colors.accent,
         tabBarInactiveTintColor: theme.colors.typography,
         tabBarStyle: {
           backgroundColor: theme.colors.background,
+        },
+        tabBarLabelStyle: {
+          fontFamily: "OpenSans_400Regular",
         },
       }}
     />

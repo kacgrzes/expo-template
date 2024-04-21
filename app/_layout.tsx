@@ -4,7 +4,14 @@ import "unistyles";
 import { SessionProvider } from "auth";
 import { Fallback } from "components";
 import { Slot } from "expo-router";
-import { ScreenTrackingCallback, useFontsSetup, useOrientationLock, useQuickActionSetup, useScreenTracking, useShakeEvent } from "hooks";
+import {
+  ScreenTrackingCallback,
+  useFontsSetup,
+  useOrientationLock,
+  useQuickActionSetup,
+  useScreenTracking,
+  useShakeEvent,
+} from "hooks";
 import { StrictMode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { setupOnAppStart } from "setupOnAppStart";

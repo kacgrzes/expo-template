@@ -42,10 +42,6 @@ const stylesheet = createStyleSheet((theme, runtime) => {
   return {
     container: {
       flex: 1,
-      backgroundColor: {
-        portrait: theme.colors.background,
-        landscape: "red",
-      }[runtime.orientation],
       alignItems: "center",
       justifyContent: "center",
     },
@@ -62,6 +58,10 @@ const stylesheet = createStyleSheet((theme, runtime) => {
       justifyContent: "center",
       textAlign: "center",
     },
-    jsonViewer: { padding: 16, backgroundColor: "lightgrey", borderRadius: 4 },
+    jsonViewer: {
+      padding: 16,
+      backgroundColor: "lightgrey",
+      borderRadius: 4,
+    },
   };
 });
