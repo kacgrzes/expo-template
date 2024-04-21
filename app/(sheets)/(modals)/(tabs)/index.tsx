@@ -30,6 +30,9 @@ export default function App() {
       <Link href="/about">
         <Text>About</Text>
       </Link>
+      <Link href="/example-sheet">
+        <Text>Example Sheet</Text>
+      </Link>
       <StatusBar style="auto" />
     </ScrollView>
   );
