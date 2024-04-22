@@ -12,6 +12,7 @@ const stylesheet = createStyleSheet((theme) => {
     base: {
       fontSize: 16,
       color: theme.colors.typography,
+      fontFamily: "OpenSans_400Regular",
     },
   };
 });

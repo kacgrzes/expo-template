@@ -1,8 +1,9 @@
 import { useSession } from "auth";
+import { Text } from "components";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
-import { Button, Pressable, ScrollView, Text, View } from "react-native";
+import { Button, Pressable, ScrollView, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { env } from "utils/env";
 
@@ -46,15 +47,11 @@ const stylesheet = createStyleSheet((theme, runtime) => {
       justifyContent: "center",
     },
     text: {
-      color: theme.colors.typography,
-      fontFamily: "OpenSans_400Regular",
       justifyContent: "center",
       textAlign: "center",
     },
     button: {
       padding: 8,
-      color: theme.colors.typography,
-      fontFamily: "OpenSans_400Regular",
       justifyContent: "center",
       textAlign: "center",
     },
