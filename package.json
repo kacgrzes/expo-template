@@ -33,6 +33,7 @@
   "dependencies": {
     "@expo-google-fonts/open-sans": "^0.2.3",
     "@gorhom/bottom-sheet": "^5.0.0-alpha.9",
+    "@hookform/resolvers": "^3.3.4",
     "@react-native-async-storage/async-storage": "1.21.0",
     "@th3rdwave/react-navigation-bottom-sheet": "^0.2.7",
     "expo": "^50.0.17",
@@ -64,6 +65,7 @@
     "intl-pluralrules": "^2.0.1",
     "react": "18.2.0",
     "react-error-boundary": "^4.0.13",
+    "react-hook-form": "^7.51.3",
     "react-i18next": "^14.1.0",
     "react-native": "0.73.6",
     "react-native-gesture-handler": "~2.14.0",

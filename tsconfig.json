@@ -5,7 +5,8 @@
       "about": ["./modules/about"],
       "auth": ["./modules/auth"],
       "i18n": ["./modules/i18n"]
-    }
+    },
+    "strict": true
   },
   "extends": "expo/tsconfig.base"
 }
