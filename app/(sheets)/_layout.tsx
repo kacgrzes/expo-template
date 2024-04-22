@@ -1,4 +1,4 @@
-import { BottomSheet } from "layouts/BottomSheet";
+import { BottomSheet } from "layouts";
 import { FullWindowOverlay } from "react-native-screens";
 
 export default function Sheets() {
