@@ -1,5 +1,5 @@
+import { Text, Button } from "components";
 import { FallbackProps } from "react-error-boundary";
-import { Text, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export function Fallback({ error, resetErrorBoundary }: FallbackProps) {

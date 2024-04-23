@@ -36,13 +36,13 @@ export default function () {
 
   return (
     <StrictMode>
-      <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-        <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
           <SessionProvider>
             <Slot key={`${areFontsLoaded}`} />
           </SessionProvider>
-        </GestureHandlerRootView>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </GestureHandlerRootView>
     </StrictMode>
   );
 }
