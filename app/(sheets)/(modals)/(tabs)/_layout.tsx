@@ -14,7 +14,7 @@ export default function Tabs() {
           backgroundColor: theme.colors.background,
         },
         tabBarLabelStyle: {
-          fontFamily: "OpenSans_400Regular",
+          fontFamily: "IBMPlexSans_400Regular",
         },
       }}
     />

@@ -25,7 +25,7 @@ export default function App() {
         <Text style={styles.button}>{`Current language: ${i18n.language}`}</Text>
       </Pressable>
       <View style={styles.jsonViewer}>
-        <Text>{JSON.stringify(env, null, 2)}</Text>
+        <Text style={{ fontFamily: "IBMPlexMono_400Regular" }}>{JSON.stringify(env, null, 2)}</Text>
       </View>
       <Button title="Sign out" onPress={signOut} />
       <Link href="/about">
