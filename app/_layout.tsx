@@ -12,7 +12,7 @@ import {
   useScreenTracking,
   useShakeEvent,
 } from "hooks";
-import { StrictMode } from "react";
+import { StrictMode, ComponentProps } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { setupOnAppStart } from "setupOnAppStart";
@@ -23,11 +23,13 @@ const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
   console.log("Screen changed", { params, pathname });
 };
 
-const handleError = (error: Error, info: { componentStack: string }) => {
-  console.error(error, info);
+type OnError = ComponentProps<typeof ErrorBoundary>["onError"];
+
+const handleError: OnError = (error, info) => {
+  console.error(error, info.componentStack);
 };
 
-export default function () {
+export default function Root() {
   const areFontsLoaded = useFontsSetup();
   useOrientationLock();
   useQuickActionSetup();
