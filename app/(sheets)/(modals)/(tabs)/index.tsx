@@ -1,9 +1,9 @@
 import { useSession } from "auth";
-import { Button, Text } from "components";
+import { Button, Text, JSONViewer } from "components";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
-import { ScrollView, View } from "react-native";
+import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { env } from "utils/env";
 
@@ -25,11 +25,7 @@ export default function App() {
           i18n.changeLanguage(i18n.language === "en" ? "pl" : "en");
         }}
       />
-      <View style={styles.jsonViewer}>
-        <Text style={{ fontFamily: "IBMPlexMono_400Regular" }}>
-          {JSON.stringify(env, null, 2)}
-        </Text>
-      </View>
+      <JSONViewer content={env} />
       <Button title="Sign out" onPress={signOut} />
       <Link href="/about" asChild>
         <Button title="About" variant="outline" />
@@ -56,10 +52,5 @@ const stylesheet = createStyleSheet({
     padding: 8,
     justifyContent: "center",
     textAlign: "center",
-  },
-  jsonViewer: {
-    padding: 16,
-    backgroundColor: "#e6e6e6",
-    borderRadius: 4,
   },
 });
