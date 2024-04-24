@@ -8,7 +8,7 @@ import { Text } from "./Text";
 type ButtonProps = {
   title: string;
   onPress?: RectButtonProps["onPress"];
-  variant?: "solid" | "outline";
+  variant?: "solid" | "outline" | "link";
 };
 
 export const Button = forwardRef<any, ButtonProps>(
@@ -35,13 +35,21 @@ const stylesheet = createStyleSheet((theme) => {
       borderRadius: 8,
       alignItems: "center",
       justifyContent: "center",
+      borderWidth: 1,
+      borderColor: "transparent",
       variants: {
         variant: {
           solid: {
             backgroundColor: theme.colors.typography,
+            borderColor: theme.colors.typography,
           },
           outline: {
             backgroundColor: "transparent",
+            borderColor: theme.colors.typography,
+          },
+          link: {
+            backgroundColor: "transparent",
+            borderColor: "transparent",
           },
         },
       },
@@ -53,6 +61,9 @@ const stylesheet = createStyleSheet((theme) => {
             color: theme.colors.background,
           },
           outline: {
+            color: theme.colors.typography,
+          },
+          link: {
             color: theme.colors.typography,
           },
         },

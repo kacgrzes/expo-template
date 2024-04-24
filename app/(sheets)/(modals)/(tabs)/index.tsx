@@ -20,6 +20,7 @@ export default function App() {
       </Text>
       <Button
         title={`Current language: ${i18n.language}`}
+        variant="link"
         onPress={() => {
           i18n.changeLanguage(i18n.language === "en" ? "pl" : "en");
         }}
@@ -34,33 +35,31 @@ export default function App() {
         <Button title="About" variant="outline" />
       </Link>
       <Link href="/example-sheet" asChild>
-        <Button title="Example Sheet" variant="outline" />
+        <Button title="Example Sheet" variant="link" />
       </Link>
       <StatusBar style="auto" />
     </ScrollView>
   );
 }
 
-const stylesheet = createStyleSheet((theme, runtime) => {
-  return {
-    container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    text: {
-      justifyContent: "center",
-      textAlign: "center",
-    },
-    button: {
-      padding: 8,
-      justifyContent: "center",
-      textAlign: "center",
-    },
-    jsonViewer: {
-      padding: 16,
-      backgroundColor: "lightgrey",
-      borderRadius: 4,
-    },
-  };
+const stylesheet = createStyleSheet({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    justifyContent: "center",
+    textAlign: "center",
+  },
+  button: {
+    padding: 8,
+    justifyContent: "center",
+    textAlign: "center",
+  },
+  jsonViewer: {
+    padding: 16,
+    backgroundColor: "#e6e6e6",
+    borderRadius: 4,
+  },
 });
