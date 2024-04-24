@@ -33,6 +33,9 @@ export default function App() {
       <Link href="/example-sheet" asChild>
         <Button title="Example Sheet" variant="link" />
       </Link>
+      <Link href="/languages" asChild>
+        <Button title="Languages" variant="link" />
+      </Link>
       <StatusBar style="auto" />
     </ScrollView>
   );
