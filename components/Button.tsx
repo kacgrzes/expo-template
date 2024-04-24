@@ -10,17 +10,22 @@ type ButtonProps = {
   onPress?: RectButtonProps["onPress"];
 };
 
-export const Button = forwardRef<any, ButtonProps>(({ title, onPress }, ref) => {
-  const { styles } = useStyles(stylesheet);
+export const Button = forwardRef<any, ButtonProps>(
+  ({ title, onPress }, ref) => {
+    const { styles } = useStyles(stylesheet);
 
-  return (
-    <RectButton activeOpacity={0.4} onPress={onPress} style={styles.container}>
-      <View accessible accessibilityRole="button">
-        <Text style={styles.title}>{title}</Text>
-      </View>
-    </RectButton>
-  );
-});
+    return (
+      <RectButton
+        activeOpacity={0.4}
+        onPress={onPress}
+        style={styles.container}>
+        <View accessible accessibilityRole="button">
+          <Text style={styles.title}>{title}</Text>
+        </View>
+      </RectButton>
+    );
+  },
+);
 
 const stylesheet = createStyleSheet((theme) => {
   return {

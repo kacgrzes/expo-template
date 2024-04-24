@@ -15,7 +15,8 @@ export const useShakeEvent = () => {
       if (currTime - lastUpdate > 100) {
         const diffTime = currTime - lastUpdate;
         lastUpdate = currTime;
-        const speed = (Math.abs(x + y + z - last_x - last_y - last_z) / diffTime) * 10000;
+        const speed =
+          (Math.abs(x + y + z - last_x - last_y - last_z) / diffTime) * 10000;
         if (speed > THRESHOLD) {
           console.log("Shake detected!");
         }

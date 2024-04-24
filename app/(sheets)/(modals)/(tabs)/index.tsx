@@ -25,7 +25,9 @@ export default function App() {
         }}
       />
       <View style={styles.jsonViewer}>
-        <Text style={{ fontFamily: "IBMPlexMono_400Regular" }}>{JSON.stringify(env, null, 2)}</Text>
+        <Text style={{ fontFamily: "IBMPlexMono_400Regular" }}>
+          {JSON.stringify(env, null, 2)}
+        </Text>
       </View>
       <Button title="Sign out" onPress={signOut} />
       <Link href="/about">

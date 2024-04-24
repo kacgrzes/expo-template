@@ -5,7 +5,8 @@ export function Version() {
   const appVersionWithBuildNumber = "1.0.0 (1)";
 
   return (
-    <Pressable onPress={() => Clipboard.setStringAsync(appVersionWithBuildNumber)}>
+    <Pressable
+      onPress={() => Clipboard.setStringAsync(appVersionWithBuildNumber)}>
       <Text>{appVersionWithBuildNumber}</Text>
     </Pressable>
   );
