@@ -3,7 +3,7 @@ import { Button, Text } from "components";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
-import { Pressable, ScrollView, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { env } from "utils/env";
 
@@ -30,11 +30,11 @@ export default function App() {
         </Text>
       </View>
       <Button title="Sign out" onPress={signOut} />
-      <Link href="/about">
-        <Text>About</Text>
+      <Link href="/about" asChild>
+        <Button title="About" variant="outline" />
       </Link>
       <Link href="/example-sheet" asChild>
-        <Button title="Example Sheet" />
+        <Button title="Example Sheet" variant="outline" />
       </Link>
       <StatusBar style="auto" />
     </ScrollView>

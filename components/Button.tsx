@@ -8,11 +8,12 @@ import { Text } from "./Text";
 type ButtonProps = {
   title: string;
   onPress?: RectButtonProps["onPress"];
+  variant?: "solid" | "outline";
 };
 
 export const Button = forwardRef<any, ButtonProps>(
-  ({ title, onPress }, ref) => {
-    const { styles } = useStyles(stylesheet);
+  ({ title, onPress, variant = "solid" }, ref) => {
+    const { styles } = useStyles(stylesheet, { variant });
 
     return (
       <RectButton
@@ -30,14 +31,32 @@ export const Button = forwardRef<any, ButtonProps>(
 const stylesheet = createStyleSheet((theme) => {
   return {
     container: {
-      backgroundColor: theme.colors.typography,
       padding: 16,
       borderRadius: 8,
       alignItems: "center",
       justifyContent: "center",
+      variants: {
+        variant: {
+          solid: {
+            backgroundColor: theme.colors.typography,
+          },
+          outline: {
+            backgroundColor: "transparent",
+          },
+        },
+      },
     },
     title: {
-      color: theme.colors.background,
+      variants: {
+        variant: {
+          solid: {
+            color: theme.colors.background,
+          },
+          outline: {
+            color: theme.colors.typography,
+          },
+        },
+      },
     },
   };
 });
