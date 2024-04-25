@@ -1,6 +1,11 @@
 import "i18n";
 import "unistyles";
 
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
 import { SessionProvider } from "auth";
 import { Fallback } from "components";
 import { Slot } from "expo-router";
@@ -12,9 +17,11 @@ import {
   useScreenTracking,
   useShakeEvent,
 } from "hooks";
-import { StrictMode, ComponentProps } from "react";
+import { ComponentProps, StrictMode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { UnistylesRuntime, useStyles } from "react-native-unistyles";
 import { setupOnAppStart } from "setupOnAppStart";
 
 setupOnAppStart();
@@ -31,6 +38,7 @@ const handleError: OnError = (error, info) => {
 
 export default function Root() {
   const areFontsLoaded = useFontsSetup();
+  useStyles();
   useOrientationLock();
   useQuickActionSetup();
   useScreenTracking(recordView);
@@ -38,13 +46,20 @@ export default function Root() {
 
   return (
     <StrictMode>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-          <SessionProvider>
-            <Slot key={`${areFontsLoaded}`} />
-          </SessionProvider>
-        </ErrorBoundary>
-      </GestureHandlerRootView>
+      <SafeAreaProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <ThemeProvider
+            value={
+              UnistylesRuntime.themeName === "dark" ? DarkTheme : DefaultTheme
+            }>
+            <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
+              <SessionProvider>
+                <Slot key={`${areFontsLoaded}`} />
+              </SessionProvider>
+            </ErrorBoundary>
+          </ThemeProvider>
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
     </StrictMode>
   );
 }
