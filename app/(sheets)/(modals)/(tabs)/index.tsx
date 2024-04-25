@@ -9,7 +9,7 @@ import { env } from "utils/env";
 
 export default function App() {
   const { styles } = useStyles(stylesheet);
-  const { signOut } = useSession();
+  const { signOut, signIn, session } = useSession();
   const { t, i18n } = useTranslation();
 
   return (
@@ -26,7 +26,10 @@ export default function App() {
         }}
       />
       <JSONViewer content={env} />
-      <Button title="Sign out" onPress={signOut} />
+      <Button
+        title={session ? "Sign out" : "Sign in"}
+        onPress={session ? signOut : signIn}
+      />
       <Link href="/about" asChild>
         <Button title="About" variant="outline" />
       </Link>
