@@ -21,6 +21,6 @@ const stylesheet = createStyleSheet({
   jsonViewer: {
     padding: 16,
     backgroundColor: "#e6e6e6",
-    borderRadius: 4,
+    borderRadius: 8,
   },
 });
