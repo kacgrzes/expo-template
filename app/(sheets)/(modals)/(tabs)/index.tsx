@@ -1,5 +1,11 @@
 import { useSession } from "auth";
-import { Button, Text, JSONViewer, Title } from "components";
+import {
+  Button,
+  ContextMenuExample,
+  Text,
+  JSONViewer,
+  Title,
+} from "components";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
@@ -40,6 +46,7 @@ export default function App() {
       <Link href="/languages" asChild>
         <Button title="Languages" variant="link" />
       </Link>
+      <ContextMenuExample />
       <StatusBar style="auto" />
     </ScrollView>
   );
