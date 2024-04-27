@@ -33,6 +33,7 @@
   "dependencies": {
     "@expo-google-fonts/ibm-plex-mono": "^0.2.3",
     "@expo-google-fonts/ibm-plex-sans": "^0.2.3",
+    "@expo-google-fonts/ibm-plex-serif": "^0.2.3",
     "@gorhom/bottom-sheet": "^5.0.0-alpha.9",
     "@hookform/resolvers": "^3.3.4",
     "@react-native-async-storage/async-storage": "1.21.0",

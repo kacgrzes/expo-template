@@ -1,5 +1,5 @@
 import { useSession } from "auth";
-import { Button, Text, JSONViewer } from "components";
+import { Button, Text, JSONViewer, Title } from "components";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
@@ -14,6 +14,7 @@ export default function App() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Title style={{ marginBottom: 12 }}>Hello</Title>
       <Text style={styles.text}>
         <Text>Open up App.js to start working on your app!{"\n"}</Text>
         <Text>{t("Welcome to React")}</Text>
