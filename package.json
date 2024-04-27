@@ -54,7 +54,7 @@
     "expo-local-authentication": "~13.8.0",
     "expo-localization": "~14.8.4",
     "expo-quick-actions": "^1.0.1",
-    "expo-router": "~3.4.9",
+    "expo-router": "~3.4.10",
     "expo-screen-orientation": "~6.4.1",
     "expo-secure-store": "~12.8.1",
     "expo-sensors": "~12.9.1",
