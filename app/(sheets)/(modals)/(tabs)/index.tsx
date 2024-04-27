@@ -2,6 +2,7 @@ import { useSession } from "auth";
 import {
   Button,
   ContextMenuExample,
+  DropdownMenuExample,
   Text,
   JSONViewer,
   Title,
@@ -47,6 +48,7 @@ export default function App() {
         <Button title="Languages" variant="link" />
       </Link>
       <ContextMenuExample />
+      <DropdownMenuExample />
       <StatusBar style="auto" />
     </ScrollView>
   );
