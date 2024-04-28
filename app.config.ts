@@ -1,17 +1,22 @@
 import { ExpoConfig, ConfigContext } from "expo/config";
+import { palette } from "unistyles/palette";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
+  const defaultConfig = {
+    ...config,
+    slug: "template",
+    primaryColor: palette.blue,
+  } as ExpoConfig;
+
   if (process.env.NODE_ENV === "development") {
     return {
-      ...config,
-      name: "expo-template (development)",
-      slug: "expo-template (development)",
+      ...defaultConfig,
+      name: "Template (development)",
     };
   }
 
   return {
-    ...config,
-    name: "expo-template",
-    slug: "expo-template",
+    ...defaultConfig,
+    name: "Template",
   };
 };

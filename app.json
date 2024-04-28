@@ -1,13 +1,19 @@
 {
   "expo": {
-    "name": "expo-template",
-    "slug": "expo-template",
+    "name": "Template",
+    "description": "A template for Expo projects",
+    "slug": "template",
     "jsEngine": "hermes",
-    "scheme": "expo-template",
+    "scheme": "template",
     "version": "1.0.0",
+    "privacy": "hidden",
+    "platforms": ["ios", "android"],
     "orientation": "default",
     "icon": "./assets/icon.png",
+    "supportsTablet": true,
     "userInterfaceStyle": "automatic",
+    "backgroundColor": "#ffffff",
+    "githubUrl": "https://github.com/kacgrzes/expo-template",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

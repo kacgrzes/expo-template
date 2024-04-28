@@ -11,7 +11,7 @@ export function ContextMenuExample() {
   return (
     <ContextMenu.Root>
       <ContextMenu.Trigger>
-        <Button title="context menu test" />
+        <Button title="ContextMenu example" />
       </ContextMenu.Trigger>
 
       <ContextMenu.Content>
