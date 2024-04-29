@@ -1,3 +1,4 @@
+import "polyfills";
 import "i18n";
 import "unistyles";
 
