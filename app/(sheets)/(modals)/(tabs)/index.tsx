@@ -30,7 +30,13 @@ export default function App() {
         title={`Current language: ${i18n.language}`}
         variant="link"
         onPress={() => {
-          i18n.changeLanguage(i18n.language === "en" ? "pl" : "en");
+          const nextLanguage = {
+            en: "fr",
+            fr: "pl",
+            pl: "en",
+          }[i18n.language];
+
+          i18n.changeLanguage(nextLanguage);
         }}
       />
       <JSONViewer content={env} />

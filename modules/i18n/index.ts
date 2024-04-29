@@ -1,5 +1,3 @@
-// @ts-ignore
-import "intl-pluralrules";
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
@@ -13,10 +11,10 @@ export const resources = {
     common: enCommon,
   },
   fr: {
-    translation: frCommon,
+    common: frCommon,
   },
   pl: {
-    translation: plCommon,
+    common: plCommon,
   },
 };
 
