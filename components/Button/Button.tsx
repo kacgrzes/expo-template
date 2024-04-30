@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-import { Text } from "./Text";
+import { Text } from "../Text";
 
 type ButtonProps = {
   title: string;
