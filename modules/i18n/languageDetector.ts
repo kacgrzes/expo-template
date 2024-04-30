@@ -8,7 +8,9 @@ export const languageDetector: LanguageDetectorAsyncModule = {
     const locales = Localization.getLocales();
     const language = locales[0].languageCode;
 
-    return callback?.(language);
+    if (language) {
+      return callback?.(language);
+    }
   },
   init: () => undefined,
   type: "languageDetector",

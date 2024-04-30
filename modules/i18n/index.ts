@@ -27,6 +27,7 @@ export const i18n = i18next
     defaultNS: "common",
     debug: __DEV__,
     fallbackLng: "en",
+    load: "languageOnly",
     interpolation: {
       escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     },
