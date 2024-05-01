@@ -18,5 +18,5 @@ export const useStorybook = () => {
     ]);
   }, [setEnabled]);
 
-  return [enabled, setEnabled];
+  return [enabled && isDevelopmentBuild(), setEnabled];
 };
