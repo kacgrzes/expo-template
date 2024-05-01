@@ -6,14 +6,15 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "../Text";
 
 type ButtonProps = {
+  full?: boolean;
   title: string;
   onPress?: RectButtonProps["onPress"];
   variant?: "solid" | "outline" | "link";
 };
 
 export const Button = forwardRef<any, ButtonProps>(
-  ({ title, onPress, variant = "solid" }, ref) => {
-    const { styles } = useStyles(stylesheet, { variant });
+  ({ title, onPress, variant = "solid", full }, ref) => {
+    const { styles } = useStyles(stylesheet, { variant, full });
 
     return (
       <RectButton
@@ -21,7 +22,9 @@ export const Button = forwardRef<any, ButtonProps>(
         onPress={onPress}
         style={styles.container}>
         <View accessible accessibilityRole="button">
-          <Text style={styles.title}>{title}</Text>
+          <Text numberOfLines={1} style={styles.title}>
+            {title}
+          </Text>
         </View>
       </RectButton>
     );
@@ -31,13 +34,19 @@ export const Button = forwardRef<any, ButtonProps>(
 const stylesheet = createStyleSheet((theme) => {
   return {
     container: {
-      padding: 16,
+      paddingVertical: 16,
+      paddingHorizontal: 24,
       borderRadius: 8,
       alignItems: "center",
       justifyContent: "center",
       borderWidth: 1,
       borderColor: "transparent",
       variants: {
+        full: {
+          true: {
+            alignSelf: "stretch",
+          },
+        },
         variant: {
           solid: {
             backgroundColor: theme.colors.typography,
