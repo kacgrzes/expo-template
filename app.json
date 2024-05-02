@@ -10,7 +10,6 @@
     "platforms": ["ios", "android"],
     "orientation": "default",
     "icon": "./assets/icon.png",
-    "supportsTablet": true,
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#ffffff",
     "githubUrl": "https://github.com/kacgrzes/expo-template",
