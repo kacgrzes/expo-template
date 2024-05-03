@@ -10,13 +10,16 @@ export function LanguagesScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {i18n.languages.map((language) => {
+      {["en", "pl", "fr"].map((language) => {
         return (
           <RectButton
             key={language}
-            onPress={() => console.log("Hello!")}
+            onPress={() => i18n.changeLanguage(language)}
             style={styles.listItem}>
-            <Text>{language}</Text>
+            <Text>
+              {language}
+              {language === i18n.language ? " (x)" : ""}
+            </Text>
           </RectButton>
         );
       })}

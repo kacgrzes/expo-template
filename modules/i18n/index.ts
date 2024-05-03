@@ -6,6 +6,8 @@ import enCommon from "./locales/en/common.json";
 import frCommon from "./locales/fr/common.json";
 import plCommon from "./locales/pl/common.json";
 
+export { LanguagesScreen } from "./screens";
+
 export const resources = {
   en: {
     common: enCommon,
