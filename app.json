@@ -1,71 +1,70 @@
 {
-  "expo": {
-    "name": "Template",
-    "description": "A template for Expo projects",
-    "slug": "template",
-    "jsEngine": "hermes",
-    "scheme": "template",
-    "version": "1.0.0",
-    "privacy": "hidden",
-    "platforms": ["ios", "android"],
-    "orientation": "default",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
-    "backgroundColor": "#ffffff",
-    "githubUrl": "https://github.com/kacgrzes/expo-template",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "io.kacgrzes.expo-template"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      [
-        "expo-dev-launcher",
-        {
-          "launchModeExperimental": "most-recent"
-        }
-      ],
-      [
-        "expo-sensors",
-        {
-          "motionPermission": "Allow $(PRODUCT_NAME) to access your device motion."
-        }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            // these values were tested with Expo SDK 48
-            "compileSdkVersion": 33,
-            "targetSdkVersion": 33,
-            "minSdkVersion": 23,
-            "buildToolsVersion": "33.0.0",
-            "kotlinVersion": "1.6.20"
-          }
-        }
-      ],
-      "expo-router",
-      "expo-font",
-      "expo-localization",
-      "expo-quick-actions",
-      "expo-secure-store",
-      "expo-tracking-transparency"
-    ]
+  "name": "Template",
+  "description": "A template for Expo projects",
+  "slug": "template",
+  "jsEngine": "hermes",
+  "scheme": "template",
+  "version": "1.0.0",
+  "privacy": "hidden",
+  "platforms": ["ios", "android"],
+  "orientation": "default",
+  "icon": "./assets/icon.png",
+  "userInterfaceStyle": "automatic",
+  "backgroundColor": "#ffffff",
+  "githubUrl": "https://github.com/kacgrzes/expo-template",
+  "splash": {
+    "image": "./assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#ffffff"
   },
+  "assetBundlePatterns": ["**/*"],
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "io.kacgrzes.expo-template"
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#ffffff"
+    }
+  },
+  "web": {
+    "favicon": "./assets/favicon.png"
+  },
+  "plugins": [
+    [
+      "expo-dev-launcher",
+      {
+        "launchMode": "most-recent"
+      }
+    ],
+    [
+      "expo-sensors",
+      {
+        "motionPermission": "Allow $(PRODUCT_NAME) to access your device motion."
+      }
+    ],
+    [
+      "expo-build-properties",
+      {
+        "android": {
+          // these values were tested with Expo SDK 48
+          "compileSdkVersion": 33,
+          "targetSdkVersion": 33,
+          "minSdkVersion": 23,
+          "buildToolsVersion": "33.0.0",
+          "kotlinVersion": "1.6.20"
+        }
+      }
+    ],
+    "expo-router",
+    "expo-font",
+    "expo-localization",
+    "expo-quick-actions",
+    "expo-secure-store",
+    "expo-tracking-transparency",
+    "expo-asset"
+  ],
   "experiments": {
     "tsconfigPaths": true,
     "typedRoutes": true
