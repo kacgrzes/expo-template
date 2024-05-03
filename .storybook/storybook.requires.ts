@@ -32,6 +32,19 @@ const normalizedStories = [
       /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     ),
   },
+  {
+    titlePrefix: "i18n",
+    directory: "./modules/i18n",
+    files: "**/*.stories.?(ts|tsx|js|jsx)",
+    importPathMatcher:
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      "../modules/i18n",
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
 ];
 
 // @ts-ignore
