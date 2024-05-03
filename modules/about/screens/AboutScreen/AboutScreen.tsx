@@ -1,7 +1,7 @@
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-import { Version } from "../components/Version";
+import { Version } from "../../components/Version";
 
 export function AboutScreen() {
   const { styles } = useStyles(stylesheet);
