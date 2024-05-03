@@ -2,23 +2,16 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "about": [
-        "./modules/about"
-      ],
-      "auth": [
-        "./modules/auth"
-      ],
-      "i18n": [
-        "./modules/i18n"
-      ]
+      "*": ["./modules/*"],
+      "assets": ["./assets"],
+      "components": ["./components"],
+      "hooks": ["./hooks"],
+      "layouts": ["./layouts"],
+      "unistyles": ["./unistyles"],
+      "utils": ["./utils"]
     },
     "strict": true
   },
   "extends": "expo/tsconfig.base",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }
