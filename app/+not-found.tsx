@@ -2,7 +2,7 @@ import { Link } from "expo-router";
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { isDeveloopment } from "utils/env";
+import { isDeveloopment } from "utils";
 
 export default function NotFound() {
   const { styles } = useStyles(stylesheet);

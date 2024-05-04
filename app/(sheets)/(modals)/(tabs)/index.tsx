@@ -12,7 +12,7 @@ import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { env } from "utils/env";
+import { env } from "utils";
 
 export default function App() {
   const { styles } = useStyles(stylesheet);

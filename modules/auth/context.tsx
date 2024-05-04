@@ -1,6 +1,6 @@
 import { useStorageState } from "hooks";
 import React from "react";
-import { isProduction } from "utils/env";
+import { isProduction } from "utils";
 
 const AuthContext = React.createContext<{
   signIn: () => void;
