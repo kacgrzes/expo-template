@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <SafeAreaView style={styles.container}>
       <Text>Not found!</Text>
-      <Link href={"/"}>
+      <Link href="/">
         <Text>Go back home</Text>
       </Link>
       {isDeveloopment && (
