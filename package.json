@@ -23,7 +23,7 @@
     "prebuild:android": "expo prebuild --clean --platform ios",
     "prebuild:ios": "expo prebuild --clean --platform ios",
     "prepare:i18next": "i18next-resources-for-ts interface -i ./i18n/locales/en -o ./@types/resources.d.ts",
-    "start": "expo start",
+    "start": "EXPO_USE_FAST_RESOLVER=1 && expo start",
     "start:production": "expo start --no-dev --minify",
     "storybook-generate": "sb-rn-get-stories",
     "test": "jest --watch --coverage=false --changedSince=origin/main",
