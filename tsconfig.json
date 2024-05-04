@@ -2,16 +2,16 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "*": ["./modules/*"],
-      "Providers": ["./Providers"],
-      "assets": ["./assets"],
-      "components": ["./components"],
-      "hooks": ["./hooks"],
-      "layouts": ["./layouts"],
-      "polyfills": "./polyfills",
-      "setupOnAppStart": ["./setupOnAppStart"],
-      "unistyles": ["./unistyles"],
-      "utils": ["./utils"]
+      "*": ["./modules/*", "*"]
+      // "Providers": ["./Providers"],
+      // "assets": ["./assets"],
+      // "components": ["./components"],
+      // "hooks": ["./hooks"],
+      // "layouts": ["./layouts"],
+      // "polyfills": "./polyfills",
+      // "setupOnAppStart": ["./setupOnAppStart"],
+      // "unistyles": ["./unistyles"],
+      // "utils": ["./utils"]
     },
     "strict": true
   },

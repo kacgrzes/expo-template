@@ -16,6 +16,7 @@
     "export-source-maps:web": "npx expo export --source-maps --platform web",
     "generate": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=plopfile.ts",
     "ios": "expo run:ios",
+    "ios:device": "expo run:ios --device",
     "lint": "eslint .",
     "log:android": "npx react-native log-android",
     "log:ios": "npx react-native log-ios",

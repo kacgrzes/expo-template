@@ -18,7 +18,7 @@ const handleError: OnError = (error, info) => {
   console.error(error, info.componentStack);
 };
 
-export function Providers({ children }: { children: ReactNode }) {
+export function Providers({ children }: { children?: ReactNode }) {
   const areFontsLoaded = useFontsSetup();
   useStyles();
 

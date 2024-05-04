@@ -4,21 +4,23 @@ import { ScrollView } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
+import { LANGUAGES } from "../../languages";
+
 export function LanguagesScreen() {
   const { i18n } = useTranslation();
   const { styles } = useStyles(stylesheet);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {["en", "pl", "fr"].map((language) => {
+      {LANGUAGES.map((language) => {
         return (
           <RectButton
-            key={language}
-            onPress={() => i18n.changeLanguage(language)}
+            key={language.id}
+            onPress={() => i18n.changeLanguage(language.id)}
             style={styles.listItem}>
             <Text>
-              {language}
-              {language === i18n.language ? " (x)" : ""}
+              {language.name}
+              {language.id === i18n.language ? " (x)" : ""}
             </Text>
           </RectButton>
         );
