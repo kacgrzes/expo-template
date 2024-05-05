@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { AboutScreen } from "./AboutScreen";
 
-const ButtonMeta: Meta<typeof AboutScreen> = {
+const AboutScreenMeta: Meta<typeof AboutScreen> = {
   title: "AboutScreen",
   component: AboutScreen,
   argTypes: {
@@ -13,6 +13,6 @@ const ButtonMeta: Meta<typeof AboutScreen> = {
   },
 };
 
-export default ButtonMeta;
+export default AboutScreenMeta;
 
 export const Default: StoryObj<typeof AboutScreen> = {};

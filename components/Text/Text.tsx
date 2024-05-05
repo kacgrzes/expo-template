@@ -1,10 +1,25 @@
-import { Text as RNText, TextProps, StyleSheet } from "react-native";
+import {
+  Text as TextComponent,
+  TextProps as TextComponentProps,
+  TextStyle,
+  StyleSheet,
+} from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-export function Text({ style, ...rest }: TextProps) {
+type TextAlign = TextStyle["textAlign"];
+type TextProps = TextComponentProps & {
+  textAlign?: TextAlign;
+};
+
+export function Text({ style, textAlign, ...rest }: TextProps) {
   const { styles } = useStyles(stylesheet);
 
-  return <RNText style={StyleSheet.compose(styles.base, style)} {...rest} />;
+  return (
+    <TextComponent
+      style={StyleSheet.flatten([styles.base, { textAlign }, style])}
+      {...rest}
+    />
+  );
 }
 
 export const Title = ({ style, ...rest }: TextProps) => {
