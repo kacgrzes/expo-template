@@ -1,3 +1,4 @@
+export * from "./BackdropComponent";
 export * from "./Button";
 export * from "./ContextMenuExample";
 export * from "./DropdownMenuExample";
