@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -8,19 +8,18 @@ import { Text } from "../Text";
 type ButtonProps = {
   full?: boolean;
   title: string;
-  onPress?: RectButtonProps["onPress"];
   variant?: "solid" | "outline" | "link";
-};
+} & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style">;
 
 export const Button = forwardRef<any, ButtonProps>(
-  ({ title, onPress, variant = "solid", full }, ref) => {
-    const { styles } = useStyles(stylesheet, { variant, full });
+  ({ title, variant = "solid", full, style, ...rest }, ref) => {
+    const { styles, theme } = useStyles(stylesheet, { variant, full });
 
     return (
       <RectButton
-        activeOpacity={0.4}
-        onPress={onPress}
-        style={styles.container}>
+        activeOpacity={theme.opacity}
+        {...rest}
+        style={StyleSheet.flatten([styles.container, style])}>
         <View accessible accessibilityRole="button">
           <Text numberOfLines={1} style={styles.title}>
             {title}

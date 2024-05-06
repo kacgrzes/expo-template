@@ -5,17 +5,20 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
+import { useStyles } from "react-native-unistyles";
 
 export function BackdropComponent({
   animatedIndex,
   style,
 }: BottomSheetBackdropProps) {
+  const { theme } = useStyles();
+
   // animated variables
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: interpolate(
       animatedIndex.value,
       [-1, 0],
-      [0, 0.4],
+      [0, theme.opacity],
       Extrapolation.CLAMP,
     ),
   }));
@@ -25,11 +28,11 @@ export function BackdropComponent({
     () => [
       style,
       {
-        backgroundColor: "#a8b5eb",
+        backgroundColor: theme.colors.background,
       },
       containerAnimatedStyle,
     ],
-    [style, containerAnimatedStyle],
+    [style, containerAnimatedStyle, theme.colors.background],
   );
 
   return <Animated.View style={containerStyle} />;

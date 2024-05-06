@@ -33,7 +33,6 @@ const stylesheet = createStyleSheet(() => {
   return {
     container: {
       flex: 1,
-      backgroundColor: "white",
     },
     listItem: {
       padding: 16,
