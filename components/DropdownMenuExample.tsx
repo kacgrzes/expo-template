@@ -4,9 +4,9 @@ import { Button } from "./Button";
 
 export function DropdownMenuExample() {
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root style={{ width: "100%" }}>
       <DropdownMenu.Trigger>
-        <Button title="DropdownMenu example" />
+        <Button title="DropdownMenu example" full />
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Content>

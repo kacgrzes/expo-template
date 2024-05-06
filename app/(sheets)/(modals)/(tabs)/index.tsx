@@ -27,6 +27,7 @@ export default function App() {
         <Text>{t("Welcome to React")}</Text>
       </Text>
       <Button
+        full
         title={`Current language: ${i18n.language}`}
         variant="link"
         onPress={() => {
@@ -41,17 +42,18 @@ export default function App() {
       />
       <JSONViewer content={env} />
       <Button
+        full
         title={session ? "Sign out" : "Sign in"}
         onPress={session ? signOut : signIn}
       />
       <Link href="/about" asChild>
-        <Button title="About" variant="outline" />
+        <Button title="About" variant="outline" full />
       </Link>
       <Link href="/example-sheet" asChild>
-        <Button title="Example Sheet" variant="link" />
+        <Button title="Example Sheet" variant="link" full />
       </Link>
       <Link href="/languages" asChild>
-        <Button title="Languages" variant="link" />
+        <Button title="Languages" variant="link" full />
       </Link>
       <ContextMenuExample />
       <DropdownMenuExample />
@@ -65,6 +67,8 @@ const stylesheet = createStyleSheet({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    padding: 16,
+    gap: 4,
   },
   text: {
     justifyContent: "center",

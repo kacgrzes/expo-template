@@ -9,9 +9,9 @@ const Preview = () => {
 
 export function ContextMenuExample() {
   return (
-    <ContextMenu.Root>
-      <ContextMenu.Trigger>
-        <Button title="ContextMenu example" />
+    <ContextMenu.Root style={{ width: "100%" }}>
+      <ContextMenu.Trigger asChild>
+        <Button title="ContextMenu example" full />
       </ContextMenu.Trigger>
 
       <ContextMenu.Content>
