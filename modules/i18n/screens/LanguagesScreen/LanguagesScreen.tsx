@@ -1,4 +1,4 @@
-import { Text } from "components";
+import { RadioButton, Text } from "components";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
@@ -18,10 +18,8 @@ export function LanguagesScreen() {
             key={language.id}
             onPress={() => i18n.changeLanguage(language.id)}
             style={styles.listItem}>
-            <Text>
-              {language.name}
-              {language.id === i18n.language ? " (x)" : ""}
-            </Text>
+            <Text>{language.name}</Text>
+            <RadioButton checked={language.id === i18n.language} />
           </RectButton>
         );
       })}
@@ -38,6 +36,8 @@ const stylesheet = createStyleSheet(() => {
       padding: 16,
       borderBottomWidth: 1,
       borderBottomColor: "#f0f0f0",
+      flexDirection: "row",
+      justifyContent: "space-between",
     },
   };
 });
