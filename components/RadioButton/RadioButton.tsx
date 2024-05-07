@@ -1,17 +1,35 @@
-import { View } from "react-native";
+import { BaseButton } from "react-native-gesture-handler";
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type RadioButtonProps = {
   checked?: boolean;
+  onPress?: () => void;
 };
 
-export function RadioButton({ checked }: RadioButtonProps) {
+export function RadioButton({ checked, onPress }: RadioButtonProps) {
   const { styles } = useStyles(stylesheet);
 
+  const animatedDot = useAnimatedStyle(() => {
+    return {
+      // transformOrigin: "center",
+      transform: [
+        {
+          scale: withTiming(checked ? 1 : 0, {
+            duration: 100,
+          }),
+        },
+      ],
+    };
+  }, [checked]);
+
   return (
-    <View style={styles.container}>
-      {checked ? <View style={styles.dot} /> : null}
-    </View>
+    <BaseButton style={styles.container} onPress={onPress}>
+      <Animated.View style={[styles.dot, animatedDot]} />
+    </BaseButton>
   );
 }
 

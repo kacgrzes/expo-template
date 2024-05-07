@@ -20,3 +20,9 @@ const RadioButtonMeta: Meta<typeof RadioButton> = {
 export default RadioButtonMeta;
 
 export const Default: StoryObj<typeof RadioButton> = {};
+
+export const Checked: StoryObj<typeof RadioButton> = {
+  args: {
+    checked: true,
+  },
+};
