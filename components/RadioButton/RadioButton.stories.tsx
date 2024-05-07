@@ -21,6 +21,12 @@ export default RadioButtonMeta;
 
 export const Default: StoryObj<typeof RadioButton> = {};
 
+export const Disabled: StoryObj<typeof RadioButton> = {
+  args: {
+    disabled: true,
+  },
+};
+
 export const Checked: StoryObj<typeof RadioButton> = {
   args: {
     checked: true,

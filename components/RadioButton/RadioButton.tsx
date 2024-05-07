@@ -6,20 +6,28 @@ import Animated, {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type RadioButtonProps = {
+  disabled?: boolean;
   checked?: boolean;
   onPress?: () => void;
 };
 
-export function RadioButton({ checked, onPress }: RadioButtonProps) {
+export function RadioButton({ checked, disabled, onPress }: RadioButtonProps) {
   const { styles } = useStyles(stylesheet);
+
+  const animatedContainer = useAnimatedStyle(() => {
+    return {
+      opacity: withTiming(disabled ? 0.4 : 1, {
+        duration: 200,
+      }),
+    };
+  }, [disabled]);
 
   const animatedDot = useAnimatedStyle(() => {
     return {
-      // transformOrigin: "center",
       transform: [
         {
           scale: withTiming(checked ? 1 : 0, {
-            duration: 100,
+            duration: 200,
           }),
         },
       ],
@@ -27,8 +35,10 @@ export function RadioButton({ checked, onPress }: RadioButtonProps) {
   }, [checked]);
 
   return (
-    <BaseButton style={styles.container} onPress={onPress}>
-      <Animated.View style={[styles.dot, animatedDot]} />
+    <BaseButton onPress={onPress}>
+      <Animated.View style={[styles.container, animatedContainer]}>
+        <Animated.View style={[styles.dot, animatedDot]} />
+      </Animated.View>
     </BaseButton>
   );
 }
