@@ -1,4 +1,3 @@
-import { opacity } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 import { palette } from "./palette";
 
 const common = {
