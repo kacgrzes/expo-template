@@ -1,11 +1,17 @@
 import { palette } from "./palette";
 
 const common = {
-  margins: {
-    sm: 2,
-    md: 4,
-    lg: 8,
-    xl: 12,
+  spacing: {
+    0: 0,
+    0.5: 1,
+    1: 2,
+    2: 4,
+    3: 12,
+    4: 16,
+    6: 24,
+    8: 32,
+    12: 48,
+    16: 64,
   },
   opacity: 0.4,
 } as const;
