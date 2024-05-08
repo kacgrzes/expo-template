@@ -1,9 +1,11 @@
-import { BaseButton } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+
+import { AnimatedBaseButton } from "../AnimatedButtons";
+import { useDisabledStyle } from "../hooks/useDisabledStyle";
 
 type RadioButtonProps = {
   disabled?: boolean;
@@ -14,13 +16,7 @@ type RadioButtonProps = {
 export function RadioButton({ checked, disabled, onPress }: RadioButtonProps) {
   const { styles } = useStyles(stylesheet);
 
-  const animatedContainer = useAnimatedStyle(() => {
-    return {
-      opacity: withTiming(disabled ? 0.4 : 1, {
-        duration: 200,
-      }),
-    };
-  }, [disabled]);
+  const disabledStyle = useDisabledStyle({ disabled });
 
   const animatedDot = useAnimatedStyle(() => {
     return {
@@ -35,11 +31,12 @@ export function RadioButton({ checked, disabled, onPress }: RadioButtonProps) {
   }, [checked]);
 
   return (
-    <BaseButton onPress={onPress}>
-      <Animated.View style={[styles.container, animatedContainer]}>
-        <Animated.View style={[styles.dot, animatedDot]} />
-      </Animated.View>
-    </BaseButton>
+    <AnimatedBaseButton
+      enabled={!disabled}
+      onPress={onPress}
+      style={[styles.container, disabledStyle]}>
+      <Animated.View style={[styles.dot, animatedDot]} />
+    </AnimatedBaseButton>
   );
 }
 

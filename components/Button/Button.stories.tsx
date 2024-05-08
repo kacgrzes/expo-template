@@ -25,6 +25,12 @@ export default ButtonMeta;
 
 export const Default: StoryObj<typeof Button> = {};
 
+export const Disabled: StoryObj<typeof Button> = {
+  args: {
+    disabled: true,
+  },
+};
+
 export const Outline: StoryObj<typeof Button> = {
   args: {
     title: "Outline Button",
