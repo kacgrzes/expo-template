@@ -14,6 +14,7 @@ export default function NotFound() {
         <Text>Go back home</Text>
       </Link>
       {isDeveloopment && (
+        // @ts-ignore
         <Link href="_sitemap">
           <Text>Sitemap</Text>
         </Link>

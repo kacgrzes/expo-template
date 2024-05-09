@@ -62,8 +62,7 @@
     "expo-localization",
     "expo-quick-actions",
     "expo-secure-store",
-    "expo-tracking-transparency",
-    "expo-asset"
+    "expo-tracking-transparency"
   ],
   "experiments": {
     "tsconfigPaths": true,
