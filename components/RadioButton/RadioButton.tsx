@@ -8,8 +8,8 @@ import { AnimatedBaseButton } from "../AnimatedButtons";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 
 type RadioButtonProps = {
-  disabled?: boolean;
   checked?: boolean;
+  disabled?: boolean;
   onPress?: () => void;
 };
 

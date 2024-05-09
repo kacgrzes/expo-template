@@ -6,7 +6,10 @@ const CheckBoxMeta: Meta<typeof CheckBox> = {
   title: "CheckBox",
   component: CheckBox,
   argTypes: {},
-  args: {},
+  args: {
+    checked: false,
+    disabled: false,
+  },
 };
 
 export default CheckBoxMeta;
