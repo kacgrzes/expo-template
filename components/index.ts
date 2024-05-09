@@ -1,5 +1,6 @@
 export * from "./BackdropComponent";
 export * from "./Button";
+export * from "./CheckBox";
 export * from "./ContextMenuExample";
 export * from "./DropdownMenuExample";
 export * from "./Fallback";
