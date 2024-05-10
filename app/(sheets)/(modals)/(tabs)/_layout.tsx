@@ -1,5 +1,5 @@
 import { Tabs as TabsRouter } from "expo-router";
-import { Home } from "lucide-react-native";
+import { Home, UserRound } from "lucide-react-native";
 import { useStyles } from "react-native-unistyles";
 
 export default function Tabs() {
@@ -23,6 +23,13 @@ export default function Tabs() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => <Home size={24} color={color} />,
+        }}
+      />
+      <TabsRouter.Screen
+        name="test-1"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color }) => <UserRound size={24} color={color} />,
         }}
       />
     </TabsRouter>
