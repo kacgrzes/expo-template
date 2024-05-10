@@ -12,9 +12,7 @@ export function JSONViewer({ content }: JSONViewerProps) {
 
   return (
     <View style={styles.jsonViewer}>
-      <Text style={{ fontFamily: "IBMPlexMono_400Regular" }}>
-        {JSON.stringify(content, null, 2)}
-      </Text>
+      <Text style={styles.mono}>{JSON.stringify(content, null, 2)}</Text>
     </View>
   );
 }
@@ -25,6 +23,9 @@ const stylesheet = createStyleSheet((theme, runtime) => {
       padding: 16,
       backgroundColor: runtime.colorScheme === "dark" ? "#202020" : "#e6e6e6",
       borderRadius: 8,
+    },
+    mono: {
+      fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
     },
   };
 });

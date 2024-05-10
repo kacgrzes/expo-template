@@ -1,16 +1,12 @@
-import { IBMPlexMono_400Regular } from "@expo-google-fonts/ibm-plex-mono";
-import { IBMPlexSans_400Regular } from "@expo-google-fonts/ibm-plex-sans";
-import { IBMPlexSerif_600SemiBold } from "@expo-google-fonts/ibm-plex-serif";
 import { useFonts } from "expo-font";
 import { SplashScreen } from "expo-router";
 import { useEffect } from "react";
+import { useStyles } from "react-native-unistyles";
 
 export const useFontsSetup = () => {
-  const [fontsLoaded, fontError] = useFonts({
-    IBMPlexMono_400Regular,
-    IBMPlexSans_400Regular,
-    IBMPlexSerif_600SemiBold,
-  });
+  const { theme } = useStyles();
+
+  const [fontsLoaded, fontError] = useFonts(theme.fonts);
 
   const areFontsSuccessullyLoaded = fontsLoaded && !fontError;
 

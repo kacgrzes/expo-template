@@ -1,6 +1,10 @@
+import { fontFamily } from "./fontFamily";
+import { fonts } from "./fonts";
 import { palette } from "./palette";
 
 const common = {
+  fonts,
+  fontFamily,
   spacing: {
     0: 0,
     0.5: 1,

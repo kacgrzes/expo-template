@@ -33,12 +33,12 @@ const stylesheet = createStyleSheet((theme) => {
     base: {
       fontSize: 16,
       color: theme.colors.typography,
-      fontFamily: "IBMPlexSans_400Regular",
+      fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
     },
     title: {
       fontSize: 24,
       fontWeight: "bold",
-      fontFamily: "IBMPlexSerif_600SemiBold",
+      fontFamily: theme.fontFamily.IBMPlexSerif_600SemiBold,
     },
   };
 });
