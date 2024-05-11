@@ -7,6 +7,7 @@ import {
   JSONViewer,
   Title,
 } from "components";
+import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
@@ -40,6 +41,7 @@ export default function App() {
           i18n.changeLanguage(nextLanguage);
         }}
       />
+      <Text>{formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}</Text>
       <JSONViewer content={env} />
       <Button
         full
