@@ -2,22 +2,8 @@ import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { languageDetector } from "./languageDetector";
-import enCommon from "./locales/en/common.json";
-import frCommon from "./locales/fr/common.json";
-import plCommon from "./locales/pl/common.json";
+import { resources } from "./resources";
 import { setupOnLanguageChange } from "./setupOnLanguageChange";
-
-export const resources = {
-  en: {
-    common: enCommon,
-  },
-  fr: {
-    common: frCommon,
-  },
-  pl: {
-    common: plCommon,
-  },
-};
 
 setupOnLanguageChange();
 
@@ -34,5 +20,5 @@ export const i18n = i18next
     interpolation: {
       escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     },
-    resources,
+    resources: resources.getResources(),
   });
