@@ -1,9 +1,13 @@
+import { getLocales } from "expo-localization";
+
 export type Language = {
   id: string;
   name: string;
 };
 
-export const LANGUAGES: Language[] = [
+const deviceLanguages = getLocales().map((locale) => locale.languageCode);
+
+export const AVAILABLE_APP_LANGUAGES: Language[] = [
   {
     id: "en",
     name: "English",
@@ -17,3 +21,19 @@ export const LANGUAGES: Language[] = [
     name: "Polski",
   },
 ];
+
+// make device languages first in the list
+export const LANGUAGES = AVAILABLE_APP_LANGUAGES.sort((a, b) => {
+  const aIndex = deviceLanguages.indexOf(a.id);
+  const bIndex = deviceLanguages.indexOf(b.id);
+
+  if (aIndex === -1) {
+    return 1;
+  }
+
+  if (bIndex === -1) {
+    return -1;
+  }
+
+  return aIndex - bIndex;
+});
