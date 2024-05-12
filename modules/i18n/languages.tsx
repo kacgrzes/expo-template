@@ -1,11 +1,9 @@
-import { getLocales } from "expo-localization";
+import { deviceLanguages } from "./deviceLanguages";
 
 export type Language = {
   id: string;
   name: string;
 };
-
-const deviceLanguages = getLocales().map((locale) => locale.languageCode);
 
 export const AVAILABLE_APP_LANGUAGES: Language[] = [
   {

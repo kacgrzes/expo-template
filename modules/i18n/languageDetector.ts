@@ -1,15 +1,26 @@
-import * as Localization from "expo-localization";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { LanguageDetectorAsyncModule } from "i18next";
+
+import { deviceLanguages } from "./deviceLanguages";
+
+const USER_LANGUAGE_KEY = "user-language";
 
 export const languageDetector: LanguageDetectorAsyncModule = {
   async: true,
-  cacheUserLanguage: () => undefined,
-  detect: (callback) => {
-    const locales = Localization.getLocales();
-    const language = locales[0].languageCode;
+  cacheUserLanguage: async (language) => {
+    await AsyncStorage.setItem(USER_LANGUAGE_KEY, language);
+  },
+  detect: async () => {
+    const userLanguage = await AsyncStorage.getItem(USER_LANGUAGE_KEY);
 
-    if (language) {
-      return callback?.(language);
+    if (userLanguage) {
+      return userLanguage;
+    }
+
+    const deviceLanguage = deviceLanguages[0];
+
+    if (deviceLanguage) {
+      return deviceLanguage;
     }
   },
   init: () => undefined,
