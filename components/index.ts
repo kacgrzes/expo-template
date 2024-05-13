@@ -5,5 +5,6 @@ export * from "./ContextMenuExample";
 export * from "./DropdownMenuExample";
 export * from "./Fallback";
 export * from "./JSONViewer";
+export * from "./ListItem";
 export * from "./RadioButton";
 export * from "./Text";
