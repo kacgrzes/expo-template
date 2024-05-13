@@ -11,9 +11,14 @@ export function AboutScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <ListItem title="Terms and conditions" onPress={() => {}} />
-      <ListItem title="Privacy policy" onPress={() => {}} />
       <ListItem
+        icon="Clipboard"
+        title="Terms and conditions"
+        onPress={() => {}}
+      />
+      <ListItem icon="LockKeyhole" title="Privacy policy" onPress={() => {}} />
+      <ListItem
+        icon="FileCheck"
         title="Licenses"
         onPress={() => {
           router.navigate("/licenses");
