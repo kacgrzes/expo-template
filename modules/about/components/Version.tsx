@@ -1,6 +1,7 @@
+import { Text } from "components";
 import * as Clipboard from "expo-clipboard";
 import { useTranslation } from "react-i18next";
-import { Pressable, Text } from "react-native";
+import { Pressable } from "react-native";
 
 export function Version() {
   const { t } = useTranslation("about");

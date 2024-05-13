@@ -1,18 +1,25 @@
-import { JSONViewer } from "components";
-import PACKAGE_JSON from "package.json";
+import { ListItem } from "components";
+import { useRouter } from "expo-router";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { isDeveloopment } from "utils";
 
 import { Version } from "../../components/Version";
 
 export function AboutScreen() {
+  const router = useRouter();
   const { styles } = useStyles(stylesheet);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <ListItem title="Terms and conditions" onPress={() => {}} />
+      <ListItem title="Privacy policy" onPress={() => {}} />
+      <ListItem
+        title="Licenses"
+        onPress={() => {
+          router.navigate("/licenses");
+        }}
+      />
       <Version />
-      {isDeveloopment && <JSONViewer content={PACKAGE_JSON.dependencies} />}
     </ScrollView>
   );
 }
