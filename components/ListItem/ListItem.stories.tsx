@@ -6,9 +6,17 @@ const ListItemMeta: Meta<typeof ListItem> = {
   title: "ListItem",
   component: ListItem,
   argTypes: {},
-  args: {},
+  args: {
+    title: "List item",
+  },
 };
 
 export default ListItemMeta;
 
 export const Default: StoryObj<typeof ListItem> = {};
+
+export const WithIcon: StoryObj<typeof ListItem> = {
+  args: {
+    icon: "AlarmClock",
+  },
+};
