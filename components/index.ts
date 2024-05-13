@@ -7,4 +7,5 @@ export * from "./Fallback";
 export * from "./JSONViewer";
 export * from "./ListItem";
 export * from "./RadioButton";
+export * from "./SocialIcon";
 export * from "./Text";
