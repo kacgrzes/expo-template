@@ -5,6 +5,8 @@ import { darkTheme, lightTheme } from "./themes";
 
 import "./types";
 
+export * from "./ThemeSwitcher";
+
 UnistylesRegistry.addBreakpoints(breakpoints)
   .addThemes({
     dark: darkTheme,
