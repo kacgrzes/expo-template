@@ -21,7 +21,7 @@ const stylesheet = createStyleSheet((theme, runtime) => {
   return {
     jsonViewer: {
       padding: 16,
-      backgroundColor: runtime.colorScheme === "dark" ? "#202020" : "#e6e6e6",
+      backgroundColor: runtime.themeName === "dark" ? "#202020" : "#e6e6e6",
       borderRadius: 8,
     },
     mono: {

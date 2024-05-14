@@ -1,4 +1,8 @@
+import { MMKV } from "react-native-mmkv";
 import { UnistylesRegistry } from "react-native-unistyles";
+
+const storage = new MMKV();
+const themeMode = storage.getString("theme-mode");
 
 import { breakpoints } from "./breakpoints";
 import { darkTheme, lightTheme } from "./themes";
@@ -6,6 +10,7 @@ import { darkTheme, lightTheme } from "./themes";
 import "./types";
 
 export * from "./ThemeSwitcher";
+export * from "./useThemeMode";
 
 UnistylesRegistry.addBreakpoints(breakpoints)
   .addThemes({
@@ -15,5 +20,6 @@ UnistylesRegistry.addBreakpoints(breakpoints)
   })
   .addConfig({
     // you can pass here optional config described below
-    adaptiveThemes: true,
+    adaptiveThemes: themeMode === "system" || !themeMode,
+    initialTheme: themeMode === "system" || !themeMode ? undefined : themeMode,
   });

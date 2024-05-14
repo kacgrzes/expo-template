@@ -11,6 +11,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { UnistylesRuntime, useStyles } from "react-native-unistyles";
+import { useThemeMode } from "unistyles";
 
 type OnError = ComponentProps<typeof ErrorBoundary>["onError"];
 
@@ -20,6 +21,7 @@ const handleError: OnError = (error, info) => {
 
 export function Providers({ children }: { children?: ReactNode }) {
   const areFontsLoaded = useFontsSetup();
+  useThemeMode();
   useStyles();
 
   return (

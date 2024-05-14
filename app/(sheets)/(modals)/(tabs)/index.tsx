@@ -3,8 +3,8 @@ import {
   Button,
   ContextMenuExample,
   DropdownMenuExample,
-  Text,
   JSONViewer,
+  Text,
   Title,
 } from "components";
 import { formatDistance } from "date-fns";
@@ -13,6 +13,7 @@ import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { ThemeSwitcher } from "unistyles";
 import { env } from "utils";
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
       <Link href="/languages" asChild>
         <Button title="Languages" variant="link" full />
       </Link>
+      <ThemeSwitcher />
       <ContextMenuExample />
       <DropdownMenuExample />
       <StatusBar style="auto" />

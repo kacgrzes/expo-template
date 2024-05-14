@@ -6,6 +6,7 @@ import {
   useScreenTracking,
   useShakeEvent,
 } from "hooks";
+import { useThemeMode } from "modules/unistyles/useThemeMode";
 
 const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
   console.log("Screen changed", { params, pathname });
@@ -16,6 +17,7 @@ export default function Root() {
   useQuickActionSetup();
   useScreenTracking(recordView);
   useShakeEvent();
+  useThemeMode();
 
   return <Slot />;
 }
