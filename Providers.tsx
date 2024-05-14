@@ -5,6 +5,7 @@ import {
 } from "@react-navigation/native";
 import { SessionProvider } from "auth";
 import { Fallback } from "components";
+import { StatusBar } from "expo-status-bar";
 import { useFontsSetup } from "hooks";
 import { ComponentProps, ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -21,7 +22,7 @@ const handleError: OnError = (error, info) => {
 
 export function Providers({ children }: { children?: ReactNode }) {
   const areFontsLoaded = useFontsSetup();
-  useThemeMode();
+  const [themeMode] = useThemeMode();
   useStyles();
 
   return (
@@ -34,6 +35,7 @@ export function Providers({ children }: { children?: ReactNode }) {
           <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
             <SessionProvider>
               {areFontsLoaded ? children : null}
+              <StatusBar style={themeMode === "system" ? "auto" : themeMode} />
             </SessionProvider>
           </ErrorBoundary>
         </ThemeProvider>

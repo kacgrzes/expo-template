@@ -9,7 +9,6 @@ import {
 } from "components";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
-import { StatusBar } from "expo-status-bar";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -61,7 +60,6 @@ export default function App() {
       <ThemeSwitcher />
       <ContextMenuExample />
       <DropdownMenuExample />
-      <StatusBar style="auto" />
     </ScrollView>
   );
 }
