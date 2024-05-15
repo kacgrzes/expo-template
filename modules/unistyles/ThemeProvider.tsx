@@ -1,12 +1,8 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider as NavigationThemeProvider,
-} from "@react-navigation/native";
+import { ThemeProvider as NavigationThemeProvider } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { ReactNode, createContext, useContext, useEffect } from "react";
 import { useMMKVString } from "react-native-mmkv";
-import { UnistylesRuntime } from "react-native-unistyles";
+import { UnistylesRuntime, useStyles } from "react-native-unistyles";
 
 import { ThemeMode, changeThemeMode } from "./changeThemeMode";
 
@@ -19,6 +15,9 @@ const ThemeContext = createContext<{
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
+  const {
+    theme: { navigation },
+  } = useStyles();
   const [theme = "system", setTheme] = useMMKVString("theme-mode") as [
     ThemeMode,
     (theme: ThemeMode) => void,
@@ -28,17 +27,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     changeThemeMode(theme);
   }, [theme]);
 
+  const finalTheme =
+    theme === "system"
+      ? UnistylesRuntime.colorScheme
+      : UnistylesRuntime.themeName;
+
   return (
-    <NavigationThemeProvider
-      value={
-        theme === "dark"
-          ? DarkTheme
-          : theme === "light"
-            ? DefaultTheme
-            : UnistylesRuntime.colorScheme === "dark"
-              ? DarkTheme
-              : DefaultTheme
-      }>
+    <NavigationThemeProvider value={navigation}>
       <ThemeContext.Provider
         value={{
           theme,
@@ -46,7 +41,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         }}>
         {children}
       </ThemeContext.Provider>
-      <StatusBar style={theme === "system" ? "auto" : theme} />
+      <StatusBar style={finalTheme === "dark" ? "light" : "dark"} />
     </NavigationThemeProvider>
   );
 }
