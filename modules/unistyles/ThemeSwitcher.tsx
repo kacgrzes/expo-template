@@ -1,24 +1,22 @@
 import { Button } from "components";
 
-import { useThemeMode } from "./useThemeMode";
+import { useTheme } from "./ThemeProvider";
 
 export const ThemeSwitcher = () => {
-  const [themeMode, setThemeMode] = useThemeMode();
-
-  console.log({ themeMode });
+  const { theme, setTheme } = useTheme();
 
   return (
     <Button
       onPress={() => {
-        if (themeMode === "system") {
-          setThemeMode("light");
-        } else if (themeMode === "light") {
-          setThemeMode("dark");
+        if (theme === "system") {
+          setTheme("light");
+        } else if (theme === "light") {
+          setTheme("dark");
         } else {
-          setThemeMode("system");
+          setTheme("system");
         }
       }}
-      title={themeMode}
+      title={theme}
     />
   );
 };
