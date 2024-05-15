@@ -1,8 +1,10 @@
 import { useActionSheet } from "@expo/react-native-action-sheet";
+import { useTheme } from "unistyles";
 
 import { Button } from "./Button";
 
 export function ActionSheetExample() {
+  const { theme } = useTheme();
   const { showActionSheetWithOptions } = useActionSheet();
 
   const onPress = () => {
@@ -15,6 +17,7 @@ export function ActionSheetExample() {
         options,
         cancelButtonIndex,
         destructiveButtonIndex,
+        userInterfaceStyle: theme === "system" ? undefined : theme,
       },
       (selectedIndex?: number) => {
         switch (selectedIndex) {
