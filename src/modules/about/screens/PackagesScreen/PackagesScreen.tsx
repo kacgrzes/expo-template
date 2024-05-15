@@ -1,5 +1,5 @@
 import { JSONViewer } from "components";
-import PACKAGE_JSON from "package.json";
+import PACKAGE_JSON from "packageJson";
 import { ScrollView } from "react-native";
 
 export function PackagesScreen() {

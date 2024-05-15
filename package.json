@@ -1,7 +1,7 @@
 {
   "name": "expo-template",
   "version": "1.0.0",
-  "main": "index.tsx",
+  "main": "src/index.tsx",
   "scripts": {
     "analyzeAndroid": "source-map-explorer 'dist/_expo/static/js/android/*.js' 'dist/_expo/static/js/android/*.js.map'",
     "analyzeIos": "source-map-explorer 'dist/_expo/static/js/ios/*.js' 'dist/_expo/static/js/ios/*.js.map'",
