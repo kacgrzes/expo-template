@@ -7,6 +7,7 @@
     "analyzeIos": "source-map-explorer 'dist/_expo/static/js/ios/*.js' 'dist/_expo/static/js/ios/*.js.map'",
     "analyzeWeb": "source-map-explorer 'dist/_expo/static/js/web/*.js' 'dist/_expo/static/js/web/*.js.map'",
     "android": "expo run:android",
+    "check": "npm run lint && npm run tsCheck",
     "checkExpo": "npm run doctor && npm expo install --check && npm outdated",
     "clean": "rm -rf dist && rm -rf .expo && watchman watch-del-all && rm -rf ios/ && rm -rf android/ && rm -rf /Users/kacgrzes/Library/Developer/Xcode/DerivedData && rm -rf ./node-modules/",
     "cleanGit": "git clean -xfd",
@@ -33,6 +34,7 @@
     "test": "jest --watch --coverage=false --changedSince=origin/main",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
+    "tsCheck": "tsc",
     "updateExpo": "npm install expo@latest && npx expo install --fix && npm run doctor && npm outdated",
     "updateSnapshots": "jest -u --coverage=false",
     "web": "expo start --web"

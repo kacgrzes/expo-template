@@ -16,7 +16,7 @@ export function ActionSheetExample() {
         cancelButtonIndex,
         destructiveButtonIndex,
       },
-      (selectedIndex: number) => {
+      (selectedIndex?: number) => {
         switch (selectedIndex) {
           case 1:
             // Save
