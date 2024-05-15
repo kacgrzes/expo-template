@@ -9,6 +9,7 @@
     "android": "expo run:android",
     "checkExpo": "npm run doctor && npm expo install --check && npm outdated",
     "clean": "rm -rf dist && rm -rf .expo && watchman watch-del-all && rm -rf ios/ && rm -rf android/ && rm -rf /Users/kacgrzes/Library/Developer/Xcode/DerivedData && rm -rf ./node-modules/",
+    "cleanGit": "git clean -xfd",
     "deeplink": "uri-scheme open --ios expo-template://index",
     "devtools": "npx react-devtools",
     "doctor": "npx expo-doctor",
