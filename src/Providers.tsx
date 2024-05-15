@@ -1,3 +1,4 @@
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { SessionProvider } from "auth";
 import { Fallback } from "components";
 import { useFontsSetup } from "hooks";
@@ -20,11 +21,13 @@ export function Providers({ children }: { children?: ReactNode }) {
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <ThemeProvider>
-          <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-            <SessionProvider>
-              {areFontsLoaded ? children : null}
-            </SessionProvider>
-          </ErrorBoundary>
+          <ActionSheetProvider>
+            <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
+              <SessionProvider>
+                {areFontsLoaded ? children : null}
+              </SessionProvider>
+            </ErrorBoundary>
+          </ActionSheetProvider>
         </ThemeProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>

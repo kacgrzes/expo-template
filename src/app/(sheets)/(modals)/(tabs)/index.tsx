@@ -1,5 +1,6 @@
 import { useSession } from "auth";
 import {
+  ActionSheetExample,
   Button,
   ContextMenuExample,
   DropdownMenuExample,
@@ -58,6 +59,7 @@ export default function App() {
         <Button title="Languages" variant="link" full />
       </Link>
       <ThemeSwitcher />
+      <ActionSheetExample />
       <ContextMenuExample />
       <DropdownMenuExample />
     </ScrollView>
