@@ -18,20 +18,18 @@ export function Providers({ children }: { children?: ReactNode }) {
   const areFontsLoaded = useFontsSetup();
 
   return (
-    <StrictMode>
-      <SafeAreaProvider>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <ThemeProvider>
-            <ActionSheetProvider>
-              <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-                <SessionProvider>
-                  {areFontsLoaded ? children : null}
-                </SessionProvider>
-              </ErrorBoundary>
-            </ActionSheetProvider>
-          </ThemeProvider>
-        </GestureHandlerRootView>
-      </SafeAreaProvider>
-    </StrictMode>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <ThemeProvider>
+          <ActionSheetProvider>
+            <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
+              <SessionProvider>
+                {areFontsLoaded ? children : null}
+              </SessionProvider>
+            </ErrorBoundary>
+          </ActionSheetProvider>
+        </ThemeProvider>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
