@@ -35,6 +35,8 @@ export const Button = forwardRef<any, ButtonProps>(
   },
 );
 
+Button.displayName = "Button";
+
 const stylesheet = createStyleSheet((theme) => {
   return {
     container: {

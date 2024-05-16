@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ["universe/native", "prettier"],
+  extends: ["expo", "prettier"],
   plugins: ["prettier"],
   rules: {
     // Ensures props and state inside functions are always up-to-date
