@@ -13,7 +13,7 @@
     "cleanGit": "git clean -xfd",
     "deeplink": "uri-scheme open --ios expo-template://index",
     "devtools": "npx react-devtools",
-    "doctor": "npx expo-doctor",
+    "doctor": "npx expo-doctor && npx react-compiler-healthcheck",
     "exportSourceMapsAndroid": "npx expo export --source-maps --platform android --no-bytecode",
     "exportSourceMapsIos": "npx expo export --source-maps --platform ios --no-bytecode",
     "exportSourceMapsWeb": "npx expo export --source-maps --platform web",

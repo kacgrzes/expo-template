@@ -6,5 +6,5 @@ import { LogBox } from "react-native";
 export const setupOnAppStart = () => {
   preventAutoHideAsync();
   // enableFreeze(true);
-  LogBox.ignoreLogs(["findNodeHandle"]);
+  LogBox.ignoreLogs(["findNodeHandle", "findHostInstance"]);
 };
