@@ -63,7 +63,11 @@
     "expo-localization",
     "expo-quick-actions",
     "expo-secure-store",
-    "expo-tracking-transparency"
+    "expo-tracking-transparency",
+    [
+      "@config-plugins/react-native-dynamic-app-icon",
+      ["./assets/icon.png", "./assets/icon2.png"]
+    ]
   ],
   "experiments": {
     "tsconfigPaths": true,

@@ -89,6 +89,7 @@
     "react-hook-form": "^7.51.4",
     "react-i18next": "^14.1.1",
     "react-native": "0.74.1",
+    "react-native-dynamic-app-icon": "^1.1.0",
     "react-native-gesture-handler": "~2.16.1",
     "react-native-ios-context-menu": "^2.5.1",
     "react-native-ios-utilities": "^4.4.5",
@@ -103,6 +104,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@config-plugins/react-native-dynamic-app-icon": "^8.0.0",
     "@storybook/addon-ondevice-actions": "^7.6.18",
     "@storybook/addon-ondevice-controls": "^7.6.18",
     "@storybook/react": "^7.6.19",
