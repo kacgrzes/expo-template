@@ -10,6 +10,7 @@ import {
 } from "components";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
+import { AppIconSwitcher } from "unistyles/AppIconSwitcher";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -22,7 +23,9 @@ export default function App() {
   const { t, i18n } = useTranslation();
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}>
       <Title style={{ marginBottom: 12 }}>Hello</Title>
       <Text style={styles.text}>
         <Text>Open up App.js to start working on your app!{"\n"}</Text>
@@ -62,15 +65,19 @@ export default function App() {
       <ActionSheetExample />
       <ContextMenuExample />
       <DropdownMenuExample />
+      <AppIconSwitcher />
     </ScrollView>
   );
 }
 
-const stylesheet = createStyleSheet({
+const stylesheet = createStyleSheet((theme, runtime) => ({
   container: {
-    flex: 1,
+    marginTop: runtime.insets.top,
+  },
+  contentContainer: {
+    // flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
     padding: 16,
     gap: 4,
   },
@@ -83,4 +90,4 @@ const stylesheet = createStyleSheet({
     justifyContent: "center",
     textAlign: "center",
   },
-});
+}));
