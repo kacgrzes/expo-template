@@ -13,6 +13,7 @@ export const listAppIcons = async () => {
     return await Asset.loadAsync([
       require("../../../assets/icon.png"),
       require("../../../assets/icon2.png"),
+      require("../../../assets/icon3.png"),
     ]);
   }
 };
