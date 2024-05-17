@@ -100,7 +100,9 @@
     "react-native-svg": "15.2.0",
     "react-native-unistyles": "^2.5.5",
     "zeego": "^1.10.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "expo-crypto": "~13.0.2",
+    "expo-web-browser": "~13.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
