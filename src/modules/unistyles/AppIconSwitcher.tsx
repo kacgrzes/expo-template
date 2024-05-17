@@ -2,9 +2,10 @@ import { Image } from "expo-image";
 import { useEffect, useState } from "react";
 import { listAppIcons, getIconName, setAppIcon } from "./appIcon";
 import { Asset } from "expo-asset";
-import { Pressable, View } from "react-native";
+import { Pressable, ScrollView } from "react-native";
 import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
+import { RadioButton } from "components";
 
 export function AppIconSwitcher() {
   const [icons, setAppIcons] = useState<Asset[] | undefined>();
@@ -12,6 +13,9 @@ export function AppIconSwitcher() {
   const { styles } = useStyles(stylesheet);
 
   const selectIcon = (iconIndex: number) => {
+    if (selectedIcon === iconIndex) {
+      return;
+    }
     setAppIcon(iconIndex.toString());
     setSelectedIcon(iconIndex);
   };
@@ -33,27 +37,45 @@ export function AppIconSwitcher() {
   }
 
   return (
-    <View style={styles.container}>
-      {icons.map((icon, index) => (
-        <Pressable
-          style={{ opacity: selectedIcon !== index ? 0.4 : undefined }}
-          key={index.toString()}
-          onPress={() => selectIcon(index)}>
-          <Image style={styles.appIcon} key={icon.hash} source={icon.uri} />
-        </Pressable>
-      ))}
-    </View>
+    <ScrollView
+      contentContainerStyle={styles.contentContainerStyle}
+      style={styles.container}>
+      {icons.map((icon, index) => {
+        const selected = index === selectedIcon;
+
+        return (
+          <Pressable
+            style={styles.appIconContainer(selected)}
+            key={icon.hash}
+            onPress={() => selectIcon(index)}>
+            <Image style={styles.appIcon} source={icon.uri} />
+            <RadioButton checked={selected} />
+          </Pressable>
+        );
+      })}
+    </ScrollView>
   );
 }
 
 const stylesheet = createStyleSheet({
   container: {
-    flexDirection: "row",
-    gap: 8,
+    paddingTop: 16,
   },
+  contentContainerStyle: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    rowGap: 16,
+  },
+  appIconContainer: (selected: boolean) => ({
+    width: "25%",
+    justifyContent: "center",
+    alignItems: "center",
+    opacity: !selected ? 0.4 : undefined,
+    gap: 8,
+  }),
   appIcon: {
     width: 64,
     height: 64,
-    borderRadius: 8,
+    borderRadius: 12,
   },
 });

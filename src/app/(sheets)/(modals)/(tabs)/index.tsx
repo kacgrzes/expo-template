@@ -61,11 +61,13 @@ export default function App() {
       <Link href="/languages" asChild>
         <Button title="Languages" variant="link" full />
       </Link>
+      <Link href="/app-icons" asChild>
+        <Button title="App icons" variant="link" full />
+      </Link>
       <ThemeSwitcher />
       <ActionSheetExample />
       <ContextMenuExample />
       <DropdownMenuExample />
-      <AppIconSwitcher />
     </ScrollView>
   );
 }

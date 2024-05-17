@@ -34,6 +34,12 @@ export default function Modals() {
           title: t("languages"),
         }}
       />
+      <Stack.Screen
+        name="app-icons"
+        options={{
+          title: "App icons",
+        }}
+      />
     </Stack>
   );
 }
