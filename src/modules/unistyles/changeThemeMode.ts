@@ -8,8 +8,8 @@ export const changeThemeMode = async (themeMode: ThemeMode) => {
     UnistylesRuntime.setAdaptiveThemes(true);
     setStatusBarStyle("auto");
   } else {
-    UnistylesRuntime.setAdaptiveThemes(false);
     UnistylesRuntime.setTheme(themeMode);
     setStatusBarStyle(themeMode === "light" ? "dark" : "light");
+    UnistylesRuntime.setAdaptiveThemes(false);
   }
 };

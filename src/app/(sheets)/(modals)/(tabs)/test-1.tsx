@@ -1,6 +1,13 @@
 import React from "react";
-import { Animated, StyleSheet, TextInput, View } from "react-native";
-import { useKeyboardAnimation } from "react-native-keyboard-controller";
+import { StyleSheet, TextInput, View } from "react-native";
+import {
+  useReanimatedKeyboardAnimation,
+  KeyboardStickyView,
+} from "react-native-keyboard-controller";
+import Animated, {
+  interpolate,
+  useDerivedValue,
+} from "react-native-reanimated";
 
 const styles = StyleSheet.create({
   container: {
@@ -20,11 +27,10 @@ const styles = StyleSheet.create({
 
 export default function KeyboardAnimation() {
   // 1. we need to use hook to get an access to animated values
-  const { height, progress } = useKeyboardAnimation();
+  const { height, progress } = useReanimatedKeyboardAnimation();
 
-  const scale = progress.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 2],
+  const scale = useDerivedValue(() => {
+    return interpolate(progress.value, [0, 1], [1, 2]);
   });
 
   return (
@@ -41,14 +47,16 @@ export default function KeyboardAnimation() {
           }}
         />
       </View>
-      <TextInput
-        style={{
-          width: "100%",
-          marginTop: 50,
-          height: 50,
-          backgroundColor: "yellow",
-        }}
-      />
+      <KeyboardStickyView style={{ width: "100%" }}>
+        <TextInput
+          style={{
+            width: "100%",
+            marginTop: 50,
+            height: 50,
+            backgroundColor: "yellow",
+          }}
+        />
+      </KeyboardStickyView>
     </View>
   );
 }
