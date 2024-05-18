@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.tsx",
   "scripts": {
+    "appIcon": "npx app-icon init",
     "analyzeAndroid": "source-map-explorer 'dist/_expo/static/js/android/*.js' 'dist/_expo/static/js/android/*.js.map'",
     "analyzeIos": "source-map-explorer 'dist/_expo/static/js/ios/*.js' 'dist/_expo/static/js/ios/*.js.map'",
     "analyzeWeb": "source-map-explorer 'dist/_expo/static/js/web/*.js' 'dist/_expo/static/js/web/*.js.map'",
