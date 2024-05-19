@@ -1,4 +1,5 @@
 export * from "./ActionSheetExample";
+export * from "./Avatar";
 export * from "./BackdropComponent";
 export * from "./Button";
 export * from "./CheckBox";
