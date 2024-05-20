@@ -58,6 +58,19 @@ const normalizedStories = [
       /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     ),
   },
+  {
+    titlePrefix: "feedback",
+    directory: "./modules/feedback",
+    files: "**/*.stories.?(ts|tsx|js|jsx)",
+    importPathMatcher:
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      "../modules/feedback",
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
 ];
 
 // @ts-ignore
