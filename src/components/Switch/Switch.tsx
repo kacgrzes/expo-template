@@ -9,7 +9,7 @@ import Animated, {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type SwitchProps = {
-  name: string;
+  name?: string;
 };
 
 export function Switch({ name = "Plop" }: SwitchProps) {

@@ -1,4 +1,4 @@
-import { Slot } from "expo-router";
+import { Slot, useRouter } from "expo-router";
 import {
   ScreenTrackingCallback,
   useOrientationLock,
@@ -12,10 +12,14 @@ const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
 };
 
 export default function Root() {
+  const router = useRouter();
+
   useOrientationLock();
   useQuickActionSetup();
   useScreenTracking(recordView);
-  useShakeEvent();
+  useShakeEvent(() => {
+    router.navigate("/feedback");
+  });
 
   return <Slot />;
 }

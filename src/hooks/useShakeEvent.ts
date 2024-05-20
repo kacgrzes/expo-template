@@ -2,9 +2,9 @@ import { Accelerometer } from "expo-sensors";
 import { useEffect } from "react";
 
 //this is shake sensitivity - lowering this will give high sensitivity and increasing this will give lower sensitivity
-const THRESHOLD = 150;
+const THRESHOLD = 300;
 
-export const useShakeEvent = () => {
+export const useShakeEvent = (onShakeDetected: () => void) => {
   useEffect(() => {
     let last_x: number, last_y: number, last_z: number;
     let lastUpdate = 0;
@@ -18,7 +18,7 @@ export const useShakeEvent = () => {
         const speed =
           (Math.abs(x + y + z - last_x - last_y - last_z) / diffTime) * 10000;
         if (speed > THRESHOLD) {
-          console.log("Shake detected!");
+          onShakeDetected();
         }
         last_x = x;
         last_y = y;

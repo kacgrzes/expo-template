@@ -12,6 +12,7 @@ export * from "./JSONViewer";
 export * from "./ListItem";
 export * from "./RadioButton";
 export * from "./SegmentedControl";
+export * from "./Separator";
 export * from "./SocialIcon";
 export * from "./Switch";
 export * from "./Text";
