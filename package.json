@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "src/index.tsx",
   "scripts": {
-    "appIcon": "npx app-icon init",
     "analyzeAndroid": "source-map-explorer 'dist/_expo/static/js/android/*.js' 'dist/_expo/static/js/android/*.js.map'",
     "analyzeIos": "source-map-explorer 'dist/_expo/static/js/ios/*.js' 'dist/_expo/static/js/ios/*.js.map'",
     "analyzeWeb": "source-map-explorer 'dist/_expo/static/js/web/*.js' 'dist/_expo/static/js/web/*.js.map'",
     "android": "expo run:android",
+    "appIcon": "npx app-icon init",
     "check": "npm run lint && npm run tsCheck",
     "checkExpo": "npm run doctor && npm expo install --check && npm outdated",
     "clean": "rm -rf dist && rm -rf .expo && watchman watch-del-all && rm -rf ios/ && rm -rf android/ && rm -rf /Users/kacgrzes/Library/Developer/Xcode/DerivedData && rm -rf ./node-modules/",
@@ -24,6 +24,7 @@
     "lint": "eslint .",
     "logAndroid": "npx react-native log-android",
     "logIos": "npx react-native log-ios",
+    "openInXcode": "xed ios",
     "postinstall": "patch-package",
     "prebuild": "expo prebuild --clean",
     "prebuildAndroid": "expo prebuild --clean --platform ios",
@@ -104,7 +105,8 @@
     "react-native-svg": "15.2.0",
     "react-native-unistyles": "^2.5.5",
     "zeego": "^1.10.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "expo-sharing": "~12.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
