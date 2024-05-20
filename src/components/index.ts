@@ -16,3 +16,5 @@ export * from "./Separator";
 export * from "./SocialIcon";
 export * from "./Switch";
 export * from "./Text";
+
+export * from "./TextInput";

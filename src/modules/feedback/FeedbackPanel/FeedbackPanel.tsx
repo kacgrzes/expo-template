@@ -1,10 +1,34 @@
 import { BottomSheetView } from "@gorhom/bottom-sheet";
-import { Button, Separator, Switch, Text, Title } from "components";
+import {
+  Button,
+  Separator,
+  Switch,
+  Text,
+  Title,
+  textInputFocusManager,
+} from "components";
+import { useFocusEffect } from "expo-router";
+import { useCallback } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 export function FeedbackPanel() {
   const { styles } = useStyles(stylesheet);
+
+  useFocusEffect(
+    useCallback(() => {
+      const lastTextInput = textInputFocusManager.getLastTextInput();
+      if (lastTextInput) {
+        textInputFocusManager.dismissLastTextInput();
+      }
+      return () => {
+        if (lastTextInput) {
+          textInputFocusManager.setLastTextInput(lastTextInput);
+          textInputFocusManager.focusLastTextInput();
+        }
+      };
+    }, []),
+  );
 
   return (
     <BottomSheetView style={styles.container}>

@@ -1,5 +1,6 @@
+import { TextInput } from "components";
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   useReanimatedKeyboardAnimation,
   KeyboardStickyView,
@@ -48,14 +49,7 @@ export default function KeyboardAnimation() {
         />
       </View>
       <KeyboardStickyView style={{ width: "100%" }}>
-        <TextInput
-          style={{
-            width: "100%",
-            marginTop: 50,
-            height: 50,
-            backgroundColor: "yellow",
-          }}
-        />
+        <TextInput style={{ marginTop: 50 }} />
       </KeyboardStickyView>
     </View>
   );

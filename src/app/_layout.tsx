@@ -6,7 +6,6 @@ import {
   useScreenTracking,
   useShakeEvent,
 } from "hooks";
-import { KeyboardController } from "react-native-keyboard-controller";
 
 const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
   console.log("Screen changed", { params, pathname });
@@ -19,7 +18,6 @@ export default function Root() {
   useQuickActionSetup();
   useScreenTracking(recordView);
   useShakeEvent(() => {
-    KeyboardController.dismiss();
     router.navigate("/feedback");
   });
 
