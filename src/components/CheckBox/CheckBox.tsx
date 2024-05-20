@@ -15,6 +15,11 @@ type CheckBoxProps = {
   disabled?: boolean;
 };
 
+/**
+Use when
+- you can select multiple options
+- the options are long and not consistant (more than 1 - 2 words)
+*/
 export function CheckBox({ checked, disabled }: CheckBoxProps) {
   const { theme, styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });

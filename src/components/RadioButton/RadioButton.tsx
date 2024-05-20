@@ -13,6 +13,11 @@ type RadioButtonProps = {
   onPress?: () => void;
 };
 
+/**
+Use when:
+- you can select only one option
+- the options are long and not consistant (more than 1 - 2 words)
+*/
 export function RadioButton({ checked, disabled, onPress }: RadioButtonProps) {
   const { styles } = useStyles(stylesheet);
 
