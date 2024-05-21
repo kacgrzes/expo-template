@@ -30,7 +30,7 @@ export default function Tabs() {
         name="test-1"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color }) => <Avatar />,
+          tabBarIcon: ({ color }) => <Avatar size="s" />,
         }}
       />
     </TabsRouter>
