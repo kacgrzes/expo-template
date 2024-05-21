@@ -1,3 +1,4 @@
+import { Grid } from "@grapp/stacks";
 import { Image } from "expo-image";
 import { Slot, useRouter } from "expo-router";
 import {
@@ -7,7 +8,7 @@ import {
   useScreenTracking,
   useShakeEvent,
 } from "hooks";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { isDeveloopment } from "utils";
 
 const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
@@ -31,5 +32,10 @@ export default function Root() {
     router.navigate("/feedback");
   });
 
-  return <Slot />;
+  return (
+    <Fragment>
+      <Slot />
+      <Grid columns={8} margin={4} gutter={4} color="#34BDFF" opacity={0.2} />
+    </Fragment>
+  );
 }

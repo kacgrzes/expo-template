@@ -47,6 +47,7 @@
     "@expo-google-fonts/ibm-plex-serif": "^0.2.3",
     "@expo/react-native-action-sheet": "^4.1.0",
     "@gorhom/bottom-sheet": "^5.0.0-alpha.10",
+    "@grapp/stacks": "^3.1.0",
     "@hookform/resolvers": "^3.4.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/datetimepicker": "8.0.1",

@@ -10,7 +10,6 @@ import {
 } from "components";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
-import { AppIconSwitcher } from "unistyles/AppIconSwitcher";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";

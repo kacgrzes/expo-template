@@ -20,6 +20,10 @@ const common = {
     16: 64,
   },
   opacity: 0.4,
+  stacks: {
+    spacing: 4,
+    debug: true,
+  },
 } as const;
 
 export const lightTheme = {
