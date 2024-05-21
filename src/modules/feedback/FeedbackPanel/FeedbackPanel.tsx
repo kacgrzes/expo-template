@@ -8,27 +8,25 @@ import {
   textInputFocusManager,
 } from "components";
 import { useFocusEffect } from "expo-router";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 export function FeedbackPanel() {
   const { styles } = useStyles(stylesheet);
 
-  useFocusEffect(
-    useCallback(() => {
-      const lastTextInput = textInputFocusManager.getLastTextInput();
+  useEffect(() => {
+    const lastTextInput = textInputFocusManager.getLastTextInput();
+    if (lastTextInput) {
+      textInputFocusManager.dismissLastTextInput();
+    }
+    return () => {
       if (lastTextInput) {
-        textInputFocusManager.dismissLastTextInput();
+        textInputFocusManager.setLastTextInput(lastTextInput);
+        textInputFocusManager.focusLastTextInput();
       }
-      return () => {
-        if (lastTextInput) {
-          textInputFocusManager.setLastTextInput(lastTextInput);
-          textInputFocusManager.focusLastTextInput();
-        }
-      };
-    }, []),
-  );
+    };
+  }, []);
 
   return (
     <BottomSheetView style={styles.container}>
