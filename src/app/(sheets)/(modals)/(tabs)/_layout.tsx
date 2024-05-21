@@ -1,6 +1,6 @@
 import { Avatar } from "components";
 import { Tabs as TabsRouter } from "expo-router";
-import { Home, UserRound } from "lucide-react-native";
+import { Home } from "lucide-react-native";
 import { useStyles } from "react-native-unistyles";
 
 export default function Tabs() {
@@ -27,7 +27,7 @@ export default function Tabs() {
         }}
       />
       <TabsRouter.Screen
-        name="test-1"
+        name="profile"
         options={{
           title: "Profile",
           tabBarIcon: ({ color }) => <Avatar size="s" />,
