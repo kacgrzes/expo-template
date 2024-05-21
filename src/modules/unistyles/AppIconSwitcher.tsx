@@ -1,11 +1,10 @@
-import { Image } from "expo-image";
 import { useEffect, useState } from "react";
 import { listAppIcons, getIconName, setAppIcon } from "./appIcon";
 import { Asset } from "expo-asset";
 import { Pressable, ScrollView } from "react-native";
 import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
-import { RadioButton } from "components";
+import { Image, RadioButton } from "components";
 
 export function AppIconSwitcher() {
   const [icons, setAppIcons] = useState<Asset[] | undefined>();
