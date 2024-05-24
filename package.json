@@ -8,6 +8,7 @@
     "analyzeWeb": "source-map-explorer 'dist/_expo/static/js/web/*.js' 'dist/_expo/static/js/web/*.js.map'",
     "android": "expo run:android",
     "appIcon": "npx app-icon init",
+    "atlas": "npx expo-atlas .expo/atlas.jsonl",
     "check": "npm run lint && npm run tsCheck",
     "checkExpo": "npm run doctor && npm expo install --check && npm outdated",
     "clean": "rm -rf dist && rm -rf .expo && watchman watch-del-all && rm -rf ios/ && rm -rf android/ && rm -rf /Users/kacgrzes/Library/Developer/Xcode/DerivedData && rm -rf ./node-modules/",
@@ -15,9 +16,9 @@
     "deeplink": "uri-scheme open --ios expo-template://index",
     "devtools": "npx react-devtools",
     "doctor": "npx expo-doctor && npx react-compiler-healthcheck",
-    "exportSourceMapsAndroid": "npx expo export --source-maps --platform android --no-bytecode",
-    "exportSourceMapsIos": "npx expo export --source-maps --platform ios --no-bytecode",
-    "exportSourceMapsWeb": "npx expo export --source-maps --platform web",
+    "exportSourceMapsAndroid": "EXPO_UNSTABLE_ATLAS=true npx expo export --source-maps --platform android --no-bytecode",
+    "exportSourceMapsIos": "EXPO_UNSTABLE_ATLAS=true npx expo export --source-maps --platform ios --no-bytecode",
+    "exportSourceMapsWeb": "EXPO_UNSTABLE_ATLAS=true npx expo export --source-maps --platform web",
     "generate": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=plopfile.ts",
     "ios": "expo run:ios",
     "iosDevice": "expo run:ios --device",
@@ -30,7 +31,7 @@
     "prebuildAndroid": "expo prebuild --clean --platform ios",
     "prebuildIos": "expo prebuild --clean --platform ios",
     "prepareI18next": "i18next-resources-for-ts interface -i ./modules/i18n/locales -o ./@types/resources.d.ts",
-    "start": "EXPO_USE_FAST_RESOLVER=1 && expo start",
+    "start": "EXPO_USE_FAST_RESOLVER=1 EXPO_UNSTABLE_ATLAS=true expo start",
     "startProduction": "expo start --no-dev --minify",
     "storybookGenerate": "sb-rn-get-stories",
     "test": "jest --watch --coverage=false --changedSince=origin/main",
@@ -142,7 +143,8 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.11.0",
     "typescript": "~5.3.3",
-    "uri-scheme": "^1.2.1"
+    "uri-scheme": "^1.2.1",
+    "expo-atlas": "^0.3.0"
   },
   "private": true
 }
