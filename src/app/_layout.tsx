@@ -3,6 +3,7 @@ import { Image } from "expo-image";
 import { Slot, useRouter } from "expo-router";
 import {
   ScreenTrackingCallback,
+  useDevMenuItem,
   useOrientationLock,
   useQuickActionSetup,
   useScreenTracking,
@@ -17,6 +18,7 @@ const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
 
 export default function Root() {
   const router = useRouter();
+  const enabled = useDevMenuItem("stack-debug-enabled");
 
   useEffect(() => {
     if (isDeveloopment) {
@@ -35,7 +37,9 @@ export default function Root() {
   return (
     <Fragment>
       <Slot />
-      <Grid columns={8} margin={4} gutter={4} color="#34BDFF" opacity={0.2} />
+      {enabled ? (
+        <Grid columns={8} margin={4} gutter={4} color="#34BDFF" opacity={0.2} />
+      ) : null}
     </Fragment>
   );
 }

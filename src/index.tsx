@@ -6,7 +6,7 @@ import "unistyles";
 
 import { registerRootComponent } from "expo";
 import { ExpoRoot } from "expo-router";
-import { useStorybook } from "hooks";
+import { useDevMenuItem, useRegisterDevMenuItems } from "hooks";
 import { setupOnAppStart } from "setupOnAppStart";
 
 import Storybook from "./.storybook";
@@ -15,7 +15,8 @@ import { Providers } from "./Providers";
 setupOnAppStart();
 
 function Root() {
-  const [enabled] = useStorybook();
+  useRegisterDevMenuItems();
+  const enabled = useDevMenuItem("storybook-enabled");
 
   if (!enabled) {
     // @ts-ignore
