@@ -15,6 +15,7 @@ import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { ThemeSwitcher } from "unistyles";
 import { env } from "utils";
+import { isHermes } from "utils/isHermes";
 
 export default function App() {
   const { styles } = useStyles(stylesheet);
@@ -30,6 +31,7 @@ export default function App() {
         <Text>Open up App.js to start working on your app!{"\n"}</Text>
         <Text>{t("Welcome to React")}</Text>
       </Text>
+      <Text>{isHermes ? <Text>Welcome to Hermes</Text> : null}</Text>
       <Button
         full
         title={`Current language: ${i18n.language}`}
