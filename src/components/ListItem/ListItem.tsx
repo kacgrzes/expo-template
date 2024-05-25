@@ -1,4 +1,4 @@
-import { icons, ChevronRight } from "lucide-react-native";
+import { ChevronRight, LucideIcon } from "lucide-react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedRectButton } from "../AnimatedButtons";
@@ -7,12 +7,11 @@ import { Text } from "../Text";
 type ListItemProps = {
   onPress: () => void;
   title: string;
-  icon?: keyof typeof icons;
+  icon?: LucideIcon;
 };
 
-export function ListItem({ title, onPress, icon }: ListItemProps) {
+export function ListItem({ title, onPress, icon: Icon }: ListItemProps) {
   const { styles, theme } = useStyles(stylesheet);
-  const Icon = icon ? icons[icon] : null;
 
   return (
     <AnimatedRectButton

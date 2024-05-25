@@ -5,6 +5,7 @@ import { ScrollView, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { Version } from "../../components/Version";
+import { Clipboard, FileCheck, LockKeyhole } from "lucide-react-native";
 
 export function AboutScreen() {
   const router = useRouter();
@@ -16,13 +17,13 @@ export function AboutScreen() {
         <Title>{applicationName}</Title>
       </View>
       <ListItem
-        icon="Clipboard"
+        icon={Clipboard}
         title="Terms and conditions"
         onPress={() => {}}
       />
-      <ListItem icon="LockKeyhole" title="Privacy policy" onPress={() => {}} />
+      <ListItem icon={LockKeyhole} title="Privacy policy" onPress={() => {}} />
       <ListItem
-        icon="FileCheck"
+        icon={FileCheck}
         title="Licenses"
         onPress={() => {
           router.navigate("/licenses");

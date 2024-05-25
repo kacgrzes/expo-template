@@ -18,17 +18,21 @@ function Root() {
   useRegisterDevMenuItems();
   const enabled = useDevMenuItem("storybook-enabled");
 
-  if (!enabled) {
+  if (!enabled || !__DEV__) {
     // @ts-ignore
     const ctx = require.context("./app");
     return <ExpoRoot context={ctx} wrapper={Providers} />;
   }
 
-  return (
-    <Providers>
-      <Storybook />
-    </Providers>
-  );
+  if (__DEV__ && enabled) {
+    return (
+      <Providers>
+        <Storybook />
+      </Providers>
+    );
+  }
+
+  return null;
 }
 
 registerRootComponent(Root);
