@@ -4,6 +4,7 @@ import {
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
   TextInputFocusEventData,
+  View,
 } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -46,7 +47,12 @@ class TextInputFocusManager {
 
 export const textInputFocusManager = new TextInputFocusManager();
 
-export function TextInput({ onBlur, onFocus, ...props }: TextInputProps) {
+export function TextInput({
+  onBlur,
+  onFocus,
+  style,
+  ...props
+}: TextInputProps) {
   const { styles, theme } = useStyles(stylesheet);
   const ref = useRef<RNTextInput>(null);
   const isFocused = useSharedValue(false);
@@ -69,7 +75,7 @@ export function TextInput({ onBlur, onFocus, ...props }: TextInputProps) {
     [onFocus, isFocused],
   );
 
-  const focusedStyle = useAnimatedStyle(() => {
+  const focusedStyleTextInput = useAnimatedStyle(() => {
     return {
       borderColor: withTiming(
         isFocused.value ? theme.colors.accent : theme.colors.typography,
@@ -78,25 +84,37 @@ export function TextInput({ onBlur, onFocus, ...props }: TextInputProps) {
     };
   });
 
+  const focusedStyleView = useAnimatedStyle(() => {
+    return {
+      borderColor: withTiming(
+        isFocused.value ? theme.colors.accent + "50" : "transparent",
+        { duration: 300 },
+      ),
+    };
+  });
+
   return (
-    <AnimatedTextInput
-      ref={ref}
-      {...props}
-      autoCapitalize={"none"}
-      autoComplete="off"
-      cursorColor={theme.colors.accent}
-      dataDetectorTypes="none"
-      inputMode="text"
-      keyboardType="default"
-      onBlur={handleBlur}
-      onFocus={handleFocus}
-      placeholderTextColor={theme.colors.typography}
-      selectionColor={theme.colors.accent}
-      spellCheck={false}
-      style={[styles.textInput, props.style, focusedStyle]}
-      textAlign="left"
-      textContentType="none"
-    />
+    <Animated.View
+      style={[{ borderWidth: 2, borderRadius: 6 }, focusedStyleView, style]}>
+      <AnimatedTextInput
+        ref={ref}
+        {...props}
+        autoCapitalize={"none"}
+        autoComplete="off"
+        cursorColor={theme.colors.accent}
+        dataDetectorTypes="none"
+        inputMode="text"
+        keyboardType="default"
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        placeholderTextColor={theme.colors.typography}
+        selectionColor={theme.colors.accent}
+        spellCheck={false}
+        style={[styles.textInput, focusedStyleTextInput]}
+        textAlign="left"
+        textContentType="none"
+      />
+    </Animated.View>
   );
 }
 
