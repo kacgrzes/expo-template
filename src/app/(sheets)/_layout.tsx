@@ -2,7 +2,7 @@ import { BackdropComponent } from "components";
 import { BottomSheet } from "layouts";
 import { FullWindowOverlay } from "react-native-screens";
 import { BottomSheetNavigationOptions } from "@th3rdwave/react-navigation-bottom-sheet";
-import { useStyles, UnistylesRuntime } from "react-native-unistyles";
+import { UnistylesRuntime } from "react-native-unistyles";
 
 const COMMON_OPTIONS: BottomSheetNavigationOptions = {
   containerComponent: FullWindowOverlay as any,
@@ -19,7 +19,7 @@ const EXAMPLE_SHEET_OPTIONS: BottomSheetNavigationOptions = {
   style: {
     marginHorizontal: 24,
   },
-  bottomInset: UnistylesRuntime.insets.bottom,
+  bottomInset: UnistylesRuntime.insets.bottom ?? 24,
   backdropComponent: null,
 };
 
