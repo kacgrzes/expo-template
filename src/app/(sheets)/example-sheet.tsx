@@ -12,8 +12,10 @@ export default function ExampleSheet() {
   );
 }
 
-const stylesheet = createStyleSheet({
-  container: {
-    padding: 24,
-  },
+const stylesheet = createStyleSheet(() => {
+  return {
+    container: {
+      padding: 24,
+    },
+  };
 });
