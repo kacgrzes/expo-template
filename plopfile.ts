@@ -17,7 +17,7 @@ export default function (plop: NodePlopAPI) {
       {
         type: "add",
         path: "src/components/{{name}}/index.ts",
-        template: 'export * from "./{{pascalCase name}}";',
+        template: 'export * from "./{{pascalCase name}}";\n',
         skipIfExists: true,
       },
       {
