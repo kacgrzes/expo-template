@@ -1,31 +1,26 @@
-import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { Text } from "./Text";
+import { Box, BoxProps } from "@grapp/stacks";
 
 type JSONViewerProps = {
   content: object;
-};
+} & BoxProps;
 
-export function JSONViewer({ content }: JSONViewerProps) {
+export function JSONViewer({ content, ...rest }: JSONViewerProps) {
   const { styles } = useStyles(stylesheet);
 
   return (
-    <View style={styles.jsonViewer}>
-      <Text style={styles.mono}>{JSON.stringify(content, null, 2)}</Text>
-    </View>
+    <Box borderRadius={8} padding={4} style={styles.jsonViewer} {...rest}>
+      <Text variant="code">{JSON.stringify(content, null, 2)}</Text>
+    </Box>
   );
 }
 
-const stylesheet = createStyleSheet((theme, runtime) => {
+const stylesheet = createStyleSheet((_, runtime) => {
   return {
     jsonViewer: {
-      padding: 16,
       backgroundColor: runtime.themeName === "dark" ? "#202020" : "#e6e6e6",
-      borderRadius: 8,
-    },
-    mono: {
-      fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
     },
   };
 });

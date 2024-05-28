@@ -9,7 +9,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 type TextAlign = TextStyle["textAlign"];
 type TextProps = TextComponentProps & {
   textAlign?: TextAlign;
-  variant?: "body" | "title";
+  variant?: "body" | "code" | "title";
 };
 
 export function Text({
@@ -41,6 +41,10 @@ const stylesheet = createStyleSheet((theme) => {
           body: {
             fontSize: 16,
             fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
+          },
+          code: {
+            fontSize: 14,
+            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
           },
           title: {
             fontSize: 24,
