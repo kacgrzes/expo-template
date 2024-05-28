@@ -7,7 +7,7 @@ import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 
-type ButtonProps = {
+export type ButtonProps = {
   disabled?: boolean;
   full?: boolean;
   title: string;

@@ -8,6 +8,7 @@ export * from "./Chip";
 export * from "./ContextMenuExample";
 export * from "./Dropdown";
 export * from "./DropdownMenuExample";
+export * from "./EmptyState";
 export * from "./Fallback";
 export * from "./Image";
 export * from "./JSONViewer";
