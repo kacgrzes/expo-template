@@ -1,5 +1,4 @@
 import { Grid } from "@grapp/stacks";
-import { Image } from "expo-image";
 import { Slot, useRouter } from "expo-router";
 import {
   ScreenTrackingCallback,
@@ -9,8 +8,7 @@ import {
   useScreenTracking,
   useShakeEvent,
 } from "hooks";
-import { Fragment, useEffect } from "react";
-import { isDeveloopment } from "utils";
+import { Fragment } from "react";
 
 const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
   console.log("Screen changed", { params, pathname });
@@ -19,13 +17,6 @@ const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
 export default function Root() {
   const router = useRouter();
   const enabled = useDevMenuItem("stack-debug-enabled");
-
-  useEffect(() => {
-    if (isDeveloopment) {
-      Image.clearDiskCache();
-      Image.clearMemoryCache();
-    }
-  }, []);
 
   useOrientationLock();
   useQuickActionSetup();

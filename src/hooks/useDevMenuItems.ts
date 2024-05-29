@@ -1,4 +1,5 @@
 import { DevMenu, isDevelopmentBuild } from "expo-dev-client";
+import { Image } from "expo-image";
 import { useEffect } from "react";
 import { useMMKVObject } from "react-native-mmkv";
 
@@ -29,8 +30,8 @@ export const useRegisterDevMenuItems = () => {
     if (!isDevelopmentBuild()) {
       return;
     }
-    DevMenu.registerDevMenuItems(
-      ITEMS.map((item) => {
+    DevMenu.registerDevMenuItems([
+      ...ITEMS.map((item) => {
         return {
           name: item.title,
           shouldCollapse: true,
@@ -44,7 +45,14 @@ export const useRegisterDevMenuItems = () => {
           },
         };
       }),
-    );
+      {
+        name: "Clear Image cache",
+        callback: () => {
+          Image.clearDiskCache();
+          Image.clearMemoryCache();
+        },
+      },
+    ]);
   }, [setValue]);
 };
 
