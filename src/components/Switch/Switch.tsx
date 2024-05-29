@@ -1,4 +1,3 @@
-import { Switch as RNSwitch } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   interpolate,
@@ -8,11 +7,9 @@ import Animated, {
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-type SwitchProps = {
-  name?: string;
-};
+type SwitchProps = {};
 
-export function Switch({ name = "Plop" }: SwitchProps) {
+export function Switch({}: SwitchProps) {
   const value = useSharedValue(0);
   const isHeld = useSharedValue(0);
   const { styles } = useStyles(stylesheet);

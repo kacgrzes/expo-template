@@ -7,8 +7,7 @@ import {
   Title,
   textInputFocusManager,
 } from "components";
-import { useFocusEffect } from "expo-router";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 

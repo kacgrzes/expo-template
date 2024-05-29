@@ -1,10 +1,9 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import {
   NativeSyntheticEvent,
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
   TextInputFocusEventData,
-  View,
 } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -93,9 +92,30 @@ export function TextInput({
     };
   });
 
+  const focusedStyleText = useAnimatedStyle(() => {
+    return {
+      top: withTiming(isFocused.value ? 4 : 10, { duration: 300 }),
+      fontSize: withTiming(isFocused.value ? 12 : 16, { duration: 300 }),
+      color: withTiming(
+        isFocused.value ? theme.colors.accent : theme.colors.typography,
+        { duration: 300 },
+      ),
+    };
+  });
+
   return (
-    <Animated.View
-      style={[{ borderWidth: 2, borderRadius: 6 }, focusedStyleView, style]}>
+    <Animated.View style={[{ justifyContent: "center" }, style]}>
+      <Animated.Text
+        style={[
+          {
+            position: "absolute",
+            zIndex: 2,
+            left: 10,
+          },
+          focusedStyleText,
+        ]}>
+        Hello
+      </Animated.Text>
       <AnimatedTextInput
         ref={ref}
         {...props}

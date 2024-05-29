@@ -1,2 +1,7 @@
 /.expo
-node_modules
+android/
+assets/
+dist/
+ios/
+node_modules/
+templates/

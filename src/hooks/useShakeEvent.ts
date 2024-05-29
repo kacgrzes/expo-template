@@ -27,5 +27,5 @@ export const useShakeEvent = (onShakeDetected: () => void) => {
     });
 
     return subscription.remove;
-  }, []);
+  }, [onShakeDetected]);
 };
