@@ -13,4 +13,12 @@ const AvatarMeta: Meta<typeof Avatar> = {
 
 export default AvatarMeta;
 
-export const Default: StoryObj<typeof Avatar> = {};
+export const Default: StoryObj<typeof Avatar> = {
+  args: {
+    source: {
+      uri: "https://i.pravatar.cc/64",
+    },
+  },
+};
+
+export const Initials: StoryObj<typeof Image> = {};

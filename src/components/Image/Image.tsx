@@ -1,7 +1,7 @@
 import { Image as ExpoImage, ImageProps as ExpoImageProps } from "expo-image";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-type ImageProps = ExpoImageProps;
+export type ImageProps = ExpoImageProps;
 
 export function Image({
   style,

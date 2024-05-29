@@ -1,12 +1,19 @@
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "../Text";
+import { Image, ImageProps } from "../Image";
 
 type Size = "s" | "m" | "l";
 
 type AvatarProps = {
+  /**
+   * Size of the avatar
+   * - "s" - Small - bottom tab bars, navigation, etc.
+   * - "m" - Medium - list or content blocks
+   * - "l" - Large - within profile or settings screen
+   */
   size?: Size;
-};
+} & Pick<ImageProps, "source">;
 
 /**
  * Avatar component
@@ -16,10 +23,14 @@ type AvatarProps = {
  * - "m" - Medium - list or content blocks
  * - "l" - Large - within profile or settings screen
  */
-export function Avatar({ size = "m" }: AvatarProps) {
+export function Avatar({ size = "m", source }: AvatarProps) {
   const { styles } = useStyles(stylesheet, {
     size,
   });
+
+  if (source) {
+    return <Image source={source} style={styles.avatar} />;
+  }
 
   return (
     <View style={styles.avatar}>
@@ -32,6 +43,9 @@ const stylesheet = createStyleSheet((theme) => {
   return {
     avatar: {
       aspectRatio: 1,
+      backgroundColor: theme.colors.typography,
+      justifyContent: "center",
+      alignItems: "center",
       variants: {
         size: {
           s: {
@@ -49,11 +63,13 @@ const stylesheet = createStyleSheet((theme) => {
             width: 64,
             borderRadius: 32,
           },
+          default: {
+            height: 40,
+            width: 40,
+            borderRadius: 20,
+          },
         },
       },
-      backgroundColor: theme.colors.typography,
-      justifyContent: "center",
-      alignItems: "center",
     },
     text: {
       color: theme.colors.background,
@@ -67,6 +83,9 @@ const stylesheet = createStyleSheet((theme) => {
           },
           l: {
             fontSize: 32,
+          },
+          default: {
+            fontSize: 20,
           },
         },
       },
