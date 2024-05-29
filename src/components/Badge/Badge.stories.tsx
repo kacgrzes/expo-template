@@ -11,4 +11,10 @@ const BadgeMeta: Meta<typeof Badge> = {
 
 export default BadgeMeta;
 
-export const Default: StoryObj<typeof Badge> = {};
+export const Default: StoryObj<typeof Badge> = {
+  args: {
+    value: 24,
+  },
+};
+
+export const Dot: StoryObj<typeof Badge> = {};

@@ -6,6 +6,7 @@ export * from "./Button";
 export * from "./CheckBox";
 export * from "./Chip";
 export * from "./ContextMenuExample";
+export * from "./Dot";
 export * from "./Dropdown";
 export * from "./DropdownMenuExample";
 export * from "./EmptyState";

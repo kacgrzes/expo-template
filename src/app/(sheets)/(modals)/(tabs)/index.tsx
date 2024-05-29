@@ -47,7 +47,7 @@ export default function App() {
         }}
       />
       <Text>{formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}</Text>
-      <JSONViewer content={env} />
+      <JSONViewer width={"100%"} marginY={4} content={env} />
       <Button
         full
         title={session ? "Sign out" : "Sign in"}
