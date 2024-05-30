@@ -1,10 +1,11 @@
-import { Avatar } from "components";
+import { Avatar, useBadgeStyle } from "components";
 import { Tabs as TabsRouter } from "expo-router";
 import { Home } from "lucide-react-native";
 import { useStyles } from "react-native-unistyles";
 
 export default function Tabs() {
   const { theme } = useStyles();
+  const tabBarBadgeStyle = useBadgeStyle();
 
   return (
     <TabsRouter
@@ -24,6 +25,8 @@ export default function Tabs() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => <Home size={24} color={color} />,
+          tabBarBadge: 3,
+          tabBarBadgeStyle,
         }}
       />
       <TabsRouter.Screen
