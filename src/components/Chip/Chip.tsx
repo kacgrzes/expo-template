@@ -25,7 +25,6 @@ const stylesheet = createStyleSheet((theme) => {
   return {
     container: {
       alignItems: "center",
-      alignSelf: "flex-start",
       backgroundColor: theme.colors.typography,
       borderRadius: 20,
       flexDirection: "row",

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { View } from "react-native";
 
 import { Button } from "./Button";
 
@@ -12,13 +11,6 @@ const ButtonMeta: Meta<typeof Button> = {
   args: {
     title: "Hello world",
   },
-  decorators: [
-    (Story) => (
-      <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-        <Story />
-      </View>
-    ),
-  ],
 };
 
 export default ButtonMeta;
@@ -56,9 +48,4 @@ export const FullWidth: StoryObj<typeof Button> = {
     full: true,
     title: "Full Width Button",
   },
-  render: (props) => (
-    <View style={{ padding: 20, flexDirection: "column", width: "100%" }}>
-      <Button {...props} />
-    </View>
-  ),
 };
