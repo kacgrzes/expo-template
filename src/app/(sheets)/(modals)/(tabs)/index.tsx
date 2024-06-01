@@ -14,8 +14,7 @@ import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { ThemeSwitcher } from "unistyles";
-import { env } from "utils";
-import { isHermes } from "utils/isHermes";
+import { env, isHermes } from "utils";
 
 export default function App() {
   const { styles } = useStyles(stylesheet);

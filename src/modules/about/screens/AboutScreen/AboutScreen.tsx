@@ -19,9 +19,17 @@ export function AboutScreen() {
       <ListItem
         icon={Clipboard}
         title="Terms and conditions"
-        onPress={() => {}}
+        onPress={() => {
+          router.navigate("/terms-and-conditions");
+        }}
       />
-      <ListItem icon={LockKeyhole} title="Privacy policy" onPress={() => {}} />
+      <ListItem
+        icon={LockKeyhole}
+        title="Privacy policy"
+        onPress={() => {
+          router.navigate("/privacy-policy");
+        }}
+      />
       <ListItem
         icon={FileCheck}
         title="Licenses"

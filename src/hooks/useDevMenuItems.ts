@@ -1,11 +1,13 @@
 import { DevMenu, isDevelopmentBuild } from "expo-dev-client";
 import { Image } from "expo-image";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useMMKVObject } from "react-native-mmkv";
+import { mmkv } from "utils";
 
 type DevMenuItem = {
   key: string;
   title: string;
+  callback?: () => void;
 };
 
 const ITEMS: DevMenuItem[] = [
@@ -15,25 +17,22 @@ const ITEMS: DevMenuItem[] = [
   },
   {
     key: "stack-debug-enabled",
-    title: "Toggle Stack debug",
+    title: `Toggle Stack debug`,
   },
 ] as const;
 
 const useDevMenuItems = () => {
-  return useMMKVObject<{ [key: string]: boolean }>("dev-menu-items");
+  return useMMKVObject<{ [key: string]: boolean }>("dev-menu-items", mmkv);
 };
 
 export const useRegisterDevMenuItems = () => {
-  const setValue = useDevMenuItems()[1];
+  const [value, setValue] = useDevMenuItems();
 
-  useEffect(() => {
-    if (!isDevelopmentBuild()) {
-      return;
-    }
+  const registerDevMenuItems = useCallback(() => {
     DevMenu.registerDevMenuItems([
       ...ITEMS.map((item) => {
         return {
-          name: item.title,
+          name: `${item.title} (${value?.[item.key] ? "enabled" : "disabled"})`,
           shouldCollapse: true,
           callback: () => {
             setValue((prevValue) => {
@@ -42,6 +41,7 @@ export const useRegisterDevMenuItems = () => {
                 [item.key]: !prevValue?.[item.key],
               };
             });
+            item.callback?.();
           },
         };
       }),
@@ -53,7 +53,15 @@ export const useRegisterDevMenuItems = () => {
         },
       },
     ]);
-  }, [setValue]);
+  }, [value, setValue]);
+
+  useEffect(() => {
+    if (!isDevelopmentBuild()) {
+      return;
+    }
+
+    registerDevMenuItems();
+  }, [setValue, registerDevMenuItems]);
 };
 
 export const useDevMenuItem = (

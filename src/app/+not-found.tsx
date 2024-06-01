@@ -1,24 +1,35 @@
-import { Link } from "expo-router";
-import { Text } from "react-native";
+import { Box } from "@grapp/stacks";
+import { ListItem, Text } from "components";
+import { useRouter } from "expo-router";
+import { Home, Map } from "lucide-react-native";
+import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { isDeveloopment } from "utils";
+import { isDevelopment } from "utils";
 
 export default function NotFound() {
   const { styles } = useStyles(stylesheet);
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Not found!</Text>
-      <Link href="/">
-        <Text>Go back home</Text>
-      </Link>
-      {isDeveloopment && (
-        // @ts-ignore
-        <Link href="_sitemap">
-          <Text>Sitemap</Text>
-        </Link>
-      )}
+      <ScrollView>
+        <Box padding={6} alignX={"center"} alignY={"center"}>
+          <Text variant="title">Not found!</Text>
+        </Box>
+        <ListItem
+          icon={Home}
+          title="Go back home"
+          onPress={() => router.navigate("/")}
+        />
+        {isDevelopment ? (
+          <ListItem
+            icon={Map}
+            title="Sitemap"
+            onPress={() => router.navigate("_sitemap")}
+          />
+        ) : null}
+      </ScrollView>
     </SafeAreaView>
   );
 }
