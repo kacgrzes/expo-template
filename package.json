@@ -53,7 +53,7 @@
     "@grapp/stacks": "^3.1.0",
     "@hookform/resolvers": "^3.4.0",
     "@react-native-async-storage/async-storage": "1.23.1",
-    "@react-native-community/datetimepicker": "^8.1.0",
+    "@react-native-community/datetimepicker": "8.0.1",
     "@react-native-community/hooks": "^3.0.0",
     "@react-native-community/slider": "4.5.2",
     "@react-native-menu/menu": "^1.0.3",

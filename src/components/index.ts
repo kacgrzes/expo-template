@@ -11,6 +11,7 @@ export * from "./Dropdown";
 export * from "./DropdownMenuExample";
 export * from "./EmptyState";
 export * from "./Fallback";
+export * from "./FlatList";
 export * from "./Image";
 export * from "./JSONViewer";
 export * from "./ListItem";
