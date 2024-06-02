@@ -15,6 +15,7 @@ export * from "./FlatList";
 export * from "./Image";
 export * from "./JSONViewer";
 export * from "./ListItem";
+export * from "./PasswordInput";
 export * from "./RadioButton";
 export * from "./SegmentedControl";
 export * from "./Separator";

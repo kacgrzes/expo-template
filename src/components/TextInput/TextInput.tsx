@@ -1,5 +1,11 @@
 import { useShakeAnimation } from "hooks";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import {
+  ReactNode,
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import {
   NativeSyntheticEvent,
   TextInput as RNTextInput,
@@ -15,8 +21,10 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 
-type TextInputProps = Omit<RNTextInputProps, "editable"> & {
+export type TextInputProps = Omit<RNTextInputProps, "editable"> & {
   disabled?: boolean;
+  left?: ReactNode;
+  right?: ReactNode;
 };
 
 class TextInputFocusManager {
@@ -62,7 +70,10 @@ export const useTextInputRef = () => {
 export const textInputFocusManager = new TextInputFocusManager();
 
 export const TextInput = forwardRef<TextInputRef, TextInputProps>(
-  ({ disabled, onBlur, onFocus, style, ...props }, outerRef) => {
+  (
+    { disabled, onBlur, onFocus, style, left = null, right = null, ...props },
+    outerRef,
+  ) => {
     const { shake, shakeAnimatedStyle } = useShakeAnimation();
     const { styles, theme } = useStyles(stylesheet);
     const innerRef = useRef<RNTextInput>(null);
@@ -134,11 +145,12 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     return (
       <Animated.View
         style={[
-          { justifyContent: "center" },
+          styles.textInputContainer,
           style,
           shakeAnimatedStyle,
           disabledAnimatedStyle,
         ]}>
+        {left}
         <Animated.Text
           style={[
             {
@@ -169,6 +181,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
           textAlign="left"
           textContentType="none"
         />
+        {right}
       </Animated.View>
     );
   },
@@ -178,14 +191,20 @@ TextInput.displayName = "TextInput";
 
 const stylesheet = createStyleSheet((theme) => {
   return {
-    textInput: {
+    textInputContainer: {
       backgroundColor: theme.colors.background,
-      color: theme.colors.typography,
-      padding: 10,
+      borderColor: theme.colors.typography,
       borderRadius: 5,
       borderWidth: 1,
-      borderColor: theme.colors.typography,
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    textInput: {
+      color: theme.colors.typography,
+      flexGrow: 1,
       fontSize: 16,
+      padding: 10,
     },
   };
 });
