@@ -1,4 +1,4 @@
-import { TextInput } from "components";
+import { Button, TextInput, useTextInputRef } from "components";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import {
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
 export default function KeyboardAnimation() {
   // 1. we need to use hook to get an access to animated values
   const { height, progress } = useReanimatedKeyboardAnimation();
+  const textInputRef = useTextInputRef();
 
   const scale = useDerivedValue(() => {
     return interpolate(progress.value, [0, 1], [1, 2]);
@@ -39,17 +40,37 @@ export default function KeyboardAnimation() {
       <View style={styles.row}>
         <Animated.View
           style={{
-            width: 50,
-            height: 50,
-            backgroundColor: "#17fc03",
-            borderRadius: 15,
             // 2. we can apply any transformations we want
-            transform: [{ translateY: height }, { scale }],
-          }}
-        />
+            transform: [{ translateY: height }],
+          }}>
+          <Button
+            title="shake"
+            onPress={() => {
+              textInputRef.current?.shake();
+            }}
+          />
+          <Button
+            title="focus"
+            onPress={() => {
+              textInputRef.current?.focus();
+            }}
+          />
+          <Button
+            title="blur"
+            onPress={() => {
+              textInputRef.current?.blur();
+            }}
+          />
+          <Button
+            title="clear"
+            onPress={() => {
+              textInputRef.current?.clear();
+            }}
+          />
+        </Animated.View>
       </View>
       <KeyboardStickyView style={{ width: "100%" }}>
-        <TextInput style={{ marginTop: 50 }} />
+        <TextInput ref={textInputRef} style={{ marginTop: 50 }} />
       </KeyboardStickyView>
     </View>
   );
