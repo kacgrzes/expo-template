@@ -114,6 +114,12 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       };
     });
 
+    const disabledAnimatedStyle = useAnimatedStyle(() => {
+      return {
+        opacity: withTiming(disabled ? theme.opacity : 1, { duration: 300 }),
+      };
+    }, [disabled, theme.opacity]);
+
     const focusedStyleText = useAnimatedStyle(() => {
       return {
         top: withTiming(isFocused.value ? 4 : 10, { duration: 300 }),
@@ -128,9 +134,10 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     return (
       <Animated.View
         style={[
-          { justifyContent: "center", opacity: disabled ? theme.opacity : 1 },
+          { justifyContent: "center" },
           style,
           shakeAnimatedStyle,
+          disabledAnimatedStyle,
         ]}>
         <Animated.Text
           style={[
