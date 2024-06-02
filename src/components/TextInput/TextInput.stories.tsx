@@ -6,7 +6,12 @@ const TextInputMeta: Meta<typeof TextInput> = {
   title: "TextInput",
   component: TextInput,
   argTypes: {},
-  args: {},
+  args: {
+    style: {
+      width: "100%",
+    },
+    disabled: true,
+  },
 };
 
 export default TextInputMeta;

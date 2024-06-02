@@ -15,7 +15,9 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 
-type TextInputProps = RNTextInputProps;
+type TextInputProps = Omit<RNTextInputProps, "editable"> & {
+  disabled?: boolean;
+};
 
 class TextInputFocusManager {
   private lastFocused: RNTextInput | null;
@@ -60,7 +62,7 @@ export const useTextInputRef = () => {
 export const textInputFocusManager = new TextInputFocusManager();
 
 export const TextInput = forwardRef<TextInputRef, TextInputProps>(
-  ({ onBlur, onFocus, style, ...props }, outerRef) => {
+  ({ disabled, onBlur, onFocus, style, ...props }, outerRef) => {
     const { shake, shakeAnimatedStyle } = useShakeAnimation();
     const { styles, theme } = useStyles(stylesheet);
     const innerRef = useRef<RNTextInput>(null);
@@ -125,7 +127,11 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 
     return (
       <Animated.View
-        style={[{ justifyContent: "center" }, style, shakeAnimatedStyle]}>
+        style={[
+          { justifyContent: "center", opacity: disabled ? theme.opacity : 1 },
+          style,
+          shakeAnimatedStyle,
+        ]}>
         <Animated.Text
           style={[
             {
@@ -141,6 +147,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
           ref={innerRef}
           {...props}
           autoCapitalize={"none"}
+          editable={!disabled}
           autoComplete="off"
           cursorColor={theme.colors.accent}
           dataDetectorTypes="none"
