@@ -1,7 +1,7 @@
 import { View } from "react-native";
-import * as ContextMenu from "zeego/context-menu";
+import { ContextMenu } from "./ContextMenu";
 
-import { Button } from "./Button";
+import { Button } from "../Button";
 
 const Preview = () => {
   return <View style={{ width: 200, height: 200, backgroundColor: "red" }} />;
