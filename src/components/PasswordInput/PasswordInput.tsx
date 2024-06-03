@@ -1,5 +1,3 @@
-import { createStyleSheet, useStyles } from "react-native-unistyles";
-
 import { TextInput, TextInputProps } from "../TextInput";
 import { Eye, EyeOff } from "lucide-react-native";
 import { useState } from "react";
@@ -17,18 +15,18 @@ type PasswordInputProps = TextInputProps;
  * @example
  *
  * ```tsx
- * <PasswordInput name="Plop" />
+ * <PasswordInput />
  * ```
  */
 export function PasswordInput(props: PasswordInputProps) {
   // TODO: create useToggle component and use it here.
   const [secureTextEntry, setSecureTextEntry] = useState(true);
-  const { styles } = useStyles(stylesheet);
 
   return (
     <TextInput
       right={
         <Pressable
+          // TODO: move these styles outside
           style={{
             height: 39,
             aspectRatio: 1,
@@ -46,18 +44,3 @@ export function PasswordInput(props: PasswordInputProps) {
     />
   );
 }
-
-const stylesheet = createStyleSheet((theme) => {
-  return {
-    container: {
-      alignSelf: "center",
-      flexDirection: "row",
-      marginTop: 24,
-    },
-    text: {
-      backgroundColor: theme.colors.typography,
-      color: theme.colors.background,
-      padding: 8,
-    },
-  };
-});

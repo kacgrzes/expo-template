@@ -24,3 +24,5 @@ export * from "./SocialIcon";
 export * from "./Switch";
 export * from "./Text";
 export * from "./TextInput";
+
+export * from "./SearchBar";

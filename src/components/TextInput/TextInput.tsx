@@ -11,6 +11,7 @@ import {
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
   TextInputFocusEventData,
+  View,
 } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -151,36 +152,44 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
           disabledAnimatedStyle,
         ]}>
         {left}
-        <Animated.Text
-          style={[
-            {
-              position: "absolute",
-              zIndex: 2,
-              left: 10,
-            },
-            focusedStyleText,
-          ]}>
-          Hello
-        </Animated.Text>
-        <AnimatedTextInput
-          ref={innerRef}
-          {...props}
-          autoCapitalize={"none"}
-          editable={!disabled}
-          autoComplete="off"
-          cursorColor={theme.colors.accent}
-          dataDetectorTypes="none"
-          inputMode="text"
-          keyboardType="default"
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          placeholderTextColor={theme.colors.typography}
-          selectionColor={theme.colors.accent}
-          spellCheck={false}
-          style={[styles.textInput, focusedStyleTextInput]}
-          textAlign="left"
-          textContentType="none"
-        />
+        <View style={{ height: "100%", flex: 1 }}>
+          <Animated.Text
+            style={[
+              {
+                position: "absolute",
+                zIndex: 2,
+                left: left !== null ? 0 : 10,
+              },
+              focusedStyleText,
+            ]}>
+            Hello
+          </Animated.Text>
+          <AnimatedTextInput
+            ref={innerRef}
+            {...props}
+            autoCapitalize={"none"}
+            editable={!disabled}
+            autoComplete="off"
+            cursorColor={theme.colors.accent}
+            dataDetectorTypes="none"
+            inputMode="text"
+            keyboardType="default"
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            placeholderTextColor={theme.colors.typography}
+            selectionColor={theme.colors.accent}
+            spellCheck={false}
+            style={[
+              styles.textInput({
+                hasLeftIcon: left !== null,
+                hasRightIcon: right !== null,
+              }),
+              focusedStyleTextInput,
+            ]}
+            textAlign="left"
+            textContentType="none"
+          />
+        </View>
         {right}
       </Animated.View>
     );
@@ -200,11 +209,21 @@ const stylesheet = createStyleSheet((theme) => {
       justifyContent: "center",
       alignItems: "center",
     },
-    textInput: {
-      color: theme.colors.typography,
-      flexGrow: 1,
-      fontSize: 16,
-      padding: 10,
+    textInput: ({
+      hasLeftIcon,
+      hasRightIcon,
+    }: {
+      hasLeftIcon: boolean;
+      hasRightIcon: boolean;
+    }) => {
+      return {
+        color: theme.colors.typography,
+        flex: 1,
+        fontSize: 16,
+        paddingLeft: hasLeftIcon ? 0 : 10,
+        paddingRight: hasRightIcon ? 0 : 10,
+        paddingVertical: 10,
+      };
     },
   };
 });
