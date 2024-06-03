@@ -154,6 +154,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
         {left}
         <View style={{ height: "100%", flex: 1 }}>
           <Animated.Text
+            onPress={() => innerRef.current?.focus()}
+            suppressHighlighting
             style={[
               {
                 position: "absolute",
@@ -223,6 +225,7 @@ const stylesheet = createStyleSheet((theme) => {
         paddingLeft: hasLeftIcon ? 0 : 10,
         paddingRight: hasRightIcon ? 0 : 10,
         paddingVertical: 10,
+        fontFamily: theme.fonts.IBMPlexMono_400Regular,
       };
     },
   };

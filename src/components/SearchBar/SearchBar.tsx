@@ -21,6 +21,7 @@ type SearchBarProps = TextInputProps;
  */
 export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
   const [value, setValue] = useState("");
+  const textInputRef = useTextInputRef();
 
   const handleChangeText = useCallback(
     (text: string) => {
@@ -36,17 +37,20 @@ export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
 
   return (
     <TextInput
+      ref={textInputRef}
       {...props}
       left={
-        <Animated.View
-          style={{
-            alignItems: "center",
-            aspectRatio: 1,
-            height: 39,
-            justifyContent: "center",
-          }}>
-          <Search size={24} />
-        </Animated.View>
+        <Pressable onPress={() => textInputRef.current?.focus()}>
+          <Animated.View
+            style={{
+              alignItems: "center",
+              aspectRatio: 1,
+              height: 39,
+              justifyContent: "center",
+            }}>
+            <Search size={24} />
+          </Animated.View>
+        </Pressable>
       }
       value={value}
       onChangeText={handleChangeText}
