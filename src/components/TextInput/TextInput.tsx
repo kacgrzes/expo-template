@@ -134,8 +134,9 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 
     const focusedStyleText = useAnimatedStyle(() => {
       return {
-        top: withTiming(isFocused.value ? 4 : 10, { duration: 300 }),
+        top: withTiming(isFocused.value ? 4 : 13, { duration: 300 }),
         fontSize: withTiming(isFocused.value ? 12 : 16, { duration: 300 }),
+        lineHeight: withTiming(isFocused.value ? 12 : 16, { duration: 300 }),
         color: withTiming(
           isFocused.value ? theme.colors.accent : theme.colors.typography,
           { duration: 300 },
@@ -203,13 +204,14 @@ TextInput.displayName = "TextInput";
 const stylesheet = createStyleSheet((theme) => {
   return {
     textInputContainer: {
+      alignItems: "center",
       backgroundColor: theme.colors.background,
       borderColor: theme.colors.typography,
       borderRadius: 5,
       borderWidth: 1,
       flexDirection: "row",
+      height: 44,
       justifyContent: "center",
-      alignItems: "center",
     },
     textInput: ({
       hasLeftIcon,
@@ -221,11 +223,11 @@ const stylesheet = createStyleSheet((theme) => {
       return {
         color: theme.colors.typography,
         flex: 1,
+        fontFamily: theme.fonts.IBMPlexMono_400Regular,
         fontSize: 16,
         paddingLeft: hasLeftIcon ? 0 : 10,
         paddingRight: hasRightIcon ? 0 : 10,
         paddingVertical: 10,
-        fontFamily: theme.fonts.IBMPlexMono_400Regular,
       };
     },
   };
