@@ -12,21 +12,18 @@ type SwitchProps = {};
 export function Switch({}: SwitchProps) {
   const value = useSharedValue(0);
   const isHeld = useSharedValue(0);
-  const { styles } = useStyles(stylesheet);
+  const { styles, theme } = useStyles(stylesheet);
 
   const gesture = Gesture.Tap()
     .onBegin(() => {
       isHeld.value = withTiming(1, {
-        duration: 300,
+        duration: theme.animation.duration,
       });
     })
     .onFinalize(() => {
       isHeld.value = withTiming(0, {
-        duration: 300,
+        duration: theme.animation.duration,
       });
-      // value.value = withTiming(value.value === 0 ? 1 : 0, {
-      //   duration: 300,
-      // });
     });
 
   const animatedThumbStyles = useAnimatedStyle(() => {

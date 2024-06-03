@@ -1,4 +1,8 @@
-import { Image as ExpoImage, ImageProps as ExpoImageProps } from "expo-image";
+import {
+  Image as ExpoImage,
+  ImageProps as ExpoImageProps,
+  ImageTransition,
+} from "expo-image";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 export type ImageProps = ExpoImageProps;
@@ -10,16 +14,23 @@ export function Image({
   contentFit = "cover",
   contentPosition = "center",
   onError = () => console.log("Image: onError"),
-  transition = {
-    duration: 300,
-    effect: "cross-dissolve",
-    timing: "ease-in-out",
-  },
+  transition = {},
   ...props
 }: ImageProps) {
-  const { styles } = useStyles(stylesheet);
+  const { styles, theme } = useStyles(stylesheet);
 
-  return <ExpoImage style={[styles.image, style]} {...props} />;
+  return (
+    <ExpoImage
+      transition={{
+        duration: theme.animation.duration,
+        effect: "cross-dissolve",
+        timing: "ease-in-out",
+        ...(transition as ImageTransition),
+      }}
+      style={[styles.image, style]}
+      {...props}
+    />
+  );
 }
 
 const stylesheet = createStyleSheet((theme) => {

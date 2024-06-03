@@ -3,6 +3,7 @@ import { TextInput, TextInputProps, useTextInputRef } from "../TextInput";
 import { Pressable } from "react-native";
 import { useCallback, useState } from "react";
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
+import { useStyles } from "react-native-unistyles";
 
 type SearchBarProps = TextInputProps;
 
@@ -20,6 +21,7 @@ type SearchBarProps = TextInputProps;
  * ```
  */
 export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
+  const { theme } = useStyles();
   const [value, setValue] = useState("");
   const textInputRef = useTextInputRef();
 
@@ -57,8 +59,8 @@ export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
       right={
         value !== "" ? (
           <Animated.View
-            entering={ZoomIn.duration(300)}
-            exiting={ZoomOut.duration(300)}
+            entering={ZoomIn.duration(theme.animation.duration)}
+            exiting={ZoomOut.duration(theme.animation.duration)}
             style={{
               alignItems: "center",
               aspectRatio: 1,

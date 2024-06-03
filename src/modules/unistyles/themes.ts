@@ -14,6 +14,9 @@ export const isStackDebugEnabled = () => {
 };
 
 const common = {
+  animation: {
+    duration: 300,
+  },
   fonts,
   fontFamily,
   opacity: 0.4,

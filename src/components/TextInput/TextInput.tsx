@@ -112,7 +112,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       return {
         borderColor: withTiming(
           isFocused.value ? theme.colors.accent : theme.colors.typography,
-          { duration: 300 },
+          { duration: theme.animation.duration },
         ),
       };
     });
@@ -121,25 +121,33 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       return {
         borderColor: withTiming(
           isFocused.value ? theme.colors.accent + "50" : "transparent",
-          { duration: 300 },
+          { duration: theme.animation.duration },
         ),
       };
     });
 
     const disabledAnimatedStyle = useAnimatedStyle(() => {
       return {
-        opacity: withTiming(disabled ? theme.opacity : 1, { duration: 300 }),
+        opacity: withTiming(disabled ? theme.opacity : 1, {
+          duration: theme.animation.duration,
+        }),
       };
     }, [disabled, theme.opacity]);
 
     const focusedStyleText = useAnimatedStyle(() => {
       return {
-        top: withTiming(isFocused.value ? 4 : 13, { duration: 300 }),
-        fontSize: withTiming(isFocused.value ? 12 : 16, { duration: 300 }),
-        lineHeight: withTiming(isFocused.value ? 12 : 16, { duration: 300 }),
+        top: withTiming(isFocused.value ? 4 : 13, {
+          duration: theme.animation.duration,
+        }),
+        fontSize: withTiming(isFocused.value ? 12 : 16, {
+          duration: theme.animation.duration,
+        }),
+        lineHeight: withTiming(isFocused.value ? 12 : 16, {
+          duration: theme.animation.duration,
+        }),
         color: withTiming(
           isFocused.value ? theme.colors.accent : theme.colors.typography,
-          { duration: 300 },
+          { duration: theme.animation.duration },
         ),
       };
     });
