@@ -1,6 +1,6 @@
-import * as DropdownMenu from "zeego/dropdown-menu";
+import { DropdownMenu } from "./DropdownMenu";
 
-import { Button } from "./Button";
+import { Button } from "../Button";
 
 export function DropdownMenuExample() {
   return (
