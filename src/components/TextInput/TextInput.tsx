@@ -22,6 +22,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 
+// TODO: add TextInput.Icon / TextInput.Affix
 export type TextInputProps = Omit<RNTextInputProps, "editable"> & {
   disabled?: boolean;
   left?: ReactNode;

@@ -1,4 +1,5 @@
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+import { PortalProvider } from "@gorhom/portal";
 import { SessionProvider } from "auth";
 import { Fallback, StatusBar } from "components";
 import { useFontsSetup } from "hooks";
@@ -22,16 +23,20 @@ export function Providers({ children }: { children?: ReactNode }) {
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <ThemeProvider>
-          <KeyboardProvider>
-            <ActionSheetProvider>
-              <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
-                <SessionProvider>
-                  {areFontsLoaded ? children : null}
-                  <StatusBar />
-                </SessionProvider>
-              </ErrorBoundary>
-            </ActionSheetProvider>
-          </KeyboardProvider>
+          <PortalProvider>
+            <KeyboardProvider>
+              <ActionSheetProvider>
+                <ErrorBoundary
+                  FallbackComponent={Fallback}
+                  onError={handleError}>
+                  <SessionProvider>
+                    {areFontsLoaded ? children : null}
+                    <StatusBar />
+                  </SessionProvider>
+                </ErrorBoundary>
+              </ActionSheetProvider>
+            </KeyboardProvider>
+          </PortalProvider>
         </ThemeProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
