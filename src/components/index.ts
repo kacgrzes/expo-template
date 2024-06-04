@@ -16,6 +16,7 @@ export * from "./JSONViewer";
 export * from "./ListItem";
 export * from "./PasswordInput";
 export * from "./RadioButton";
+export * from "./SafeAreaView";
 export * from "./SearchBar";
 export * from "./SegmentedControl";
 export * from "./Separator";

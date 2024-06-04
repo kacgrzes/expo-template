@@ -17,7 +17,7 @@ const EXAMPLE_SHEET_OPTIONS: BottomSheetNavigationOptions = {
   enableDynamicSizing: false,
   snapPoints: [200],
   style: {
-    marginHorizontal: 24,
+    marginHorizontal: 16,
   },
   bottomInset: UnistylesRuntime.insets.bottom ?? 24,
   backdropComponent: null,

@@ -1,9 +1,8 @@
 import { Box } from "@grapp/stacks";
-import { ListItem, Text } from "components";
+import { ListItem, Text, SafeAreaView } from "components";
 import { useRouter } from "expo-router";
 import { Home, Map } from "lucide-react-native";
 import { ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { isDevelopment } from "utils";
 
