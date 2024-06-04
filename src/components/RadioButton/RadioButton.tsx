@@ -6,11 +6,17 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedBaseButton } from "../AnimatedButtons";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
+import { Size } from "../types";
+
+// TODO:
+// - add RadioButton.Group? with initialValue, onValueChange
 
 type RadioButtonProps = {
-  checked?: boolean;
   disabled?: boolean;
   onPress?: () => void;
+  selected?: boolean;
+  size?: Size;
+  value?: string | number | boolean;
 };
 
 /**
@@ -18,7 +24,12 @@ Use when:
 - you can select only one option
 - the options are long and not consistant (more than 1 - 2 words)
 */
-export function RadioButton({ checked, disabled, onPress }: RadioButtonProps) {
+export function RadioButton({
+  disabled,
+  onPress,
+  selected,
+  size,
+}: RadioButtonProps) {
   const { styles } = useStyles(stylesheet);
 
   const disabledStyle = useDisabledStyle({ disabled });
@@ -27,13 +38,13 @@ export function RadioButton({ checked, disabled, onPress }: RadioButtonProps) {
     return {
       transform: [
         {
-          scale: withTiming(checked ? 1 : 0, {
+          scale: withTiming(selected ? 1 : 0, {
             duration: 200,
           }),
         },
       ],
     };
-  }, [checked]);
+  }, [selected]);
 
   return (
     <AnimatedBaseButton

@@ -6,13 +6,26 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { useDisabledStyle } from "../hooks/useDisabledStyle";
 
-type SwitchProps = {};
+type SwitchProps = {
+  disabled?: boolean;
+  initialValue?: boolean;
+  onValueChange?: (value: boolean) => void;
+  value?: boolean;
+};
 
-export function Switch({}: SwitchProps) {
+/**
+ * Use when:
+ * - An instant response of applied settings is required without an explicit action.
+ * - A setting requires an on/off or show/hide function to display the results.
+ * - User needs to perform instantaneous actions that do not need a review or confirmation.
+ */
+export function Switch({ disabled }: SwitchProps) {
   const value = useSharedValue(0);
   const isHeld = useSharedValue(0);
   const { styles, theme } = useStyles(stylesheet);
+  const disabledStyle = useDisabledStyle({ disabled });
 
   const gesture = Gesture.Tap()
     .onBegin(() => {
@@ -24,7 +37,8 @@ export function Switch({}: SwitchProps) {
       isHeld.value = withTiming(0, {
         duration: theme.animation.duration,
       });
-    });
+    })
+    .enabled(!disabled);
 
   const animatedThumbStyles = useAnimatedStyle(() => {
     return {
@@ -35,7 +49,7 @@ export function Switch({}: SwitchProps) {
 
   return (
     <GestureDetector gesture={gesture}>
-      <Animated.View style={styles.track}>
+      <Animated.View style={[styles.track, disabledStyle]}>
         <Animated.View style={[styles.thumb, animatedThumbStyles]} />
       </Animated.View>
     </GestureDetector>

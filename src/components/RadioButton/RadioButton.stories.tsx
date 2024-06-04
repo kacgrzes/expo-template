@@ -6,14 +6,14 @@ const RadioButtonMeta: Meta<typeof RadioButton> = {
   title: "RadioButton",
   component: RadioButton,
   argTypes: {
-    checked: {
+    selected: {
       type: "boolean",
       name: "Checked",
       defaultValue: false,
     },
   },
   args: {
-    checked: false,
+    selected: false,
   },
 };
 
@@ -29,6 +29,6 @@ export const Disabled: StoryObj<typeof RadioButton> = {
 
 export const Checked: StoryObj<typeof RadioButton> = {
   args: {
-    checked: true,
+    selected: true,
   },
 };

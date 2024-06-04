@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { ReactNode, forwardRef } from "react";
 import { View } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -6,16 +6,33 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
+import { Size } from "../types";
 
 export type ButtonProps = {
   disabled?: boolean;
   full?: boolean;
+  left?: ReactNode;
+  right?: ReactNode;
+  size?: Size;
   title: string;
   variant?: "solid" | "outline" | "link";
 } & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style">;
 
 export const Button = forwardRef<any, ButtonProps>(
-  ({ title, variant = "solid", disabled, full, style, ...rest }, ref) => {
+  (
+    {
+      disabled,
+      full,
+      left = null,
+      right = null,
+      size,
+      style,
+      title,
+      variant = "solid",
+      ...rest
+    },
+    ref,
+  ) => {
     const { styles, theme } = useStyles(stylesheet, { variant, full });
     const disabledStyle = useDisabledStyle({ disabled });
 
@@ -26,9 +43,11 @@ export const Button = forwardRef<any, ButtonProps>(
         {...rest}
         style={[styles.container, style, disabledStyle]}>
         <View accessible accessibilityRole="button">
+          {left}
           <Text numberOfLines={1} style={styles.title}>
             {title}
           </Text>
+          {right}
         </View>
       </AnimatedRectButton>
     );

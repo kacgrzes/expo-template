@@ -9,18 +9,22 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedBaseButton } from "../AnimatedButtons";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
+import { Size } from "../types";
 
 type CheckBoxProps = {
   checked?: boolean;
   disabled?: boolean;
+  size?: Size;
 };
 
 /**
-Use when
-- you can select multiple options
-- the options are long and not consistant (more than 1 - 2 words)
-*/
-export function CheckBox({ checked, disabled }: CheckBoxProps) {
+ * Use when
+ * - you can select multiple options
+ * - the options are long and not consistant (more than 1 - 2 words)
+ * - Applied settings need to be confirmed and reviewed by user before they are submitted
+ * - Defined settings require an action like Submit, OK, Next, Apply before displaying results
+ */
+export function CheckBox({ checked, disabled, size }: CheckBoxProps) {
   const { theme, styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });
 

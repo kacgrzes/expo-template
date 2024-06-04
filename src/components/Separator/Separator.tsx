@@ -11,8 +11,7 @@ const stylesheet = createStyleSheet((theme) => {
   return {
     separator: {
       alignSelf: "stretch",
-      flexDirection: "row",
-      flexGrow: 1,
+      width: "100%",
       backgroundColor: theme.colors.typography,
       height: StyleSheet.hairlineWidth,
     },

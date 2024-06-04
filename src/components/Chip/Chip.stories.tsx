@@ -6,7 +6,9 @@ const ChipMeta: Meta<typeof Chip> = {
   title: "Chip",
   component: Chip,
   argTypes: {},
-  args: {},
+  args: {
+    disabled: false,
+  },
 };
 
 export default ChipMeta;

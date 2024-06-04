@@ -6,7 +6,9 @@ const SwitchMeta: Meta<typeof Switch> = {
   title: "Switch",
   component: Switch,
   argTypes: {},
-  args: {},
+  args: {
+    disabled: false,
+  },
 };
 
 export default SwitchMeta;

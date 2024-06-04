@@ -1,9 +1,17 @@
-import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "../Text";
+import { Size } from "../types";
+import { ReactNode } from "react";
+import Animated from "react-native-reanimated";
+import { useDisabledStyle } from "../hooks/useDisabledStyle";
 
 type ChipProps = {
-  name: string;
+  disabled?: boolean;
+  left?: ReactNode;
+  // TODO: maybe this onPress should be a little bit different
+  onPress?: () => void;
+  right?: ReactNode;
+  size: Size;
 };
 
 /**
@@ -11,13 +19,14 @@ Use when
 - you can select multiple options
 - the options are short and consistant (1 or 2 words)
 */
-export function Chip({ name = "Plop" }: ChipProps) {
+export function Chip({ disabled, left, onPress, right, size }: ChipProps) {
   const { styles } = useStyles(stylesheet);
+  const disabledStyle = useDisabledStyle({ disabled });
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, disabledStyle]}>
       <Text style={styles.text}>Chip</Text>
-    </View>
+    </Animated.View>
   );
 }
 
