@@ -1,6 +1,6 @@
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { SessionProvider } from "auth";
-import { Fallback } from "components";
+import { Fallback, StatusBar } from "components";
 import { useFontsSetup } from "hooks";
 import { ComponentProps, ReactNode } from "react";
 import { KeyboardProvider } from "react-native-keyboard-controller";
@@ -27,6 +27,7 @@ export function Providers({ children }: { children?: ReactNode }) {
               <ErrorBoundary FallbackComponent={Fallback} onError={handleError}>
                 <SessionProvider>
                   {areFontsLoaded ? children : null}
+                  <StatusBar />
                 </SessionProvider>
               </ErrorBoundary>
             </ActionSheetProvider>

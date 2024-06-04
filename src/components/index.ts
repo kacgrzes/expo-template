@@ -22,6 +22,7 @@ export * from "./SegmentedControl";
 export * from "./Separator";
 export * from "./Slider";
 export * from "./SocialIcon";
+export * from "./StatusBar";
 export * from "./Switch";
 export * from "./Text";
 export * from "./TextInput";
