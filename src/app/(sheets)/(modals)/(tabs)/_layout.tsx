@@ -36,6 +36,12 @@ export default function Tabs() {
           tabBarIcon: ({ color }) => <Avatar size="s" />,
         }}
       />
+      <TabsRouter.Screen
+        name="(examples)"
+        options={{
+          title: "Top tabs",
+        }}
+      />
     </TabsRouter>
   );
 }
