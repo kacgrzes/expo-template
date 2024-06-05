@@ -10,6 +10,7 @@ const ButtonMeta: Meta<typeof Button> = {
   },
   args: {
     title: "Hello world",
+    disabled: false,
   },
 };
 

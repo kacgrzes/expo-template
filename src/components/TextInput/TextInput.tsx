@@ -1,11 +1,6 @@
+import { CommonAccessoryProps, CommonFormProps } from "components/types";
 import { useShakeAnimation } from "hooks";
-import {
-  ReactNode,
-  forwardRef,
-  useCallback,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import {
   NativeSyntheticEvent,
   TextInput as RNTextInput,
@@ -23,11 +18,9 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 
 // TODO: add TextInput.Icon / TextInput.Affix
-export type TextInputProps = Omit<RNTextInputProps, "editable"> & {
-  disabled?: boolean;
-  left?: ReactNode;
-  right?: ReactNode;
-};
+export type TextInputProps = CommonFormProps &
+  CommonAccessoryProps &
+  Omit<RNTextInputProps, "editable">;
 
 class TextInputFocusManager {
   private lastFocused: RNTextInput | null;

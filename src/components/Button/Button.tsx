@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef } from "react";
+import { forwardRef } from "react";
 import { View } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -6,17 +6,20 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { Size } from "../types";
+import { Status, Size, CommonAccessoryProps, CommonFormProps } from "../types";
 
-export type ButtonProps = {
-  disabled?: boolean;
-  full?: boolean;
-  left?: ReactNode;
-  right?: ReactNode;
-  size?: Size;
-  title: string;
-  variant?: "solid" | "outline" | "link";
-} & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style">;
+// TODO: Add Button.Group
+
+type ButtonVariant = "solid" | "outline" | "link";
+
+export type ButtonProps = CommonFormProps &
+  CommonAccessoryProps & {
+    full?: boolean;
+    size?: Size;
+    status?: Status;
+    title: string;
+    variant?: ButtonVariant;
+  } & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style">;
 
 export const Button = forwardRef<any, ButtonProps>(
   (

@@ -9,13 +9,16 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedBaseButton } from "../AnimatedButtons";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { Size } from "../types";
+import { CommonFormProps, Size, Status } from "../types";
 
-type CheckBoxProps = {
+export type CheckBoxProps = CommonFormProps & {
   checked?: boolean;
-  disabled?: boolean;
+  onValueChange?: (checked: boolean) => void;
   size?: Size;
+  status?: Status;
 };
+
+// TODO: how do I implement indeterminate state?
 
 /**
  * Use when
