@@ -14,6 +14,7 @@ export * from "./FlatList";
 export * from "./Image";
 export * from "./JSONViewer";
 export * from "./ListItem";
+export * from "./Notifier";
 export * from "./PasswordInput";
 export * from "./RadioButton";
 export * from "./SafeAreaView";

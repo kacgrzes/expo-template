@@ -1,7 +1,7 @@
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { PortalProvider } from "@gorhom/portal";
 import { SessionProvider } from "auth";
-import { Fallback, StatusBar } from "components";
+import { Fallback, StatusBar, Notifier } from "components";
 import { useFontsSetup } from "hooks";
 import { ComponentProps, ReactNode } from "react";
 import { KeyboardProvider } from "react-native-keyboard-controller";
@@ -36,6 +36,7 @@ export function Providers({ children }: { children?: ReactNode }) {
                 </ErrorBoundary>
               </ActionSheetProvider>
             </KeyboardProvider>
+            <Notifier />
           </PortalProvider>
         </ThemeProvider>
       </GestureHandlerRootView>
