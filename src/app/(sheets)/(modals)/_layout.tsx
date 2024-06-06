@@ -40,6 +40,12 @@ export default function Modals() {
           title: "App icons",
         }}
       />
+      <Stack.Screen
+        name="example-modal"
+        options={{
+          title: "Example modal",
+        }}
+      />
     </Stack>
   );
 }

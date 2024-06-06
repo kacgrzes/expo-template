@@ -1,11 +1,9 @@
 import { BackdropComponent } from "components";
 import { BottomSheet } from "layouts";
-import { FullWindowOverlay } from "react-native-screens";
 import { BottomSheetNavigationOptions } from "@th3rdwave/react-navigation-bottom-sheet";
 import { UnistylesRuntime } from "react-native-unistyles";
 
 const COMMON_OPTIONS: BottomSheetNavigationOptions = {
-  containerComponent: FullWindowOverlay as any,
   detached: false,
   enableDynamicSizing: true,
   backdropComponent: BackdropComponent,

@@ -6,7 +6,6 @@ import {
   useState,
 } from "react";
 import { View } from "react-native";
-import { FullWindowOverlay } from "react-native-screens";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Text } from "../Text";
@@ -41,25 +40,24 @@ export const Notifier: NotifierComposition = () => {
   }, [create, dismiss]);
 
   return (
-    <FullWindowOverlay>
-      <View pointerEvents="box-none" style={{ paddingTop: top + 8, gap: 4 }}>
-        {messages.map((message) => {
-          return (
-            <AnimatedRectButton
-              onPress={() => dismiss(message)}
-              key={message}
-              style={{
-                backgroundColor: "red",
-                borderRadius: 16,
-                padding: 24,
-                marginHorizontal: 8,
-              }}>
-              <Text>{message}</Text>
-            </AnimatedRectButton>
-          );
-        })}
-      </View>
-    </FullWindowOverlay>
+    <View pointerEvents="box-none" style={{ paddingTop: top + 8, gap: 4 }}>
+      {messages.map((message) => {
+        return (
+          // TODO: replace this with Notification / Alert component
+          <AnimatedRectButton
+            onPress={() => dismiss(message)}
+            key={message}
+            style={{
+              backgroundColor: "red",
+              borderRadius: 16,
+              padding: 24,
+              marginHorizontal: 8,
+            }}>
+            <Text>{message}</Text>
+          </AnimatedRectButton>
+        );
+      })}
+    </View>
   );
 };
 

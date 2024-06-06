@@ -58,6 +58,9 @@ export default function App() {
       <Link href="/example-sheet" asChild>
         <Button title="Example Sheet" variant="link" full />
       </Link>
+      <Link href="/example-modal" asChild>
+        <Button title="Example Modal" variant="link" full />
+      </Link>
       <Link href="/languages" asChild>
         <Button title="Languages" variant="link" full />
       </Link>
