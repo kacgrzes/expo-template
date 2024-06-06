@@ -4,7 +4,7 @@ import { Asset } from "expo-asset";
 import { Pressable, ScrollView } from "react-native";
 import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
-import { Image, RadioButton } from "components";
+import { RadioButton, AppIcon } from "components";
 
 export function AppIconSwitcher() {
   const [icons, setAppIcons] = useState<Asset[] | undefined>();
@@ -47,8 +47,8 @@ export function AppIconSwitcher() {
             style={styles.appIconContainer(selected)}
             key={icon.hash}
             onPress={() => selectIcon(index)}>
-            <Image style={styles.appIcon} source={icon.uri} />
-            <RadioButton checked={selected} />
+            <AppIcon source={icon.uri} />
+            <RadioButton selected={selected} />
           </Pressable>
         );
       })}
@@ -72,9 +72,4 @@ const stylesheet = createStyleSheet({
     opacity: !selected ? 0.4 : undefined,
     gap: 8,
   }),
-  appIcon: {
-    width: 64,
-    height: 64,
-    borderRadius: 12,
-  },
 });
