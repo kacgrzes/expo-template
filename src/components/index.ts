@@ -17,6 +17,7 @@ export * from "./ListItem";
 export * from "./Notifier";
 export * from "./Overlay";
 export * from "./PasswordInput";
+export * from "./Picker";
 export * from "./RadioButton";
 export * from "./SafeAreaView";
 export * from "./ScrollView";

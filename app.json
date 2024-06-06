@@ -10,7 +10,7 @@
   "orientation": "default",
   "icon": "./assets/icon.png",
   "userInterfaceStyle": "automatic",
-  "backgroundColor": "#ffffff",
+  "backgroundColor": "#000000",
   "githubUrl": "https://github.com/kacgrzes/expo-template",
   "splash": {
     "image": "./assets/splash.png",
