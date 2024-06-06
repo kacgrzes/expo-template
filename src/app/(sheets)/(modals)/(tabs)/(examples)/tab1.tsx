@@ -1,13 +1,14 @@
-import { Button, Notifier } from "components";
-import { View } from "react-native";
+import { Button, Notifier, Tooltip, ScrollView } from "components";
 
 export default function Tab1() {
   return (
-    <View>
-      <Button
-        title="Add notification"
-        onPress={() => Notifier.create("hello!" + Math.random())}
-      />
-    </View>
+    <ScrollView>
+      <Tooltip>
+        <Button
+          title="Add notification"
+          onPress={() => Notifier.create("hello!" + Math.random())}
+        />
+      </Tooltip>
+    </ScrollView>
   );
 }

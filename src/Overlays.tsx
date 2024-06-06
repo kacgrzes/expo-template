@@ -8,6 +8,7 @@ export function Overlays() {
     <FullWindowOverlay>
       <View pointerEvents="box-none" style={StyleSheet.absoluteFill}>
         <PortalHost name="sheets" />
+        <PortalHost name="tooltips" />
         <Notifier />
       </View>
     </FullWindowOverlay>
