@@ -1,4 +1,5 @@
 export * from "./useDevMenuItems";
+export * from "./useDevPlugins";
 export * from "./useFontsSetup";
 export * from "./useOrientationLock";
 export * from "./useQuickActionSetup";

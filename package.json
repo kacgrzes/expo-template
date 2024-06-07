@@ -134,6 +134,9 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@config-plugins/react-native-dynamic-app-icon": "^8.0.0",
+    "@dev-plugins/async-storage": "^0.0.3",
+    "@dev-plugins/react-native-mmkv": "^0.0.1",
+    "@dev-plugins/react-navigation": "^0.0.6",
     "@storybook/addon-ondevice-actions": "^7.6.18",
     "@storybook/addon-ondevice-controls": "^7.6.18",
     "@storybook/react": "^7.6.19",

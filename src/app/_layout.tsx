@@ -3,6 +3,7 @@ import { Slot, useRouter } from "expo-router";
 import {
   ScreenTrackingCallback,
   useDevMenuItem,
+  useDevPlugins,
   useOrientationLock,
   useQuickActionSetup,
   useScreenTracking,
@@ -18,6 +19,7 @@ export default function Root() {
   const router = useRouter();
   const enabled = useDevMenuItem("stack-debug-enabled");
 
+  useDevPlugins();
   useOrientationLock();
   useQuickActionSetup();
   useScreenTracking(recordView);
