@@ -19,7 +19,7 @@ export function LanguagesScreen() {
             onPress={() => i18n.changeLanguage(language.id)}
             style={styles.listItem}>
             <Text>{language.name}</Text>
-            <RadioButton checked={language.id === i18n.language} />
+            <RadioButton selected={language.id === i18n.language} />
           </RectButton>
         );
       })}

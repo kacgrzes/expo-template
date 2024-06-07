@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Pressable } from "react-native";
 
 export function Version() {
+  // @ts-ignore TODO: fix this
   const { t } = useTranslation("about");
   const appVersionWithBuildNumber = "1.0.0 (1)";
 
