@@ -18,7 +18,7 @@ const handleError: OnError = (error, info) => {
 };
 
 export function Providers({ children }: { children?: ReactNode }) {
-  const areFontsLoaded = useFontsSetup();
+  useFontsSetup();
 
   return (
     <SafeAreaProvider>
@@ -31,7 +31,7 @@ export function Providers({ children }: { children?: ReactNode }) {
                   FallbackComponent={Fallback}
                   onError={handleError}>
                   <SessionProvider>
-                    {areFontsLoaded ? children : null}
+                    {children}
                     <StatusBar />
                     <Overlays />
                   </SessionProvider>
