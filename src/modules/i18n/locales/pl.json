@@ -1,4 +1,5 @@
 {
   "Welcome to React": "Witaj w React i react-i18next",
-  "languages": "Języki"
+  "languages": "Języki",
+  "todayIs": "Dzisiaj jest {{date, yyyy-MM-dd}}"
 }
