@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { ThemeSwitcher } from "unistyles";
-import { env, isHermes } from "utils";
+import { env, isHermes, openSettings } from "utils";
 
 export default function App() {
   const { styles } = useStyles(stylesheet);
@@ -68,6 +68,12 @@ export default function App() {
       <Link href="/app-icons" asChild>
         <Button title="App icons" variant="link" full />
       </Link>
+      <Button
+        title="Open settings"
+        variant="link"
+        onPress={openSettings}
+        full
+      />
       <ThemeSwitcher />
       <ActionSheetExample />
       <ContextMenuExample />
