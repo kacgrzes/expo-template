@@ -33,6 +33,7 @@
     "prebuildIos": "expo prebuild --clean --platform ios",
     "prepare": "husky",
     "prepareI18next": "i18next-resources-for-ts interface -i ./modules/i18n/locales -o ./@types/resources.d.ts",
+    "prettier": "npx prettier . --write",
     "restartWatchman": "npm run stopWatchman && npm run startWatchman",
     "start": "npm run restartWatchman && EXPO_USE_FAST_RESOLVER=1 expo start",
     "startProduction": "expo start --no-dev --minify",

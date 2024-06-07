@@ -1,0 +1,7 @@
+.expo/
+.husky/
+android/
+dist/
+ios/
+node_modules/
+templates/
