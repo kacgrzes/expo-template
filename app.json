@@ -2,6 +2,7 @@
   "name": "Template",
   "description": "A template for Expo projects",
   "slug": "template",
+  "owner": "kacgrzes",
   "jsEngine": "hermes",
   "scheme": "template",
   "version": "1.0.0",
@@ -11,6 +12,10 @@
   "icon": "./assets/icon.png",
   "userInterfaceStyle": "automatic",
   "backgroundColor": "#000000",
+  "primaryColor": "#000000",
+  "developmentClient": {
+    "silentLaunch": true
+  },
   "githubUrl": "https://github.com/kacgrzes/expo-template",
   "splash": {
     "image": "./assets/splash.png",
@@ -19,8 +24,9 @@
   },
   "assetBundlePatterns": ["**/*"],
   "ios": {
-    "supportsTablet": true,
-    "bundleIdentifier": "io.kacgrzes.expo-template"
+    "backgroundColor": "#000000",
+    "bundleIdentifier": "io.kacgrzes.expo-template",
+    "supportsTablet": true
   },
   "android": {
     "adaptiveIcon": {
@@ -70,7 +76,9 @@
     ]
   ],
   "experiments": {
+    "reactCanary": false,
     "tsconfigPaths": true,
+    "turboModules": false,
     "typedRoutes": true
   }
 }
