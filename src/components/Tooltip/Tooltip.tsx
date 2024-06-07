@@ -83,6 +83,7 @@ export function Tooltip({ children }: TooltipProps) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const stylesheet = createStyleSheet((theme) => {
   return {
     container: {

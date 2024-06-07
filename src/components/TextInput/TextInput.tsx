@@ -111,6 +111,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       };
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const focusedStyleView = useAnimatedStyle(() => {
       return {
         borderColor: withTiming(

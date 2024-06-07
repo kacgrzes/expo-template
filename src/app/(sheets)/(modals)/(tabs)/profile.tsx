@@ -5,10 +5,7 @@ import {
   useReanimatedKeyboardAnimation,
   KeyboardStickyView,
 } from "react-native-keyboard-controller";
-import Animated, {
-  interpolate,
-  useDerivedValue,
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 
 const styles = StyleSheet.create({
   container: {
@@ -28,12 +25,8 @@ const styles = StyleSheet.create({
 
 export default function KeyboardAnimation() {
   // 1. we need to use hook to get an access to animated values
-  const { height, progress } = useReanimatedKeyboardAnimation();
+  const { height } = useReanimatedKeyboardAnimation();
   const textInputRef = useTextInputRef();
-
-  const scale = useDerivedValue(() => {
-    return interpolate(progress.value, [0, 1], [1, 2]);
-  });
 
   return (
     <View style={styles.container}>

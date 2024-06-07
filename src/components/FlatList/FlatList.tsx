@@ -4,10 +4,6 @@ import {
 } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-type ItemWithID = {
-  id: string;
-};
-
 type FlatListProps<ItemT = any> = RNFlatListProps<ItemT>;
 
 const defaultKeyExtractor = (item: any, index: number) =>
@@ -31,6 +27,7 @@ export function FlatList<ItemT = any>({
   keyExtractor = defaultKeyExtractor,
   renderItem,
 }: FlatListProps<ItemT>) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { styles } = useStyles(stylesheet);
 
   return (
