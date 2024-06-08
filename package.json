@@ -15,7 +15,7 @@
     "cleanGit": "git clean -xfd",
     "compilerHealthcheck": "npx react-compiler-healthcheck",
     "config": "npx expo config",
-    "deeplink": "npx uri-scheme open --ios expo-template://index",
+    "deeplink": "npx uri-scheme open --ios template://profile",
     "devtools": "npx react-devtools",
     "doctor": "npx expo-doctor && npm run compilerHealthcheck",
     "easBuildAndroidDevelopment": "eas build --platform android --profile development",
