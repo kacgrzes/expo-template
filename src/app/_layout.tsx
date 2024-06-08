@@ -1,19 +1,14 @@
 import { Grid } from "@grapp/stacks";
 import { Slot, useRouter } from "expo-router";
 import {
-  ScreenTrackingCallback,
   useDevMenuItem,
   useDevPlugins,
   useOrientationLock,
   useQuickActionSetup,
-  useScreenTracking,
   useShakeEvent,
 } from "hooks";
 import { Fragment } from "react";
-
-const recordView: ScreenTrackingCallback = ({ params, pathname }) => {
-  console.log("Screen changed", { params, pathname });
-};
+import { useScreenTracking, trackScreen } from "analytics";
 
 export default function Root() {
   const router = useRouter();
@@ -22,7 +17,7 @@ export default function Root() {
   useDevPlugins();
   useOrientationLock();
   useQuickActionSetup();
-  useScreenTracking(recordView);
+  useScreenTracking(trackScreen);
   useShakeEvent(() => {
     router.navigate("/feedback");
   });

@@ -10,6 +10,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider } from "unistyles";
 import { Overlays } from "./Overlays";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type OnError = ComponentProps<typeof ErrorBoundary>["onError"];
 
@@ -18,11 +19,12 @@ const handleError: OnError = (error, info) => {
 };
 
 export function Providers({ children }: { children?: ReactNode }) {
-  useFontsSetup();
+  const fontsLoaded = useFontsSetup();
+  const { styles } = useStyles(stylesheet);
 
   return (
     <SafeAreaProvider>
-      <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView style={styles.rootView}>
         <ThemeProvider>
           <PortalProvider>
             <KeyboardProvider>
@@ -31,7 +33,7 @@ export function Providers({ children }: { children?: ReactNode }) {
                   FallbackComponent={Fallback}
                   onError={handleError}>
                   <SessionProvider>
-                    {children}
+                    {fontsLoaded ? children : null}
                     <StatusBar />
                     <Overlays />
                   </SessionProvider>
@@ -44,3 +46,11 @@ export function Providers({ children }: { children?: ReactNode }) {
     </SafeAreaProvider>
   );
 }
+
+const stylesheet = createStyleSheet(() => {
+  return {
+    rootView: {
+      flex: 1,
+    },
+  };
+});
