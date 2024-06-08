@@ -25,14 +25,15 @@
   "assetBundlePatterns": ["**/*"],
   "ios": {
     "backgroundColor": "#000000",
-    "bundleIdentifier": "io.kacgrzes.expo-template",
+    "bundleIdentifier": "io.kacgrzes.template",
     "supportsTablet": true
   },
   "android": {
     "adaptiveIcon": {
       "foregroundImage": "./assets/adaptive-icon.png",
       "backgroundColor": "#ffffff"
-    }
+    },
+    "package": "io.kacgrzes.template"
   },
   "web": {
     "favicon": "./assets/favicon.png"
@@ -55,8 +56,8 @@
       {
         "android": {
           // these values were tested with Expo SDK 48
-          "compileSdkVersion": 33,
-          "targetSdkVersion": 33,
+          "compileSdkVersion": 34,
+          "targetSdkVersion": 34,
           "minSdkVersion": 23,
           "buildToolsVersion": "33.0.0",
           "kotlinVersion": "1.6.21"
@@ -80,5 +81,10 @@
     "tsconfigPaths": true,
     "turboModules": false,
     "typedRoutes": true
+  },
+  "extra": {
+    "eas": {
+      "projectId": "70f8e0af-61a6-48ed-ab83-8fd620248c9c"
+    }
   }
 }
