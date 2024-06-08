@@ -1,10 +1,10 @@
 import { Text } from "components";
 import { ScrollView } from "react-native";
 
-export function PrivacyPolicy() {
+export function TermsAndConditions() {
   return (
     <ScrollView>
-      <Text>Terms & Conditions</Text>
+      <Text>Terms and Conditions</Text>
     </ScrollView>
   );
 }
