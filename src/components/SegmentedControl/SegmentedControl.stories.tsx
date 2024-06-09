@@ -8,6 +8,7 @@ const SegmentedControlMeta: Meta<typeof SegmentedControl> = {
   argTypes: {},
   args: {
     full: false,
+    disabled: false,
   },
 };
 
@@ -18,5 +19,11 @@ export const Default: StoryObj<typeof SegmentedControl> = {};
 export const Full: StoryObj<typeof SegmentedControl> = {
   args: {
     full: true,
+  },
+};
+
+export const Disabled: StoryObj<typeof SegmentedControl> = {
+  args: {
+    disabled: true,
   },
 };

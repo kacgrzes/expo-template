@@ -15,29 +15,33 @@ import Animated, {
 import {
   ReactNode,
   createContext,
+  useCallback,
   useContext,
-  useEffect,
   useState,
 } from "react";
+import { useDisabledStyle } from "components/hooks/useDisabledStyle";
+import { View } from "react-native";
 
-type SegmentedControlProps = { full?: boolean };
+type SegmentedControlProps = { disabled?: boolean; full?: boolean };
 
 function Segment({
-  onPress,
-  label,
+  disabled,
   full,
   index,
+  label,
+  onPress,
 }: {
-  onPress?: () => void;
-  label: string;
+  disabled?: boolean;
   full?: boolean;
   index: number;
+  label: string;
+  onPress?: () => void;
 }) {
   const { measurements } = useSegmentedControlContext();
   const { styles } = useStyles(stylesheet);
   const animatedRef = useAnimatedRef();
 
-  useEffect(() => {
+  const handleLayout = useCallback(() => {
     runOnUI(() => {
       const measuredDimensions = measure(animatedRef);
       console.log(measuredDimensions);
@@ -45,14 +49,13 @@ function Segment({
         measurements.value[index] = measuredDimensions;
       }
     })();
-  }, [animatedRef, index, measurements, full]);
+  }, [animatedRef, index, measurements]);
 
   return (
-    <AnimatedRectButton
-      onPress={onPress}
-      ref={animatedRef}
-      style={styles.segment(full)}>
-      <Text>{label}</Text>
+    <AnimatedRectButton enabled={!disabled} onPress={onPress} ref={animatedRef}>
+      <View style={styles.segment(full)} onLayout={handleLayout}>
+        <Text>{label}</Text>
+      </View>
     </AnimatedRectButton>
   );
 }
@@ -89,6 +92,7 @@ const ActiveSegment = ({
   const { measurements } = useSegmentedControlContext();
   const animatedStyle = useAnimatedStyle(() => {
     const measurement = measurements.value[selectedIndex];
+    console.log({ measurement });
 
     if (!measurement) {
       return {};
@@ -108,30 +112,34 @@ const ActiveSegment = ({
   return <Animated.View style={[styles.activeSegment, animatedStyle]} />;
 };
 
-export function SegmentedControl({ full }: SegmentedControlProps) {
+export function SegmentedControl({ disabled, full }: SegmentedControlProps) {
   const { styles } = useStyles(stylesheet);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const disabledStyle = useDisabledStyle({ disabled });
 
   return (
     <SegmentedControlProvider>
-      <Animated.View style={styles.track}>
+      <Animated.View style={[styles.track, disabledStyle]}>
         <Segment
-          onPress={() => setSelectedIndex(0)}
+          disabled={disabled}
+          full={full}
           index={0}
           label="Segment #1"
-          full={full}
+          onPress={() => setSelectedIndex(0)}
         />
         <Segment
-          onPress={() => setSelectedIndex(1)}
+          disabled={disabled}
+          full={full}
           index={1}
           label="Segment #2"
-          full={full}
+          onPress={() => setSelectedIndex(1)}
         />
         <Segment
-          onPress={() => setSelectedIndex(2)}
+          disabled={disabled}
+          full={full}
           index={2}
           label="Segment #3"
-          full={full}
+          onPress={() => setSelectedIndex(2)}
         />
         <ActiveSegment selectedIndex={selectedIndex} full={full} />
       </Animated.View>
