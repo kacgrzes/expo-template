@@ -1,8 +1,9 @@
 import { View } from "react-native";
 import { Button, Text, Notifier } from "components";
 import { useRouter } from "expo-router";
+import { withModalStatusBar } from "utils/withModalStatusBar";
 
-export default function ExampleModal() {
+function ExampleModal() {
   const router = useRouter();
 
   return (
@@ -23,3 +24,5 @@ export default function ExampleModal() {
     </View>
   );
 }
+
+export default withModalStatusBar(ExampleModal);

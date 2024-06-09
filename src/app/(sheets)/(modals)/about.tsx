@@ -1,1 +1,4 @@
-export { AboutScreen as default } from "about";
+import { AboutScreen } from "about";
+import { withModalStatusBar } from "utils/withModalStatusBar";
+
+export default withModalStatusBar(AboutScreen);

@@ -4,8 +4,11 @@ import {
 } from "expo-status-bar";
 import { useTheme } from "modules/unistyles";
 import { useMemo } from "react";
+import { isIOS } from "utils/platform";
 
-export type StatusBarProps = ExpoStatusBarProps;
+export type StatusBarProps = ExpoStatusBarProps & {
+  isModal?: boolean;
+};
 
 /**
  * # StatusBar
@@ -21,8 +24,9 @@ export type StatusBarProps = ExpoStatusBarProps;
  * ```
  */
 export function StatusBar({
-  animated,
+  animated = true,
   hideTransitionAnimation = "fade",
+  isModal,
   networkActivityIndicatorVisible = true,
   translucent = true,
 }: StatusBarProps) {
@@ -36,7 +40,7 @@ export function StatusBar({
       animated={animated}
       hideTransitionAnimation={hideTransitionAnimation}
       networkActivityIndicatorVisible={networkActivityIndicatorVisible}
-      style={style}
+      style={isModal && isIOS ? "light" : style}
       translucent={translucent}
     />
   );
