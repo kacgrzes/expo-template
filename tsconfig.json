@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "checkJs": true,
     "esModuleInterop": true,
+    "jsx": "react-native",
     "paths": {
       "*": ["./src/*", "./src/modules/*"],
       "packageJson": ["./package.json"]
@@ -12,10 +14,17 @@
   "extends": "expo/tsconfig.base",
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
   "exclude": [
+    ".eslintrc.js",
+    ".expo",
+    ".husky",
     "android",
+    "assets",
     "babel.config.js",
+    "dist",
     "ios",
     "metro.config.js",
-    "node_modules"
+    "node_modules",
+    "patches",
+    "templates"
   ]
 }
