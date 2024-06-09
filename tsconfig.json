@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "checkJs": true,
+    "esModuleInterop": true,
     "paths": {
       "*": ["./src/*", "./src/modules/*"],
       "packageJson": ["./package.json"]
@@ -8,5 +10,12 @@
     "strict": true
   },
   "extends": "expo/tsconfig.base",
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
+  "exclude": [
+    "android",
+    "babel.config.js",
+    "ios",
+    "metro.config.js",
+    "node_modules"
+  ]
 }
