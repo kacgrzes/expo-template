@@ -5,11 +5,13 @@ import {
   ContextMenuExample,
   DropdownMenuExample,
   JSONViewer,
+  SegmentedControl,
   Text,
   Title,
 } from "components";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
+import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -22,63 +24,68 @@ export default function App() {
   const { t, i18n } = useTranslation();
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}>
-      <Title style={{ marginBottom: 12 }}>Hello</Title>
-      <Text style={styles.text}>
-        <Text>Open up App.js to start working on your app!{"\n"}</Text>
-        <Text>{t("Welcome to React")}</Text>
-      </Text>
-      <Text>{isHermes ? <Text>Welcome to Hermes</Text> : null}</Text>
-      <Button
-        full
-        title={`Current language: ${i18n.language}`}
-        variant="link"
-        onPress={() => {
-          const nextLanguage = {
-            en: "fr",
-            fr: "pl",
-            pl: "en",
-          }[i18n.language];
+    <Fragment>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}>
+        <SegmentedControl full />
+        <Title style={{ marginBottom: 12 }}>Hello</Title>
+        <Text style={styles.text}>
+          <Text>Open up App.js to start working on your app!{"\n"}</Text>
+          <Text>{t("Welcome to React")}</Text>
+        </Text>
+        <Text>{isHermes ? <Text>Welcome to Hermes</Text> : null}</Text>
+        <Button
+          full
+          title={`Current language: ${i18n.language}`}
+          variant="link"
+          onPress={() => {
+            const nextLanguage = {
+              en: "fr",
+              fr: "pl",
+              pl: "en",
+            }[i18n.language];
 
-          i18n.changeLanguage(nextLanguage);
-        }}
-      />
-      <Text>{formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}</Text>
-      <Text>{t("todayIs", { date: new Date() })}</Text>
-      <JSONViewer width={"100%"} marginY={4} content={env} />
-      <Button
-        full
-        title={session ? "Sign out" : "Sign in"}
-        onPress={session ? signOut : signIn}
-      />
-      <Link href="/about" asChild>
-        <Button title="About" variant="outline" full />
-      </Link>
-      <Link href="/example-sheet" asChild>
-        <Button title="Example Sheet" variant="link" full />
-      </Link>
-      <Link href="/example-modal" asChild>
-        <Button title="Example Modal" variant="link" full />
-      </Link>
-      <Link href="/languages" asChild>
-        <Button title="Languages" variant="link" full />
-      </Link>
-      <Link href="/app-icons" asChild>
-        <Button title="App icons" variant="link" full />
-      </Link>
-      <Button
-        title="Open settings"
-        variant="link"
-        onPress={openSettings}
-        full
-      />
-      <ThemeSwitcher />
-      <ActionSheetExample />
-      <ContextMenuExample />
-      <DropdownMenuExample />
-    </ScrollView>
+            i18n.changeLanguage(nextLanguage);
+          }}
+        />
+        <Text>
+          {formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}
+        </Text>
+        <Text>{t("todayIs", { date: new Date() })}</Text>
+        <JSONViewer width={"100%"} marginY={4} content={env} />
+        <Button
+          full
+          title={session ? "Sign out" : "Sign in"}
+          onPress={session ? signOut : signIn}
+        />
+        <Link href="/about" asChild>
+          <Button title="About" variant="outline" full />
+        </Link>
+        <Link href="/example-sheet" asChild>
+          <Button title="Example Sheet" variant="link" full />
+        </Link>
+        <Link href="/example-modal" asChild>
+          <Button title="Example Modal" variant="link" full />
+        </Link>
+        <Link href="/languages" asChild>
+          <Button title="Languages" variant="link" full />
+        </Link>
+        <Link href="/app-icons" asChild>
+          <Button title="App icons" variant="link" full />
+        </Link>
+        <Button
+          title="Open settings"
+          variant="link"
+          onPress={openSettings}
+          full
+        />
+        <ThemeSwitcher />
+        <ActionSheetExample />
+        <ContextMenuExample />
+        <DropdownMenuExample />
+      </ScrollView>
+    </Fragment>
   );
 }
 
