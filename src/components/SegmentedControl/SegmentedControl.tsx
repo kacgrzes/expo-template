@@ -53,7 +53,7 @@ function Segment({
         enabled={!disabled}
         onPress={onPress}
         style={styles.segment(full)}>
-        <Text>{label}</Text>
+        <Text variant="label">{label}</Text>
       </AnimatedRectButton>
     </View>
   );
@@ -168,6 +168,7 @@ const stylesheet = createStyleSheet((theme) => {
         flexGrow: full ? 1 : undefined,
         justifyContent: "center",
         alignItems: "center",
+        paddingHorizontal: 8,
       };
     },
     activeSegment: {
