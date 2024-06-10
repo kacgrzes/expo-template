@@ -2,25 +2,20 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "components/Text";
 import { AnimatedRectButton } from "components/AnimatedButtons";
 import Animated, {
-  MeasuredDimensions,
-  SharedValue,
-  measure,
-  runOnUI,
-  useAnimatedRef,
-  useSharedValue,
-  makeMutable,
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
 import {
+  Dispatch,
   ReactNode,
+  SetStateAction,
   createContext,
   useCallback,
   useContext,
   useState,
 } from "react";
 import { useDisabledStyle } from "components/hooks/useDisabledStyle";
-import { View } from "react-native";
+import { LayoutChangeEvent, LayoutRectangle, View } from "react-native";
 
 type SegmentedControlProps = { disabled?: boolean; full?: boolean };
 
@@ -37,44 +32,51 @@ function Segment({
   label: string;
   onPress?: () => void;
 }) {
-  const { measurements } = useSegmentedControlContext();
+  const { setMeasurements } = useSegmentedControlContext();
   const { styles } = useStyles(stylesheet);
-  const animatedRef = useAnimatedRef();
 
-  const handleLayout = useCallback(() => {
-    runOnUI(() => {
-      const measuredDimensions = measure(animatedRef);
-      console.log(measuredDimensions);
-      if (measuredDimensions) {
-        measurements.value[index] = measuredDimensions;
-      }
-    })();
-  }, [animatedRef, index, measurements]);
+  const handleLayout = useCallback(
+    (event: LayoutChangeEvent) => {
+      const layout = event.nativeEvent.layout;
+      setMeasurements((p) => {
+        const measurements = [...p];
+        measurements[index] = layout;
+        return measurements;
+      });
+    },
+    [index, setMeasurements],
+  );
 
   return (
-    <AnimatedRectButton enabled={!disabled} onPress={onPress} ref={animatedRef}>
-      <View style={styles.segment(full)} onLayout={handleLayout}>
+    <View onLayout={handleLayout} style={{ flex: full ? 1 : 0 }}>
+      <AnimatedRectButton
+        enabled={!disabled}
+        onPress={onPress}
+        style={styles.segment(full)}>
         <Text>{label}</Text>
-      </View>
-    </AnimatedRectButton>
+      </AnimatedRectButton>
+    </View>
   );
 }
 
 const SegmentedControlContext = createContext<{
-  measurements: SharedValue<MeasuredDimensions[]>;
+  measurements: LayoutRectangle[];
+  setMeasurements: Dispatch<SetStateAction<LayoutRectangle[]>>;
 }>({
-  measurements: makeMutable([]),
+  measurements: [],
+  setMeasurements: () => undefined,
 });
 
 const useSegmentedControlContext = () => useContext(SegmentedControlContext);
 
 const SegmentedControlProvider = ({ children }: { children: ReactNode }) => {
-  const measurements = useSharedValue<MeasuredDimensions[]>([]);
+  const [measurements, setMeasurements] = useState<LayoutRectangle[]>([]);
 
   return (
     <SegmentedControlContext.Provider
       value={{
         measurements,
+        setMeasurements,
       }}>
       {children}
     </SegmentedControlContext.Provider>
@@ -91,19 +93,21 @@ const ActiveSegment = ({
   const { styles } = useStyles(stylesheet);
   const { measurements } = useSegmentedControlContext();
   const animatedStyle = useAnimatedStyle(() => {
-    const measurement = measurements.value[selectedIndex];
-    console.log({ measurement });
+    const measurement = measurements[selectedIndex];
 
     if (!measurement) {
-      return {};
+      return {
+        opacity: 0,
+      };
     }
 
     return {
-      width: withTiming(measurement?.width),
+      width: withTiming(measurement?.width, { duration: 300 }),
       height: withTiming(measurement?.height),
+      opacity: withTiming(1, { duration: 300 }),
       transform: [
         {
-          translateX: withTiming(measurement?.x),
+          translateX: withTiming(measurement?.x, { duration: 300 }),
         },
       ],
     };
@@ -153,12 +157,14 @@ const stylesheet = createStyleSheet((theme) => {
       flexDirection: "row",
       backgroundColor: "grey",
       padding: 2,
-      borderRadius: 4,
+      borderRadius: 6,
+      gap: 2,
+      height: 44,
     },
     segment: (full?: boolean) => {
       return {
-        padding: 8,
-        borderRadius: 2,
+        height: "100%",
+        borderRadius: 4,
         flexGrow: full ? 1 : undefined,
         justifyContent: "center",
         alignItems: "center",
@@ -166,7 +172,7 @@ const stylesheet = createStyleSheet((theme) => {
     },
     activeSegment: {
       backgroundColor: "black",
-      borderRadius: 2,
+      borderRadius: 4,
       position: "absolute",
       top: 2,
       zIndex: -1,
