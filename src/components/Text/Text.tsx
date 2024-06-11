@@ -9,7 +9,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 type TextAlign = TextStyle["textAlign"];
 type TextProps = TextComponentProps & {
   textAlign?: TextAlign;
-  variant?: "badge" | "body" | "code" | "title" | "label";
+  variant?: "body" | "code" | "title" | "label";
 };
 
 // TODO: create animated version of Text
@@ -39,17 +39,13 @@ const stylesheet = createStyleSheet((theme) => {
       color: theme.colors.typography,
       variants: {
         variant: {
-          badge: {
-            fontSize: 14,
-            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
-          },
           body: {
             fontSize: 16,
             fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
           },
           label: {
             fontSize: 14,
-            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
+            fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
           },
           code: {
             fontSize: 14,
