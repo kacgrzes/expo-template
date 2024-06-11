@@ -26,7 +26,17 @@
   "ios": {
     "backgroundColor": "#000000",
     "bundleIdentifier": "io.kacgrzes.template",
-    "supportsTablet": true
+    "supportsTablet": true,
+    "splash": {
+      "backgroundColor": "#ffffff",
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "dark": {
+        "backgroundColor": "#000000",
+        "image": "./assets/splash.png",
+        "resizeMode": "contain"
+      }
+    }
   },
   "android": {
     "adaptiveIcon": {
