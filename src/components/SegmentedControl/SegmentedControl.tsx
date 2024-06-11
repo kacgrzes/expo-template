@@ -151,11 +151,11 @@ export function SegmentedControl({ disabled, full }: SegmentedControlProps) {
   );
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet((theme, runtime) => {
   return {
     track: {
       flexDirection: "row",
-      backgroundColor: "grey",
+      backgroundColor: runtime.themeName === "dark" ? "grey" : "lightgrey",
       padding: 2,
       borderRadius: 6,
       gap: 2,
@@ -172,7 +172,7 @@ const stylesheet = createStyleSheet((theme) => {
       };
     },
     activeSegment: {
-      backgroundColor: "black",
+      backgroundColor: theme.colors.background,
       borderRadius: 4,
       position: "absolute",
       top: 2,

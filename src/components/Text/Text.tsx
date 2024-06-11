@@ -12,6 +12,7 @@ type TextProps = TextComponentProps & {
   variant?: "badge" | "body" | "code" | "title" | "label";
 };
 
+// TODO: create animated version of Text
 export function Text({
   style,
   textAlign,
@@ -48,7 +49,7 @@ const stylesheet = createStyleSheet((theme) => {
           },
           label: {
             fontSize: 14,
-            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
+            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
           },
           code: {
             fontSize: 14,
