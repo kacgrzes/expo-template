@@ -11,7 +11,10 @@
     "template"
   ],
   "license": "MIT",
-  "author": "Kacper Grzeszczyk",
+  "author": {
+    "name": "Kacper Grzeszczyk",
+    "email": "kacgrzes@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kacgrzes/expo-template"
@@ -126,6 +129,7 @@
     "expo-linking": "~6.3.1",
     "expo-local-authentication": "~14.0.1",
     "expo-localization": "~15.0.3",
+    "expo-mail-composer": "~13.0.1",
     "expo-navigation-bar": "~3.0.6",
     "expo-quick-actions": "^2.0.0",
     "expo-router": "~3.5.16",
