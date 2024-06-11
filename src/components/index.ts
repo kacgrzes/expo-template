@@ -10,6 +10,7 @@ export * from "./ContextMenu";
 export * from "./Dot";
 export * from "./DropdownMenu";
 export * from "./EmptyState";
+export * from "./FAB";
 export * from "./Fallback";
 export * from "./FlatList";
 export * from "./Image";

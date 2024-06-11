@@ -1,3 +1,4 @@
+import { FloatBox } from "@grapp/stacks";
 import { useSession } from "auth";
 import {
   ActionSheetExample,
@@ -8,12 +9,15 @@ import {
   SegmentedControl,
   Text,
   Title,
+  FAB,
+  ScrollView,
+  OnScroll,
 } from "components";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
-import { Fragment } from "react";
+import { Feather } from "lucide-react-native";
+import { Fragment, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { ThemeSwitcher } from "unistyles";
 import { env, isHermes, openSettings } from "utils";
@@ -22,10 +26,21 @@ export default function App() {
   const { styles } = useStyles(stylesheet);
   const { signOut, signIn, session } = useSession();
   const { t, i18n } = useTranslation();
+  const [extended, setExtended] = useState(true);
+
+  const handleScroll: OnScroll = useCallback((event) => {
+    if (event.nativeEvent.contentOffset.y <= 0) {
+      setExtended(true);
+    } else {
+      setExtended(false);
+    }
+  }, []);
 
   return (
     <Fragment>
       <ScrollView
+        scrollEventThrottle={1000 / 60} // 60 FPS
+        onScroll={handleScroll}
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <SegmentedControl full />
@@ -85,6 +100,9 @@ export default function App() {
         <ContextMenuExample />
         <DropdownMenuExample />
       </ScrollView>
+      <FloatBox bottom={16} right={16}>
+        <FAB Icon={Feather} extended={extended} label="Hello!" />
+      </FloatBox>
     </Fragment>
   );
 }
