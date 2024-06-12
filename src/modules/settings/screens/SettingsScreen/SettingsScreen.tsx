@@ -1,6 +1,13 @@
 import { ScrollView, ListItem } from "components";
 import { useRouter } from "expo-router";
-import { Globe, Moon, Paintbrush, Star } from "lucide-react-native";
+import {
+  Globe,
+  Moon,
+  Paintbrush,
+  Star,
+  Share,
+  LifeBuoy,
+} from "lucide-react-native";
 
 export function SettingsScreen() {
   const router = useRouter();
@@ -33,6 +40,20 @@ export function SettingsScreen() {
         title="Rate this app"
         onPress={() => {
           router.navigate("/rate");
+        }}
+      />
+      <ListItem
+        icon={Share}
+        title="Share this app"
+        onPress={() => {
+          // TODO: Share this app :)
+        }}
+      />
+      <ListItem
+        icon={LifeBuoy}
+        title="Help"
+        onPress={() => {
+          router.navigate("/help");
         }}
       />
     </ScrollView>
