@@ -21,8 +21,8 @@ export function SettingsScreen() {
   const { bottom } = useSafeAreaInsets();
 
   return (
-    <ScrollView contentInset={{ bottom }}>
-      <Box paddingX={4} marginBottom={4} marginTop={8}>
+    <ScrollView contentInset={{ bottom }} scrollIndicatorInsets={{ bottom: 0 }}>
+      <Box paddingX={4} marginBottom={4} marginTop={12}>
         <Text variant="label" textTransform="uppercase">
           Appearance
         </Text>
@@ -45,6 +45,7 @@ export function SettingsScreen() {
       <ListItem
         icon={Globe}
         title="Language"
+        details="Polski"
         onPress={() => {
           router.navigate("/languages");
         }}
@@ -58,7 +59,7 @@ export function SettingsScreen() {
         }}
         right={<Switch />}
       />
-      <Box paddingX={4} marginBottom={4} marginTop={8}>
+      <Box paddingX={4} marginBottom={4} marginTop={12}>
         <Text variant="label" textTransform="uppercase">
           General
         </Text>
@@ -98,7 +99,7 @@ export function SettingsScreen() {
           router.navigate("/rate");
         }}
       />
-      <Box paddingX={4} marginBottom={4} marginTop={8}>
+      <Box paddingX={4} marginBottom={4} marginTop={12}>
         <Text variant="label" textTransform="uppercase">
           Other
         </Text>

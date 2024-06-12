@@ -1,1 +1,4 @@
-export { SettingsScreen as default } from "settings";
+import { SettingsScreen } from "settings";
+import { withModalStatusBar } from "utils/withModalStatusBar";
+
+export default withModalStatusBar(SettingsScreen);

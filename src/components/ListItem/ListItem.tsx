@@ -24,13 +24,7 @@ export function ListItem({
   const { styles, theme } = useStyles(stylesheet);
   const right = useMemo(() => {
     if (!rightElement) {
-      return (
-        <ChevronRight
-          size={24}
-          color={theme.colors.typography}
-          strokeWidth={1.5}
-        />
-      );
+      return <ChevronRight size={24} color={"grey"} strokeWidth={1.5} />;
     }
 
     return rightElement;
@@ -45,9 +39,13 @@ export function ListItem({
         <Icon size={24} color={theme.colors.typography} strokeWidth={1.5} />
       ) : null}
 
-      <Box gap={2} flex={"fluid"} style={{ justifyContent: "center" }}>
+      <Box gap={1} flex={"fluid"} style={{ justifyContent: "center" }}>
         <Text>{title}</Text>
-        {details ? <Text style={{ color: "grey" }}>{details}</Text> : null}
+        {details ? (
+          <Text numberOfLines={1} style={{ color: "grey" }}>
+            {details}
+          </Text>
+        ) : null}
       </Box>
       {right}
     </AnimatedRectButton>
@@ -61,7 +59,8 @@ const stylesheet = createStyleSheet(() => {
       alignItems: "center",
       flexDirection: "row",
       justifyContent: "space-between",
-      padding: 16,
+      paddingHorizontal: 16,
+      paddingVertical: 8,
       minHeight: 64,
       width: "100%",
     },

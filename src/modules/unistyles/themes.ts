@@ -32,6 +32,7 @@ export const lightTheme = {
     accent: foundation.colors.blue,
     background: foundation.colors.white,
     typography: foundation.colors.black,
+    // muted: foundation.colors
   },
   gradients: {
     base: [
@@ -58,6 +59,7 @@ export const darkTheme = {
     accent: foundation.colors.blue,
     background: foundation.colors.black,
     typography: foundation.colors.white,
+    // muted: foundation.colors
   },
   gradients: {
     base: [

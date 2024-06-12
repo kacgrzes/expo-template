@@ -59,9 +59,6 @@ export default function App() {
           title={session ? "Sign out" : "Sign in"}
           onPress={session ? signOut : signIn}
         />
-        <Link href="/about" asChild>
-          <Button title="About" variant="outline" full />
-        </Link>
         <Link href="/settings" asChild>
           <Button title="App settings" variant="link" full />
         </Link>
