@@ -1,6 +1,6 @@
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { Check } from "lucide-react-native";
-import { ListItem } from "components";
+import { ListItem } from "components/ListItem";
 
 import { useTheme } from "./ThemeProvider";
 
