@@ -19,7 +19,6 @@ import { Feather } from "lucide-react-native";
 import { Fragment, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { ThemeSwitcher } from "unistyles";
 import { env, isHermes, openSettings } from "utils";
 
 export default function App() {
@@ -83,11 +82,8 @@ export default function App() {
         <Link href="/example-modal" asChild>
           <Button title="Example Modal" variant="link" full />
         </Link>
-        <Link href="/languages" asChild>
-          <Button title="Languages" variant="link" full />
-        </Link>
-        <Link href="/app-icons" asChild>
-          <Button title="App icons" variant="link" full />
+        <Link href="/settings" asChild>
+          <Button title="App settings" variant="link" full />
         </Link>
         <Button
           title="Open settings"
@@ -95,7 +91,6 @@ export default function App() {
           onPress={openSettings}
           full
         />
-        <ThemeSwitcher />
         <ActionSheetExample />
         <ContextMenuExample />
         <DropdownMenuExample />

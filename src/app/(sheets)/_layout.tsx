@@ -29,6 +29,7 @@ export default function Sheets() {
         name="example-sheet"
         options={EXAMPLE_SHEET_OPTIONS}
       />
+      <BottomSheet.Screen name="appearance" options={EXAMPLE_SHEET_OPTIONS} />
     </BottomSheet>
   );
 }
