@@ -3,10 +3,10 @@ import { useRouter } from "expo-router";
 import {
   Globe,
   Moon,
-  Paintbrush,
   Star,
   Share,
   LifeBuoy,
+  BoxSelect,
 } from "lucide-react-native";
 
 export function SettingsScreen() {
@@ -22,7 +22,7 @@ export function SettingsScreen() {
         }}
       />
       <ListItem
-        icon={Paintbrush}
+        icon={BoxSelect}
         title="App icon"
         onPress={() => {
           router.navigate("/app-icons");

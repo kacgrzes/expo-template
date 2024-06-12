@@ -41,9 +41,15 @@ export default function Modals() {
         }}
       />
       <Stack.Screen
-        name="example-modal"
+        name="help"
         options={{
-          title: "Example modal",
+          title: "Help",
+        }}
+      />
+      <Stack.Screen
+        name="settings"
+        options={{
+          title: "Settings",
         }}
       />
     </Stack>

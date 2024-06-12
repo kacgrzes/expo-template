@@ -76,12 +76,6 @@ export default function App() {
         <Link href="/about" asChild>
           <Button title="About" variant="outline" full />
         </Link>
-        <Link href="/example-sheet" asChild>
-          <Button title="Example Sheet" variant="link" full />
-        </Link>
-        <Link href="/example-modal" asChild>
-          <Button title="Example Modal" variant="link" full />
-        </Link>
         <Link href="/settings" asChild>
           <Button title="App settings" variant="link" full />
         </Link>

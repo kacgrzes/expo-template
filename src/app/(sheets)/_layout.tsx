@@ -25,10 +25,6 @@ export default function Sheets() {
   return (
     <BottomSheet screenOptions={COMMON_OPTIONS}>
       <BottomSheet.Screen name="(modals)" />
-      <BottomSheet.Screen
-        name="example-sheet"
-        options={EXAMPLE_SHEET_OPTIONS}
-      />
       <BottomSheet.Screen name="appearance" options={EXAMPLE_SHEET_OPTIONS} />
     </BottomSheet>
   );
