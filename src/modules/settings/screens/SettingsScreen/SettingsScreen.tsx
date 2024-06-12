@@ -14,13 +14,15 @@ import {
   Info,
   SquarePen,
 } from "lucide-react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export function SettingsScreen() {
   const router = useRouter();
+  const { bottom } = useSafeAreaInsets();
 
   return (
-    <ScrollView>
-      <Box paddingX={4} marginBottom={4} marginTop={4}>
+    <ScrollView contentInset={{ bottom }}>
+      <Box paddingX={4} marginBottom={4} marginTop={8}>
         <Text variant="label" textTransform="uppercase">
           Appearance
         </Text>
@@ -28,6 +30,7 @@ export function SettingsScreen() {
       <ListItem
         icon={Moon}
         title="Appearance"
+        details="Use my device settings"
         onPress={() => {
           router.navigate("/appearance");
         }}
@@ -55,25 +58,16 @@ export function SettingsScreen() {
         }}
         right={<Switch />}
       />
+      <Box paddingX={4} marginBottom={4} marginTop={8}>
+        <Text variant="label" textTransform="uppercase">
+          General
+        </Text>
+      </Box>
       <ListItem
-        icon={Star}
-        title="Rate this app"
+        icon={Info}
+        title="About"
         onPress={() => {
-          router.navigate("/rate");
-        }}
-      />
-      <ListItem
-        icon={SquarePen}
-        title="Give us your feedback"
-        onPress={() => {
-          // TODO:
-        }}
-      />
-      <ListItem
-        icon={Share}
-        title="Share this app"
-        onPress={() => {
-          // TODO: Share this app :)
+          router.navigate("/about");
         }}
       />
       <ListItem
@@ -84,15 +78,34 @@ export function SettingsScreen() {
         }}
       />
       <ListItem
-        icon={Eraser}
-        title="Clear cache"
+        icon={Share}
+        title="Share this app"
         onPress={() => {
-          // TODO
+          // TODO: Share this app :)
         }}
       />
       <ListItem
-        icon={Info}
-        title="About"
+        icon={SquarePen}
+        title="Give us your feedback"
+        onPress={() => {
+          // TODO:
+        }}
+      />
+      <ListItem
+        icon={Star}
+        title="Rate this app"
+        onPress={() => {
+          router.navigate("/rate");
+        }}
+      />
+      <Box paddingX={4} marginBottom={4} marginTop={8}>
+        <Text variant="label" textTransform="uppercase">
+          Other
+        </Text>
+      </Box>
+      <ListItem
+        icon={Eraser}
+        title="Clear cache"
         onPress={() => {
           // TODO
         }}

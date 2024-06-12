@@ -24,7 +24,7 @@ import { env, isHermes, openSettings } from "utils";
 export default function App() {
   const { styles } = useStyles(stylesheet);
   const { signOut, signIn, session } = useSession();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [extended, setExtended] = useState(true);
 
   const handleScroll: OnScroll = useCallback((event) => {
@@ -49,20 +49,6 @@ export default function App() {
           <Text>{t("Welcome to React")}</Text>
         </Text>
         <Text>{isHermes ? <Text>Welcome to Hermes</Text> : null}</Text>
-        <Button
-          full
-          title={`Current language: ${i18n.language}`}
-          variant="link"
-          onPress={() => {
-            const nextLanguage = {
-              en: "fr",
-              fr: "pl",
-              pl: "en",
-            }[i18n.language];
-
-            i18n.changeLanguage(nextLanguage);
-          }}
-        />
         <Text>
           {formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}
         </Text>
