@@ -49,6 +49,7 @@ export function SettingsScreen() {
       <ListItem
         icon={Vibrate}
         title="Haptic feedback"
+        details="Use my device settings"
         onPress={() => {
           // TODO
         }}

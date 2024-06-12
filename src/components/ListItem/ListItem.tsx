@@ -5,18 +5,21 @@ import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
 import { CommonAccessoryProps } from "../types";
 import { useMemo } from "react";
+import { Box } from "@grapp/stacks";
 
 type ListItemProps = {
+  details?: string;
+  icon?: LucideIcon;
   onPress: () => void;
   title: string;
-  icon?: LucideIcon;
 } & CommonAccessoryProps;
 
 export function ListItem({
-  title,
-  onPress,
+  details,
   icon: Icon,
+  onPress,
   right: rightElement,
+  title,
 }: ListItemProps) {
   const { styles, theme } = useStyles(stylesheet);
   const right = useMemo(() => {
@@ -41,7 +44,11 @@ export function ListItem({
       {Icon ? (
         <Icon size={24} color={theme.colors.typography} strokeWidth={1.5} />
       ) : null}
-      <Text style={{ flexGrow: 1 }}>{title}</Text>
+
+      <Box gap={2} flex={"fluid"} style={{ justifyContent: "center" }}>
+        <Text>{title}</Text>
+        {details ? <Text style={{ color: "grey" }}>{details}</Text> : null}
+      </Box>
       {right}
     </AnimatedRectButton>
   );
