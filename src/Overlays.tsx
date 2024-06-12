@@ -1,7 +1,6 @@
-import { FullWindowOverlay } from "react-native-screens";
 import { View, StyleSheet } from "react-native";
 import { PortalHost } from "@gorhom/portal";
-import { Notifier } from "components";
+import { FullWindowOverlay, Notifier } from "components";
 
 export function Overlays() {
   return (
