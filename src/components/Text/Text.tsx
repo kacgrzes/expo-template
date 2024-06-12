@@ -9,6 +9,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 type TextAlign = TextStyle["textAlign"];
 type TextProps = TextComponentProps & {
   textAlign?: TextAlign;
+  textTransform?: TextStyle["textTransform"];
   variant?: "body" | "code" | "title" | "label";
 };
 
@@ -16,6 +17,7 @@ type TextProps = TextComponentProps & {
 export function Text({
   style,
   textAlign,
+  textTransform,
   variant = "body",
   ...rest
 }: TextProps) {
@@ -23,7 +25,11 @@ export function Text({
 
   return (
     <TextComponent
-      style={StyleSheet.flatten([styles.text, { textAlign }, style])}
+      style={StyleSheet.flatten([
+        styles.text,
+        { textAlign, textTransform },
+        style,
+      ])}
       {...rest}
     />
   );

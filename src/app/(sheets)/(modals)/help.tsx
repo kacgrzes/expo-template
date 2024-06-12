@@ -1,12 +1,4 @@
-import { ScrollView, Text } from "react-native";
+import { HelpScreen } from "help";
 import { withModalStatusBar } from "utils/withModalStatusBar";
 
-function Help() {
-  return (
-    <ScrollView>
-      <Text>This is help screen</Text>
-    </ScrollView>
-  );
-}
-
-export default withModalStatusBar(Help);
+export default withModalStatusBar(HelpScreen);

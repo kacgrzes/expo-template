@@ -1,4 +1,5 @@
-import { ScrollView, ListItem } from "components";
+import { Box } from "@grapp/stacks";
+import { ScrollView, ListItem, Text, Switch } from "components";
 import { useRouter } from "expo-router";
 import {
   Globe,
@@ -7,6 +8,11 @@ import {
   Share,
   LifeBuoy,
   BoxSelect,
+  Vibrate,
+  UserRoundX,
+  Eraser,
+  Info,
+  SquarePen,
 } from "lucide-react-native";
 
 export function SettingsScreen() {
@@ -14,6 +20,11 @@ export function SettingsScreen() {
 
   return (
     <ScrollView>
+      <Box paddingX={4} marginBottom={4} marginTop={4}>
+        <Text variant="label" textTransform="uppercase">
+          Appearance
+        </Text>
+      </Box>
       <ListItem
         icon={Moon}
         title="Appearance"
@@ -36,10 +47,25 @@ export function SettingsScreen() {
         }}
       />
       <ListItem
+        icon={Vibrate}
+        title="Haptic feedback"
+        onPress={() => {
+          // TODO
+        }}
+        right={<Switch />}
+      />
+      <ListItem
         icon={Star}
         title="Rate this app"
         onPress={() => {
           router.navigate("/rate");
+        }}
+      />
+      <ListItem
+        icon={SquarePen}
+        title="Give us your feedback"
+        onPress={() => {
+          // TODO:
         }}
       />
       <ListItem
@@ -54,6 +80,27 @@ export function SettingsScreen() {
         title="Help"
         onPress={() => {
           router.navigate("/help");
+        }}
+      />
+      <ListItem
+        icon={Eraser}
+        title="Clear cache"
+        onPress={() => {
+          // TODO
+        }}
+      />
+      <ListItem
+        icon={Info}
+        title="About"
+        onPress={() => {
+          // TODO
+        }}
+      />
+      <ListItem
+        icon={UserRoundX}
+        title="Delete account"
+        onPress={() => {
+          // TODO
         }}
       />
     </ScrollView>
