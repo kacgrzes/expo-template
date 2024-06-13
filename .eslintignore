@@ -5,3 +5,4 @@ dist/
 ios/
 node_modules/
 templates/
+venv/
