@@ -28,7 +28,7 @@ export function ListItem({
     }
 
     return rightElement;
-  }, [rightElement, theme.colors.typography]);
+  }, [rightElement]);
 
   return (
     <AnimatedRectButton
