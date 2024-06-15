@@ -5,7 +5,7 @@
 [![MIT License](https://img.shields.io/npm/dt/@kacgrzes/expo-template?style=flat-square)](https://img.shields.io/npm/dt/@kacgrzes/expo-template?style=flat-square)
 [![MIT License](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square)](https://img.shields.io/github/stars/kacgrzes/expo-typescript-template?style=flat-square)
 
-# @kacgrzes/expo-template
+# @kacgrzes/expo-template V2
 
 This is a template to be used with expo. It includes all the necessary stuff to start working with expo framework. It has the most popular packages included so it's easier to start coding the app itself without all the necessary boilerplate setup. It has:
 

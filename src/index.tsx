@@ -1,60 +1,38 @@
-// duplicated import of gesture handler is required for bottom sheet modal to work on android
-/* eslint-disable import/no-duplicates */
-// FIXME: see how why did you render works
-// import './wdyr'
-import 'react-native-gesture-handler'
-import 'react-native-reanimated'
-import '~i18n'
+// TODO: can be removed when reanimated is 3.11.0
+import "react-native-reanimated";
+import "polyfills";
+import "i18n";
+import "unistyles";
 
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
-import { registerRootComponent } from 'expo'
-import { StyleSheet } from 'react-native'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { QueryClientProvider, QueryClient } from 'react-query'
+import { registerRootComponent } from "expo";
+import { ExpoRoot } from "expo-router";
+import { useDevMenuItem, useRegisterDevMenuItems } from "hooks";
+import { setupOnAppStart } from "setupOnAppStart";
 
-import { AppLoading } from '~components'
-import { theme, nativeBaseConfig } from '~constants'
-import { Navigation } from '~navigation'
-import { AuthProvider, NotificationsProvider, NativeBaseProvider } from '~providers'
-import { startMockedServer, colorModeManager } from '~services'
+import Storybook from "./.storybook";
+import { Providers } from "./Providers";
 
-// FIXME: there is some issue with miragejs that causes console.log to not work
-const DISABLE_CONSOLE_ENABLE_MOCKED_SERVER = false
+setupOnAppStart();
 
-if (DISABLE_CONSOLE_ENABLE_MOCKED_SERVER) {
-  startMockedServer()
+function Root() {
+  useRegisterDevMenuItems();
+  const enabled = useDevMenuItem("storybook-enabled");
+
+  if (!enabled || !__DEV__) {
+    // @ts-ignore
+    const ctx = require.context("./app");
+    return <ExpoRoot context={ctx} wrapper={Providers} />;
+  }
+
+  if (__DEV__ && enabled) {
+    return (
+      <Providers>
+        <Storybook />
+      </Providers>
+    );
+  }
+
+  return null;
 }
 
-const queryClient = new QueryClient({})
-
-const App = (): JSX.Element => {
-  return (
-    <NativeBaseProvider theme={theme} colorModeManager={colorModeManager} config={nativeBaseConfig}>
-      {/* NativeBaseProvider includes SafeAreaProvider so that we don't have to include it in a root render tree */}
-      {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
-      <NotificationsProvider>
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider>
-            <AppLoading>
-              <GestureHandlerRootView style={styles.gestureHandlerRootView}>
-                <BottomSheetModalProvider>
-                  <Navigation />
-                </BottomSheetModalProvider>
-              </GestureHandlerRootView>
-            </AppLoading>
-          </AuthProvider>
-        </QueryClientProvider>
-      </NotificationsProvider>
-    </NativeBaseProvider>
-  )
-}
-
-const styles = StyleSheet.create({
-  gestureHandlerRootView: {
-    flex: 1,
-  },
-})
-
-registerRootComponent(App)
-
-export default App
+registerRootComponent(Root);

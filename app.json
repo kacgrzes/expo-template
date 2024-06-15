@@ -1,36 +1,106 @@
 {
-  "expo": {
-    "name": "Template",
-    "slug": "expo-typescript-template",
-    "scheme": "template",
-    "version": "1.0.0",
-    "owner": "binarapps",
-    "userInterfaceStyle": "automatic",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
+  "name": "Template",
+  "description": "A template for Expo projects",
+  "slug": "template",
+  "owner": "kacgrzes",
+  "jsEngine": "hermes",
+  "scheme": "template",
+  "version": "1.0.0",
+  "privacy": "hidden",
+  "platforms": ["ios", "android"],
+  "orientation": "default",
+  "icon": "./assets/icon.png",
+  "userInterfaceStyle": "automatic",
+  "backgroundColor": "#000000",
+  "primaryColor": "#000000",
+  "developmentClient": {
+    "silentLaunch": true
+  },
+  "githubUrl": "https://github.com/kacgrzes/expo-template",
+  "splash": {
+    "image": "./assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#ffffff"
+  },
+  "assetBundlePatterns": ["**/*"],
+  "ios": {
+    "backgroundColor": "#000000",
+    "bundleIdentifier": "io.kacgrzes.template",
+    "supportsTablet": true,
     "splash": {
+      "backgroundColor": "#ffffff",
       "image": "./assets/splash.png",
       "resizeMode": "contain",
+      "dark": {
+        "backgroundColor": "#000000",
+        "image": "./assets/splash.png",
+        "resizeMode": "contain"
+      }
+    }
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "jsEngine": "hermes",
-      "bundleIdentifier": "com.binarapps.template.dev"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "jsEngine": "hermes"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "package": "io.kacgrzes.template"
+  },
+  "web": {
+    "favicon": "./assets/favicon.png",
+    "output": "single",
+    "bundler": "metro"
+  },
+  "plugins": [
+    [
+      "expo-dev-launcher",
+      {
+        "launchMode": "most-recent"
+      }
+    ],
+    [
+      "expo-sensors",
+      {
+        "motionPermission": "Allow $(PRODUCT_NAME) to access your device motion."
+      }
+    ],
+    [
+      "expo-build-properties",
+      {
+        "android": {
+          // these values were tested with Expo SDK 48
+          "buildToolsVersion": "34.0.0",
+          "compileSdkVersion": 34,
+          "kotlinVersion": "1.6.21",
+          "minSdkVersion": 23,
+          "newArchEnabled": false,
+          "targetSdkVersion": 34
+        },
+        "ios": {
+          "newArchEnabled": false
+        }
+      }
+    ],
+    "expo-asset",
+    "expo-router",
+    "expo-font",
+    "expo-localization",
+    "expo-quick-actions",
+    "expo-secure-store",
+    "expo-tracking-transparency",
+    [
+      "@config-plugins/react-native-dynamic-app-icon",
+      ["./assets/icon.png", "./assets/icon2.png", "./assets/icon3.png"]
+    ]
+  ],
+  "experiments": {
+    "reactCanary": false,
+    "tsconfigPaths": true,
+    "turboModules": false,
+    "typedRoutes": true
+  },
+  "extra": {
+    "eas": {
+      "projectId": "70f8e0af-61a6-48ed-ab83-8fd620248c9c"
     }
   }
 }

@@ -1,7 +1,1 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-yarn lint-staged
-yarn typecheck
-yarn prettier:write
-yarn pretty-quick --staged --ignore-path=./.prettierignore
+npm run check && npm run testFinal

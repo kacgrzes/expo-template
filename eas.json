@@ -1,22 +1,30 @@
 {
+  "cli": {
+    "version": ">= 9.2.0"
+  },
   "build": {
     "development": {
       "developmentClient": true,
       "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "development"
+      }
+    },
+    "ios-simulator": {
+      "extends": "development",
       "ios": {
         "simulator": true
       }
     },
-    "qa": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "preview"
+      }
     },
     "production": {}
   },
-  "cli": {
-    "version": ">= 0.53.1"
+  "submit": {
+    "production": {}
   }
 }

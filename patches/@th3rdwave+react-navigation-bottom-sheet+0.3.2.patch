@@ -1,0 +1,30 @@
+diff --git a/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx b/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx
+index cc6f6c9..74b5fe5 100644
+--- a/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx
++++ b/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx
+@@ -9,6 +9,7 @@ import * as React from 'react';
+ import { Platform, StyleSheet } from 'react-native';
+ import { SafeAreaProvider } from 'react-native-safe-area-context';
+ import { FullWindowOverlay } from 'react-native-screens';
++import { Portal } from "@gorhom/portal"
+ import type {
+   BottomSheetDescriptorMap,
+   BottomSheetNavigationConfig,
+@@ -132,7 +133,7 @@ export function BottomSheetView({ state, descriptors }: Props) {
+   return (
+     <>
+       {firstScreen.render()}
+-      <Overlay>
++      <Portal hostName='sheets'>
+         {shouldRenderProvider.current && (
+           <BottomSheetModalProvider>
+             {state.routes.slice(1).map((route) => {
+@@ -176,7 +177,7 @@ export function BottomSheetView({ state, descriptors }: Props) {
+             })}
+           </BottomSheetModalProvider>
+         )}
+-      </Overlay>
++      </Portal>
+     </>
+   );
+ }
