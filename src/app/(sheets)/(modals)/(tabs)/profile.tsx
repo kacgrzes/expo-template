@@ -1,4 +1,4 @@
-import { Button, TextInput, useTextInputRef } from "components";
+import { Button, TextInput, useTextInputRef } from "@/components";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import {

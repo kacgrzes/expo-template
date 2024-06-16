@@ -1,4 +1,4 @@
-import { Avatar, useBadgeStyle } from "components";
+import { Avatar, useBadgeStyle } from "@/components";
 import { Tabs as TabsRouter } from "expo-router";
 import { Home } from "lucide-react-native";
 import { useStyles } from "react-native-unistyles";

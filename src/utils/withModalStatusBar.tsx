@@ -1,4 +1,4 @@
-import { StatusBar } from "components/StatusBar";
+import { StatusBar } from "@/components/StatusBar";
 import { ComponentType, Fragment } from "react";
 
 export const withModalStatusBar = (Screen: ComponentType) => {

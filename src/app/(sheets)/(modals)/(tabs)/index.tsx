@@ -1,5 +1,5 @@
 import { FloatBox } from "@grapp/stacks";
-import { useSession } from "auth";
+import { useSession } from "@/auth";
 import {
   ActionSheetExample,
   Button,
@@ -12,14 +12,14 @@ import {
   FAB,
   ScrollView,
   OnScroll,
-} from "components";
+} from "@/components";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";
 import { Fragment, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { env, isHermes, openSettings } from "utils";
+import { env, isHermes, openSettings } from "@/utils";
 
 export default function App() {
   const { styles } = useStyles(stylesheet);

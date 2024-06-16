@@ -1,4 +1,4 @@
-import { ListItem, SocialIcon, Title } from "components";
+import { ListItem, SocialIcon, Title } from "@/components";
 import { applicationName } from "expo-application";
 import { useRouter } from "expo-router";
 import { ScrollView, View } from "react-native";

@@ -6,9 +6,9 @@ import {
   useOrientationLock,
   useQuickActionSetup,
   useShakeEvent,
-} from "hooks";
+} from "@/hooks";
 import { Fragment } from "react";
-import { useScreenTracking, trackScreen } from "analytics";
+import { useScreenTracking, trackScreen } from "@/analytics";
 
 export default function Root() {
   const router = useRouter();

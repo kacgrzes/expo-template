@@ -1,4 +1,4 @@
-import { JSONViewer } from "components";
+import { JSONViewer } from "@/components";
 import PACKAGE_JSON from "packageJson";
 import { ScrollView } from "react-native";
 

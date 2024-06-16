@@ -1,6 +1,6 @@
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Text } from "components/Text";
-import { AnimatedRectButton } from "components/AnimatedButtons";
+import { Text } from "@/components/Text";
+import { AnimatedRectButton } from "@/components/AnimatedButtons";
 import Animated, {
   useAnimatedStyle,
   withTiming,
@@ -14,7 +14,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { useDisabledStyle } from "components/hooks/useDisabledStyle";
+import { useDisabledStyle } from "@/components/hooks/useDisabledStyle";
 import { LayoutChangeEvent, LayoutRectangle, View } from "react-native";
 
 type SegmentedControlProps = { disabled?: boolean; full?: boolean };

@@ -1,1 +1,1 @@
-export { FeedbackPanel as default } from "feedback";
+export { FeedbackPanel as default } from "@/feedback";

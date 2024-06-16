@@ -1,1 +1,1 @@
-export { ThemeSwitcher as default } from "unistyles/ThemeSwitcher";
+export { ThemeSwitcher as default } from "@/unistyles/ThemeSwitcher";

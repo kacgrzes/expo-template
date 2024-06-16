@@ -1,5 +1,5 @@
 import { Box } from "@grapp/stacks";
-import { ScrollView, ListItem, Text, Switch } from "components";
+import { ScrollView, ListItem, Text, Switch } from "@/components";
 import { useRouter } from "expo-router";
 import {
   Globe,

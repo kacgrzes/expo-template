@@ -2,8 +2,10 @@
 /.expo
 android/
 assets/
+babel.config.js
 dist/
 ios/
+metro.config.js
 node_modules/
 templates/
 venv/

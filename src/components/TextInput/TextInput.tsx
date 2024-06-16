@@ -1,5 +1,5 @@
-import { CommonAccessoryProps, CommonFormProps } from "components/types";
-import { useShakeAnimation } from "hooks";
+import { CommonAccessoryProps, CommonFormProps } from "@/components/types";
+import { useShakeAnimation } from "@/hooks";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import {
   NativeSyntheticEvent,

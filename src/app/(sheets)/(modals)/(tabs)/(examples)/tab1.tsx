@@ -1,4 +1,4 @@
-import { Button, Notifier, Tooltip, ScrollView, Text } from "components";
+import { Button, Notifier, Tooltip, ScrollView, Text } from "@/components";
 import * as Linking from "expo-linking";
 import { Pressable } from "react-native";
 

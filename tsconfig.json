@@ -7,7 +7,7 @@
     "module": "ESNext",
     "jsx": "react-native",
     "paths": {
-      "*": ["./src/*", "./src/modules/*"],
+      "@/*": ["./src/*", "./src/modules/*"],
       "packageJson": ["./package.json"]
     },
     "skipLibCheck": true,

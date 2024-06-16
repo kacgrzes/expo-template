@@ -1,14 +1,14 @@
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { PortalProvider } from "@gorhom/portal";
-import { SessionProvider } from "auth";
-import { Fallback, StatusBar } from "components";
-import { useFontsSetup } from "hooks";
+import { SessionProvider } from "@/auth";
+import { Fallback, StatusBar } from "@/components";
+import { useFontsSetup } from "@/hooks";
 import { ComponentProps, ReactNode } from "react";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { ErrorBoundary } from "react-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ThemeProvider } from "unistyles";
+import { ThemeProvider } from "@/unistyles";
 import { Overlays } from "./Overlays";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 

@@ -1,5 +1,5 @@
-import { TopTabs } from "layouts";
-import { SafeAreaView } from "components";
+import { TopTabs } from "@/layouts";
+import { SafeAreaView } from "@/components";
 
 export default function TopTabsExample() {
   return (

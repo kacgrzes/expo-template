@@ -1,7 +1,7 @@
 import { LucideIcon, Plus } from "lucide-react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 // TODO: check why this component has such a big hit slop
-import { AnimatedRectButton } from "components/AnimatedButtons";
+import { AnimatedRectButton } from "@/components/AnimatedButtons";
 import {
   ComponentProps,
   useCallback,

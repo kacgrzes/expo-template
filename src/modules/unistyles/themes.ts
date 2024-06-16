@@ -3,7 +3,7 @@ import { Theme as NavigationTheme } from "@react-navigation/native";
 import { fontFamily } from "./fontFamily";
 import { fonts } from "./fonts";
 import { foundation } from "./foundation";
-import { mmkv } from "utils";
+import { mmkv } from "@/utils";
 
 export const isStackDebugEnabled = () => {
   const json = mmkv.getString("dev-menu-items");

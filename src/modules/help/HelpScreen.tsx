@@ -1,4 +1,4 @@
-import { ScrollView, ListItem } from "components";
+import { ScrollView, ListItem } from "@/components";
 import { applicationName } from "expo-application";
 
 export function HelpScreen() {
