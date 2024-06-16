@@ -4,12 +4,16 @@
     "baseUrl": "./",
     "checkJs": true,
     "esModuleInterop": true,
+    "module": "ESNext",
     "jsx": "react-native",
     "paths": {
       "*": ["./src/*", "./src/modules/*"],
       "packageJson": ["./package.json"]
     },
-    "strict": true
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "typeRoots": ["node_modules/@types", "@types"]
   },
   "extends": "expo/tsconfig.base",
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
