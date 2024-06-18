@@ -13,8 +13,15 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   extends: ["plugin:react-hooks/recommended", "expo", "prettier"],
-  plugins: ["@typescript-eslint", "react-native-globals", "expo", "prettier"],
+  plugins: [
+    "react-compiler",
+    "@typescript-eslint",
+    "react-native-globals",
+    "expo",
+    "prettier",
+  ],
   rules: {
+    "react-compiler/react-compiler": "warn",
     "expo/no-dynamic-env-var": "error",
     "expo/no-env-var-destructuring": "error",
     "prettier/prettier": ["error"],
