@@ -22,6 +22,7 @@ type SwitchProps = {
  * - User needs to perform instantaneous actions that do not need a review or confirmation.
  */
 export function Switch({ disabled }: SwitchProps) {
+  "use no memo";
   const value = useSharedValue(0);
   const isHeld = useSharedValue(0);
   const { styles, theme } = useStyles(stylesheet);

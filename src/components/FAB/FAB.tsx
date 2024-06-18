@@ -41,6 +41,7 @@ type FABProps = Pick<ComponentProps<typeof AnimatedRectButton>, "onPress"> & {
  * ```
  */
 export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
+  "use no memo";
   const { styles } = useStyles(stylesheet);
   const [layout, setLayout] = useState<LayoutRectangle>({
     width: 0,
@@ -78,8 +79,7 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
     } else {
       close();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [extended]);
+  }, [close, extended, open]);
 
   const handleLayout = useCallback(
     (event: LayoutChangeEvent) => {

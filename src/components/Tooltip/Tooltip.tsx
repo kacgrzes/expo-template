@@ -23,6 +23,7 @@ type TooltipProps = {
 // Trigger
 // Content
 const useTooltipPosition = () => {
+  "use no memo";
   const measurement = useSharedValue<MeasuredDimensions | null>(null);
   const animatedRef = useAnimatedRef();
 
@@ -54,6 +55,7 @@ const useTooltipPosition = () => {
  * ```
  */
 export function Tooltip({ children }: TooltipProps) {
+  "use no memo";
   const [visible, setVisible] = useState(false);
   const { animatedRef, tooltipAnimatedStyle } = useTooltipPosition();
 

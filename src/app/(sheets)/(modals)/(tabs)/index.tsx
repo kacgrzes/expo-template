@@ -21,6 +21,10 @@ import { useTranslation } from "react-i18next";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { env, isHermes, openSettings } from "@/utils";
 
+const CompilerTest = () => {
+  return <Text>{new Date().toUTCString()}</Text>;
+};
+
 export default function App() {
   const { styles } = useStyles(stylesheet);
   const { signOut, signIn, session } = useSession();
@@ -48,6 +52,7 @@ export default function App() {
           <Text>Open up App.js to start working on your app!{"\n"}</Text>
           <Text>{t("Welcome to React")}</Text>
         </Text>
+        <CompilerTest />
         <Text>{isHermes ? <Text>Welcome to Hermes</Text> : null}</Text>
         <Text>
           {formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}

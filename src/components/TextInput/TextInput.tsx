@@ -69,6 +69,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     { disabled, onBlur, onFocus, style, left = null, right = null, ...props },
     outerRef,
   ) => {
+    "use no memo";
     const { shake, shakeAnimatedStyle } = useShakeAnimation();
     const { styles, theme } = useStyles(stylesheet);
     const innerRef = useRef<RNTextInput>(null);

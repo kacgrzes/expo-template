@@ -6,6 +6,7 @@ import {
 } from "react-native-reanimated";
 
 export const useShakeAnimation = () => {
+  "use no memo";
   const shakeAnimation = useSharedValue(0);
 
   const shake = () => {
