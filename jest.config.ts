@@ -7,6 +7,7 @@ const config: Config = {
   modulePaths: [tsConfig.compilerOptions.baseUrl],
   preset: "jest-expo",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  testEnvironment: "node",
   testMatch: ["<rootDir>/src/**/*.test.ts", "<rootDir>/src/**/*.test.tsx"],
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/"],
   transformIgnorePatterns: [
