@@ -11,3 +11,15 @@ jest.mock("react-native-keyboard-controller", () =>
 jest.mock("@react-native-async-storage/async-storage", () =>
   require("@react-native-async-storage/async-storage/jest/async-storage-mock"),
 );
+
+jest.mock("zeego/context-menu", () => {
+  return jest.fn(() => {
+    return require("react").createElement("View", null, null);
+  });
+});
+
+jest.mock("zeego/dropdown-menu", () => {
+  return jest.fn(() => {
+    return require("react").createElement("View", null, null);
+  });
+});
