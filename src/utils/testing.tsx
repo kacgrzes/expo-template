@@ -1,12 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { render, RenderOptions } from "@testing-library/react-native";
+
+const Wrapper = ({ children }: { children: ReactNode }) => {
+  return <>{children}</>;
+};
 
 function customRender<T>(
   component: React.ReactElement<T>,
   options?: RenderOptions,
 ) {
   return render(component, {
-    wrapper: ({ children }) => <>{children}</>,
+    wrapper: Wrapper,
     ...options,
   });
 }
