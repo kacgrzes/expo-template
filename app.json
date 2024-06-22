@@ -94,7 +94,7 @@
   ],
   "experiments": {
     "reactCanary": false,
-    "reactCompiler": true,
+    "reactCompiler": false,
     "tsconfigPaths": true,
     "turboModules": false,
     "typedRoutes": true
