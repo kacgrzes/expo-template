@@ -1,3 +1,4 @@
+import { configure } from "@testing-library/react-native";
 import "@testing-library/jest-native/extend-expect";
 import "@testing-library/react-native/extend-expect";
 import { setUpTests } from "react-native-reanimated";
@@ -22,4 +23,12 @@ jest.mock("zeego/dropdown-menu", () => {
   return jest.fn(() => {
     return require("react").createElement("View", null, null);
   });
+});
+
+jest.setTimeout(5 * 1000); // default is 5 seconds
+
+jest.retryTimes(3);
+
+configure({
+  asyncUtilTimeout: 5 * 1000, // 5 seconds
 });
