@@ -16,7 +16,7 @@ import {
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { env, isHermes, openSettings } from "@/utils";
@@ -38,6 +38,14 @@ export default function App() {
       setExtended(false);
     }
   }, []);
+
+  useEffect(() => {
+    fetch("https://example.com/user")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  });
 
   return (
     <Fragment>

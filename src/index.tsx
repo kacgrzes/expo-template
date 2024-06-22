@@ -11,8 +11,10 @@ import { setupOnAppStart } from "@/setupOnAppStart";
 
 import Storybook from "./.storybook";
 import { Providers } from "./Providers";
+import { enableMocking } from "./mocks/enableMocking";
 
 setupOnAppStart();
+enableMocking();
 
 function Root() {
   useRegisterDevMenuItems();
