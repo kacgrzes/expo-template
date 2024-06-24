@@ -17,10 +17,10 @@ export function JSONViewer({ content, ...rest }: JSONViewerProps) {
   );
 }
 
-const stylesheet = createStyleSheet((_, runtime) => {
+const stylesheet = createStyleSheet((theme) => {
   return {
     jsonViewer: {
-      backgroundColor: runtime.themeName === "dark" ? "#202020" : "#e6e6e6",
+      backgroundColor: theme.name === "dark" ? "#202020" : "#e6e6e6",
     },
   };
 });

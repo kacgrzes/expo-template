@@ -28,6 +28,7 @@ const common = {
 
 export const lightTheme = {
   ...common,
+  name: "light",
   colors: {
     accent: foundation.colors.blue,
     background: foundation.colors.white,
@@ -55,6 +56,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   ...common,
+  name: "dark",
   colors: {
     accent: foundation.colors.blue,
     background: foundation.colors.black,

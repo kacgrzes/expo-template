@@ -151,11 +151,11 @@ export function SegmentedControl({ disabled, full }: SegmentedControlProps) {
   );
 }
 
-const stylesheet = createStyleSheet((theme, runtime) => {
+const stylesheet = createStyleSheet((theme) => {
   return {
     track: {
       flexDirection: "row",
-      backgroundColor: runtime.themeName === "dark" ? "grey" : "lightgrey",
+      backgroundColor: theme.name === "dark" ? "grey" : "lightgrey",
       padding: 2,
       borderRadius: 6,
       gap: 2,
