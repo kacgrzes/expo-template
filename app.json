@@ -43,7 +43,17 @@
       "foregroundImage": "./assets/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "package": "io.kacgrzes.template"
+    "package": "io.kacgrzes.template",
+    "splash": {
+      "backgroundColor": "#ffffff",
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "dark": {
+        "backgroundColor": "#000000",
+        "image": "./assets/splash.png",
+        "resizeMode": "contain"
+      }
+    }
   },
   "web": {
     "favicon": "./assets/favicon.png",
