@@ -29,7 +29,13 @@ export function Avatar({ size = "m", source }: AvatarProps) {
   });
 
   if (source) {
-    return <Image source={source} style={styles.avatar} />;
+    return (
+      <Image
+        accessibilityIgnoresInvertColors
+        source={source}
+        style={styles.avatar}
+      />
+    );
   }
 
   return (

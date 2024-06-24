@@ -44,9 +44,10 @@ export function AppIconSwitcher() {
 
         return (
           <Pressable
-            style={styles.appIconContainer(selected)}
+            accessibilityRole="radio"
             key={icon.hash}
-            onPress={() => selectIcon(index)}>
+            onPress={() => selectIcon(index)}
+            style={styles.appIconContainer(selected)}>
             <AppIcon source={icon.uri} />
             <RadioButton selected={selected} />
           </Pressable>

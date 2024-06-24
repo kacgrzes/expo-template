@@ -42,7 +42,9 @@ export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
       ref={textInputRef}
       {...props}
       left={
-        <Pressable onPress={() => textInputRef.current?.focus()}>
+        <Pressable
+          accessibilityRole="search"
+          onPress={() => textInputRef.current?.focus()}>
           <Animated.View
             style={{
               alignItems: "center",
@@ -68,6 +70,7 @@ export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
               justifyContent: "center",
             }}>
             <Pressable
+              accessibilityRole="button"
               onPress={handleClear}
               style={{
                 width: 24,

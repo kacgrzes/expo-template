@@ -16,6 +16,7 @@ export default function Tab1() {
         />
       </Tooltip>
       <Pressable
+        accessibilityRole="link"
         onPress={() => {
           Linking.openURL(redirectUrl);
         }}>

@@ -63,7 +63,11 @@ export default function KeyboardAnimation() {
         </Animated.View>
       </View>
       <KeyboardStickyView style={{ width: "100%" }}>
-        <TextInput ref={textInputRef} style={{ marginTop: 50 }} />
+        <TextInput
+          accessibilityRole="none"
+          ref={textInputRef}
+          style={{ marginTop: 50 }}
+        />
       </KeyboardStickyView>
     </View>
   );

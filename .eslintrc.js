@@ -12,7 +12,12 @@ module.exports = {
     sourceType: "module",
     tsconfigRootDir: __dirname,
   },
-  extends: ["plugin:react-hooks/recommended", "expo", "prettier"],
+  extends: [
+    "plugin:react-hooks/recommended",
+    "plugin:react-native-a11y/all",
+    "expo",
+    "prettier",
+  ],
   plugins: [
     "react-compiler",
     "@typescript-eslint",

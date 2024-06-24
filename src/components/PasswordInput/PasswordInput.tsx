@@ -26,6 +26,7 @@ export function PasswordInput(props: PasswordInputProps) {
     <TextInput
       right={
         <Pressable
+          accessibilityRole="button"
           // TODO: move these styles outside
           style={{
             height: 39,

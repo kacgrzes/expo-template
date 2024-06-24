@@ -61,7 +61,7 @@ export function Tooltip({ children }: TooltipProps) {
 
   return (
     <View>
-      <Pressable onPress={() => setVisible(true)}>
+      <Pressable accessibilityRole="button" onPress={() => setVisible(true)}>
         <Animated.View ref={animatedRef}>{children}</Animated.View>
       </Pressable>
       {visible ? (

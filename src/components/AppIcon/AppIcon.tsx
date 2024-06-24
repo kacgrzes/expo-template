@@ -19,7 +19,13 @@ type AppIconProps = Pick<ImageProps, "source">;
 export function AppIcon({ source }: AppIconProps) {
   const { styles } = useStyles(stylesheet);
 
-  return <Image style={styles.appIcon} source={source} />;
+  return (
+    <Image
+      accessibilityIgnoresInvertColors
+      source={source}
+      style={styles.appIcon}
+    />
+  );
 }
 
 const stylesheet = createStyleSheet((theme) => {
