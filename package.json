@@ -125,6 +125,7 @@
     "expo-font": "~12.0.5",
     "expo-haptics": "~13.0.1",
     "expo-image": "~1.12.12",
+    "expo-insights": "~0.7.0",
     "expo-intent-launcher": "~11.0.1",
     "expo-keep-awake": "~13.0.2",
     "expo-linear-gradient": "~13.0.2",
