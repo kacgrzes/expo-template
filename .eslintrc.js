@@ -16,7 +16,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:react-native-a11y/all",
     "expo",
-    "prettier",
+    "prettier", // this has to be the last one
   ],
   plugins: [
     "react-compiler",
