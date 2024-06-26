@@ -9,6 +9,7 @@ export function DropdownMenuExample() {
         <Button title="DropdownMenu example" full />
       </DropdownMenu.Trigger>
 
+      {/* @ts-ignore */}
       <DropdownMenu.Content>
         <DropdownMenu.Label>Label #1</DropdownMenu.Label>
         <DropdownMenu.Item key="test-1">

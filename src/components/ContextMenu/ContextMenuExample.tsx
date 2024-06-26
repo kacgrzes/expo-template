@@ -14,6 +14,7 @@ export function ContextMenuExample() {
         <Button title="ContextMenu example" full />
       </ContextMenu.Trigger>
 
+      {/* @ts-ignore */}
       <ContextMenu.Content>
         <ContextMenu.Preview>{() => <Preview />}</ContextMenu.Preview>
 
