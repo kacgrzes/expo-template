@@ -33,6 +33,12 @@ export default function (plop: NodePlopAPI) {
         skipIfExists: true,
       },
       {
+        type: "add",
+        path: "src/components/{{name}}/{{name}}.test.tsx",
+        templateFile: "templates/Component.test.tsx.hbs",
+        skipIfExists: true,
+      },
+      {
         type: "append",
         unique: true,
         path: "src/components/index.ts",
