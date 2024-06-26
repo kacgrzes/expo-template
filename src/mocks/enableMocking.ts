@@ -5,5 +5,5 @@ export async function enableMocking() {
 
   await import("./polyfills");
   const { server } = await import("./server");
-  server.listen();
+  server.listen({ onUnhandledRequest: "bypass" });
 }

@@ -36,7 +36,7 @@ configure({
 
 beforeAll(() => {
   // Enable API mocking before all the tests.
-  server.listen();
+  server.listen({ onUnhandledRequest: "error" });
 });
 
 afterEach(() => {
