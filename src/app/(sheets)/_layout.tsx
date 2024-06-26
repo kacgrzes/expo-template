@@ -12,13 +12,11 @@ const COMMON_OPTIONS: BottomSheetNavigationOptions = {
 const EXAMPLE_SHEET_OPTIONS: BottomSheetNavigationOptions = {
   ...COMMON_OPTIONS,
   detached: true,
-  enableDynamicSizing: false,
-  snapPoints: [200],
+  enableDynamicSizing: true,
   style: {
     marginHorizontal: 16,
   },
   bottomInset: UnistylesRuntime.insets.bottom ?? 24,
-  backdropComponent: null,
 };
 
 export default function Sheets() {
