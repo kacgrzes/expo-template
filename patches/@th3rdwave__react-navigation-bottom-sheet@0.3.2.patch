@@ -1,7 +1,7 @@
-diff --git a/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx b/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx
-index cc6f6c9..74b5fe5 100644
---- a/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx
-+++ b/node_modules/@th3rdwave/react-navigation-bottom-sheet/src/BottomSheetView.tsx
+diff --git a/src/BottomSheetView.tsx b/src/BottomSheetView.tsx
+index cc6f6c9ab4ee9c32897e5fb7b757a781778a01a5..74b5fe58d3256b2540c7117b2bc375d46dd0346e 100644
+--- a/src/BottomSheetView.tsx
++++ b/src/BottomSheetView.tsx
 @@ -9,6 +9,7 @@ import * as React from 'react';
  import { Platform, StyleSheet } from 'react-native';
  import { SafeAreaProvider } from 'react-native-safe-area-context';
