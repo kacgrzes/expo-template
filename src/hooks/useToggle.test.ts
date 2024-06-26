@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react-native";
 import { useToggle } from "./useToggle";
 
-describe("useToggle hook", () => {
+describe("useToggle", () => {
   test("should initialize with default value (false)", () => {
     const { result } = renderHook(() => useToggle());
 

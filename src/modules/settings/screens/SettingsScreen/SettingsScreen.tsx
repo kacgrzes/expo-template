@@ -1,5 +1,6 @@
 import { Box } from "@grapp/stacks";
 import { ScrollView, ListItem, Text, Switch } from "@/components";
+import { useCurrentLanguage } from "@/i18n";
 import { useRouter } from "expo-router";
 import {
   Globe,
@@ -19,6 +20,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 export function SettingsScreen() {
   const router = useRouter();
   const { bottom } = useSafeAreaInsets();
+  const currentLanguage = useCurrentLanguage();
 
   return (
     <ScrollView contentInset={{ bottom }} scrollIndicatorInsets={{ bottom: 0 }}>
@@ -45,7 +47,7 @@ export function SettingsScreen() {
       <ListItem
         icon={Globe}
         title="Language"
-        details="Polski"
+        details={currentLanguage.name}
         onPress={() => {
           router.navigate("/languages");
         }}
