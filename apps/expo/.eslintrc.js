@@ -16,20 +16,12 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:react-native-a11y/all",
     "expo",
-    "prettier", // this has to be the last one
   ],
-  plugins: [
-    "react-compiler",
-    "@typescript-eslint",
-    "react-native-globals",
-    "expo",
-    "prettier",
-  ],
+  plugins: ["react-compiler", "react-native-globals", "expo"],
   rules: {
     "react-compiler/react-compiler": "warn",
     "expo/no-dynamic-env-var": "error",
     "expo/no-env-var-destructuring": "error",
-    "prettier/prettier": ["error"],
     // Ensures props and state inside functions are always up-to-date
     "react-hooks/exhaustive-deps": "warn",
   },

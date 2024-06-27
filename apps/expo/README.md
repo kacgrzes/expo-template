@@ -17,7 +17,6 @@ Version in the `package.json` is one to one the latest expo on which the templat
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/expo?style=flat-square)
 [![MIT License](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)](https://img.shields.io/github/package-json/dependency-version/kacgrzes/expo-typescript-template/@react-navigation/native?style=flat-square)
 
-
 - TypeScript support
 - Expo
 - React Navigation
@@ -33,8 +32,7 @@ Version in the `package.json` is one to one the latest expo on which the templat
 - auth flow ready for implementation details
   - using expo-secure-store module to save user token
   - right now it has simple signIn/signOut flow
-- prettier
-- babel-module-resolver
+- biome (instead of eslint and prettier)
 - tests with jest and @testing-library/react-native
 - animations with `reanimated` and `moti`
 - `@gorhom/bottom-sheet`
