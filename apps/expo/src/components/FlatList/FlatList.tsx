@@ -27,8 +27,7 @@ export function FlatList<ItemT = any>({
   keyExtractor = defaultKeyExtractor,
   renderItem,
 }: FlatListProps<ItemT>) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { styles } = useStyles(stylesheet);
+  const { styles: _styles } = useStyles(stylesheet);
 
   return (
     <RNFlatList<ItemT>

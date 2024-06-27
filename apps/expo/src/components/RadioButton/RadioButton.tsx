@@ -29,7 +29,7 @@ export function RadioButton({
   disabled,
   onPress,
   selected,
-  size,
+  size: _size,
 }: RadioButtonProps) {
   const { styles } = useStyles(stylesheet);
 

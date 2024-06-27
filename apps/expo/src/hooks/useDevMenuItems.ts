@@ -61,7 +61,7 @@ export const useRegisterDevMenuItems = () => {
     }
 
     registerDevMenuItems();
-  }, [setValue, registerDevMenuItems]);
+  }, [registerDevMenuItems]);
 };
 
 export const useDevMenuItem = (

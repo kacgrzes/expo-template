@@ -86,8 +86,7 @@ export function Tooltip({ children }: TooltipProps) {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const stylesheet = createStyleSheet((theme) => {
+const _stylesheet = createStyleSheet((theme) => {
   return {
     container: {
       alignSelf: "center",

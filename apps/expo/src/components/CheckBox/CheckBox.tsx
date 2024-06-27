@@ -27,7 +27,7 @@ export type CheckBoxProps = CommonFormProps & {
  * - Applied settings need to be confirmed and reviewed by user before they are submitted
  * - Defined settings require an action like Submit, OK, Next, Apply before displaying results
  */
-export function CheckBox({ checked, disabled, size }: CheckBoxProps) {
+export function CheckBox({ checked, disabled, size: _size }: CheckBoxProps) {
   const { theme, styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });
 

@@ -19,7 +19,7 @@ Use when
 - you can select multiple options
 - the options are short and consistant (1 or 2 words)
 */
-export function Chip({ disabled, left, onPress, right, size }: ChipProps) {
+export function Chip({ disabled }: ChipProps) {
   const { styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });
 

@@ -93,7 +93,7 @@ export default function App() {
   );
 }
 
-const stylesheet = createStyleSheet((theme, runtime) => ({
+const stylesheet = createStyleSheet((_theme, runtime) => ({
   container: {
     marginTop: runtime.insets.top,
   },

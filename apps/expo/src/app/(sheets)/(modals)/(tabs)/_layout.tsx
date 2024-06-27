@@ -34,7 +34,7 @@ export default function Tabs() {
         name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color }) => <Avatar size="s" />,
+          tabBarIcon: () => <Avatar size="s" />,
         }}
       />
       <TabsRouter.Screen

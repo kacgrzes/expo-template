@@ -8,8 +8,7 @@ type SliderProps = {
   value: number;
 };
 
-// eslint-disable-next-line no-empty-pattern
-export function Slider({}: SliderProps) {
+export function Slider({ disabled: _disabled }: SliderProps) {
   const { styles } = useStyles(stylesheet);
 
   return (
