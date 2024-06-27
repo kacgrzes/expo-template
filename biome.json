@@ -1,7 +1,19 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "files": {
-    "ignore": ["**/ios/*", "**/android/*"]
+    "ignore": [
+      ".expo/",
+      ".husky/",
+      "android/",
+      "babel.config.js",
+      "build/",
+      "dist/",
+      "expo-env.d.ts",
+      "ios/",
+      "metro.config.js",
+      "node_modules/",
+      "templates/"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -10,17 +22,7 @@
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 80,
-    "attributePosition": "auto",
-    "ignore": [
-      "**/.expo/",
-      "**/.husky/",
-      "**/android/",
-      "**/dist/",
-      "**/expo-env.d.ts",
-      "**/ios/",
-      "**/node_modules/",
-      "**/templates/"
-    ]
+    "attributePosition": "auto"
   },
   "organizeImports": { "enabled": true },
   "linter": {
@@ -52,22 +54,7 @@
         "noUnsafeNegation": "warn",
         "useValidTypeof": "error"
       }
-    },
-    "ignore": [
-      ".expo",
-      "android/app/build",
-      "**/.eslintrc.js",
-      "./.expo",
-      "**/android/",
-      "**/assets/",
-      "**/babel.config.js",
-      "**/dist/",
-      "**/ios/",
-      "**/metro.config.js",
-      "**/node_modules/",
-      "**/templates/",
-      "**/venv/"
-    ]
+    }
   },
   "javascript": {
     "formatter": {
