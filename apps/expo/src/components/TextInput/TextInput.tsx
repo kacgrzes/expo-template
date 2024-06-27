@@ -79,11 +79,26 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       outerRef,
       () => {
         return {
-          blur: () => innerRef.current?.blur(),
-          clear: () => innerRef.current?.clear(),
-          focus: () => innerRef.current?.focus(),
-          isFocused: () => innerRef.current?.isFocused(),
-          shake,
+          blur: () => {
+            innerRef.current?.blur();
+            return undefined;
+          },
+          clear: () => {
+            innerRef.current?.clear();
+            return undefined;
+          },
+          focus: () => {
+            innerRef.current?.focus();
+            return undefined;
+          },
+          isFocused: () => {
+            innerRef.current?.isFocused();
+            return undefined;
+          },
+          shake: () => {
+            shake();
+            return undefined;
+          },
         };
       },
       [shake],
@@ -102,7 +117,9 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
         onFocus?.(e);
         isFocused.value = true;
-        textInputFocusManager.setLastTextInput(innerRef.current);
+        if (innerRef.current) {
+          textInputFocusManager.setLastTextInput(innerRef.current);
+        }
       },
       [onFocus, isFocused],
     );
