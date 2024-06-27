@@ -52,3 +52,10 @@ expo-env.d.ts
 
 # Python
 venv/
+
+# turbo
+.turbo
+
+# typescript
+*.tsbuildinfo
+dist/
