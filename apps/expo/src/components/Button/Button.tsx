@@ -6,7 +6,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { Status, Size, CommonAccessoryProps, CommonFormProps } from "../types";
+import { CommonAccessoryProps, CommonFormProps, Size, Status } from "../types";
 
 // TODO: Add Button.Group
 
@@ -34,7 +34,7 @@ export const Button = forwardRef<any, ButtonProps>(
       variant = "solid",
       ...rest
     },
-    ref,
+    _ref,
   ) => {
     const { styles, theme } = useStyles(stylesheet, { variant, full });
     const disabledStyle = useDisabledStyle({ disabled });
@@ -44,7 +44,8 @@ export const Button = forwardRef<any, ButtonProps>(
         activeOpacity={theme.opacity}
         enabled={!disabled}
         {...rest}
-        style={[styles.container, style, disabledStyle]}>
+        style={[styles.container, style, disabledStyle]}
+      >
         <View accessible accessibilityRole="button">
           {left}
           <Text numberOfLines={1} style={styles.title}>

@@ -1,6 +1,6 @@
-import { Status } from "../types";
 import { ActivityIndicator as ActivityIndicatorComponent } from "react-native";
 import { useStyles } from "react-native-unistyles";
+import { Status } from "../types";
 
 type ActivityIndicatorProps = {
   size?: "s" | "l";

@@ -1,8 +1,8 @@
 import { Pressable, View } from "react-native";
 import { createStyleSheet } from "react-native-unistyles";
 
-import { Text } from "../Text";
 import { Portal } from "@gorhom/portal";
+import { ReactNode, useState } from "react";
 import Animated, {
   measure,
   useAnimatedRef,
@@ -11,8 +11,8 @@ import Animated, {
   useSharedValue,
   MeasuredDimensions,
 } from "react-native-reanimated";
-import { ReactNode, useState } from "react";
 import { Overlay } from "../Overlay";
+import { Text } from "../Text";
 
 type TooltipProps = {
   children: ReactNode;
@@ -76,7 +76,8 @@ export function Tooltip({ children }: TooltipProps) {
                 position: "absolute",
               },
               tooltipAnimatedStyle,
-            ]}>
+            ]}
+          >
             <Text style={{ flexShrink: 1 }}>Hello</Text>
           </Animated.View>
         </Portal>

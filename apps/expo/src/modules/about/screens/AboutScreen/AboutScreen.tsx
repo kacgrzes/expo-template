@@ -4,8 +4,8 @@ import { useRouter } from "expo-router";
 import { ScrollView, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-import { Version } from "../../components/Version";
 import { Clipboard, FileCheck, LockKeyhole, Mail } from "lucide-react-native";
+import { Version } from "../../components/Version";
 import { composeEmail } from "../../utils/composeEmail";
 
 export function AboutScreen() {

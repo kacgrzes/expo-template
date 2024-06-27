@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
-import { useStyles } from "react-native-unistyles";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import { useStyles } from "react-native-unistyles";
 
 type OverlayProps = {
   /** The name of the person who generated this component */

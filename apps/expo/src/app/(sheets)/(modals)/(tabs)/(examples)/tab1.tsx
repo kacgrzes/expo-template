@@ -1,4 +1,4 @@
-import { Button, Notifier, Tooltip, ScrollView, Text } from "@/components";
+import { Button, Notifier, ScrollView, Text, Tooltip } from "@/components";
 import * as Linking from "expo-linking";
 import { Pressable } from "react-native";
 
@@ -19,7 +19,8 @@ export default function Tab1() {
         accessibilityRole="link"
         onPress={() => {
           Linking.openURL(redirectUrl);
-        }}>
+        }}
+      >
         <Text>{redirectUrl}</Text>
       </Pressable>
     </ScrollView>

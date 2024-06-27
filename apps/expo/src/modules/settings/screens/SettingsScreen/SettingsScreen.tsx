@@ -1,19 +1,19 @@
-import { Box } from "@grapp/stacks";
-import { ScrollView, ListItem, Text, Switch } from "@/components";
+import { ListItem, ScrollView, Switch, Text } from "@/components";
 import { useCurrentLanguage } from "@/i18n";
+import { Box } from "@grapp/stacks";
 import { useRouter } from "expo-router";
 import {
-  Globe,
-  Moon,
-  Star,
-  Share,
-  LifeBuoy,
   BoxSelect,
-  Vibrate,
-  UserRoundX,
   Eraser,
+  Globe,
   Info,
+  LifeBuoy,
+  Moon,
+  Share,
   SquarePen,
+  Star,
+  UserRoundX,
+  Vibrate,
 } from "lucide-react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 

@@ -1,8 +1,0 @@
-.expo/
-.husky/
-android/
-dist/
-expo-env.d.ts
-ios/
-node_modules/
-templates/

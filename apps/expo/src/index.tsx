@@ -4,8 +4,8 @@ import "@/polyfills";
 import "@/i18n";
 import "@/unistyles";
 
-import { registerRootComponent } from "expo";
 import { setupOnAppStart } from "@/setupOnAppStart";
+import { registerRootComponent } from "expo";
 import { Root } from "./Root";
 
 setupOnAppStart();

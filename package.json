@@ -7,16 +7,17 @@
   "packageManager": "pnpm@9.4.0",
   "private": true,
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "husky": "^9.0.11",
     "prettier": "^3.3.2",
     "turbo": "^2.0.5",
     "typescript": "~5.3.3"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
+    "check": "biome check",
+    "format": "biome format",
+    "lint": "biome lint",
     "prepare": "husky"
   }
 }

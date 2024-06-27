@@ -32,7 +32,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         value={{
           theme,
           setTheme,
-        }}>
+        }}
+      >
         {children}
       </ThemeContext.Provider>
     </NavigationThemeProvider>

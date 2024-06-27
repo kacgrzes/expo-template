@@ -1,6 +1,6 @@
-import React from "react";
-import type { Preview } from "@storybook/react";
 import { Box } from "@grapp/stacks";
+import type { Preview } from "@storybook/react";
+import React from "react";
 
 const preview: Preview = {
   parameters: {

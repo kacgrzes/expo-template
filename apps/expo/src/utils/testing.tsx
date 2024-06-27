@@ -1,5 +1,5 @@
+import { RenderOptions, render } from "@testing-library/react-native";
 import React, { ReactNode } from "react";
-import { render, RenderOptions } from "@testing-library/react-native";
 
 const Wrapper = ({ children }: { children: ReactNode }) => {
   return <>{children}</>;

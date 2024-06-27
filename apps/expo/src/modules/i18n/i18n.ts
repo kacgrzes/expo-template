@@ -1,15 +1,15 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 
+import {
+  format as formatDate,
+  formatDistance,
+  formatRelative,
+  isDate,
+} from "date-fns";
 import { languageDetector } from "./languageDetector";
 import { resources } from "./resources";
 import { dateLocales, setupOnLanguageChange } from "./setupOnLanguageChange";
-import {
-  isDate,
-  format as formatDate,
-  formatRelative,
-  formatDistance,
-} from "date-fns";
 
 setupOnLanguageChange();
 

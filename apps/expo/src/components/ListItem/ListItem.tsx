@@ -1,11 +1,11 @@
 import { ChevronRight, LucideIcon } from "lucide-react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
+import { Box } from "@grapp/stacks";
+import { useMemo } from "react";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
 import { CommonAccessoryProps } from "../types";
-import { useMemo } from "react";
-import { Box } from "@grapp/stacks";
 
 type ListItemProps = {
   details?: string;
@@ -34,7 +34,8 @@ export function ListItem({
     <AnimatedRectButton
       activeOpacity={0.1}
       onPress={onPress}
-      style={styles.listItem}>
+      style={styles.listItem}
+    >
       {Icon ? (
         <Icon size={24} color={theme.colors.typography} strokeWidth={1.5} />
       ) : null}

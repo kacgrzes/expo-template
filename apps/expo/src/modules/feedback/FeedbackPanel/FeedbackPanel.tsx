@@ -1,4 +1,3 @@
-import { BottomSheetView } from "@gorhom/bottom-sheet";
 import {
   Button,
   Separator,
@@ -7,6 +6,7 @@ import {
   Title,
   textInputFocusManager,
 } from "@/components";
+import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { useEffect } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -45,7 +45,7 @@ export function FeedbackPanel() {
   );
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet(() => {
   return {
     container: {
       padding: 24,

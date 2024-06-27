@@ -77,7 +77,6 @@
       "expo-build-properties",
       {
         "android": {
-          // these values were tested with Expo SDK 48
           "buildToolsVersion": "34.0.0",
           "compileSdkVersion": 34,
           "kotlinVersion": "1.6.21",

@@ -1,10 +1,10 @@
+import { ListItem, SafeAreaView, Text } from "@/components";
+import { isDevelopment } from "@/utils/env";
 import { Box } from "@grapp/stacks";
-import { ListItem, Text, SafeAreaView } from "@/components";
 import { useRouter } from "expo-router";
 import { Home, Map } from "lucide-react-native";
 import { ScrollView } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { isDevelopment } from "@/utils/env";
 
 export default function NotFound() {
   const { styles } = useStyles(stylesheet);

@@ -1,7 +1,7 @@
-import { TextInput, TextInputProps } from "../TextInput";
 import { Eye, EyeOff } from "lucide-react-native";
 import { useState } from "react";
 import { Pressable } from "react-native";
+import { TextInput, TextInputProps } from "../TextInput";
 
 type PasswordInputProps = TextInputProps;
 
@@ -36,7 +36,8 @@ export function PasswordInput(props: PasswordInputProps) {
           }}
           onPress={() => {
             setSecureTextEntry(!secureTextEntry);
-          }}>
+          }}
+        >
           {secureTextEntry ? <Eye size={24} /> : <EyeOff size={24} />}
         </Pressable>
       }

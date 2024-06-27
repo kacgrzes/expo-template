@@ -1,1 +1,2 @@
-# bun check && bun testFinal
+bun check
+# && bun testFinal

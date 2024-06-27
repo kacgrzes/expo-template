@@ -28,7 +28,7 @@ export function AppIcon({ source }: AppIconProps) {
   );
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet((_theme) => {
   return {
     appIcon: {
       width: 64,

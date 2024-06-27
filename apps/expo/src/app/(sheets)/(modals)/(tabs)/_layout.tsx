@@ -19,7 +19,8 @@ export default function Tabs() {
         tabBarLabelStyle: {
           fontFamily: "IBMPlexSans_400Regular",
         },
-      }}>
+      }}
+    >
       <TabsRouter.Screen
         name="index"
         options={{

@@ -14,7 +14,8 @@ export default function Modals() {
         headerTitleStyle: {
           fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
         },
-      }}>
+      }}
+    >
       <Stack.Screen
         name="(tabs)"
         options={{

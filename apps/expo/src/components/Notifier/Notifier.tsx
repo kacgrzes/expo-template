@@ -8,8 +8,8 @@ import {
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { Text } from "../Text";
 import { AnimatedRectButton } from "@/components/AnimatedButtons";
+import { Text } from "../Text";
 
 type NotifierRef = {
   create: (message: string) => void;
@@ -32,12 +32,16 @@ export const Notifier: NotifierComposition = () => {
     setMessages((p) => p.filter((m) => m !== message));
   }, []);
 
-  useImperativeHandle(notifierRef, () => {
-    return {
-      create,
-      dismiss,
-    };
-  }, [create, dismiss]);
+  useImperativeHandle(
+    notifierRef,
+    () => {
+      return {
+        create,
+        dismiss,
+      };
+    },
+    [create, dismiss],
+  );
 
   return (
     <View pointerEvents="box-none" style={{ paddingTop: top + 8, gap: 4 }}>
@@ -52,7 +56,8 @@ export const Notifier: NotifierComposition = () => {
               borderRadius: 16,
               padding: 24,
               marginHorizontal: 8,
-            }}>
+            }}
+          >
             <Text>{message}</Text>
           </AnimatedRectButton>
         );

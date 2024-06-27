@@ -1,8 +1,8 @@
 import {
+  StyleSheet,
   Text as TextComponent,
   TextProps as TextComponentProps,
   TextStyle,
-  StyleSheet,
 } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 

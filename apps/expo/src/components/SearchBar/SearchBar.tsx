@@ -1,9 +1,9 @@
 import { Search, X } from "lucide-react-native";
-import { TextInput, TextInputProps, useTextInputRef } from "../TextInput";
-import { Pressable } from "react-native";
 import { useCallback, useState } from "react";
+import { Pressable } from "react-native";
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
 import { useStyles } from "react-native-unistyles";
+import { TextInput, TextInputProps, useTextInputRef } from "../TextInput";
 
 type SearchBarProps = TextInputProps;
 
@@ -44,14 +44,16 @@ export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
       left={
         <Pressable
           accessibilityRole="search"
-          onPress={() => textInputRef.current?.focus()}>
+          onPress={() => textInputRef.current?.focus()}
+        >
           <Animated.View
             style={{
               alignItems: "center",
               aspectRatio: 1,
               height: 39,
               justifyContent: "center",
-            }}>
+            }}
+          >
             <Search size={24} />
           </Animated.View>
         </Pressable>
@@ -68,7 +70,8 @@ export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
               aspectRatio: 1,
               height: 39,
               justifyContent: "center",
-            }}>
+            }}
+          >
             <Pressable
               accessibilityRole="button"
               onPress={handleClear}
@@ -79,7 +82,8 @@ export function SearchBar({ onChangeText, ...props }: SearchBarProps) {
                 backgroundColor: "lightgrey",
                 justifyContent: "center",
                 alignItems: "center",
-              }}>
+              }}
+            >
               <X size={14} />
             </Pressable>
           </Animated.View>

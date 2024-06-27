@@ -1,10 +1,6 @@
-import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Text } from "@/components/Text";
 import { AnimatedRectButton } from "@/components/AnimatedButtons";
-import Animated, {
-  useAnimatedStyle,
-  withTiming,
-} from "react-native-reanimated";
+import { Text } from "@/components/Text";
+import { useDisabledStyle } from "@/components/hooks/useDisabledStyle";
 import {
   Dispatch,
   ReactNode,
@@ -14,8 +10,12 @@ import {
   useContext,
   useState,
 } from "react";
-import { useDisabledStyle } from "@/components/hooks/useDisabledStyle";
 import { LayoutChangeEvent, LayoutRectangle, View } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type SegmentedControlProps = { disabled?: boolean; full?: boolean };
 
@@ -52,7 +52,8 @@ function Segment({
       <AnimatedRectButton
         enabled={!disabled}
         onPress={onPress}
-        style={styles.segment(full)}>
+        style={styles.segment(full)}
+      >
         <Text variant="label">{label}</Text>
       </AnimatedRectButton>
     </View>
@@ -77,7 +78,8 @@ const SegmentedControlProvider = ({ children }: { children: ReactNode }) => {
       value={{
         measurements,
         setMeasurements,
-      }}>
+      }}
+    >
       {children}
     </SegmentedControlContext.Provider>
   );

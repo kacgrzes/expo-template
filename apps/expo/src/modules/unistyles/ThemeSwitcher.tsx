@@ -1,9 +1,9 @@
+import { ListItem } from "@/components/ListItem";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { Check } from "lucide-react-native";
-import { ListItem } from "@/components/ListItem";
 
-import { useTheme } from "./ThemeProvider";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { useTheme } from "./ThemeProvider";
 
 export const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();

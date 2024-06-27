@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Text } from "../Text";
 import { Dot } from "../Dot";
+import { Text } from "../Text";
 import { Status } from "../types";
 
 type BadgeStatus = "default" | Status;
@@ -51,7 +51,8 @@ export function Badge({
           style={styles.label(status)}
           suppressHighlighting
           textAlign="center"
-          variant="label">
+          variant="label"
+        >
           {value}
         </Text>
       </View>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ListItem } from "./ListItem";
 import { AlarmClock } from "lucide-react-native";
+import { ListItem } from "./ListItem";
 
 const ListItemMeta: Meta<typeof ListItem> = {
   title: "ListItem",

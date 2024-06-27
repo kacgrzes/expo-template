@@ -1,9 +1,9 @@
-import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Text } from "../Text";
-import { Size } from "../types";
 import { ReactNode } from "react";
 import Animated from "react-native-reanimated";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
+import { Size } from "../types";
 
 type ChipProps = {
   disabled?: boolean;

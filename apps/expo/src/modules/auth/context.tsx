@@ -1,6 +1,6 @@
 import { useStorageState } from "@/hooks";
-import React from "react";
 import { isProduction } from "@/utils";
+import React from "react";
 
 const AuthContext = React.createContext<{
   signIn: () => void;
@@ -41,7 +41,8 @@ export function SessionProvider(props: React.PropsWithChildren) {
         },
         session,
         isLoading,
-      }}>
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );

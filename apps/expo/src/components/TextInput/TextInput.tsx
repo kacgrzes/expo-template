@@ -51,11 +51,11 @@ class TextInputFocusManager {
 }
 
 type TextInputRef = {
-  blur: () => void | undefined;
-  clear: () => void | undefined;
-  focus: () => void | undefined;
+  blur: () => undefined;
+  clear: () => undefined;
+  focus: () => undefined;
   isFocused: () => boolean | undefined;
-  shake: () => void | undefined;
+  shake: () => undefined;
 };
 
 export const useTextInputRef = () => {
@@ -75,15 +75,19 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     const innerRef = useRef<RNTextInput>(null);
     const isFocused = useSharedValue(false);
 
-    useImperativeHandle(outerRef, () => {
-      return {
-        blur: () => innerRef.current?.blur(),
-        clear: () => innerRef.current?.clear(),
-        focus: () => innerRef.current?.focus(),
-        isFocused: () => innerRef.current?.isFocused(),
-        shake,
-      };
-    }, [shake]);
+    useImperativeHandle(
+      outerRef,
+      () => {
+        return {
+          blur: () => innerRef.current?.blur(),
+          clear: () => innerRef.current?.clear(),
+          focus: () => innerRef.current?.focus(),
+          isFocused: () => innerRef.current?.isFocused(),
+          shake,
+        };
+      },
+      [shake],
+    );
 
     const handleBlur = useCallback(
       (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
@@ -98,7 +102,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
         onFocus?.(e);
         isFocused.value = true;
-        textInputFocusManager.setLastTextInput(innerRef.current!);
+        textInputFocusManager.setLastTextInput(innerRef.current);
       },
       [onFocus, isFocused],
     );
@@ -112,11 +116,10 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       };
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const focusedStyleView = useAnimatedStyle(() => {
+    const _focusedStyleView = useAnimatedStyle(() => {
       return {
         borderColor: withTiming(
-          isFocused.value ? theme.colors.accent + "50" : "transparent",
+          isFocused.value ? `${theme.colors.accent}50` : "transparent",
           { duration: theme.animation.duration },
         ),
       };
@@ -156,7 +159,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
           style,
           shakeAnimatedStyle,
           disabledAnimatedStyle,
-        ]}>
+        ]}
+      >
         {left}
         <View style={{ height: "100%", flex: 1 }}>
           <Animated.Text
@@ -169,7 +173,8 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
                 left: left !== null ? 0 : 10,
               },
               focusedStyleText,
-            ]}>
+            ]}
+          >
             Hello
           </Animated.Text>
           <AnimatedTextInput

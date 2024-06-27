@@ -51,7 +51,8 @@ export function RadioButton({
     <AnimatedBaseButton
       enabled={!disabled}
       onPress={onPress}
-      style={[styles.container, disabledStyle]}>
+      style={[styles.container, disabledStyle]}
+    >
       <Animated.View style={[styles.dot, animatedDot]} />
     </AnimatedBaseButton>
   );

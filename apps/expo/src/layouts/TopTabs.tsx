@@ -1,6 +1,6 @@
 import {
-  createMaterialTopTabNavigator,
   MaterialTopTabNavigationOptions,
+  createMaterialTopTabNavigator,
 } from "@react-navigation/material-top-tabs";
 import { withLayoutContext } from "expo-router";
 

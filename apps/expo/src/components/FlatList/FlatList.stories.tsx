@@ -1,9 +1,9 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
-import { FlatList } from "./FlatList";
 import { Clipboard, FileCheck, LockKeyhole } from "lucide-react-native";
 import { ListItem } from "../ListItem";
+import { FlatList } from "./FlatList";
 
 const data = [
   { id: "0", icon: Clipboard, title: "Terms and conditions" },

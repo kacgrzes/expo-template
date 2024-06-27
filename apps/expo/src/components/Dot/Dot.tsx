@@ -7,7 +7,7 @@ export function Dot() {
   return <View style={styles.dot} />;
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet(() => {
   return {
     dot: {
       width: 10,

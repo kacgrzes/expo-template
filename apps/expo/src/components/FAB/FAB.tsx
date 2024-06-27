@@ -1,7 +1,6 @@
-import { LucideIcon, Plus } from "lucide-react-native";
-import { createStyleSheet, useStyles } from "react-native-unistyles";
 // TODO: check why this component has such a big hit slop
 import { AnimatedRectButton } from "@/components/AnimatedButtons";
+import { LucideIcon, Plus } from "lucide-react-native";
 import {
   ComponentProps,
   useCallback,
@@ -16,6 +15,7 @@ import Animated, {
   withDelay,
   withTiming,
 } from "react-native-reanimated";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type FABProps = Pick<ComponentProps<typeof AnimatedRectButton>, "onPress"> & {
   Icon?: LucideIcon;
@@ -117,11 +117,13 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
             height: 48,
           },
           animatedLabelContainer,
-        ]}>
+        ]}
+      >
         {label ? (
           <Animated.Text
             onLayout={handleLayout}
-            style={[styles.label, animatedLabel]}>
+            style={[styles.label, animatedLabel]}
+          >
             {label}
           </Animated.Text>
         ) : null}

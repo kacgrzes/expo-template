@@ -17,7 +17,8 @@ export function LanguagesScreen() {
           <RectButton
             key={language.id}
             onPress={() => i18n.changeLanguage(language.id)}
-            style={styles.listItem}>
+            style={styles.listItem}
+          >
             <Text>{language.name}</Text>
             <RadioButton selected={language.id === i18n.language} />
           </RectButton>

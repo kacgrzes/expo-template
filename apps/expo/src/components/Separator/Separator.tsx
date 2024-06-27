@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 export function Separator() {

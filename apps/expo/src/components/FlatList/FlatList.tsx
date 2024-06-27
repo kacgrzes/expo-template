@@ -39,7 +39,7 @@ export function FlatList<ItemT = any>({
   );
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet((_theme) => {
   return {
     container: {
       alignSelf: "center",

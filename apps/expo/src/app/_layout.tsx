@@ -1,5 +1,4 @@
-import { Grid } from "@grapp/stacks";
-import { Slot, useRouter } from "expo-router";
+import { trackScreen, useScreenTracking } from "@/analytics";
 import {
   useDevMenuItem,
   useDevPlugins,
@@ -7,8 +6,9 @@ import {
   useQuickActionSetup,
   useShakeEvent,
 } from "@/hooks";
+import { Grid } from "@grapp/stacks";
+import { Slot, useRouter } from "expo-router";
 import { Fragment } from "react";
-import { useScreenTracking, trackScreen } from "@/analytics";
 
 export default function Root() {
   const router = useRouter();

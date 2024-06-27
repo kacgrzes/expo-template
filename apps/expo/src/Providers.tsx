@@ -1,16 +1,16 @@
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
-import { PortalProvider } from "@gorhom/portal";
 import { SessionProvider } from "@/auth";
 import { Fallback, StatusBar } from "@/components";
 import { useFontsSetup } from "@/hooks";
+import { ThemeProvider } from "@/unistyles";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+import { PortalProvider } from "@gorhom/portal";
 import { ComponentProps, ReactNode } from "react";
-import { KeyboardProvider } from "react-native-keyboard-controller";
 import { ErrorBoundary } from "react-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ThemeProvider } from "@/unistyles";
-import { Overlays } from "./Overlays";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { Overlays } from "./Overlays";
 
 type OnError = ComponentProps<typeof ErrorBoundary>["onError"];
 
@@ -31,7 +31,8 @@ export function Providers({ children }: { children?: ReactNode }) {
               <ActionSheetProvider>
                 <ErrorBoundary
                   FallbackComponent={Fallback}
-                  onError={handleError}>
+                  onError={handleError}
+                >
                   <SessionProvider>
                     {fontsLoaded ? children : null}
                     <StatusBar />

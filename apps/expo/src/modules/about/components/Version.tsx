@@ -11,7 +11,8 @@ export function Version() {
   return (
     <Pressable
       accessibilityRole="link"
-      onPress={() => Clipboard.setStringAsync(appVersionWithBuildNumber)}>
+      onPress={() => Clipboard.setStringAsync(appVersionWithBuildNumber)}
+    >
       <Text>
         {t("version")} {appVersionWithBuildNumber}
       </Text>

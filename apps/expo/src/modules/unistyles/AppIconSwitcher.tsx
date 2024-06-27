@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { listAppIcons, getIconName, setAppIcon } from "./appIcon";
+import { AppIcon, RadioButton } from "@/components";
 import { Asset } from "expo-asset";
+import { useEffect, useState } from "react";
 import { Pressable, ScrollView } from "react-native";
 import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
-import { RadioButton, AppIcon } from "@/components";
+import { getIconName, listAppIcons, setAppIcon } from "./appIcon";
 
 export function AppIconSwitcher() {
   const [icons, setAppIcons] = useState<Asset[] | undefined>();
@@ -38,7 +38,8 @@ export function AppIconSwitcher() {
   return (
     <ScrollView
       contentContainerStyle={styles.contentContainerStyle}
-      style={styles.container}>
+      style={styles.container}
+    >
       {icons.map((icon, index) => {
         const selected = index === selectedIcon;
 
@@ -47,7 +48,8 @@ export function AppIconSwitcher() {
             accessibilityRole="radio"
             key={icon.hash}
             onPress={() => selectIcon(index)}
-            style={styles.appIconContainer(selected)}>
+            style={styles.appIconContainer(selected)}
+          >
             <AppIcon source={icon.uri} />
             <RadioButton selected={selected} />
           </Pressable>

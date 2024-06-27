@@ -1,0 +1,118 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "files": {
+    "ignore": ["**/ios/*", "**/android/*"]
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto",
+    "ignore": [
+      "**/.expo/",
+      "**/.husky/",
+      "**/android/",
+      "**/dist/",
+      "**/expo-env.d.ts",
+      "**/ios/",
+      "**/node_modules/",
+      "**/templates/"
+    ]
+  },
+  "organizeImports": { "enabled": true },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": false,
+      "complexity": { "noWith": "warn" },
+      "correctness": {
+        "noEmptyCharacterClassInRegex": "warn",
+        "noEmptyPattern": "warn",
+        "noUndeclaredVariables": "error",
+        "noUnreachable": "warn",
+        "noUnusedLabels": "warn",
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "error",
+        "useIsNan": "error"
+      },
+      "security": { "noDangerouslySetInnerHtmlWithChildren": "warn" },
+      "style": { "useBlockStatements": "off" },
+      "suspicious": {
+        "noDoubleEquals": "warn",
+        "noDuplicateCase": "error",
+        "noDuplicateClassMembers": "error",
+        "noDuplicateJsxProps": "error",
+        "noDuplicateObjectKeys": "error",
+        "noDuplicateParameters": "error",
+        "noRedeclare": "warn",
+        "noUnsafeNegation": "warn",
+        "useValidTypeof": "error"
+      }
+    },
+    "ignore": [
+      ".expo",
+      "android/app/build",
+      "**/.eslintrc.js",
+      "./.expo",
+      "**/android/",
+      "**/assets/",
+      "**/babel.config.js",
+      "**/dist/",
+      "**/ios/",
+      "**/metro.config.js",
+      "**/node_modules/",
+      "**/templates/",
+      "**/venv/"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteStyle": "double",
+      "attributePosition": "auto"
+    },
+    "globals": ["console", "__DEV__", "shared-node-browser"],
+    "jsxRuntime": "transparent"
+  },
+  "overrides": [
+    { "include": ["*.web.*"] },
+    { "include": ["*.d.ts"], "linter": { "rules": {} } },
+    { "include": ["*.js", "*.jsx"] },
+    {
+      "include": ["*.ts", "*.tsx", "*.d.ts"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noBannedTypes": "error",
+            "noUselessConstructor": "warn"
+          },
+          "correctness": {
+            "noUndeclaredVariables": "off",
+            "noUnusedVariables": "warn"
+          },
+          "style": {
+            "useConsistentArrayType": {
+              "level": "warn",
+              "options": { "syntax": "shorthand" }
+            }
+          },
+          "suspicious": {
+            "noDuplicateClassMembers": "error",
+            "noExtraNonNullAssertion": "warn",
+            "noRedeclare": "warn"
+          }
+        }
+      }
+    }
+  ]
+}

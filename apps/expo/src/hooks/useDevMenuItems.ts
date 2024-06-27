@@ -1,8 +1,8 @@
+import { mmkv } from "@/utils";
 import { DevMenu, isDevelopmentBuild } from "expo-dev-client";
 import { Image } from "expo-image";
 import { useCallback, useEffect } from "react";
 import { useMMKVObject } from "react-native-mmkv";
-import { mmkv } from "@/utils";
 
 type DevMenuItem = {
   key: string;

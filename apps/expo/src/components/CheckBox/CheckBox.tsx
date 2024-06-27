@@ -49,7 +49,8 @@ export function CheckBox({ checked, disabled, size }: CheckBoxProps) {
 
   return (
     <AnimatedBaseButton
-      style={[styles.container, disabledStyle, animatedStyle]}>
+      style={[styles.container, disabledStyle, animatedStyle]}
+    >
       <Check size={18} strokeWidth={2} color={theme.colors.background} />
     </AnimatedBaseButton>
   );

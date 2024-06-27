@@ -1,6 +1,6 @@
 import {
-  useSharedValue,
   useAnimatedStyle,
+  useSharedValue,
   withSequence,
   withTiming,
 } from "react-native-reanimated";

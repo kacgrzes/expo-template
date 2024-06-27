@@ -1,25 +1,25 @@
-import { FloatBox } from "@grapp/stacks";
 import { useSession } from "@/auth";
 import {
   ActionSheetExample,
   Button,
   ContextMenuExample,
   DropdownMenuExample,
+  FAB,
   JSONViewer,
+  OnScroll,
+  ScrollView,
   SegmentedControl,
   Text,
   Title,
-  FAB,
-  ScrollView,
-  OnScroll,
 } from "@/components";
+import { env, isHermes, openSettings } from "@/utils";
+import { FloatBox } from "@grapp/stacks";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { env, isHermes, openSettings } from "@/utils";
 
 const CompilerTest = () => {
   return <Text>{new Date().toUTCString()}</Text>;
@@ -53,7 +53,8 @@ export default function App() {
         scrollEventThrottle={1000 / 60} // 60 FPS
         onScroll={handleScroll}
         style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
+        contentContainerStyle={styles.contentContainer}
+      >
         <SegmentedControl full />
         <Title style={{ marginBottom: 12 }}>Hello</Title>
         <Text style={styles.text}>

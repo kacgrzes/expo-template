@@ -33,7 +33,7 @@ export function EmptyState({
   );
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet((_theme) => {
   return {
     container: {
       alignSelf: "center",

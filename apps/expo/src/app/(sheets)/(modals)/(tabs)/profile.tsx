@@ -2,8 +2,8 @@ import { Button, TextInput, useTextInputRef } from "@/components";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import {
-  useReanimatedKeyboardAnimation,
   KeyboardStickyView,
+  useReanimatedKeyboardAnimation,
 } from "react-native-keyboard-controller";
 import Animated from "react-native-reanimated";
 
@@ -35,7 +35,8 @@ export default function KeyboardAnimation() {
           style={{
             // 2. we can apply any transformations we want
             transform: [{ translateY: height }],
-          }}>
+          }}
+        >
           <Button
             title="shake"
             onPress={() => {

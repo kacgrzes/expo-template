@@ -1,10 +1,10 @@
+import { useTheme } from "@/modules/unistyles";
+import { isIOS } from "@/utils/platform";
 import {
   StatusBar as ExpoStatusBar,
   StatusBarProps as ExpoStatusBarProps,
 } from "expo-status-bar";
-import { useTheme } from "@/modules/unistyles";
 import { useMemo } from "react";
-import { isIOS } from "@/utils/platform";
 
 export type StatusBarProps = ExpoStatusBarProps & {
   isModal?: boolean;

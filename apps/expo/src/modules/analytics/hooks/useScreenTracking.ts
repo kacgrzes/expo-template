@@ -1,6 +1,7 @@
 import { useGlobalSearchParams, usePathname } from "expo-router";
 import { useEffect } from "react";
-import { ScreenTrackingCallback } from "../trackScreen";
+
+import type { ScreenTrackingCallback } from "../trackScreen";
 
 export const useScreenTracking = (
   callback: ScreenTrackingCallback = () => {},

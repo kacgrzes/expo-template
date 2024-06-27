@@ -33,7 +33,7 @@ export function Image({
   );
 }
 
-const stylesheet = createStyleSheet((theme) => {
+const stylesheet = createStyleSheet((_theme) => {
   return {
     image: {
       backgroundColor: "lightgrey",

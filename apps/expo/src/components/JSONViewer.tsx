@@ -1,7 +1,7 @@
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-import { Text } from "./Text";
 import { Box, BoxProps } from "@grapp/stacks";
+import { Text } from "./Text";
 
 type JSONViewerProps = {
   content: object;
