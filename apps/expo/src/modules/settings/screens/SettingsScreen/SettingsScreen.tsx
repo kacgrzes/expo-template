@@ -24,7 +24,7 @@ export function SettingsScreen() {
 
   return (
     <ScrollView contentInset={{ bottom }} scrollIndicatorInsets={{ bottom: 0 }}>
-      <Box paddingX={4} marginBottom={4} marginTop={12}>
+      <Box paddingX={4} marginBottom={4} marginTop={6}>
         <Text variant="label" textTransform="uppercase">
           Appearance
         </Text>
