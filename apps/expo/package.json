@@ -94,6 +94,7 @@
     "@expo-google-fonts/ibm-plex-mono": "^0.2.3",
     "@expo-google-fonts/ibm-plex-sans": "^0.2.3",
     "@expo-google-fonts/ibm-plex-serif": "^0.2.3",
+    "@expo/layouts": "workspace:*",
     "@expo/react-native-action-sheet": "^4.1.0",
     "@gorhom/bottom-sheet": "^5.0.0-alpha.10",
     "@gorhom/portal": "^1.0.14",
