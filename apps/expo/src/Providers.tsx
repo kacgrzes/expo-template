@@ -8,7 +8,10 @@ import { ComponentProps, ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Overlays } from "./Overlays";
 
@@ -23,7 +26,7 @@ export function Providers({ children }: { children?: ReactNode }) {
   const { styles } = useStyles(stylesheet);
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <GestureHandlerRootView style={styles.rootView}>
         <ThemeProvider>
           <PortalProvider>
