@@ -1,5 +1,5 @@
+import { useToggle } from "@acme/hooks";
 import { Eye, EyeOff } from "lucide-react-native";
-import { useState } from "react";
 import { Pressable } from "react-native";
 import { TextInput, TextInputProps } from "../TextInput";
 
@@ -19,8 +19,7 @@ type PasswordInputProps = TextInputProps;
  * ```
  */
 export function PasswordInput(props: PasswordInputProps) {
-  // TODO: create useToggle component and use it here.
-  const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [secureTextEntry, toggleSecureTextEntry] = useToggle(true);
 
   return (
     <TextInput
@@ -34,9 +33,7 @@ export function PasswordInput(props: PasswordInputProps) {
             justifyContent: "center",
             alignItems: "center",
           }}
-          onPress={() => {
-            setSecureTextEntry(!secureTextEntry);
-          }}
+          onPress={toggleSecureTextEntry}
         >
           {secureTextEntry ? <Eye size={24} /> : <EyeOff size={24} />}
         </Pressable>

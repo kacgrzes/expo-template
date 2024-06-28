@@ -13,7 +13,7 @@
     "turbo": "^2.0.5",
     "typescript": "~5.3.3"
   },
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": ["apps/**/*", "packages/**/*"],
   "scripts": {
     "check": "biome check && bun tsc",
     "format": "biome format",

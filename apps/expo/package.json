@@ -90,6 +90,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@acme/hooks": "workspace:*",
     "@expo-google-fonts/ibm-plex-mono": "^0.2.3",
     "@expo-google-fonts/ibm-plex-sans": "^0.2.3",
     "@expo-google-fonts/ibm-plex-serif": "^0.2.3",
