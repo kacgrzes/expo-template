@@ -3,13 +3,14 @@ import { configure } from "@testing-library/react-native";
 import "@testing-library/jest-native/extend-expect";
 import "@testing-library/react-native/extend-expect";
 import { setUpTests } from "react-native-reanimated";
-import mockSafeAreaContext from "react-native-safe-area-context/jest/mock";
 import { server } from "./src/mocks/server";
 
 setUpTests();
 
 jest.mock("react-native/Libraries/EventEmitter/NativeEventEmitter");
-jest.mock("react-native-safe-area-context", () => mockSafeAreaContext);
+jest.mock("react-native-safe-area-context", () =>
+  require("react-native-safe-area-context/jest/mock"),
+);
 jest.mock("react-native-keyboard-controller", () =>
   require("react-native-keyboard-controller/jest"),
 );
