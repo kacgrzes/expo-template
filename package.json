@@ -14,9 +14,10 @@
   },
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
-    "check": "biome check",
+    "check": "biome check && bun tsc",
     "format": "biome format",
     "lint": "biome lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "tsc": "tsc --build"
   }
 }
