@@ -19,6 +19,7 @@
     "format": "biome format",
     "lint": "biome lint",
     "prepare": "husky",
+    "sherif": "npx sherif",
     "tsc": "tsc --build"
   },
   "lint-staged": {
