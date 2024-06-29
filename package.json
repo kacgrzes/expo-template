@@ -25,5 +25,8 @@
   "lint-staged": {
     "*.ts": ["biome check --apply"],
     "*.tsx": ["biome check --apply"]
+  },
+  "patchedDependencies": {
+    "@th3rdwave/react-navigation-bottom-sheet@0.3.2": "patches/@th3rdwave%2Freact-navigation-bottom-sheet@0.3.2.patch"
   }
 }

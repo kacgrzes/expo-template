@@ -1,0 +1,61 @@
+diff --git a/src/BottomSheetView.tsx b/src/BottomSheetView.tsx
+index cc6f6c9ab4ee9c32897e5fb7b757a781778a01a5..5d73190f0a9949abc3c135b8b271c346a263050e 100644
+--- a/src/BottomSheetView.tsx
++++ b/src/BottomSheetView.tsx
+@@ -4,11 +4,10 @@ import {
+   BottomSheetModalProvider,
+   BottomSheetView as RNBottomSheetView,
+ } from '@gorhom/bottom-sheet';
++import { Portal } from "@gorhom/portal";
+ import { ParamListBase, useTheme } from '@react-navigation/native';
+ import * as React from 'react';
+-import { Platform, StyleSheet } from 'react-native';
+-import { SafeAreaProvider } from 'react-native-safe-area-context';
+-import { FullWindowOverlay } from 'react-native-screens';
++import { StyleSheet } from 'react-native';
+ import type {
+   BottomSheetDescriptorMap,
+   BottomSheetNavigationConfig,
+@@ -21,20 +20,6 @@ type BottomSheetModalScreenProps = BottomSheetModalProps & {
+   navigation: BottomSheetNavigationProp<ParamListBase>;
+ };
+ 
+-function Overlay({ children }: { children: React.ReactNode }) {
+-  if (Platform.OS === 'ios') {
+-    return (
+-      <FullWindowOverlay>
+-        <SafeAreaProvider style={styles.safeAreaProvider}>
+-          {children}
+-        </SafeAreaProvider>
+-      </FullWindowOverlay>
+-    );
+-  } else {
+-    return children;
+-  }
+-}
+-
+ function BottomSheetModalScreen({
+   index,
+   navigation,
+@@ -132,7 +117,7 @@ export function BottomSheetView({ state, descriptors }: Props) {
+   return (
+     <>
+       {firstScreen.render()}
+-      <Overlay>
++      <Portal hostName='sheets'>
+         {shouldRenderProvider.current && (
+           <BottomSheetModalProvider>
+             {state.routes.slice(1).map((route) => {
+@@ -176,11 +161,7 @@ export function BottomSheetView({ state, descriptors }: Props) {
+             })}
+           </BottomSheetModalProvider>
+         )}
+-      </Overlay>
++      </Portal >
+     </>
+   );
+ }
+-
+-const styles = StyleSheet.create({
+-  safeAreaProvider: { flex: 1, pointerEvents: 'box-none' },
+-});
