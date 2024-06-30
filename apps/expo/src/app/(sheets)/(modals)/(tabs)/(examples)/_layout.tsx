@@ -1,5 +1,7 @@
-import { SafeAreaView } from "@/components";
 import { TopTabs } from "@expo/layouts";
+// eslint-disable-next-line import/no-unresolved
+/** eslint-disable import/no-unresolved */
+import { SafeAreaView } from "@mobile/components";
 
 export default function TopTabsExample() {
   return (

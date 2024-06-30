@@ -1,6 +1,6 @@
-import { AnimatedRectButton } from "@/components/AnimatedButtons";
-import { Text } from "@/components/Text";
-import { useDisabledStyle } from "@/components/hooks/useDisabledStyle";
+import { AnimatedRectButton } from "@mobile/components/AnimatedButtons";
+import { Text } from "@mobile/components/Text";
+import { useDisabledStyle } from "@mobile/components/hooks/useDisabledStyle";
 import {
   Dispatch,
   ReactNode,

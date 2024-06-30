@@ -1,5 +1,7 @@
 /** eslint-disable import/no-unresolved */
 import { useSession } from "@/auth";
+import { env } from "@common/utils";
+import { FloatBox } from "@grapp/stacks";
 import {
   ActionSheetExample,
   Button,
@@ -12,9 +14,7 @@ import {
   SegmentedControl,
   Text,
   Title,
-} from "@/components";
-import { env } from "@common/utils";
-import { FloatBox } from "@grapp/stacks";
+} from "@mobile/components";
 // eslint-disable-next-line import/no-unresolved
 import { isHermes, openSettings } from "@mobile/utils";
 import { formatDistance } from "date-fns";

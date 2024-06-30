@@ -1,4 +1,4 @@
-import { Text } from "@/components";
+import { Text } from "@mobile/components";
 import { ScrollView } from "react-native";
 
 export function PrivacyPolicy() {

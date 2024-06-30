@@ -1,6 +1,6 @@
-import { ListItem, ScrollView, Switch, Text } from "@/components";
 import { useCurrentLanguage } from "@/i18n";
 import { Box } from "@grapp/stacks";
+import { ListItem, ScrollView, Switch, Text } from "@mobile/components";
 import { useRouter } from "expo-router";
 import {
   BoxSelect,

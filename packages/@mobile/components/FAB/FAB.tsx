@@ -1,5 +1,5 @@
 // TODO: check why this component has such a big hit slop
-import { AnimatedRectButton } from "@/components/AnimatedButtons";
+import { AnimatedRectButton } from "@mobile/components/AnimatedButtons";
 import { LucideIcon, Plus } from "lucide-react-native";
 import {
   ComponentProps,

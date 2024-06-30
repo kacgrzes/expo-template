@@ -1,5 +1,8 @@
 /** eslint-disable @typescript-eslint/no-unused-vars */
-import { CommonAccessoryProps, CommonFormProps } from "@/components/types";
+import {
+  CommonAccessoryProps,
+  CommonFormProps,
+} from "@mobile/components/types";
 import { useShakeAnimation } from "@mobile/hooks/useShakeAnimation";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import {

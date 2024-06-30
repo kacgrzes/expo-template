@@ -1,4 +1,4 @@
-import { RadioButton, Text } from "@/components";
+import { RadioButton, Text } from "@mobile/components";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
 import { RectButton } from "react-native-gesture-handler";

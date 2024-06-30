@@ -1,4 +1,4 @@
-import { Text } from "@/components";
+import { Text } from "@mobile/components";
 import * as Clipboard from "expo-clipboard";
 import { useTranslation } from "react-i18next";
 import { Pressable } from "react-native";

@@ -1,5 +1,5 @@
-import { BackdropComponent } from "@/components";
 import { BottomSheet } from "@expo/layouts";
+import { BackdropComponent } from "@mobile/components";
 import { BottomSheetNavigationOptions } from "@th3rdwave/react-navigation-bottom-sheet";
 import { UnistylesRuntime } from "react-native-unistyles";
 

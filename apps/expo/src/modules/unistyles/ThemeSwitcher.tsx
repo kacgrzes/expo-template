@@ -1,5 +1,5 @@
-import { ListItem } from "@/components/ListItem";
 import { BottomSheetView } from "@gorhom/bottom-sheet";
+import { ListItem } from "@mobile/components/ListItem";
 import { Check } from "lucide-react-native";
 
 import { createStyleSheet, useStyles } from "react-native-unistyles";

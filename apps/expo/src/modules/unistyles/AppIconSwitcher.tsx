@@ -1,4 +1,4 @@
-import { AppIcon, RadioButton } from "@/components";
+import { AppIcon, RadioButton } from "@mobile/components";
 import { Asset } from "expo-asset";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView } from "react-native";

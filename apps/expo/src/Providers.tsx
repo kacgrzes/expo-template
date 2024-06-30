@@ -1,8 +1,8 @@
 import { SessionProvider } from "@/auth";
-import { Fallback, StatusBar } from "@/components";
 import { ThemeProvider } from "@/unistyles";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { PortalProvider } from "@gorhom/portal";
+import { Fallback, StatusBar } from "@mobile/components";
 import { useFontsSetup } from "@mobile/hooks";
 import { ComponentProps, ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";

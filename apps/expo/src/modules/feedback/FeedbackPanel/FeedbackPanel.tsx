@@ -1,3 +1,4 @@
+import { BottomSheetView } from "@gorhom/bottom-sheet";
 import {
   Button,
   Separator,
@@ -5,8 +6,7 @@ import {
   Text,
   Title,
   textInputFocusManager,
-} from "@/components";
-import { BottomSheetView } from "@gorhom/bottom-sheet";
+} from "@mobile/components";
 import { useEffect } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
