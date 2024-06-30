@@ -1,3 +1,4 @@
+/** eslint-disable import/no-unresolved */
 import { forwardRef } from "react";
 import { View } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
@@ -5,6 +6,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
+// eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { CommonAccessoryProps, CommonFormProps, Size, Status } from "../types";
 

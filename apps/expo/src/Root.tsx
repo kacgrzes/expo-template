@@ -1,4 +1,4 @@
-import { useDevMenuItem, useRegisterDevMenuItems } from "@/hooks";
+import { useDevMenuItem, useRegisterDevMenuItems } from "@mobile/hooks";
 import { ExpoRoot } from "expo-router";
 import Storybook from "./.storybook";
 import { Providers } from "./Providers";

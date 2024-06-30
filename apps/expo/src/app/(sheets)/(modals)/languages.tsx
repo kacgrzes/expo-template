@@ -1,4 +1,4 @@
 import { LanguagesScreen } from "@/i18n";
-import { withModalStatusBar } from "@/utils/withModalStatusBar";
+import { withModalStatusBar } from "@/withModalStatusBar";
 
 export default withModalStatusBar(LanguagesScreen);

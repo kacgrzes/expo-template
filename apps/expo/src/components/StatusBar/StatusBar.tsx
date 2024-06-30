@@ -1,5 +1,7 @@
+/** eslint-disable import/no-unresolved */
 import { useTheme } from "@/modules/unistyles";
-import { isIOS } from "@/utils/platform";
+// eslint-disable-next-line import/no-unresolved
+import { isIOS } from "@mobile/utils/platform";
 import {
   StatusBar as ExpoStatusBar,
   StatusBarProps as ExpoStatusBarProps,

@@ -1,12 +1,14 @@
+/** eslint-disable import/no-unresolved */
 import { trackScreen, useScreenTracking } from "@/analytics";
+import { Grid } from "@grapp/stacks";
 import {
   useDevMenuItem,
   useDevPlugins,
   useOrientationLock,
   useQuickActionSetup,
   useShakeEvent,
-} from "@/hooks";
-import { Grid } from "@grapp/stacks";
+  // eslint-disable-next-line import/no-unresolved
+} from "@mobile/hooks";
 import { Slot, useRouter } from "expo-router";
 import { Fragment } from "react";
 

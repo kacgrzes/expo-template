@@ -1,7 +1,9 @@
+/** eslint-disable import/no-unresolved */
 import { ReactNode } from "react";
 import Animated from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "../Text";
+// eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { Size } from "../types";
 

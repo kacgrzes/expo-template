@@ -1,5 +1,5 @@
-import { useStorageState } from "@/hooks";
-import { isProduction } from "@/utils";
+import { isProduction } from "@common/utils";
+import { useStorageState } from "@mobile/hooks";
 import React from "react";
 
 const AuthContext = React.createContext<{

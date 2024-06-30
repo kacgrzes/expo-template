@@ -1,4 +1,4 @@
-import { mmkv } from "@/utils";
+import { mmkv } from "@mobile/utils";
 import { DevMenu, isDevelopmentBuild } from "expo-dev-client";
 import { Image } from "expo-image";
 import { useCallback, useEffect } from "react";

@@ -1,6 +1,8 @@
+/* eslint-disable import/no-unresolved */
 import { Theme as NavigationTheme } from "@react-navigation/native";
 
-import { mmkv } from "@/utils";
+// eslint-disable-next-line import/no-unresolved
+import { mmkv } from "@mobile/utils";
 import { fontFamily } from "./fontFamily";
 import { fonts } from "./fonts";
 import { foundation } from "./foundation";

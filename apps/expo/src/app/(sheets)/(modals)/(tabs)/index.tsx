@@ -1,3 +1,4 @@
+/** eslint-disable import/no-unresolved */
 import { useSession } from "@/auth";
 import {
   ActionSheetExample,
@@ -12,8 +13,10 @@ import {
   Text,
   Title,
 } from "@/components";
-import { env, isHermes, openSettings } from "@/utils";
+import { env } from "@common/utils";
 import { FloatBox } from "@grapp/stacks";
+// eslint-disable-next-line import/no-unresolved
+import { isHermes, openSettings } from "@mobile/utils";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";

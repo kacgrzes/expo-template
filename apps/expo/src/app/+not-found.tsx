@@ -1,5 +1,5 @@
 import { ListItem, SafeAreaView, Text } from "@/components";
-import { isDevelopment } from "@/utils/env";
+import { isDevelopment } from "@common/utils";
 import { Box } from "@grapp/stacks";
 import { useRouter } from "expo-router";
 import { Home, Map } from "lucide-react-native";

@@ -1,3 +1,4 @@
+/** eslint-disable import/no-unresolved */
 import { Check } from "lucide-react-native";
 import {
   interpolateColor,
@@ -8,6 +9,7 @@ import {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedBaseButton } from "../AnimatedButtons";
+// eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { CommonFormProps, Size, Status } from "../types";
 

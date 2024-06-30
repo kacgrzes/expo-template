@@ -1,5 +1,6 @@
+/** eslint-disable @typescript-eslint/no-unused-vars */
 import { CommonAccessoryProps, CommonFormProps } from "@/components/types";
-import { useShakeAnimation } from "@/hooks/useShakeAnimation";
+import { useShakeAnimation } from "@mobile/hooks/useShakeAnimation";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import {
   NativeSyntheticEvent,
@@ -133,6 +134,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
       };
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const _focusedStyleView = useAnimatedStyle(() => {
       return {
         borderColor: withTiming(

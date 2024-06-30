@@ -1,4 +1,4 @@
 import { SettingsScreen } from "@/settings";
-import { withModalStatusBar } from "@/utils/withModalStatusBar";
+import { withModalStatusBar } from "@/withModalStatusBar";
 
 export default withModalStatusBar(SettingsScreen);

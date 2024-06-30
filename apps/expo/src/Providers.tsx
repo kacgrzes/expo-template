@@ -1,9 +1,9 @@
 import { SessionProvider } from "@/auth";
 import { Fallback, StatusBar } from "@/components";
-import { useFontsSetup } from "@/hooks";
 import { ThemeProvider } from "@/unistyles";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { PortalProvider } from "@gorhom/portal";
+import { useFontsSetup } from "@mobile/hooks";
 import { ComponentProps, ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
