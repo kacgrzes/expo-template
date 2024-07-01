@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { ScrollView } from "react-native";
 
 import { Text } from "../Text";
