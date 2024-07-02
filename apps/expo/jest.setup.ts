@@ -2,8 +2,8 @@ import "@/unistyles";
 import { configure } from "@testing-library/react-native";
 import "@testing-library/jest-native/extend-expect";
 import "@testing-library/react-native/extend-expect";
+import { server } from "@mobile/msw/server";
 import { setUpTests } from "react-native-reanimated";
-import { server } from "./src/mocks/server";
 
 setUpTests();
 
