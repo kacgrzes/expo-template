@@ -2,6 +2,13 @@
 import { forwardRef } from "react";
 import { View } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
+import Animated, {
+  useAnimatedStyle,
+  interpolate,
+  useDerivedValue,
+  withTiming,
+  Extrapolate,
+} from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { ActivityIndicator } from "../ActivityIndicator";
@@ -44,6 +51,43 @@ export const Button = forwardRef<any, ButtonProps>(
     const { styles, theme } = useStyles(stylesheet, { variant, full });
     const disabledStyle = useDisabledStyle({ disabled: disabled || loading });
 
+    const loadingProgress = useDerivedValue(() =>
+      withTiming(loading ? 1 : 0, { duration: 200 }),
+    );
+
+    const titleAnimatedStyle = useAnimatedStyle(() => ({
+      opacity: interpolate(
+        loadingProgress.value,
+        [0, 1],
+        [1, 0],
+        Extrapolate.CLAMP,
+      ),
+      transform: [
+        {
+          translateY: interpolate(
+            loadingProgress.value,
+            [0, 1],
+            [0, 10],
+            Extrapolate.CLAMP,
+          ),
+        },
+      ],
+    }));
+
+    const loaderAnimatedStyle = useAnimatedStyle(() => ({
+      opacity: loadingProgress.value,
+      transform: [
+        {
+          translateY: interpolate(
+            loadingProgress.value,
+            [0, 1],
+            [-10, 0],
+            Extrapolate.CLAMP,
+          ),
+        },
+      ],
+    }));
+
     return (
       <AnimatedRectButton
         activeOpacity={theme.opacity}
@@ -59,14 +103,17 @@ export const Button = forwardRef<any, ButtonProps>(
           {left}
           <View style={styles.titleContainer}>
             {loading ? (
-              <ActivityIndicator style={styles.loadingIndicator} />
+              <Animated.View
+                style={[styles.loaderContainer, loaderAnimatedStyle]}
+              >
+                <ActivityIndicator status="muted" />
+              </Animated.View>
             ) : null}
-            <Text
-              numberOfLines={1}
-              style={[styles.title, loading && styles.hiddenTitle]}
-            >
-              {title}
-            </Text>
+            <Animated.View style={titleAnimatedStyle}>
+              <Text numberOfLines={1} style={styles.title}>
+                {title}
+              </Text>
+            </Animated.View>
           </View>
           {right}
         </View>
@@ -133,10 +180,14 @@ const stylesheet = createStyleSheet((theme) => {
     hiddenTitle: {
       opacity: 0,
     },
-    loadingIndicator: {
+    loaderContainer: {
       position: "absolute",
       left: 0,
       right: 0,
+      top: 0,
+      bottom: 0,
+      justifyContent: "center",
+      alignItems: "center",
     },
   };
 });
