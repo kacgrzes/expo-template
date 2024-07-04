@@ -5,6 +5,7 @@ import {
 } from "react-native";
 import { useStyles } from "react-native-unistyles";
 import { Status } from "../types";
+import { useStatusColor } from "./useStatusColor";
 
 type ActivityIndicatorProps = {
   size?: "s" | "l";
@@ -14,13 +15,14 @@ type ActivityIndicatorProps = {
 
 export function ActivityIndicator({
   size = "s",
+  status,
   style,
 }: ActivityIndicatorProps) {
-  const { theme } = useStyles();
+  const color = useStatusColor(status);
 
   return (
     <ActivityIndicatorComponent
-      color={theme.colors.accent}
+      color={color}
       size={size === "s" ? "small" : "large"}
       style={style}
     />
