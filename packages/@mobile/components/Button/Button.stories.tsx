@@ -24,6 +24,12 @@ export const Disabled: StoryObj<typeof Button> = {
   },
 };
 
+export const Loading: StoryObj<typeof Button> = {
+  args: {
+    loading: true,
+  },
+};
+
 export const Outline: StoryObj<typeof Button> = {
   args: {
     title: "Outline Button",
