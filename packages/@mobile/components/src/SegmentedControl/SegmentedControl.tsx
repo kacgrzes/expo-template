@@ -1,6 +1,3 @@
-import { AnimatedRectButton } from "@mobile/components/AnimatedButtons";
-import { Text } from "@mobile/components/Text";
-import { useDisabledStyle } from "@mobile/components/hooks/useDisabledStyle";
 import {
   Dispatch,
   ReactNode,
@@ -17,6 +14,9 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { AnimatedRectButton } from "../AnimatedButtons";
+import { Text } from "../Text";
+import { useDisabledStyle } from "../hooks/useDisabledStyle";
 
 type SegmentedControlProps = { disabled?: boolean; full?: boolean };
 

@@ -1,4 +1,4 @@
 {
   "name": "@mobile/components",
-  "main": "index.ts"
+  "main": "src/index.ts"
 }
