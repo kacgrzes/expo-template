@@ -6,6 +6,7 @@ import { mmkv } from "@mobile/utils";
 import { fontFamily } from "./fontFamily";
 import { fonts } from "./fonts";
 import { foundation } from "./foundation";
+import { darkStatusColors, lightStatusColors } from "./themeStatusColors";
 
 export const isStackDebugEnabled = () => {
   const json = mmkv.getString("dev-menu-items");
@@ -26,12 +27,15 @@ const common = {
     spacing: 4,
     debug: isStackDebugEnabled(),
   },
+  colors: {},
 } as const;
 
 export const lightTheme = {
   ...common,
   name: "light",
   colors: {
+    ...common.colors,
+    ...lightStatusColors,
     accent: foundation.colors.blue,
     background: foundation.colors.white,
     typography: foundation.colors.black,
@@ -60,6 +64,8 @@ export const darkTheme = {
   ...common,
   name: "dark",
   colors: {
+    ...common.colors,
+    ...darkStatusColors,
     accent: foundation.colors.blue,
     background: foundation.colors.black,
     typography: foundation.colors.white,
