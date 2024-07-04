@@ -1,5 +1,6 @@
 /** eslint-disable import/no-unresolved */
 import { useSession } from "@/auth";
+import ButtonLoadingDemo from "@/modules/examples";
 import { env } from "@common/utils";
 import { FloatBox } from "@grapp/stacks";
 import {
@@ -85,6 +86,7 @@ export default function App() {
           onPress={openSettings}
           full
         />
+        <ButtonLoadingDemo />
         <ActionSheetExample />
         <ContextMenuExample />
         <DropdownMenuExample />
