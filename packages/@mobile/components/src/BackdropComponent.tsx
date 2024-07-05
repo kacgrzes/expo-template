@@ -1,5 +1,7 @@
 import { BottomSheetBackdropProps } from "@gorhom/bottom-sheet";
+import { useRouter } from "expo-router";
 import React, { useMemo } from "react";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   Extrapolation,
   interpolate,
@@ -11,6 +13,7 @@ export function BackdropComponent({
   animatedIndex,
   style,
 }: BottomSheetBackdropProps) {
+  const { back } = useRouter();
   const { theme } = useStyles();
 
   // animated variables
@@ -35,5 +38,11 @@ export function BackdropComponent({
     [style, containerAnimatedStyle, theme.colors.background],
   );
 
-  return <Animated.View style={containerStyle} />;
+  const gesture = Gesture.Tap().runOnJS(true).onStart(back);
+
+  return (
+    <GestureDetector gesture={gesture}>
+      <Animated.View style={containerStyle} />
+    </GestureDetector>
+  );
 }
