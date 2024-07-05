@@ -33,6 +33,7 @@
     "cleanGit": "git clean -xfd",
     "compilerHealthcheck": "bunx react-compiler-healthcheck",
     "config": "bunx expo config",
+    "dev": "bun start",
     "deeplink": "bunx uri-scheme open --ios template://profile",
     "devtools": "bunx react-devtools",
     "easBuildAndroidDevelopment": "eas build --platform android --profile development",

@@ -1,25 +1,27 @@
 {
+  "name": "monorepo",
   "author": "Kacper Grzeszczyk",
   "engines": {
     "node": ">=20.12.0"
   },
   "keywords": [],
-  "packageManager": "pnpm@9.4.0",
   "private": true,
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
-    "turbo": "^2.0.5",
+    "turbo": "latest",
     "typescript": "~5.3.3"
   },
-  "workspaces": ["apps/*", "packages/**/*"],
+  "workspaces": ["apps/*", "packages/@common/*", "packages/@expo/*", "packages/@mobile/*"],
   "scripts": {
     "check": "biome check && bun tsc",
     "format": "biome format",
     "lint": "biome lint",
     "prepare": "husky",
     "sherif": "npx sherif",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
     "tsc": "tsc --build"
   },
   "lint-staged": {
@@ -28,5 +30,6 @@
   },
   "patchedDependencies": {
     "@th3rdwave/react-navigation-bottom-sheet@0.3.2": "patches/@th3rdwave%2Freact-navigation-bottom-sheet@0.3.2.patch"
-  }
+  },
+  "packageManager": "^bun@1.0.18"
 }
