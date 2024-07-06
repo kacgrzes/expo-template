@@ -161,14 +161,14 @@ const stylesheet = createStyleSheet((theme) => {
       flexDirection: "row",
       backgroundColor: theme.name === "dark" ? "grey" : "lightgrey",
       padding: 2,
-      borderRadius: 6,
+      borderRadius: 8,
       gap: 2,
       height: 44,
     },
     segment: (full?: boolean) => {
       return {
         height: "100%",
-        borderRadius: 4,
+        borderRadius: 6,
         flexGrow: full ? 1 : undefined,
         justifyContent: "center",
         alignItems: "center",
@@ -177,7 +177,7 @@ const stylesheet = createStyleSheet((theme) => {
     },
     activeSegment: {
       backgroundColor: theme.colors.background,
-      borderRadius: 4,
+      borderRadius: 6,
       position: "absolute",
       top: 2,
       zIndex: -1,

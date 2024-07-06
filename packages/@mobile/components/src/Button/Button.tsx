@@ -127,7 +127,7 @@ Button.displayName = "Button";
 const stylesheet = createStyleSheet((theme) => {
   return {
     container: {
-      paddingVertical: 16,
+      height: 44,
       paddingHorizontal: 24,
       borderRadius: 8,
       alignItems: "center",
