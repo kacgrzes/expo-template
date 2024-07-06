@@ -24,6 +24,7 @@ export * from "./PasswordInput";
 export * from "./Picker";
 export * from "./RadioButton";
 export * from "./SafeAreaView";
+export * from "./Screen";
 export * from "./ScrollView";
 export * from "./SearchBar";
 export * from "./SectionList";

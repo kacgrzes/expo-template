@@ -1,4 +1,10 @@
 {
   "name": "@mobile/components",
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+  "dependencies": {
+    "color": "^4.2.3"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.6"
+  }
 }
