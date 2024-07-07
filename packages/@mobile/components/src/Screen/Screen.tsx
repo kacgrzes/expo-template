@@ -1,11 +1,11 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
+import { LinearGradient } from "expo-linear-gradient";
 import React, {
   createContext,
   useContext,
   useMemo,
   ReactElement,
-  cloneElement,
   Fragment,
 } from "react";
 import {
@@ -34,10 +34,10 @@ const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
 
 const ScreenContext = createContext<{
   footerHeight?: number;
-  noBottomEdge?: boolean;
+  hasBottomEdge?: boolean;
 }>({
   footerHeight: undefined,
-  noBottomEdge: false,
+  hasBottomEdge: false,
 });
 
 export const useScreenContext = () => useContext(ScreenContext);
@@ -47,7 +47,6 @@ type ScreenProps = {
   fab?: ReactElement<FABProps>;
   footer?: ReactElement<BoxProps>;
   edges?: ("bottom" | "top")[];
-  noBottomEdge?: boolean;
 };
 
 function ScreenScrollView({
@@ -55,17 +54,17 @@ function ScreenScrollView({
   contentContainerStyle,
   ...rest
 }: KeyboardAwareScrollViewProps) {
-  const { footerHeight = 0, noBottomEdge } = useScreenContext();
+  const { footerHeight = 0, hasBottomEdge } = useScreenContext();
   const { height, progress } = useReanimatedKeyboardAnimation();
   const { bottom } = useSafeAreaInsets();
 
   const extraBottom = useDerivedValue(() => {
     return footerHeight === 0
-      ? interpolate(progress.value, [0, 1], [noBottomEdge ? 0 : bottom, 0])
+      ? interpolate(progress.value, [0, 1], [hasBottomEdge ? bottom : 0, 0])
       : interpolate(
           progress.value,
           [0, 1],
-          [footerHeight, footerHeight - (noBottomEdge ? 0 : bottom)],
+          [footerHeight, footerHeight - (hasBottomEdge ? bottom : 0)],
         );
   });
 
@@ -109,24 +108,24 @@ export function Screen({
   footer,
   edges = ["bottom"],
 }: ScreenProps) {
-  const { styles } = useStyles(stylesheet);
+  const { styles, theme } = useStyles(stylesheet);
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
 
-  const noBottomEdge = !edges.includes("bottom");
-  const noTopEdge = !edges.includes("top");
+  const hasBottomEdge = edges.includes("bottom");
+  const hasTopEdge = edges.includes("top");
 
   const value = useMemo(() => {
     return {
       footerHeight,
-      noBottomEdge,
+      hasBottomEdge,
     };
-  }, [footerHeight, noBottomEdge]);
+  }, [footerHeight, hasBottomEdge]);
 
   return (
     <ScreenContext.Provider value={value}>
       <Box
         flex={"fluid"}
-        style={{ marginTop: noTopEdge ? 0 : UnistylesRuntime.insets.top }}
+        style={{ marginTop: hasTopEdge ? UnistylesRuntime.insets.top : 0 }}
       >
         <Box key={footerHeight}>{children}</Box>
         <KeyboardStickyView
@@ -137,16 +136,26 @@ export function Screen({
           onLayout={onFooterLayout}
           style={styles.keyboardStickyView}
         >
-          {footer
-            ? cloneElement(footer, {
-                children: (
-                  <Fragment>
-                    {footer.props.children}
-                    {noBottomEdge ? null : <Box style={styles.footer} />}
-                  </Fragment>
-                ),
-              })
-            : null}
+          {footer ? (
+            <Fragment>
+              {footer}
+              {hasBottomEdge ? <Box style={styles.footer} /> : null}
+              <LinearGradient
+                colors={[
+                  theme.colors.background + "00",
+                  theme.colors.background,
+                ]}
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: footerHeight,
+                  zIndex: -20,
+                }}
+              />
+            </Fragment>
+          ) : null}
         </KeyboardStickyView>
         {fab ? (
           <KeyboardStickyView
@@ -154,7 +163,7 @@ export function Screen({
             offset={{
               closed: footerHeight
                 ? -footerHeight
-                : -(noBottomEdge ? 0 : UnistylesRuntime.insets.bottom),
+                : -(hasBottomEdge ? UnistylesRuntime.insets.bottom : 0),
               opened: footerHeight
                 ? -footerHeight + UnistylesRuntime.insets.bottom
                 : 0,
