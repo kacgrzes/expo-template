@@ -1,6 +1,13 @@
-import { Box, FloatBox } from "@grapp/stacks";
+import { Box, BoxProps } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
-import React, { createContext, useContext, useMemo } from "react";
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  ReactElement,
+  cloneElement,
+  Fragment,
+} from "react";
 import {
   KeyboardAwareScrollView,
   KeyboardAwareScrollViewProps,
@@ -19,7 +26,6 @@ import {
   createStyleSheet,
   useStyles,
 } from "react-native-unistyles";
-import { Text } from "../Text";
 
 const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
   KeyboardAwareScrollView,
@@ -35,6 +41,7 @@ export const useScreenContext = () => useContext(ScreenContext);
 
 type ScreenProps = {
   children?: React.ReactNode;
+  footer?: ReactElement<BoxProps>;
 };
 
 const offset = {
@@ -76,6 +83,7 @@ function ScreenScrollView({ children, ...rest }: KeyboardAwareScrollViewProps) {
       automaticallyAdjustContentInsets={false}
       automaticallyAdjustKeyboardInsets={false}
       automaticallyAdjustsScrollIndicatorInsets={false}
+      keyboardDismissMode={"interactive"}
       {...rest}
       animatedProps={animatedProps}
       extraKeyboardSpace={0}
@@ -87,7 +95,7 @@ function ScreenScrollView({ children, ...rest }: KeyboardAwareScrollViewProps) {
   );
 }
 
-export function Screen({ children }: ScreenProps) {
+export function Screen({ children, footer }: ScreenProps) {
   const { styles } = useStyles(stylesheet);
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
 
@@ -104,9 +112,18 @@ export function Screen({ children }: ScreenProps) {
         <KeyboardStickyView
           offset={offset}
           onLayout={onFooterLayout}
-          style={styles.footer}
+          style={styles.keyboardStickyView}
         >
-          <Text>Hello!</Text>
+          {footer
+            ? cloneElement(footer, {
+                children: (
+                  <Fragment>
+                    {footer.props.children}
+                    <Box style={styles.footer} />
+                  </Fragment>
+                ),
+              })
+            : null}
         </KeyboardStickyView>
       </Box>
     </ScreenContext.Provider>
@@ -115,16 +132,16 @@ export function Screen({ children }: ScreenProps) {
 
 Screen.ScrollView = ScreenScrollView;
 
-const stylesheet = createStyleSheet((theme, runtime) => {
+const stylesheet = createStyleSheet((_theme, runtime) => {
   return {
-    footer: {
-      padding: 4 * theme.stacks.spacing,
+    keyboardStickyView: {
       position: "absolute",
       bottom: 0,
       left: 0,
       right: 0,
-      backgroundColor: "red",
-      paddingBottom: runtime.insets.bottom + 16,
+    },
+    footer: {
+      paddingBottom: runtime.insets.bottom,
     },
   };
 });
