@@ -46,6 +46,7 @@ type ScreenProps = {
   children?: React.ReactNode;
   fab?: ReactElement<FABProps>;
   footer?: ReactElement<BoxProps>;
+  edges?: ("bottom" | "top")[];
   noBottomEdge?: boolean;
 };
 
@@ -102,9 +103,17 @@ function ScreenScrollView({
   );
 }
 
-export function Screen({ children, fab, footer, noBottomEdge }: ScreenProps) {
+export function Screen({
+  children,
+  fab,
+  footer,
+  edges = ["bottom"],
+}: ScreenProps) {
   const { styles } = useStyles(stylesheet);
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
+
+  const noBottomEdge = !edges.includes("bottom");
+  const noTopEdge = !edges.includes("top");
 
   const value = useMemo(() => {
     return {
@@ -115,7 +124,10 @@ export function Screen({ children, fab, footer, noBottomEdge }: ScreenProps) {
 
   return (
     <ScreenContext.Provider value={value}>
-      <Box flex={"fluid"}>
+      <Box
+        flex={"fluid"}
+        style={{ marginTop: noTopEdge ? 0 : UnistylesRuntime.insets.top }}
+      >
         <Box key={footerHeight}>{children}</Box>
         <KeyboardStickyView
           offset={{

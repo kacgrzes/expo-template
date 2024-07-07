@@ -51,7 +51,7 @@ export default function App() {
 
   return (
     <Screen
-      noBottomEdge
+      edges={["top"]}
       fab={<FAB Icon={Feather} extended={extended} label="Hello!" />}
       footer={
         <Box padding={4} style={{ backgroundColor: "green" }}>
@@ -61,7 +61,6 @@ export default function App() {
     >
       <Screen.ScrollView
         onScroll={handleScroll}
-        style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
         <SegmentedControl full />
@@ -103,10 +102,7 @@ export default function App() {
   );
 }
 
-const stylesheet = createStyleSheet((theme, runtime) => ({
-  container: {
-    marginTop: runtime.insets.top,
-  },
+const stylesheet = createStyleSheet((theme) => ({
   contentContainer: {
     gap: theme.stacks.spacing * 1,
     alignItems: "center",
