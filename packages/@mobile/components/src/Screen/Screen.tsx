@@ -26,6 +26,7 @@ import {
   createStyleSheet,
   useStyles,
 } from "react-native-unistyles";
+import { FABProps } from "../FAB";
 
 const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
   KeyboardAwareScrollView,
@@ -33,34 +34,37 @@ const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
 
 const ScreenContext = createContext<{
   footerHeight?: number;
+  noBottomEdge?: boolean;
 }>({
   footerHeight: undefined,
+  noBottomEdge: false,
 });
 
 export const useScreenContext = () => useContext(ScreenContext);
 
 type ScreenProps = {
   children?: React.ReactNode;
+  fab?: ReactElement<FABProps>;
   footer?: ReactElement<BoxProps>;
+  noBottomEdge?: boolean;
 };
 
-const offset = {
-  opened: UnistylesRuntime.insets.bottom,
-  closed: 0,
-};
-
-function ScreenScrollView({ children, ...rest }: KeyboardAwareScrollViewProps) {
-  const { footerHeight = 0 } = useScreenContext();
+function ScreenScrollView({
+  children,
+  contentContainerStyle,
+  ...rest
+}: KeyboardAwareScrollViewProps) {
+  const { footerHeight = 0, noBottomEdge } = useScreenContext();
   const { height, progress } = useReanimatedKeyboardAnimation();
   const { bottom } = useSafeAreaInsets();
 
   const extraBottom = useDerivedValue(() => {
     return footerHeight === 0
-      ? interpolate(progress.value, [0, 1], [bottom, 0])
+      ? interpolate(progress.value, [0, 1], [noBottomEdge ? 0 : bottom, 0])
       : interpolate(
           progress.value,
           [0, 1],
-          [footerHeight, footerHeight - bottom],
+          [footerHeight, footerHeight - (noBottomEdge ? 0 : bottom)],
         );
   });
 
@@ -83,34 +87,41 @@ function ScreenScrollView({ children, ...rest }: KeyboardAwareScrollViewProps) {
       automaticallyAdjustContentInsets={false}
       automaticallyAdjustKeyboardInsets={false}
       automaticallyAdjustsScrollIndicatorInsets={false}
+      bottomOffset={footerHeight + 16}
+      extraKeyboardSpace={0}
       keyboardDismissMode={"interactive"}
+      scrollEventThrottle={1000 / 60} // 60 FPS
       {...rest}
       animatedProps={animatedProps}
-      extraKeyboardSpace={0}
-      bottomOffset={footerHeight + 16}
     >
-      {children}
+      <Box padding={4} style={contentContainerStyle}>
+        {children}
+      </Box>
       <Reanimated.View style={animatedSpacerStyle} />
     </AnimatedKeyboardAwareScrollView>
   );
 }
 
-export function Screen({ children, footer }: ScreenProps) {
+export function Screen({ children, fab, footer, noBottomEdge }: ScreenProps) {
   const { styles } = useStyles(stylesheet);
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
 
   const value = useMemo(() => {
     return {
       footerHeight,
+      noBottomEdge,
     };
-  }, [footerHeight]);
+  }, [footerHeight, noBottomEdge]);
 
   return (
     <ScreenContext.Provider value={value}>
       <Box flex={"fluid"}>
         <Box key={footerHeight}>{children}</Box>
         <KeyboardStickyView
-          offset={offset}
+          offset={{
+            opened: UnistylesRuntime.insets.bottom,
+            closed: 0,
+          }}
           onLayout={onFooterLayout}
           style={styles.keyboardStickyView}
         >
@@ -119,12 +130,27 @@ export function Screen({ children, footer }: ScreenProps) {
                 children: (
                   <Fragment>
                     {footer.props.children}
-                    <Box style={styles.footer} />
+                    {noBottomEdge ? null : <Box style={styles.footer} />}
                   </Fragment>
                 ),
               })
             : null}
         </KeyboardStickyView>
+        {fab ? (
+          <KeyboardStickyView
+            style={styles.fabContainer}
+            offset={{
+              closed: footerHeight
+                ? -footerHeight
+                : -(noBottomEdge ? 0 : UnistylesRuntime.insets.bottom),
+              opened: footerHeight
+                ? -footerHeight + UnistylesRuntime.insets.bottom
+                : 0,
+            }}
+          >
+            {fab}
+          </KeyboardStickyView>
+        ) : null}
       </Box>
     </ScreenContext.Provider>
   );
@@ -142,6 +168,11 @@ const stylesheet = createStyleSheet((_theme, runtime) => {
     },
     footer: {
       paddingBottom: runtime.insets.bottom,
+    },
+    fabContainer: {
+      position: "absolute",
+      bottom: 16,
+      right: 16,
     },
   };
 });

@@ -17,7 +17,10 @@ import Animated, {
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-type FABProps = Pick<ComponentProps<typeof AnimatedRectButton>, "onPress"> & {
+export type FABProps = Pick<
+  ComponentProps<typeof AnimatedRectButton>,
+  "onPress"
+> & {
   Icon?: LucideIcon;
   extended?: boolean;
   label?: string;

@@ -1,4 +1,5 @@
 import { Button, TextInput, useTextInputRef } from "@mobile/components";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import {
@@ -27,6 +28,7 @@ export default function KeyboardAnimation() {
   // 1. we need to use hook to get an access to animated values
   const { height } = useReanimatedKeyboardAnimation();
   const textInputRef = useTextInputRef();
+  const tabBarHeight = useBottomTabBarHeight();
 
   return (
     <View style={styles.container}>
@@ -63,7 +65,13 @@ export default function KeyboardAnimation() {
           />
         </Animated.View>
       </View>
-      <KeyboardStickyView style={{ width: "100%" }}>
+      <KeyboardStickyView
+        style={{ width: "100%" }}
+        offset={{
+          closed: 0,
+          opened: tabBarHeight,
+        }}
+      >
         <TextInput
           accessibilityRole="none"
           ref={textInputRef}

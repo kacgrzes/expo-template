@@ -1,8 +1,7 @@
-/** eslint-disable import/no-unresolved */
 import { useSession } from "@/auth";
 import ButtonLoadingDemo from "@/modules/examples";
 import { env } from "@common/utils";
-import { FloatBox } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import {
   ActionSheetExample,
   Button,
@@ -11,17 +10,16 @@ import {
   FAB,
   JSONViewer,
   OnScroll,
-  ScrollView,
+  Screen,
   SegmentedControl,
   Text,
   Title,
 } from "@mobile/components";
-// eslint-disable-next-line import/no-unresolved
 import { isHermes, openSettings } from "@mobile/utils";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -52,9 +50,16 @@ export default function App() {
   });
 
   return (
-    <Fragment>
-      <ScrollView
-        scrollEventThrottle={1000 / 60} // 60 FPS
+    <Screen
+      noBottomEdge
+      fab={<FAB Icon={Feather} extended={extended} label="Hello!" />}
+      footer={
+        <Box padding={4} style={{ backgroundColor: "green" }}>
+          <Text>Hello!</Text>
+        </Box>
+      }
+    >
+      <Screen.ScrollView
         onScroll={handleScroll}
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
@@ -80,6 +85,9 @@ export default function App() {
         <Link href="/settings" asChild>
           <Button title="App settings" variant="link" full />
         </Link>
+        <Link href="/sign-up" asChild>
+          <Button title="Sign up" variant="link" full />
+        </Link>
         <Button
           title="Open settings"
           variant="link"
@@ -90,24 +98,18 @@ export default function App() {
         <ActionSheetExample />
         <ContextMenuExample />
         <DropdownMenuExample />
-      </ScrollView>
-      <FloatBox bottom={16} right={16}>
-        <FAB Icon={Feather} extended={extended} label="Hello!" />
-      </FloatBox>
-    </Fragment>
+      </Screen.ScrollView>
+    </Screen>
   );
 }
 
-const stylesheet = createStyleSheet((_theme, runtime) => ({
+const stylesheet = createStyleSheet((theme, runtime) => ({
   container: {
     marginTop: runtime.insets.top,
   },
   contentContainer: {
-    // flex: 1,
+    gap: theme.stacks.spacing * 1,
     alignItems: "center",
-    // justifyContent: "center",
-    padding: 16,
-    gap: 4,
   },
   text: {
     justifyContent: "center",
