@@ -35,9 +35,11 @@ const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
 const ScreenContext = createContext<{
   footerHeight?: number;
   hasBottomEdge?: boolean;
+  hasTopEdge?: boolean;
 }>({
   footerHeight: undefined,
   hasBottomEdge: false,
+  hasTopEdge: false,
 });
 
 export const useScreenContext = () => useContext(ScreenContext);
@@ -54,9 +56,10 @@ function ScreenScrollView({
   contentContainerStyle,
   ...rest
 }: KeyboardAwareScrollViewProps) {
-  const { footerHeight = 0, hasBottomEdge } = useScreenContext();
+  const { theme } = useStyles();
+  const { footerHeight = 0, hasBottomEdge, hasTopEdge } = useScreenContext();
   const { height, progress } = useReanimatedKeyboardAnimation();
-  const { bottom } = useSafeAreaInsets();
+  const { bottom, top } = useSafeAreaInsets();
 
   const extraBottom = useDerivedValue(() => {
     return footerHeight === 0
@@ -72,6 +75,7 @@ function ScreenScrollView({
     return {
       scrollIndicatorInsets: {
         bottom: -height.value + extraBottom.value,
+        top: hasTopEdge ? top : 0,
       },
     };
   });
@@ -83,22 +87,38 @@ function ScreenScrollView({
   });
 
   return (
-    <AnimatedKeyboardAwareScrollView
-      automaticallyAdjustContentInsets={false}
-      automaticallyAdjustKeyboardInsets={false}
-      automaticallyAdjustsScrollIndicatorInsets={false}
-      bottomOffset={footerHeight + 16}
-      extraKeyboardSpace={0}
-      keyboardDismissMode={"interactive"}
-      scrollEventThrottle={1000 / 60} // 60 FPS
-      {...rest}
-      animatedProps={animatedProps}
-    >
-      <Box padding={4} style={contentContainerStyle}>
-        {children}
-      </Box>
-      <Reanimated.View style={animatedSpacerStyle} />
-    </AnimatedKeyboardAwareScrollView>
+    <Fragment>
+      {hasTopEdge ? (
+        <LinearGradient
+          colors={[theme.colors.background, theme.colors.background + "00"]}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: footerHeight,
+            zIndex: 20,
+          }}
+        />
+      ) : null}
+      <AnimatedKeyboardAwareScrollView
+        automaticallyAdjustContentInsets={false}
+        automaticallyAdjustKeyboardInsets={false}
+        automaticallyAdjustsScrollIndicatorInsets={false}
+        bottomOffset={footerHeight + 16}
+        extraKeyboardSpace={0}
+        keyboardDismissMode={"interactive"}
+        scrollEventThrottle={1000 / 60} // 60 FPS
+        {...rest}
+        animatedProps={animatedProps}
+        contentContainerStyle={{ paddingTop: hasTopEdge ? top : 0 }}
+      >
+        <Box padding={4} style={contentContainerStyle}>
+          {children}
+        </Box>
+        <Reanimated.View style={animatedSpacerStyle} />
+      </AnimatedKeyboardAwareScrollView>
+    </Fragment>
   );
 }
 
@@ -118,15 +138,13 @@ export function Screen({
     return {
       footerHeight,
       hasBottomEdge,
+      hasTopEdge,
     };
-  }, [footerHeight, hasBottomEdge]);
+  }, [footerHeight, hasBottomEdge, hasTopEdge]);
 
   return (
     <ScreenContext.Provider value={value}>
-      <Box
-        flex={"fluid"}
-        style={{ marginTop: hasTopEdge ? UnistylesRuntime.insets.top : 0 }}
-      >
+      <Box flex={"fluid"}>
         <Box key={footerHeight}>{children}</Box>
         <KeyboardStickyView
           offset={{
