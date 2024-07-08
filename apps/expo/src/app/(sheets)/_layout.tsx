@@ -16,7 +16,7 @@ const EXAMPLE_SHEET_OPTIONS: BottomSheetNavigationOptions = {
   style: {
     marginHorizontal: 16,
   },
-  bottomInset: UnistylesRuntime.insets.bottom ?? 24,
+  bottomInset: UnistylesRuntime.insets.bottom + 16 ?? 24,
 };
 
 export default function Sheets() {
