@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
-import React, { ReactElement, Fragment } from "react";
+import React, { ReactElement, useMemo } from "react";
 import { KeyboardStickyView } from "react-native-keyboard-controller";
 import {
   UnistylesRuntime,
@@ -8,8 +8,9 @@ import {
   useStyles,
 } from "react-native-unistyles";
 import { FABProps } from "../FAB";
-import { GradientOverlay } from "./GradientOverlay";
 import { ScreenProvider } from "./ScreenContext";
+import { ScreenFAB } from "./ScreenFAB";
+import { ScreenFooter } from "./ScreenFooter";
 import { ScreenScrollView } from "./ScreenScrollView";
 
 type ScreenProps = {
@@ -29,10 +30,34 @@ export function Screen({
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
   const hasBottomEdge = edges.includes("bottom");
 
+  const memoizedFooter = useMemo(
+    () =>
+      footer && (
+        <ScreenFooter
+          footer={footer}
+          hasBottomEdge={hasBottomEdge}
+          footerHeight={footerHeight}
+        />
+      ),
+    [footer, hasBottomEdge, footerHeight],
+  );
+
+  const memoizedFAB = useMemo(
+    () =>
+      fab && (
+        <ScreenFAB
+          fab={fab}
+          footerHeight={footerHeight}
+          hasBottomEdge={hasBottomEdge}
+        />
+      ),
+    [fab, footerHeight, hasBottomEdge],
+  );
+
   return (
     <ScreenProvider footerHeight={footerHeight} edges={edges}>
-      <Box flex={"fluid"}>
-        <Box key={footerHeight}>{children}</Box>
+      <Box flex="fluid">
+        <Box>{children}</Box>
         <KeyboardStickyView
           offset={{
             opened: UnistylesRuntime.insets.bottom,
@@ -41,29 +66,9 @@ export function Screen({
           onLayout={onFooterLayout}
           style={styles.keyboardStickyView}
         >
-          {footer ? (
-            <Fragment>
-              {footer}
-              {hasBottomEdge ? <Box style={styles.footer} /> : null}
-              <GradientOverlay position="bottom" height={footerHeight + 24} />
-            </Fragment>
-          ) : null}
+          {memoizedFooter}
         </KeyboardStickyView>
-        {fab ? (
-          <KeyboardStickyView
-            style={styles.fabContainer}
-            offset={{
-              closed: footerHeight
-                ? -footerHeight
-                : -(hasBottomEdge ? UnistylesRuntime.insets.bottom : 0),
-              opened: footerHeight
-                ? -footerHeight + UnistylesRuntime.insets.bottom
-                : 0,
-            }}
-          >
-            {fab}
-          </KeyboardStickyView>
-        ) : null}
+        {memoizedFAB}
       </Box>
     </ScreenProvider>
   );
@@ -71,21 +76,11 @@ export function Screen({
 
 Screen.ScrollView = ScreenScrollView;
 
-const stylesheet = createStyleSheet((_theme, runtime) => {
-  return {
-    keyboardStickyView: {
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
-    footer: {
-      paddingBottom: runtime.insets.bottom,
-    },
-    fabContainer: {
-      position: "absolute",
-      bottom: 16,
-      right: 16,
-    },
-  };
-});
+const stylesheet = createStyleSheet(() => ({
+  keyboardStickyView: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+}));
