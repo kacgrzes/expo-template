@@ -8,7 +8,7 @@ type GradientOverlayProps = {
   height?: number;
 };
 
-export const GradientOverlay: React.FC<GradientOverlayProps> = ({
+const GradientOverlayComponent: React.FC<GradientOverlayProps> = ({
   position,
   height,
 }) => {
@@ -24,6 +24,8 @@ export const GradientOverlay: React.FC<GradientOverlayProps> = ({
 
   return <LinearGradient colors={colors} style={style} />;
 };
+
+export const GradientOverlay = React.memo(GradientOverlayComponent);
 
 const stylesheet = createStyleSheet(() => ({
   top: (height: number = 0) =>

@@ -1,25 +1,7 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
-import React, {
-  createContext,
-  useContext,
-  useMemo,
-  ReactElement,
-  Fragment,
-} from "react";
-import {
-  KeyboardAwareScrollView,
-  KeyboardAwareScrollViewProps,
-  KeyboardStickyView,
-  useReanimatedKeyboardAnimation,
-} from "react-native-keyboard-controller";
-import Reanimated, {
-  interpolate,
-  useAnimatedProps,
-  useAnimatedStyle,
-  useDerivedValue,
-} from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import React, { ReactElement, Fragment } from "react";
+import { KeyboardStickyView } from "react-native-keyboard-controller";
 import {
   UnistylesRuntime,
   createStyleSheet,
@@ -27,22 +9,8 @@ import {
 } from "react-native-unistyles";
 import { FABProps } from "../FAB";
 import { GradientOverlay } from "./GradientOverlay";
-
-const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
-  KeyboardAwareScrollView,
-);
-
-const ScreenContext = createContext<{
-  footerHeight?: number;
-  hasBottomEdge?: boolean;
-  hasTopEdge?: boolean;
-}>({
-  footerHeight: undefined,
-  hasBottomEdge: false,
-  hasTopEdge: false,
-});
-
-export const useScreenContext = () => useContext(ScreenContext);
+import { ScreenProvider } from "./ScreenContext";
+import { ScreenScrollView } from "./ScreenScrollView";
 
 type ScreenProps = {
   children?: React.ReactNode;
@@ -50,64 +18,6 @@ type ScreenProps = {
   footer?: ReactElement<BoxProps>;
   edges?: ("bottom" | "top")[];
 };
-
-function ScreenScrollView({
-  children,
-  contentContainerStyle,
-  ...rest
-}: KeyboardAwareScrollViewProps) {
-  const { footerHeight = 0, hasBottomEdge, hasTopEdge } = useScreenContext();
-  const { height, progress } = useReanimatedKeyboardAnimation();
-  const { bottom, top } = useSafeAreaInsets();
-
-  const extraBottom = useDerivedValue(() => {
-    return footerHeight === 0
-      ? interpolate(progress.value, [0, 1], [hasBottomEdge ? bottom : 0, 0])
-      : interpolate(
-          progress.value,
-          [0, 1],
-          [footerHeight, footerHeight - (hasBottomEdge ? bottom : 0)],
-        );
-  });
-
-  const animatedProps = useAnimatedProps<KeyboardAwareScrollViewProps>(() => {
-    return {
-      scrollIndicatorInsets: {
-        bottom: -height.value + extraBottom.value,
-        top: hasTopEdge ? top : 0,
-      },
-    };
-  });
-
-  const animatedSpacerStyle = useAnimatedStyle(() => {
-    return {
-      height: extraBottom.value,
-    };
-  });
-
-  return (
-    <Fragment>
-      {hasTopEdge ? <GradientOverlay position="top" height={top + 24} /> : null}
-      <AnimatedKeyboardAwareScrollView
-        automaticallyAdjustContentInsets={false}
-        automaticallyAdjustKeyboardInsets={false}
-        automaticallyAdjustsScrollIndicatorInsets={false}
-        bottomOffset={footerHeight + 16}
-        extraKeyboardSpace={0}
-        keyboardDismissMode={"interactive"}
-        scrollEventThrottle={1000 / 60} // 60 FPS
-        {...rest}
-        animatedProps={animatedProps}
-        contentContainerStyle={{ paddingTop: hasTopEdge ? top : 0 }}
-      >
-        <Box padding={4} style={contentContainerStyle}>
-          {children}
-        </Box>
-        <Reanimated.View style={animatedSpacerStyle} />
-      </AnimatedKeyboardAwareScrollView>
-    </Fragment>
-  );
-}
 
 export function Screen({
   children,
@@ -117,20 +27,10 @@ export function Screen({
 }: ScreenProps) {
   const { styles } = useStyles(stylesheet);
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
-
   const hasBottomEdge = edges.includes("bottom");
-  const hasTopEdge = edges.includes("top");
-
-  const value = useMemo(() => {
-    return {
-      footerHeight,
-      hasBottomEdge,
-      hasTopEdge,
-    };
-  }, [footerHeight, hasBottomEdge, hasTopEdge]);
 
   return (
-    <ScreenContext.Provider value={value}>
+    <ScreenProvider footerHeight={footerHeight} edges={edges}>
       <Box flex={"fluid"}>
         <Box key={footerHeight}>{children}</Box>
         <KeyboardStickyView
@@ -165,7 +65,7 @@ export function Screen({
           </KeyboardStickyView>
         ) : null}
       </Box>
-    </ScreenContext.Provider>
+    </ScreenProvider>
   );
 }
 
