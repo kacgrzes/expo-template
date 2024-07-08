@@ -1,6 +1,5 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
-import { LinearGradient } from "expo-linear-gradient";
 import React, {
   createContext,
   useContext,
@@ -27,6 +26,7 @@ import {
   useStyles,
 } from "react-native-unistyles";
 import { FABProps } from "../FAB";
+import { GradientOverlay } from "./GradientOverlay";
 
 const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
   KeyboardAwareScrollView,
@@ -56,7 +56,6 @@ function ScreenScrollView({
   contentContainerStyle,
   ...rest
 }: KeyboardAwareScrollViewProps) {
-  const { theme } = useStyles();
   const { footerHeight = 0, hasBottomEdge, hasTopEdge } = useScreenContext();
   const { height, progress } = useReanimatedKeyboardAnimation();
   const { bottom, top } = useSafeAreaInsets();
@@ -88,19 +87,7 @@ function ScreenScrollView({
 
   return (
     <Fragment>
-      {hasTopEdge ? (
-        <LinearGradient
-          colors={[theme.colors.background, theme.colors.background + "00"]}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: footerHeight,
-            zIndex: 20,
-          }}
-        />
-      ) : null}
+      {hasTopEdge ? <GradientOverlay position="top" height={top + 24} /> : null}
       <AnimatedKeyboardAwareScrollView
         automaticallyAdjustContentInsets={false}
         automaticallyAdjustKeyboardInsets={false}
@@ -128,7 +115,7 @@ export function Screen({
   footer,
   edges = ["bottom"],
 }: ScreenProps) {
-  const { styles, theme } = useStyles(stylesheet);
+  const { styles } = useStyles(stylesheet);
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
 
   const hasBottomEdge = edges.includes("bottom");
@@ -158,20 +145,7 @@ export function Screen({
             <Fragment>
               {footer}
               {hasBottomEdge ? <Box style={styles.footer} /> : null}
-              <LinearGradient
-                colors={[
-                  theme.colors.background + "00",
-                  theme.colors.background,
-                ]}
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: footerHeight,
-                  zIndex: -20,
-                }}
-              />
+              <GradientOverlay position="bottom" height={footerHeight + 24} />
             </Fragment>
           ) : null}
         </KeyboardStickyView>
