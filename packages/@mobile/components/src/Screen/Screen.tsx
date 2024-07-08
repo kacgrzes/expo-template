@@ -20,12 +20,12 @@ type ScreenProps = {
   edges?: ("bottom" | "top")[];
 };
 
-export function Screen({
+const ScreenComponent = ({
   children,
   fab,
   footer,
   edges = ["bottom"],
-}: ScreenProps) {
+}: ScreenProps) => {
   const { styles } = useStyles(stylesheet);
   const { height: footerHeight, onLayout: onFooterLayout } = useLayout();
   const hasBottomEdge = edges.includes("bottom");
@@ -72,7 +72,9 @@ export function Screen({
       </Box>
     </ScreenProvider>
   );
-}
+};
+
+export const Screen = React.memo(ScreenComponent);
 
 Screen.ScrollView = ScreenScrollView;
 
