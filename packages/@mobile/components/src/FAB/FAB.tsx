@@ -1,5 +1,3 @@
-// TODO: check why this component has such a big hit slop
-import { AnimatedRectButton } from "@mobile/components";
 import { LucideIcon, Plus } from "lucide-react-native";
 import {
   ComponentProps,
@@ -16,6 +14,8 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+// TODO: check why this component has such a big hit slop
+import { AnimatedRectButton } from "../AnimatedButtons";
 
 export type FABProps = Pick<
   ComponentProps<typeof AnimatedRectButton>,

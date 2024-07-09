@@ -76,6 +76,7 @@ const ScreenComponent = ({
 
 export const Screen = React.memo(ScreenComponent);
 
+// @ts-ignore
 Screen.ScrollView = ScreenScrollView;
 
 const stylesheet = createStyleSheet(() => ({

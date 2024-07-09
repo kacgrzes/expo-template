@@ -8,7 +8,7 @@ import {
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { AnimatedRectButton } from "@mobile/components";
+import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
 
 type NotifierRef = {
