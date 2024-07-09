@@ -6,7 +6,15 @@ import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
 import { getIconName, listAppIcons, setAppIcon } from "./appIcon";
 
-export function AppIconSwitcher() {
+type ModuleId = string | number | string[] | number[];
+
+type AppIconSwitcherProps = {
+  icons: ModuleId;
+};
+
+export function AppIconSwitcher({
+  icons: iconsModulesIds,
+}: AppIconSwitcherProps) {
   const [icons, setAppIcons] = useState<Asset[] | undefined>();
   const [selectedIcon, setSelectedIcon] = useState<number | undefined>();
   const { styles } = useStyles(stylesheet);
@@ -21,7 +29,7 @@ export function AppIconSwitcher() {
 
   useEffect(() => {
     async function init() {
-      const icons = await listAppIcons();
+      const icons = await listAppIcons(iconsModulesIds);
       setAppIcons(icons);
       const { iconName } = await getIconName();
       console.log({ iconName });
@@ -29,7 +37,7 @@ export function AppIconSwitcher() {
     }
 
     init();
-  }, []);
+  }, [iconsModulesIds]);
 
   if (!icons) {
     return null;

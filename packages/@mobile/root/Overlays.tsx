@@ -1,5 +1,6 @@
 import { PortalHost } from "@gorhom/portal";
 import { FullWindowOverlay, Notifier } from "@mobile/components";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 
 export function Overlays() {

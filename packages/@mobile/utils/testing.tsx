@@ -6,10 +6,10 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
 };
 
 function customRender<T>(
-  component: React.ReactElement<T>,
+  element: React.ReactElement<T>,
   options?: RenderOptions,
 ) {
-  return render(component, {
+  return render(element, {
     wrapper: Wrapper,
     ...options,
   });

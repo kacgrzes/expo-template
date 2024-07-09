@@ -1,5 +1,6 @@
-import { StatusBar } from "@mobile/components";
+import React from "react";
 import { ComponentType, Fragment } from "react";
+import { StatusBar } from "./StatusBar";
 
 export const withModalStatusBar = (Screen: ComponentType) => {
   const WithModalStatusBar = () => (

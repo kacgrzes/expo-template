@@ -1,8 +1,3 @@
-/** eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  CommonAccessoryProps,
-  CommonFormProps,
-} from "@mobile/components/types";
 import { useShakeAnimation } from "@mobile/hooks/useShakeAnimation";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import {
@@ -18,6 +13,8 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+/** eslint-disable @typescript-eslint/no-unused-vars */
+import { CommonAccessoryProps, CommonFormProps } from "../types";
 
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 

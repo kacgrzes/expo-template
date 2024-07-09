@@ -8,13 +8,11 @@ export const setAppIcon = async (iconIndex: string) => {
   }
 };
 
-export const listAppIcons = async () => {
+type ModuleId = string | number | string[] | number[];
+
+export const listAppIcons = async (iconsModulesIds: ModuleId) => {
   if (Platform.OS === "ios" && (await AppIcon.supportsDynamicAppIcon())) {
-    return await Asset.loadAsync([
-      require("../../../assets/icon.png"),
-      require("../../../assets/icon2.png"),
-      require("../../../assets/icon3.png"),
-    ]);
+    return await Asset.loadAsync(iconsModulesIds);
   }
 };
 

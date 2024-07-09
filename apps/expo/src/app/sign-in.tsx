@@ -1,4 +1,4 @@
-import { useSession } from "@/auth";
+import { useSession } from "@mobile/auth";
 import { router } from "expo-router";
 import { Text, View } from "react-native";
 

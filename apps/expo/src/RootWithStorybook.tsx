@@ -1,16 +1,16 @@
 import { useDevMenuItem, useRegisterDevMenuItems } from "@mobile/hooks";
-import { ExpoRoot } from "expo-router";
+import { Providers, Root } from "@mobile/root";
+import React from "react";
 import Storybook from "./.storybook";
-import { Providers } from "./Providers";
 
-export function Root() {
+export function RootWithStorybook() {
   useRegisterDevMenuItems();
   const enabled = useDevMenuItem("storybook-enabled");
 
   if (!enabled || !__DEV__) {
     // @ts-ignore
-    const ctx = require.context("./app");
-    return <ExpoRoot context={ctx} wrapper={Providers} />;
+    const context = require.context("./app");
+    return <Root context={context} />;
   }
 
   if (__DEV__ && enabled) {

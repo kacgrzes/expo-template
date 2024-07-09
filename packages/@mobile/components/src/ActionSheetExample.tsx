@@ -1,5 +1,5 @@
-import { useTheme } from "@/modules/unistyles/ThemeProvider";
 import { useActionSheet } from "@expo/react-native-action-sheet";
+import { useTheme } from "@mobile/unistyles";
 
 import { Button } from "./Button";
 

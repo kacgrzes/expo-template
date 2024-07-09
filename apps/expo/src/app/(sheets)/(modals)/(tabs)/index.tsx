@@ -1,7 +1,7 @@
-import { useSession } from "@/auth";
 import ButtonLoadingDemo from "@/modules/examples";
 import { env } from "@common/utils";
 import { Box } from "@grapp/stacks";
+import { useSession } from "@mobile/auth";
 import {
   ActionSheetExample,
   Button,

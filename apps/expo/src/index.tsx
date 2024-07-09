@@ -1,12 +1,15 @@
 // TODO: can be removed when reanimated is 3.11.0
 import "react-native-reanimated";
-import "@/polyfills";
+// eslint-disable-next-line import/no-unresolved
+import "@mobile/root";
 import "@/i18n";
-import "@/unistyles";
+import "@mobile/unistyles";
 
-import { setupOnAppStart } from "@/setupOnAppStart";
+// eslint-disable-next-line import/no-unresolved
+import { setupOnAppStart } from "@mobile/root";
 import { registerRootComponent } from "expo";
-import { Root } from "./Root";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { RootWithStorybook } from "./RootWithStorybook";
 
 setupOnAppStart();
-registerRootComponent(Root);
+registerRootComponent(RootWithStorybook);

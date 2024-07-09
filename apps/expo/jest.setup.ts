@@ -1,4 +1,4 @@
-import "@/unistyles";
+import "@mobile/unistyles";
 import { configure } from "@testing-library/react-native";
 import "@testing-library/jest-native/extend-expect";
 import "@testing-library/react-native/extend-expect";

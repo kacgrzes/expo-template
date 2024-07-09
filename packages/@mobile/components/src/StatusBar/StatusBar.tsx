@@ -1,5 +1,5 @@
 /** eslint-disable import/no-unresolved */
-import { useTheme } from "@/modules/unistyles";
+import { useTheme } from "@mobile/unistyles";
 // eslint-disable-next-line import/no-unresolved
 import { isIOS } from "@mobile/utils/platform";
 import {
