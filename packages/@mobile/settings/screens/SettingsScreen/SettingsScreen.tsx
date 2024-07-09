@@ -1,6 +1,6 @@
-import { useCurrentLanguage } from "@/i18n";
 import { Box } from "@grapp/stacks";
 import { ListItem, Screen, Switch, Text } from "@mobile/components";
+import { useCurrentLanguage } from "@mobile/i18n";
 import { useRouter } from "expo-router";
 import {
   BoxSelect,

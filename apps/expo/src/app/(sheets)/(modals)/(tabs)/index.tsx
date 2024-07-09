@@ -1,4 +1,3 @@
-import ButtonLoadingDemo from "@/modules/examples";
 import { env } from "@common/utils";
 import { Box } from "@grapp/stacks";
 import { useSession } from "@mobile/auth";
@@ -93,7 +92,6 @@ export default function App() {
           onPress={openSettings}
           full
         />
-        <ButtonLoadingDemo />
         <ActionSheetExample />
         <ContextMenuExample />
         <DropdownMenuExample />

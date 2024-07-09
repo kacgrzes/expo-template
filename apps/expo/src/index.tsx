@@ -2,7 +2,7 @@
 import "react-native-reanimated";
 // eslint-disable-next-line import/no-unresolved
 import "@mobile/root";
-import "@/i18n";
+import "@mobile/i18n";
 import "@mobile/unistyles";
 
 // eslint-disable-next-line import/no-unresolved

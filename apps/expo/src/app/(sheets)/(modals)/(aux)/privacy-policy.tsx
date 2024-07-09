@@ -1,1 +1,1 @@
-export { PrivacyPolicy as default } from "@/about/screens/PrivacyPolicy";
+export { PrivacyPolicy as default } from "@mobile/about/screens/PrivacyPolicy";

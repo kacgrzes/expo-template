@@ -1,4 +1,4 @@
-import { HelpScreen } from "@/help";
 import { withModalStatusBar } from "@mobile/components";
+import { HelpScreen } from "@mobile/help";
 
 export default withModalStatusBar(HelpScreen);

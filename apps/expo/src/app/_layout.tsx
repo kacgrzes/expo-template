@@ -1,6 +1,5 @@
-/** eslint-disable import/no-unresolved */
-import { trackScreen, useScreenTracking } from "@/analytics";
 import { Grid } from "@grapp/stacks";
+import { trackScreen, useScreenTracking } from "@mobile/analytics";
 import {
   useDevMenuItem,
   useDevPlugins,

@@ -1,7 +1,7 @@
-import { AppIcon, RadioButton } from "@mobile/components";
+import { AppIcon, RadioButton, Screen } from "@mobile/components";
 import { Asset } from "expo-asset";
 import { useEffect, useState } from "react";
-import { Pressable, ScrollView } from "react-native";
+import { Pressable } from "react-native";
 import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
 import { getIconName, listAppIcons, setAppIcon } from "./appIcon";
@@ -44,33 +44,29 @@ export function AppIconSwitcher({
   }
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.contentContainerStyle}
-      style={styles.container}
-    >
-      {icons.map((icon, index) => {
-        const selected = index === selectedIcon;
+    <Screen>
+      <Screen.ScrollView contentContainerStyle={styles.contentContainerStyle}>
+        {icons.map((icon, index) => {
+          const selected = index === selectedIcon;
 
-        return (
-          <Pressable
-            accessibilityRole="radio"
-            key={icon.hash}
-            onPress={() => selectIcon(index)}
-            style={styles.appIconContainer(selected)}
-          >
-            <AppIcon source={icon.uri} />
-            <RadioButton selected={selected} />
-          </Pressable>
-        );
-      })}
-    </ScrollView>
+          return (
+            <Pressable
+              accessibilityRole="radio"
+              key={icon.hash}
+              onPress={() => selectIcon(index)}
+              style={styles.appIconContainer(selected)}
+            >
+              <AppIcon source={icon.uri} />
+              <RadioButton selected={selected} />
+            </Pressable>
+          );
+        })}
+      </Screen.ScrollView>
+    </Screen>
   );
 }
 
 const stylesheet = createStyleSheet({
-  container: {
-    paddingTop: 16,
-  },
   contentContainerStyle: {
     flexDirection: "row",
     flexWrap: "wrap",

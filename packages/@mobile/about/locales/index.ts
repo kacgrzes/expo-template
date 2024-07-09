@@ -1,4 +1,4 @@
-import { resources } from "@/i18n";
+import { resources } from "@mobile/i18n";
 
 import en from "./en.json";
 import fr from "./fr.json";
