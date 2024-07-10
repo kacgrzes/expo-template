@@ -1,6 +1,6 @@
 import { BottomSheetBackdropProps } from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
-import React, { useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   Extrapolation,
@@ -13,6 +13,18 @@ export function BackdropComponent({
   animatedIndex,
   style,
 }: BottomSheetBackdropProps) {
+  const canGoBack = useRef(false);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      canGoBack.current = true;
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   const { back } = useRouter();
   const { theme } = useStyles();
 
@@ -38,7 +50,14 @@ export function BackdropComponent({
     [style, containerAnimatedStyle, theme.colors.background],
   );
 
-  const gesture = Gesture.Tap().runOnJS(true).onStart(back);
+  const goBack = useCallback(() => {
+    if (canGoBack.current) {
+      back();
+      canGoBack.current = false;
+    }
+  }, [back]);
+
+  const gesture = Gesture.Tap().runOnJS(true).onStart(goBack);
 
   return (
     <GestureDetector gesture={gesture}>
