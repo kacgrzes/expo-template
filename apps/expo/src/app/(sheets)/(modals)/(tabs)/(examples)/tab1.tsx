@@ -16,11 +16,12 @@ export default function Tab1() {
   return (
     <ScrollView>
       <Tooltip>
-        <Button
-          title="Add notification"
-          onPress={() => Notifier.create("hello!" + Math.random())}
-        />
+        <Button title="Toast example" />
       </Tooltip>
+      <Button
+        title={"Create notification"}
+        onPress={() => Notifier.create("hello!" + Math.random())}
+      />
       <Pressable
         accessibilityRole="link"
         onPress={() => {
