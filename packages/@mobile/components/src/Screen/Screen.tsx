@@ -10,6 +10,7 @@ import {
 import { FABProps } from "../FAB";
 import { ScreenProvider } from "./ScreenContext";
 import { ScreenFAB } from "./ScreenFAB";
+import { ScreenFlatList, ScreenFlatListProps } from "./ScreenFlatList";
 import { ScreenFooter } from "./ScreenFooter";
 import { ScreenScrollView, ScreenScrollViewProps } from "./ScreenScrollView";
 
@@ -73,11 +74,14 @@ const ScreenComponent = React.memo(
 
 type ScreenComposition = MemoExoticComponent<typeof ScreenComponent> & {
   ScrollView: FC<ScreenScrollViewProps>;
+  // TODO: improve types on this one
+  FlatList: FC<ScreenFlatListProps<any>>;
 };
 
 export const Screen = ScreenComponent as ScreenComposition;
 
 Screen.ScrollView = ScreenScrollView;
+Screen.FlatList = ScreenFlatList;
 
 const stylesheet = createStyleSheet(() => ({
   keyboardStickyView: {

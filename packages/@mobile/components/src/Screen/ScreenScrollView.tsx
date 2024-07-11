@@ -21,7 +21,7 @@ const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
 );
 
 export type ScreenScrollViewProps = KeyboardAwareScrollViewProps & {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export const ScreenScrollView: React.FC<ScreenScrollViewProps> = React.memo(

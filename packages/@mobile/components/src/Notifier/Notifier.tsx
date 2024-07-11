@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import Animated from "react-native-reanimated";
-import { FadeIn, FadeOut, LinearTransition } from "react-native-reanimated";
+import { FadeInUp, FadeOutUp, LinearTransition } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedRectButton } from "../AnimatedButtons";
@@ -50,8 +50,8 @@ export const Notifier: NotifierComposition = () => {
         return (
           // TODO: replace this with Notification / Alert component
           <AnimatedRectButton
-            entering={FadeIn.duration(300)}
-            exiting={FadeOut.duration(300)}
+            entering={FadeInUp.duration(300)}
+            exiting={FadeOutUp.duration(300)}
             key={message}
             layout={LinearTransition.duration(150)}
             onPress={() => dismiss(message)}
