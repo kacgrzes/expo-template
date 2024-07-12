@@ -54,7 +54,7 @@ const ScreenComponent = React.memo(
     return (
       <ScreenProvider footerHeight={footerHeight} edges={edges}>
         <Box flex="fluid">
-          <Box>{children}</Box>
+          <Box flex={"fluid"}>{children}</Box>
           <KeyboardStickyView
             offset={{
               opened: UnistylesRuntime.insets.bottom,
@@ -73,15 +73,14 @@ const ScreenComponent = React.memo(
 );
 
 type ScreenComposition = MemoExoticComponent<typeof ScreenComponent> & {
-  ScrollView: FC<ScreenScrollViewProps>;
-  // TODO: improve types on this one
   FlatList: FC<ScreenFlatListProps<any>>;
+  ScrollView: FC<ScreenScrollViewProps>;
 };
 
 export const Screen = ScreenComponent as ScreenComposition;
 
-Screen.ScrollView = ScreenScrollView;
 Screen.FlatList = ScreenFlatList;
+Screen.ScrollView = ScreenScrollView;
 
 const stylesheet = createStyleSheet(() => ({
   keyboardStickyView: {

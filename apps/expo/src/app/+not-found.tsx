@@ -1,18 +1,16 @@
 import { isDevelopment } from "@common/utils";
 import { Box } from "@grapp/stacks";
-import { ListItem, SafeAreaView, Text } from "@mobile/components";
+import { ListItem, Screen, Text } from "@mobile/components";
 import { useRouter } from "expo-router";
 import { Home, Map } from "lucide-react-native";
-import { ScrollView } from "react-native";
-import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 export default function NotFound() {
-  const { styles } = useStyles(stylesheet);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
+    <Screen edges={["top", "bottom"]}>
+      <Screen.ScrollView contentContainerStyle={{ paddingHorizontal: 0 }}>
         <Box padding={6} alignX={"center"} alignY={"center"}>
           <Text variant="title">Not found!</Text>
         </Box>
@@ -28,15 +26,7 @@ export default function NotFound() {
             onPress={() => router.navigate("_sitemap")}
           />
         ) : null}
-      </ScrollView>
-    </SafeAreaView>
+      </Screen.ScrollView>
+    </Screen>
   );
 }
-
-const stylesheet = createStyleSheet({
-  container: {
-    alignItems: "center",
-    flex: 1,
-    justifyContent: "center",
-  },
-});
