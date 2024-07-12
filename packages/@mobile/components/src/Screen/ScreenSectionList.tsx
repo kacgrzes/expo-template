@@ -1,6 +1,5 @@
-import React from "react";
-import { SectionList, SectionListProps } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
+import React, { useCallback } from "react";
+import { SectionList, SectionListProps } from "../SectionList";
 import { ScreenScrollView } from "./ScreenScrollView";
 
 export type ScreenSectionListProps<ItemT> = SectionListProps<ItemT>;
@@ -8,10 +7,11 @@ export type ScreenSectionListProps<ItemT> = SectionListProps<ItemT>;
 export const ScreenSectionList = <ItemT = any>(
   props: ScreenSectionListProps<ItemT>,
 ) => {
+  const renderScrollComponent = useCallback((scrollProps: any) => {
+    return <ScreenScrollView {...scrollProps} />;
+  }, []);
+
   return (
-    <SectionList
-      {...props}
-      renderScrollComponent={(props) => <ScreenScrollView {...props} />}
-    />
+    <SectionList renderScrollComponent={renderScrollComponent} {...props} />
   );
 };

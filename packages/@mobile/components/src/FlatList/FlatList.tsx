@@ -1,15 +1,14 @@
-import { Box } from "@grapp/stacks";
-import { ComponentProps, memo } from "react";
-import { FlatList as RNFlatList } from "react-native-gesture-handler";
+import { ComponentProps } from "react";
+import { FlatList as RNFlatList } from "react-native";
+import { useItemSeparatorComponent } from "../ItemSeparatorComponent";
+import {
+  defaultKeyExtractor,
+  defaultRenderScrollComponent,
+} from "../defaultListProps";
 
-export type FlatListProps<ItemT> = ComponentProps<typeof RNFlatList<ItemT>>;
-
-const DefaultItemSeparatorComponent = memo(() => {
-  return <Box width={4} height={4} />;
-});
-
-const defaultKeyExtractor = (item: any, index: number) =>
-  item.id || index.toString();
+export type FlatListProps<ItemT> = ComponentProps<typeof RNFlatList<ItemT>> & {
+  gap?: number;
+};
 
 /**
  * # FlatList
@@ -25,17 +24,23 @@ const defaultKeyExtractor = (item: any, index: number) =>
  * ```
  */
 export function FlatList<ItemT = any>({
-  ItemSeparatorComponent = DefaultItemSeparatorComponent,
+  ItemSeparatorComponent: ItemSeparatorComponentFromProp,
   contentContainerStyle,
   data,
+  gap = 2,
   horizontal,
   keyExtractor = defaultKeyExtractor,
   renderItem,
-  renderScrollComponent,
+  renderScrollComponent = defaultRenderScrollComponent,
   showsHorizontalScrollIndicator = true,
   showsVerticalScrollIndicator = true,
   ...rest
 }: FlatListProps<ItemT>) {
+  const ItemSeparatorComponent = useItemSeparatorComponent({
+    gap,
+    ItemSeparatorComponentFromProp,
+  });
+
   return (
     <RNFlatList<ItemT>
       ItemSeparatorComponent={ItemSeparatorComponent}
