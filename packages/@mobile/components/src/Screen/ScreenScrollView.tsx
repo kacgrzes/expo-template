@@ -58,11 +58,14 @@ export const ScreenScrollView: React.FC<ScreenScrollViewProps> = React.memo(
     );
 
     const memoizedContentContainerStyle = useMemo(
-      () => ({
-        padding: 16,
-        paddingTop: hasTopEdge ? top + 16 : 16,
-      }),
-      [hasTopEdge, top],
+      () => [
+        {
+          padding: 16,
+          paddingTop: hasTopEdge ? top + 16 : 16,
+        },
+        contentContainerStyle,
+      ],
+      [hasTopEdge, top, contentContainerStyle],
     );
 
     return (
@@ -80,10 +83,7 @@ export const ScreenScrollView: React.FC<ScreenScrollViewProps> = React.memo(
           scrollEventThrottle={16}
           {...rest}
           animatedProps={animatedProps}
-          contentContainerStyle={[
-            memoizedContentContainerStyle,
-            contentContainerStyle,
-          ]}
+          contentContainerStyle={memoizedContentContainerStyle}
         >
           {children}
           <Reanimated.View style={animatedSpacerStyle} />

@@ -10,7 +10,7 @@ export default function SignUp() {
         </Box>
       }
     >
-      <Screen.ScrollView contentContainerStyle={{ padding: 16 }}>
+      <Screen.ScrollView>
         <Box gap={4}>
           <Text>What's your email?</Text>
           <TextInput

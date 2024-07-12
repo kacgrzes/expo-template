@@ -111,6 +111,7 @@
     "@mobile/hooks": "workspace:*",
     "@mobile/i18n": "workspace:*",
     "@mobile/msw": "workspace:*",
+    "@mobile/not-found": "workspace:*",
     "@mobile/root": "workspace:*",
     "@mobile/settings": "workspace:*",
     "@mobile/unistyles": "workspace:*",
