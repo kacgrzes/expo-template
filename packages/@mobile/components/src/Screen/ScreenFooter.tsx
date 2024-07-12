@@ -1,10 +1,6 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import React, { ReactElement } from "react";
-import {
-  UnistylesRuntime,
-  createStyleSheet,
-  useStyles,
-} from "react-native-unistyles";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { GradientOverlay } from "./GradientOverlay";
 
 type ScreenFooterProps = {

@@ -1,10 +1,12 @@
-import {
-  FlatList as RNFlatList,
-  FlatListProps as RNFlatListProps,
-} from "react-native";
-import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { Box } from "@grapp/stacks";
+import { ComponentProps, memo } from "react";
+import { FlatList as RNFlatList } from "react-native-gesture-handler";
 
-type FlatListProps<ItemT = any> = RNFlatListProps<ItemT>;
+export type FlatListProps<ItemT> = ComponentProps<typeof RNFlatList<ItemT>>;
+
+const DefaultItemSeparatorComponent = memo(() => {
+  return <Box width={4} height={4} />;
+});
 
 const defaultKeyExtractor = (item: any, index: number) =>
   item.id || index.toString();
@@ -23,27 +25,29 @@ const defaultKeyExtractor = (item: any, index: number) =>
  * ```
  */
 export function FlatList<ItemT = any>({
+  ItemSeparatorComponent = DefaultItemSeparatorComponent,
+  contentContainerStyle,
   data,
+  horizontal,
   keyExtractor = defaultKeyExtractor,
   renderItem,
+  renderScrollComponent,
+  showsHorizontalScrollIndicator = true,
+  showsVerticalScrollIndicator = true,
+  ...rest
 }: FlatListProps<ItemT>) {
-  const { styles: _styles } = useStyles(stylesheet);
-
   return (
     <RNFlatList<ItemT>
+      ItemSeparatorComponent={ItemSeparatorComponent}
+      contentContainerStyle={contentContainerStyle}
       data={data}
-      keyExtractor={defaultKeyExtractor || keyExtractor}
+      horizontal={horizontal}
+      keyExtractor={keyExtractor}
       renderItem={renderItem}
+      renderScrollComponent={renderScrollComponent}
+      showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
+      showsVerticalScrollIndicator={showsVerticalScrollIndicator}
+      {...rest}
     />
   );
 }
-
-const stylesheet = createStyleSheet((_theme) => {
-  return {
-    container: {
-      alignSelf: "center",
-      flexDirection: "row",
-      marginTop: 24,
-    },
-  };
-});

@@ -22,7 +22,7 @@ const GradientOverlayComponent: React.FC<GradientOverlayProps> = ({
   const style: ViewStyle =
     position === "top" ? styles.top(height) : styles.bottom(height);
 
-  return <LinearGradient colors={colors} style={style} />;
+  return <LinearGradient pointerEvents="none" colors={colors} style={style} />;
 };
 
 export const GradientOverlay = React.memo(GradientOverlayComponent);
