@@ -13,6 +13,7 @@ import { ScreenFAB } from "./ScreenFAB";
 import { ScreenFlatList, ScreenFlatListProps } from "./ScreenFlatList";
 import { ScreenFooter } from "./ScreenFooter";
 import { ScreenScrollView, ScreenScrollViewProps } from "./ScreenScrollView";
+import { ScreenSectionList, ScreenSectionListProps } from "./ScreenSectionList";
 
 type ScreenProps = {
   children?: React.ReactNode;
@@ -75,12 +76,14 @@ const ScreenComponent = React.memo(
 type ScreenComposition = MemoExoticComponent<typeof ScreenComponent> & {
   FlatList: FC<ScreenFlatListProps<any>>;
   ScrollView: FC<ScreenScrollViewProps>;
+  SectionList: FC<ScreenSectionListProps<any>>;
 };
 
 export const Screen = ScreenComponent as ScreenComposition;
 
 Screen.FlatList = ScreenFlatList;
 Screen.ScrollView = ScreenScrollView;
+Screen.SectionList = ScreenSectionList;
 
 const stylesheet = createStyleSheet(() => ({
   keyboardStickyView: {

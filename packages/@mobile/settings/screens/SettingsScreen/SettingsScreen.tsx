@@ -22,7 +22,7 @@ export function SettingsScreen() {
 
   return (
     <Screen>
-      <Screen.ScrollView contentContainerStyle={{ padding: 0 }}>
+      <Screen.ScrollView contentContainerStyle={{ padding: 0, paddingTop: 0 }}>
         <Box paddingX={4} marginBottom={4} marginTop={6}>
           <Text variant="label" textTransform="uppercase">
             Appearance
