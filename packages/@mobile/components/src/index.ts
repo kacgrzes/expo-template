@@ -28,6 +28,7 @@ export * from "./SafeAreaView";
 export * from "./Screen";
 export * from "./ScrollView";
 export * from "./SearchBar";
+export * from "./Section";
 export * from "./SectionList";
 export * from "./SegmentedControl";
 export * from "./Separator";
