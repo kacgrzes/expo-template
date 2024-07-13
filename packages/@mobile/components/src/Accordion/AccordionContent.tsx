@@ -8,7 +8,6 @@ import Animated, {
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { useAccordionItemContext } from "./AccordionItem";
-import { useAccordionRootContext } from "./AccordionRoot";
 
 export type AccordionContentProps = {
   children?: React.ReactNode;

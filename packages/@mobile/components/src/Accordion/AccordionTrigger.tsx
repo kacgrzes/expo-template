@@ -1,13 +1,15 @@
+import { Box, BoxProps } from "@grapp/stacks";
 import React from "react";
 import { AnimatedBaseButton } from "../AnimatedButtons";
 import { useAccordionItemContext } from "./AccordionItem";
 import { useAccordionRootContext } from "./AccordionRoot";
 
-export type AccordionTriggerProps = {
-  children?: React.ReactNode;
-};
+export type AccordionTriggerProps = BoxProps;
 
-export const AccordionTrigger = ({ children }: AccordionTriggerProps) => {
+export const AccordionTrigger = ({
+  children,
+  ...rest
+}: AccordionTriggerProps) => {
   const { value, disabled: disabledSingle } = useAccordionItemContext();
   const { disabled: disabledAll, trigger } = useAccordionRootContext();
 
@@ -20,7 +22,7 @@ export const AccordionTrigger = ({ children }: AccordionTriggerProps) => {
         trigger(value);
       }}
     >
-      {children}
+      <Box {...rest}>{children}</Box>
     </AnimatedBaseButton>
   );
 };
