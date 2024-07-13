@@ -21,6 +21,7 @@ export * from "./JSONViewer";
 export * from "./ListItem";
 export * from "./Notifier";
 export * from "./Overlay";
+export * from "./PagerView";
 export * from "./PasswordInput";
 export * from "./Picker";
 export * from "./RadioButton";
