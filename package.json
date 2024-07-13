@@ -36,5 +36,8 @@
   "patchedDependencies": {
     "@th3rdwave/react-navigation-bottom-sheet@0.3.2": "patches/@th3rdwave%2Freact-navigation-bottom-sheet@0.3.2.patch"
   },
-  "packageManager": "^bun@1.0.18"
+  "packageManager": "^bun@1.0.18",
+  "dependencies": {
+    "constate": "^3.3.2"
+  }
 }

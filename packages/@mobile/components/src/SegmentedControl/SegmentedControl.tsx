@@ -1,13 +1,5 @@
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import constate from "constate";
+import { useCallback, useMemo, useState } from "react";
 import { LayoutChangeEvent, LayoutRectangle, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -61,17 +53,7 @@ function Segment({
   );
 }
 
-const SegmentedControlContext = createContext<{
-  measurements: LayoutRectangle[];
-  setMeasurements: Dispatch<SetStateAction<LayoutRectangle[]>>;
-}>({
-  measurements: [],
-  setMeasurements: () => undefined,
-});
-
-const useSegmentedControlContext = () => useContext(SegmentedControlContext);
-
-const SegmentedControlProvider = ({ children }: { children: ReactNode }) => {
+const useSegmentedControl = () => {
   const [measurements, setMeasurements] = useState<LayoutRectangle[]>([]);
 
   const value = useMemo(
@@ -79,12 +61,11 @@ const SegmentedControlProvider = ({ children }: { children: ReactNode }) => {
     [measurements],
   );
 
-  return (
-    <SegmentedControlContext.Provider value={value}>
-      {children}
-    </SegmentedControlContext.Provider>
-  );
+  return value;
 };
+
+const [SegmentedControlProvider, useSegmentedControlContext] =
+  constate(useSegmentedControl);
 
 const ActiveSegment = ({
   selectedIndex,

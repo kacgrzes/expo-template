@@ -1,4 +1,5 @@
-import React, { createContext, useContext } from "react";
+import constate from "constate";
+import React from "react";
 import Animated from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -11,42 +12,33 @@ export type AccordionItemProps = {
   value: string;
 };
 
-const AccordionItemContext = createContext<
-  Pick<AccordionItemProps, "disabled" | "value"> & {
-    selected: boolean;
-  }
->({
-  value: "",
-  disabled: false,
-  selected: false,
-});
-
-export const useAccordionItemContext = () => {
-  const context = useContext(AccordionItemContext);
-  if (AccordionItemContext === undefined) {
-    throw new Error(
-      "useAccordionItemContext must be used within a AccordionItemContext",
-    );
-  }
-  return context;
+const useAccordionItem = ({ disabled, value }) => {
+  const { value: rootValue } = useAccordionRootContext();
+  const selected = rootValue === value;
+  return {
+    disabled,
+    selected,
+    value,
+  };
 };
+
+export const [AccordionItemProvider, useAccordionItemContext] =
+  constate(useAccordionItem);
 
 export const AccordionItem = ({
   children,
   disabled,
   value,
 }: AccordionItemProps) => {
-  const { value: rootValue } = useAccordionRootContext();
   const { styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });
-  const selected = rootValue === value;
 
   return (
-    <AccordionItemContext.Provider value={{ disabled, selected, value }}>
+    <AccordionItemProvider disabled={disabled} value={value}>
       <Animated.View style={[styles.item, disabledStyle]}>
         {children}
       </Animated.View>
-    </AccordionItemContext.Provider>
+    </AccordionItemProvider>
   );
 };
 
