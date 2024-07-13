@@ -1,7 +1,13 @@
 import { Box } from "@grapp/stacks";
-import { Button, Screen, Text, TextInput } from "@mobile/components";
+import {
+  Button,
+  Screen,
+  Text,
+  TextInput,
+  withModalStatusBar,
+} from "@mobile/components";
 
-export default function SignUp() {
+function SignUp() {
   return (
     <Screen
       footer={
@@ -62,3 +68,5 @@ export default function SignUp() {
     </Screen>
   );
 }
+
+export default withModalStatusBar(SignUp);
