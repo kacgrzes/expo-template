@@ -1,6 +1,5 @@
 import React, { forwardRef, memo, useMemo } from "react";
 import { Fragment, useRef } from "react";
-import type { ScrollView } from "react-native";
 import {
   KeyboardAwareScrollView,
   KeyboardAwareScrollViewProps,
@@ -13,6 +12,7 @@ import Reanimated, {
   useDerivedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useScrollRef } from "../ScrollView";
 import { GradientOverlay } from "./GradientOverlay";
 import { useScreenContext } from "./ScreenContext";
 
@@ -98,6 +98,4 @@ ScreenScrollViewComponent.displayName = "ScreenScrollView";
 
 export const ScreenScrollView = memo(ScreenScrollViewComponent);
 
-export const useScreenScrollView = () => {
-  return useRef<ScrollView>(null);
-};
+export const useScreenScrollView = useScrollRef;
