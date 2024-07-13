@@ -1,6 +1,6 @@
-import { Box } from "@grapp/stacks";
-import React, { useMemo } from "react";
-import { Fragment } from "react";
+import React, { forwardRef, memo, useMemo } from "react";
+import { Fragment, useRef } from "react";
+import type { ScrollView } from "react-native";
 import {
   KeyboardAwareScrollView,
   KeyboardAwareScrollViewProps,
@@ -24,8 +24,8 @@ export type ScreenScrollViewProps = KeyboardAwareScrollViewProps & {
   children?: React.ReactNode;
 };
 
-export const ScreenScrollView: React.FC<ScreenScrollViewProps> = React.memo(
-  ({ children, contentContainerStyle, ...rest }) => {
+const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
+  ({ children, contentContainerStyle, ...rest }, ref) => {
     const { footerHeight = 0, hasBottomEdge, hasTopEdge } = useScreenContext();
     const { height, progress } = useReanimatedKeyboardAnimation();
     const { bottom, top } = useSafeAreaInsets();
@@ -74,6 +74,7 @@ export const ScreenScrollView: React.FC<ScreenScrollViewProps> = React.memo(
           <GradientOverlay position="top" height={top + 24} />
         ) : null}
         <AnimatedKeyboardAwareScrollView
+          ref={ref}
           automaticallyAdjustContentInsets={false}
           automaticallyAdjustKeyboardInsets={false}
           automaticallyAdjustsScrollIndicatorInsets={false}
@@ -93,4 +94,10 @@ export const ScreenScrollView: React.FC<ScreenScrollViewProps> = React.memo(
   },
 );
 
-ScreenScrollView.displayName = "ScreenScrollView";
+ScreenScrollViewComponent.displayName = "ScreenScrollView";
+
+export const ScreenScrollView = memo(ScreenScrollViewComponent);
+
+export const useScreenScrollView = () => {
+  return useRef<ScrollView>(null);
+};

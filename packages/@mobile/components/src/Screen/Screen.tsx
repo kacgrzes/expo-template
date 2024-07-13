@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
-import React, { ReactElement, useMemo, FC, MemoExoticComponent } from "react";
+import React, { ReactElement, useMemo, MemoExoticComponent } from "react";
 import { KeyboardStickyView } from "react-native-keyboard-controller";
 import {
   UnistylesRuntime,
@@ -10,10 +10,10 @@ import {
 import { FABProps } from "../FAB";
 import { ScreenProvider } from "./ScreenContext";
 import { ScreenFAB } from "./ScreenFAB";
-import { ScreenFlatList, ScreenFlatListProps } from "./ScreenFlatList";
+import { ScreenFlatList } from "./ScreenFlatList";
 import { ScreenFooter } from "./ScreenFooter";
-import { ScreenScrollView, ScreenScrollViewProps } from "./ScreenScrollView";
-import { ScreenSectionList, ScreenSectionListProps } from "./ScreenSectionList";
+import { ScreenScrollView } from "./ScreenScrollView";
+import { ScreenSectionList } from "./ScreenSectionList";
 
 type ScreenProps = {
   children?: React.ReactNode;
@@ -74,9 +74,9 @@ const ScreenComponent = React.memo(
 );
 
 type ScreenComposition = MemoExoticComponent<typeof ScreenComponent> & {
-  FlatList: FC<ScreenFlatListProps<any>>;
-  ScrollView: FC<ScreenScrollViewProps>;
-  SectionList: FC<ScreenSectionListProps<any>>;
+  FlatList: typeof ScreenFlatList;
+  ScrollView: typeof ScreenScrollView;
+  SectionList: typeof ScreenSectionList;
 };
 
 export const Screen = ScreenComponent as ScreenComposition;
