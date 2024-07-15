@@ -1,10 +1,45 @@
-import { View } from "react-native";
+import { ViewProps } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  interpolate,
+  interpolateColor,
+  SharedValue,
+} from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-export function Dot() {
+type DotProps = Pick<ViewProps, "style"> & {
+  index?: number;
+  animatedIndex?: SharedValue<number>;
+};
+
+export function Dot({ index, animatedIndex, style }: DotProps) {
   const { styles } = useStyles(stylesheet);
 
-  return <View style={styles.dot} />;
+  const animatedStyle = useAnimatedStyle(() => {
+    if (typeof animatedIndex === "undefined" || typeof index === "undefined") {
+      return {};
+    }
+
+    return {
+      backgroundColor: interpolateColor(
+        animatedIndex.value,
+        [index - 1, index, index + 1],
+        ["lightgray", "black", "lightgray"],
+      ),
+      transform: [
+        {
+          scale: interpolate(
+            animatedIndex.value,
+            [index - 3, index, index + 3],
+            [0.4, 1, 0.4],
+            "clamp",
+          ),
+        },
+      ],
+    };
+  }, []);
+
+  return <Animated.View style={[styles.dot, animatedStyle, style]} />;
 }
 
 const stylesheet = createStyleSheet(() => {
@@ -13,7 +48,7 @@ const stylesheet = createStyleSheet(() => {
       width: 10,
       height: 10,
       borderRadius: 5,
-      backgroundColor: "rgb(255, 59, 48)",
+      backgroundColor: "lightgray",
     },
   };
 });
