@@ -1,8 +1,13 @@
 import React from "react";
-import { PageControl } from "../PageControl";
+import { PageControl, PageControlProps } from "../PageControl";
 import { usePagerContext } from "./PagerRoot";
 
-export const PagerControl = () => {
+type PagerControlProps = Omit<
+  PageControlProps,
+  "hidesForSinglePage" | "currentPage" | "numberOfPages"
+>;
+
+export const PagerControl = (props: PagerControlProps) => {
   const { currentPage, numberOfPages } = usePagerContext();
 
   if (!numberOfPages) {
@@ -10,6 +15,11 @@ export const PagerControl = () => {
   }
 
   return (
-    <PageControl currentPage={currentPage} numberOfPages={numberOfPages} />
+    <PageControl
+      hidesForSinglePage
+      currentPage={currentPage}
+      numberOfPages={numberOfPages}
+      {...props}
+    />
   );
 };
