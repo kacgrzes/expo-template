@@ -6,6 +6,7 @@ import { Text } from "../Text";
 // eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { Size } from "../types";
+import { ChipGroup } from "./ChipGroup";
 
 type ChipProps = {
   disabled?: boolean;
@@ -13,7 +14,7 @@ type ChipProps = {
   // TODO: maybe this onPress should be a little bit different
   onPress?: () => void;
   right?: ReactNode;
-  size: Size;
+  size?: Size;
 };
 
 /**
@@ -21,7 +22,7 @@ Use when
 - you can select multiple options
 - the options are short and consistant (1 or 2 words)
 */
-export function Chip({ disabled }: ChipProps) {
+export function Chip({ disabled, size = "m" }: ChipProps) {
   const { styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });
 
@@ -31,6 +32,8 @@ export function Chip({ disabled }: ChipProps) {
     </Animated.View>
   );
 }
+
+Chip.Group = ChipGroup;
 
 const stylesheet = createStyleSheet((theme) => {
   return {
@@ -42,7 +45,6 @@ const stylesheet = createStyleSheet((theme) => {
       gap: 4,
       height: 40,
       justifyContent: "center",
-      marginTop: 24,
       paddingHorizontal: 12,
     },
     text: {
