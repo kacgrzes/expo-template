@@ -47,15 +47,16 @@ export const lightTheme = {
       `${foundation.colors.white}FF`,
     ] as string[],
   },
+  // https://reactnavigation.org/docs/themes/#basic-usage
   navigation: {
     dark: false,
     colors: {
-      primary: "rgb(0, 122, 255)",
+      primary: foundation.colors.blue,
       background: foundation.colors.white,
-      card: "rgb(255, 255, 255)",
-      text: "rgb(28, 28, 30)",
-      border: "rgb(216, 216, 216)",
-      notification: "rgb(255, 59, 48)",
+      card: foundation.colors.white,
+      text: foundation.colors.black,
+      border: "transparent",
+      notification: undefined,
     },
   },
 } as const;
@@ -77,17 +78,18 @@ export const darkTheme = {
       `${foundation.colors.black}FF`,
     ] as string[],
   },
+  // https://reactnavigation.org/docs/themes/#basic-usage
   navigation: {
     dark: true,
     colors: {
-      primary: "rgb(10, 132, 255)",
+      primary: foundation.colors.blue,
       background: foundation.colors.black,
-      card: "rgb(18, 18, 18)",
-      text: "rgb(229, 229, 231)",
-      border: "rgb(39, 39, 41)",
-      notification: "rgb(255, 69, 58)",
+      card: foundation.colors.black,
+      text: foundation.colors.white,
+      border: "transparent",
+      notification: undefined,
     },
-  } as NavigationTheme,
+  },
 } as const;
 
 // define other themes
