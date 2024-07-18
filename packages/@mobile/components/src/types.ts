@@ -1,6 +1,12 @@
 import { ReactNode } from "react";
 
-export type Status = "success" | "error" | "warning" | "info" | "muted";
+export type Status =
+  | "primary"
+  | "success"
+  | "error"
+  | "warning"
+  | "info"
+  | "muted";
 export type Size = "s" | "m" | "l";
 
 export type CommonFormProps = {

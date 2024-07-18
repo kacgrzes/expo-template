@@ -1,3 +1,5 @@
+// TODO: move to some util function
+import * as Crypto from "expo-crypto";
 import {
   FC,
   createRef,
@@ -6,15 +8,14 @@ import {
   useState,
 } from "react";
 import Animated from "react-native-reanimated";
-import { FadeInUp, FadeOutUp, LinearTransition } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { Notification, NotificationProps } from "./Notification";
 
-import { AnimatedRectButton } from "../AnimatedButtons";
-import { Text } from "../Text";
+type NotificationPropsWithId = NotificationProps & { id: string };
 
 type NotifierRef = {
-  create: (message: string) => void;
-  dismiss: (message: string) => void;
+  create: (notification: NotificationProps) => void;
+  dismiss: (notificationId: string) => void;
 };
 
 const notifierRef = createRef<NotifierRef>();
@@ -23,14 +24,24 @@ type NotifierComposition = FC & NotifierRef;
 
 export const Notifier: NotifierComposition = () => {
   const { styles } = useStyles(stylesheet);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [notifications, setNotifications] = useState<NotificationPropsWithId[]>(
+    [],
+  );
 
-  const create = useCallback((message: string) => {
-    setMessages((p) => [...p, message]);
+  const create = useCallback((notification: NotificationProps) => {
+    setNotifications((p) => [
+      ...p,
+      {
+        ...notification,
+        id: Crypto.randomUUID(),
+      },
+    ]);
   }, []);
 
-  const dismiss = useCallback((message: string) => {
-    setMessages((p) => p.filter((m) => m !== message));
+  const dismiss = useCallback((notificationId: string) => {
+    setNotifications((p) =>
+      p.filter((notification) => notification.id !== notificationId),
+    );
   }, []);
 
   useImperativeHandle(
@@ -46,19 +57,13 @@ export const Notifier: NotifierComposition = () => {
 
   return (
     <Animated.View pointerEvents="box-none" style={styles.notifier}>
-      {messages.map((message) => {
+      {notifications.map((notification) => {
         return (
-          // TODO: replace this with Notification / Alert component
-          <AnimatedRectButton
-            entering={FadeInUp.duration(300)}
-            exiting={FadeOutUp.duration(300)}
-            key={message}
-            layout={LinearTransition.duration(150)}
-            onPress={() => dismiss(message)}
-            style={styles.notification}
-          >
-            <Text>{message}</Text>
-          </AnimatedRectButton>
+          <Notification
+            {...notification}
+            key={notification.id}
+            onPress={() => dismiss(notification.id)}
+          />
         );
       })}
     </Animated.View>
@@ -68,13 +73,6 @@ export const Notifier: NotifierComposition = () => {
 const stylesheet = createStyleSheet((_theme, runtime) => {
   return {
     notifier: { paddingTop: runtime.insets.top + 8, gap: 4 },
-    notification: {
-      backgroundColor: "red",
-      borderRadius: 16,
-      paddingHorizontal: 24,
-      paddingVertical: 16,
-      marginHorizontal: 8,
-    },
   };
 });
 

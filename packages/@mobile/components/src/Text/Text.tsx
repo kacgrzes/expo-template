@@ -5,12 +5,14 @@ import {
   TextStyle,
 } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { Status } from "../types";
 
 type TextAlign = TextStyle["textAlign"];
 type TextProps = TextComponentProps & {
   textAlign?: TextAlign;
   textTransform?: TextStyle["textTransform"];
   variant?: "body" | "code" | "title" | "label";
+  status?: Status;
 };
 
 // TODO: create animated version of Text
@@ -19,9 +21,10 @@ export function Text({
   textAlign,
   textTransform,
   variant = "body",
+  status = "primary",
   ...rest
 }: TextProps) {
-  const { styles } = useStyles(stylesheet, { variant });
+  const { styles } = useStyles(stylesheet, { variant, status });
 
   return (
     <TextComponent
@@ -44,6 +47,23 @@ const stylesheet = createStyleSheet((theme) => {
     text: {
       color: theme.colors.typography,
       variants: {
+        status: {
+          primary: {
+            color: theme.colors.typography,
+          },
+          info: {
+            color: theme.colors.info,
+          },
+          success: {
+            color: theme.colors.success,
+          },
+          warning: {
+            color: theme.colors.warning,
+          },
+          error: {
+            color: theme.colors.error,
+          },
+        },
         variant: {
           body: {
             fontSize: 16,

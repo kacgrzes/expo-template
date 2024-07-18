@@ -1,7 +1,3 @@
-/* eslint-disable import/no-unresolved */
-import { Theme as NavigationTheme } from "@react-navigation/native";
-
-// eslint-disable-next-line import/no-unresolved
 import { mmkv } from "@mobile/utils";
 import { fontFamily } from "./fontFamily";
 import { fonts } from "./fonts";
@@ -47,7 +43,9 @@ export const lightTheme = {
       `${foundation.colors.white}FF`,
     ] as string[],
   },
-  // https://reactnavigation.org/docs/themes/#basic-usage
+  /**
+   * @see https://reactnavigation.org/docs/themes/#basic-usage
+   */
   navigation: {
     dark: false,
     colors: {
@@ -78,7 +76,9 @@ export const darkTheme = {
       `${foundation.colors.black}FF`,
     ] as string[],
   },
-  // https://reactnavigation.org/docs/themes/#basic-usage
+  /**
+   * @see https://reactnavigation.org/docs/themes/#basic-usage
+   */
   navigation: {
     dark: true,
     colors: {

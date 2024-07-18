@@ -11,8 +11,7 @@ type ColorShade =
   | 900
   | 950;
 
-// TODO: this could be original Status someday
-export type Status = string;
+export type Status = "success" | "error" | "warning" | "info" | "muted";
 
 export const statusColorPalette: Record<Status, Record<ColorShade, string>> = {
   success: {
