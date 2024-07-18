@@ -4,6 +4,7 @@ export * from "./AppIcon";
 export * from "./Avatar";
 export * from "./BackdropComponent";
 export * from "./Badge";
+export * from "./Center";
 export * from "./BottomSheet";
 export * from "./Button";
 export * from "./Card";
