@@ -51,7 +51,7 @@ class TextInputFocusManager {
   }
 }
 
-type TextInputRef = {
+export type TextInputRef = {
   blur: () => undefined;
   clear: () => undefined;
   focus: () => undefined;

@@ -81,6 +81,7 @@ const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
           bottomOffset={footerHeight + 16}
           extraKeyboardSpace={0}
           keyboardDismissMode="interactive"
+          keyboardShouldPersistTaps="handled"
           scrollEventThrottle={16}
           {...rest}
           animatedProps={animatedProps}

@@ -1,9 +1,10 @@
 import { useToggle } from "@common/hooks";
 import { Eye, EyeOff } from "lucide-react-native";
+import { forwardRef } from "react";
 import { Pressable } from "react-native";
-import { TextInput, TextInputProps } from "../TextInput";
+import { TextInput, TextInputProps, TextInputRef } from "../TextInput";
 
-type PasswordInputProps = TextInputProps;
+export type PasswordInputProps = TextInputProps;
 
 /**
  * # PasswordInput
@@ -18,28 +19,31 @@ type PasswordInputProps = TextInputProps;
  * <PasswordInput />
  * ```
  */
-export function PasswordInput(props: PasswordInputProps) {
-  const [secureTextEntry, toggleSecureTextEntry] = useToggle(true);
+export const PasswordInput = forwardRef<TextInputRef, PasswordInputProps>(
+  (props, ref) => {
+    const [secureTextEntry, toggleSecureTextEntry] = useToggle(true);
 
-  return (
-    <TextInput
-      right={
-        <Pressable
-          accessibilityRole="button"
-          // TODO: move these styles outside
-          style={{
-            height: 39,
-            aspectRatio: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          onPress={toggleSecureTextEntry}
-        >
-          {secureTextEntry ? <Eye size={24} /> : <EyeOff size={24} />}
-        </Pressable>
-      }
-      {...props}
-      secureTextEntry={secureTextEntry}
-    />
-  );
-}
+    return (
+      <TextInput
+        ref={ref}
+        right={
+          <Pressable
+            accessibilityRole="button"
+            // TODO: move these styles outside
+            style={{
+              height: 39,
+              aspectRatio: 1,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onPress={toggleSecureTextEntry}
+          >
+            {secureTextEntry ? <Eye size={24} /> : <EyeOff size={24} />}
+          </Pressable>
+        }
+        {...props}
+        secureTextEntry={secureTextEntry}
+      />
+    );
+  },
+);
