@@ -24,6 +24,8 @@ export type ScreenScrollViewProps = KeyboardAwareScrollViewProps & {
   children?: React.ReactNode;
 };
 
+const scrollEventThrottle = 1000 / 60;
+
 const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
   ({ children, contentContainerStyle, ...rest }, ref) => {
     const { footerHeight = 0, hasBottomEdge, hasTopEdge } = useScreenContext();
@@ -74,7 +76,6 @@ const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
           <GradientOverlay position="top" height={top + 24} />
         ) : null}
         <AnimatedKeyboardAwareScrollView
-          ref={ref}
           automaticallyAdjustContentInsets={false}
           automaticallyAdjustKeyboardInsets={false}
           automaticallyAdjustsScrollIndicatorInsets={false}
@@ -82,7 +83,8 @@ const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
           extraKeyboardSpace={0}
           keyboardDismissMode="interactive"
           keyboardShouldPersistTaps="handled"
-          scrollEventThrottle={16}
+          ref={ref}
+          scrollEventThrottle={scrollEventThrottle}
           {...rest}
           animatedProps={animatedProps}
           contentContainerStyle={memoizedContentContainerStyle}

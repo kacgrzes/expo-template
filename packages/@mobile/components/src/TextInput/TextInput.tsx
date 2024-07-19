@@ -197,15 +197,17 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
             Hello
           </Animated.Text>
           <AnimatedTextInput
+            allowFontScaling={true}
             ref={innerRef}
+            editable={!disabled}
+            readOnly={disabled}
+            inputMode="text"
+            dataDetectorTypes="none"
+            keyboardType="default"
             {...props}
             autoCapitalize={"none"}
-            editable={!disabled}
             autoComplete="off"
             cursorColor={theme.colors.accent}
-            dataDetectorTypes="none"
-            inputMode="text"
-            keyboardType="default"
             onBlur={handleBlur}
             onFocus={handleFocus}
             placeholderTextColor={theme.colors.typography}
