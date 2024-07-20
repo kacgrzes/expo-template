@@ -12,7 +12,7 @@ export const isStackDebugEnabled = () => {
   return JSON.parse(json)["stack-debug-enabled"] ?? false;
 };
 
-const common = {
+export const common = {
   animation: {
     duration: 300,
   },
@@ -27,7 +27,6 @@ const common = {
 } as const;
 
 export const lightTheme = {
-  ...common,
   name: "light",
   colors: {
     ...common.colors,
@@ -60,7 +59,6 @@ export const lightTheme = {
 } as const;
 
 export const darkTheme = {
-  ...common,
   name: "dark",
   colors: {
     ...common.colors,
