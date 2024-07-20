@@ -5,6 +5,10 @@
     "color": "^4.2.3"
   },
   "devDependencies": {
-    "@types/color": "^3.0.6"
+    "@types/color": "^3.0.6",
+    "plop": "^4.0.1"
+  },
+  "scripts": {
+    "generate": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=plopfile.ts"
   }
 }

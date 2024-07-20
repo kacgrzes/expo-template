@@ -16,32 +16,32 @@ export default function (plop: NodePlopAPI) {
     actions: [
       {
         type: "add",
-        path: "src/components/{{name}}/index.ts",
+        path: "src/{{name}}/index.ts",
         template: 'export * from "./{{pascalCase name}}";\n',
         skipIfExists: true,
       },
       {
         type: "add",
-        path: "src/components/{{name}}/{{name}}.tsx",
+        path: "src/{{name}}/{{name}}.tsx",
         templateFile: "templates/Component.tsx.hbs",
         skipIfExists: true,
       },
       {
         type: "add",
-        path: "src/components/{{name}}/{{name}}.stories.tsx",
+        path: "src/{{name}}/{{name}}.stories.tsx",
         templateFile: "templates/Component.stories.tsx.hbs",
         skipIfExists: true,
       },
       {
         type: "add",
-        path: "src/components/{{name}}/{{name}}.test.tsx",
+        path: "src/{{name}}/{{name}}.test.tsx",
         templateFile: "templates/Component.test.tsx.hbs",
         skipIfExists: true,
       },
       {
         type: "append",
         unique: true,
-        path: "src/components/index.ts",
+        path: "src/index.ts",
         template: 'export * from "./{{name}}";\n',
       },
     ],
