@@ -1,4 +1,4 @@
-import merge from "lodash/merge";
+import { deepMerge } from "@common/utils";
 import { UnistylesRegistry } from "react-native-unistyles";
 import { breakpoints } from "./breakpoints";
 import { themeMode } from "./themeMode";
@@ -16,17 +16,17 @@ class ThemeConfigurator {
   private darkTheme: typeof darkTheme = darkTheme;
 
   common(theme: DeepPartial<typeof commonTheme>) {
-    this.commonTheme = merge(this.commonTheme, theme);
+    this.commonTheme = deepMerge(this.commonTheme, theme);
     return this;
   }
 
   dark(theme: DeepPartial<typeof darkTheme>) {
-    this.darkTheme = merge(this.darkTheme, theme);
+    this.darkTheme = deepMerge(this.darkTheme, theme);
     return this;
   }
 
   light(theme: Omit<DeepPartial<typeof lightTheme>, "name">) {
-    this.lightTheme = merge(this.lightTheme, theme);
+    this.lightTheme = deepMerge(this.lightTheme, theme);
     return this;
   }
 
