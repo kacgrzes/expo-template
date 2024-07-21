@@ -11,5 +11,9 @@ export const FormLabel = ({ children }: FormLabelProps) => {
   const { setFocus } = useFormContext();
   const { name } = useFormFieldContext();
 
-  return <Text onPress={() => setFocus(name)}>{children}</Text>;
+  return (
+    <Text suppressHighlighting onPress={() => setFocus(name)}>
+      {children}
+    </Text>
+  );
 };

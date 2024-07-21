@@ -87,6 +87,7 @@ const stylesheet = createStyleSheet((theme) => {
         variant: {
           body: {
             fontSize: 16,
+            lineHeight: 1.5 * 16,
             fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
           },
           label: {
@@ -108,8 +109,8 @@ const stylesheet = createStyleSheet((theme) => {
     link: {
       textDecorationLine: "underline",
       textDecorationStyle: "solid",
-      textDecorationColor: theme.colors.accent,
-      color: theme.colors.accent,
+      textDecorationColor: theme.colors.primary,
+      color: theme.colors.primary,
     },
   };
 });

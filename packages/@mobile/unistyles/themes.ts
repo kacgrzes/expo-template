@@ -23,7 +23,9 @@ export const common = {
     spacing: 4,
     debug: isStackDebugEnabled(),
   },
-  colors: {},
+  colors: {
+    primary: foundation.colors.blue,
+  },
 } as const;
 
 export const lightTheme = {
@@ -31,7 +33,6 @@ export const lightTheme = {
   colors: {
     ...common.colors,
     ...lightStatusColors,
-    accent: foundation.colors.blue,
     background: foundation.colors.white,
     typography: foundation.colors.black,
     // muted: foundation.colors
@@ -63,7 +64,6 @@ export const darkTheme = {
   colors: {
     ...common.colors,
     ...darkStatusColors,
-    accent: foundation.colors.blue,
     background: foundation.colors.black,
     typography: foundation.colors.white,
     // muted: foundation.colors

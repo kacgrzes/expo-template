@@ -148,7 +148,7 @@ const stylesheet = createStyleSheet((theme) => {
     container: {
       minHeight: size,
       minWidth: size,
-      backgroundColor: theme.colors.accent,
+      backgroundColor: theme.colors.primary,
       borderRadius: size / 2,
       justifyContent: "center",
       alignItems: "center",

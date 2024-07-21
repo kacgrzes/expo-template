@@ -1,8 +1,8 @@
 export const foundation = {
   colors: {
-    white: "#fefefe",
+    white: "#F5F6FA",
     black: "#2e2e2e",
-    blue: "#2a77f1",
+    blue: "#3D55CC",
     slate: {
       50: "#f8fafc",
       100: "#f1f5f9",

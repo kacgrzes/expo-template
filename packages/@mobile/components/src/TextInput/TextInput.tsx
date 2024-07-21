@@ -128,7 +128,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     const focusedStyleTextInput = useAnimatedStyle(() => {
       return {
         borderColor: withTiming(
-          isFocused.value ? theme.colors.accent : theme.colors.typography,
+          isFocused.value ? theme.colors.primary : theme.colors.typography,
           { duration: theme.animation.duration },
         ),
       };
@@ -138,7 +138,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     const _focusedStyleView = useAnimatedStyle(() => {
       return {
         borderColor: withTiming(
-          isFocused.value ? `${theme.colors.accent}50` : "transparent",
+          isFocused.value ? `${theme.colors.primary}50` : "transparent",
           { duration: theme.animation.duration },
         ),
       };
@@ -164,7 +164,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
           duration: theme.animation.duration,
         }),
         color: withTiming(
-          isFocused.value ? theme.colors.accent : theme.colors.typography,
+          isFocused.value ? theme.colors.primary : theme.colors.typography,
           { duration: theme.animation.duration },
         ),
       };
@@ -207,11 +207,11 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
             {...props}
             autoCapitalize={"none"}
             autoComplete="off"
-            cursorColor={theme.colors.accent}
+            cursorColor={theme.colors.primary}
             onBlur={handleBlur}
             onFocus={handleFocus}
             placeholderTextColor={theme.colors.typography}
-            selectionColor={theme.colors.accent}
+            selectionColor={theme.colors.primary}
             spellCheck={false}
             style={[
               // @ts-ignore TODO: fix this

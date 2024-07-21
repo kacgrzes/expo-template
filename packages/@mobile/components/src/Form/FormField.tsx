@@ -23,7 +23,7 @@ export const FormField = ({ children, name }: FormFieldProps) => {
 
   return (
     <FormFieldProvider name={name}>
-      <Box gap={2} width={"100%"}>
+      <Box gap={1} width={"100%"}>
         {children}
         {error && typeof error === "string" ? (
           <Text status="error">{error}</Text>

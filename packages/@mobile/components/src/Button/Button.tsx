@@ -1,4 +1,3 @@
-/** eslint-disable import/no-unresolved */
 import { forwardRef } from "react";
 import { View } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
@@ -7,14 +6,13 @@ import Animated, {
   interpolate,
   useDerivedValue,
   withTiming,
-  Extrapolate,
+  Extrapolation,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { ActivityIndicator } from "../ActivityIndicator";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
-// eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { CommonAccessoryProps, CommonFormProps, Size, Status } from "../types";
 
@@ -60,7 +58,7 @@ export const Button = forwardRef<any, ButtonProps>(
         loadingProgress.value,
         [0, 1],
         [1, 0],
-        Extrapolate.CLAMP,
+        Extrapolation.CLAMP,
       ),
       transform: [
         {
@@ -68,7 +66,7 @@ export const Button = forwardRef<any, ButtonProps>(
             loadingProgress.value,
             [0, 1],
             [0, 10],
-            Extrapolate.CLAMP,
+            Extrapolation.CLAMP,
           ),
         },
       ],
@@ -82,7 +80,7 @@ export const Button = forwardRef<any, ButtonProps>(
             loadingProgress.value,
             [0, 1],
             [-10, 0],
-            Extrapolate.CLAMP,
+            Extrapolation.CLAMP,
           ),
         },
       ],
@@ -142,8 +140,8 @@ const stylesheet = createStyleSheet((theme) => {
         },
         variant: {
           solid: {
-            backgroundColor: theme.colors.typography,
-            borderColor: theme.colors.typography,
+            backgroundColor: theme.colors.primary,
+            borderColor: theme.colors.primary,
           },
           outline: {
             backgroundColor: "transparent",

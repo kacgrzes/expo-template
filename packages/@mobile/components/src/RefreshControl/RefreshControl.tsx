@@ -16,7 +16,7 @@ export function RefreshControl(props: RefreshControlProps) {
     <RefreshControlComponent
       colors={[theme.colors.background]}
       progressBackgroundColor={theme.colors.typography}
-      tintColor={theme.colors.accent}
+      tintColor={theme.colors.primary}
       {...props}
     />
   );
