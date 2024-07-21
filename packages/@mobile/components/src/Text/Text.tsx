@@ -38,8 +38,25 @@ export function Text({
   );
 }
 
-export const Title = ({ style, variant = "title", ...rest }: TextProps) => {
-  return <Text style={style} variant={variant} {...rest} />;
+export const Title = ({ variant = "title", ...rest }: TextProps) => {
+  return <Text variant={variant} {...rest} />;
+};
+
+type LinkProps = TextProps & {
+  onPress: () => void;
+};
+
+export const Link = ({ onPress, style, ...rest }: LinkProps) => {
+  const { styles } = useStyles(stylesheet);
+
+  return (
+    <Text
+      onPress={onPress}
+      style={[styles.link, style]}
+      suppressHighlighting
+      {...rest}
+    />
+  );
 };
 
 const stylesheet = createStyleSheet((theme) => {
@@ -63,6 +80,9 @@ const stylesheet = createStyleSheet((theme) => {
           error: {
             color: theme.colors.error,
           },
+          muted: {
+            color: theme.colors.muted,
+          },
         },
         variant: {
           body: {
@@ -84,6 +104,12 @@ const stylesheet = createStyleSheet((theme) => {
           },
         },
       },
+    },
+    link: {
+      textDecorationLine: "underline",
+      textDecorationStyle: "solid",
+      textDecorationColor: theme.colors.accent,
+      color: theme.colors.accent,
     },
   };
 });
