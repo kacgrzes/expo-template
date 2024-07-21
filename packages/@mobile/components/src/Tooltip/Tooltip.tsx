@@ -1,8 +1,6 @@
-import { Pressable, View } from "react-native";
-import { createStyleSheet } from "react-native-unistyles";
-
 import { Portal } from "@gorhom/portal";
 import { ReactNode, useState } from "react";
+import { Pressable, View } from "react-native";
 import Animated, {
   measure,
   useAnimatedRef,
@@ -85,18 +83,3 @@ export function Tooltip({ children }: TooltipProps) {
     </View>
   );
 }
-
-const _stylesheet = createStyleSheet((theme) => {
-  return {
-    container: {
-      alignSelf: "center",
-      flexDirection: "row",
-      marginTop: 24,
-    },
-    text: {
-      backgroundColor: theme.colors.typography,
-      color: theme.colors.background,
-      padding: 8,
-    },
-  };
-});
