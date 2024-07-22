@@ -1,13 +1,12 @@
 import { BottomSheetBackdropProps } from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import Animated, {
+import {
   Extrapolation,
   interpolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { useStyles } from "react-native-unistyles";
+import { Overlay } from "./Overlay";
 
 export function BackdropComponent({
   animatedIndex,
@@ -26,28 +25,19 @@ export function BackdropComponent({
   }, []);
 
   const { back } = useRouter();
-  const { theme } = useStyles();
 
-  // animated variables
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: interpolate(
       animatedIndex.value,
       [-1, 0],
-      [0, theme.opacity],
+      [0, 1],
       Extrapolation.CLAMP,
     ),
   }));
 
-  // styles
   const containerStyle = useMemo(
-    () => [
-      style,
-      {
-        backgroundColor: theme.colors.background,
-      },
-      containerAnimatedStyle,
-    ],
-    [style, containerAnimatedStyle, theme.colors.background],
+    () => [style, containerAnimatedStyle],
+    [style, containerAnimatedStyle],
   );
 
   const goBack = useCallback(() => {
@@ -57,11 +47,5 @@ export function BackdropComponent({
     }
   }, [back]);
 
-  const gesture = Gesture.Tap().runOnJS(true).onStart(goBack);
-
-  return (
-    <GestureDetector gesture={gesture}>
-      <Animated.View style={containerStyle} />
-    </GestureDetector>
-  );
+  return <Overlay onPress={goBack} style={containerStyle} />;
 }

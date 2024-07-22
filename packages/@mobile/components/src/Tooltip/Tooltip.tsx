@@ -63,22 +63,26 @@ export function Tooltip({ children }: TooltipProps) {
         <Animated.View ref={animatedRef}>{children}</Animated.View>
       </Pressable>
       {visible ? (
-        <Portal hostName="tooltips">
-          <Overlay onPress={() => setVisible(false)} />
-          <Animated.View
-            style={[
-              {
-                backgroundColor: "green",
-                borderRadius: 8,
-                padding: 20,
-                position: "absolute",
-              },
-              tooltipAnimatedStyle,
-            ]}
-          >
-            <Text style={{ flexShrink: 1 }}>Hello</Text>
-          </Animated.View>
-        </Portal>
+        <>
+          <Portal hostName="overlay">
+            <Overlay fadeInOut onPress={() => setVisible(false)} />
+          </Portal>
+          <Portal hostName="tooltips">
+            <Animated.View
+              style={[
+                {
+                  backgroundColor: "green",
+                  borderRadius: 8,
+                  padding: 20,
+                  position: "absolute",
+                },
+                tooltipAnimatedStyle,
+              ]}
+            >
+              <Text style={{ flexShrink: 1 }}>Hello</Text>
+            </Animated.View>
+          </Portal>
+        </>
       ) : null}
     </View>
   );
