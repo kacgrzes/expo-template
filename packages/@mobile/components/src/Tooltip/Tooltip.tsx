@@ -9,8 +9,9 @@ import Animated, {
   useSharedValue,
   MeasuredDimensions,
 } from "react-native-reanimated";
-import { Overlay } from "../Overlay";
+// import { Overlay } from "../Overlay";
 import { Text } from "../Text";
+import { TooltipOverlay } from "./TooltipOverlay";
 
 type TooltipProps = {
   children: ReactNode;
@@ -36,7 +37,7 @@ const useTooltipPosition = () => {
     };
   }, []);
 
-  return { animatedRef, tooltipAnimatedStyle };
+  return { animatedRef, tooltipAnimatedStyle, measurement };
 };
 
 /**
@@ -55,23 +56,28 @@ const useTooltipPosition = () => {
 export function Tooltip({ children }: TooltipProps) {
   "use no memo";
   const [visible, setVisible] = useState(false);
-  const { animatedRef, tooltipAnimatedStyle } = useTooltipPosition();
+  const { animatedRef, tooltipAnimatedStyle, measurement } =
+    useTooltipPosition();
 
   return (
     <View>
       <Pressable accessibilityRole="button" onPress={() => setVisible(true)}>
         <Animated.View ref={animatedRef}>{children}</Animated.View>
       </Pressable>
+
       {visible ? (
         <>
           <Portal hostName="overlay">
-            <Overlay fadeInOut onPress={() => setVisible(false)} />
+            <TooltipOverlay
+              measurement={measurement}
+              onPress={() => setVisible(false)}
+            />
           </Portal>
           <Portal hostName="tooltips">
             <Animated.View
               style={[
                 {
-                  backgroundColor: "green",
+                  backgroundColor: "black",
                   borderRadius: 8,
                   padding: 20,
                   position: "absolute",
@@ -79,7 +85,9 @@ export function Tooltip({ children }: TooltipProps) {
                 tooltipAnimatedStyle,
               ]}
             >
-              <Text style={{ flexShrink: 1 }}>Hello</Text>
+              <Text style={{ flexShrink: 1, color: "white" }}>
+                Hello tooltip!
+              </Text>
             </Animated.View>
           </Portal>
         </>

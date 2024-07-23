@@ -1,4 +1,3 @@
-import { Portal } from "@gorhom/portal";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
