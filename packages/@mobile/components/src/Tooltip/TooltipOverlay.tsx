@@ -1,3 +1,4 @@
+import { Portal } from "@gorhom/portal";
 import {
   Canvas,
   Fill,
@@ -8,22 +9,13 @@ import {
 } from "@shopify/react-native-skia";
 import React from "react";
 import { StyleSheet } from "react-native";
-import {
-  MeasuredDimensions,
-  SharedValue,
-  useDerivedValue,
-  useSharedValue,
-} from "react-native-reanimated";
+import { useDerivedValue, useSharedValue } from "react-native-reanimated";
+import { useStyles } from "react-native-unistyles";
+import { useTooltipContext } from "./TooltipProvider";
 
-export const TooltipOverlay = ({
-  measurement,
-  offset = 8,
-  onPress,
-}: {
-  measurement: SharedValue<MeasuredDimensions | null>;
-  offset?: number;
-  onPress: () => void;
-}) => {
+export const TooltipOverlay = ({ offset = 8 }: { offset?: number }) => {
+  const { theme } = useStyles();
+  const { measurement, setVisible, visible } = useTooltipContext();
   const size = useSharedValue<Size>({
     width: 0,
     height: 0,
@@ -33,7 +25,6 @@ export const TooltipOverlay = ({
     if (!measurement.value) {
       return undefined;
     }
-    const offset = 8;
     const { pageX, pageY, width, height } = measurement.value;
     return rrect(
       rect(
@@ -47,21 +38,29 @@ export const TooltipOverlay = ({
     );
   }, [measurement, offset]);
 
+  if (!visible) {
+    return null;
+  }
+
   return (
-    <Canvas
-      onTouch={onPress}
-      onSize={size}
-      mode="default"
-      style={{
-        ...StyleSheet.absoluteFillObject,
-        width: "100%",
-        height: "100%",
-        flex: 1,
-      }}
-    >
-      <Group clip={clip} invertClip>
-        <Fill opacity={0.4} />
-      </Group>
-    </Canvas>
+    <Portal hostName="overlay">
+      <Canvas
+        onTouch={() => {
+          setVisible(false);
+        }}
+        onSize={size}
+        mode="default"
+        style={{
+          ...StyleSheet.absoluteFillObject,
+          width: "100%",
+          height: "100%",
+          flex: 1,
+        }}
+      >
+        <Group clip={clip} invertClip>
+          <Fill opacity={theme.opacity} />
+        </Group>
+      </Canvas>
+    </Portal>
   );
 };
