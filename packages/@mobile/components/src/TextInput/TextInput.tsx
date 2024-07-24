@@ -2,11 +2,12 @@ import { useShakeAnimation } from "@mobile/hooks/useShakeAnimation";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import {
   NativeSyntheticEvent,
-  TextInput as RNTextInput,
+  // TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
   TextInputFocusEventData,
   View,
 } from "react-native";
+import { TextInput as RNTextInput } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,

@@ -6,7 +6,7 @@ import {
   interpolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { Overlay } from "./Overlay";
+import { Overlay } from "../Overlay";
 
 export function BackdropComponent({
   animatedIndex,

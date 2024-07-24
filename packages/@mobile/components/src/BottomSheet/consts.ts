@@ -1,18 +1,29 @@
 import { BottomSheetNavigationOptions } from "@th3rdwave/react-navigation-bottom-sheet";
 import { UnistylesRuntime } from "react-native-unistyles";
-import { BackdropComponent } from "../BackdropComponent";
+import { BackdropComponent } from "./BackdropComponent";
+import { HandleComponent } from "./HandleComponent";
 
-export const COMMON_BOTTOM_SHEET_OPTIONS: BottomSheetNavigationOptions = {
-  detached: false,
-  enableDynamicSizing: true,
-  backdropComponent: BackdropComponent,
+export const useCommonBottomSheetOptions = () => {
+  return {
+    detached: false,
+    enableDynamicSizing: true,
+    backdropComponent: BackdropComponent,
+    handleIndicatorStyle: {
+      backgroundColor: "black",
+      width: 48,
+    },
+    handleComponent: HandleComponent,
+  } as BottomSheetNavigationOptions;
 };
 
-export const DETACHED_BOTTOM_SHEET_OPTIONS: BottomSheetNavigationOptions = {
-  ...COMMON_BOTTOM_SHEET_OPTIONS,
-  detached: true,
-  style: {
-    marginHorizontal: 16,
-  },
-  bottomInset: UnistylesRuntime.insets.bottom + 16 ?? 24,
+export const useDetachedBottomSheetOptions = () => {
+  const commonBottomSheetOptions = useCommonBottomSheetOptions();
+  return {
+    ...commonBottomSheetOptions,
+    detached: true,
+    style: {
+      marginHorizontal: 16,
+    },
+    bottomInset: UnistylesRuntime.insets.bottom + 16 ?? 24,
+  } as BottomSheetNavigationOptions;
 };

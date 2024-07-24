@@ -2,7 +2,6 @@ export * from "./ActionSheetExample";
 export * from "./AnimatedButtons";
 export * from "./AppIcon";
 export * from "./Avatar";
-export * from "./BackdropComponent";
 export * from "./Badge";
 export * from "./BottomSheet";
 export * from "./Button";
