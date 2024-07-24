@@ -1,6 +1,5 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import React, { ReactElement, useMemo, MemoExoticComponent } from "react";
 import { KeyboardStickyView } from "react-native-keyboard-controller";
 import {
