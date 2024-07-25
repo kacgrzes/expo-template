@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useScrollRef } from "../ScrollView";
 import { GradientOverlay } from "./GradientOverlay";
 import { useScreenContext } from "./ScreenContext";
+import { useBottomTabBarHeight } from "./useBottomTabBarHeight";
 
 const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
   KeyboardAwareScrollView,
@@ -30,17 +31,26 @@ const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
   ({ children, contentContainerStyle, ...rest }, ref) => {
     const { footerHeight = 0, hasBottomEdge, hasTopEdge } = useScreenContext();
     const { height, progress } = useReanimatedKeyboardAnimation();
-    const { bottom, top } = useSafeAreaInsets();
+    const { bottom: bottomInsets, top } = useSafeAreaInsets();
+    const bottomTabBarHeight = useBottomTabBarHeight();
+
+    const bottom = useMemo(() => {
+      if (bottomTabBarHeight) {
+        return bottomTabBarHeight;
+      }
+
+      return hasBottomEdge ? bottomInsets : 0;
+    }, [bottomTabBarHeight, hasBottomEdge, bottomInsets]);
 
     const extraBottom = useDerivedValue(() => {
       return footerHeight === 0
-        ? interpolate(progress.value, [0, 1], [hasBottomEdge ? bottom : 0, 0])
+        ? interpolate(progress.value, [0, 1], [bottom, 0])
         : interpolate(
             progress.value,
             [0, 1],
-            [footerHeight, footerHeight - (hasBottomEdge ? bottom : 0)],
+            [footerHeight, footerHeight - bottom],
           );
-    }, [footerHeight, hasBottomEdge, bottom, progress]);
+    }, [bottom, footerHeight, progress]);
 
     const animatedProps = useAnimatedProps<KeyboardAwareScrollViewProps>(
       () => ({
