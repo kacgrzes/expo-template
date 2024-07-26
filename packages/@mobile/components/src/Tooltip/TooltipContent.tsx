@@ -1,16 +1,21 @@
 import { Portal } from "@gorhom/portal";
-import React from "react";
+import React, { ReactNode } from "react";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { Text } from "../Text";
 import { useTooltipContext } from "./TooltipProvider";
 
-// type TooltipContentProps = {}
+type TooltipContentProps = {
+  children?: ReactNode;
+};
 
-export const TooltipContent = () => {
+export const TooltipContent = ({ children }: TooltipContentProps) => {
   const { visible, measurement } = useTooltipContext();
   const tooltipAnimatedStyle = useAnimatedStyle(() => {
     return {
-      top: (measurement?.value?.pageY ?? 0) + (measurement?.value?.height ?? 0),
+      top:
+        (measurement?.value?.pageY ?? 0) +
+        (measurement?.value?.height ?? 0) +
+        5,
       left: measurement?.value?.pageX ?? 0,
     };
   }, [measurement]);
@@ -33,6 +38,7 @@ export const TooltipContent = () => {
         ]}
       >
         <Text style={{ flexShrink: 1, color: "white" }}>Hello tooltip!</Text>
+        {children}
       </Animated.View>
     </Portal>
   );

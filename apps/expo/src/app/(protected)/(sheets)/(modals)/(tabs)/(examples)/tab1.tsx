@@ -26,7 +26,9 @@ export default function Tab1() {
           <Button title="Toast example" />
         </Tooltip.Trigger>
         <Tooltip.Overlay />
-        <Tooltip.Content />
+        <Tooltip.Content>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
       </Tooltip.Root>
       <Button
         title={"Create notification"}
