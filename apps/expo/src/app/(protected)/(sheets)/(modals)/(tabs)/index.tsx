@@ -12,9 +12,12 @@ import {
   Screen,
   SegmentedControl,
   Text,
+  TextInput,
   Title,
+  useScreenScrollView,
 } from "@mobile/components";
 import { isHermes, openSettings } from "@mobile/utils";
+import { useScrollToTop } from "@react-navigation/native";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";
@@ -27,6 +30,9 @@ const CompilerTest = () => {
 };
 
 export default function App() {
+  const ref = useScreenScrollView();
+  useScrollToTop(ref);
+
   const { styles } = useStyles(stylesheet);
   const { signOut, signIn, session } = useSession();
   const { t } = useTranslation();
@@ -55,10 +61,12 @@ export default function App() {
       footer={
         <Box padding={4} style={{ backgroundColor: "green" }}>
           <Text>Hello!</Text>
+          <TextInput />
         </Box>
       }
     >
       <Screen.ScrollView
+        ref={ref}
         onScroll={handleScroll}
         contentContainerStyle={styles.contentContainer}
       >
@@ -69,6 +77,7 @@ export default function App() {
           <Text>{t("Welcome to React")}</Text>
         </Text>
         <CompilerTest />
+        <TextInput />
         <Text>{isHermes ? <Text>Welcome to Hermes</Text> : null}</Text>
         <Text>
           {formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}
@@ -83,8 +92,17 @@ export default function App() {
         <Link href="/settings" asChild>
           <Button title="App settings" variant="link" full />
         </Link>
+        <Link href="/keyboard-sheet" asChild>
+          <Button title="Keyboard sheet" variant="link" full />
+        </Link>
         <Link href="/sign-up" asChild>
           <Button title="Sign up" variant="link" full />
+        </Link>
+        <Link href="/screen-flat-list" asChild>
+          <Button title="Screen FlatList" variant="link" full />
+        </Link>
+        <Link href="/screen-section-list" asChild>
+          <Button title="Screen SectionList" variant="link" full />
         </Link>
         <Button
           title="Open settings"

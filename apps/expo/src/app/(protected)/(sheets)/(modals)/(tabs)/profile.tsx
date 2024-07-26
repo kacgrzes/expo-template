@@ -1,4 +1,4 @@
-import { Button, TextInput, useTextInputRef } from "@mobile/components";
+import { Button, Screen, TextInput, useTextInputRef } from "@mobile/components";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { StyleSheet, View } from "react-native";

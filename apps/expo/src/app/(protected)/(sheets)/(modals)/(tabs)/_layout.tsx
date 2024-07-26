@@ -1,6 +1,6 @@
 import { Avatar, useBadgeStyle } from "@mobile/components";
 import { Tabs as TabsRouter } from "expo-router";
-import { Home } from "lucide-react-native";
+import { Compass, Home } from "lucide-react-native";
 import { useStyles } from "react-native-unistyles";
 
 export default function Tabs() {
@@ -11,11 +11,8 @@ export default function Tabs() {
     <TabsRouter
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme.colors.accent,
+        tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.typography,
-        tabBarStyle: {
-          backgroundColor: theme.colors.background,
-        },
         tabBarLabelStyle: {
           fontFamily: "IBMPlexSans_400Regular",
         },
@@ -28,6 +25,13 @@ export default function Tabs() {
           tabBarIcon: ({ color }) => <Home size={24} color={color} />,
           tabBarBadge: 3,
           tabBarBadgeStyle,
+        }}
+      />
+      <TabsRouter.Screen
+        name="discover"
+        options={{
+          title: "Discover",
+          tabBarIcon: ({ color }) => <Compass size={24} color={color} />,
         }}
       />
       <TabsRouter.Screen
