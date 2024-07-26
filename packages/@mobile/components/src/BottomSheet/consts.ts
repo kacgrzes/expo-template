@@ -8,10 +8,6 @@ export const useCommonBottomSheetOptions = () => {
     detached: false,
     enableDynamicSizing: true,
     backdropComponent: BackdropComponent,
-    handleIndicatorStyle: {
-      backgroundColor: "black",
-      width: 48,
-    },
     handleComponent: HandleComponent,
   } as BottomSheetNavigationOptions;
 };
