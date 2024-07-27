@@ -11,7 +11,7 @@ type TextAlign = TextStyle["textAlign"];
 type TextProps = TextComponentProps & {
   textAlign?: TextAlign;
   textTransform?: TextStyle["textTransform"];
-  variant?: "body" | "code" | "title" | "label";
+  variant?: "body" | "code" | "title" | "label" | "button";
   status?: Status;
 };
 
@@ -89,6 +89,11 @@ const stylesheet = createStyleSheet((theme) => {
             fontSize: 16,
             lineHeight: 1.5 * 16,
             fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
+          },
+          button: {
+            fontSize: 16,
+            lineHeight: 1.5 * 16,
+            fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
           },
           label: {
             fontSize: 14,

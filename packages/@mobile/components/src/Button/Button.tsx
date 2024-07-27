@@ -108,7 +108,7 @@ export const Button = forwardRef<any, ButtonProps>(
               </Animated.View>
             ) : null}
             <Animated.View style={titleAnimatedStyle}>
-              <Text numberOfLines={1} style={styles.title}>
+              <Text variant="button" numberOfLines={1} style={styles.title}>
                 {title}
               </Text>
             </Animated.View>
@@ -164,7 +164,7 @@ const stylesheet = createStyleSheet((theme) => {
       variants: {
         variant: {
           solid: {
-            color: theme.colors.background,
+            color: theme.colors.typography,
           },
           outline: {
             color: theme.colors.typography,
