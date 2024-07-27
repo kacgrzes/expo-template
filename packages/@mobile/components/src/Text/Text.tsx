@@ -8,20 +8,34 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Status } from "../types";
 
 type TextAlign = TextStyle["textAlign"];
+type TextTransform = TextStyle["textTransform"];
+type TextVariant =
+  | "body1"
+  | "body2"
+  | "body3"
+  | "body4"
+  | "code"
+  | "title"
+  | "label1"
+  | "label2"
+  | "label3";
+
 type TextProps = TextComponentProps & {
-  textAlign?: TextAlign;
-  textTransform?: TextStyle["textTransform"];
-  variant?: "body" | "code" | "title" | "label" | "button";
+  italic?: boolean;
   status?: Status;
+  textAlign?: TextAlign;
+  textTransform?: TextTransform;
+  variant?: TextVariant;
 };
 
 // TODO: create animated version of Text
 export function Text({
+  italic = false,
+  status = "primary",
   style,
   textAlign,
   textTransform,
-  variant = "body",
-  status = "primary",
+  variant = "body1",
   ...rest
 }: TextProps) {
   const { styles } = useStyles(stylesheet, { variant, status });
@@ -30,7 +44,7 @@ export function Text({
     <TextComponent
       style={StyleSheet.flatten([
         styles.text,
-        { textAlign, textTransform },
+        { textAlign, textTransform, fontStyle: italic ? "italic" : "normal" },
         style,
       ])}
       {...rest}
@@ -68,6 +82,10 @@ const stylesheet = createStyleSheet((theme) => {
           primary: {
             color: theme.colors.typography,
           },
+          // TODO: improve this!
+          secondary: {
+            color: theme.colors.typography,
+          },
           info: {
             color: theme.colors.info,
           },
@@ -85,22 +103,44 @@ const stylesheet = createStyleSheet((theme) => {
           },
         },
         variant: {
-          body: {
+          body1: {
             fontSize: 16,
             lineHeight: 1.5 * 16,
             fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
           },
-          button: {
+          body2: {
+            fontSize: 14,
+            lineHeight: 1.5 * 14,
+            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
+          },
+          body3: {
+            fontSize: 12,
+            lineHeight: 1.5 * 12,
+            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
+          },
+          body4: {
+            fontSize: 14,
+            lineHeight: 1.5 * 14,
+            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
+          },
+          label1: {
             fontSize: 16,
             lineHeight: 1.5 * 16,
             fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
           },
-          label: {
+          label2: {
             fontSize: 14,
+            lineHeight: 1.5 * 14,
+            fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
+          },
+          label3: {
+            fontSize: 12,
+            lineHeight: 1.5 * 12,
             fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
           },
           code: {
             fontSize: 14,
+            lineHeight: 1.5 * 14,
             fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
           },
           title: {
