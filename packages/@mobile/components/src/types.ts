@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export type Status =
   | "primary"
+  | "secondary"
   | "success"
   | "error"
   | "warning"

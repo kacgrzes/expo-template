@@ -24,7 +24,7 @@ export function SettingsScreen() {
     <Screen>
       <Screen.ScrollView contentContainerStyle={{ padding: 0, paddingTop: 0 }}>
         <Box paddingX={4} marginBottom={4} marginTop={6}>
-          <Text variant="label" textTransform="uppercase">
+          <Text variant="label1" textTransform="uppercase">
             Appearance
           </Text>
         </Box>
@@ -61,7 +61,7 @@ export function SettingsScreen() {
           right={<Switch />}
         />
         <Box paddingX={4} marginBottom={4} marginTop={12}>
-          <Text variant="label" textTransform="uppercase">
+          <Text variant="label1" textTransform="uppercase">
             General
           </Text>
         </Box>
@@ -101,7 +101,7 @@ export function SettingsScreen() {
           }}
         />
         <Box paddingX={4} marginBottom={4} marginTop={12}>
-          <Text variant="label" textTransform="uppercase">
+          <Text variant="label1" textTransform="uppercase">
             Other
           </Text>
         </Box>

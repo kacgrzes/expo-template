@@ -4,7 +4,7 @@ import { Dot } from "../Dot";
 import { Text } from "../Text";
 import { Status } from "../types";
 
-type BadgeStatus = "default" | Status;
+type BadgeStatus = "default" | Omit<Status, "secondary">;
 
 type BadgeProps = {
   /** Value in the badge. Badge will be a dot if this is not provided/ */
@@ -51,7 +51,7 @@ export function Badge({
           style={styles.label(status)}
           suppressHighlighting
           textAlign="center"
-          variant="label"
+          variant="label1"
         >
           {value}
         </Text>

@@ -108,7 +108,7 @@ export const Button = forwardRef<any, ButtonProps>(
               </Animated.View>
             ) : null}
             <Animated.View style={titleAnimatedStyle}>
-              <Text variant="button" numberOfLines={1} style={styles.title}>
+              <Text variant="label1" numberOfLines={1} style={styles.title}>
                 {title}
               </Text>
             </Animated.View>

@@ -47,7 +47,7 @@ function Segment({
         onPress={onPress}
         style={styles.segment(full)}
       >
-        <Text variant="label">{label}</Text>
+        <Text variant="label1">{label}</Text>
       </AnimatedRectButton>
     </View>
   );
