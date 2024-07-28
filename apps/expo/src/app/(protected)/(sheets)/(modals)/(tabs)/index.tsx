@@ -3,10 +3,12 @@ import { Box } from "@grapp/stacks";
 import { useSession } from "@mobile/auth";
 import {
   ActionSheetExample,
+  AppleAuthenticationButton,
   Button,
   ContextMenuExample,
   DropdownMenuExample,
   FAB,
+  GoogleAuthenticationButton,
   JSONViewer,
   OnScroll,
   Screen,
@@ -89,6 +91,8 @@ export default function App() {
           title={session ? "Sign out" : "Sign in"}
           onPress={session ? signOut : signIn}
         />
+        <AppleAuthenticationButton full />
+        <GoogleAuthenticationButton full />
         <Link href="/settings" asChild>
           <Button title="App settings" variant="link" full />
         </Link>
