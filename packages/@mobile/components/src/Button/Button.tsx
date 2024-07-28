@@ -18,7 +18,7 @@ import { CommonAccessoryProps, CommonFormProps, Size, Status } from "../types";
 
 // TODO: Add Button.Group
 
-type ButtonVariant = "solid" | "outline" | "link";
+type ButtonVariant = "solid" | "outline" | "link" | "apple" | "google";
 
 export type ButtonProps = CommonFormProps &
   CommonAccessoryProps & {
@@ -96,7 +96,7 @@ export const Button = forwardRef<any, ButtonProps>(
         <View
           accessible
           accessibilityRole="button"
-          style={styles.contentContainer}
+          style={{ flexDirection: "row", alignItems: "center" }}
         >
           {left}
           <View style={styles.titleContainer}>
@@ -139,6 +139,14 @@ const stylesheet = createStyleSheet((theme) => {
           },
         },
         variant: {
+          apple: {
+            backgroundColor: theme.name === "light" ? "#000" : "#fff",
+            borderColor: theme.name === "light" ? "#000" : "#fff",
+          },
+          google: {
+            backgroundColor: theme.name === "light" ? "#FFFFFF" : "#131314",
+            borderColor: theme.name === "light" ? "#747775" : "#8E918F",
+          },
           solid: {
             backgroundColor: theme.colors.primary,
             borderColor: theme.colors.primary,
@@ -163,6 +171,12 @@ const stylesheet = createStyleSheet((theme) => {
     title: {
       variants: {
         variant: {
+          apple: {
+            color: theme.name === "light" ? "#FFFFFF" : "#000000",
+          },
+          google: {
+            color: theme.name === "light" ? "#1F1F1F" : "#E3E3E3",
+          },
           solid: {
             color: theme.colors.typography,
           },

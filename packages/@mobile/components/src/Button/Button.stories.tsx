@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
+import { AppleAuthenticationButton } from "./AppleAuthenticationButton";
 import { Button } from "./Button";
+import { GoogleAuthenticationButton } from "./GoogleAuthenticationButton";
 
 const ButtonMeta: Meta<typeof Button> = {
   title: "Button",
@@ -54,5 +57,17 @@ export const FullWidth: StoryObj<typeof Button> = {
   args: {
     full: true,
     title: "Full Width Button",
+  },
+};
+
+export const AppleAuthenticationButtonStory: StoryObj<typeof Button> = {
+  render: () => {
+    return <AppleAuthenticationButton />;
+  },
+};
+
+export const GoogleAuthenticationButtonStory: StoryObj<typeof Button> = {
+  render: () => {
+    return <GoogleAuthenticationButton />;
   },
 };
