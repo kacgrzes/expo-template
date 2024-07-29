@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { PageControl, PageControlProps } from "../PageControl";
 import { usePagerContext } from "./PagerRoot";
 
 type PagerControlProps = Omit<
   PageControlProps,
-  "hidesForSinglePage" | "currentPage" | "numberOfPages"
+  "hidesForSinglePage" | "currentPage" | "numberOfPages" | "onPageChange"
 >;
 
 export const PagerControl = (props: PagerControlProps) => {
-  const { currentPage, numberOfPages } = usePagerContext();
+  const { currentPage, numberOfPages, pagerViewRef } = usePagerContext();
+  const handlePageChange = useCallback(
+    (currentPage: number) => {
+      pagerViewRef.current?.setPageWithoutAnimation(currentPage);
+    },
+    [pagerViewRef],
+  );
 
   if (!numberOfPages) {
     return null;
@@ -19,6 +25,7 @@ export const PagerControl = (props: PagerControlProps) => {
       hidesForSinglePage
       currentPage={currentPage}
       numberOfPages={numberOfPages}
+      onPageChange={handlePageChange}
       {...props}
     />
   );

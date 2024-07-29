@@ -7,8 +7,9 @@ type PagerContainerProps = {
 };
 
 export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
+  // TODO: what should I do about this ref?
   ({ children }, ref) => {
-    const { currentPage, setNumberOfPages } = usePagerContext();
+    const { currentPage, setNumberOfPages, pagerViewRef } = usePagerContext();
 
     useEffect(() => {
       setNumberOfPages(Children.count(children));
@@ -24,10 +25,10 @@ export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
 
     return (
       <PagerView
-        ref={ref}
         initialPage={0}
-        style={{ flex: 1 }}
         onPageScroll={handler}
+        ref={pagerViewRef}
+        style={{ flex: 1 }}
       >
         {children}
       </PagerView>
