@@ -65,7 +65,7 @@ export const PageControl = ({
   }
 
   const panGesture = Gesture.Pan()
-    .activateAfterLongPress(300)
+    .activateAfterLongPress(150)
     .onStart(() => {
       offsetPage.value = currentPage.value;
       panActive.value = withTiming(1, { duration: 300 });
