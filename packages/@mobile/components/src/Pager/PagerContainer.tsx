@@ -27,7 +27,16 @@ export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
       <PagerView
         initialPage={0}
         onPageScroll={handler}
-        ref={pagerViewRef}
+        ref={(instance: PagerViewRef | null) => {
+          // @ts-ignore
+          pagerViewRef.current = instance;
+          if (typeof ref === "function") {
+            ref(instance);
+          } else if (typeof ref === "object") {
+            // @ts-ignore
+            ref.current = instance;
+          }
+        }}
         style={{ flex: 1 }}
       >
         {children}
