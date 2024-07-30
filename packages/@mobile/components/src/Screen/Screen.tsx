@@ -49,7 +49,7 @@ const ScreenComponent = React.memo(
 
     return (
       <ScreenProvider footerHeight={footerHeight} edges={edges}>
-        <Box flex="fluid">
+        <Box flex="fluid" style={styles.screen}>
           <Box flex={"fluid"}>{children}</Box>
           <KeyboardStickyView offset={offset} style={styles.keyboardStickyView}>
             <View
@@ -81,7 +81,10 @@ Screen.FlatList = ScreenFlatList;
 Screen.ScrollView = ScreenScrollView;
 Screen.SectionList = ScreenSectionList;
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet((theme) => ({
+  screen: {
+    backgroundColor: theme.colors.background,
+  },
   keyboardStickyView: {
     position: "absolute",
     bottom: 0,
