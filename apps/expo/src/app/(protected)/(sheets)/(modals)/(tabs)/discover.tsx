@@ -18,7 +18,7 @@ export default function Discover() {
       edges={["top"]}
       footer={
         <Card margin={3} borderRadius={8}>
-          <Text>Footer</Text>
+          <Text variant="body2">Footer example</Text>
         </Card>
       }
     >
