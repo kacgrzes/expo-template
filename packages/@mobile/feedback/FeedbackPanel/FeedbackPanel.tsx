@@ -29,7 +29,9 @@ export function FeedbackPanel() {
 
   return (
     <BottomSheetView style={styles.container}>
-      <Title textAlign="center">Zgłoś problem techniczny</Title>
+      <Text variant="title" textAlign="center">
+        Zgłoś problem techniczny
+      </Text>
       <Text textAlign="center">
         Jeśli napotkałeś problem techniczny, prosimy o zgłoszenie go.
       </Text>

@@ -1,4 +1,4 @@
-import { ListItem, SocialIcon, Title } from "@mobile/components";
+import { ListItem, SocialIcon, Text } from "@mobile/components";
 import { applicationName } from "expo-application";
 import { useRouter } from "expo-router";
 import { ScrollView, View } from "react-native";
@@ -15,7 +15,7 @@ export function AboutScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.top}>
-        <Title>{applicationName}</Title>
+        <Text variant="title">{applicationName}</Text>
       </View>
       <ListItem
         icon={Clipboard}

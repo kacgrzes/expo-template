@@ -15,7 +15,6 @@ import {
   SegmentedControl,
   Text,
   TextInput,
-  Title,
   useScreenScrollView,
 } from "@mobile/components";
 import { isHermes, openSettings } from "@mobile/utils";
@@ -73,7 +72,9 @@ export default function App() {
         contentContainerStyle={styles.contentContainer}
       >
         <SegmentedControl full />
-        <Title style={{ marginBottom: 12 }}>Hello</Title>
+        <Text variant="title" style={{ marginBottom: 12 }}>
+          Hello
+        </Text>
         <Text style={styles.text}>
           <Text>Open up App.js to start working on your app!{"\n"}</Text>
           <Text>{t("Welcome to React")}</Text>
