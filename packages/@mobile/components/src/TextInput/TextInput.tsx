@@ -188,6 +188,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
             suppressHighlighting
             style={[
               {
+                fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
                 position: "absolute",
                 zIndex: 2,
                 left: left !== null ? 0 : 10,
@@ -257,7 +258,8 @@ const stylesheet = createStyleSheet((theme) => {
       return {
         color: theme.colors.typography,
         flex: 1,
-        fontFamily: theme.fonts.IBMPlexMono_400Regular,
+        fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
+        fontWeight: "400",
         fontSize: 16,
         paddingLeft: hasLeftIcon ? 0 : 10,
         paddingRight: hasRightIcon ? 0 : 10,

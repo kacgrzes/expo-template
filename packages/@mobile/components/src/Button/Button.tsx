@@ -178,7 +178,8 @@ const stylesheet = createStyleSheet((theme) => {
             color: theme.name === "light" ? "#1F1F1F" : "#E3E3E3",
           },
           solid: {
-            color: theme.colors.typography,
+            // color: theme.colors.typography,
+            color: "white",
           },
           outline: {
             color: theme.colors.typography,
