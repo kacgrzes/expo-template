@@ -109,6 +109,7 @@
     "@mobile/help": "workspace:*",
     "@mobile/hooks": "workspace:*",
     "@mobile/i18n": "workspace:*",
+    "@mobile/layouts": "workspace:*",
     "@mobile/msw": "workspace:*",
     "@mobile/not-found": "workspace:*",
     "@mobile/root": "workspace:*",

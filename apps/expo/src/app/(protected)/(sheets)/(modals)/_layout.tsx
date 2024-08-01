@@ -1,23 +1,13 @@
-/** eslint-disable @typescript-eslint/no-unused-vars */
+import { useModalsScreenOptions } from "@mobile/layouts";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Button } from "react-native";
-import { useStyles } from "react-native-unistyles";
 
 export default function Modals() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { theme } = useStyles();
+  const screenOptions = useModalsScreenOptions();
   const { t } = useTranslation();
 
   return (
-    <Stack
-      screenOptions={{
-        presentation: "modal",
-        headerTitleStyle: {
-          fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
-        },
-      }}
-    >
+    <Stack screenOptions={screenOptions}>
       <Stack.Screen
         name="(tabs)"
         options={{

@@ -1,23 +1,14 @@
 import { Avatar, useBadgeStyle } from "@mobile/components";
+import { useTabsScreenOptions } from "@mobile/layouts";
 import { Tabs as TabsRouter } from "expo-router";
 import { Compass, Home } from "lucide-react-native";
-import { useStyles } from "react-native-unistyles";
 
 export default function Tabs() {
-  const { theme } = useStyles();
+  const screenOptions = useTabsScreenOptions();
   const tabBarBadgeStyle = useBadgeStyle();
 
   return (
-    <TabsRouter
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: theme.colors.typography,
-        tabBarLabelStyle: {
-          fontFamily: "IBMPlexSans_400Regular",
-        },
-      }}
-    >
+    <TabsRouter screenOptions={screenOptions}>
       <TabsRouter.Screen
         name="index"
         options={{
