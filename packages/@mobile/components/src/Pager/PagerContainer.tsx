@@ -1,3 +1,4 @@
+import { mergeRefs } from "@common/utils";
 import React, { Children, useEffect, forwardRef } from "react";
 import { PagerView, PagerViewRef, usePagerScrollHandler } from "../PagerView";
 import { usePagerContext } from "./PagerRoot";
@@ -7,8 +8,7 @@ type PagerContainerProps = {
 };
 
 export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
-  // TODO: what should I do about this ref?
-  ({ children }, ref) => {
+  ({ children }, forwardedRef) => {
     const { currentPage, setNumberOfPages, pagerViewRef } = usePagerContext();
 
     useEffect(() => {
@@ -27,16 +27,7 @@ export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
       <PagerView
         initialPage={0}
         onPageScroll={handler}
-        ref={(instance: PagerViewRef | null) => {
-          // @ts-ignore
-          pagerViewRef.current = instance;
-          if (typeof ref === "function") {
-            ref(instance);
-          } else if (typeof ref === "object") {
-            // @ts-ignore
-            ref.current = instance;
-          }
-        }}
+        ref={mergeRefs(forwardedRef, pagerViewRef)}
         style={{ flex: 1 }}
       >
         {children}

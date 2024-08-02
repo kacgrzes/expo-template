@@ -90,8 +90,8 @@ export const PagerView = forwardRef(
 
     return (
       <AnimatedPagerView
-        initialPage={initialPage}
         ref={pagerViewRef}
+        initialPage={initialPage}
         {...props}
         onPageSelected={(event) => {
           props.onPageSelected?.(event);
