@@ -16,6 +16,7 @@ import Animated, {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 // TODO: check why this component has such a big hit slop
 import { AnimatedRectButton } from "../AnimatedButtons";
+import { Shadow, shadowStyle } from "../Shadow";
 
 export type FABProps = Pick<
   ComponentProps<typeof AnimatedRectButton>,
@@ -106,32 +107,41 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
   }, [extended]);
 
   return (
-    <AnimatedRectButton style={styles.container} onPress={onPress}>
-      {/* TODO: add proper color here */}
-      <View style={styles.iconContainer}>
-        <Icon color={"#fff"} size={24} strokeWidth={2} />
-      </View>
-      <Animated.View
-        style={[
-          {
-            position: "relative",
-            justifyContent: "center",
-            alignItems: "center",
-            height: 48,
-          },
-          animatedLabelContainer,
-        ]}
-      >
-        {label ? (
-          <Animated.Text
-            onLayout={handleLayout}
-            style={[styles.label, animatedLabel]}
-          >
-            {label}
-          </Animated.Text>
-        ) : null}
-      </Animated.View>
-    </AnimatedRectButton>
+    <Shadow
+      style={shadowStyle({
+        color: "#000",
+        offset: [0, 1],
+        opacity: 0.22,
+        radius: 2.22,
+      })}
+    >
+      <AnimatedRectButton style={styles.container} onPress={onPress}>
+        {/* TODO: add proper color here */}
+        <View style={styles.iconContainer}>
+          <Icon color={"#fff"} size={24} strokeWidth={2} />
+        </View>
+        <Animated.View
+          style={[
+            {
+              position: "relative",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 48,
+            },
+            animatedLabelContainer,
+          ]}
+        >
+          {label ? (
+            <Animated.Text
+              onLayout={handleLayout}
+              style={[styles.label, animatedLabel]}
+            >
+              {label}
+            </Animated.Text>
+          ) : null}
+        </Animated.View>
+      </AnimatedRectButton>
+    </Shadow>
   );
 }
 

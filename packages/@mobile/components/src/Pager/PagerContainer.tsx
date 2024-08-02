@@ -1,14 +1,17 @@
 import { mergeRefs } from "@common/utils";
 import React, { Children, useEffect, forwardRef } from "react";
-import { PagerView, PagerViewRef, usePagerScrollHandler } from "../PagerView";
+import {
+  PagerView,
+  PagerViewProps,
+  PagerViewRef,
+  usePagerScrollHandler,
+} from "../PagerView";
 import { usePagerContext } from "./PagerRoot";
 
-type PagerContainerProps = {
-  children?: React.ReactNode;
-};
+type PagerContainerProps = Omit<PagerViewProps, "onPageScroll" | "style">;
 
 export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
-  ({ children }, forwardedRef) => {
+  ({ children, initialPage = 0, ...rest }, forwardedRef) => {
     const { currentPage, setNumberOfPages, pagerViewRef } = usePagerContext();
 
     useEffect(() => {
@@ -25,10 +28,11 @@ export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
 
     return (
       <PagerView
-        initialPage={0}
+        initialPage={initialPage}
         onPageScroll={handler}
         ref={mergeRefs(forwardedRef, pagerViewRef)}
         style={{ flex: 1 }}
+        {...rest}
       >
         {children}
       </PagerView>

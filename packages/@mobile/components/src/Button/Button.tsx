@@ -12,6 +12,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { ActivityIndicator } from "../ActivityIndicator";
 import { AnimatedRectButton } from "../AnimatedButtons";
+import { Shadow, shadowStyle } from "../Shadow";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { CommonAccessoryProps, CommonFormProps, Size, Status } from "../types";
@@ -87,35 +88,38 @@ export const Button = forwardRef<any, ButtonProps>(
     }));
 
     return (
-      <AnimatedRectButton
-        activeOpacity={theme.opacity}
-        enabled={!disabled && !loading}
-        {...rest}
-        style={[styles.container, style, disabledStyle]}
-      >
-        <View
-          accessible
-          accessibilityRole="button"
-          style={{ flexDirection: "row", alignItems: "center" }}
+      <Shadow style={styles.shadow(variant)}>
+        <AnimatedRectButton
+          activeOpacity={theme.opacity}
+          enabled={!disabled && !loading}
+          {...rest}
+          style={[styles.container, style, disabledStyle]}
         >
-          {left}
-          <View style={styles.titleContainer}>
-            {loading ? (
-              <Animated.View
-                style={[styles.loaderContainer, loaderAnimatedStyle]}
-              >
-                <ActivityIndicator status="muted" />
+          <View
+            accessible
+            accessibilityRole="button"
+            style={{ flexDirection: "row", alignItems: "center" }}
+          >
+            {left}
+            <View style={styles.titleContainer}>
+              {loading ? (
+                <Animated.View
+                  style={[styles.loaderContainer, loaderAnimatedStyle]}
+                >
+                  <ActivityIndicator status="muted" />
+                </Animated.View>
+              ) : null}
+              <Animated.View style={titleAnimatedStyle}>
+                <Text variant="label1" numberOfLines={1} style={styles.title}>
+                  {title}
+                </Text>
               </Animated.View>
-            ) : null}
-            <Animated.View style={titleAnimatedStyle}>
-              <Text variant="label1" numberOfLines={1} style={styles.title}>
-                {title}
-              </Text>
-            </Animated.View>
+            </View>
+            {right}
           </View>
-          {right}
-        </View>
-      </AnimatedRectButton>
+          <Shadow style={styles.shadow} />
+        </AnimatedRectButton>
+      </Shadow>
     );
   },
 );
@@ -133,11 +137,6 @@ const stylesheet = createStyleSheet((theme) => {
       borderWidth: 1,
       borderColor: "transparent",
       variants: {
-        full: {
-          true: {
-            alignSelf: "stretch",
-          },
-        },
         variant: {
           apple: {
             backgroundColor: theme.name === "light" ? "#000" : "#fff",
@@ -189,6 +188,31 @@ const stylesheet = createStyleSheet((theme) => {
           },
         },
       },
+    },
+    shadow: (variant: ButtonVariant) => {
+      const color = {
+        apple: theme.name === "light" ? "#000" : "#fff",
+        google: theme.name === "light" ? "#747775" : "#8E918F",
+        solid: theme.colors.primary,
+        outline: "transparent",
+        link: "transparent",
+      }[variant];
+
+      return {
+        ...shadowStyle({
+          color,
+          offset: [0, 12],
+          opacity: 0.2,
+          radius: 20,
+        }),
+        variants: {
+          full: {
+            true: {
+              alignSelf: "stretch",
+            },
+          },
+        },
+      };
     },
     hiddenTitle: {
       opacity: 0,
