@@ -14,7 +14,10 @@ export type TextVariant =
   | "body2"
   | "body3"
   | "body4"
-  | "code"
+  | "code1"
+  | "code2"
+  | "code3"
+  | "code4"
   | "title"
   | "label1"
   | "label2"
@@ -124,8 +127,8 @@ const stylesheet = createStyleSheet((theme) => {
             fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
           },
           body4: {
-            fontSize: 14,
-            lineHeight: 1.5 * 14,
+            fontSize: 10,
+            lineHeight: 1.5 * 10,
             fontWeight: "400",
             fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
           },
@@ -147,9 +150,27 @@ const stylesheet = createStyleSheet((theme) => {
             fontWeight: "500",
             fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
           },
-          code: {
+          code1: {
+            fontSize: 16,
+            lineHeight: 1.5 * 16,
+            fontWeight: "400",
+            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
+          },
+          code2: {
             fontSize: 14,
             lineHeight: 1.5 * 14,
+            fontWeight: "400",
+            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
+          },
+          code3: {
+            fontSize: 12,
+            lineHeight: 1.5 * 12,
+            fontWeight: "400",
+            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
+          },
+          code4: {
+            fontSize: 10,
+            lineHeight: 1.5 * 10,
             fontWeight: "400",
             fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
           },

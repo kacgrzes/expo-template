@@ -12,7 +12,7 @@ export function JSONViewer({ content, ...rest }: JSONViewerProps) {
 
   return (
     <Box borderRadius={8} padding={4} style={styles.jsonViewer} {...rest}>
-      <Text variant="code">{JSON.stringify(content, null, 2)}</Text>
+      <Text variant="code1">{JSON.stringify(content, null, 2)}</Text>
     </Box>
   );
 }
