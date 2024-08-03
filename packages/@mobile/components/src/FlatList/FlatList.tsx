@@ -34,6 +34,7 @@ export function FlatList<ItemT = any>({
   renderScrollComponent = defaultRenderScrollComponent,
   showsHorizontalScrollIndicator = true,
   showsVerticalScrollIndicator = true,
+  style,
   ...rest
 }: FlatListProps<ItemT>) {
   const ItemSeparatorComponent = useItemSeparatorComponent({
@@ -52,6 +53,7 @@ export function FlatList<ItemT = any>({
       renderScrollComponent={renderScrollComponent}
       showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
       showsVerticalScrollIndicator={showsVerticalScrollIndicator}
+      style={[{ overflow: "visible" }, style]}
       {...rest}
     />
   );

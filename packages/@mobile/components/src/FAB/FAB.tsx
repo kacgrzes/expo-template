@@ -107,14 +107,7 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
   }, [extended]);
 
   return (
-    <Shadow
-      style={shadowStyle({
-        color: "#000",
-        offset: [0, 1],
-        opacity: 0.22,
-        radius: 2.22,
-      })}
-    >
+    <Shadow style={styles.shadow}>
       <AnimatedRectButton style={styles.container} onPress={onPress}>
         {/* TODO: add proper color here */}
         <View style={styles.iconContainer}>
@@ -169,5 +162,11 @@ const stylesheet = createStyleSheet((theme) => {
       position: "absolute",
       color: "#fff",
     },
+    shadow: shadowStyle({
+      color: "#000",
+      offset: [0, 1],
+      opacity: 0.22,
+      radius: 2.22,
+    }),
   };
 });
