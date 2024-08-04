@@ -1,5 +1,5 @@
+import { BoxProps } from "@grapp/stacks";
 import React, { Fragment, forwardRef, memo, useMemo } from "react";
-import { View } from "react-native";
 import {
   KeyboardAwareScrollView,
   KeyboardAwareScrollViewProps,
@@ -12,6 +12,7 @@ import Reanimated, {
   useDerivedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useBoxProps, useBoxStyle } from "../Box";
 import { useScrollRef } from "../ScrollView";
 import { GradientOverlay } from "./GradientOverlay";
 import { useScreenContext } from "./ScreenContext";
@@ -23,10 +24,12 @@ const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
 
 export type ScreenScrollViewProps = KeyboardAwareScrollViewProps & {
   children?: React.ReactNode;
-};
+} & BoxProps;
 
 const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
-  ({ children, contentContainerStyle, ...rest }, ref) => {
+  ({ children, contentContainerStyle, padding = 3, ...rest }, ref) => {
+    const { boxProps, otherProps } = useBoxProps({ padding, ...rest });
+    const boxStyle = useBoxStyle(boxProps);
     const { footerHeight = 0, hasBottomEdge, hasTopEdge } = useScreenContext();
     const { height, progress } = useReanimatedKeyboardAnimation();
     const { bottom: bottomInsets, top } = useSafeAreaInsets();
@@ -60,23 +63,25 @@ const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
       [height, extraBottom, hasTopEdge, top],
     );
 
-    const animatedSpacerStyle = useAnimatedStyle(
-      () => ({
-        height: extraBottom.value,
-      }),
-      [extraBottom],
-    );
+    const animatedSpacerStyle = useAnimatedStyle(() => {
+      const height = extraBottom.value - 2 * (boxStyle?.gap ?? 0);
+      return {
+        height,
+      };
+    }, [extraBottom, boxStyle.gap]);
 
-    const memoizedContentContainerStyle = useMemo(
-      () => [
+    const memoizedContentContainerStyle = useMemo(() => {
+      const paddingTop = boxStyle.paddingTop || boxStyle.padding || 0;
+
+      return [
+        boxStyle,
         {
-          padding: 16,
-          paddingTop: hasTopEdge ? top + 16 : 16,
+          paddingTop: hasTopEdge ? top + paddingTop : paddingTop,
+          flexGrow: 1,
         },
         contentContainerStyle,
-      ],
-      [hasTopEdge, top, contentContainerStyle],
-    );
+      ];
+    }, [hasTopEdge, top, boxStyle, contentContainerStyle]);
 
     return (
       <Fragment>
@@ -92,10 +97,11 @@ const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
           keyboardDismissMode="interactive"
           keyboardShouldPersistTaps="handled"
           ref={ref}
-          {...rest}
+          {...otherProps}
           animatedProps={animatedProps}
+          contentContainerStyle={memoizedContentContainerStyle}
         >
-          <View style={memoizedContentContainerStyle}>{children}</View>
+          {children}
           <Reanimated.View style={animatedSpacerStyle} />
         </AnimatedKeyboardAwareScrollView>
       </Fragment>
