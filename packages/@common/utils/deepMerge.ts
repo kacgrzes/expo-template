@@ -1,9 +1,4 @@
-/**
- * Simple object check.
- * @param item
- * @returns {boolean}
- */
-export function isObject(item) {
+export function isObject(item: any): boolean {
   return item && typeof item === "object" && !Array.isArray(item);
 }
 
@@ -12,7 +7,7 @@ export function isObject(item) {
  * @param target
  * @param ...sources
  */
-export function deepMerge(target, ...sources) {
+export function deepMerge(target: any, ...sources: any) {
   if (!sources.length) return target;
   const source = sources.shift();
 
