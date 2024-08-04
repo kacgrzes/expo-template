@@ -22,7 +22,7 @@ import { useScrollToTop } from "@react-navigation/native";
 import { formatDistance } from "date-fns";
 import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -46,14 +46,6 @@ export default function App() {
       setExtended(false);
     }
   }, []);
-
-  useEffect(() => {
-    fetch("https://example.com/user")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
-  });
 
   return (
     <Screen

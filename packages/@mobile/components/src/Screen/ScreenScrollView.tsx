@@ -1,5 +1,5 @@
-import React, { forwardRef, memo, useMemo } from "react";
-import { Fragment, useRef } from "react";
+import React, { Fragment, forwardRef, memo, useMemo } from "react";
+import { View } from "react-native";
 import {
   KeyboardAwareScrollView,
   KeyboardAwareScrollViewProps,
@@ -24,8 +24,6 @@ const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
 export type ScreenScrollViewProps = KeyboardAwareScrollViewProps & {
   children?: React.ReactNode;
 };
-
-const scrollEventThrottle = 1000 / 60;
 
 const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
   ({ children, contentContainerStyle, ...rest }, ref) => {
@@ -94,12 +92,10 @@ const ScreenScrollViewComponent = forwardRef<any, ScreenScrollViewProps>(
           keyboardDismissMode="interactive"
           keyboardShouldPersistTaps="handled"
           ref={ref}
-          scrollEventThrottle={scrollEventThrottle}
           {...rest}
           animatedProps={animatedProps}
-          contentContainerStyle={memoizedContentContainerStyle}
         >
-          {children}
+          <View style={memoizedContentContainerStyle}>{children}</View>
           <Reanimated.View style={animatedSpacerStyle} />
         </AnimatedKeyboardAwareScrollView>
       </Fragment>
