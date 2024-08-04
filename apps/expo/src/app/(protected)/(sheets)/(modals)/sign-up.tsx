@@ -11,7 +11,7 @@ function SignUp() {
   return (
     <Screen
       footer={
-        <Box padding={4}>
+        <Box padding={3}>
           <Button title="Continue" />
         </Box>
       }

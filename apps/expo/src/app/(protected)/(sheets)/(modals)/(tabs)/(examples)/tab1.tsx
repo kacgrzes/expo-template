@@ -1,6 +1,7 @@
 import {
   Button,
   Notifier,
+  Screen,
   ScrollView,
   Text,
   Tooltip,
@@ -16,39 +17,37 @@ export default function Tab1() {
   });
 
   return (
-    <ScrollView
-      contentContainerStyle={{
-        gap: 16,
-      }}
-    >
-      <Tooltip.Root>
-        <Tooltip.Trigger>
-          <Button title="Toast example" />
-        </Tooltip.Trigger>
-        <Tooltip.Overlay />
-        <Tooltip.Content>
-          <Tooltip.Arrow />
-        </Tooltip.Content>
-      </Tooltip.Root>
-      <Button
-        title={"Create notification"}
-        onPress={() =>
-          Notifier.create({
-            status: sample(["success", "info", "warning", "error"]),
-            title: "Hello",
-            description: "This is a notification",
-          })
-        }
-      />
-      <Pressable
-        accessibilityRole="link"
-        onPress={() => {
-          Linking.openURL(redirectUrl);
-        }}
-      >
-        <Text>{redirectUrl}</Text>
-      </Pressable>
-      <Example />
-    </ScrollView>
+    <Screen edges={["bottom"]}>
+      <Screen.ScrollView gap={4}>
+        <Tooltip.Root>
+          <Tooltip.Trigger>
+            <Button title="Toast example" />
+          </Tooltip.Trigger>
+          <Tooltip.Overlay />
+          <Tooltip.Content>
+            <Tooltip.Arrow />
+          </Tooltip.Content>
+        </Tooltip.Root>
+        <Button
+          title={"Create notification"}
+          onPress={() =>
+            Notifier.create({
+              status: sample(["success", "info", "warning", "error"]),
+              title: "Hello",
+              description: "This is a notification",
+            })
+          }
+        />
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => {
+            Linking.openURL(redirectUrl);
+          }}
+        >
+          <Text>{redirectUrl}</Text>
+        </Pressable>
+        <Example />
+      </Screen.ScrollView>
+    </Screen>
   );
 }

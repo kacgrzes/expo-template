@@ -22,10 +22,7 @@ export default function Discover() {
         </Card>
       }
     >
-      <Screen.ScrollView
-        ref={ref}
-        contentContainerStyle={{ paddingHorizontal: 0, gap: 16 }}
-      >
+      <Screen.ScrollView ref={ref} gap={0} paddingX={0}>
         <Card margin={3} borderRadius={8}>
           <Text>Start your reading streak!</Text>
         </Card>

@@ -34,7 +34,6 @@ export default function App() {
   const ref = useScreenScrollView();
   useScrollToTop(ref);
 
-  const { styles } = useStyles(stylesheet);
   const { signOut, signIn, session } = useSession();
   const { t } = useTranslation();
   const [extended, setExtended] = useState(true);
@@ -53,21 +52,21 @@ export default function App() {
       fab={<FAB Icon={Feather} extended={extended} label="Hello!" />}
       footer={
         <Box padding={4} style={{ backgroundColor: "green" }}>
-          <Text>Hello!</Text>
           <TextInput />
         </Box>
       }
     >
       <Screen.ScrollView
-        ref={ref}
+        alignX="center"
+        gap={2}
         onScroll={handleScroll}
-        contentContainerStyle={styles.contentContainer}
+        ref={ref}
       >
         <SegmentedControl full />
         <Text variant="title" style={{ marginBottom: 12 }}>
           Hello
         </Text>
-        <Text style={styles.text}>
+        <Text textAlign="center">
           <Text>Open up App.js to start working on your app!{"\n"}</Text>
           <Text>{t("Welcome to React")}</Text>
         </Text>
@@ -114,19 +113,3 @@ export default function App() {
     </Screen>
   );
 }
-
-const stylesheet = createStyleSheet((theme) => ({
-  contentContainer: {
-    gap: theme.stacks.spacing * 1,
-    alignItems: "center",
-  },
-  text: {
-    justifyContent: "center",
-    textAlign: "center",
-  },
-  button: {
-    padding: 8,
-    justifyContent: "center",
-    textAlign: "center",
-  },
-}));
