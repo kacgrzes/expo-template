@@ -12,20 +12,26 @@ import { useDisabledStyle } from "../hooks/useDisabledStyle";
 
 type SegmentedControlProps = { disabled?: boolean; full?: boolean };
 
+const BORDER_SIZE = 2;
+const BORDER_RADIUS = 8;
+
 function Segment({
+  active,
   disabled,
   full,
   index,
   label,
   onPress,
 }: {
+  active?: boolean;
   disabled?: boolean;
   full?: boolean;
   index: number;
   label: string;
   onPress?: () => void;
 }) {
-  const { setMeasurements } = useSegmentedControlContext();
+  const { setMeasurements, numberOfMeasurements } =
+    useSegmentedControlContext();
   const { styles } = useStyles(stylesheet);
 
   const handleLayout = useCallback(
@@ -45,7 +51,7 @@ function Segment({
       <AnimatedRectButton
         enabled={!disabled}
         onPress={onPress}
-        style={styles.segment(full)}
+        style={styles.segment(full, active && numberOfMeasurements !== 3)}
       >
         <Text variant="label1">{label}</Text>
       </AnimatedRectButton>
@@ -57,7 +63,11 @@ const useSegmentedControl = () => {
   const [measurements, setMeasurements] = useState<LayoutRectangle[]>([]);
 
   const value = useMemo(
-    () => ({ measurements, setMeasurements }),
+    () => ({
+      measurements,
+      numberOfMeasurements: measurements.length,
+      setMeasurements,
+    }),
     [measurements],
   );
 
@@ -67,7 +77,7 @@ const useSegmentedControl = () => {
 const [SegmentedControlProvider, useSegmentedControlContext] =
   constate(useSegmentedControl);
 
-const ActiveSegment = ({
+const SegmentBackground = ({
   selectedIndex,
   full,
 }: {
@@ -89,7 +99,7 @@ const ActiveSegment = ({
     return {
       width: withTiming(measurement?.width, { duration: 300 }),
       height: withTiming(measurement?.height),
-      opacity: withTiming(1, { duration: 300 }),
+      opacity: 1,
       transform: [
         {
           translateX: withTiming(measurement?.x, { duration: 300 }),
@@ -110,6 +120,7 @@ export function SegmentedControl({ disabled, full }: SegmentedControlProps) {
     <SegmentedControlProvider>
       <Animated.View style={[styles.track, disabledStyle]}>
         <Segment
+          active={selectedIndex === 0}
           disabled={disabled}
           full={full}
           index={0}
@@ -117,6 +128,7 @@ export function SegmentedControl({ disabled, full }: SegmentedControlProps) {
           onPress={() => setSelectedIndex(0)}
         />
         <Segment
+          active={selectedIndex === 1}
           disabled={disabled}
           full={full}
           index={1}
@@ -124,13 +136,14 @@ export function SegmentedControl({ disabled, full }: SegmentedControlProps) {
           onPress={() => setSelectedIndex(1)}
         />
         <Segment
+          active={selectedIndex === 2}
           disabled={disabled}
           full={full}
           index={2}
           label="Segment #3"
           onPress={() => setSelectedIndex(2)}
         />
-        <ActiveSegment selectedIndex={selectedIndex} full={full} />
+        <SegmentBackground selectedIndex={selectedIndex} full={full} />
       </Animated.View>
     </SegmentedControlProvider>
   );
@@ -141,26 +154,27 @@ const stylesheet = createStyleSheet((theme) => {
     track: {
       flexDirection: "row",
       backgroundColor: theme.name === "dark" ? "grey" : "lightgrey",
-      padding: 2,
-      borderRadius: 8,
-      gap: 2,
+      padding: BORDER_SIZE,
+      borderRadius: BORDER_RADIUS,
+      gap: BORDER_SIZE,
       height: 44,
     },
-    segment: (full?: boolean) => {
+    segment: (full?: boolean, active?: boolean) => {
       return {
         height: "100%",
-        borderRadius: 6,
+        borderRadius: BORDER_RADIUS - BORDER_SIZE,
         flexGrow: full ? 1 : undefined,
+        backgroundColor: active ? theme.colors.background : undefined,
         justifyContent: "center",
         alignItems: "center",
-        paddingHorizontal: 8,
+        paddingHorizontal: BORDER_RADIUS - BORDER_SIZE,
       };
     },
     activeSegment: {
       backgroundColor: theme.colors.background,
-      borderRadius: 6,
+      borderRadius: BORDER_RADIUS - BORDER_SIZE,
       position: "absolute",
-      top: 2,
+      top: BORDER_SIZE,
       zIndex: -1,
     },
   };
