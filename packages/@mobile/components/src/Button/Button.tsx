@@ -33,7 +33,7 @@ export type ButtonProps = CommonFormProps &
   (
     | {
         title: string;
-        icon: undefined;
+        icon?: undefined;
       }
     | {
         title?: undefined;

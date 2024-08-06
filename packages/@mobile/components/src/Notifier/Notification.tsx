@@ -66,7 +66,7 @@ const stylesheet = createStyleSheet((theme) => {
     notification: (status: NotificationStatus) => {
       return {
         flexDirection: "row",
-        backgroundColor: theme.colors[status] + "AA",
+        backgroundColor: theme.colors[status] + "66",
         borderRadius: 16,
         paddingHorizontal: 12,
         paddingVertical: 16,
