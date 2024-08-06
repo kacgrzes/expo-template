@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
+import { ArrowDown } from "lucide-react-native";
 import { AppleAuthenticationButton } from "./AppleAuthenticationButton";
 import { Button } from "./Button";
 import { GoogleAuthenticationButton } from "./GoogleAuthenticationButton";
@@ -57,6 +58,13 @@ export const FullWidth: StoryObj<typeof Button> = {
   args: {
     full: true,
     title: "Full Width Button",
+  },
+};
+
+export const IconButton: StoryObj<typeof Button> = {
+  args: {
+    title: undefined,
+    icon: ArrowDown,
   },
 };
 

@@ -1,4 +1,5 @@
-import { forwardRef } from "react";
+import { LucideIcon } from "lucide-react-native";
+import { cloneElement, forwardRef } from "react";
 import { View } from "react-native";
 import { RectButtonProps } from "react-native-gesture-handler";
 import Animated, {
@@ -27,15 +28,25 @@ export type ButtonProps = CommonFormProps &
     loading?: boolean;
     size?: Size;
     status?: Status;
-    title: string;
     variant?: ButtonVariant;
-  } & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style">;
+  } & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style"> &
+  (
+    | {
+        title: string;
+        icon: undefined;
+      }
+    | {
+        title?: undefined;
+        icon: LucideIcon;
+      }
+  );
 
 export const Button = forwardRef<any, ButtonProps>(
   (
     {
       disabled,
       full,
+      icon,
       left = null,
       loading = false,
       right = null,
@@ -93,7 +104,11 @@ export const Button = forwardRef<any, ButtonProps>(
           activeOpacity={theme.opacity}
           enabled={!disabled && !loading}
           {...rest}
-          style={[styles.container, style, disabledStyle]}
+          style={[
+            styles.container({ hasIcon: icon !== undefined }),
+            style,
+            disabledStyle,
+          ]}
         >
           <View
             accessible
@@ -110,14 +125,20 @@ export const Button = forwardRef<any, ButtonProps>(
                 </Animated.View>
               ) : null}
               <Animated.View style={titleAnimatedStyle}>
-                <Text variant="label1" numberOfLines={1} style={styles.title}>
-                  {title}
-                </Text>
+                {title ? (
+                  <Text variant="label1" numberOfLines={1} style={styles.title}>
+                    {title}
+                  </Text>
+                ) : (
+                  cloneElement(icon, {
+                    size: 24,
+                    color: "white",
+                  })
+                )}
               </Animated.View>
             </View>
             {right}
           </View>
-          <Shadow style={styles.shadow} />
         </AnimatedRectButton>
       </Shadow>
     );
@@ -128,38 +149,43 @@ Button.displayName = "Button";
 
 const stylesheet = createStyleSheet((theme) => {
   return {
-    container: {
-      height: 44,
-      paddingHorizontal: 24,
-      borderRadius: 8,
-      alignItems: "center",
-      justifyContent: "center",
-      borderWidth: 1,
-      borderColor: "transparent",
-      variants: {
-        variant: {
-          apple: {
-            backgroundColor: theme.name === "light" ? "#000" : "#fff",
-            borderColor: theme.name === "light" ? "#000" : "#fff",
-          },
-          google: {
-            backgroundColor: theme.name === "light" ? "#FFFFFF" : "#131314",
-            borderColor: theme.name === "light" ? "#747775" : "#8E918F",
-          },
-          solid: {
-            backgroundColor: theme.colors.primary,
-            borderColor: theme.colors.primary,
-          },
-          outline: {
-            backgroundColor: "transparent",
-            borderColor: theme.colors.typography,
-          },
-          link: {
-            backgroundColor: "transparent",
-            borderColor: "transparent",
+    container: ({ hasIcon }: { hasIcon: boolean }) => {
+      const size = 44;
+
+      return {
+        height: size,
+        paddingHorizontal: hasIcon ? 0 : 24,
+        aspectRatio: hasIcon ? 1 : undefined,
+        borderRadius: hasIcon ? size / 2 : 8,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: "transparent",
+        variants: {
+          variant: {
+            apple: {
+              backgroundColor: theme.name === "light" ? "#000" : "#fff",
+              borderColor: theme.name === "light" ? "#000" : "#fff",
+            },
+            google: {
+              backgroundColor: theme.name === "light" ? "#FFFFFF" : "#131314",
+              borderColor: theme.name === "light" ? "#747775" : "#8E918F",
+            },
+            solid: {
+              backgroundColor: theme.colors.primary,
+              borderColor: theme.colors.primary,
+            },
+            outline: {
+              backgroundColor: "transparent",
+              borderColor: theme.colors.typography,
+            },
+            link: {
+              backgroundColor: "transparent",
+              borderColor: "transparent",
+            },
           },
         },
-      },
+      };
     },
     titleContainer: {
       position: "relative",

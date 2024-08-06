@@ -24,7 +24,6 @@ import { Link } from "expo-router";
 import { Feather } from "lucide-react-native";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const CompilerTest = () => {
   return <Text>{new Date().toUTCString()}</Text>;
@@ -63,6 +62,7 @@ export default function App() {
         ref={ref}
       >
         <SegmentedControl full />
+        <Button variant="solid" title="Test" full />
         <Text variant="title" style={{ marginBottom: 12 }}>
           Hello
         </Text>
