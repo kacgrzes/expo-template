@@ -39,6 +39,7 @@ export * from "./SectionList";
 export * from "./SegmentedControl";
 export * from "./Separator";
 export * from "./Shadow";
+export * from "./Skeleton";
 export * from "./Slider";
 export * from "./SocialIcon";
 export * from "./StatusBar";
