@@ -1,9 +1,30 @@
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Image, ImageProps } from "../Image";
+import { Skeleton } from "../Skeleton";
 import { Text } from "../Text";
 
 type Size = "s" | "m" | "l";
+
+const getSizeNumber = (sizeName: Size) => {
+  const sizes = {
+    s: 24,
+    m: 40,
+    l: 64,
+  };
+
+  return sizes[sizeName];
+};
+
+const getSizeStyle = (size: Size) => {
+  const sizeNumber = getSizeNumber(size);
+
+  return {
+    height: sizeNumber,
+    width: sizeNumber,
+    borderRadius: sizeNumber / 2,
+  };
+};
 
 type AvatarProps = {
   /**
@@ -13,6 +34,7 @@ type AvatarProps = {
    * - "l" - Large - within profile or settings screen
    */
   size?: Size;
+  loading?: boolean;
 } & Pick<ImageProps, "source">;
 
 /**
@@ -23,10 +45,14 @@ type AvatarProps = {
  * - "m" - Medium - list or content blocks
  * - "l" - Large - within profile or settings screen
  */
-export function Avatar({ size = "m", source }: AvatarProps) {
+export function Avatar({ size = "m", loading, source }: AvatarProps) {
   const { styles } = useStyles(stylesheet, {
     size,
   });
+
+  if (loading) {
+    return <Skeleton.Circle size={getSizeNumber(size)} />;
+  }
 
   if (source) {
     return (
@@ -49,31 +75,14 @@ const stylesheet = createStyleSheet((theme) => {
   return {
     avatar: {
       aspectRatio: 1,
-      backgroundColor: theme.colors.typography,
+      backgroundColor: "#E1E9EE",
       justifyContent: "center",
       alignItems: "center",
       variants: {
         size: {
-          s: {
-            height: 24,
-            width: 24,
-            borderRadius: 12,
-          },
-          m: {
-            height: 40,
-            width: 40,
-            borderRadius: 20,
-          },
-          l: {
-            height: 64,
-            width: 64,
-            borderRadius: 32,
-          },
-          default: {
-            height: 40,
-            width: 40,
-            borderRadius: 20,
-          },
+          s: getSizeStyle("s"),
+          m: getSizeStyle("m"),
+          l: getSizeStyle("l"),
         },
       },
     },
@@ -89,9 +98,6 @@ const stylesheet = createStyleSheet((theme) => {
           },
           l: {
             fontSize: 32,
-          },
-          default: {
-            fontSize: 20,
           },
         },
       },

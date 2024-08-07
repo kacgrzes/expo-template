@@ -8,6 +8,7 @@ const AvatarMeta: Meta<typeof Avatar> = {
   argTypes: {},
   args: {
     size: "m",
+    loading: false,
   },
 };
 
