@@ -1,9 +1,11 @@
+import { forwardRef } from "react";
 import {
   StyleSheet,
   Text as TextComponent,
   TextProps as TextComponentProps,
   TextStyle,
 } from "react-native";
+import Animated from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Status } from "../types";
 
@@ -25,7 +27,7 @@ export type TextVariant =
   | "caption1"
   | "caption2";
 
-type TextProps = TextComponentProps & {
+export type TextProps = TextComponentProps & {
   italic?: boolean;
   status?: Status;
   textAlign?: TextAlign;
@@ -33,29 +35,36 @@ type TextProps = TextComponentProps & {
   variant?: TextVariant;
 };
 
-// TODO: create animated version of Text
-export function Text({
-  italic = false,
-  status = "primary",
-  style,
-  textAlign,
-  textTransform,
-  variant = "body1",
-  ...rest
-}: TextProps) {
-  const { styles } = useStyles(stylesheet, { variant, status });
+export type TextRef = typeof TextComponent;
 
-  return (
-    <TextComponent
-      style={StyleSheet.flatten([
-        styles.text,
-        { textAlign, textTransform, fontStyle: italic ? "italic" : "normal" },
-        style,
-      ])}
-      {...rest}
-    />
-  );
-}
+export const Text = forwardRef<TextRef, TextProps>(
+  (
+    {
+      italic = false,
+      status = "primary",
+      style,
+      textAlign,
+      textTransform,
+      variant = "body1",
+      ...rest
+    },
+    ref,
+  ) => {
+    const { styles } = useStyles(stylesheet, { variant, status });
+
+    return (
+      <TextComponent
+        ref={ref}
+        style={StyleSheet.flatten([
+          styles.text,
+          { textAlign, textTransform, fontStyle: italic ? "italic" : "normal" },
+          style,
+        ])}
+        {...rest}
+      />
+    );
+  },
+);
 
 export const Title = ({ variant = "title", ...rest }: TextProps) => {
   return <Text variant={variant} {...rest} />;
@@ -202,3 +211,10 @@ const stylesheet = createStyleSheet((theme) => {
     },
   };
 });
+
+export const useTextVariantStyle = (variant = "body1") => {
+  const { styles } = useStyles(stylesheet, { variant });
+  return styles.text;
+};
+
+export const AnimatedText = Animated.createAnimatedComponent(Text);
