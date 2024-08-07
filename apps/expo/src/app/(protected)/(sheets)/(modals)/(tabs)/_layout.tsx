@@ -1,7 +1,7 @@
 import { Avatar, useBadgeStyle } from "@mobile/components";
 import { useTabsScreenOptions } from "@mobile/layouts";
 import { Tabs as TabsRouter } from "expo-router";
-import { Compass, Home } from "lucide-react-native";
+import { Bookmark, Compass, Home } from "lucide-react-native";
 
 export default function Tabs() {
   const screenOptions = useTabsScreenOptions();
@@ -36,6 +36,7 @@ export default function Tabs() {
         name="(examples)"
         options={{
           title: "Top tabs",
+          tabBarIcon: ({ color }) => <Bookmark size={24} color={color} />,
         }}
       />
     </TabsRouter>
