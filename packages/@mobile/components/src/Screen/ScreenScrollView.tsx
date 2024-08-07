@@ -39,11 +39,14 @@ const ScreenScrollViewComponent = forwardRef<
   const bottomTabBarHeight = useBottomTabBarHeight();
   const bottom = useMemo(() => {
     if (bottomTabBarHeight) {
+      if (footerHeight === 0) {
+        return 0;
+      }
       return bottomTabBarHeight;
     }
 
     return hasBottomEdge ? bottomInsets : 0;
-  }, [bottomTabBarHeight, hasBottomEdge, bottomInsets]);
+  }, [bottomTabBarHeight, hasBottomEdge, bottomInsets, footerHeight]);
 
   const extraBottom = useDerivedValue(() => {
     return footerHeight === 0
