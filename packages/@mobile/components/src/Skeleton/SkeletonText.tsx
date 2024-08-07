@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import React from "react";
-import { View } from "react-native";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { AnimatedText, Text, TextProps, useTextVariantStyle } from "../Text";
 import { Skeleton } from "./Skeleton";
 import { useSkeletonAnimation } from "./SkeletonContext";
@@ -50,50 +50,58 @@ export const SkeletonText = (props: PlaceholderTextProps) => {
       numberOfLines && lineHeight ? numberOfLines * lineHeight : undefined;
 
     return (
-      <Box
-        direction="row"
-        wrap={"wrap"}
-        style={{
-          maxHeight,
-          overflow: "hidden",
-        }}
-        alignX={textAlignToFlexJustify(textAlign)}
+      <Animated.View
+        entering={FadeIn.duration(300)}
+        exiting={FadeOut.duration(300)}
       >
-        {words.map((word, index) => (
-          <Box
-            alignY="center"
-            direction="row"
-            height={lineHeight}
-            key={`word-${index}`}
-          >
-            <AnimatedText
-              {...props}
-              style={[
-                {
-                  color: "transparent",
-                  flexShrink: 1,
-                  height: fontSize,
-                  backgroundColor: "#E1E9EE",
-                  overflow: "hidden",
-                  borderRadius: 4,
-                },
-                animatedStyles,
-              ]}
+        <Box
+          direction="row"
+          wrap={"wrap"}
+          style={{
+            maxHeight,
+            overflow: "hidden",
+          }}
+          alignX={textAlignToFlexJustify(textAlign)}
+        >
+          {words.map((word, index) => (
+            <Box
+              alignY="center"
+              direction="row"
+              height={lineHeight}
+              key={`word-${index}`}
             >
-              {word}
-            </AnimatedText>
+              <AnimatedText
+                {...props}
+                style={[
+                  {
+                    color: "transparent",
+                    flexShrink: 1,
+                    height: fontSize,
+                    backgroundColor: "#E1E9EE",
+                    overflow: "hidden",
+                    borderRadius: 4,
+                  },
+                  animatedStyles,
+                ]}
+              >
+                {word}
+              </AnimatedText>
 
-            {index !== lastWordIndex ? (
-              <Text style={{ height: fontSize }}> </Text>
-            ) : null}
-          </Box>
-        ))}
-      </Box>
+              {index !== lastWordIndex ? (
+                <Text style={{ height: fontSize }}> </Text>
+              ) : null}
+            </Box>
+          ))}
+        </Box>
+      </Animated.View>
     );
   }
 
   return (
-    <View>
+    <Animated.View
+      entering={FadeIn.duration(300)}
+      exiting={FadeOut.duration(300)}
+    >
       {new Array(numberOfLines).fill(null).map((_, index) => {
         return (
           <Box
@@ -110,6 +118,6 @@ export const SkeletonText = (props: PlaceholderTextProps) => {
           </Box>
         );
       })}
-    </View>
+    </Animated.View>
   );
 };

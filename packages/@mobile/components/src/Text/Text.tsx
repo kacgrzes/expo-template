@@ -5,8 +5,9 @@ import {
   TextProps as TextComponentProps,
   TextStyle,
 } from "react-native";
-import Animated from "react-native-reanimated";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { Skeleton } from "../Skeleton";
 import { Status } from "../types";
 
 type TextAlign = TextStyle["textAlign"];
@@ -29,6 +30,7 @@ export type TextVariant =
 
 export type TextProps = TextComponentProps & {
   italic?: boolean;
+  loading?: boolean;
   status?: Status;
   textAlign?: TextAlign;
   textTransform?: TextTransform;
@@ -41,6 +43,7 @@ export const Text = forwardRef<TextRef, TextProps>(
   (
     {
       italic = false,
+      loading,
       status = "primary",
       style,
       textAlign,
@@ -51,6 +54,30 @@ export const Text = forwardRef<TextRef, TextProps>(
     ref,
   ) => {
     const { styles } = useStyles(stylesheet, { variant, status });
+
+    if (loading) {
+      return <Skeleton.Text {...rest} textAlign={textAlign} />;
+    }
+
+    if (loading === false) {
+      return (
+        <AnimatedText
+          entering={FadeIn.duration(300)}
+          exiting={FadeOut.duration(300)}
+          ref={ref}
+          style={StyleSheet.flatten([
+            styles.text,
+            {
+              textAlign,
+              textTransform,
+              fontStyle: italic ? "italic" : "normal",
+            },
+            style,
+          ])}
+          {...rest}
+        />
+      );
+    }
 
     return (
       <TextComponent
