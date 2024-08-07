@@ -68,6 +68,7 @@ export function AppIconSwitcher({
 
 const stylesheet = createStyleSheet({
   contentContainerStyle: {
+    alignItems: "flex-start",
     flexDirection: "row",
     flexWrap: "wrap",
     rowGap: 16,

@@ -83,6 +83,8 @@ const ScreenScrollViewComponent = forwardRef<
       {
         paddingTop: hasTopEdge ? top + paddingTop : paddingTop,
         flexGrow: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start",
       },
       contentContainerStyle,
     ];
