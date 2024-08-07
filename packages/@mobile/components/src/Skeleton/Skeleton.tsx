@@ -3,7 +3,12 @@ import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { useSkeletonAnimation } from "./SkeletonContext";
 
-export const Skeleton = ({ width, height }) => {
+export type SkeletonProps = {
+  width: number;
+  height: number;
+};
+
+export const Skeleton = ({ width, height }: SkeletonProps) => {
   const animatedStyles = useSkeletonAnimation();
   const { styles } = useStyles(stylesheet);
 
@@ -16,7 +21,7 @@ export const Skeleton = ({ width, height }) => {
   );
 };
 
-const stylesheet = createStyleSheet((theme) => ({
+const stylesheet = createStyleSheet(() => ({
   skeleton: {
     backgroundColor: "#E1E9EE",
     borderRadius: 4,
