@@ -63,6 +63,7 @@ export default function App() {
       >
         <SegmentedControl full />
         <Button variant="solid" title="Test" full />
+        <TextInput />
         <Text variant="title" style={{ marginBottom: 12 }}>
           Hello
         </Text>
@@ -71,7 +72,6 @@ export default function App() {
           <Text>{t("Welcome to React")}</Text>
         </Text>
         <CompilerTest />
-        <TextInput />
         <Text>{isHermes ? <Text>Welcome to Hermes</Text> : null}</Text>
         <Text>
           {formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1))}
@@ -99,6 +99,9 @@ export default function App() {
         </Link>
         <Link href="/screen-section-list" asChild>
           <Button title="Screen SectionList" variant="link" full />
+        </Link>
+        <Link href="/Main" asChild>
+          <Button title="Examples" variant="link" full />
         </Link>
         <Button
           title="Open settings"

@@ -93,10 +93,6 @@ export const Text = forwardRef<TextRef, TextProps>(
   },
 );
 
-export const Title = ({ variant = "title", ...rest }: TextProps) => {
-  return <Text variant={variant} {...rest} />;
-};
-
 type LinkProps = TextProps & {
   onPress: () => void;
 };

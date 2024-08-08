@@ -241,9 +241,9 @@ const stylesheet = createStyleSheet((theme) => {
     textInputContainer: {
       alignItems: "center",
       backgroundColor: theme.colors.background,
-      borderColor: theme.colors.typography,
+      borderColor: "lightgrey",
       borderRadius: 5,
-      borderWidth: 1,
+      borderWidth: 2,
       flexDirection: "row",
       height: 44,
       justifyContent: "center",

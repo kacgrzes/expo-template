@@ -1,3 +1,4 @@
+import { Box } from "@grapp/stacks";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
@@ -21,6 +22,20 @@ const ButtonMeta: Meta<typeof Button> = {
 export default ButtonMeta;
 
 export const Default: StoryObj<typeof Button> = {};
+
+export const AllButtons: StoryObj<typeof Button> = {
+  render: () => {
+    return (
+      <Box gap={1} width={"100%"}>
+        <AppleAuthenticationButton />
+        <GoogleAuthenticationButton />
+        <Button title="Link" variant="link" />
+        <Button title="Outline" variant="outline" />
+        <Button title="Solid" variant="solid" />
+      </Box>
+    );
+  },
+};
 
 export const Disabled: StoryObj<typeof Button> = {
   args: {

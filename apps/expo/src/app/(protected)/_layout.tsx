@@ -1,4 +1,5 @@
 import { useSession } from "@mobile/auth";
+import { Screen } from "@mobile/components";
 import { Redirect, Stack } from "expo-router";
 import { Text } from "react-native";
 
@@ -7,7 +8,13 @@ export default function Protected() {
 
   // You can keep the splash screen open, or render a loading screen like we do here.
   if (isLoading) {
-    return <Text>Loading...</Text>;
+    return (
+      <Screen edges={["top"]}>
+        <Screen.ScrollView alignX={"center"} alignY={"center"}>
+          <Text>Loading...</Text>
+        </Screen.ScrollView>
+      </Screen>
+    );
   }
 
   // Only require authentication within the (app) group's layout as users

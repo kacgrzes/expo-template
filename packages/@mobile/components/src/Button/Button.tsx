@@ -58,7 +58,7 @@ export const Button = forwardRef<any, ButtonProps>(
     },
     _ref,
   ) => {
-    const { styles, theme } = useStyles(stylesheet, { variant, full });
+    const { styles } = useStyles(stylesheet, { variant, full });
     const disabledStyle = useDisabledStyle({ disabled: disabled || loading });
 
     const loadingProgress = useDerivedValue(() =>
@@ -101,7 +101,8 @@ export const Button = forwardRef<any, ButtonProps>(
     return (
       <Shadow style={styles.shadow(variant)}>
         <AnimatedRectButton
-          activeOpacity={theme.opacity}
+          underlayColor={"black"}
+          activeOpacity={0.1}
           enabled={!disabled && !loading}
           {...rest}
           style={[
@@ -159,25 +160,24 @@ const stylesheet = createStyleSheet((theme) => {
         borderRadius: hasIcon ? size / 2 : 8,
         alignItems: "center",
         justifyContent: "center",
-        borderWidth: 1,
         borderColor: "transparent",
         variants: {
           variant: {
             apple: {
               backgroundColor: theme.name === "light" ? "#000" : "#fff",
-              borderColor: theme.name === "light" ? "#000" : "#fff",
             },
             google: {
               backgroundColor: theme.name === "light" ? "#FFFFFF" : "#131314",
+              borderWidth: 2,
               borderColor: theme.name === "light" ? "#747775" : "#8E918F",
             },
             solid: {
               backgroundColor: theme.colors.primary,
-              borderColor: theme.colors.primary,
             },
             outline: {
               backgroundColor: "transparent",
               borderColor: theme.colors.typography,
+              borderWidth: 2,
             },
             link: {
               backgroundColor: "transparent",
