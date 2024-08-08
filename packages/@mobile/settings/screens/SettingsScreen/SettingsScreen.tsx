@@ -1,5 +1,11 @@
 import { Box } from "@grapp/stacks";
-import { ListItem, Screen, Switch, Text } from "@mobile/components";
+import {
+  ListItem,
+  Screen,
+  Switch,
+  Text,
+  useSwitchRef,
+} from "@mobile/components";
 import { useCurrentLanguage } from "@mobile/i18n";
 import { useRouter } from "expo-router";
 import {
@@ -17,6 +23,7 @@ import {
 } from "lucide-react-native";
 
 export function SettingsScreen() {
+  const switchRef = useSwitchRef();
   const router = useRouter();
   const currentLanguage = useCurrentLanguage();
 
@@ -56,9 +63,9 @@ export function SettingsScreen() {
           title="Haptic feedback"
           details="Use my device settings"
           onPress={() => {
-            // TODO
+            switchRef.current?.toggle();
           }}
-          right={<Switch />}
+          right={<Switch ref={switchRef} />}
         />
         <Box paddingX={4} marginBottom={4} marginTop={12}>
           <Text variant="label1" textTransform="uppercase">
