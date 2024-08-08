@@ -47,6 +47,12 @@ export default function SignIn() {
                 <Form.Field name="password">
                   <Form.Label>Password</Form.Label>
                   <Form.PasswordInput />
+                  <Form.HelperText>
+                    Password requirements: {"\n"}- At least 8 characters long{" "}
+                    {"\n"}- Contains uppercase and lowercase letters {"\n"}-
+                    Includes at least one number {"\n"}- Includes at least one
+                    special character (!@#$%^&*)
+                  </Form.HelperText>
                 </Form.Field>
                 <Form.Submit />
                 <Button

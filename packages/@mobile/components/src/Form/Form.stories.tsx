@@ -29,6 +29,12 @@ export const Default: StoryObj<typeof Form> = {
         <Form.Field name="lastName">
           <Form.Label>Hello</Form.Label>
           <Form.TextInput />
+          <Form.HelperText>
+            Password requirements: {"\n"}- At least 8 characters long {"\n"}-
+            Contains uppercase and lowercase letters {"\n"}- Includes at least
+            one number {"\n"}- Includes at least one special character
+            (!@#$%^&*)
+          </Form.HelperText>
         </Form.Field>
         <Form.Submit />
       </Form.Root>

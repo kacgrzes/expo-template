@@ -1,3 +1,4 @@
+import { useToggle } from "@common/hooks";
 import {
   Button,
   Notifier,
@@ -15,6 +16,7 @@ export default function Tab1() {
   const redirectUrl = Linking.createURL("index", {
     queryParams: { hello: "world" },
   });
+  const [loading, toggle] = useToggle(false);
 
   return (
     <Screen edges={["bottom"]}>
@@ -48,19 +50,22 @@ export default function Tab1() {
         </Pressable>
         <Example />
         <Skeleton.Provider>
+          <Skeleton.Circle size={40} />
           <Skeleton width={200} height={20} />
           <Skeleton width={150} height={20} />
           <Skeleton width={100} height={20} />
           <Skeleton.Text status="muted" numberOfLines={3} />
-          <Skeleton.Text status="muted">
-            Nie jestem w stanie dostarczyć bieżących danych pogodowych ani
-            informacji na temat średnich temperatur w konkretnym roku. Jednak na
-            podstawie historycznych danych, Gandia, miejscowość w Hiszpanii, ma
-            w maju średnią temperaturę około 18-20 stopni Celsjusza. Proszę
-            zwrócić uwagę, że te wartości to przybliżenia, a rzeczywista
-            temperatura może się różnić w zależności od roku oraz warunków
-            pogodowych.
-          </Skeleton.Text>
+          <Pressable onPress={toggle}>
+            <Text loading={loading} status="muted">
+              Nie jestem w stanie dostarczyć bieżących danych pogodowych ani
+              informacji na temat średnich temperatur w konkretnym roku. Jednak
+              na podstawie historycznych danych, Gandia, miejscowość w
+              Hiszpanii, ma w maju średnią temperaturę około 18-20 stopni
+              Celsjusza. Proszę zwrócić uwagę, że te wartości to przybliżenia, a
+              rzeczywista temperatura może się różnić w zależności od roku oraz
+              warunków pogodowych.
+            </Text>
+          </Pressable>
         </Skeleton.Provider>
       </Screen.ScrollView>
     </Screen>
