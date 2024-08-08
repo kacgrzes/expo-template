@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@grapp/stacks";
 import React from "react";
-import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import FadeInOut from "../FadeInOut";
 import { AnimatedText, Text, TextProps, useTextVariantStyle } from "../Text";
 import { Skeleton } from "./Skeleton";
 import { useSkeletonAnimation } from "./SkeletonContext";
@@ -50,10 +50,7 @@ export const SkeletonText = (props: PlaceholderTextProps) => {
       numberOfLines && lineHeight ? numberOfLines * lineHeight : undefined;
 
     return (
-      <Animated.View
-        entering={FadeIn.duration(300)}
-        exiting={FadeOut.duration(300)}
-      >
+      <FadeInOut>
         <Box
           direction="row"
           wrap={"wrap"}
@@ -93,15 +90,12 @@ export const SkeletonText = (props: PlaceholderTextProps) => {
             </Box>
           ))}
         </Box>
-      </Animated.View>
+      </FadeInOut>
     );
   }
 
   return (
-    <Animated.View
-      entering={FadeIn.duration(300)}
-      exiting={FadeOut.duration(300)}
-    >
+    <FadeInOut>
       {new Array(numberOfLines).fill(null).map((_, index) => {
         return (
           <Box
@@ -118,6 +112,6 @@ export const SkeletonText = (props: PlaceholderTextProps) => {
           </Box>
         );
       })}
-    </Animated.View>
+    </FadeInOut>
   );
 };

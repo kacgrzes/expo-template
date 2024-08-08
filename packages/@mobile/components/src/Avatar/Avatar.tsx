@@ -1,5 +1,5 @@
-import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import FadeInOut from "../FadeInOut";
 import { Image, ImageProps } from "../Image";
 import { Skeleton } from "../Skeleton";
 import { Text } from "../Text";
@@ -56,18 +56,20 @@ export function Avatar({ size = "m", loading, source }: AvatarProps) {
 
   if (source) {
     return (
-      <Image
-        accessibilityIgnoresInvertColors
-        source={source}
-        style={styles.avatar}
-      />
+      <FadeInOut>
+        <Image
+          accessibilityIgnoresInvertColors
+          source={source}
+          style={styles.avatar}
+        />
+      </FadeInOut>
     );
   }
 
   return (
-    <View style={styles.avatar}>
+    <FadeInOut style={styles.avatar}>
       <Text style={styles.text}>K</Text>
-    </View>
+    </FadeInOut>
   );
 }
 

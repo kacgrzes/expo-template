@@ -1,6 +1,6 @@
 import React from "react";
-import Animated from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import FadeInOut from "../FadeInOut";
 import { useSkeletonAnimation } from "./SkeletonContext";
 
 type SkeletonCircleProps = {
@@ -11,7 +11,7 @@ export const SkeletonCircle = ({ size }: SkeletonCircleProps) => {
   const animatedStyles = useSkeletonAnimation();
   const { styles } = useStyles(stylesheet);
 
-  return <Animated.View style={[styles.circle(size), animatedStyles]} />;
+  return <FadeInOut style={[styles.circle(size), animatedStyles]} />;
 };
 
 const stylesheet = createStyleSheet({

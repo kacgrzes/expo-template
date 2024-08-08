@@ -6,6 +6,7 @@ import Animated, {
   AnimatedStyle,
 } from "react-native-reanimated";
 import { useStyles } from "react-native-unistyles";
+import FadeInOut from "../FadeInOut";
 
 type OverlayProps = {
   fadeInOut?: boolean;
@@ -38,13 +39,8 @@ export const Overlay = ({ fadeInOut, onPress, style }: OverlayProps) => {
 
   return (
     <GestureDetector gesture={gesture}>
-      <Animated.View
-        entering={
-          fadeInOut ? FadeIn.duration(theme.animation.duration) : undefined
-        }
-        exiting={
-          fadeInOut ? FadeOut.duration(theme.animation.duration) : undefined
-        }
+      <FadeInOut
+        enabled={fadeInOut}
         style={[
           StyleSheet.absoluteFill,
           {
