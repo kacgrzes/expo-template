@@ -9,6 +9,7 @@ import { FABProps } from "../FAB";
 import { ScreenProvider } from "./ScreenContext";
 import { ScreenFlatList } from "./ScreenFlatList";
 import { ScreenFooter } from "./ScreenFooter";
+import { ScrollToBottom, ScrollToTop } from "./ScreenScrollTo";
 import { ScreenScrollView } from "./ScreenScrollView";
 import { ScreenSectionList } from "./ScreenSectionList";
 import { useBottomTabBarHeight } from "./useBottomTabBarHeight";
@@ -73,6 +74,8 @@ type ScreenComposition = MemoExoticComponent<typeof ScreenComponent> & {
   FlatList: typeof ScreenFlatList;
   ScrollView: typeof ScreenScrollView;
   SectionList: typeof ScreenSectionList;
+  ScrollToTop: typeof ScrollToTop;
+  ScrollToBottom: typeof ScrollToBottom;
 };
 
 export const Screen = ScreenComponent as ScreenComposition;
@@ -80,6 +83,8 @@ export const Screen = ScreenComponent as ScreenComposition;
 Screen.FlatList = ScreenFlatList;
 Screen.ScrollView = ScreenScrollView;
 Screen.SectionList = ScreenSectionList;
+Screen.ScrollToTop = ScrollToTop;
+Screen.ScrollToBottom = ScrollToBottom;
 
 const stylesheet = createStyleSheet((theme) => ({
   screen: {
