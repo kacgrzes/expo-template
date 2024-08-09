@@ -1,4 +1,3 @@
-import { Box } from "@grapp/stacks";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
@@ -20,7 +19,7 @@ export const Default: StoryObj<typeof Chip> = {};
 export const Group: StoryObj<typeof Chip> = {
   render: () => {
     return (
-      <Chip.Group gap={2}>
+      <Chip.Group>
         <Chip />
         <Chip />
         <Chip />
@@ -29,6 +28,22 @@ export const Group: StoryObj<typeof Chip> = {
         <Chip />
         <Chip />
       </Chip.Group>
+    );
+  },
+};
+
+export const ScrollView: StoryObj<typeof Chip> = {
+  render: () => {
+    return (
+      <Chip.ScrollView>
+        <Chip />
+        <Chip />
+        <Chip />
+        <Chip />
+        <Chip />
+        <Chip />
+        <Chip />
+      </Chip.ScrollView>
     );
   },
 };
