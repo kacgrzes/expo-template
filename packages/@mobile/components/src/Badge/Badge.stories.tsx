@@ -23,7 +23,11 @@ export const Default: StoryObj<typeof Badge> = {
   },
 };
 
-export const Dot: StoryObj<typeof Badge> = {};
+export const Dot: StoryObj<typeof Badge> = {
+  args: {
+    label: undefined,
+  },
+};
 
 export const Label: StoryObj<typeof Badge> = {
   args: {

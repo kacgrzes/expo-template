@@ -51,7 +51,7 @@ export function Badge({
           style={styles.label(status)}
           suppressHighlighting
           textAlign="center"
-          variant="label1"
+          variant="label3"
         >
           {value}
         </Text>
