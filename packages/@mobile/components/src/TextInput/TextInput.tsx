@@ -23,6 +23,8 @@ import Animated, {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 /** eslint-disable @typescript-eslint/no-unused-vars */
 import { CommonAccessoryProps, CommonFormProps } from "../types";
+import { textInputFocusManager } from "./textInputFocusManager";
+import { TextInputRef } from "./useTextInputRef";
 
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 
@@ -30,48 +32,6 @@ const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 export type TextInputProps = CommonFormProps &
   CommonAccessoryProps &
   Omit<RNTextInputProps, "editable">;
-
-class TextInputFocusManager {
-  private lastFocused: RNTextInput | null;
-
-  constructor() {
-    this.lastFocused = null;
-  }
-
-  setLastTextInput(textInput: RNTextInput) {
-    this.lastFocused = textInput;
-  }
-
-  focusLastTextInput() {
-    this.lastFocused?.focus();
-  }
-
-  dismissLastTextInput() {
-    this.lastFocused?.blur();
-  }
-
-  getLastTextInput() {
-    return this.lastFocused;
-  }
-
-  resetLastTextInput() {
-    this.lastFocused = null;
-  }
-}
-
-export type TextInputRef = {
-  blur: () => undefined;
-  clear: () => undefined;
-  focus: () => undefined;
-  isFocused: () => boolean | undefined;
-  shake: () => undefined;
-};
-
-export const useTextInputRef = () => {
-  return useRef<TextInputRef>(null);
-};
-
-export const textInputFocusManager = new TextInputFocusManager();
 
 export const TextInput = forwardRef<TextInputRef, TextInputProps>(
   (
