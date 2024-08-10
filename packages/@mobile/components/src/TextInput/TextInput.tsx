@@ -1,5 +1,11 @@
 import { useShakeAnimation } from "@mobile/hooks/useShakeAnimation";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import {
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import {
   NativeSyntheticEvent,
   // TextInput as RNTextInput,
@@ -12,6 +18,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
+  useDerivedValue,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 /** eslint-disable @typescript-eslint/no-unused-vars */
@@ -72,10 +79,16 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     outerRef,
   ) => {
     "use no memo";
+    const [value, setValue] = useState("");
     const { shake, shakeAnimatedStyle } = useShakeAnimation();
     const { styles, theme } = useStyles(stylesheet);
     const innerRef = useRef<RNTextInput>(null);
+
     const isFocused = useSharedValue(false);
+    const hasValue = value.length !== 0;
+    const isFocusedOrHasValue = useDerivedValue(
+      () => isFocused.value || hasValue,
+    );
 
     useImperativeHandle(
       outerRef,
@@ -129,8 +142,20 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     const focusedStyleTextInput = useAnimatedStyle(() => {
       return {
         borderColor: withTiming(
-          isFocused.value ? theme.colors.primary : theme.colors.typography,
+          isFocusedOrHasValue.value
+            ? theme.colors.primary
+            : theme.colors.typography,
           { duration: theme.animation.duration },
+        ),
+        bottom: -4,
+      };
+    });
+
+    const textInputContainerStyle = useAnimatedStyle(() => {
+      return {
+        borderColor: withTiming(
+          isFocused.value ? theme.colors.primary : "lightgrey",
+          { duration: 300 },
         ),
       };
     });
@@ -155,13 +180,13 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
 
     const focusedStyleText = useAnimatedStyle(() => {
       return {
-        top: withTiming(isFocused.value ? 4 : 13, {
+        top: withTiming(isFocusedOrHasValue.value ? 4 : 13, {
           duration: theme.animation.duration,
         }),
-        fontSize: withTiming(isFocused.value ? 12 : 16, {
+        fontSize: withTiming(isFocusedOrHasValue.value ? 12 : 16, {
           duration: theme.animation.duration,
         }),
-        lineHeight: withTiming(isFocused.value ? 12 : 16, {
+        lineHeight: withTiming(isFocusedOrHasValue.value ? 12 : 16, {
           duration: theme.animation.duration,
         }),
         color: withTiming(
@@ -178,6 +203,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
           styles.textInputContainer,
           style,
           shakeAnimatedStyle,
+          textInputContainerStyle,
           disabledAnimatedStyle,
         ]}
       >
@@ -225,6 +251,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
             ]}
             textAlign="left"
             textContentType="none"
+            onChangeText={setValue}
           />
         </View>
         {right}
