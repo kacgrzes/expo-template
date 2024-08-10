@@ -61,7 +61,11 @@ export default function App() {
         onScroll={handleScroll}
         ref={ref}
       >
-        <SegmentedControl full />
+        <SegmentedControl full>
+          <SegmentedControl.Item label="Segment #1" />
+          <SegmentedControl.Item label="Segment #2" />
+          <SegmentedControl.Item label="Segment #3 very very long text" />
+        </SegmentedControl>
         <Button variant="solid" title="Test" full />
         <TextInput />
         <Text variant="title" style={{ marginBottom: 12 }}>
@@ -113,6 +117,7 @@ export default function App() {
         <ContextMenuExample />
         <DropdownMenuExample />
       </Screen.ScrollView>
+      <Screen.ScrollToBottom />
     </Screen>
   );
 }

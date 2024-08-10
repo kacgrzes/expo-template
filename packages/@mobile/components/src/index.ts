@@ -44,6 +44,7 @@ export * from "./Slider";
 export * from "./SocialIcon";
 export * from "./StatusBar";
 export * from "./Switch";
+export * from "./Tabs";
 export * from "./Text";
 export * from "./TextInput";
 export * from "./Tooltip";
