@@ -8,7 +8,7 @@
   "private": true,
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "husky": "^9.0.11",
+    "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
     "turbo": "latest",
     "typescript": "~5.3.3"
@@ -40,6 +40,7 @@
   },
   "packageManager": "^bun@1.0.18",
   "dependencies": {
-    "constate": "^3.3.2"
+    "constate": "^3.3.2",
+    "lucide-react-native": "^0.427.0"
   }
 }
