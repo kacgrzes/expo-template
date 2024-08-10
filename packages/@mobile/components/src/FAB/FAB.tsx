@@ -119,7 +119,7 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
               position: "relative",
               justifyContent: "center",
               alignItems: "center",
-              height: 48,
+              height: 44,
             },
             animatedLabelContainer,
           ]}
@@ -139,7 +139,7 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
 }
 
 const stylesheet = createStyleSheet((theme) => {
-  const size = 48;
+  const size = 44;
 
   return {
     iconContainer: {

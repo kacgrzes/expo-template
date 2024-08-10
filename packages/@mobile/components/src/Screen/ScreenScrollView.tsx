@@ -82,7 +82,7 @@ const ScreenScrollViewComponent = forwardRef<
       boxStyle,
       {
         paddingTop: hasTopEdge ? top + paddingTop : paddingTop,
-        flexGrow: 1,
+        // flexGrow: 1,
         flexDirection: "column",
         justifyContent: "flex-start",
       },
