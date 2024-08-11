@@ -1,8 +1,9 @@
 import { forwardRef } from "react";
 import { StyleSheet, Text as TextComponent } from "react-native";
-import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import { FadeIn, FadeOut } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Skeleton } from "../Skeleton";
+import { AnimatedText } from "./AnimatedText";
 import { TextProps, TextRef } from "./Text.types";
 
 export const Text = forwardRef<TextRef, TextProps>(
@@ -215,5 +216,3 @@ export const useTextVariantStyle = (variant = "body1") => {
   const { styles } = useStyles(stylesheet, { variant });
   return styles.text;
 };
-
-export const AnimatedText = Animated.createAnimatedComponent(Text);

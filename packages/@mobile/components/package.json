@@ -6,9 +6,11 @@
   },
   "devDependencies": {
     "@types/color": "^3.0.6",
+    "clipboardy": "^4.0.0",
     "plop": "^4.0.1"
   },
   "scripts": {
-    "generate": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=plopfile.ts"
+    "generate": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=plopfile.ts",
+    "copy-types": "node ./scripts/copy-types.mjs"
   }
 }

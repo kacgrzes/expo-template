@@ -31,17 +31,29 @@ const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 
 export const TextInput = forwardRef<TextInputRef, TextInputProps>(
   (
-    { disabled, onBlur, onFocus, style, left = null, right = null, ...props },
+    {
+      disabled,
+      onBlur,
+      onFocus,
+      style,
+      left = null,
+      right = null,
+      value: controlledValue,
+      defaultValue,
+      ...props
+    },
     outerRef,
   ) => {
     "use no memo";
-    const [value, setValue] = useState("");
+    const [internalValue, setInternalValue] = useState(defaultValue);
+    const value =
+      controlledValue !== undefined ? controlledValue : internalValue;
     const { shake, shakeAnimatedStyle } = useShakeAnimation();
     const { styles, theme } = useStyles(stylesheet);
     const innerRef = useRef<RNTextInput>(null);
 
     const isFocused = useSharedValue(false);
-    const hasValue = value.length !== 0;
+    const hasValue = typeof value !== "undefined" && value.length !== 0;
     const isFocusedOrHasValue = useDerivedValue(
       () => isFocused.value || hasValue,
     );
@@ -205,9 +217,10 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
               }),
               focusedStyleTextInput,
             ]}
+            value={value}
             textAlign="left"
             textContentType="none"
-            onChangeText={setValue}
+            onChangeText={setInternalValue}
           />
         </View>
         {right}
