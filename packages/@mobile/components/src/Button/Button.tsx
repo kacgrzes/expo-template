@@ -26,7 +26,7 @@ export const Button = forwardRef<any, ButtonProps>(
       left = null,
       loading = false,
       right = null,
-      size,
+      size = "m",
       style,
       title,
       variant = "solid",
@@ -34,7 +34,7 @@ export const Button = forwardRef<any, ButtonProps>(
     },
     _ref,
   ) => {
-    const { styles } = useStyles(stylesheet, { variant, full });
+    const { styles } = useStyles(stylesheet, { variant, full, size });
     const disabledStyle = useDisabledStyle({ disabled: disabled || loading });
 
     const loadingProgress = useDerivedValue(() =>
@@ -127,13 +127,9 @@ Button.displayName = "Button";
 const stylesheet = createStyleSheet((theme) => {
   return {
     container: ({ hasIcon }: { hasIcon: boolean }) => {
-      const size = 44;
-
       return {
-        height: size,
         paddingHorizontal: hasIcon ? 0 : 24,
         aspectRatio: hasIcon ? 1 : undefined,
-        borderRadius: hasIcon ? size / 2 : 8,
         alignItems: "center",
         justifyContent: "center",
         borderColor: "transparent",
@@ -158,6 +154,20 @@ const stylesheet = createStyleSheet((theme) => {
             link: {
               backgroundColor: "transparent",
               borderColor: "transparent",
+            },
+          },
+          size: {
+            s: {
+              height: 40,
+              borderRadius: hasIcon ? 40 / 2 : 8,
+            },
+            m: {
+              height: 44,
+              borderRadius: hasIcon ? 44 / 2 : 8,
+            },
+            l: {
+              height: 48,
+              borderRadius: hasIcon ? 48 / 2 : 8,
             },
           },
         },

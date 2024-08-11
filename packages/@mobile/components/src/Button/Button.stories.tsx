@@ -37,6 +37,18 @@ export const AllButtons: StoryObj<typeof Button> = {
   },
 };
 
+export const AllSizes: StoryObj<typeof Button> = {
+  render: () => {
+    return (
+      <Box gap={1} width={"100%"}>
+        <Button title="Small" size="s" />
+        <Button title="Medium" size="m" />
+        <Button title="Large" size="l" />
+      </Box>
+    );
+  },
+};
+
 export const Disabled: StoryObj<typeof Button> = {
   args: {
     disabled: true,
