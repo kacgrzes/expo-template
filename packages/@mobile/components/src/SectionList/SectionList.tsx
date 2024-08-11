@@ -1,16 +1,10 @@
-import { ComponentProps } from "react";
-import { SectionList as RNSectionList } from "react-native";
+import { SectionList as SectionListComponent } from "react-native";
 import { useItemSeparatorComponent } from "../ItemSeparatorComponent";
 import {
   defaultKeyExtractor,
   defaultRenderScrollComponent,
 } from "../defaultListProps";
-
-export type SectionListProps<ItemT> = ComponentProps<
-  typeof RNSectionList<ItemT>
-> & {
-  gap?: number;
-};
+import { SectionListProps } from "./SectionList.types";
 
 /**
  * # SectionList
@@ -44,7 +38,7 @@ export function SectionList<ItemT = any>({
   });
 
   return (
-    <RNSectionList<ItemT>
+    <SectionListComponent<ItemT>
       ItemSeparatorComponent={ItemSeparatorComponent}
       contentContainerStyle={contentContainerStyle}
       data={data}

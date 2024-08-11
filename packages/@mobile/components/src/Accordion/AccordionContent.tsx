@@ -7,11 +7,8 @@ import Animated, {
   useAnimatedStyle,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { AccordionContentProps } from "./Accordion.types";
 import { useAccordionItemContext } from "./AccordionItem";
-
-export type AccordionContentProps = {
-  children?: React.ReactNode;
-};
 
 export const AccordionContent = ({ children }: AccordionContentProps) => {
   const { selected } = useAccordionItemContext();

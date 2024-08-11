@@ -1,17 +1,8 @@
 import { Box } from "@grapp/stacks";
-import React, { ComponentProps } from "react";
+import React from "react";
 import { AnimatedBorderlessButton } from "../AnimatedButtons";
 import { AnimatedText } from "../Text";
-
-type TabsItemProps = {
-  disabled?: boolean;
-  label: string;
-  selected?: boolean;
-  testID?: string;
-} & Pick<
-  ComponentProps<typeof AnimatedBorderlessButton>,
-  "onPress" | "onLongPress"
->;
+import { TabsItemProps } from "./Tabs.types";
 
 export const TabsItem = ({
   disabled = false,

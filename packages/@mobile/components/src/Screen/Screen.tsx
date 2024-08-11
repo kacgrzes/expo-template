@@ -1,11 +1,11 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import { useLayout } from "@react-native-community/hooks";
-import React, { ReactElement, useMemo, MemoExoticComponent } from "react";
+import React, { useMemo, MemoExoticComponent } from "react";
 import { View } from "react-native";
 import { KeyboardStickyView } from "react-native-keyboard-controller";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { FABProps } from "../FAB";
+import { ScreenProps } from "./Screen.types";
 import { ScreenProvider } from "./ScreenContext";
 import { ScreenFlatList } from "./ScreenFlatList";
 import { ScreenFooter } from "./ScreenFooter";
@@ -13,13 +13,6 @@ import { ScrollToBottom, ScrollToTop } from "./ScreenScrollTo";
 import { ScreenScrollView } from "./ScreenScrollView";
 import { ScreenSectionList } from "./ScreenSectionList";
 import { useBottomTabBarHeight } from "./useBottomTabBarHeight";
-
-type ScreenProps = {
-  children?: React.ReactNode;
-  fab?: ReactElement<FABProps>;
-  footer?: ReactElement<BoxProps>;
-  edges?: ("bottom" | "top")[];
-};
 
 const ScreenComponent = React.memo(
   ({ children, fab, footer, edges = ["bottom"] }: ScreenProps) => {

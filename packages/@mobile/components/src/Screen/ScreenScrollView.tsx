@@ -1,5 +1,4 @@
 import { mergeRefs } from "@common/utils";
-import { BoxProps } from "@grapp/stacks";
 import React, { Fragment, forwardRef, memo, useMemo } from "react";
 import {
   KeyboardAwareScrollView,
@@ -16,16 +15,13 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useBoxProps, useBoxStyle } from "../Box";
 import { ScrollViewRef, useScrollRef } from "../ScrollView";
 import { GradientOverlay } from "./GradientOverlay";
+import { ScreenScrollViewProps } from "./Screen.types";
 import { useScreenContext } from "./ScreenContext";
 import { useBottomTabBarHeight } from "./useBottomTabBarHeight";
 
 const AnimatedKeyboardAwareScrollView = Reanimated.createAnimatedComponent(
   KeyboardAwareScrollView,
 );
-
-export type ScreenScrollViewProps = KeyboardAwareScrollViewProps & {
-  children?: React.ReactNode;
-} & BoxProps;
 
 const ScreenScrollViewComponent = forwardRef<
   ScrollViewRef,

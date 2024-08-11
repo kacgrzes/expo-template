@@ -1,9 +1,8 @@
 import React, { useCallback } from "react";
-import { SectionList, SectionListProps } from "../SectionList";
+import { SectionList } from "../SectionList";
 import { useSectionListRef } from "../SectionList";
+import { ScreenSectionListProps } from "./Screen.types";
 import { ScreenScrollView } from "./ScreenScrollView";
-
-export type ScreenSectionListProps<ItemT> = SectionListProps<ItemT>;
 
 export const ScreenSectionList = <ItemT = any>(
   props: ScreenSectionListProps<ItemT>,

@@ -1,16 +1,10 @@
-import { ViewProps } from "react-native";
 import Animated, {
   useAnimatedStyle,
   interpolate,
   interpolateColor,
-  SharedValue,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
-type DotProps = Pick<ViewProps, "style"> & {
-  index?: number;
-  animatedIndex?: SharedValue<number>;
-};
+import { DotProps } from "./Dot.types";
 
 export function Dot({ index, animatedIndex, style }: DotProps) {
   const { styles } = useStyles(stylesheet);

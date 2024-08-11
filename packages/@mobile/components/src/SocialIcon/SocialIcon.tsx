@@ -1,14 +1,7 @@
 import { Facebook, Instagram, Twitter } from "lucide-react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
 import { AnimatedBaseButton } from "../AnimatedButtons";
-
-type Name = "Facebook" | "Instagram" | "Twitter";
-
-type SocialIconProps = {
-  name: Name;
-  onPress: () => void;
-};
+import { Name, SocialIconProps } from "./SocialIcon.types";
 
 export function SocialIcon({ name, onPress }: SocialIconProps) {
   const { styles } = useStyles(stylesheet);

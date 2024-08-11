@@ -1,10 +1,5 @@
-import { Box, BoxProps } from "@grapp/stacks";
-import { ReactNode } from "react";
-
-type ChipGroupProps = {
-  children?: ReactNode;
-  // multiple?: boolean;
-} & Pick<BoxProps, "gap">;
+import { Box } from "@grapp/stacks";
+import { ChipGroupProps } from "./Chip.types";
 
 export const ChipGroup = ({ children }: ChipGroupProps) => {
   return (

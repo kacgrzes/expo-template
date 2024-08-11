@@ -8,8 +8,6 @@ import {
 } from "react";
 import {
   NativeSyntheticEvent,
-  // TextInput as RNTextInput,
-  TextInputProps as RNTextInputProps,
   TextInputFocusEventData,
   View,
 } from "react-native";
@@ -22,16 +20,14 @@ import Animated, {
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 /** eslint-disable @typescript-eslint/no-unused-vars */
-import { CommonAccessoryProps, CommonFormProps } from "../types";
+
+import { TextInputProps } from "./TextInput.types";
 import { textInputFocusManager } from "./textInputFocusManager";
 import { TextInputRef } from "./useTextInputRef";
 
 const AnimatedTextInput = Animated.createAnimatedComponent(RNTextInput);
 
 // TODO: add TextInput.Icon / TextInput.Affix
-export type TextInputProps = CommonFormProps &
-  CommonAccessoryProps &
-  Omit<RNTextInputProps, "editable">;
 
 export const TextInput = forwardRef<TextInputRef, TextInputProps>(
   (

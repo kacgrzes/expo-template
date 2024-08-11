@@ -3,9 +3,8 @@ import { useCallback, useState } from "react";
 import { Pressable } from "react-native";
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
 import { useStyles } from "react-native-unistyles";
-import { TextInput, TextInputProps, useTextInputRef } from "../TextInput";
-
-type SearchBarProps = TextInputProps;
+import { TextInput, useTextInputRef } from "../TextInput";
+import { SearchBarProps } from "./SearchBar.types";
 
 /**
  * # SearchBar

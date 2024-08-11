@@ -1,13 +1,7 @@
-import {
-  RefreshControl as RefreshControlComponent,
-  RefreshControlProps as RefreshControlComponentProps,
-} from "react-native";
+import React from "react";
+import { RefreshControl as RefreshControlComponent } from "react-native";
 import { useStyles } from "react-native-unistyles";
-
-type RefreshControlProps = Pick<
-  RefreshControlComponentProps,
-  "refreshing" | "onRefresh"
->;
+import { RefreshControlProps } from "./RefreshControl.types";
 
 export function RefreshControl(props: RefreshControlProps) {
   const { theme } = useStyles();

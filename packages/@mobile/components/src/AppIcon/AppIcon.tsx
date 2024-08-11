@@ -1,7 +1,6 @@
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Image, ImageProps } from "../Image";
-
-type AppIconProps = Pick<ImageProps, "source">;
+import { Image } from "../Image";
+import { AppIconProps } from "./AppIcon.types";
 
 /**
  * # AppIcon

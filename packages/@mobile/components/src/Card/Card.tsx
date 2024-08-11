@@ -1,8 +1,9 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import React from "react";
 import { Shadow, shadowStyle } from "../Shadow";
+import { CardProps } from "./Card.types";
 
-export const Card = ({ children, ...rest }: BoxProps) => {
+export const Card = ({ children, ...rest }: CardProps) => {
   return (
     <Shadow
       style={{

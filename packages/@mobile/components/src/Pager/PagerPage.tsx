@@ -1,9 +1,6 @@
-import { Box, BoxProps } from "@grapp/stacks";
-import React, { ReactNode } from "react";
-
-type PagerPageProps = {
-  children?: ReactNode;
-} & BoxProps;
+import { Box } from "@grapp/stacks";
+import React from "react";
+import { PagerPageProps } from "./Pager.types";
 
 export const PagerPage = ({ children, ...props }: PagerPageProps) => {
   return (

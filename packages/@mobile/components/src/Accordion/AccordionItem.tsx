@@ -4,13 +4,8 @@ import Animated from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
+import { AccordionItemProps } from "./Accordion.types";
 import { useAccordionRootContext } from "./AccordionRoot";
-
-export type AccordionItemProps = {
-  children?: React.ReactNode;
-  disabled?: boolean;
-  value: string;
-};
 
 const useAccordionItem = ({ disabled, value }) => {
   const { value: rootValue } = useAccordionRootContext();

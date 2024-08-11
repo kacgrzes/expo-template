@@ -1,7 +1,5 @@
-import { LucideIcon } from "lucide-react-native";
 import { cloneElement, forwardRef } from "react";
 import { View } from "react-native";
-import { RectButtonProps } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedStyle,
   interpolate,
@@ -16,31 +14,9 @@ import { AnimatedRectButton } from "../AnimatedButtons";
 import { Shadow, shadowStyle } from "../Shadow";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { CommonAccessoryProps, CommonFormProps, Size, Status } from "../types";
+import { ButtonProps, ButtonVariant } from "./Button.types";
 
 // TODO: Add Button.Group
-
-type ButtonVariant = "solid" | "outline" | "link" | "apple" | "google";
-
-export type ButtonProps = CommonFormProps &
-  CommonAccessoryProps & {
-    full?: boolean;
-    loading?: boolean;
-    size?: Size;
-    status?: Status;
-    variant?: ButtonVariant;
-  } & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style"> &
-  (
-    | {
-        title: string;
-        icon?: undefined;
-      }
-    | {
-        title?: undefined;
-        icon: LucideIcon;
-      }
-  );
-
 export const Button = forwardRef<any, ButtonProps>(
   (
     {

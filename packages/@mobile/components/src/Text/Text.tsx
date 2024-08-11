@@ -1,43 +1,9 @@
 import { forwardRef } from "react";
-import {
-  StyleSheet,
-  Text as TextComponent,
-  TextProps as TextComponentProps,
-  TextStyle,
-} from "react-native";
+import { StyleSheet, Text as TextComponent } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Skeleton } from "../Skeleton";
-import { Status } from "../types";
-
-type TextAlign = TextStyle["textAlign"];
-type TextTransform = TextStyle["textTransform"];
-export type TextVariant =
-  | "body1"
-  | "body2"
-  | "body3"
-  | "body4"
-  | "code1"
-  | "code2"
-  | "code3"
-  | "code4"
-  | "title"
-  | "label1"
-  | "label2"
-  | "label3"
-  | "caption1"
-  | "caption2";
-
-export type TextProps = TextComponentProps & {
-  italic?: boolean;
-  loading?: boolean;
-  status?: Status;
-  textAlign?: TextAlign;
-  textTransform?: TextTransform;
-  variant?: TextVariant;
-};
-
-export type TextRef = typeof TextComponent;
+import { TextProps, TextRef } from "./Text.types";
 
 export const Text = forwardRef<TextRef, TextProps>(
   (
@@ -56,7 +22,17 @@ export const Text = forwardRef<TextRef, TextProps>(
     const { styles } = useStyles(stylesheet, { variant, status });
 
     if (loading) {
-      return <Skeleton.Text {...rest} textAlign={textAlign} />;
+      const { children, numberOfLines } = rest;
+      return (
+        <Skeleton.Text
+          numberOfLines={numberOfLines}
+          status={status}
+          textAlign={textAlign}
+          variant={variant}
+        >
+          {children}
+        </Skeleton.Text>
+      );
     }
 
     if (loading === false) {

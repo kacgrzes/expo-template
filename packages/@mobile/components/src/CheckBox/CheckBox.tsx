@@ -11,14 +11,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AnimatedBaseButton } from "../AnimatedButtons";
 // eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { CommonFormProps, Size, Status } from "../types";
-
-export type CheckBoxProps = CommonFormProps & {
-  checked?: boolean;
-  onValueChange?: (checked: boolean) => void;
-  size?: Size;
-  status?: Status;
-};
+import { CheckBoxProps } from "./CheckBox.types";
 
 // TODO: how do I implement indeterminate state?
 

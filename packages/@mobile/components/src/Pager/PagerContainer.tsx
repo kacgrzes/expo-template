@@ -1,14 +1,8 @@
 import { mergeRefs } from "@common/utils";
 import React, { Children, useEffect, forwardRef } from "react";
-import {
-  PagerView,
-  PagerViewProps,
-  PagerViewRef,
-  usePagerScrollHandler,
-} from "../PagerView";
+import { PagerView, PagerViewRef, usePagerScrollHandler } from "../PagerView";
+import { PagerContainerProps } from "./Pager.types";
 import { usePagerContext } from "./PagerRoot";
-
-type PagerContainerProps = Omit<PagerViewProps, "onPageScroll" | "style">;
 
 export const PagerContainer = forwardRef<PagerViewRef, PagerContainerProps>(
   ({ children, initialPage = 0, ...rest }, forwardedRef) => {

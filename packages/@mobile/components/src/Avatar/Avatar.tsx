@@ -1,10 +1,9 @@
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import FadeInOut from "../FadeInOut";
-import { Image, ImageProps } from "../Image";
+import { Image } from "../Image";
 import { Skeleton } from "../Skeleton";
 import { Text } from "../Text";
-
-type Size = "s" | "m" | "l";
+import { AvatarProps, Size } from "./Avatar.types";
 
 const getSizeNumber = (sizeName: Size) => {
   const sizes = {
@@ -25,17 +24,6 @@ const getSizeStyle = (size: Size) => {
     borderRadius: sizeNumber / 2,
   };
 };
-
-type AvatarProps = {
-  /**
-   * Size of the avatar
-   * - "s" - Small - bottom tab bars, navigation, etc.
-   * - "m" - Medium - list or content blocks
-   * - "l" - Large - within profile or settings screen
-   */
-  size?: Size;
-  loading?: boolean;
-} & Pick<ImageProps, "source">;
 
 /**
  * Avatar component

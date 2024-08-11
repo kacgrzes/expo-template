@@ -1,28 +1,13 @@
 import { getValidChildren } from "@common/utils";
-import { ReactNode, cloneElement, useMemo, useState } from "react";
+import { cloneElement, useMemo, useState } from "react";
 import Animated from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { Size } from "../types";
+import { SegmentedControlProps } from "./SegmentedControl.types";
 import { SegmentedControlProvider } from "./SegmentedControlContext";
 import { SegmentedControlIndicator } from "./SegmentedControlIndicator";
 import { SegmentedControlItem } from "./SegmentedControlItem";
 import { BORDER_RADIUS, BORDER_SIZE } from "./consts";
-
-type SegmentedControlProps = {
-  children?: ReactNode;
-  defaultSelectedIndex?: number;
-  disabled?: boolean;
-  full?: boolean;
-  onValueChange?: (index: number) => void;
-  selectedIndex?: number;
-  size?: Size;
-  // animated?: boolean;
-  // multiselect?: boolean;
-  // testID?: string;
-  // onChange (with event)
-  // withItemBorders
-};
 
 // TODO
 // accessibility!!!

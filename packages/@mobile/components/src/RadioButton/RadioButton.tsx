@@ -6,19 +6,10 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { AnimatedBaseButton } from "../AnimatedButtons";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { CommonFormProps, Size, Status } from "../types";
+import { RadioButtonProps } from "./RadioButton.types";
 
 // TODO:
 // - add RadioButton.Group? with initialValue, onValueChange
-
-export type RadioButtonProps = CommonFormProps & {
-  onPress?: () => void;
-  onValueChange?: (value: string | number | boolean) => void;
-  selected?: boolean;
-  size?: Size;
-  status?: Status;
-  value?: string | number | boolean;
-};
 
 /**
 Use when:

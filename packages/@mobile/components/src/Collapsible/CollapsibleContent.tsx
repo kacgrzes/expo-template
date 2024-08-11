@@ -1,8 +1,5 @@
+import { CollapsibleContentProps } from "./Collapsible.types";
 import { useCollapsibleContext } from "./CollapsibleRoot";
-
-type CollapsibleContentProps = {
-  children?: React.ReactNode;
-};
 
 export const CollapsibleContent = ({ children }: CollapsibleContentProps) => {
   const { open } = useCollapsibleContext();

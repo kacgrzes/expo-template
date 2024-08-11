@@ -1,12 +1,8 @@
-import { Box, BoxProps } from "@grapp/stacks";
-import React, { ReactNode } from "react";
+import React from "react";
 import { ScrollView } from "../ScrollView";
+import { ChipScrollViewProps } from "./Chip.types";
 
-type ChipGroupProps = {
-  children?: ReactNode;
-} & Pick<BoxProps, "gap">;
-
-export const ChipScrollView = ({ children }: ChipGroupProps) => {
+export const ChipScrollView = ({ children }: ChipScrollViewProps) => {
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}

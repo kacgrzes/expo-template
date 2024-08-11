@@ -3,14 +3,7 @@ import React, { useCallback, useState } from "react";
 import Animated from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-
-type CollapsibleRootProps = {
-  children?: React.ReactNode;
-  defaultOpen?: boolean;
-  disabled?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  open?: boolean;
-};
+import { CollapsibleRootProps } from "./Collapsible.types";
 
 const useOpenState = ({
   defaultOpen,

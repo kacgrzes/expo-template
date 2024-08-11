@@ -1,9 +1,8 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import React from "react";
 import { AnimatedBaseButton } from "../AnimatedButtons";
+import { CollapsibleTriggerProps } from "./Collapsible.types";
 import { useCollapsibleContext } from "./CollapsibleRoot";
-
-export type CollapsibleTriggerProps = BoxProps;
 
 export const CollapsibleTrigger = ({
   children,

@@ -1,6 +1,4 @@
 import { X } from "lucide-react-native";
-/** eslint-disable import/no-unresolved */
-import { ReactNode } from "react";
 import {
   LinearTransition,
   useAnimatedStyle,
@@ -9,24 +7,10 @@ import {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
-// eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { Size } from "../types";
+import { ChipProps } from "./Chip.types";
 import { ChipGroup } from "./ChipGroup";
 import { ChipScrollView } from "./ChipScrollView";
-
-type ChipProps = {
-  disabled?: boolean;
-  left?: ReactNode;
-  // TODO: maybe this onPress should be a little bit different
-  onPress?: () => void;
-  onDismiss?: () => void;
-  right?: ReactNode;
-  size?: Size;
-  selected?: boolean;
-  // variant
-  // status
-};
 
 /**
 Use when
@@ -35,6 +19,7 @@ Use when
 */
 export function Chip({
   disabled,
+  label,
   size = "m",
   onDismiss,
   onPress,
@@ -61,7 +46,7 @@ export function Chip({
         variant="label2"
         style={styles.text({ hasOnDismiss: Boolean(onDismiss), selected })}
       >
-        Chip
+        {label}
       </Text>
       {onDismiss ? (
         <AnimatedRectButton style={styles.iconContainer}>

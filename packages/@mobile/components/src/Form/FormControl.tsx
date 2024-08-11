@@ -1,11 +1,8 @@
 import React from "react";
-import { ReactElement, cloneElement } from "react";
+import { cloneElement } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import { FormControlProps } from "./Form.types";
 import { useFormFieldContext } from "./FormField";
-
-type FormControlProps = {
-  children?: ReactElement;
-};
 
 export const FormControl = ({ children }: FormControlProps) => {
   const { name } = useFormFieldContext();

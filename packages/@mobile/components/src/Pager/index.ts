@@ -9,3 +9,5 @@ export const Pager = {
   Page: PagerPage,
   Root: PagerRoot,
 };
+
+export * from "./Pager.types";

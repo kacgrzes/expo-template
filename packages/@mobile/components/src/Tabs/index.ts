@@ -11,3 +11,5 @@ export const Tabs = {
   Item: TabsItem,
   ScrollView: TabsScrollView,
 };
+
+export * from "./Tabs.types";

@@ -1,16 +1,9 @@
-import { Box, BoxProps } from "@grapp/stacks";
-import { ReactNode } from "react";
+import { Box } from "@grapp/stacks";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-import { Button, ButtonProps } from "../Button";
+import { Button } from "../Button";
 import { Text } from "../Text";
-
-type EmptyStateProps = {
-  explanation?: string;
-  illustration?: ReactNode;
-  title: string;
-  cta?: ButtonProps;
-} & BoxProps;
+import { EmptyStateProps } from "./EmptyState.types";
 
 export function EmptyState({
   cta,

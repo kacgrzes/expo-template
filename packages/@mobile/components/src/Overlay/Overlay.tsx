@@ -1,19 +1,8 @@
-import { StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { StyleSheet } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import Animated, {
-  FadeIn,
-  FadeOut,
-  AnimatedStyle,
-} from "react-native-reanimated";
 import { useStyles } from "react-native-unistyles";
 import FadeInOut from "../FadeInOut";
-
-type OverlayProps = {
-  fadeInOut?: boolean;
-  /** The name of the person who generated this component */
-  onPress: () => void;
-  style?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
-};
+import { OverlayProps } from "./Overlay.types";
 
 /**
  * # Overlay

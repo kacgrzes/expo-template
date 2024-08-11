@@ -1,8 +1,7 @@
 import React, { useCallback } from "react";
 import { FlatList, FlatListProps, useFlatListRef } from "../FlatList";
+import { ScreenFlatListProps } from "./Screen.types";
 import { ScreenScrollView } from "./ScreenScrollView";
-
-export type ScreenFlatListProps<ItemT> = FlatListProps<ItemT>;
 
 export const ScreenFlatList = <ItemT = any>(
   props: ScreenFlatListProps<ItemT>,

@@ -1,11 +1,7 @@
 import { mergeRefs } from "@common/utils";
 import { forwardRef } from "react";
-import {
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  ScrollViewProps,
-} from "react-native";
 import { ScrollView as GHScrollView } from "react-native-gesture-handler";
+import { ScrollViewProps } from "./ScrollView.types";
 import { ScrollViewRef } from "./useScrollRef";
 
 export const ScrollView = forwardRef<ScrollViewRef, ScrollViewProps>(
@@ -14,5 +10,3 @@ export const ScrollView = forwardRef<ScrollViewRef, ScrollViewProps>(
     return <GHScrollView ref={mergeRefs(ref)} {...props} />;
   },
 );
-
-export type OnScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => void;

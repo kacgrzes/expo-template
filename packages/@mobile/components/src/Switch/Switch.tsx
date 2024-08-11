@@ -16,21 +16,7 @@ import Animated, {
   runOnJS,
 } from "react-native-reanimated";
 import { Shadow, shadowStyle } from "../Shadow";
-
-interface SwitchProps {
-  value?: boolean;
-  defaultValue?: boolean;
-  onValueChange?: (value: boolean) => void;
-  activeColor?: string;
-  inactiveColor?: string;
-  thumbColor?: string;
-}
-
-export interface SwitchHandle {
-  toggle: () => void;
-  setOn: () => void;
-  setOff: () => void;
-}
+import { SwitchHandle, SwitchProps } from "./Switch.types";
 
 const SPACING = 2;
 const SWITCH_WIDTH = 50;

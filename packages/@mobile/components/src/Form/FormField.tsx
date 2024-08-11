@@ -3,11 +3,7 @@ import constate from "constate";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { Text } from "../Text";
-
-export type FormFieldProps = {
-  children: React.ReactNode;
-  name: string;
-};
+import { FormFieldProps } from "./Form.types";
 
 const useFormField = ({ name }: { name: string }) => {
   return {

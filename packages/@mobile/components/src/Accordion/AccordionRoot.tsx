@@ -1,14 +1,6 @@
 import constate from "constate";
 import React, { useState } from "react";
-
-export type AccordionRootProps = {
-  children?: React.ReactNode;
-  defaultValue?: string | string[];
-  disabled?: boolean;
-  onValueChange?: (value: string | string[]) => void;
-  type: "single" | "multiple";
-  value?: string | string[];
-};
+import { AccordionRootProps } from "./Accordion.types";
 
 const useAccordionRoot = ({ disabled, defaultValue }) => {
   // TODO: replace with useReducer

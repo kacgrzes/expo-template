@@ -4,6 +4,7 @@ import {
   userEvent,
   waitFor,
 } from "@testing-library/react-native";
+import React from "react";
 import { Button } from "./Button";
 
 describe("Components", () => {

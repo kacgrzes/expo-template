@@ -2,15 +2,9 @@
 import { useTheme } from "@mobile/unistyles";
 // eslint-disable-next-line import/no-unresolved
 import { isIOS } from "@mobile/utils/platform";
-import {
-  StatusBar as ExpoStatusBar,
-  StatusBarProps as ExpoStatusBarProps,
-} from "expo-status-bar";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { useMemo } from "react";
-
-export type StatusBarProps = ExpoStatusBarProps & {
-  isModal?: boolean;
-};
+import { StatusBarProps } from "./StatusBar.types";
 
 /**
  * # StatusBar

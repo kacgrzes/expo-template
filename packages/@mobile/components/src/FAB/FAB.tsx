@@ -1,11 +1,5 @@
-import { LucideIcon, Plus } from "lucide-react-native";
-import {
-  ComponentProps,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Plus } from "lucide-react-native";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { LayoutChangeEvent, LayoutRectangle, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -17,15 +11,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 // TODO: check why this component has such a big hit slop
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Shadow, shadowStyle } from "../Shadow";
-
-export type FABProps = Pick<
-  ComponentProps<typeof AnimatedRectButton>,
-  "onPress"
-> & {
-  Icon?: LucideIcon;
-  extended?: boolean;
-  label?: string;
-};
+import { FABProps } from "./FAB.types";
 
 // TODO: refactor this component to use smaller components
 // TODO: fix dynamic label change because right now it doen't work as expected

@@ -1,14 +1,12 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import React, { useCallback } from "react";
 import {
   Gesture,
   GestureDetector,
   GestureUpdateEvent,
-  PanGestureChangeEventPayload,
   PanGestureHandlerEventPayload,
 } from "react-native-gesture-handler";
 import Animated, {
-  SharedValue,
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
@@ -17,13 +15,7 @@ import Animated, {
   clamp,
 } from "react-native-reanimated";
 import { Dot } from "../Dot";
-
-export type PageControlProps = Pick<BoxProps, "gap"> & {
-  currentPage: SharedValue<number>;
-  numberOfPages: number;
-  hidesForSinglePage?: boolean;
-  onPageChange: (currentPage: number) => void;
-};
+import { PageControlProps } from "./PageControl.types";
 
 export const PageControl = ({
   currentPage,

@@ -4,12 +4,11 @@ import { Eye, EyeOff } from "lucide-react-native";
 import { forwardRef, useMemo } from "react";
 import { Pressable } from "react-native";
 import { useStyles } from "react-native-unistyles";
-import { TextInput, TextInputProps, TextInputRef } from "../TextInput";
+import { TextInput } from "../TextInput";
+import { PasswordInputProps, PasswordInputRef } from "./PasswordInput.types";
 
 const passwordRules =
   "required: upper;require: lower; required: digit; minLength: 8;";
-
-export type PasswordInputProps = TextInputProps;
 
 // TODO: there's a difference between new password and current password
 
@@ -26,7 +25,7 @@ export type PasswordInputProps = TextInputProps;
  * <PasswordInput />
  * ```
  */
-export const PasswordInput = forwardRef<TextInputRef, PasswordInputProps>(
+export const PasswordInput = forwardRef<PasswordInputRef, PasswordInputProps>(
   (props, ref) => {
     const { theme } = useStyles();
     const [secureTextEntry, toggleSecureTextEntry] = useToggle(true);

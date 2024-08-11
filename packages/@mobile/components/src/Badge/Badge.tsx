@@ -2,17 +2,7 @@ import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Dot } from "../Dot";
 import { Text } from "../Text";
-import { Status } from "../types";
-
-type BadgeStatus = "default" | Omit<Status, "secondary">;
-
-type BadgeProps = {
-  /** Value in the badge. Badge will be a dot if this is not provided/ */
-  label?: number | string;
-  max?: number;
-  outline?: boolean;
-  status?: BadgeStatus;
-};
+import { BadgeProps, BadgeStatus } from "./Badge.types";
 
 /**
  * # Badge

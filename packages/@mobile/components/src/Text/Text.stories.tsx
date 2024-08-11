@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React, { Fragment } from "react";
 import { View } from "react-native";
 
-import { Text, TextVariant } from "./Text";
+import { Text } from "./Text";
+import { TextVariant } from "./Text.types";
 
 const TextMeta: Meta<typeof Text> = {
   title: "Text",

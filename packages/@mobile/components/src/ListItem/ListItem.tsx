@@ -1,18 +1,11 @@
-import { ChevronRight, LucideIcon } from "lucide-react-native";
+import { ChevronRight } from "lucide-react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { Box } from "@grapp/stacks";
 import { useMemo } from "react";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
-import { CommonAccessoryProps } from "../types";
-
-type ListItemProps = {
-  details?: string;
-  icon?: LucideIcon;
-  onPress: () => void;
-  title: string;
-} & CommonAccessoryProps;
+import { ListItemProps } from "./ListItem.types";
 
 export function ListItem({
   details,

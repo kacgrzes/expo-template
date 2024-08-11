@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  ActivityIndicator as ActivityIndicatorComponent,
-  ActivityIndicatorProps as RNActivityIndicatorProps,
-} from "react-native";
-import { useStyles } from "react-native-unistyles";
-import { Status } from "../types";
-import { useStatusColor } from "./useStatusColor";
+import { ActivityIndicator as ActivityIndicatorComponent } from "react-native";
 
-type ActivityIndicatorProps = {
-  size?: "s" | "l";
-  status?: Status;
-  style?: RNActivityIndicatorProps["style"];
-};
+import { ActivityIndicatorProps } from "./ActivityIndicator.types";
+import { useStatusColor } from "./useStatusColor";
 
 export function ActivityIndicator({
   size = "s",

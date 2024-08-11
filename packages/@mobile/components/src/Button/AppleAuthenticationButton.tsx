@@ -1,14 +1,13 @@
-import {
-  AppleAuthenticationButtonStyle,
-  AppleAuthenticationButtonType,
-  signInAsync,
-} from "expo-apple-authentication";
+// import {
+//   AppleAuthenticationButtonStyle,
+//   AppleAuthenticationButtonType,
+//   signInAsync,
+// } from "expo-apple-authentication";
 import { Image } from "expo-image";
 import React from "react";
 import { useStyles } from "react-native-unistyles";
-import { Button, ButtonProps } from "./Button";
-
-type AppleAuthenticationButtonProps = Pick<ButtonProps, "full">;
+import { Button } from "./Button";
+import { AppleAuthenticationButtonProps } from "./Button.types";
 
 const RATIO = 195 / 240;
 const SIZE = 14;

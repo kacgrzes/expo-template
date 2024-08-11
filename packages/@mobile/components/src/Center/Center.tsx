@@ -1,7 +1,6 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import React from "react";
-
-export type CenterProps = Omit<BoxProps, "alignX" | "alignY">;
+import { CenterProps } from "./Center.types";
 
 export const Center = ({ children, ...rest }: CenterProps) => {
   return (

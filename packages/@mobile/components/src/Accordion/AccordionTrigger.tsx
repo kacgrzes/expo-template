@@ -1,10 +1,9 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import React from "react";
 import { AnimatedBaseButton } from "../AnimatedButtons";
+import { AccordionTriggerProps } from "./Accordion.types";
 import { useAccordionItemContext } from "./AccordionItem";
 import { useAccordionRootContext } from "./AccordionRoot";
-
-export type AccordionTriggerProps = BoxProps;
 
 export const AccordionTrigger = ({
   children,

@@ -1,11 +1,8 @@
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { Text } from "../Text";
+import { FormLabelProps } from "./Form.types";
 import { useFormFieldContext } from "./FormField";
-
-export type FormLabelProps = {
-  children: React.ReactNode;
-};
 
 export const FormLabel = ({ children }: FormLabelProps) => {
   const { setFocus } = useFormContext();

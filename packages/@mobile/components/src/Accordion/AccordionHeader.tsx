@@ -1,7 +1,6 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import React from "react";
-
-export type AccordionHeaderProps = BoxProps;
+import { AccordionHeaderProps } from "./Accordion.types";
 
 export const AccordionHeader = ({
   children,

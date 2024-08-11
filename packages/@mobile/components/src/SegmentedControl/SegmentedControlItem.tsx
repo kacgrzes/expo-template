@@ -3,14 +3,9 @@ import { LayoutChangeEvent, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AnimatedRectButton } from "../AnimatedButtons";
 import { Text } from "../Text";
+import { SegmentedControlItemProps } from "./SegmentedControl.types";
 import { useSegmentedControlContext } from "./SegmentedControlContext";
 import { BORDER_RADIUS, BORDER_SIZE } from "./consts";
-
-type SegmentedControlItemProps = {
-  index?: number;
-  label: string;
-  onPress?: () => void;
-};
 
 export function SegmentedControlItem({
   index,

@@ -7,3 +7,5 @@ export const Collapsible = {
   Root: CollapsibleRoot,
   Trigger: CollapsibleTrigger,
 };
+
+export * from "./Collapsible.types";

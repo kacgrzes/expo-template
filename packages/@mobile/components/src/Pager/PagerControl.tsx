@@ -1,11 +1,7 @@
 import React, { useCallback } from "react";
-import { PageControl, PageControlProps } from "../PageControl";
+import { PageControl } from "../PageControl";
+import { PagerControlProps } from "./Pager.types";
 import { usePagerContext } from "./PagerRoot";
-
-type PagerControlProps = Omit<
-  PageControlProps,
-  "hidesForSinglePage" | "currentPage" | "numberOfPages" | "onPageChange"
->;
 
 export const PagerControl = (props: PagerControlProps) => {
   const { currentPage, numberOfPages, pagerViewRef } = usePagerContext();

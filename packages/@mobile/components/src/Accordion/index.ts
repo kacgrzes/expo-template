@@ -17,3 +17,5 @@ export { AccordionHeader } from "./AccordionHeader";
 export { AccordionItem } from "./AccordionItem";
 export { AccordionRoot } from "./AccordionRoot";
 export { AccordionTrigger } from "./AccordionTrigger";
+
+export * from "./Accordion.types";

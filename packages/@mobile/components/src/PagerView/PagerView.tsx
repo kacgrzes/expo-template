@@ -1,17 +1,13 @@
 import {
   Children,
-  Ref,
   forwardRef,
   useImperativeHandle,
   useRef,
   useState,
 } from "react";
-import PagerViewComponent, {
-  PagerViewProps as PagerViewComponentProps,
-} from "react-native-pager-view";
+import PagerViewComponent from "react-native-pager-view";
 import Animated, { useHandler, useEvent } from "react-native-reanimated";
-
-export type PagerViewProps = PagerViewComponentProps;
+import { PagerViewProps } from "./PagerView.types";
 
 const AnimatedPagerView = Animated.createAnimatedComponent(PagerViewComponent);
 
@@ -103,10 +99,3 @@ export const PagerView = forwardRef(
     );
   },
 );
-
-export type PagerViewRef = PagerViewComponent & {
-  nextPage: () => void;
-  previousPage: () => void;
-};
-
-export const usePagerViewRef = () => useRef<PagerViewRef>(null);

@@ -1,12 +1,9 @@
-import { Box, BoxProps } from "@grapp/stacks";
+import { Box } from "@grapp/stacks";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import * as z from "zod";
-
-export type FormRootProps<T extends z.Schema<any, any>> = BoxProps & {
-  schema?: T;
-};
+import { FormRootProps } from "./Form.types";
 
 export const FormRoot = <T extends z.Schema<any, any> = any>({
   children,

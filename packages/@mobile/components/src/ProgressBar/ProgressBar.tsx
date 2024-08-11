@@ -1,6 +1,6 @@
 import { Box } from "@grapp/stacks";
 import React, { useEffect, useState } from "react";
-import { LayoutChangeEvent, LayoutRectangle, View } from "react-native";
+import { LayoutChangeEvent, LayoutRectangle } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -8,22 +8,7 @@ import Animated, {
   withTiming,
   interpolate,
 } from "react-native-reanimated";
-
-type ProgressCommonProps = {
-  animated?: boolean;
-  backgroundColor?: string;
-  borderColor?: string;
-  borderWidth?: number;
-  color?: string;
-  indeterminate?: boolean;
-  progress?: number;
-};
-
-export type ProgressBarProps = {
-  borderRadius?: number;
-  height?: number;
-  width?: number | `${number}%`;
-} & ProgressCommonProps;
+import { ProgressBarProps } from "./ProgressBar.types";
 
 export const ProgressBar = ({
   animated = true,
