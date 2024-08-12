@@ -2,7 +2,8 @@ import { Box } from "@grapp/stacks";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
-import { ArrowDown } from "lucide-react-native";
+import { useToggle } from "@common/hooks";
+import { ArrowDown, Pause } from "lucide-react-native";
 import { AppleAuthenticationButton } from "./AppleAuthenticationButton";
 import { Button } from "./Button";
 import { GoogleAuthenticationButton } from "./GoogleAuthenticationButton";
@@ -45,6 +46,20 @@ export const AllSizes: StoryObj<typeof Button> = {
         <Button title="Medium" size="m" />
         <Button title="Large" size="l" />
       </Box>
+    );
+  },
+};
+
+export const ButtonGroupStory: StoryObj<typeof Button> = {
+  render: () => {
+    const [visible, toggleVisibility] = useToggle(true);
+    return (
+      <Button.Group size="l">
+        {visible ? (
+          <Button icon={<Pause fill={"white"} stroke={"transparent"} />} />
+        ) : null}
+        <Button title="Button 2" full onPress={toggleVisibility} />
+      </Button.Group>
     );
   },
 };

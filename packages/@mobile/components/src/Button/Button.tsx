@@ -6,6 +6,7 @@ import Animated, {
   useDerivedValue,
   withTiming,
   Extrapolation,
+  LinearTransition,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -77,6 +78,7 @@ export const Button = forwardRef<any, ButtonProps>(
     return (
       <Shadow style={styles.shadow(variant)}>
         <AnimatedRectButton
+          layout={LinearTransition.duration(300)}
           underlayColor={"black"}
           activeOpacity={0.1}
           enabled={!disabled && !loading}
@@ -128,6 +130,7 @@ const stylesheet = createStyleSheet((theme) => {
   return {
     container: ({ hasIcon }: { hasIcon: boolean }) => {
       return {
+        borderRadius: 8,
         paddingHorizontal: hasIcon ? 0 : 24,
         aspectRatio: hasIcon ? 1 : undefined,
         alignItems: "center",
@@ -159,15 +162,15 @@ const stylesheet = createStyleSheet((theme) => {
           size: {
             s: {
               height: 40,
-              borderRadius: hasIcon ? 40 / 2 : 8,
+              // borderRadius: hasIcon ? 40 / 2 : 8,
             },
             m: {
               height: 44,
-              borderRadius: hasIcon ? 44 / 2 : 8,
+              // borderRadius: hasIcon ? 44 / 2 : 8,
             },
             l: {
               height: 48,
-              borderRadius: hasIcon ? 48 / 2 : 8,
+              // borderRadius: hasIcon ? 48 / 2 : 8,
             },
           },
         },
@@ -221,6 +224,7 @@ const stylesheet = createStyleSheet((theme) => {
           full: {
             true: {
               alignSelf: "stretch",
+              flexGrow: 1,
             },
           },
         },

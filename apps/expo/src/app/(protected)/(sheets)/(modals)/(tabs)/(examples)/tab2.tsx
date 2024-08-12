@@ -1,5 +1,7 @@
+import { useToggle } from "@common/hooks";
 import { Box } from "@grapp/stacks";
-import { Chip, Screen, Text } from "@mobile/components";
+import { Button, Chip, Screen, Text } from "@mobile/components";
+import { Pause } from "lucide-react-native";
 
 const categories = [
   {
@@ -36,6 +38,8 @@ const categories = [
 ];
 
 export default function Tab2() {
+  const [visible, toggleVisibility] = useToggle(true);
+
   return (
     <Screen>
       <Screen.ScrollView gap={6}>
@@ -51,6 +55,12 @@ export default function Tab2() {
             </Box>
           );
         })}
+        <Button.Group size="l">
+          {visible ? (
+            <Button icon={<Pause fill={"white"} stroke={"transparent"} />} />
+          ) : null}
+          <Button title="Button 2" full onPress={toggleVisibility} />
+        </Button.Group>
       </Screen.ScrollView>
     </Screen>
   );
