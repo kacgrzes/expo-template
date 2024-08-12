@@ -4,7 +4,8 @@ import { FadeIn, FadeOut } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Skeleton } from "../Skeleton";
 import { AnimatedText } from "./AnimatedText";
-import { TextProps, TextRef } from "./Text.types";
+import { TextProps, TextRef, TextVariant } from "./Text.types";
+import { textVariants } from "./textVariants";
 
 export const Text = forwardRef<TextRef, TextProps>(
   (
@@ -116,91 +117,7 @@ const stylesheet = createStyleSheet((theme) => {
             color: theme.colors.muted,
           },
         },
-        variant: {
-          body1: {
-            fontSize: 16,
-            lineHeight: 1.5 * 16,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
-          },
-          body2: {
-            fontSize: 14,
-            lineHeight: 1.5 * 14,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
-          },
-          body3: {
-            fontSize: 12,
-            lineHeight: 1.5 * 12,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
-          },
-          body4: {
-            fontSize: 10,
-            lineHeight: 1.5 * 10,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexSans_400Regular,
-          },
-          label1: {
-            fontSize: 16,
-            lineHeight: 1.5 * 16,
-            fontWeight: "500",
-            fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
-          },
-          label2: {
-            fontSize: 14,
-            lineHeight: 1.5 * 14,
-            fontWeight: "500",
-            fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
-          },
-          label3: {
-            fontSize: 12,
-            lineHeight: 1.5 * 12,
-            fontWeight: "500",
-            fontFamily: theme.fontFamily.IBMPlexSans_500Medium,
-          },
-          code1: {
-            fontSize: 16,
-            lineHeight: 1.5 * 16,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
-          },
-          code2: {
-            fontSize: 14,
-            lineHeight: 1.5 * 14,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
-          },
-          code3: {
-            fontSize: 12,
-            lineHeight: 1.5 * 12,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
-          },
-          code4: {
-            fontSize: 10,
-            lineHeight: 1.5 * 10,
-            fontWeight: "400",
-            fontFamily: theme.fontFamily.IBMPlexMono_400Regular,
-          },
-          title: {
-            fontSize: 24,
-            fontWeight: "600",
-            fontFamily: theme.fontFamily.IBMPlexSerif_600SemiBold,
-          },
-          caption1: {
-            fontSize: 12,
-            lineHeight: 1.5 * 12,
-            fontWeight: "600",
-            fontFamily: theme.fontFamily.IBMPlexSans_600SemiBold,
-          },
-          caption2: {
-            fontSize: 10,
-            lineHeight: 1.5 * 10,
-            fontWeight: "600",
-            fontFamily: theme.fontFamily.IBMPlexSans_600SemiBold,
-          },
-        },
+        variant: textVariants,
       },
     },
     link: {
@@ -212,7 +129,6 @@ const stylesheet = createStyleSheet((theme) => {
   };
 });
 
-export const useTextVariantStyle = (variant = "body1") => {
-  const { styles } = useStyles(stylesheet, { variant });
-  return styles.text;
+export const useTextVariantStyle = (variant: TextVariant = "body1") => {
+  return textVariants[variant];
 };

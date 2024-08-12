@@ -41,7 +41,7 @@ export default function Tab2() {
       <Screen.ScrollView gap={6}>
         {categories.map((category) => {
           return (
-            <Box gap={4}>
+            <Box gap={4} key={category.name}>
               <Text>{category.name}</Text>
               <Chip.Group key={category.name}>
                 {category.topics.map((topic) => (
