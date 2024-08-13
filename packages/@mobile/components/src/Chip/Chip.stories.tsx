@@ -20,13 +20,13 @@ export const Group: StoryObj<typeof Chip> = {
   render: () => {
     return (
       <Chip.Group>
-        <Chip />
-        <Chip />
-        <Chip />
-        <Chip />
-        <Chip />
-        <Chip />
-        <Chip />
+        <Chip label="1" />
+        <Chip label="2" />
+        <Chip label="3" />
+        <Chip label="4" />
+        <Chip label="5" />
+        <Chip label="6" />
+        <Chip label="7" />
       </Chip.Group>
     );
   },

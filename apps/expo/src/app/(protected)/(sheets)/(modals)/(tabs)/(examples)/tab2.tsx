@@ -55,6 +55,7 @@ export default function Tab2() {
             </Box>
           );
         })}
+
         <Button.Group size="l">
           {visible ? (
             <Button icon={<Pause fill={"white"} stroke={"transparent"} />} />

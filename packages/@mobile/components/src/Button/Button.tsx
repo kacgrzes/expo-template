@@ -6,7 +6,6 @@ import Animated, {
   useDerivedValue,
   withTiming,
   Extrapolation,
-  LinearTransition,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -78,7 +77,6 @@ export const Button = forwardRef<any, ButtonProps>(
     return (
       <Shadow style={styles.shadow(variant)}>
         <AnimatedRectButton
-          layout={LinearTransition.duration(300)}
           underlayColor={"black"}
           activeOpacity={0.1}
           enabled={!disabled && !loading}
