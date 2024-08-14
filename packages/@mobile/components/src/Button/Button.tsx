@@ -15,6 +15,7 @@ import { Shadow, shadowStyle } from "../Shadow";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { ButtonProps, ButtonVariant } from "./Button.types";
+import { ButtonProgress } from "./ButtonProgress";
 
 // TODO: Add Button.Group
 export const Button = forwardRef<any, ButtonProps>(
@@ -25,6 +26,7 @@ export const Button = forwardRef<any, ButtonProps>(
       icon,
       left = null,
       loading = false,
+      progress = false,
       right = null,
       size = "m",
       style,
@@ -87,10 +89,11 @@ export const Button = forwardRef<any, ButtonProps>(
             disabledStyle,
           ]}
         >
+          {progress ? <ButtonProgress variant={variant} /> : null}
           <View
             accessible
             accessibilityRole="button"
-            style={{ flexDirection: "row", alignItems: "center" }}
+            style={styles.innerContainer({ hasIcon: icon !== undefined })}
           >
             {left}
             <View style={styles.titleContainer}>
@@ -126,14 +129,21 @@ Button.displayName = "Button";
 
 const stylesheet = createStyleSheet((theme) => {
   return {
+    innerContainer: ({ hasIcon }) => {
+      return {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingHorizontal: hasIcon ? 0 : 24,
+      };
+    },
     container: ({ hasIcon }: { hasIcon: boolean }) => {
       return {
         borderRadius: 8,
-        paddingHorizontal: hasIcon ? 0 : 24,
         aspectRatio: hasIcon ? 1 : undefined,
         alignItems: "center",
         justifyContent: "center",
         borderColor: "transparent",
+        overflow: "hidden",
         variants: {
           variant: {
             apple: {

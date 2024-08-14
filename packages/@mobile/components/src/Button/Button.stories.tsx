@@ -121,3 +121,11 @@ export const GoogleAuthenticationButtonStory: StoryObj<typeof Button> = {
     return <GoogleAuthenticationButton />;
   },
 };
+
+export const Progress: StoryObj<typeof Button> = {
+  args: {
+    title: "Hello",
+    full: true,
+    progress: true,
+  },
+};

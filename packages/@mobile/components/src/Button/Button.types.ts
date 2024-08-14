@@ -10,6 +10,7 @@ export type ButtonProps = CommonFormProps &
   CommonAccessoryProps & {
     full?: boolean;
     loading?: boolean;
+    progress?: boolean;
     size?: Size;
     status?: Status;
     variant?: ButtonVariant;
@@ -29,6 +30,12 @@ export type ButtonGroupProps = Pick<BoxProps, "gap"> &
   Pick<ButtonProps, "disabled" | "size"> & {
     children?: ReactNode;
   };
+
+export type ButtonProgressProps = {
+  duration?: number;
+  variant?: ButtonVariant;
+  onCompleted?: () => void;
+};
 
 export type AppleAuthenticationButtonProps = Pick<ButtonProps, "full">;
 
