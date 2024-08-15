@@ -54,16 +54,18 @@ export default function SignIn() {
                     special character (!@#$%^&*)
                   </Form.HelperText>
                 </Form.Field>
-                <Form.Submit />
-                <Button
-                  title="Sign in"
-                  onPress={() => {
-                    signIn();
-                    // Navigate after signing in. You may want to tweak this to ensure sign-in is
-                    // successful before navigating.
-                    router.replace("/");
-                  }}
-                />
+                <Button.Group direction="column">
+                  <Form.Submit />
+                  <Button
+                    title="Sign in"
+                    onPress={() => {
+                      signIn();
+                      // Navigate after signing in. You may want to tweak this to ensure sign-in is
+                      // successful before navigating.
+                      router.replace("/");
+                    }}
+                  />
+                </Button.Group>
               </Form.Root>
             </Screen.ScrollView>
           </Pager.Page>

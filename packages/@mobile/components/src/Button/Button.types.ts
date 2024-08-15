@@ -26,7 +26,7 @@ export type ButtonProps = CommonFormProps &
       }
   );
 
-export type ButtonGroupProps = Pick<BoxProps, "gap"> &
+export type ButtonGroupProps = Pick<BoxProps, "gap" | "direction"> &
   Pick<ButtonProps, "disabled" | "size"> & {
     children?: ReactNode;
   };
