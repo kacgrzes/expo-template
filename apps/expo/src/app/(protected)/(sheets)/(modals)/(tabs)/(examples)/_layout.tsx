@@ -57,6 +57,7 @@ export default function TopTabsExample() {
         <TopTabs.Screen name="tab1" />
         <TopTabs.Screen name="tab2" options={{}} />
         <TopTabs.Screen name="tab3" options={{}} />
+        <TopTabs.Screen name="tab4" options={{}} />
       </TopTabs>
     </SafeAreaView>
   );
