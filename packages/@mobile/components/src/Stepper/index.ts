@@ -1,23 +1,15 @@
-// ref - reset, set, increment, decrement
+import { StepperDecrement } from "./StepperDecrement";
+import { StepperDisplay } from "./StepperDisplay";
+import { StepperIcon } from "./StepperIcon";
+import { StepperIncrement } from "./StepperIncrement";
+import { StepperRoot } from "./StepperRoot";
 
-// <Stepper.Root
-// ref
-// accessibilityLabel
-// testID
-// min
-// max
-// onChange
-// onValueChange
-// initialValue
-// defaultValue
-// value
-// orientation
-// step
-// disabled
-// size
-// >
-// <Stepper.Decrement />
-// <Stepper.Display /> // render prop <Stepper.Value />
-// <Stepper.Increment />
-// <Stepper.Icon />
-// </Stepper.Root>;
+export const Stepper = {
+  Decrement: StepperDecrement,
+  Display: StepperDisplay,
+  Icon: StepperIcon,
+  Increment: StepperIncrement,
+  Root: StepperRoot,
+};
+
+export { useStepperRef, StepperRef } from "./useStepperRef";
