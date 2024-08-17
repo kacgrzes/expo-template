@@ -113,6 +113,7 @@ export const Button = forwardRef<any, ButtonProps>(
                   cloneElement(icon, {
                     size: 24,
                     color: "white",
+                    ...icon.props,
                   })
                 )}
               </Animated.View>

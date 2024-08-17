@@ -17,7 +17,11 @@ import { OverlayProps } from "./Overlay.types";
  * <Overlay />
  * ```
  */
-export const Overlay = ({ fadeInOut, onPress, style }: OverlayProps) => {
+export const Overlay = ({
+  fadeInOut = false,
+  onPress,
+  style,
+}: OverlayProps) => {
   const { theme } = useStyles();
 
   const gesture = Gesture.Tap()

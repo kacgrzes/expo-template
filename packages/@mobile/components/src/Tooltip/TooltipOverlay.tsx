@@ -1,4 +1,5 @@
 import { Portal } from "@gorhom/portal";
+import { FloatBox } from "@grapp/stacks";
 import {
   Canvas,
   Fill,
@@ -13,7 +14,13 @@ import { useDerivedValue, useSharedValue } from "react-native-reanimated";
 import { useStyles } from "react-native-unistyles";
 import { useTooltipContext } from "./TooltipProvider";
 
-export const TooltipOverlay = ({ offset = 8 }: { offset?: number }) => {
+export const TooltipOverlay = ({
+  offset = 8,
+  transparent = false,
+}: {
+  offset?: number;
+  transparent?: boolean;
+}) => {
   const { theme } = useStyles();
   const { measurement, setVisible, visible } = useTooltipContext();
   const size = useSharedValue<Size>({
@@ -40,6 +47,14 @@ export const TooltipOverlay = ({ offset = 8 }: { offset?: number }) => {
 
   if (!visible) {
     return null;
+  }
+
+  if (transparent) {
+    return (
+      <Portal hostName="overlay">
+        <FloatBox onTouchEnd={() => setVisible(false)} offset={0} />
+      </Portal>
+    );
   }
 
   return (
