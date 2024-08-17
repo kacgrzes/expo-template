@@ -1,11 +1,5 @@
 import { useRef } from "react";
-
-export type StepperRef = {
-  reset: () => void;
-  set: (value: number) => void;
-  increment: () => void;
-  decrement: () => void;
-};
+import { StepperRef } from "./Stepper.types";
 
 export const useStepperRef = () => {
   return useRef<StepperRef>(null);
