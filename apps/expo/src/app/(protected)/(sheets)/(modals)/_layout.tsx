@@ -22,6 +22,16 @@ export default function Modals() {
         }}
       />
       <Stack.Screen
+        name="full-screen-modal"
+        options={{
+          headerShown: false,
+          header: () => null,
+          presentation: "transparentModal",
+          animation: "fade",
+          title: "Full screen modal",
+        }}
+      />
+      <Stack.Screen
         name="languages"
         options={{
           title: t("languages"),

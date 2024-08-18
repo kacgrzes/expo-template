@@ -89,6 +89,12 @@ export default function App() {
         />
         <AppleAuthenticationButton full />
         <GoogleAuthenticationButton full />
+        <Link href="/modal" asChild>
+          <Button title="modal" variant="link" full />
+        </Link>
+        <Link href="/full-screen-modal" asChild>
+          <Button title="Full screen modal" variant="link" full />
+        </Link>
         <Link href="/settings" asChild>
           <Button title="App settings" variant="link" full />
         </Link>

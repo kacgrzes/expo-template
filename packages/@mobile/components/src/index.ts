@@ -44,6 +44,7 @@ export * from "./Skeleton";
 export * from "./Slider";
 export * from "./SocialIcon";
 export * from "./StatusBar";
+export * from "./Stepper";
 export * from "./Switch";
 export * from "./Tabs";
 export * from "./Text";
