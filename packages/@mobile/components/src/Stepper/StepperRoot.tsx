@@ -1,5 +1,4 @@
 import { Box } from "@grapp/stacks";
-import { Minus, Plus } from "lucide-react-native";
 import React, {
   forwardRef,
   useCallback,
@@ -8,13 +7,13 @@ import React, {
   useState,
 } from "react";
 
-import { Button } from "../Button";
-import { Text } from "../Text";
 import { StepperRef, StepperRootProps } from "./Stepper.types";
+import { StepperProvider } from "./StepperContext";
 
 export const StepperRoot = forwardRef<StepperRef, StepperRootProps>(
   (
     {
+      children,
       defaultValue = 0,
       disabled,
       max = Infinity,
@@ -66,33 +65,23 @@ export const StepperRoot = forwardRef<StepperRef, StepperRootProps>(
     );
 
     return (
-      <Box
-        direction={orientation === "horizontal" ? "row" : "column"}
-        style={{ alignSelf: "flex-start" }}
+      <StepperProvider
+        decrement={decrement}
+        disabled={disabled}
+        increment={increment}
+        max={max}
+        min={min}
+        orientation={orientation}
+        size={size}
+        value={value}
       >
-        <Button
-          variant="outline"
-          size={size}
-          icon={<Minus color={"black"} />}
-          onPress={decrement}
-          disabled={disabled || value <= min}
-        />
         <Box
-          alignX={"center"}
-          alignY={"center"}
-          paddingY={orientation === "vertical" ? 2 : undefined}
-          paddingX={orientation === "horizontal" ? 2 : undefined}
+          direction={orientation === "horizontal" ? "row" : "column"}
+          style={{ alignSelf: "flex-start" }}
         >
-          <Text>{value}</Text>
+          {children}
         </Box>
-        <Button
-          variant="outline"
-          size={size}
-          icon={<Plus color={"black"} />}
-          onPress={increment}
-          disabled={disabled || value >= max}
-        />
-      </Box>
+      </StepperProvider>
     );
   },
 );

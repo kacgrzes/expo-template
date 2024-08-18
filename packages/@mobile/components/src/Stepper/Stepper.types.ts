@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
 import { Size } from "../types";
 
 // autorepeat
 export type StepperRootProps = {
   accessibilityLabel?: string;
+  children?: ReactNode;
   defaultValue?: number;
   disabled?: boolean;
   max?: number;
