@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+export type Orientation = "horizontal" | "vertical";
+
 export type Status =
   | "primary"
   | "secondary"
