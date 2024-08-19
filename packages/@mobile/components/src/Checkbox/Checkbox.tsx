@@ -1,5 +1,6 @@
-/** eslint-disable import/no-unresolved */
 import { Check } from "lucide-react-native";
+/** eslint-disable import/no-unresolved */
+import React, { useState, useCallback } from "react";
 import {
   interpolateColor,
   useAnimatedStyle,
@@ -11,7 +12,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AnimatedBaseButton } from "../AnimatedButtons";
 // eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { CheckBoxProps } from "./CheckBox.types";
+import { CheckboxProps } from "./Checkbox.types";
 
 // TODO: how do I implement indeterminate state?
 
@@ -22,9 +23,33 @@ import { CheckBoxProps } from "./CheckBox.types";
  * - Applied settings need to be confirmed and reviewed by user before they are submitted
  * - Defined settings require an action like Submit, OK, Next, Apply before displaying results
  */
-export function CheckBox({ checked, disabled, size: _size }: CheckBoxProps) {
+export function Checkbox({
+  checked: controlledChecked,
+  disabled,
+  size: _size,
+  onValueChange,
+}: CheckboxProps) {
   const { theme, styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });
+
+  // Internal state for uncontrolled usage
+  const [internalChecked, setInternalChecked] = useState(false);
+
+  // Use prop value if provided, otherwise use internal state
+  const checked =
+    controlledChecked !== undefined ? controlledChecked : internalChecked;
+
+  const handlePress = useCallback(() => {
+    if (disabled) return;
+
+    if (controlledChecked === undefined) {
+      // Uncontrolled: update internal state
+      setInternalChecked((prev) => !prev);
+    }
+
+    // Call onChange if provided
+    onValueChange?.(!checked);
+  }, [disabled, controlledChecked, checked, onValueChange]);
 
   const chekedValue = useDerivedValue(() => {
     return withTiming(checked ? 1 : 0, {
@@ -45,6 +70,8 @@ export function CheckBox({ checked, disabled, size: _size }: CheckBoxProps) {
   return (
     <AnimatedBaseButton
       style={[styles.container, disabledStyle, animatedStyle]}
+      onPress={handlePress}
+      enabled={!disabled}
     >
       <Check size={18} strokeWidth={2} color={theme.colors.background} />
     </AnimatedBaseButton>

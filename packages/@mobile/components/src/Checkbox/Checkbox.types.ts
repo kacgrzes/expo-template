@@ -1,6 +1,6 @@
 import { CommonFormProps, Size, Status } from "../types";
 
-export type CheckBoxProps = CommonFormProps & {
+export type CheckboxProps = CommonFormProps & {
   checked?: boolean;
   onValueChange?: (checked: boolean) => void;
   size?: Size;
