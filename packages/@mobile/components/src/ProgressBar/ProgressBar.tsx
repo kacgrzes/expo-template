@@ -84,10 +84,10 @@ export const ProgressBar = ({
       borderWidth={borderWidth}
       height={height}
       onLayout={handleLayout}
-      width={width}
       style={{
         overflow: "hidden",
       }}
+      width={width}
     >
       <Animated.View
         style={[{ backgroundColor: color, height: "100%" }, animatedStyle]}

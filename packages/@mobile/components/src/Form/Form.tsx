@@ -1,4 +1,4 @@
-import { FormPasswordInput, FormTextInput } from "./controls";
+import { FormCheckbox, FormPasswordInput, FormTextInput } from "./controls";
 
 import { FormControl } from "./FormControl";
 import { FormField } from "./FormField";
@@ -8,6 +8,7 @@ import { FormRoot } from "./FormRoot";
 import { FormSubmit } from "./FormSubmit";
 
 export const Form = {
+  Checkbox: FormCheckbox,
   Control: FormControl,
   Field: FormField,
   HelperText: FormHelperText,

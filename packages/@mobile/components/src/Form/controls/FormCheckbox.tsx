@@ -1,11 +1,11 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import { TextInput, TextInputProps } from "../../TextInput";
+import { Checkbox, CheckboxProps } from "../../Checkbox";
 import { useFormFieldContext } from "../FormField";
 
-export type FormTextInputProps = TextInputProps;
+export type FormCheckboxProps = CheckboxProps;
 
-export const FormTextInput = (props: FormTextInputProps) => {
+export const FormCheckbox = (props: FormCheckboxProps) => {
   const { name } = useFormFieldContext();
   const { control } = useFormContext();
 
@@ -15,10 +15,11 @@ export const FormTextInput = (props: FormTextInputProps) => {
       control={control}
       render={({ field, fieldState }) => {
         return (
-          <TextInput
+          <Checkbox
             {...props}
             {...field}
-            onChangeText={field.onChange}
+            checked={field.value}
+            onValueChange={field.onChange}
             // error={fieldState.error?.message}
           />
         );

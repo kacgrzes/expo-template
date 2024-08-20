@@ -48,6 +48,15 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
     const [internalValue, setInternalValue] = useState(defaultValue);
     const value =
       controlledValue !== undefined ? controlledValue : internalValue;
+    const onChangeText = useCallback(
+      (text: string) => {
+        if (controlledValue === undefined) {
+          setInternalValue(text);
+        }
+        props.onChangeText?.(text);
+      },
+      [controlledValue, props.onChangeText],
+    );
     const { shake, shakeAnimatedStyle } = useShakeAnimation();
     const { styles, theme } = useStyles(stylesheet);
     const innerRef = useRef<RNTextInput>(null);
@@ -220,7 +229,7 @@ export const TextInput = forwardRef<TextInputRef, TextInputProps>(
             value={value}
             textAlign="left"
             textContentType="none"
-            onChangeText={setInternalValue}
+            onChangeText={onChangeText}
           />
         </View>
         {right}

@@ -9,7 +9,7 @@ export * from "./Button";
 export * from "./Calendar";
 export * from "./Card";
 export * from "./Center";
-export * from "./CheckBox";
+export * from "./Checkbox";
 export * from "./Chip";
 export * from "./ContextMenu";
 export * from "./Dot";

@@ -13,6 +13,13 @@ import {
 } from "@mobile/components";
 import MultipleShadows from "@mobile/components/src/Shadow/MultipleShadows";
 import { router } from "expo-router";
+import { z } from "zod";
+
+const signInSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8),
+  agreeToTerms: z.boolean(),
+});
 
 export default function SignIn() {
   const { signIn } = useSession();
@@ -36,10 +43,10 @@ export default function SignIn() {
           </Box>
         }
       >
-        <Pager.Container initialPage={2} ref={pagerViewRef}>
+        <Pager.Container ref={pagerViewRef}>
           <Pager.Page>
             <Screen.ScrollView>
-              <Form.Root>
+              <Form.Root schema={signInSchema}>
                 <Form.Field name="email">
                   <Form.Label>Email</Form.Label>
                   <Form.TextInput />
@@ -53,6 +60,12 @@ export default function SignIn() {
                     Includes at least one number {"\n"}- Includes at least one
                     special character (!@#$%^&*)
                   </Form.HelperText>
+                </Form.Field>
+                <Form.Field name="agreeToTerms">
+                  <Box direction={"row"} gap={2} alignY={"center"}>
+                    <Form.Checkbox />
+                    <Form.Label>Do you agree?</Form.Label>
+                  </Box>
                 </Form.Field>
                 <Button.Group direction="column">
                   <Form.Submit />

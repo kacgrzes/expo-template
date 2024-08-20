@@ -19,10 +19,12 @@ export const FormField = ({ children, name }: FormFieldProps) => {
 
   return (
     <FormFieldProvider name={name}>
-      <Box gap={1} width={"100%"}>
+      <Box direction={"column"} gap={1} width={"100%"}>
         {children}
         {error && typeof error === "string" ? (
-          <Text status="error">{error}</Text>
+          <Text variant="body2" status="error">
+            {error}
+          </Text>
         ) : null}
       </Box>
     </FormFieldProvider>
