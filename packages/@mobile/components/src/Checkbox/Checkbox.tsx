@@ -1,6 +1,5 @@
 import { Check } from "lucide-react-native";
-/** eslint-disable import/no-unresolved */
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import {
   interpolateColor,
   useAnimatedStyle,
@@ -9,6 +8,7 @@ import {
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
+import { useControlled } from "@common/hooks";
 import { AnimatedBaseButton } from "../AnimatedButtons";
 // eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
@@ -32,24 +32,17 @@ export function Checkbox({
   const { theme, styles } = useStyles(stylesheet);
   const disabledStyle = useDisabledStyle({ disabled });
 
-  // Internal state for uncontrolled usage
-  const [internalChecked, setInternalChecked] = useState(false);
-
-  // Use prop value if provided, otherwise use internal state
-  const checked =
-    controlledChecked !== undefined ? controlledChecked : internalChecked;
+  const [checked, setChecked] = useControlled(
+    controlledChecked,
+    false,
+    onValueChange,
+  );
 
   const handlePress = useCallback(() => {
     if (disabled) return;
 
-    if (controlledChecked === undefined) {
-      // Uncontrolled: update internal state
-      setInternalChecked((prev) => !prev);
-    }
-
-    // Call onChange if provided
-    onValueChange?.(!checked);
-  }, [disabled, controlledChecked, checked, onValueChange]);
+    setChecked(!checked);
+  }, [disabled, checked, setChecked]);
 
   const chekedValue = useDerivedValue(() => {
     return withTiming(checked ? 1 : 0, {
