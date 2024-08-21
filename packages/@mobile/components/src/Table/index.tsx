@@ -34,7 +34,7 @@ type TableHeaderProps = {
 };
 
 const TableHeader = ({ children }: TableHeaderProps) => {
-  return children;
+  return <Box backgroundColor={"lightgrey"}>{children}</Box>;
 };
 
 type TableBodyProps = {
