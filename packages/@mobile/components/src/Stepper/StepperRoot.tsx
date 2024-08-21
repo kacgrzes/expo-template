@@ -79,7 +79,15 @@ export const StepperRoot = forwardRef<StepperRef, StepperRootProps>(
           direction={orientation === "horizontal" ? "row" : "column"}
           style={{ alignSelf: "flex-start" }}
         >
-          {children}
+          {typeof children === "function"
+            ? children({
+                decrement,
+                increment,
+                reset,
+                set: setInternalValue,
+                value,
+              })
+            : children}
         </Box>
       </StepperProvider>
     );

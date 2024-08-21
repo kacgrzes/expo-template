@@ -12,4 +12,5 @@ export const Stepper = {
   Root: StepperRoot,
 };
 
-export { useStepperRef, StepperRef } from "./useStepperRef";
+export { useStepperRef } from "./useStepperRef";
+export * from "./Stepper.types";

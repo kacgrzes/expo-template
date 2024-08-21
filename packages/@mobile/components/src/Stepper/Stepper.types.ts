@@ -1,10 +1,19 @@
 import { ReactNode } from "react";
 import { Size } from "../types";
 
+export type StepperControls = {
+  reset: () => void;
+  set: (value: number) => void;
+  increment: () => void;
+  decrement: () => void;
+};
+
 // autorepeat
 export type StepperRootProps = {
   accessibilityLabel?: string;
-  children?: ReactNode;
+  children?:
+    | ReactNode
+    | ((values: StepperControls & { value: number }) => ReactNode);
   defaultValue?: number;
   disabled?: boolean;
   max?: number;
@@ -18,9 +27,4 @@ export type StepperRootProps = {
   value?: number;
 };
 
-export type StepperRef = {
-  reset: () => void;
-  set: (value: number) => void;
-  increment: () => void;
-  decrement: () => void;
-};
+export type StepperRef = StepperControls;
