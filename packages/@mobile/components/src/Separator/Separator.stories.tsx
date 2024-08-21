@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
+import { ScrollView } from "../ScrollView";
 import { Text } from "../Text";
 import { Separator } from "./Separator";
 
@@ -31,6 +32,34 @@ export const WithChildren: StoryObj<typeof Separator> = {
       <Separator>
         <Text>Hello!</Text>
       </Separator>
+    );
+  },
+};
+
+export const Horizontal: StoryObj<typeof Separator> = {
+  render: () => {
+    return (
+      <ScrollView
+        horizontal
+        contentContainerStyle={{
+          gap: 8,
+          alignSelf: "flex-start",
+        }}
+      >
+        <Text>Hello!</Text>
+        <Separator orientation="vertical" />
+        <Text>Hello!</Text>
+        <Separator orientation="vertical" />
+        <Text>Hello!</Text>
+        <Separator orientation="vertical" />
+        <Text>Hello!</Text>
+        <Separator orientation="vertical" />
+        <Text>Hello!</Text>
+        <Separator orientation="vertical" />
+        <Text>Hello!</Text>
+        <Separator orientation="vertical" />
+        <Text>Hello!</Text>
+      </ScrollView>
     );
   },
 };

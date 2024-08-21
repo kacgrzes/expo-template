@@ -40,9 +40,9 @@ const stylesheet = createStyleSheet((theme) => {
     separator: ({ orientation }: { orientation: Orientation }) => {
       return {
         backgroundColor: "lightgray",
-        flexShrink: 1,
-        height: orientation === "vertical" ? "100%" : StyleSheet.hairlineWidth,
-        width: orientation === "vertical" ? StyleSheet.hairlineWidth : "100%",
+        flexGrow: 1,
+        height: orientation === "vertical" ? "auto" : StyleSheet.hairlineWidth,
+        width: orientation === "vertical" ? StyleSheet.hairlineWidth : "auto",
       };
     },
   };
