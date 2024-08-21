@@ -10,6 +10,7 @@ export type Status =
   | "warning"
   | "info"
   | "muted";
+
 export type Size = "s" | "m" | "l";
 
 export type CommonFormProps = {
