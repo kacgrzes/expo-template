@@ -42,7 +42,7 @@ export const RenderProp: StoryObj<typeof Stepper> = {
               ) : (
                 <Stepper.Icon
                   onPress={decrement}
-                  icon={<Trash2 color="black" />}
+                  icon={Trash2}
                   disabled={value === 0}
                 />
               )}

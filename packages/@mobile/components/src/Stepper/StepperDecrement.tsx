@@ -9,7 +9,7 @@ export const StepperDecrement = () => {
     <Button
       variant="outline"
       size={size}
-      icon={<Minus color={"black"} />}
+      icon={Minus}
       onPress={decrement}
       disabled={disabled || value <= min}
     />

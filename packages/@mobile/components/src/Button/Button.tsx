@@ -23,7 +23,7 @@ export const Button = forwardRef<any, ButtonProps>(
     {
       disabled,
       full,
-      icon,
+      icon: Icon,
       left = null,
       loading = false,
       progress = false,
@@ -38,6 +38,7 @@ export const Button = forwardRef<any, ButtonProps>(
   ) => {
     const { styles } = useStyles(stylesheet, { variant, full, size });
     const disabledStyle = useDisabledStyle({ disabled: disabled || loading });
+    const iconColor = useIconColor({ variant });
 
     const loadingProgress = useDerivedValue(() =>
       withTiming(loading ? 1 : 0, { duration: 200 }),
@@ -84,7 +85,7 @@ export const Button = forwardRef<any, ButtonProps>(
           enabled={!disabled && !loading}
           {...rest}
           style={[
-            styles.container({ hasIcon: icon !== undefined }),
+            styles.container({ hasIcon: Icon !== undefined }),
             style,
             disabledStyle,
           ]}
@@ -93,7 +94,7 @@ export const Button = forwardRef<any, ButtonProps>(
           <View
             accessible
             accessibilityRole="button"
-            style={styles.innerContainer({ hasIcon: icon !== undefined })}
+            style={styles.innerContainer({ hasIcon: Icon !== undefined })}
           >
             {left}
             <View style={styles.titleContainer}>
@@ -109,13 +110,9 @@ export const Button = forwardRef<any, ButtonProps>(
                   <Text variant="label1" numberOfLines={1} style={styles.title}>
                     {title}
                   </Text>
-                ) : (
-                  cloneElement(icon, {
-                    size: 24,
-                    color: "white",
-                    ...icon.props,
-                  })
-                )}
+                ) : Icon !== undefined ? (
+                  <Icon size={24} color={iconColor} />
+                ) : null}
               </Animated.View>
             </View>
             {right}
@@ -127,6 +124,16 @@ export const Button = forwardRef<any, ButtonProps>(
 );
 
 Button.displayName = "Button";
+
+const useIconColor = ({ variant }: { variant: ButtonVariant }) => {
+  const { theme } = useStyles();
+
+  if (variant === "outline" || variant === "link") {
+    return theme.colors.typography;
+  }
+
+  return "white";
+};
 
 const stylesheet = createStyleSheet((theme) => {
   return {

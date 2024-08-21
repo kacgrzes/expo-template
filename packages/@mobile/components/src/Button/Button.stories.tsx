@@ -55,9 +55,7 @@ export const ButtonGroupStory: StoryObj<typeof Button> = {
     const [visible, toggleVisibility] = useToggle(true);
     return (
       <Button.Group size="l">
-        {visible ? (
-          <Button icon={<Pause fill={"white"} stroke={"transparent"} />} />
-        ) : null}
+        {visible ? <Button icon={Pause} /> : null}
         <Button title="Button 2" full onPress={toggleVisibility} />
       </Button.Group>
     );

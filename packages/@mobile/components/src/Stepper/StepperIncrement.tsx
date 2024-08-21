@@ -9,7 +9,7 @@ export const StepperIncrement = () => {
     <Button
       variant="outline"
       size={size}
-      icon={<Plus color={"black"} />}
+      icon={Plus}
       onPress={increment}
       disabled={disabled || value >= max}
     />
