@@ -1,7 +1,8 @@
 import { BoxProps } from "@grapp/stacks";
 import { ReactNode } from "react";
+import { Orientation } from "../types";
 
 export type SeparatorProps = {
   children?: ReactNode;
-  orientation?: "vertical" | "horizontal";
+  orientation?: Orientation;
 } & Pick<BoxProps, "gap">;

@@ -34,7 +34,7 @@ export const RenderProp: StoryObj<typeof Stepper> = {
   render: (args) => {
     return (
       <Stepper.Root {...args} min={0} max={5}>
-        {({ decrement, increment, reset, set, value }) => {
+        {({ decrement, value }) => {
           return (
             <>
               {value > 1 ? (

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Size } from "../types";
+import { Orientation, Size } from "../types";
 
 export type StepperControls = {
   reset: () => void;
@@ -20,7 +20,7 @@ export type StepperRootProps = {
   min?: number;
   onChange?: (value: number) => void;
   onValueChange?: (value: number) => void;
-  orientation?: "horizontal" | "vertical";
+  orientation?: Orientation;
   size?: Size;
   step?: number;
   testID?: string;

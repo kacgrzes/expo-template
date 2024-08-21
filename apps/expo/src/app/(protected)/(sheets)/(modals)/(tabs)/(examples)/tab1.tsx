@@ -22,7 +22,11 @@ export default function Tab1() {
   return (
     <Screen edges={["bottom"]}>
       <Screen.ScrollView gap={4}>
-        <Stepper.Root size="s" defaultValue={0} min={0} max={100} />
+        <Stepper.Root size="s" defaultValue={0} min={-5} max={5}>
+          <Stepper.Decrement />
+          <Stepper.Display />
+          <Stepper.Increment />
+        </Stepper.Root>
         <Tooltip.Root>
           <Tooltip.Trigger>
             <Button title="Toast example" />

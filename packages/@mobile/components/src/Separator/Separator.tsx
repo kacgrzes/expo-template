@@ -2,6 +2,7 @@ import { Box } from "@grapp/stacks";
 import { StyleSheet, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "../Text";
+import { Orientation } from "../types";
 import { SeparatorProps } from "./Separator.types";
 
 export function Separator({
@@ -36,11 +37,7 @@ export function Separator({
 
 const stylesheet = createStyleSheet((theme) => {
   return {
-    separator: ({
-      orientation,
-    }: {
-      orientation: "vertical" | "horizontal";
-    }) => {
+    separator: ({ orientation }: { orientation: Orientation }) => {
       return {
         backgroundColor: "lightgray",
         flexShrink: 1,

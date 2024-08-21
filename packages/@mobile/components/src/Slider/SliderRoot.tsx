@@ -2,7 +2,7 @@ import partition from "lodash/partition";
 import React, { Children, isValidElement, cloneElement } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Size } from "../types";
+import { Orientation, Size } from "../types";
 import { SliderProvider } from "./SliderContext";
 import { SliderThumb } from "./SliderThumb";
 
@@ -17,7 +17,7 @@ type SliderRootProps = {
   onChange?: (values: number[]) => void;
   onValueChange?: (values: number[]) => void;
   onValueCommit?: (values: number[]) => void;
-  orientation?: "horizontal" | "vertical";
+  orientation?: Orientation;
   size?: Size;
   step?: number;
   testID?: string;
@@ -72,7 +72,7 @@ export const SliderRoot = ({
 
 const stylesheet = createStyleSheet(() => {
   return {
-    root: ({ orientation }: { orientation: "horizontal" | "vertical" }) => {
+    root: ({ orientation }: { orientation: Orientation }) => {
       if (orientation === "vertical") {
         return {
           width: 20,
