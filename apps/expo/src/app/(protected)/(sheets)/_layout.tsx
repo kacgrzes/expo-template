@@ -11,6 +11,10 @@ export default function Sheets() {
         name="appearance"
         // options={DETACHED_BOTTOM_SHEET_OPTIONS}
       />
+      <BottomSheet.Screen
+        name="feedback"
+        // options={DETACHED_BOTTOM_SHEET_OPTIONS}
+      />
     </BottomSheet>
   );
 }

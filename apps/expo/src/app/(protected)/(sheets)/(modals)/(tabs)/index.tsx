@@ -113,6 +113,9 @@ export default function App() {
         <Link href="/Main" asChild>
           <Button title="Examples" variant="link" full />
         </Link>
+        <Link href="/feedback" asChild>
+          <Button title="Show feedback panel" variant="link" full />
+        </Link>
         <Button
           title="Open settings"
           variant="link"

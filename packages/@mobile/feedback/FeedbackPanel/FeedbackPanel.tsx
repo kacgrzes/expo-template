@@ -9,23 +9,30 @@ import {
 } from "@mobile/components";
 import { useEffect } from "react";
 import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+
+const Spacer = () => {
+  const { bottom } = useSafeAreaInsets();
+
+  return <View style={{ height: bottom }} />;
+};
 
 export function FeedbackPanel() {
   const { styles } = useStyles(stylesheet);
 
-  useEffect(() => {
-    const lastTextInput = textInputFocusManager.getLastTextInput();
-    if (lastTextInput) {
-      textInputFocusManager.dismissLastTextInput();
-    }
-    return () => {
-      if (lastTextInput) {
-        textInputFocusManager.setLastTextInput(lastTextInput);
-        textInputFocusManager.focusLastTextInput();
-      }
-    };
-  }, []);
+  // useEffect(() => {
+  //   const lastTextInput = textInputFocusManager.getLastTextInput();
+  //   if (lastTextInput) {
+  //     textInputFocusManager.dismissLastTextInput();
+  //   }
+  //   return () => {
+  //     if (lastTextInput) {
+  //       textInputFocusManager.setLastTextInput(lastTextInput);
+  //       textInputFocusManager.focusLastTextInput();
+  //     }
+  //   };
+  // }, []);
 
   return (
     <BottomSheetView style={styles.container}>
@@ -43,6 +50,7 @@ export function FeedbackPanel() {
         </Text>
         <Switch />
       </View>
+      <Spacer />
     </BottomSheetView>
   );
 }
