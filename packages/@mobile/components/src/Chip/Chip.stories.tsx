@@ -8,6 +8,7 @@ const ChipMeta: Meta<typeof Chip> = {
   component: Chip,
   argTypes: {},
   args: {
+    label: "Hello!",
     disabled: false,
   },
 };

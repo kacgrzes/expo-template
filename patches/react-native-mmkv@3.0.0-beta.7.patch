@@ -1,0 +1,36 @@
+diff --git a/cpp/MmkvHostObject.cpp b/cpp/MmkvHostObject.cpp
+index 38ee31048801a2cc868481d9ce28fa367d6bb761..6a41796a626371d3a820e4ac9f2b02269fb08d0a 100644
+--- a/cpp/MmkvHostObject.cpp
++++ b/cpp/MmkvHostObject.cpp
+@@ -69,11 +69,11 @@ MMKVMode MmkvHostObject::getMMKVMode(const facebook::react::MMKVConfig& config)
+   if (!config.mode.has_value()) {
+     return MMKVMode::MMKV_SINGLE_PROCESS;
+   }
+-  react::MmkvCxxMode mode = config.mode.value();
++  react::NativeMmkvMode mode = config.mode.value();
+   switch (mode) {
+-    case react::MmkvCxxMode::SINGLE_PROCESS:
++    case react::NativeMmkvMode::SINGLE_PROCESS:
+       return MMKVMode::MMKV_SINGLE_PROCESS;
+-    case react::MmkvCxxMode::MULTI_PROCESS:
++    case react::NativeMmkvMode::MULTI_PROCESS:
+       return MMKVMode::MMKV_MULTI_PROCESS;
+     default:
+       [[unlikely]] throw std::runtime_error("Invalid MMKV Mode value!");
+diff --git a/cpp/NativeMmkvModule.h b/cpp/NativeMmkvModule.h
+index e0aaf82a2db5dfc1d9e412dce49b6c7da5853bc1..65fe730cc2f3b5dcdb5ee48c3976ebab494e7e07 100644
+--- a/cpp/NativeMmkvModule.h
++++ b/cpp/NativeMmkvModule.h
+@@ -20,9 +20,9 @@
+ namespace facebook::react {
+ 
+ // The MMKVConfiguration type from JS
+-using MMKVConfig = MmkvCxxConfiguration<std::string, std::optional<std::string>,
+-                                        std::optional<std::string>, std::optional<MmkvCxxMode>>;
+-template <> struct Bridging<MMKVConfig> : MmkvCxxConfigurationBridging<MMKVConfig> {};
++using MMKVConfig = NativeMmkvConfiguration<std::string, std::optional<std::string>,
++                                        std::optional<std::string>, std::optional<NativeMmkvMode>>;
++                                        template <> struct Bridging<MMKVConfig> : NativeMmkvConfigurationBridging<MMKVConfig> {};
+ 
+ // The TurboModule itself
+ class NativeMmkvModule : public NativeMmkvCxxSpec<NativeMmkvModule> {

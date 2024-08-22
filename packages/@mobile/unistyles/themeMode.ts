@@ -1,8 +1,5 @@
-import { MMKV } from "react-native-mmkv";
+import { mmkv } from "@mobile/utils";
 
 import { ThemeMode } from "./changeThemeMode";
 
-const storage = new MMKV();
-export const themeMode = storage.getString("theme-mode") as
-  | ThemeMode
-  | undefined;
+export const themeMode = mmkv.getString("theme-mode") as ThemeMode | undefined;

@@ -6,7 +6,6 @@ import {
   useOrientationLock,
   useQuickActionSetup,
   useShakeEvent,
-  // eslint-disable-next-line import/no-unresolved
 } from "@mobile/hooks";
 import { Slot, useRouter } from "expo-router";
 import { createStyleSheet, useStyles } from "react-native-unistyles";

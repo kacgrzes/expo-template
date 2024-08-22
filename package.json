@@ -36,7 +36,8 @@
   },
   "patchedDependencies": {
     "@th3rdwave/react-navigation-bottom-sheet@0.3.2": "patches/@th3rdwave%2Freact-navigation-bottom-sheet@0.3.2.patch",
-    "expo-router@3.5.17": "patches/expo-router@3.5.17.patch"
+    "expo-router@3.5.17": "patches/expo-router@3.5.17.patch",
+    "react-native-mmkv@3.0.0-beta.7": "patches/react-native-mmkv@3.0.0-beta.7.patch"
   },
   "packageManager": "^bun@1.0.18",
   "dependencies": {

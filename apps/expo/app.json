@@ -85,7 +85,7 @@
           "targetSdkVersion": 34
         },
         "ios": {
-          "newArchEnabled": false
+          "newArchEnabled": true
         }
       }
     ],
