@@ -1,5 +1,5 @@
-import { cloneElement, forwardRef } from "react";
-import { View } from "react-native";
+import { forwardRef } from "react";
+import { StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   interpolate,

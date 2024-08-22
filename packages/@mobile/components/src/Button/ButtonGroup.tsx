@@ -1,26 +1,28 @@
-import { getValidChildren } from "@common/utils";
-import { Box } from "@grapp/stacks";
-import React, { cloneElement } from "react";
+import React from "react";
 import { Form } from "../Form";
+import { Group } from "../Group";
 import { Button } from "./Button";
 import { ButtonGroupProps } from "./Button.types";
+import { ButtonProvider } from "./ButtonContext";
 
 export const ButtonGroup = ({
   children,
   gap = 2,
   size,
   disabled,
-  direction = "row",
+  orientation = "horizontal",
 }: ButtonGroupProps) => {
   return (
-    <Box direction={direction} gap={gap} width={"100%"}>
-      {getValidChildren(children, [Button, Form.Submit]).map((child) => {
-        return cloneElement(child, {
-          size,
-          disabled,
-          ...child.props,
-        });
-      })}
-    </Box>
+    <ButtonProvider size={size} disabled={disabled}>
+      <Group
+        orientation={orientation}
+        gap={gap}
+        borderRadius={20}
+        width={"100%"}
+        validTypes={[Button, Form.Submit]}
+      >
+        {children}
+      </Group>
+    </ButtonProvider>
   );
 };

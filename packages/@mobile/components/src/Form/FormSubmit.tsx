@@ -5,9 +5,9 @@ import {
   SubmitHandler,
   useFormContext,
 } from "react-hook-form";
-import { Button } from "../Button";
+import { Button, ButtonProps } from "../Button";
 
-export const FormSubmit = () => {
+export const FormSubmit = ({ style }: Pick<ButtonProps, "style">) => {
   const { handleSubmit, formState } = useFormContext();
 
   const onValid: SubmitHandler<FieldValues> = (data) => {
@@ -23,6 +23,7 @@ export const FormSubmit = () => {
       onPress={() => handleSubmit(onValid, onInvalid)()}
       title="Submit"
       disabled={formState.disabled}
+      style={style}
     />
   );
 };

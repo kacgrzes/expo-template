@@ -67,7 +67,7 @@ export default function SignIn() {
                     <Form.Label>Do you agree?</Form.Label>
                   </Box>
                 </Form.Field>
-                <Button.Group direction="column">
+                <Button.Group orientation="vertical">
                   <Form.Submit />
                   <Button
                     title="Sign in"
