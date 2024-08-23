@@ -33,7 +33,7 @@ const getSizeStyle = (size: Size) => {
  * - "m" - Medium - list or content blocks
  * - "l" - Large - within profile or settings screen
  */
-export function Avatar({ size = "m", loading, source }: AvatarProps) {
+export function Avatar({ size = "m", loading, source, style }: AvatarProps) {
   const { styles } = useStyles(stylesheet, {
     size,
   });
@@ -44,7 +44,7 @@ export function Avatar({ size = "m", loading, source }: AvatarProps) {
 
   if (source) {
     return (
-      <FadeInOut>
+      <FadeInOut style={style}>
         <Image
           accessibilityIgnoresInvertColors
           source={source}
@@ -55,7 +55,7 @@ export function Avatar({ size = "m", loading, source }: AvatarProps) {
   }
 
   return (
-    <FadeInOut style={styles.avatar}>
+    <FadeInOut style={[styles.avatar, style]}>
       <Text style={styles.text}>K</Text>
     </FadeInOut>
   );

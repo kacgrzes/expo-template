@@ -1,3 +1,4 @@
+import { GroupProps } from "../Group";
 import { ImageProps } from "../Image";
 import { Size } from "../types";
 
@@ -13,3 +14,8 @@ export type AvatarProps = {
 } & Pick<ImageProps, "source">;
 
 export { Size };
+
+export type AvatarGroupProps = Omit<GroupProps, "validTypes"> & {
+  size?: Size;
+  overlap?: number;
+};

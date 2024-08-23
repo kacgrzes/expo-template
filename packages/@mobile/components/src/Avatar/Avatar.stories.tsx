@@ -48,3 +48,32 @@ export const SkiaImage: StoryObj<typeof Image> = {
     );
   },
 };
+
+export const GroupedAvatars: StoryObj<typeof Avatar.Group> = {
+  render: (args) => (
+    <Avatar.Group {...args}>
+      <Avatar source={{ uri: "https://i.pravatar.cc/64?img=1" }} />
+      <Avatar source={{ uri: "https://i.pravatar.cc/64?img=2" }} />
+      <Avatar source={{ uri: "https://i.pravatar.cc/64?img=3" }} />
+      <Avatar source={{ uri: "https://i.pravatar.cc/64?img=4" }} />
+    </Avatar.Group>
+  ),
+  args: {
+    size: "m",
+    overlap: 4,
+    orientation: "horizontal",
+  },
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: ["xs", "s", "m", "l", "xl"],
+    },
+    overlap: {
+      control: { type: "number" },
+    },
+    orientation: {
+      control: { type: "radio" },
+      options: ["horizontal", "vertical"],
+    },
+  },
+};
