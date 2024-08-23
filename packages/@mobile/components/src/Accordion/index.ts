@@ -1,3 +1,4 @@
+import { AccordionArrow } from "./AccordionArrow";
 import { AccordionContent } from "./AccordionContent";
 import { AccordionHeader } from "./AccordionHeader";
 import { AccordionItem } from "./AccordionItem";
@@ -5,6 +6,7 @@ import { AccordionRoot } from "./AccordionRoot";
 import { AccordionTrigger } from "./AccordionTrigger";
 
 export const Accordion = {
+  Arrow: AccordionArrow,
   Content: AccordionContent,
   Header: AccordionHeader,
   Item: AccordionItem,
