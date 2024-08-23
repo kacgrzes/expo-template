@@ -60,8 +60,9 @@ export const GroupedAvatars: StoryObj<typeof Avatar.Group> = {
   ),
   args: {
     size: "m",
-    overlap: 4,
+    overlap: 12,
     orientation: "horizontal",
+    reverse: false,
   },
   argTypes: {
     size: {

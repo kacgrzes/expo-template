@@ -11,11 +11,12 @@ export type AvatarProps = {
    */
   size?: Size;
   loading?: boolean;
-} & Pick<ImageProps, "source">;
+} & Pick<ImageProps, "source" | "style">;
 
 export { Size };
 
 export type AvatarGroupProps = Omit<GroupProps, "validTypes"> & {
   size?: Size;
   overlap?: number;
+  reverse?: boolean;
 };
