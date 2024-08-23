@@ -15,8 +15,8 @@ import { AppIconProps } from "./AppIcon.types";
  * <AppIcon />
  * ```
  */
-export function AppIcon({ source }: AppIconProps) {
-  const { styles } = useStyles(stylesheet);
+export function AppIcon({ source, context }: AppIconProps) {
+  const { styles } = useStyles(stylesheet, { context });
 
   return (
     <Image
@@ -32,7 +32,20 @@ const stylesheet = createStyleSheet((_theme) => {
     appIcon: {
       width: 64,
       height: 64,
-      borderRadius: 15,
+      variants: {
+        context: {
+          "home-screen-icon": {
+            width: 64,
+            height: 64,
+            borderRadius: 15,
+          },
+          notification: {
+            width: 24,
+            height: 24,
+            borderRadius: 6,
+          },
+        },
+      },
     },
   };
 });

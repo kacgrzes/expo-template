@@ -1,3 +1,7 @@
 import { ImageProps } from "../Image";
 
-export type AppIconProps = Pick<ImageProps, "source">;
+export type AppIconContext = "home-screen-icon" | "notification";
+
+export interface AppIconProps extends Pick<ImageProps, "source"> {
+  context?: AppIconContext;
+}

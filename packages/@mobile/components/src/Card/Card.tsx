@@ -21,6 +21,7 @@ export const Card = ({ children, style, ...rest }: CardProps) => {
         borderRadius={16}
         borderWidth={1}
         padding={3}
+        height={"auto"}
         {...rest}
         backgroundColor={"white"}
         flex={"fluid"}
