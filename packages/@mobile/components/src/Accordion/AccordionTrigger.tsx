@@ -1,6 +1,6 @@
 import { Box } from "@grapp/stacks";
 import React from "react";
-import { AnimatedBaseButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { AccordionTriggerProps } from "./Accordion.types";
 import { useAccordionItemContext } from "./AccordionItem";
 import { useAccordionRootContext } from "./AccordionRoot";
@@ -12,16 +12,16 @@ export const AccordionTrigger = ({
   const { value, disabled: disabledSingle } = useAccordionItemContext();
   const { disabled: disabledAll, trigger } = useAccordionRootContext();
 
-  const enabled = !disabledSingle && !disabledAll;
+  const disabled = disabledSingle || disabledAll;
 
   return (
-    <AnimatedBaseButton
-      enabled={enabled}
+    <Pressable
+      disabled={disabled}
       onPress={() => {
         trigger(value);
       }}
     >
       <Box {...rest}>{children}</Box>
-    </AnimatedBaseButton>
+    </Pressable>
   );
 };

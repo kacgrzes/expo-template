@@ -1,11 +1,7 @@
 import { LucideIcon } from "lucide-react-native";
-import { ComponentProps } from "react";
-import { AnimatedRectButton } from "../AnimatedButtons";
+import { PressableProps } from "../Pressable";
 
-export type FABProps = Pick<
-  ComponentProps<typeof AnimatedRectButton>,
-  "onPress"
-> & {
+export type FABProps = PressableProps & {
   Icon?: LucideIcon;
   extended?: boolean;
   label?: string;

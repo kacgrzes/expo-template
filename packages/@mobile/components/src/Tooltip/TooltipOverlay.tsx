@@ -10,7 +10,12 @@ import {
 } from "@shopify/react-native-skia";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { useDerivedValue, useSharedValue } from "react-native-reanimated";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import {
+  runOnJS,
+  useDerivedValue,
+  useSharedValue,
+} from "react-native-reanimated";
 import { useStyles } from "react-native-unistyles";
 import { useTooltipContext } from "./TooltipProvider";
 
@@ -45,6 +50,10 @@ export const TooltipOverlay = ({
     );
   }, [measurement, offset]);
 
+  const tapGesture = Gesture.Tap().onEnd(() => {
+    runOnJS(setVisible)(false);
+  });
+
   if (!visible) {
     return null;
   }
@@ -59,23 +68,22 @@ export const TooltipOverlay = ({
 
   return (
     <Portal hostName="overlay">
-      <Canvas
-        onTouch={() => {
-          setVisible(false);
-        }}
-        onSize={size}
-        mode="default"
-        style={{
-          ...StyleSheet.absoluteFillObject,
-          width: "100%",
-          height: "100%",
-          flex: 1,
-        }}
-      >
-        <Group clip={clip} invertClip>
-          <Fill opacity={theme.opacity} />
-        </Group>
-      </Canvas>
+      <GestureDetector gesture={tapGesture}>
+        <Canvas
+          onSize={size}
+          mode="default"
+          style={{
+            ...StyleSheet.absoluteFillObject,
+            width: "100%",
+            height: "100%",
+            flex: 1,
+          }}
+        >
+          <Group clip={clip} invertClip>
+            <Fill opacity={theme.opacity} />
+          </Group>
+        </Canvas>
+      </GestureDetector>
     </Portal>
   );
 };

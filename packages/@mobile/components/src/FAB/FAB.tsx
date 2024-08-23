@@ -9,7 +9,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 // TODO: check why this component has such a big hit slop
-import { AnimatedRectButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { Shadow, shadowStyle } from "../Shadow";
 import { FABProps } from "./FAB.types";
 
@@ -94,7 +94,7 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
 
   return (
     <Shadow style={styles.shadow}>
-      <AnimatedRectButton style={styles.container} onPress={onPress}>
+      <Pressable style={styles.container} onPress={onPress}>
         {/* TODO: add proper color here */}
         <View style={styles.iconContainer}>
           <Icon color={"#fff"} size={24} strokeWidth={2} />
@@ -119,7 +119,7 @@ export function FAB({ onPress, Icon = Plus, extended, label }: FABProps) {
             </Animated.Text>
           ) : null}
         </Animated.View>
-      </AnimatedRectButton>
+      </Pressable>
     </Shadow>
   );
 }

@@ -4,7 +4,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-import { AnimatedBaseButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { RadioButtonProps } from "./RadioButton.types";
 
@@ -39,13 +39,13 @@ export function RadioButton({
   }, [selected]);
 
   return (
-    <AnimatedBaseButton
-      enabled={!disabled}
+    <Pressable
+      disabled={disabled}
       onPress={onPress}
       style={[styles.container, disabledStyle]}
     >
       <Animated.View style={[styles.dot, animatedDot]} />
-    </AnimatedBaseButton>
+    </Pressable>
   );
 }
 

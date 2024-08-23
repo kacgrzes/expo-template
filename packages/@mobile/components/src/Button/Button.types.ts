@@ -1,8 +1,8 @@
 import { BoxProps } from "@grapp/stacks";
 import { LucideIcon } from "lucide-react-native";
 import { ReactNode } from "react";
-import { RectButtonProps } from "react-native-gesture-handler";
 import { GroupProps } from "../Group";
+import { PressableProps } from "../Pressable";
 import { CommonAccessoryProps, CommonFormProps, Size, Status } from "../types";
 
 export type ButtonVariant = "solid" | "outline" | "link" | "apple" | "google";
@@ -15,7 +15,7 @@ export type ButtonProps = CommonFormProps &
     size?: Size;
     status?: Status;
     variant?: ButtonVariant;
-  } & Pick<RectButtonProps, "onPress" | "onLongPress" | "testID" | "style"> &
+  } & PressableProps &
   (
     | {
         title: string;

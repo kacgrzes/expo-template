@@ -12,8 +12,8 @@ import { FadeInUp, FadeOutUp, LinearTransition } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Status } from "../types";
 
-import { AnimatedRectButton } from "../AnimatedButtons";
 import { BlurView } from "../BlurView";
+import { Pressable } from "../Pressable";
 import { Text } from "../Text";
 
 type NotificationStatus = Exclude<Status, "muted" | "primary">;
@@ -43,7 +43,7 @@ export const Notification = ({
   const Icon = useMemo(() => icons[status], [status]);
 
   return (
-    <AnimatedRectButton
+    <Pressable
       entering={FadeInUp.duration(300)}
       exiting={FadeOutUp.duration(300)}
       layout={LinearTransition.duration(150)}
@@ -57,7 +57,7 @@ export const Notification = ({
         {description ? <Text status={status}>{description}</Text> : null}
       </Box>
       <X color={theme.colors[status]} />
-    </AnimatedRectButton>
+    </Pressable>
   );
 };
 

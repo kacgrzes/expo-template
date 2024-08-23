@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { LayoutChangeEvent, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { AnimatedRectButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { Text } from "../Text";
 import { SegmentedControlItemProps } from "./SegmentedControl.types";
 import { useSegmentedControlContext } from "./SegmentedControlContext";
@@ -31,8 +31,8 @@ export function SegmentedControlItem({
 
   return (
     <View onLayout={handleLayout} style={{ flex: full ? 1 : 0 }}>
-      <AnimatedRectButton
-        enabled={!disabled && !active}
+      <Pressable
+        disabled={disabled || active}
         onPress={onPress}
         style={styles.item({
           full,
@@ -42,7 +42,7 @@ export function SegmentedControlItem({
         <Text variant="label1" numberOfLines={1}>
           {label}
         </Text>
-      </AnimatedRectButton>
+      </Pressable>
     </View>
   );
 }

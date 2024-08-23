@@ -17,7 +17,6 @@ export const ButtonGroup = ({
       <Group
         orientation={orientation}
         gap={gap}
-        borderRadius={20}
         width={"100%"}
         validTypes={[Button, Form.Submit]}
       >

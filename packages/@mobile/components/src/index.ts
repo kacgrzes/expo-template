@@ -30,6 +30,7 @@ export * from "./Pager";
 export * from "./PagerView";
 export * from "./PasswordInput";
 export * from "./Picker";
+export * from "./Pressable";
 export * from "./RadioButton";
 export * from "./SafeAreaView";
 export * from "./Screen";

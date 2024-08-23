@@ -1,6 +1,6 @@
 import { Facebook, Instagram, Twitter } from "lucide-react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { AnimatedBaseButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { Name, SocialIconProps } from "./SocialIcon.types";
 
 export function SocialIcon({ name, onPress }: SocialIconProps) {
@@ -12,9 +12,9 @@ export function SocialIcon({ name, onPress }: SocialIconProps) {
   }[name];
 
   return (
-    <AnimatedBaseButton style={styles.container(name)} onPress={onPress}>
+    <Pressable style={styles.container(name)} onPress={onPress}>
       <Icon size={24} color="white" />
-    </AnimatedBaseButton>
+    </Pressable>
   );
 }
 

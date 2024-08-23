@@ -5,7 +5,7 @@ import {
   withTiming,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { AnimatedRectButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { ChipProps } from "./Chip.types";
@@ -35,12 +35,11 @@ export function Chip({
   }, [selected]);
 
   return (
-    <AnimatedRectButton
-      activeOpacity={0.4}
+    <Pressable
       onPress={onPress}
       layout={LinearTransition}
       style={[styles.container(), disabledStyle, selectedStyle]}
-      enabled={!disabled}
+      disabled={disabled}
     >
       <Text
         variant="label2"
@@ -49,11 +48,11 @@ export function Chip({
         {label}
       </Text>
       {onDismiss ? (
-        <AnimatedRectButton style={styles.iconContainer}>
+        <Pressable style={styles.iconContainer} onPress={onDismiss}>
           <X size={16} color="black" />
-        </AnimatedRectButton>
+        </Pressable>
       ) : null}
-    </AnimatedRectButton>
+    </Pressable>
   );
 }
 

@@ -1,6 +1,6 @@
 import { Box } from "@grapp/stacks";
 import React from "react";
-import { AnimatedBorderlessButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { AnimatedText } from "../Text";
 import { TabsItemProps } from "./Tabs.types";
 
@@ -13,11 +13,11 @@ export const TabsItem = ({
   testID,
 }: TabsItemProps) => {
   return (
-    <AnimatedBorderlessButton
+    <Pressable
       testID={testID}
       onPress={onPress}
       onLongPress={onLongPress}
-      enabled={!disabled}
+      disabled={disabled}
     >
       <Box
         accessibilityRole="button"
@@ -36,6 +36,6 @@ export const TabsItem = ({
           {label}
         </AnimatedText>
       </Box>
-    </AnimatedBorderlessButton>
+    </Pressable>
   );
 };

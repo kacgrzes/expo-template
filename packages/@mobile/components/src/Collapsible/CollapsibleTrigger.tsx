@@ -1,6 +1,6 @@
 import { Box } from "@grapp/stacks";
 import React from "react";
-import { AnimatedBaseButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { CollapsibleTriggerProps } from "./Collapsible.types";
 import { useCollapsibleContext } from "./CollapsibleRoot";
 
@@ -11,13 +11,13 @@ export const CollapsibleTrigger = ({
   const { disabled, open, onOpenChange } = useCollapsibleContext();
 
   return (
-    <AnimatedBaseButton
-      enabled={!disabled}
+    <Pressable
+      disabled={disabled}
       onPress={() => {
         onOpenChange(!open);
       }}
     >
       <Box {...rest}>{children}</Box>
-    </AnimatedBaseButton>
+    </Pressable>
   );
 };

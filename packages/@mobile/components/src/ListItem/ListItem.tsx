@@ -3,7 +3,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { Box } from "@grapp/stacks";
 import { useMemo } from "react";
-import { AnimatedRectButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { Text } from "../Text";
 import { ListItemProps } from "./ListItem.types";
 
@@ -24,11 +24,7 @@ export function ListItem({
   }, [rightElement]);
 
   return (
-    <AnimatedRectButton
-      activeOpacity={0.1}
-      onPress={onPress}
-      style={styles.listItem}
-    >
+    <Pressable onPress={onPress} style={styles.listItem}>
       {Icon ? (
         <Icon size={24} color={theme.colors.typography} strokeWidth={1.5} />
       ) : null}
@@ -42,7 +38,7 @@ export function ListItem({
         ) : null}
       </Box>
       {right}
-    </AnimatedRectButton>
+    </Pressable>
   );
 }
 

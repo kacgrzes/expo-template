@@ -1,14 +1,11 @@
-import { ComponentProps, ReactNode } from "react";
-import { AnimatedBorderlessButton } from "../AnimatedButtons";
+import { ReactNode } from "react";
+import { PressableProps } from "../Pressable";
 
 export type TabsItemProps = {
   disabled?: boolean;
   label: string;
   selected?: boolean;
   testID?: string;
-} & Pick<
-  ComponentProps<typeof AnimatedBorderlessButton>,
-  "onPress" | "onLongPress"
->;
+} & Pick<PressableProps, "onPress" | "onLongPress">;
 
 export type TabsScrollViewProps = { children: ReactNode };

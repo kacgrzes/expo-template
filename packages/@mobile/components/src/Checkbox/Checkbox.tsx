@@ -1,15 +1,15 @@
 import { Check } from "lucide-react-native";
 import React, { useCallback } from "react";
-import {
+import Animated, {
   interpolateColor,
   useAnimatedStyle,
   useDerivedValue,
   withTiming,
 } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { Pressable } from "../Pressable";
 
 import { useControlled } from "@common/hooks";
-import { AnimatedBaseButton } from "../AnimatedButtons";
 // eslint-disable-next-line import/no-unresolved
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
 import { CheckboxProps } from "./Checkbox.types";
@@ -44,7 +44,7 @@ export function Checkbox({
     setChecked(!checked);
   }, [disabled, checked, setChecked]);
 
-  const chekedValue = useDerivedValue(() => {
+  const checkedValue = useDerivedValue(() => {
     return withTiming(checked ? 1 : 0, {
       duration: 200,
     });
@@ -53,7 +53,7 @@ export function Checkbox({
   const animatedStyle = useAnimatedStyle(() => {
     return {
       backgroundColor: interpolateColor(
-        chekedValue.value,
+        checkedValue.value,
         [0, 1],
         [theme.colors.background, theme.colors.typography],
       ),
@@ -61,13 +61,11 @@ export function Checkbox({
   }, [checked, theme.colors.background, theme.colors.typography]);
 
   return (
-    <AnimatedBaseButton
-      style={[styles.container, disabledStyle, animatedStyle]}
-      onPress={handlePress}
-      enabled={!disabled}
-    >
-      <Check size={18} strokeWidth={2} color={theme.colors.background} />
-    </AnimatedBaseButton>
+    <Pressable onPress={handlePress} disabled={disabled}>
+      <Animated.View style={[styles.container, animatedStyle, disabledStyle]}>
+        <Check size={18} strokeWidth={2} color={theme.colors.background} />
+      </Animated.View>
+    </Pressable>
   );
 }
 

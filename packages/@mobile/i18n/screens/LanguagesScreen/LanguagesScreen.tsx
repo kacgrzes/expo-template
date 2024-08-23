@@ -1,7 +1,6 @@
-import { RadioButton, Text } from "@mobile/components";
+import { Pressable, RadioButton, Text } from "@mobile/components";
 import { useTranslation } from "react-i18next";
 import { ScrollView } from "react-native";
-import { RectButton } from "react-native-gesture-handler";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { LANGUAGES } from "../../languages";
@@ -14,14 +13,14 @@ export function LanguagesScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       {LANGUAGES.map((language) => {
         return (
-          <RectButton
+          <Pressable
             key={language.id}
             onPress={() => i18n.changeLanguage(language.id)}
             style={styles.listItem}
           >
             <Text>{language.name}</Text>
             <RadioButton selected={language.id === i18n.language} />
-          </RectButton>
+          </Pressable>
         );
       })}
     </ScrollView>

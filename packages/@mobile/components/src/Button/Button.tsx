@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   interpolate,
@@ -10,7 +10,7 @@ import Animated, {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 import { ActivityIndicator } from "../ActivityIndicator";
-import { AnimatedRectButton } from "../AnimatedButtons";
+import { Pressable } from "../Pressable";
 import { Shadow, shadowStyle } from "../Shadow";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
@@ -79,16 +79,14 @@ export const Button = forwardRef<any, ButtonProps>(
 
     return (
       <Shadow style={styles.shadow(variant)}>
-        <AnimatedRectButton
-          underlayColor={"black"}
-          activeOpacity={0.1}
-          enabled={!disabled && !loading}
-          {...rest}
+        <Pressable
+          disabled={disabled || loading}
           style={[
             styles.container({ hasIcon: Icon !== undefined }),
             style,
             disabledStyle,
           ]}
+          {...rest}
         >
           {progress ? <ButtonProgress variant={variant} /> : null}
           <View
@@ -117,7 +115,7 @@ export const Button = forwardRef<any, ButtonProps>(
             </View>
             {right}
           </View>
-        </AnimatedRectButton>
+        </Pressable>
       </Shadow>
     );
   },
@@ -137,6 +135,9 @@ const useIconColor = ({ variant }: { variant: ButtonVariant }) => {
 
 const stylesheet = createStyleSheet((theme) => {
   return {
+    pressable: {
+      borderRadius: 8,
+    },
     innerContainer: ({ hasIcon }) => {
       return {
         flexDirection: "row",
