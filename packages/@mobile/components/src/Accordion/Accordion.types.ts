@@ -6,6 +6,7 @@ type AccordionRootSingle = {
   defaultValue?: string;
   value?: string;
   type: "single";
+  collapsible?: boolean;
 };
 
 type AccordionRootMultiple = {
@@ -13,6 +14,7 @@ type AccordionRootMultiple = {
   defaultValue?: string[];
   value?: string[];
   type: "multiple";
+  collapsible?: undefined;
 };
 
 export type AccordionRootProps = {

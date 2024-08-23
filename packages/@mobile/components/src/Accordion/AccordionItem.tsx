@@ -8,8 +8,12 @@ import { AccordionItemProps } from "./Accordion.types";
 import { useAccordionRootContext } from "./AccordionRoot";
 
 const useAccordionItem = ({ disabled, value }) => {
-  const { value: rootValue } = useAccordionRootContext();
-  const selected = rootValue === value;
+  const { value: rootValue, type } = useAccordionRootContext();
+  const selected =
+    type === "multiple"
+      ? (rootValue as string[]).includes(value)
+      : rootValue === value;
+
   return {
     disabled,
     selected,
