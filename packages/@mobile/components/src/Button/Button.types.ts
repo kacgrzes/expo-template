@@ -38,6 +38,10 @@ export type ButtonProgressProps = {
   onCompleted?: () => void;
 };
 
+export interface ButtonComponent extends React.FC<ButtonProps> {
+  Group: React.FC<ButtonGroupProps>;
+}
+
 export type AppleAuthenticationButtonProps = Pick<ButtonProps, "full">;
 
 export type GoogleAuthenticationButtonProps = Pick<ButtonProps, "full">;

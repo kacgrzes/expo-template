@@ -14,10 +14,9 @@ import { Pressable } from "../Pressable";
 import { Shadow, shadowStyle } from "../Shadow";
 import { Text } from "../Text";
 import { useDisabledStyle } from "../hooks/useDisabledStyle";
-import { ButtonProps, ButtonVariant } from "./Button.types";
+import { ButtonComponent, ButtonProps, ButtonVariant } from "./Button.types";
 import { ButtonProgress } from "./ButtonProgress";
 
-// TODO: Add Button.Group
 export const Button = forwardRef<any, ButtonProps>(
   (
     {

@@ -5,7 +5,7 @@ export * from "./AppleAuthenticationButton";
 export * from "./GoogleAuthenticationButton";
 export * from "./Button.types";
 
-const Button = ButtonComponent;
+export const Button = ButtonComponent as typeof ButtonComponent & {
+  Group: typeof ButtonGroup;
+};
 Button.Group = ButtonGroup;
-
-export { Button };

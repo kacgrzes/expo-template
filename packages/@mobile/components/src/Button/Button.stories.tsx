@@ -4,8 +4,8 @@ import React from "react";
 
 import { useToggle } from "@common/hooks";
 import { ArrowDown, Pause } from "lucide-react-native";
+import { Button } from "../index";
 import { AppleAuthenticationButton } from "./AppleAuthenticationButton";
-import { Button } from "./Button";
 import { GoogleAuthenticationButton } from "./GoogleAuthenticationButton";
 
 const ButtonMeta: Meta<typeof Button> = {
