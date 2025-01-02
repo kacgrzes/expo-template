@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "jsx": "react-native",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*", "./src/modules/*"],
+      "packageJson": ["./package.json"]
+    }
+  },
+  "extends": "../../../tsconfig.base.json",
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
+  "exclude": [
+    ".eslintrc.js",
+    ".expo",
+    ".husky",
+    "android",
+    "assets",
+    "babel.config.js",
+    "dist",
+    "ios",
+    "metro.config.js",
+    "node_modules",
+    "patches",
+    "templates"
+  ],
+  "references": []
+}
